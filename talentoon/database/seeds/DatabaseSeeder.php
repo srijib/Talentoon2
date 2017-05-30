@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LikableTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(PermissionsTableSeeder::class);
-
+        $this->call(PermissionRoleTableSeeder::class);
     }
 }
