@@ -1,0 +1,53 @@
+<style>
+	.container{
+		font-size: 10px;
+	}
+</style>
+
+
+
+
+
+
+<div class="container" >
+
+
+
+	<!-- Form Start -->
+	<form ng-submit="submit_post_file()" name="form" role="form" enctype="multipart/form-data">
+		<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+		<!--<input type="submit" id="submit_file" value="Submit" />-->
+		<br/>
+		<img ng-src="{{post.file}}" style="width:300px;">
+	</form>
+	<!-- Form End -->
+
+
+
+	<form ng-submit="submitted=true ; newpost(addpost.$valid)" name="addpost"  novalidate >
+
+
+
+	<div class="field">
+	<h4 style="color:Purple ">post title</h4>
+		<input type="text" name="title" required ng-model="post.title" class="form-control">
+			<p class="error" ng-if="addpost.title.$error.required && submitted" >please enter your post title</p>
+	</div>
+  <div class="field">
+	<h4 style="color:Purple ">description</h4>
+		<input type="text" name="description" required ng-model="post.description" class="form-control">
+			<p class="error" ng-if="addpost.description.$error.required && submitted" >please enter your post description</p>
+	</div>
+
+
+    <input type="hidden" name="category_id"  ng-model="post.category_id" class="form-control" value="{{cat_id}}">
+
+	<button  type="submit" name="button">OK</button>
+	<!-- <p type="submit" class="btnAction"><a class="btn btn-primary btnAction" role="button">Discover More</a></p> -->
+</form>
+
+
+
+</div>
+<br>
+<br>

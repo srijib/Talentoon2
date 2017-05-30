@@ -1,0 +1,57 @@
+
+<div class="container" >
+<form  name="register" ng-submit="submitted=true; registerFn(register.$valid)"  novalidate >
+	<div class="field">
+	<label style="color:#6A0C38">  First Name</label>
+		<input type="text" name="first_name" placeholder="First Name" required ng-model="user.first_name" class="form-control">
+			<p class="error" ng-if="submitted && register.first_name.$error.required" >please enter your user first name</p>
+	</div>
+  <div class="field">
+	<label style="color:#6A0C38">  Last Name</label>
+		<input type="text" name="last_name" placeholder="Last Name" required ng-model="user.last_name" class="form-control">
+			<p class="error" ng-if="submitted && register.last_name.$error.required" >please enter your last name</p>
+	</div>
+	<div class="field">
+	<label style="color:#6A0C38">email    </label>
+		<input type="email" required name="email" placeholder="Email" ng-model="user.email" class="form-control">
+		<p class="error" ng-if="submitted && register.email.$error.required" >please enter your email</p>
+		<p class="error" ng-if="submitted && register.email.$error.email"> please enter valid email</p>
+	</div>
+	<div class="field">
+	<label style="color:#6A0C38">password</label>
+		<input type="password" name="password" placeholder="Password" required ng-model="user.password" class="form-control" ng-minlength="6">
+		<p class="error" ng-if="submitted && register.password.$error.required" >please enter your password</p>
+	</div>
+	<div class="field">
+	<label style="color:#6A0C38"> Phone</label>
+		<input type="text" name="phone" placeholder="Phone" required ng-model="user.phone" class="form-control"  ng-minlength="11" ng-maxlength="11">
+			<p class="error" ng-if="submitted && register.phone.$error.required" >please enter your phone</p>
+			<p class="error" ng-show="submitted && register.phone.$error.number" >please enter only number </p>
+			<p class="error" ng-show="register.phone.$error.minlength" > phone number should be 11 digits </p>
+
+
+	</div>
+	<div class="field">
+    <label style="color:#6A0C38">gender   </label>
+    <select name="gender" ng-model="user.gender" required>
+  <option value="male">male</option>
+  <option value="female">female</option>
+</select>
+    <p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
+</div>
+
+<div class="field">
+  <label style="color:#6A0C38">country  </label>
+  <select  name="country_id" ng-model="user.country_id" >
+<option   value="{{country.id}}" ng-repeat="country in countries track by $index">{{country.name}}</option>
+</select>
+  <p class='error' ng-if='submitted && register.country_id.$error.required'>please choose your country</p>
+</div>
+<div class="field ">
+  <label style="color:#6A0C38">Date of Birthday </label>
+ <input type="date" name="date_of_birth" ng-model="user.date_of_birth">
+</div>
+	<button type="submit" name="button" style="color:#6A0C38">Register</button>
+</form>
+
+</div>

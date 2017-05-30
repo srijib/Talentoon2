@@ -1,0 +1,80 @@
+<style>
+    .container{
+        font-size: 10px;
+    }
+</style>
+
+
+
+
+
+
+<div class="container" >
+
+
+
+    <!-- Form Start -->
+    <form ng-submit="submit_event_file" name="form" role="form" enctype="multipart/form-data">
+        <input name="event_file" ng-model="event.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+        <!--<input type="submit" id="submit_file" value="Submit" />-->
+        <br/>
+        <img ng-src="{{post.file}}" style="width:300px;">
+    </form>
+    <!-- Form End -->
+
+
+
+    <form ng-submit="submitted=true ; newevent(addevent.$valid)" name="addevent"  novalidate >
+
+
+
+        <div class="field">
+            <h4 style="color:Purple ">Time from</h4>
+            <input type="time" name="time_from" required ng-model="event.time_from" class="form-control">
+            <p class="error" ng-if="addevent.time_from.$error.required && submitted" >This field is required</p>
+        </div>
+        <div class="field">
+            <h4 style="color:Purple ">Time to</h4>
+            <input type="time" name="time_to" required ng-model="event.time_to" class="form-control">
+            <p class="error" ng-if="addevent.time_to.$error.required && submitted" >This field is required</p>
+        </div>
+
+        <div class="field">
+            <h4 style="color:Purple ">Date from</h4>
+            <input type="date" name="date_from" required ng-model="event.date_from" class="form-control">
+            <p class="error" ng-if="addevent.date_from.$error.required && submitted" >This field is required</p>
+        </div>
+        <div class="field">
+            <h4 style="color:Purple ">Date to</h4>
+            <input type="date" name="date_to" required ng-model="event.date_to" class="form-control">
+            <p class="error" ng-if="addevent.date_to.$error.required && submitted" >This field is required</p>
+        </div>
+        <div class="field">
+            <h4 style="color:Purple ">Location</h4>
+            <input type="text" name="location" required ng-model="event.location" class="form-control">
+            <p class="error" ng-if="addevent.location.$error.required && submitted" >This field is required</p>
+        </div>
+        <div class="field">
+            <h4 style="color:Purple ">Description</h4>
+            <input type="text" name="description" required ng-model="event.description" class="form-control">
+            <p class="error" ng-if="addevent.description.$error.required && submitted" >This field is required</p>
+        </div>
+        <div class="field">
+            <h4 style="color:Purple ">Paied</h4>
+            <input type="radio" name="paied" required ng-model="event.is_paid" class="form-control" value="1" checked>Paied<br>
+            <input type="radio" name="paied" required ng-model="event.is_paid" class="form-control" value="0" checked> Free<br>
+            <p class="error" ng-if="addevent.paied.$error.required && submitted" >This field is required</p>
+        </div>
+
+
+        <input type="hidden" name="category_id"  ng-model="event.category_id" class="form-control" value="{{cat_id}}">
+
+        <button  type="submit" name="button">OK</button>
+        <!-- <p type="submit" class="btnAction"><a class="btn btn-primary btnAction" role="button">Discover More</a></p> -->
+    </form>
+
+
+
+</div>
+<br>
+<br>

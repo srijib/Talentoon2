@@ -1,0 +1,832 @@
+<center>
+      <a href="#!/category/betalent/{{cat_id}}/{{user_id}}" class="btn btn-info" role="button">Be Mawhoob</a>
+
+        <a ng-class="untalent()" class="btn btn-info" role="button">unTalentMe</a>
+
+
+    <a href="#!/category/bementor/{{cat_id}}/{{user_id}}" class="btn btn-info" role="button">Be Mentor</a>
+
+    <a ng-click="unmentor()" class="btn btn-info" role="button">un Mentor</a>
+
+    <a ng-href="{{current_presenter_class_url}}" class="btn btn-info" role="button" >Join Current Session NOW</a> </center>
+
+</center>
+
+
+
+<br>
+
+<div class="container">
+    <div class="btn-group " role="group" aria-label="...">
+        <button type="button" class="btn btn-default btn-lg">Be Talent</button>
+        <button type="button" class="btn btn-default btn-lg">Be Mentor</button>
+        <div ng-if="status != 1">
+            <a href="#!/category/subscribe/{{cat_id}}/{{user_id}}" type="button" class="btn btn-default btn-lg active" ng-click="subscribe()">Subscribe</a>
+        </div>
+        <div ng-if="status == 1">
+            <a href="#!/category/unsubscribe/{{cat_id}}/{{user_id}}" type="button" class="btn btn-default btn-lg active" ng-click="unsubscribe()">Un subscribe</a>
+        </div>
+
+    </div>
+</div>
+
+<div id="topposts">
+            <div class="container">
+                <div class="title">
+                    <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+                    <h1 class="h1">TOP POSTS</h1>
+                </div>
+ <!-- data-aos="fade-up" data-aos-duration="2000"  -->
+                <div class="row mainrow" >
+                    <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in category3Posts | limitTo:3 track by $index">
+                        <div class="thumbnail">
+                            <!-- defaultimg-->
+                            <div class="row defaultimg" >
+                                <img  class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
+                            </div>
+                            <!-- end defaultimg-->
+                            <!-- caption-->
+                            <div class="caption row"  data-toggle="modal" data-target="#1stpost">
+                                <p>{{post.title}}</p>
+                                <p>{{post.description}}</p>
+                                <p>{{post.created_at}}</p>
+                            </div>
+
+                            <!-- user-->
+
+
+                            <!--                               userinfo-->
+                            <div class="row userinfo">
+                                <img src="Imgs/Persons/face4.jpg" alt="">
+                                <p>Shaker Mohamed</p>
+                            </div>
+                            <!--                              end userinfo-->
+                            <!--small row  like comment share-->
+                            <div class="interaction row" >
+
+                                <!--comment like -->
+
+                                <!--comment-->
+                                <div class="">
+                                    <a href="#"  data-toggle="modal" data-target="#1stpost">
+                                        <i class="fa fa-heart" aria-hidden="true" ></i>
+                                        <span class="badge">12</span>
+                                    </a>
+
+                                    <!--like-->
+                                    <a href="#"  data-toggle="modal" data-target="#1stpost">
+                                        <i class="fa fa-commenting" aria-hidden="true"></i>
+                                        <span class="badge">35</span>
+                                    </a>
+
+                                    <!--share -->
+
+                                    <div id="socialHolder">
+                                        <div id="socialShare" class="btn-group share-group">
+                                            <a data-toggle="dropdown" class="btn btn-info">
+                                                <i class="fa fa-share-alt fa-inverse"></i>
+                                            </a>
+                                            <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>  <!--end comment like share -->
+
+                            </div><!--end small row -->
+
+                    </div><!--end thumbnail-->
+            </div><!--end postSection-->
+        </div>
+        <div class="btnsOn">
+            <a href="#!/category/{{cat_id}}/posts" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
+            <a href="#!/category/{{cat_id}}/addpost" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="1stpost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <div class="row popUserInfo">
+                        <img src="Imgs/Persons/face4.jpg" alt="">
+                        <p>Shaker Mohamed</p>
+                    </div>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-4 col-md-4 col-sm-12 popPostSection">
+                    <div class="thumbnail">
+                        <!-- defaultimg-->
+                        <div class="row  popdefaultimg" >
+                            <img src="Imgs/Website/3.jpg" alt="">
+                        </div>
+                        <!-- end defaultimg-->
+                        <!-- caption-->
+                        <div class="popCaption row"  data-toggle="modal" data-target="#1stpost">
+
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        </div>
+
+                        <!-- user-->
+                        <div class="popUser">
+
+                            <!--                               userinfo-->
+
+                            <!--                              end userinfo-->
+                            <!--small row  like comment share-->
+                            <div class="popInteraction row " >
+
+                                <!--comment like -->
+
+                                <!--comment-->
+                                <div class="">
+                                    <a>
+                                        <i class="fa fa-heart" aria-hidden="true" ></i>
+                                        <span class="badge">8</span>
+                                    </a>
+
+                                    <!--like-->
+                                    <a>
+                                        <i class="fa fa-commenting" aria-hidden="true"></i>
+                                        <span class="badge">6</span>
+                                    </a>
+
+                                    <!--share -->
+                                    <div id="socialHolder">
+                                        <div id="socialShare" class="btn-group share-group">
+                                            <a data-toggle="dropdown" class="btn btn-info">
+                                                <i class="fa fa-share-alt fa-inverse"></i>
+                                            </a>
+                                            <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+                                </div><!--end comment like share -->
+
+                            </div><!--end small row -->
+                        </div><!-- end user-->
+
+                        <div class="popUsersComments">
+                            <div class="writePost">
+                                <textarea class="form-control" rows="3"></textarea>
+                                <div class="posting">
+                                    <button type="button" class="btn btn-default">Comment</button>
+                                </div>
+
+                            </div>
+
+                            <ul class="media-list">
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Omar Mourad</h4>
+                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+
+                                    </div>
+
+
+
+                                </li>
+
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Khaled Ali</h4>
+                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+                                    </div>
+                                </li>
+
+
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Hossam Abdelrhman</h4>
+                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+
+                                    </div>
+
+
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div><!--end thumbnail-->
+                </div><!--end postSection-->
+
+            </div><!--end modalbody-->
+        </div><!--end modalcontent-->
+    </div><!--end modaldialog-->
+</div><!--end my modal id-->
+
+
+<!-- data-aos="zoom-in-down" data-aos-duration="2000" -->
+<div id="topEvents">
+    <div class="container">
+        <div class="title">
+            <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+            <h1 class="h1">TOP Events</h1>
+        </div>
+        <div class="evMainRow row">
+            <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" event in events| limitTo:3">
+                <div class="thumbnail">
+                    <div class="row evDefaultImg" >
+                        <img src="http://localhost:8000/{{event.media_url}}" alt="">
+                    </div><!--    top event default image-->
+
+                    <div class="row evTitle"  >
+                        <div class="col-lg-10 col-md-10 col-sm-8" >
+                            <a href="#" data-toggle="modal" data-target="#ev1">
+                                <h3>{{event.title}}</h3>
+                            </a>
+                        </div>
+
+
+                        <!--share -->
+
+                        <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-4">
+                            <div id="socialShare" class="btn-group share-group">
+                                <a data-toggle="dropdown" class="btn btn-info">
+                                    <i class="fa fa-share-alt fa-inverse"></i>
+                                </a>
+                                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                            <i class="fa fa-envelope"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!--    top event title-->
+                    <div class="evCaption row">
+                        <p class="row">{{event.description}}</p>
+                    </div><!--    top event caption-->
+
+                    <div class=" evDetails row">
+                        <div class="eventScd col-lg-6 col-md-12 col-sm-12">
+                            <span  class="bigdate">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <p>25</p>
+                            </span>
+                            <span class="labels">
+                                <span class="label first label-default"> {{event.date_from}} - {{event.date_to}}</span>
+                                <span class="label label-default">{{event.time_from}} - {{event.time_to}}</span>
+                            </span>
+                        </div><!--    top event schdule-->
+                        <div class="eventScd col-lg-6 col-md-12 col-sm-12" id="secondp">
+                            <span  class="bigdate" id="span1">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </span>
+                            <span class="labels"id="s">
+                                {{event.location}}
+                            </span>
+                        </div><!--    top event schdule-->
+                    </div><!--    top event detaila-->
+                    <!--
+-->
+                    <div class=" going" data-toggle="modal" data-target="#ev1">
+                        <button type="button" class="btn btn-default">Going</button>
+                    </div>
+
+                </div> <!--    top event thumbnail-->
+            </div><!--    top event section-->
+        </div>
+        <div class="btnsOn">
+            <a href="#!/category/{{cat_id}}/events" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
+            <a href="#!/category/{{cat_id}}/createEvent" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="ev1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel" class="col-lg-10 col-md-10 col-sm-8 " >
+                    <div class="row popUpEvTitle">
+                        <a href="#">
+                            <h3>Feel the beat</h3>
+                        </a>
+                    </div>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="thumbnail">
+                    <div class="row evDefaultImg" >
+                        <img src="Imgs/Website/6.jpg" alt="">
+                    </div><!--    top event default image-->
+
+
+
+                    <!--                            </div>    top event title-->
+                    <div class="evCaption row">
+                        <p class="row">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    </div><!--    top event caption-->
+
+                    <div class="evDetails row">
+                        <div class="eventScd col-lg-6 col-md-12 col-sm-12">
+                            <span class="bigdate">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <p>25</p>
+                            </span>
+                            <span class="labels">
+                                <span class="label first label-default"> Aug - 30 Aug</span>
+                                <span class="label label-default">09:00 - 10:00 PM</span>
+                            </span>
+                        </div><!--    top event schdule-->
+                        <div class="eventScd col-lg-6 col-md-12 col-sm-12" id="secondp">
+                            <span  class="bigdate" id="span1">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </span>
+                            <span class="labels"id="s">
+                                Jozwitte Art Place,Cleoptra,Alexandria
+                            </span>
+                        </div><!--    top event schdule-->
+                    </div><!--    top event detaila-->
+
+                    <div class="row evTitle"  >
+                        <div class="col-lg-6 col-md-6 col-sm-12 " >
+                            <a class="userPic">
+                                <span>Mintoring by : </span>
+                                <img src="Imgs/Persons/face3.jpg" alt="">
+                                Saad Mohamed
+                            </a>
+
+                            <!--    top event userPic-->
+
+                        </div>
+
+                        <!--share -->
+                        <div class="going  col-lg-4 col-md-4 col-sm-12">
+                            <button type="button" class=" btn btn-default">Going</button>
+                        </div>
+
+                        <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
+                            <div id="socialShare" class="btn-group share-group">
+                                <a data-toggle="dropdown" class="btn btn-info">
+                                    <i class="fa fa-share-alt fa-inverse"></i>
+                                </a>
+                                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                            <i class="fa fa-envelope"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popUsersComments">
+                        <div class="writePost">
+                            <textarea class="form-control" rows="3"></textarea>
+                            <div class="posting">
+                                <button type="button" class="btn btn-default">Comment</button>
+                            </div>
+
+                        </div>
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" src="Imgs/Persons/face2.jpg">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Omar Mourad</h4>
+                                    <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+
+                                </div>
+
+
+
+                            </li>
+
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" src="Imgs/Persons/face3.jpg">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Khaled Ali</h4>
+                                    <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div> <!--    top event thumbnail-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="topWorkshops">
+    <div class="container">
+        <div class="title">
+            <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+            <h1 class="h1">TOP Workshops</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" ng-repeat="workshop in categoryWorkshops | limitTo:3 track by $index" >
+                <div class="thumbnail">
+                    <!--                    <img src="http://placehold.it/350x250">-->
+                    <img src="http://localhost:8000/{{workshop.media_url}}">
+                    <h3  data-toggle="modal" data-target="#workshop1" >{{workshop.name}}</h3>
+                    <div class="caption">
+                        <p>{{workshop.description}}</p>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="workshopInfo">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                                <span class="badge">level: {{workshop.level}}</span>
+                            </div>
+
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span class="badge">{{workshop.max_capacity}} place left</span>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span class="badge">{{workshop.date_from}} {{workshop.time_from}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="userPic row">
+                        <span class="col-lg-6 col-md-4 col-sm-12 mintor" >Mintoring by   <img src="http://localhost:8000/{{workshop.user_image}}"></span>
+                        <span class="col-lg-6 col-md-4 col-sm-12" >{{workshop.first_name}} {{workshop.last_name}}</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <div class="btnsOn">
+            <a href="#!/category/{{cat_id}}/workshops" class="btn btn-default" role="button" ng-click="allworkshops()"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
+            <a href="#!/category/{{cat_id}}/addworkshop" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="workshop1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel" class="col-lg-10 col-md-10 col-sm-8 " >
+                    <div class="row popWorkshopTitle">
+                        <a href="#">
+                            <h3>Meet the melody</h3>
+                        </a>
+                    </div>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="thumbnail">
+                    <div class="row popWorkshopDefaultImg" >
+                        <img src="Imgs/Website/5.jpg" alt="">
+                    </div><!--    top event default image-->
+
+
+
+                    <!--                            </div>    top event title-->
+                    <div class="popWorkshopCaption row">
+                        <p class="row">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    </div><!--    top event caption-->
+
+                    <div class="row">
+                        <div class="popWorkshopInfo">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                                <span class="badge">5 live videos</span>
+                            </div>
+
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span class="badge">34 place left</span>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span class="badge">2 May 03:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row popWorkshopTitle"  >
+                        <div class="col-lg-6 col-md-6 col-sm-12 " >
+                            <a class="userPic">
+                                <span>Mintoring by : </span>
+                                <img src="Imgs/Persons/face1.jpg" alt="">
+                                Ali ibrahim
+                            </a>
+
+                            <!--    top event userPic-->
+
+                        </div>
+
+                        <!--share -->
+                        <div class="going  col-lg-4 col-md-4 col-sm-12">
+                            <button type="button" class=" btn btn-default">Enroll Now</button>
+                        </div>
+
+                        <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
+                            <div id="socialShare" class="btn-group share-group">
+                                <a data-toggle="dropdown" class="btn btn-info">
+                                    <i class="fa fa-share-alt fa-inverse"></i>
+                                </a>
+                                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                            <i class="fa fa-envelope"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popWorkshopUsersComments">
+                        <div class="writePost">
+                            <textarea class="form-control" rows="3"></textarea>
+                            <div class="posting">
+                                <button type="button" class="btn btn-default">Comment</button>
+                            </div>
+
+                        </div>
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" src="Imgs/Persons/face2.jpg">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Omar Mourad</h4>
+                                    <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+
+                                </div>
+
+
+
+                            </li>
+
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" src="Imgs/Persons/face3.jpg">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Khaled Ali</h4>
+                                    <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div> <!--    top event thumbnail-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container" >
+    <!-- Form Start -->
+    <form ng-submit="submit_talent_file()" name="form" role="form" enctype="multipart/form-data">
+        <input name="talent_files[]" ng-model="talent.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedReviewFile(this)" style="width:400px" >
+        <br/>
+        <img ng-src="{{talent.file}}" style="width:300px;">
+    </form>
+    <!-- Form End -->
+
+    <form ng-submit="submitted=true ; completeTalentProfile(addtalentprofile.$valid)" name="addtalentprofile"  novalidate >
+        <label>Talent Description</label>
+        <input type="text" name="description" required ng-model="talent.description" placeholder="description">
+        <label>Talented From When?</label>
+        <input type="text" name="from_when" required ng-model="talent.from_when" placeholder="12 years">
+        <input type="submit" name="button" value="Send My Talent Profile"/>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr/>
+
+
+<h1>Please Complete Your Profile to be Mentor.. ()</h1>
+<div class="completementor">
+
+<form ng-submit="completeMentorProfile()" name="complete_mentor_profile">
+  <label>Mentor Experience Text</label>
+  <input type="text" name="experience" required ng-model="mentor.experience">
+  <label>Experience Years</label>
+  <input type="text" name="years_of_experience" required ng-model="mentor.years_of_experience">
+  <button type="submit" name="button">Send My Mentor Profile</button>
+</form>
+
+
+    <input type="button" name="teacher_button" value="Be Teacher In Talentoon" ng-click="add_wiziq_teacher()"/>
+    <a href="#!/videoconference" class="btn btn-info" role="button">Add New Video Conference Session</a>
+
+</div>
+<hr/>

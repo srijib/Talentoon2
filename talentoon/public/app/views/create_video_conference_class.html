@@ -1,0 +1,60 @@
+<style>
+    .container{
+        font-size: 10px;
+    }
+</style>
+
+
+
+<div class="container" >
+
+    <form ng-submit="submitted=true ; create_wiziq_session(createclass.$valid)" name="createclass"  novalidate >
+
+        <div class="field">
+            <h4 style="color:Purple ">class title</h4>
+            <input type="text" name="title" required ng-model="class.title" class="form-control">
+            <p class="error" ng-if="createclass.title.$error.required && submitted" >please enter your class title</p>
+        </div>
+
+        <div class="field">
+            <h4 style="color:Purple ">description</h4>
+            <input type="text" name="description" required ng-model="class.description" class="form-control">
+            <p class="error" ng-if="createclass.description.$error.required && submitted" >please enter your class description</p>
+        </div>
+
+
+        <div class="field">
+            <h4 style="color:Purple ">duration</h4>
+            <input type="text" name="duration" required ng-model="class.duration" class="form-control">
+            <p class="error" ng-if="createclass.duration.$error.required && submitted" >please enter your class duration</p>
+        </div>
+
+
+        <div class="field">
+            <h4 style="color:Purple ">time zone</h4>
+            <input type="text" name="time_zone" required ng-model="class.time_zone" class="form-control" >
+            <p class="error" ng-if="createclass.time_zone.$error.required && submitted" >please enter your class time zone</p>
+        </div>
+
+
+        <div class="field">
+            <h4 style="color:Purple ">start time</h4>
+            <input type="text" name="start_time" required ng-model="class.start_time" class="form-control" >
+            <p class="error" ng-if="createclass.start_time.$error.required && submitted" >please enter your class start time</p>
+        </div>
+
+
+        <div class="field">
+            <h4 style="color:Purple ">Attendee limit</h4>
+            <input type="text" name="attendee_limit" required ng-model="class.attendee_limit" class="form-control" >
+            <p class="error" ng-if="createclass.attendee_limit.$error.required && submitted" >please enter your attendees limit</p>
+        </div>
+
+
+        <button  type="submit" name="button">Create</button>
+    </form>
+
+
+</div>
+<br>
+<br>

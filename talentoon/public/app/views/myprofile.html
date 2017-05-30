@@ -1,0 +1,64 @@
+<style>
+.jumbotron{
+
+  /*background-image: url("Imgs/Persons/photo.jpg");*/
+  height: 100%;
+}
+</style>
+<div class="jumbotron">
+
+<!-- <img  class="img-circle"src="Imgs/Persons/face1.jpg"/> -->
+<img  class="img-circle"src="http://localhost:8000/{{userprofile.image}}" width="150px">
+
+<h2> welcome <span style="color:Purple ">{{userprofile.first_name}}  {{userprofile.last_name}}</span></h2>
+</div>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active" style="color:#6A0C38"><a href=""  style="font-size: 17px;">my profile</a></li>
+  <li role="presentation"><a href="#" style="font-size: 17px;">my workshops</a></li>
+  <li role="presentation"><a href="#"  style="font-size: 17px;">my events</a></li>
+  <li role="presentation"><a href="#"  style="font-size: 17px;">Follower <span class="badge">12</span></a></li>
+</ul>
+
+<style>
+.row{
+margin-left: 138px;
+    margin-top: 15px;
+    width: 600px;
+}
+</style>
+
+<div class="container">
+
+      <div class="row">
+          <div  ng-repeat="userpost in userposts  track by $index" >
+
+            <div class="thumbnail">
+
+                <img src="http://localhost:8000/{{userpost.media_url}}" class="img-circle">
+                <div class="caption">
+                  <h4 style="color:Purple ">Title: {{userpost.title}}</h4>
+                  <h4 style="color:Purple ">Description: {{userpost.description}}</h4>
+
+                    <a class="userPic"><img class="img-circle" src="http://localhost:8000/{{userinfo.image}}" alt="" width="150px"><span style="font-size: 17px;"> BY : {{userinfo.first_name}} {{userinfo.last_name}}<span></a>
+
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 ">
+                            <a href="#" class="interactions"><i class="fa fa-heart" aria-hidden="true"></i>  <span class="badge">12</span></a>
+
+                            <a href="#" class="interactions">  <i class="fa fa-commenting" aria-hidden="true"></i>       <span class="badge">35</span></a>
+
+                        </div>
+
+                        <div class="col-lg-4 col-md-8 col-sm-2 ">
+                            <i class="fa fa-share-alt" aria-hidden="true"></i>
+
+                            <i class="fa fa-bookmark" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+
+  </div>
+</div>

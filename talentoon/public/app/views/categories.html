@@ -1,0 +1,16 @@
+ <!-- data-aos="flip-right" data-aos-duration="3000" -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 categorySection" ng-repeat="category in categories">
+            <div class="thumbnail">
+                <!--                    <img src="http://placehold.it/350x250">-->
+                <img src="http://localhost:8000/{{category.image}}">
+                <div class="caption">
+                    <h3>{{category.title}}</h3>
+                    <p>{{category.description}} raniaaaaaaaa  Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p  class="btnAction"><a href="#!/category/{{category.id}}" class="btn btn-primary btnAction" role="button">Discover More</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

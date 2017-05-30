@@ -1,0 +1,39 @@
+
+
+<div class="container">
+    <h1 style="color:#6A0C38;font-family:Times New Roman">TOP POSTS</h1>
+    <div class="row">
+
+            <div class="thumbnail">
+
+                <img src="{{workshop.media.media_url}}" style=" height:200px">
+                <div class="caption">
+
+                  <h4 style="color:Purple ">Title: {{category_workshop.name}}</h4>
+                  <h4 style="color:Purple ">Description: {{category_workshop.description}}</h4>
+                  <h4 style="color:Purple ">level: {{category_workshop.level}}</h4>
+                  <h4 style="color:Purple ">Capacity: {{category_workshop.max_capacity}}</h4>
+                  <h4 style="color:Purple ">Time from: {{category_workshop.time_from}}</h4>
+                  <h4 style="color:Purple ">Time to: {{category_workshop.time_to}}</h4>
+                  <h4 style="color:Purple ">Date from: {{category_workshop.date_from}}</h4>
+                  <h4 style="color:Purple ">Date to: {{category_workshop.date_to}}</h4>
+
+                  <!-- <h4 style="color:Purple ">{{category_post.id}}</h4> -->
+
+
+
+                </div>
+            </div>
+            <div ng-if="enroll == 1">
+            <a href=""  ng-click="workshop_enroll(category_workshop.id,userId)" ng-controller="workshop" class="btn btn-success" role="button">Enroll </a>
+            </div>
+            <div ng-if="enroll == 0">
+            <button type="button" href=""  ng-click="workshop_enroll(category_workshop.id,userId)" ng-controller="workshop" class="btn btn-success" disabled>Enroll </button>
+
+            </div>
+            <a href="#!/category/{{category_post.category_id}}" class="btn btn-default" role="button">GO To My Category </a>
+
+
+
+  </div>
+</div>

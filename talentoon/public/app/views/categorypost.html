@@ -1,0 +1,45 @@
+
+<div class="container">
+    <!-- <h1 style="color:#6A0C38;font-family:Times New Roman">TOP POSTS</h1> -->
+    <div class="row">
+
+            <div class="thumbnail">
+
+                <img src="http://localhost:8000/{{category_post.media_url}}" style=" height:200px">
+                <div class="caption">
+                  <h4 style="color:Purple ">Title: {{category_post.title}}</h4>
+                  <h4 style="color:Purple ">Description: {{category_post.description}}</h4>
+                  <h4 style="color:Purple "> category :{{category_post.category_title}}</h4>
+
+                    <a class="userPic"><img src="http://localhost:8000/{{category_post.user_image}}" alt=""> BY : {{category_post.first_name}} {{category_post.last_name}}</a>
+
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 ">
+                            <a href="" class="interactions" ng-click="sharepost(category_post.id,category_post.user_id)" ng-controller="post">Share<i class="fa fa-share" aria-hidden="true"></i> </a>
+
+                          <!-- <div ng-if="status != 1 "> -->
+                          <div ng-if="userstatu != 1">
+                            <a href="" class="interactions" ng-click="likepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">like</span><i class="fa fa-heart" aria-hidden="true"></i>  <span class="badge">{{category_post_like_count.liked_count}}</span></a>
+                           </div>
+                           <!-- <div ng-if="status == 1 "> -->
+                           <div ng-if="userstatu == 1">
+                             <a href="" class="interactions" ng-click="dislikepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">dislike</span><i class="fa fa-heart" aria-hidden="true"></i>  <span class="badge">{{category_post_like_count.liked_count}}</span></a>
+                            </div>
+                            <a href="#" class="interactions">  <i class="fa fa-commenting" aria-hidden="true"></i><span class="badge">35</span></a>
+                            <!-- </div> -->
+
+                        <div class="col-lg-4 col-md-8 col-sm-2 ">
+                            <i class="fa fa-share-alt" aria-hidden="true"></i>
+
+                            <i class="fa fa-bookmark" aria-hidden="true"></i>
+                        </div>
+                        <!-- <a href="#!/post/{{post.id}}" class="btn btn-default" role="button">details</a> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+            <a href="#!/category/{{category_post.category_id}}" class="btn btn-default" role="button">GO To My Category </a>
+
+
+
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<style >
+    .container{
+        font-size: 15px;
+    }
+</style>
+
+<br>
+ <div class="container">
+  <div ng-repeat="initial_post in all_initial_posts track by $index">
+    <div class="thumbnail">
+        <img src="{{initial_post.review_media_url}}" class="img-circle" style="  height: 80px;"/>
+        <p>from when: {{initial_post.from_when}}</p>
+        <p>category title: {{initial_post.category_title}}</p>
+        <p>description: {{initial_post.description}}</p>
+        <p>created_at: {{initial_post.created_at}}</p>
+        <p>first_name: {{initial_post.first_name}}</p>
+        <input type="hidden" ng-model="initial_post.category_id" value="{{initial_post.category_id}}">
+        <input type="hidden" ng-model="initial_post.talent_id" value="{{initial_post.talent_id}}">
+    </div>
+    <form ng-submit="review($index)" name="review_form_{{$index}}"  novalidate>
+        <div class="field">
+              <label>Level</label>
+              <select name="level_{{$index}}" ng-model="initial_post.rev.level_single">
+                    <option value="1">Level 1</option>
+                    <option value="2">Level 2</option>
+                    <option value="3">Level 3</option>
+                    <option value="4">Level 4</option>
+                    <option value="5">Level 5</option>
+                    <option value="6">Level 6</option>
+                    <option value="7">Level 7</option>
+                    <option value="8">Level 8</option>
+                    <option value="9">Level 9</option>
+                    <option value="10">Level 10</option>
+              </select>
+              <label>Comment</label>
+              <textarea name="comment_{{$index}}" rows="4" cols="40" ng-model="initial_post.rev.comment"></textarea>
+        </div>
+        <button type="submit" name="button_{{$index}}">add review</button>
+    </form>
+  </div>
+
+</div>

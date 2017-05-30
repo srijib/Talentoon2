@@ -1,0 +1,38 @@
+input.ng-invalid{
+	border: 1 px solid red;
+}
+
+p.error {
+	color: red;
+}
+
+.ui{
+	color: red;
+}
+
+label{
+display: inline-block;
+width: 150px;
+
+
+}
+
+.field{
+	margin-bottom: 20px;
+
+}
+
+button{
+	display: block;
+	
+}
+
+.search{
+  padding-top: 100px;
+}
+
+.panel-heading
+{
+    border-top-left-radius: inherit; 
+    border-top-right-radius: inherit;
+}

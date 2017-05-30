@@ -1,0 +1,19 @@
+<div class="container" >
+    <form ng-submit="submitted = true; loginFn(login.$valid)" name="login" novalidate >
+        <div class="field">
+            <h4 style="color:#6A0C38">Email</h4>
+            <input type="email" required name="email" ng-model="user.email" class="form-control" placeholder="Email">
+            <p class="error" ng-if="submitted && register.email.$error.required" >please enter your email</p>
+            <p class="error" ng-if="submitted && register.email.$error.email"> please enter valid email</p>
+        </div>
+
+        <div class="field">
+            <h4 style="color:#6A0C38">password</h4>
+            <input type="password" name="password"  required ng-model="user.password"class="form-control" placeholder="Password">
+            <p class="error" ng-if="submitted && login.password.$error.required" >please enter your password</p>
+        </div>
+
+        <button type="submit" name="button" style="color:#6A0C38">Login</button>
+    </form>
+
+</div>
