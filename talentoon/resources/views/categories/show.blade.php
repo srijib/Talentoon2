@@ -1,4 +1,5 @@
-@extends('layouts.admin')
+{{--@extends('layouts.admin')--}}
+@extends('../../layouts/app')
 @section('title')
     category show
 @endsection
@@ -13,6 +14,7 @@
     </ul>
 
     <li>All Comments</li>
+    <ul>
       @foreach($comments as $comment)
           <li>Comment:->  {{$comment->content}}</li>
                @endforeach
