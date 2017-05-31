@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\ReviewMedia;
 use App\Models\WorkShop;
+use App\Models\WorkshopSession;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Validator;
@@ -200,4 +201,21 @@ class UploadController extends Controller
         }
 
     }
+    public function session_upload (Request $request,$id){
+//        return response()->json(['request'=> $_FILES['file'],'message' => 'data sent successfully']);
+    if(!empty($_FILES)){
+        $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/files/'.$_FILES['file']['name']);
+
+        $session = WorkshopSession::find($id);
+        $session->media_url = 'uploads/files/'.$_FILES['file']['name'];
+        $session->media_type = $_FILES['file']['type'];
+        $session->save();
+
+
+        return response()->json(['request'=> $x,'message' => 'data sent successfully']);
+    }else{
+        echo "File Is Empty";
+    }
+
+}
 }

@@ -1,0 +1,45 @@
+
+
+<ion-view view-title="Post Details">
+  <ion-content>
+
+      <ion-card>
+        <img src="http://localhost:8000/{{category_post.media_url}}">
+
+        <ion-card-content>
+
+          <p>
+            <h3 style="color: #FFB733"><span class="ion-ios-star" style="color:#6A0C38"></span><span class="ion-toggle-filled"style="color:#6A0C38"></span>{{category_post.category_title}}</h3>
+          <center>  <h2 style="color:#FFB733"> {{category_post.title}}</h2></center>
+            <h4 style="color:black ">{{category_post.description}}</h4>
+          </p>
+          <a class="item item-avatar" href="#" style="background-color: #6A0C38">
+          <img src="http://localhost:8000/{{category_post.user_image}}" alt="">
+      <p>    BY : {{category_post.first_name}} {{category_post.last_name}}</p>
+
+             </a>
+        </ion-card-content>
+
+      </ion-card>
+
+  </div>
+
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 ">
+
+
+                          <div ng-if="userstatu != 1">
+                            <a href="" class="interactions "style="color:#6A0C38" ng-click="likepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">like</span><i class="ion-heart" aria-hidden="true"></i>  <span class="badge" style="color:#6A0C38">{{category_post_like_count.liked_count}}</span></a>
+                           </div>
+
+                           <div ng-if="userstatu == 1">
+                             <a href="" class="interactions " ng-click="dislikepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">dislike</span><i class="ion-heart royal" aria-hidden="true"></i>  <span class="badge">{{category_post_like_count.liked_count}}</span></a>
+                            </div>
+
+                </div>
+            </div>
+            <!-- like like-->
+      <center>      <a href="#/app/category/{{category_post.category_id}}" class="button" role="button" style="background-color:#6A0C38;color:white">GO To My Category </a>
+</center>
+</ion-view >
+  </ion-content>

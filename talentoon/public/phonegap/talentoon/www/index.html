@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/routes.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controller/app.js"></script>
+    <script src="js/controller/login.js"></script>
+    <script src="js/controller/home.js"></script>
+    <script src="js/controller/category.js"></script>
+    <script src="js/controller/register.js"></script>
+    <script src="js/controller/categories.js"></script>
+    <script src="js/controller/category.js"></script>
+    <script src="js/controller/addpost.js"></script>
+    <script src="js/controller/post.js"></script>
+
+
+    <!--
+
+
+    <script src="js/controller/post.js"></script> -->
+
+
+    <!-- Factories -->
+    <script src="js/factories/user.js"></script>
+    <script src="js/factories/home.js"></script>
+    <script src="js/factories/categories.js"></script>
+    <script src="js/factories/posts.js"></script>
+
+
+
+  </head>
+  <body ng-app="talentoon">
+    <style>
+
+.bar.bar-royal {
+  background-color: #6A0C38
+}
+.logo{
+       width: 109px;
+}
+
+    </style>
+
+    <ion-pane>
+      <ion-header-bar class="bar-royal">
+
+        <img src="img/logo.png" class="logo"/>
+      </ion-header-bar>
+
+      <ion-content>
+          <ui-view></ui-view>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>

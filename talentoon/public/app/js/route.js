@@ -176,7 +176,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider','$translatePro
                     templateUrl: 'views/create_video_conference_class.html',
                     controller: 'videoconference'
                 })
-
+                .when('/category/:category_id/workshops/:workshop_id/createSession', {
+                    templateUrl: 'views/createsession.html',
+                    controller: 'addsession'
+                })
 
     $httpProvider.interceptors.push(['$q', '$location', function ($q, $location) {
                 return {

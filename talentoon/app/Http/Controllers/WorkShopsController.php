@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\WorkShop;
 use App\Models\WorkshopEnroll;
+use App\Models\WorkshopSession;
 use DB;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -16,6 +17,9 @@ class WorkShopsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+     $this->middleware(['ability:mentor,create-workshop,true','checkmentorauthority'])->only('store');    
+    }
     public function index()
     {
         //
@@ -124,7 +128,10 @@ class WorkShopsController extends Controller
 
             return response()->json(['token_absent'], $e->getStatusCode());
         }
+        $session=DB::table('workshop_session')
 
+            ->where("workshop_session.workshop_id",$workshop_id)
+            ->get();
       $workshop = DB::table('workshops')
           ->join('categories', 'workshops.category_id', '=', 'categories.id')
           ->select('workshops.*', 'categories.title as category_title')
@@ -138,48 +145,42 @@ class WorkShopsController extends Controller
           ->where([
              ['workshop_enrollment.workshop_id','=',$workshop_id]])
               ->groupBy('workshop_enrollment.workshop_id')
-              ->get()->first();
-    //           $countcapacity=get_object_vars($countcapacity);
-    //           if($countcapacity["workshop_count"]==$capacity){
-    //
-    //     return response()->json(['enroll'=>0,'user'=>$user,'workshop' => $workshop,'message' => 'workshop sent successfully']);
-    //
-    //     }else{
-    //
-    //   return response()->json(['enroll'=>1,'user'=>$user,'workshop' => $workshop,'message' => 'workshop sent successfully']);
-    //     }
-    //
-    //
-    // }
-    if(is_null($countcapacity)){
-        return response()->json(['enroll'=>1,'user'=>$user,'workshop' => $workshop,'message' => 'workshop sent successfully']);
+                  ->get()->first();
 
-    }else{
-    $countcapacity=get_object_vars($countcapacity);
-    if($countcapacity["workshop_count"]==$capacity){
+        if(is_null($countcapacity)){
+            return response()->json(['session'=>$session,'enroll'=>1,'user'=>$user,'workshop' => $workshop,'message' => 'workshop sent successfully']);
 
-return response()->json(['enroll'=>0,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
+        }else{
+        $countcapacity=get_object_vars($countcapacity);
+        if($countcapacity["workshop_count"]==$capacity){
 
-}else{
+            return response()->json(['session'=>$session,'enroll'=>0,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
 
-return response()->json(['enroll'=>1,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
-}
-}
+            }else{
+
+            return response()->json(['session'=>$session,'enroll'=>1,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
+            }
+    }
 }
     public function enroll(Request $request){
 
-            $enroll = DB::table('workshop_enrollment')
-            ->where('user_id', '=', $request->user_id)
-            ->where('workshop_id', '=', $request->workshop_id)
-            ->first();
+        $enroll = DB::table('workshop_enrollment')
+        ->where('user_id', '=', $request->user_id)
+        ->where('workshop_id', '=', $request->workshop_id)
+        ->first();
 
         if (is_null($enroll)) {
         WorkshopEnroll::create($request->all());
         return response()->json(['message' => 'data saved successfully']);
-
-    }else{
+        }else{
         return response()->json(['message' => 'you already enroll in this workshop ']);
 
+        }
     }
-}
+    public function createSession(Request $request)
+    {
+    //
+    $id=WorkshopSession::create($request->all())->id;
+    return response()->json(['workshop_id'=>$id,'message' => 'data saved successfully']);
+    }
 }
