@@ -64,8 +64,7 @@ return response()->json(['status' => 1,
                 'first_name'=>$user->first_name,
                 'last_name'=>$user->last_name,
                 'image'=>$user->image,
-                'post'=>$post,
-                'countlike'=>$countlike
+                'post'=>$post
               ]);
 
 

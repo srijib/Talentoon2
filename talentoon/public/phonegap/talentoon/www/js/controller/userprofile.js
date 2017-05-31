@@ -1,4 +1,5 @@
-angular.module('myApp').controller("userprofile", function ($scope, $http, user, $routeParams,$location) {
+angular.module('talentoon').controller("userprofile", function ($scope, $http, user,$rootScope) {
+  $rootScope.token = localStorage.getItem('token');
 
   user.userprofile().then(function(data){
 		 console.log(data);
