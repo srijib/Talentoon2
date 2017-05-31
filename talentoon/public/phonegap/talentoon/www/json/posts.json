@@ -1,0 +1,104 @@
+[{
+    "id":1,
+    "created_at": "5-5-2016",
+    "updated_at": "10-5-2016",
+    "title": "post1",
+    "description": "post desc1",
+    "is_approved": 1,
+    "category_id": 1,
+    "user_id": 1,
+    "media": {
+      "id": 1,
+      "media_url": "json/images/htc1.png",
+      "src_id": 1,
+      "media_type": "image"
+    }
+
+  },
+  {
+    "id":2,
+    "created_at": "5-5-2016",
+    "updated_at": "8-9-2016",
+    "title": "post2",
+    "description": "post desc2",
+    "is_approved": 1,
+    "category_id": 2,
+    "user_id": 3,
+    "media": {
+      "id": 2,
+      "media_url": "json/images/htc2.png",
+      "src_id": 1,
+      "media_type": "image"
+    }
+
+  },
+  {
+    "id":3,
+    "created_at": "5-5-2016",
+    "updated_at": "10-5-2016",
+    "title": "post3",
+    "description": "post desc 3",
+    "is_approved": 1,
+    "category_id": 1,
+    "user_id": 1,
+    "media": {
+      "id":3,
+      "media_url": "json/images/sam1.png",
+      "src_id": 1,
+      "media_type": "image"
+    }
+
+  },
+  {
+    "id":4,
+    "created_at": "5-5-2016",
+    "updated_at": "10-5-2016",
+    "title": "post4",
+    "description": "post desc 4",
+    "is_approved": 0,
+    "category_id": 2,
+    "user_id": 3,
+    "media": {
+      "id":4,
+      "media_url": "json/images/htc1.png",
+      "src_id": 1,
+      "media_type": "image"
+    }
+
+  },
+  {
+    "id":5,
+    "created_at": "5-5-2016",
+    "updated_at": "10-5-2016",
+    "title": "post5",
+    "description": "post desc5",
+    "is_approved": 0,
+    "category_id": 2,
+    "user_id": 3,
+    "media": {
+      "id":5,
+      "media_url": "json/images/nexus2.png",
+      "src_id": 1,
+      "media_type": "image"
+    }
+
+  },
+  {
+    "id":6,
+    "created_at": "5-5-2016",
+    "updated_at": "10-5-2016",
+    "title": "post6",
+    "description": "post desc 6",
+    "is_approved": 1,
+    "category_id": 1,
+    "user_id": 1,
+    "media": {
+      "id":6,
+      "media_url": "json/images/nexus1.png",
+      "src_id": 1,
+      "media_type": "image"
+    }
+
+  }
+
+]
