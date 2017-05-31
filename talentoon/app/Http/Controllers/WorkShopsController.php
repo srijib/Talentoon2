@@ -15,6 +15,9 @@ class WorkShopsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+     $this->middleware(['ability:mentor,create-workshop,true','checkmentorauthority'])->only('store');    
+    }
     public function index()
     {
         //

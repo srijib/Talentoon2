@@ -23,9 +23,9 @@ class CategoriesController extends Controller
     public function __construct(){
         $this->middleware('jwt.auth', ['only'=>['index','show']]);
     }
-    public function index(JWTAuth $JWTAuth)
+    public function index()
     {
-       $user = $JWTAuth->parseToken()->authenticate();
+       $user = JWTAuth::parseToken()->authenticate();
        $categories= Category::all();
 
         // $path=$categories[0]->getAttributes()['image'];

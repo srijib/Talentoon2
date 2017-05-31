@@ -30,15 +30,15 @@ Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelated
 });
 
 
-Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
+//Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
   Route::resource('categories.events','EventController');  
-});
+//});
 
 Route::get('/mostLikeabe','PostsController@mostLikablePosts');
 
-Route::group(['middleware'=>['ability:mentor,create-workshop,true','checkmentorauthority']],function(){
+//Route::group(['middleware'=>['ability:mentor,create-workshop,true','checkmentorauthority']],function(){
     Route::resource('categories.workshops', 'WorkShopsController');
-});
+//});
 
 Route::get('/allworkshops', 'WorkShopsController@index');
 
