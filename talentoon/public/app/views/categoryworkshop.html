@@ -32,8 +32,15 @@
 
             </div>
             <a href="#!/category/{{category_post.category_id}}" class="btn btn-default" role="button">GO To My Category </a>
+            <a href="#!/category/{{category_workshop.category_id}}/workshops/{{category_workshop.id}}/createSession" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create session</a>
 
+            </div>
+            <div ng-repeat="session in media">
+                <div class="thumbnail">
+                  <video width="320" height="240" controls >
+                   <source src="http://127.0.0.1:8000/{{session.media_url}}" type="{{session.media_type}}">
 
-
-  </div>
+                 </video>
+                </div>
+            </div>
 </div>

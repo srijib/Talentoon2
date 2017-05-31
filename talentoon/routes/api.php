@@ -30,9 +30,9 @@ Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelated
 });
 
 
-Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
-  Route::resource('categories.events','EventController');  
-});
+// Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
+  Route::resource('categories.events','EventController');
+// });
 
 Route::get('/mostLikeabe','PostsController@mostLikablePosts');
 
@@ -141,4 +141,5 @@ Route::post('/workshop_enroll','WorkShopsController@enroll');
 Route::get('/categorymentor/get_mentor_details/{mentor_id}', 'CategoryMentorController@get_mentor_details');
 Route::post('/conference/add_teacher', 'VideoConferenceController@add_wiziq_teacher');
 Route::post('/conference/create_class', 'VideoConferenceController@create_wiziq_class');
-
+Route::post('/session_upload/{id}', 'UploadController@session_upload');
+Route::post('/workshop/{workshop_id}','WorkShopsController@createSession');

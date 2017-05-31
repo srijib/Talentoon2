@@ -1,6 +1,6 @@
 @extends('../../layouts/app')
 @section('title')
-    users list
+    mentors list
 @endsection
 
 @section('content')
