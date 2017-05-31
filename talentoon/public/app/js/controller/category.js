@@ -1,4 +1,4 @@
-angular.module('myApp').controller("oneCategory",function($location,$scope,$http,categories,$routeParams,$rootScope,$timeout,FileUploader,$q,videoconference){
+angular.module('myApp').controller("oneCategory",function($location,$scope,$http,categories,$routeParams,$rootScope,$timeout,$q,videoconference){
 
 	$rootScope.token = JSON.parse(localStorage.getItem("token"));
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
@@ -306,21 +306,6 @@ $scope.add_wiziq_teacher = function() {
 }
 
 //--------------------------------------------------------------------
-
-
-
-    // Talent Uploader
-
-	//files with ng file upload
-	var uploader = $scope.uploader = new FileUploader({
-        // url: 'http://172.16.2.239:8000/api/test'
-        // url: 'upload.php'
-        url: 'http://localhost:8000/api/uploads/singleuploded'
-
-			});
-
-
-
 
 			$scope.allworkshops = function() {
 

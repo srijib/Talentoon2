@@ -71,4 +71,3 @@ Route::prefix('admin')->group(function(){
 //Route::resource('initial_reviews','InitialReviewController');
 
 Route::resource('initial_reviews','InitialReviewController');
-
