@@ -20,6 +20,12 @@ class AdminMentorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index()
     {
 
@@ -103,7 +109,7 @@ class AdminMentorController extends Controller
     public function be_mentor($id){
             //dd($id);
             DB::table('category_mentors')->where('mentor_id', $id)->update(['status' => 1]);
-             
+
             $role = Role::where('name', '=','mentor')->get()->first();
             //dd($role);
             $userId = DB::table('category_mentors')
@@ -115,7 +121,7 @@ class AdminMentorController extends Controller
             $user=User::find($userId->id);
             //dd($user);
              $user->attachRole($role);
-   
+
            return redirect()->route('mentor.index');
 
 
