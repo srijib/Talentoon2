@@ -1,4 +1,5 @@
-@extends('layouts/admin')
+{{--@extends('layouts/admin')--}}
+@extends('../../layouts/app')
 @section('title')
     categories create
 @endsection

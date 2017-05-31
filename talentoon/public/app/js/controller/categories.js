@@ -1,4 +1,4 @@
-angular.module('myApp').controller("categories", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, FileUploader, $q) {
+angular.module('myApp').controller("categories",function($location,$scope,$http,categories,$routeParams,$rootScope,$timeout,$q){
 
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
     $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
@@ -11,8 +11,12 @@ angular.module('myApp').controller("categories", function ($location, $scope, $h
     var mentor = {}
     var user_id = 1;
 
-    $scope.cat_id = $routeParams['category_id'];
 
+	$scope.cat_id= $routeParams['category_id'];
+	$scope.lang= 'ar';
+	if ($scope.lang == 'ar') {
+		$location.url('/ar/categories');
+	}
 
     categories.getAllCategory().then(function (data) {
         $scope.categories = data.data;

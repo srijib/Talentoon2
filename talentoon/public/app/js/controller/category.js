@@ -1,4 +1,4 @@
-angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, FileUploader, $q, videoconference) {
+angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, $q, videoconference) {
 
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
     $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
@@ -10,23 +10,25 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     var mentor = {}
     var user_id = 1;
 
+
     $scope.cat_id = $routeParams['category_id'];
     $scope.workshop_id = $routeParams['workshop_id'];
     $scope.event_id = $routeParams['event_id'];
-
     categories.getCategoryWorkshops($scope.cat_id).then(function (data) {
         $rootScope.categoryWorkshops = data;
     }, function (err) {
         console.log(err);
 
+
     });
 
-
-    categories.getCategoryWorkshop($scope.cat_id, $scope.workshop_id).then(function (data) {
+    categories.getCategoryWorkshop($scope.workshop_id).then(function (data) {
         console.log("inside controller", data)
         $rootScope.category_workshop = data.workshop;
         $rootScope.userId = data.user.id;
         $rootScope.enroll = data.enroll;
+        $rootScope.media = data.session;
+
         // $rootScope.category_post = localStorage.getItem("data");
         console.log("single workshop from controller", $rootScope.category_workshop);
 
@@ -306,21 +308,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 //--------------------------------------------------------------------
 
-
-
-    // Talent Uploader
-
-    //files with ng file upload
-    var uploader = $scope.uploader = new FileUploader({
-        // url: 'http://172.16.2.239:8000/api/test'
-        // url: 'upload.php'
-        url: 'http://localhost:8000/api/uploads/singleuploded'
-
-    });
-
-
-
-
     $scope.allworkshops = function () {
 
         var user_id = 1;
@@ -335,16 +322,5 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
         });
     }
-
-
-
-
-
-
-
-
-
-
-
 
 });
