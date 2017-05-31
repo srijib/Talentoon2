@@ -8,6 +8,7 @@ use App\Models\WorkshopEnroll;
 use DB;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+
 class WorkShopsController extends Controller
 {
     /**
@@ -77,8 +78,12 @@ class WorkShopsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   //I need to take category id and workshop id and
+        // by checking the mentor_id is the user id then edit else not
+        //from Request $request we will git the editable data
+        $user=JWTAuth::parseToken()->toUser();
+
+
     }
 
     /**
