@@ -1,5 +1,26 @@
 //angular.module('myApp').config(['$routeProvider', function ($routeProvider) {
-angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
+angular.module('myApp').config(['$routeProvider', '$httpProvider','$translateProvider', function ($routeProvider, $httpProvider, $translateProvider) {
+
+    var translations_en = {
+      HEADLINE: 'What an awesome module!',
+      PARAGRAPH: 'Srsly!',
+      NAMESPACE: {
+        PARAGRAPH: 'And it comes with awesome features!'
+      }
+    };
+    var translations_ar = {
+      HEADLINE: 'arabic headline!',
+      PARAGRAPH: 'arabic Srsly!',
+      NAMESPACE: {
+        PARAGRAPH: 'arabic And it comes with awesome features!'
+      }
+    };
+
+    // add translation table
+    $translateProvider
+      .translations('en', translations_en)
+      .preferredLanguage('en');
+
 
         $routeProvider.when('/', {
             templateUrl: 'views/home.html',
@@ -29,6 +50,19 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($ro
 //all category
                 .when('/categories', {
                     templateUrl: 'views/categories.html',
+                    controller: 'categories',
+                    resolve: {
+
+                        resolvedCategory: function (categories) {
+                            return categories.getAllCategory().then(function (res) {
+                                return res;
+                            });
+                        },
+
+                    }
+                })
+                .when('/ar/categories', {
+                    templateUrl: 'views/ar/categories.html',
                     controller: 'categories',
                     resolve: {
 
