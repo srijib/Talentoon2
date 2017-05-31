@@ -33,7 +33,7 @@
   <ion-side-menu side="right">
     <ion-list>
       <ion-item menu-close>
-        welcome ,{{username}}
+        <h4 style="color:#6A0C38">welcome , {{username}}</h4>
         <img src="http://localhost:8000/{{userimage}}" alt="" class="userimage">
       </ion-item>
       <ion-item ui-sref="app.home" menu-close>
@@ -45,6 +45,9 @@
       <ion-item ui-sref="app.categories" menu-close>
         Categories
       </ion-item>
+      <ion-item ui-sref="app.myprofile" menu-close>
+        My Profile
+      </ion-item>
       <ion-item ng-click="logout()" menu-close>
         Logout
       </ion-item>
@@ -53,3 +56,27 @@
   </ion-side-menu>
 
 </ion-side-menus>
+<style>
+.menu-right ion-content,.menu-right .item-content{
+color:#000000;
+background-color:#6A0C38;
+color:white
+
+}
+
+</style>
+
+<!-- <div class="tabs tabs-icon-top">
+  <a class="tab-item" ui-sref="app.home">
+    <i class="icon ion-home"></i>
+    Home
+  </a>
+  <a class="tab-item"ui-sref="app.categories">
+   <i class="icon ion-star"></i>
+   Categories
+ </a>
+ <a class="tab-item"ui-sref="app.userprofile">
+   <i class="icon ion-gear-a"></i>
+   MyProfile
+ </a>
+</div> -->
