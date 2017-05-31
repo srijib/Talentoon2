@@ -13,7 +13,6 @@ angular.module('myApp').controller("oneCategory",function($location,$scope,$http
 	$scope.cat_id= $routeParams['category_id'];
 	$scope.workshop_id=$routeParams['workshop_id'];
 	$scope.event_id=$routeParams['event_id'];
-
 	categories.getCategoryWorkshops($scope.cat_id).then(function(data){
 			$rootScope.categoryWorkshops=data;
 	} , function(err){
@@ -22,11 +21,13 @@ angular.module('myApp').controller("oneCategory",function($location,$scope,$http
 	});
 
 
-	categories.getCategoryWorkshop($scope.cat_id,$scope.workshop_id).then(function(data){
+	categories.getCategoryWorkshop($scope.workshop_id).then(function(data){
 			console.log("inside controller" , data)
 			$rootScope.category_workshop=data.workshop;
 			$rootScope.userId=data.user.id;
 			$rootScope.enroll=data.enroll;
+			$rootScope.media=data.session;
+
 			// $rootScope.category_post = localStorage.getItem("data");
 			console.log("single workshop from controller",$rootScope.category_workshop);
 
