@@ -37,16 +37,21 @@
         <img src="http://localhost:8000/{{userimage}}" alt="" class="userimage">
       </ion-item>
       <ion-item ui-sref="app.home" menu-close>
-        Home
+        <i class="icon ion-home"></i>  Home
       </ion-item>
       <ion-item ui-sref="app.about" menu-close>
-        About
+      <i class="ion-person-stalker "></i>   About
+
       </ion-item>
       <ion-item ui-sref="app.categories" menu-close>
-        Categories
+    <i class="ion-android-color-palette"></i>
+    <i class="ion-music-note"></i>
+    <i class="ion-camera"></i>
+    <i class="ion-compose"></i>
+      Categories
       </ion-item>
       <ion-item ui-sref="app.myprofile" menu-close>
-        My Profile
+      <i class="ion-person "></i>   My Profile
       </ion-item>
       <ion-item ng-click="logout()" menu-close>
         Logout
@@ -65,18 +70,3 @@ color:white
 }
 
 </style>
-
-<!-- <div class="tabs tabs-icon-top">
-  <a class="tab-item" ui-sref="app.home">
-    <i class="icon ion-home"></i>
-    Home
-  </a>
-  <a class="tab-item"ui-sref="app.categories">
-   <i class="icon ion-star"></i>
-   Categories
- </a>
- <a class="tab-item"ui-sref="app.userprofile">
-   <i class="icon ion-gear-a"></i>
-   MyProfile
- </a>
-</div> -->
