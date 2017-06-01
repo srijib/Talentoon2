@@ -291,6 +291,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
 
 		addworkshop:function(workshopdata){
+            console.log('in factory addworkshop')
 			console.log(workshopdata);
 			console.log(workshopdata.category_id);
 			var def =$q.defer();
@@ -301,6 +302,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 				data:workshopdata
 
 			}).then(function(res){
+                console.log('in add workshop w 7salaha success')
                 console.log("workshop",res.data);
                 $http({
                     method: 'POST',
@@ -318,14 +320,17 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                     }
                 }).then(function (data) {
                     // alert(data);
+                    console.log('in factory w ba3t al media')
                     console.log("thennnnn in add post", data)
                 });
 
                 //////////////////////////////////////////////
 				console.log(res);
-				if(res.data.length){
+				if(res.data){
+                    console.log('in lma ba3t al media w est2blt al data sa7')
 					def.resolve(res.data)
 				}else{
+                    console.log('w 7sal al error')
 					def.reject('there is no data ')
 				}
 
@@ -485,6 +490,38 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             return def.promise;
 
         },
+        isWorkshopCraetor: function (data) {
+                        //  var category_id= index;
+                        // // console.log("category_id",category_id)
+                        // console.log("workshop id", id)
+                        var def = $q.defer();
+                        console.log("data",data)
+                        $http({
+                            url: 'http://localhost:8000/api/isWorkshopCraetor',
+                            method: 'POST',
+                            data: data
+                        }).then(function (res) {
+
+                            console.log("hnshof hal hwa y3rf ya3ml edit",res.data)
+                            // console.log("user",res.data.user);
+                            // console.log("enroll",res.data.enroll);
+                            // console.log("single category from factory", res.data.workshop)
+
+                            if (res) {
+
+                                def.resolve(res.data);
+
+                            } else {
+                                def.reject('there is no data ')
+                                console.log("hnshof hal hwa y3rf ya3ml edit fl error",res.data)
+                            }
+
+                        }, function (err) {
+                            def.reject(err);
+                        })
+                        return def.promise;
+
+                    }
 
     }
 

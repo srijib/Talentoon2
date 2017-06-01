@@ -3,6 +3,7 @@ angular.module('myApp').controller("oneCategory",function($location,$scope,$http
 	$rootScope.token = JSON.parse(localStorage.getItem("token"));
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 	console.log("category controller current user",$rootScope.cur_user);
+	console.log("category controller token",$rootScope.token);
 	var filesuploaded = []
     var filesmentoruploaded = []
     var reviewfilesuploaded=[]
@@ -42,7 +43,24 @@ angular.module('myApp').controller("oneCategory",function($location,$scope,$http
 
 	});
 
+    $scope.isWorkshopCraetor = function (workshop_id) {
+    	console.log('hnaaa al id bta3 al workshop',workshop_id);
+    	var user_id=$rootScope.cur_user.id;
+        //$rootScope.cur_user['id']
+        console.log('hnaaa al id bta3 al user workshop',$rootScope.cur_user.id);
+        var data_ws={user_id,workshop_id};
+        console.log('hnaaa al data workshop',data_ws);
+        categories.isWorkshopCraetor(data_ws).then(function(data){
+			console.log('yess al data waslt',data)
+            $rootScope.isCreator=data.creator;
+			console.log($rootScope.isCreator)
+        } , function(err){
+            console.log(err);
 
+        });
+
+
+    }
     $scope.completeTalentProfile = function(){
 
 		if (reviewfilesuploaded.length > 0)

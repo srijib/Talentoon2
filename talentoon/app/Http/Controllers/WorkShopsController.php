@@ -47,6 +47,7 @@ class WorkShopsController extends Controller
     public function store(Request $request)
     {
         //
+        return response()->json(['req'=>$request]);
         $id=WorkShop::create($request->all())->id;
 
         return response()->json(['workshop_id'=>$id,'message' => 'data saved successfully']);
@@ -108,6 +109,22 @@ class WorkShopsController extends Controller
     {
         //
     }
+    public function isWorkshopCraetor(Request $request){
+        $user=JWTAuth::parsetoken()->toUser();
+//        dd($user->id);
+//        dd($request->workshop_id);
+        $creator = DB::table('workshops')
+            ->select('workshops.*')
+            ->where("workshops.mentor_id",$user->id)
+            ->where("workshops.id",$request->workshop_id)
+            ->get()->first();
+        if ($creator){
+            return response()->json(['creator'=>1]);
+        }else{
+            return response()->json(['creator'=>0]);
+        }
+
+    }
     public function show($workshop_id){
         try {
             //dd($request->all());
@@ -127,7 +144,8 @@ class WorkShopsController extends Controller
 
       $workshop = DB::table('workshops')
           ->join('categories', 'workshops.category_id', '=', 'categories.id')
-          ->select('workshops.*', 'categories.title as category_title')
+          ->join('users', 'users.id', '=', 'workshops.mentor_id')
+          ->select('workshops.*', 'categories.title as category_title','users.first_name as first_name','users.last_name as last_name','users.first_name as first_name','users.image as image')
           ->where("workshops.id",$workshop_id)
           ->get()->first();
 
@@ -155,16 +173,16 @@ class WorkShopsController extends Controller
         return response()->json(['enroll'=>1,'user'=>$user,'workshop' => $workshop,'message' => 'workshop sent successfully']);
 
     }else{
-    $countcapacity=get_object_vars($countcapacity);
-    if($countcapacity["workshop_count"]==$capacity){
+        $countcapacity=get_object_vars($countcapacity);
+        if($countcapacity["workshop_count"]==$capacity){
 
-return response()->json(['enroll'=>0,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
+            return response()->json(['enroll'=>0,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
 
-}else{
+        }else{
 
-return response()->json(['enroll'=>1,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
-}
-}
+         return response()->json(['enroll'=>1,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
+        }
+    }
 }
     public function enroll(Request $request){
 
@@ -177,9 +195,9 @@ return response()->json(['enroll'=>1,'workshop' => $workshop,'user'=>$user,'mess
         WorkshopEnroll::create($request->all());
         return response()->json(['message' => 'data saved successfully']);
 
-    }else{
-        return response()->json(['message' => 'you already enroll in this workshop ']);
+        }else{
+            return response()->json(['message' => 'you already enroll in this workshop ']);
 
-    }
+        }
 }
 }
