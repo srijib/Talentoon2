@@ -1,5 +1,5 @@
 //angular.module('myApp').config(['$routeProvider', function ($routeProvider) {
-angular.module('myApp').config(['$routeProvider', '$httpProvider','$translateProvider', function ($routeProvider, $httpProvider, $translateProvider) {
+angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 
     var translations_en = {
       HEADLINE: 'What an awesome module!',
@@ -17,9 +17,9 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider','$translatePro
     };
 
     // add translation table
-    $translateProvider
-      .translations('en', translations_en)
-      .preferredLanguage('en');
+    // $translateProvider
+    //   .translations('en', translations_en)
+    //   .preferredLanguage('en');
 
 
         $routeProvider.when('/', {

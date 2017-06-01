@@ -7,7 +7,7 @@ use App\Http\Requests;
 use DB;
 use Tymon\JWTAuth\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use JWTAuth;
+
 
 class CategoryTalentService
 {
@@ -18,7 +18,7 @@ class CategoryTalentService
                 'category_id'=> $categoryId,
                 'from_when'=>$fromWhen,
                 'description'=>$desc
-                ]); 
+                ]);
     }
 
     public function mentorApprove($request){
