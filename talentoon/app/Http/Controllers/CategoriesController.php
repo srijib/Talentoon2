@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Services\Notification;
-
+use DB;
 
 class CategoriesController extends Controller
 {
@@ -71,8 +71,19 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
+
+
+      $posts = DB::table('posts')
+          ->join('users', 'posts.user_id', '=', 'users.id')
+          ->select('posts.*', 'users.first_name', 'users.last_name', 'users.image')
+          ->where('category_id','=', $id)
+          ->get();
+
+
+
+
         $category=Category::find($id);
-        $posts=Post::where('category_id','=', $id)->get();
+        // $posts=Post::where('category_id','=', $id)->get();
         $workshops=WorkShop::where('category_id','=', $id)->get();
 
 
