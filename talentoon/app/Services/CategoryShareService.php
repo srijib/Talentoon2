@@ -7,10 +7,10 @@ use DB;
 class CategoryShareService
 {
 
-    public static function share ($request){
+    public static function share ($request,$user_id){
 
 
-    $share=Share::create($request->all());
+    $share=Share::create(['post_id'=>$request->post_id,'user_id'=>$user_id]);
 
     return response()->json(['message' => 'Share successfully']);
 

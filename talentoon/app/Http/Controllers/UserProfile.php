@@ -34,39 +34,26 @@ return response()->json(['status' => 1,
         ->where("posts.user_id",$user->id)
         ->get();
 
-
-
-
-      //   // for($i=0;$i<count($post);$i++){
-      //   for($i=0;$i<count($post);$i++){
-      //     $countlike = DB::table('likeables')
-      //
-      // ->join('posts','likeables.likeable_id', '=',$post[$i]->id)
-      // ->select(DB::raw('count(likeables.liked) as liked_count','likeables.liked'))
-      // ->where([
-      //    ['likeables.likeable_id','=',$post[$i]->id,
-      //    ['likeables.liked', '=', '1']
-      //   ]])
-      // ->groupBy('likeables.liked')
-      //
-      // ->get();
-      //   }
-
-
-
-
-
-
-
     return response()->json(['status' => 1,
-                    'message' => 'user data send successfully',
-                  'user_id'=>$user->id,
+                'message' => 'user data send successfully',
+                'user_id'=>$user->id,
                 'first_name'=>$user->first_name,
                 'last_name'=>$user->last_name,
                 'image'=>$user->image,
-                'post'=>$post,
-                'countlike'=>$countlike
+                'post'=>$post
               ]);
+
+
+  }
+  public function dispalyShared(){
+      $user= JWTAuth::parseToken()->toUser();
+      $workshop = DB::table('shares')
+          ->join('posts', 'shares.post_id', '=', 'posts.id')
+          ->join('users', 'shares.user_id', '=', 'users.id')
+          ->select('shares.*', 'posts.*', 'users.first_name', 'users.last_name')
+          ->where("shares.user_id",$user)
+          ->get();
+
 
 
   }

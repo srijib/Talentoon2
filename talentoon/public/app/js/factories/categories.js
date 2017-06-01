@@ -326,8 +326,9 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
                 //////////////////////////////////////////////
 				console.log(res);
+                console.log("length: ",res.data.length);
 				if(res.data){
-                    console.log('in lma ba3t al media w est2blt al data sa7')
+
 					def.resolve(res.data)
 				}else{
                     console.log('w 7sal al error')

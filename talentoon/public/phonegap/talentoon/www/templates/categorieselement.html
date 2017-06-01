@@ -1,0 +1,23 @@
+
+<ion-view view-title="Categories posts">
+  <ion-content>
+    <div class="col-lg-4 col-md-4 col-sm-12 categorySection" ng-repeat="post in category3Posts  track by $index">
+
+  <ion-card>
+
+    <img  class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
+    <center><h3 style="color: #FFB733">{{post.title}}</h3></center>
+    <p>{{post.description}}</p>
+    <p>{{post.created_at}}</p>
+<input type="hidden" ng-model="post.category_id" value="{{post.category_id}}">
+
+  </ion-card>
+  <center>  <a href="#/app/category/{{post.category_id}}/posts/{{post.id}}" class="button" style="background-color:#6A0C38;color:white;width: 180px;"role="button" >details</a>
+</center>
+<hr>
+</div>
+<a href="#/app/category/{{cat_id}}/addpost" class=" button button-block" style="background-color:#6A0C38;color:white"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+
+
+  </ion-content>
+</ion-view>

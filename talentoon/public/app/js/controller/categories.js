@@ -1,22 +1,27 @@
 angular.module('myApp').controller("categories",function($location,$scope,$http,categories,$routeParams,$rootScope,$timeout,$q){
 
-	$rootScope.token = JSON.parse(localStorage.getItem("token"));
-	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
-	console.log("category controller current user",$rootScope.cur_user);
-	var filesuploaded = []
+    $rootScope.token = JSON.parse(localStorage.getItem("token"));
+    $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+    console.log("category controller current user", $rootScope.cur_user);
+    
+    var filesuploaded = []
     var filesmecategoriesntoruploaded = []
-    var reviewfilesuploaded=[]
-	var talent = {}
+    var reviewfilesuploaded = []
+    var talent = {}
     var mentor = {}
-	var user_id=1;
+    var user_id = 1;
+
 
 	$scope.cat_id= $routeParams['category_id'];
+	$scope.lang= 'ar';
+	if ($scope.lang == 'ar') {
+		$location.url('/ar/categories');
+	}
 
-
-	categories.getAllCategory().then(function(data){
-		$scope.categories=data.data;
-				console.log("categories array",$scope.categories);
-	} , function(err){
-		console.log(err);
-	});
+    categories.getAllCategory().then(function (data) {
+        $scope.categories = data.data;
+        console.log("categories array", $scope.categories);
+    }, function (err) {
+        console.log(err);
+    });
 });

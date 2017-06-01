@@ -1,0 +1,72 @@
+<style>
+.bar-royal{
+  background-color: #6A0C38
+}
+.userimage{
+  width: 68px;
+    border: 2px solid #FFB733;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+</style>
+
+<ion-side-menus enable-menu-with-back-views="true">
+
+  <ion-side-menu-content >
+
+
+    <ion-nav-bar class="bar-royal" >
+
+      <ion-nav-buttons side="right">
+       <!-- Toggle left side menu -->
+       <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+      </ion-nav-buttons>
+      <ion-nav-back-button>
+     </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="pageContent"></ion-nav-view>
+  <!-- Main content, usually <ion-nav-view> -->
+  </ion-side-menu-content>
+
+  <!-- Right menu -->
+  <ion-side-menu side="right">
+    <ion-list>
+      <ion-item menu-close>
+      <center>  <h4 style="color:#6A0C38;font-size:20px">welcome , {{username}}</h4>
+        <img src="http://localhost:8000/{{userimage}}" alt="" class="userimage"></center>
+      </ion-item>
+      <ion-item ui-sref="app.home" menu-close>
+        <i class="icon ion-home"></i>  Home
+      </ion-item>
+      <ion-item ui-sref="app.about" menu-close>
+      <i class="ion-person-stalker "></i>   About
+
+      </ion-item>
+      <ion-item ui-sref="app.categories" menu-close>
+    <i class="ion-android-color-palette"></i>
+    <i class="ion-music-note"></i>
+    <i class="ion-camera"></i>
+    <i class="ion-compose"></i>
+      Categories
+      </ion-item>
+      <ion-item ui-sref="app.myprofile" menu-close>
+      <i class="ion-android-contact "></i>   My Profile
+      </ion-item>
+      <ion-item ng-click="logout()" menu-close>
+        Logout
+      </ion-item>
+
+</ion-list>
+  </ion-side-menu>
+
+</ion-side-menus>
+<style>
+.menu-right ion-content,.menu-right .item-content{
+color:#000000;
+background-color:#6A0C38;
+color:white
+
+}
+
+</style>
