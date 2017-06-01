@@ -18,6 +18,12 @@ class AdminRegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     protected function create()
      {
          //
