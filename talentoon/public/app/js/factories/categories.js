@@ -441,7 +441,8 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             })
 
             return def.promise;
-        },getCategoryWorkshops:function(index){
+        },
+        getCategoryWorkshops:function(index){
 
 			var def =$q.defer();
 			$http({
@@ -522,7 +523,35 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                         })
                         return def.promise;
 
+                    },
+            editWorkshop: function (editable) {
+                console.log("in factory to edit workshop",editable.cat_id);
+                var def = $q.defer();
+                var id=editable.workshop_id;
+                // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
+                $http({
+                    url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/workshops/'+editable.workshop_id+'/edit',
+                    // url:'http://172.16.2.239:8000/api/posts',
+                    method: 'get',
+                    data: id
+                }).then(function (res) {
+
+                    console.log('i tested',res.data.myrequest);
+
+                    if (res.data) {
+                        def.resolve(res.data)
+                    } else {
+                        def.reject('there is no data ')
                     }
+
+                }, function (err) {
+                    // console.log(err);
+                    def.reject(err);
+                })
+                return def.promise;
+
+
+            },
 
     }
 

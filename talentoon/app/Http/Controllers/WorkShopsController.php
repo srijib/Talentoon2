@@ -82,11 +82,13 @@ class WorkShopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {   //I need to take category id and workshop id and
         // by checking the mentor_id is the user id then edit else not
         //from Request $request we will git the editable data
         $user=JWTAuth::parseToken()->toUser();
+        dd($request->id);
+        return response()->json(['myrequest'=>$request->id]);
 
 
     }

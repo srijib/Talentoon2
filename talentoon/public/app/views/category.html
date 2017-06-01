@@ -579,7 +579,7 @@
                 <div class="thumbnail">
                     <!--                    <img src="http://placehold.it/350x250">-->
                     <img src="http://localhost:8000/{{workshop.media_url}}">
-                    <h3  data-toggle="modal" data-target="#workshop1" ng-click="isWorkshopCraetor(workshop.id);">{{workshop.name}}</h3>
+                    <h3  data-toggle="modal" data-target="#{{workshop.id}}" ng-click="isWorkshopCraetor(workshop.id);">{{workshop.name}}</h3>
                     <div class="caption">
                         <p>{{workshop.description}}</p>
                     </div>
@@ -609,7 +609,7 @@
 
                 </div>
                 <!--bgarbbbbbbbbbbbbbbb-->
-                <div class="modal fade" id="workshop1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade" id="{{workshop.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
 
@@ -756,7 +756,7 @@
                                         <!--<div ng-if="isCreator==1">-->
                                             <div class="writePost">
                                                 <div class="posting">
-                                                    <button type="button" class="btn btn-default" ng-click="editWorkshop(workshop.id)">Edit</button>
+                                                    <button type="button" class="btn btn-default" ng-click="editWorkshop(workshop.id,cat_id)">Edit</button>
                                                 </div>
                                             </div>
                                         <!--</div>-->

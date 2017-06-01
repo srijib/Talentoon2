@@ -66,6 +66,17 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 
     }
+    $scope.editWorkshop=function (workshop_id,cat_id){
+        console.log('gwa edit al workshop',workshop_id);
+        var editable={workshop_id,cat_id}
+        categories.editWorkshop(editable).then(function(data){
+            console.log('7asl al edit ya3ni haygeb al data',data)
+        } , function(err){
+            console.log(err);
+
+
+        });
+    }
     $scope.completeTalentProfile = function(){
 
         if (reviewfilesuploaded.length > 0)
