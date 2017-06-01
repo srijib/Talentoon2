@@ -1,12 +1,12 @@
 <center>
-      <a href="#!/category/betalent/{{cat_id}}/{{user_id}}" class="btn btn-info" role="button">Be Mawhoob</a>
+      <a href="#!/category/betalent/{{cat_id}}/{{user_id}}" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_TALENT' | translate}}</a>
 
-        <a ng-class="untalent()" class="btn btn-info" role="button">unTalentMe</a>
+        <a ng-class="untalent()" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_UN_TALENT' | translate}}</a>
 
 
-    <a href="#!/category/bementor/{{cat_id}}/{{user_id}}" class="btn btn-info" role="button">Be Mentor</a>
+    <a href="#!/category/bementor/{{cat_id}}/{{user_id}}" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_MENTOR' | translate}}</a>
 
-    <a ng-click="unmentor()" class="btn btn-info" role="button">un Mentor</a>
+    <a ng-click="unmentor()" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_UN_MENTOR' | translate}}</a>
 
     <a ng-href="{{current_presenter_class_url}}" class="btn btn-info" role="button" >Join Current Session NOW</a> </center>
 
@@ -18,13 +18,13 @@
 
 <div class="container">
     <div class="btn-group " role="group" aria-label="...">
-        <button type="button" class="btn btn-default btn-lg">Be Talent</button>
-        <button type="button" class="btn btn-default btn-lg">Be Mentor</button>
+        <button type="button" class="btn btn-default btn-lg">{{'ONE_CATEGORY.BE_TALENT' | translate}}</button>
+        <button type="button" class="btn btn-default btn-lg">{{'ONE_CATEGORY.BE_MENTOR' | translate}}</button>
         <div ng-if="status != 1">
-            <a href="#!/category/subscribe/{{cat_id}}/{{user_id}}" type="button" class="btn btn-default btn-lg active" ng-click="subscribe()">Subscribe</a>
+            <a href="#!/category/subscribe/{{cat_id}}/{{user_id}}" type="button" class="btn btn-default btn-lg active" ng-click="subscribe()">{{'ONE_CATEGORY.SUBSCRIBE' | translate}}</a>
         </div>
         <div ng-if="status == 1">
-            <a href="#!/category/unsubscribe/{{cat_id}}/{{user_id}}" type="button" class="btn btn-default btn-lg active" ng-click="unsubscribe()">Un subscribe</a>
+            <a href="#!/category/unsubscribe/{{cat_id}}/{{user_id}}" type="button" class="btn btn-default btn-lg active" ng-click="unsubscribe()">{{'ONE_CATEGORY.UN_SUBSCRIBE' | translate}}</a>
         </div>
 
     </div>
@@ -34,7 +34,7 @@
             <div class="container">
                 <div class="title">
                     <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
-                    <h1 class="h1">TOP POSTS</h1>
+                    <h1 class="h1">{{'TOP_POSTS' | translate}}</h1>
                 </div>
  <!-- data-aos="fade-up" data-aos-duration="2000"  -->
                 <div class="row mainrow" >
@@ -312,7 +312,7 @@
     <div class="container">
         <div class="title">
             <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
-            <h1 class="h1">TOP Events</h1>
+            <h1 class="h1">{{'TOP_EVENTS' | translate}}</h1>
         </div>
         <div class="evMainRow row">
             <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" event in events| limitTo:3">
@@ -571,7 +571,7 @@
     <div class="container">
         <div class="title">
             <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
-            <h1 class="h1">TOP Workshops</h1>
+            <h1 class="h1">{{'TOP_WORKSHOPS' | translate}}</h1>
         </div>
 
         <div class="row">
