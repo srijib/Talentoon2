@@ -86,6 +86,16 @@ angular.module('talentoon').config(function($stateProvider,$httpProvider) {
           }
         })
 
+        .state('app.myprofile', {
+          url: '/myprofile',
+          views: {
+            "pageContent": {
+              templateUrl: "templates/userprofile.html",
+              controller: "userprofile"
+            }
+          }
+        })
+
 
 
 

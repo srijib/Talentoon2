@@ -1,4 +1,4 @@
-angular.module('talentoon').factory("user", function ($http, $q) {
+angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
 
     return {
         register: function (userdata) {
@@ -78,6 +78,9 @@ angular.module('talentoon').factory("user", function ($http, $q) {
             var def = $q.defer();
             $http({
                 url: 'http://localhost:8000/api/userprofile',
+                headers:{
+              'Authorization':'Bearer'+ $rootScope.token
+                 },
                 method: 'GET'
 
             }).then(function (res) {
@@ -104,6 +107,9 @@ angular.module('talentoon').factory("user", function ($http, $q) {
             var def = $q.defer();
             $http({
                 url: 'http://localhost:8000/api/userprofile/userposts',
+                headers:{
+              'Authorization':'Bearer'+ $rootScope.token
+                 },
                 method: 'GET'
 
             }).then(function (res) {

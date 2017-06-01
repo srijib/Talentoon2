@@ -18,6 +18,8 @@ class TokenEntrustAbility extends BaseMiddleware
      */
     public function handle($request, Closure $next, $roles, $permissions, $validateAll = false)
     {
+         $response = $next($request);
+        $expired = false;
         if (! $token = $this->auth->setRequest($request)->getToken()) {
             return $this->respond('tymon.jwt.absent', 'token_not_provided', 400);
         }
@@ -25,9 +27,26 @@ class TokenEntrustAbility extends BaseMiddleware
         try {
             $user = $this->auth->authenticate($token);
         } catch (TokenExpiredException $e) {
-            return $this->respond('tymon.jwt.expired', 'token_expired', $e->getStatusCode(), [$e]);
+            //return $this->respond('tymon.jwt.expired', 'token_expired', $e->getStatusCode(), [$e]);
+             $expired = true;
         } catch (JWTException $e) {
             return $this->respond('tymon.jwt.invalid', 'token_invalid', $e->getStatusCode(), [$e]);
+        }
+        if ($expired) {
+            try {
+                $newToken = $this->auth->setRequest($request)->parseToken()->refresh();
+                $user = $this->auth->authenticate($newToken);
+                //dd("old token:",$token,"new token:",$newToken,"user:",$user);
+            } catch (TokenExpiredException $e) {
+                return $this->respond('tymon.jwt.expired', 'token_expired', $e->getStatusCode(), [$e]);
+            } catch (JWTException $e) {
+                return $this->respond('tymon.jwt.invalid', 'token_invalid', $e->getStatusCode(), [$e]);
+            }
+            // send the refreshed token back to the client
+            $request->headers->set('Authorization', 'Bearer ' . $newToken);
+            //$response->headers->set('Authorization', 'Bearer ' . $newToken);
+            //$response(csrf_token())->headers->set('Authorization', 'Bearer ' . $newToken);
+
         }
 
         if (! $user) {
