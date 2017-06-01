@@ -323,7 +323,8 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
                 //////////////////////////////////////////////
 				console.log(res);
-				if(res.data.length){
+                                console.log("length: ",res.data.length);
+				if(res.data){
 					def.resolve(res.data)
 				}else{
 					def.reject('there is no data ')

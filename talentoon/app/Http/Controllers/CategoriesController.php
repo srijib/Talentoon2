@@ -27,13 +27,16 @@ class CategoriesController extends Controller
     {
        $user = JWTAuth::parseToken()->authenticate();
        $categories= Category::all();
-
+       //N.B token had value however it is printed {}
+       $token=JWTAuth::getToken();
+       //dd($token);
         // $path=$categories[0]->getAttributes()['image'];
         // $categories[5]->getAttributes()['image'] = '/uploads/files/'.$categories[5]->getAttributes()['image'];
         // dd($categories[5]->getAttributes()['image']);
 
         return response()->json(['user' => $user,'data' => $categories,'status' => '1','message' => 'data sent successfully'
-                ]);
+          //'token'=>$token
+            ]);
         // return view('categories.index',['categories'=>$categories]);
     }
 
