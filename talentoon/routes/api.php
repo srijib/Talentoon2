@@ -32,7 +32,7 @@ Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelated
 
 
 //Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
-  Route::resource('categories.events','EventController');  
+  Route::resource('categories.events','EventController');
 //});
 
 Route::get('/mostLikeabe','PostsController@mostLikablePosts');
@@ -95,6 +95,9 @@ Route::get('/userprofile',[
     Route::get('/userprofile/userposts',[
         'uses'=>'UserProfile@userposts',
         'middleware'=> 'jwt.auth']);
+    Route::get('/userprofile/displayShared',[
+            'uses'=>'UserProfile@displayShared',
+            'middleware'=> 'jwt.auth']);
 
 Route::post('/categorytalent/store','CategoryTalentController@store');
 

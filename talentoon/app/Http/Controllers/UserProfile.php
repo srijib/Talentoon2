@@ -7,11 +7,13 @@ use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Models\Post;
 use DB;
+use App\Models\Share;
+use App\Models\User;
 
 class UserProfile extends Controller
 {
 
-  public function index(Request $request){
+ public function index(Request $request){
 
 $user= JWTAuth::parseToken()->toUser();
 return response()->json(['status' => 1,
@@ -45,17 +47,30 @@ return response()->json(['status' => 1,
 
 
   }
-  public function dispalyShared(){
+  public function displayShared(){
       $user= JWTAuth::parseToken()->toUser();
-      $workshop = DB::table('shares')
-          ->join('posts', 'shares.post_id', '=', 'posts.id')
-          ->join('users', 'shares.user_id', '=', 'users.id')
-          ->select('shares.*', 'posts.*', 'users.first_name', 'users.last_name')
-          ->where("shares.user_id",$user)
+      $post_ids= DB::table('shares')
+          ->select('shares.post_id')
+          ->where("shares.user_id",$user->id)
           ->get();
+        //   dd($post_ids[0]->post_id);
+
+      $arr=[];
+      for ($i=0; $i <count($post_ids) ; $i++) {
+          array_push($arr,$post_ids[$i]->post_id);
+      }
 
 
 
+      $shares = DB::table('posts')
+          ->join('users', 'posts.user_id', '=', 'users.id')
+          ->select('posts.*','users.*')
+          ->whereIn("posts.id", $arr)
+          ->get();
+    return response()->json(['status' => 1,
+                      'message' => 'posts send successfully',
+                      'shares'=>$shares
+                    ]);
   }
 
 
