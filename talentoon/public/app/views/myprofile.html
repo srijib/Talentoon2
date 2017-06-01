@@ -58,6 +58,35 @@ margin-left: 138px;
                 </div>
             </div>
 </div>
+<h1>Shares</h1>
+<div  ng-repeat="share in usershare  track by $index" >
+
+  <div class="thumbnail">
+
+      <img src="http://localhost:8000/{{share.media_url}}" class="img-circle">
+      <div class="caption">
+        <h4 style="color:Purple ">Title: {{share.title}}</h4>
+        <h4 style="color:Purple ">Description: {{share.description}}</h4>
+
+          <a class="userPic"><img class="img-circle" src="http://localhost:8000/{{share.image}}" alt="" width="150px"><span style="font-size: 17px;"> BY : {{share.first_name}} {{share.last_name}}<span></a>
+
+          <div class="row">
+              <div class="col-lg-8 col-md-8 col-sm-8 ">
+                  <a href="#" class="interactions"><i class="fa fa-heart" aria-hidden="true"></i>  <span class="badge">12</span></a>
+
+                  <a href="#" class="interactions">  <i class="fa fa-commenting" aria-hidden="true"></i>       <span class="badge">35</span></a>
+
+              </div>
+
+              <div class="col-lg-4 col-md-8 col-sm-2 ">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+
+                  <i class="fa fa-bookmark" aria-hidden="true"></i>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
 
   </div>

@@ -11,7 +11,9 @@ use JWTAuth;
 
 class EventController extends Controller
 {
-
+public function __construct(){
+    $this->middleware(['ability:mentor,create-event,true','checkmentorauthority'])->only('store');
+}
 
     public function index(){
 

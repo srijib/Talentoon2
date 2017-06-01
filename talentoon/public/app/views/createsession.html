@@ -1,0 +1,29 @@
+<style>
+	.container{
+		font-size: 10px;
+	}
+</style>
+
+<div class="container" >
+<form ng-submit="submitted=true ; newsession(addsession.$valid)" name="addsession"  novalidate >
+
+<div class="field">
+	<input type="text" name="title"  ng-model="session.title" class="form-control" >
+
+
+<input type="hidden" name="workshop_id"  ng-model="session.workshop_id" class="form-control" >
+
+<h4 style="color:Purple ">workshop session</h4>
+<input name="workshop_session" ng-model="session.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+		<!--<input type="submit" id="submit_file" value="Submit" />-->
+</div>
+
+	<button  type="submit" name="button">OK</button>
+	<!-- <p type="submit" class="btnAction"><a class="btn btn-primary btnAction" role="button">Discover More</a></p> -->
+</form>
+
+
+
+</div>
+<br>
+<br>

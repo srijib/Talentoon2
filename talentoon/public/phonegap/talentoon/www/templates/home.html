@@ -1,0 +1,27 @@
+<ion-view view-title="Home">
+  <ion-header-bar>
+    <h1 class="title" style="color: #FFB733">Top Posts</h1>
+
+
+  </ion-header-bar>
+  <ion-content>
+      <div ng-repeat="post in topposts | limitTo:3  track by $index">
+        <ion-card>
+          <img  class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
+
+          <ion-card-content>
+
+            <p>
+              <p>{{post.description}}</p>
+            </p>
+            <a class="item item-avatar" href="" style="background-color: #6A0C38">
+              <img src="http://localhost:8000/{{post.user_image}}" alt="">
+                 <p>{{post.first_name}} {{post.last_name}}</p>
+               </a>
+          </ion-card-content>
+
+        </ion-card>
+<hr>
+  </div>
+  </ion-content>
+</ion-view>

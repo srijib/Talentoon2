@@ -291,6 +291,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
 
 		addworkshop:function(workshopdata){
+            console.log('in factory addworkshop')
 			console.log(workshopdata);
 			console.log(workshopdata.category_id);
 			var def =$q.defer();
@@ -301,6 +302,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 				data:workshopdata
 
 			}).then(function(res){
+                console.log('in add workshop w 7salaha success')
                 console.log("workshop",res.data);
                 $http({
                     method: 'POST',
@@ -318,14 +320,18 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                     }
                 }).then(function (data) {
                     // alert(data);
+                    console.log('in factory w ba3t al media')
                     console.log("thennnnn in add post", data)
                 });
 
                 //////////////////////////////////////////////
 				console.log(res);
-				if(res.data.length){
+                console.log("length: ",res.data.length);
+				if(res.data){
+
 					def.resolve(res.data)
 				}else{
+                    console.log('w 7sal al error')
 					def.reject('there is no data ')
 				}
 
@@ -435,7 +441,8 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             })
 
             return def.promise;
-        },getCategoryWorkshops:function(index){
+        },
+        getCategoryWorkshops:function(index){
 
 			var def =$q.defer();
 			$http({
@@ -485,6 +492,66 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             return def.promise;
 
         },
+        isWorkshopCraetor: function (data) {
+                        //  var category_id= index;
+                        // // console.log("category_id",category_id)
+                        // console.log("workshop id", id)
+                        var def = $q.defer();
+                        console.log("data",data)
+                        $http({
+                            url: 'http://localhost:8000/api/isWorkshopCraetor',
+                            method: 'POST',
+                            data: data
+                        }).then(function (res) {
+
+                            console.log("hnshof hal hwa y3rf ya3ml edit",res.data)
+                            // console.log("user",res.data.user);
+                            // console.log("enroll",res.data.enroll);
+                            // console.log("single category from factory", res.data.workshop)
+
+                            if (res) {
+
+                                def.resolve(res.data);
+
+                            } else {
+                                def.reject('there is no data ')
+                                console.log("hnshof hal hwa y3rf ya3ml edit fl error",res.data)
+                            }
+
+                        }, function (err) {
+                            def.reject(err);
+                        })
+                        return def.promise;
+
+                    },
+            editWorkshop: function (editable) {
+                console.log("in factory to edit workshop",editable.cat_id);
+                var def = $q.defer();
+                var id=editable.workshop_id;
+                // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
+                $http({
+                    url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/workshops/'+editable.workshop_id+'/edit',
+                    // url:'http://172.16.2.239:8000/api/posts',
+                    method: 'get',
+                    data: id
+                }).then(function (res) {
+
+                    console.log('i tested',res.data.myrequest);
+
+                    if (res.data) {
+                        def.resolve(res.data)
+                    } else {
+                        def.reject('there is no data ')
+                    }
+
+                }, function (err) {
+                    // console.log(err);
+                    def.reject(err);
+                })
+                return def.promise;
+
+
+            },
 
     }
 

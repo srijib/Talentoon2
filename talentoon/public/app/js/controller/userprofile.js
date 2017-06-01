@@ -22,6 +22,17 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
     console.log(err);
 
   });
+  user.displayShared().then(function(data){
+     console.log("shareeeeeeeeees",data.data.shares);
+     $scope.usershare=data.data.shares;
+    // $scope.userinfo=data.data;
+    //     console.log("user profile posts",$scope.userposts);
+    //     console.log("user profile info",$scope.userinfo);
+
+  } , function(err){
+    console.log(err);
+
+  });
 
 
 })
