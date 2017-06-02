@@ -1,6 +1,7 @@
 angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, $q, videoconference) {
 
 
+
 	$rootScope.token = JSON.parse(localStorage.getItem("token"));
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 	console.log("category controller current user",$rootScope.cur_user);
@@ -82,7 +83,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
         if (reviewfilesuploaded.length > 0)
         {
-            talent.talent_id = 1;
+            talent.talent_id = $rootScope.cur_user.id;
             talent.category_id = $routeParams['category_id'];
             talent.from_when = $scope.talent.from_when;
             talent.description = $scope.talent.description;
@@ -91,8 +92,8 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
             console.log("Talent Object is ", talent);
 
             categories.complete_talent_profile(talent).then(function (data) {
-
-                category_talent_id = data.category_talent_id.original.category_talent_id;
+                console.log("inside category talent profile",data.id)
+                category_talent_id = data.id;
                 console.log("get the id from here", category_talent_id)
 
 
@@ -155,7 +156,9 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
     $scope.completeMentorProfile = function () {
 
-        mentor.mentor_id = 1;
+
+
+        mentor.mentor_id = $rootScope.cur_user.id;
         mentor.category_id = $routeParams['category_id'];
         mentor.years_of_experience = $scope.mentor.years_of_experience;
         mentor.experience = $scope.mentor.experience;
@@ -175,9 +178,9 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
     $scope.unmentor = function () {
 
-        mentor.mentor_id = 1;
+        mentor.mentor_id =$rootScope.cur_user.id;
         //$routeParams['category_id']
-        mentor.category_id = 1;
+        mentor.category_id = $routeParams['category_id'];
         mentor.action = "unmentor";
 
 
@@ -355,5 +358,10 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
         });
     }
+
+    if(localStorage.getItem("wiziq_presenter_url")){
+        $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
+    }
+
 
 });

@@ -1,6 +1,5 @@
 //angular.module('myApp').config(['$routeProvider', function ($routeProvider) {
 angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translateProvider', function ($routeProvider, $httpProvider, $translateProvider) {
-
     var translations_en = {
       DESCOVER_MORE: 'Discover More',
       TOP_POSTS: 'Top Posts',
@@ -53,8 +52,9 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             BE_UN_TALENT: 'الغاء الموهبه',
             BE_UN_MENTOR: 'الغاء التعليم',
             UN_SUBSCRIBE: 'لا تتابع',
-      },
-    };
+
+        },
+      };
 
     // add translation table
     $translateProvider
@@ -63,12 +63,30 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
       .preferredLanguage('en');
 
 
-        $routeProvider.when('/', {
-            templateUrl: 'views/home.html',
+
+
+
+    $routeProvider.when('/', {
+        templateUrl: 'views/home.html',
+        controller: 'homec'
+    })
+
+
+    // .when('/category/createEvent', {
+    //     templateUrl: 'views/post.html',
+    //     controller: 'homec'
+    // })
+        .when('/post/:post_id', {
+            templateUrl: 'views/post.html',
             controller: 'homec'
         })
 
+        .when('/category/:category_id/createEvent', {
+            templateUrl: 'views/createEvent.html',
+            controller: 'eventcontroller'
+        })
 
+<<<<<<< HEAD
                 // .when('/category/createEvent', {
                 //     templateUrl: 'views/post.html',
                 //     controller: 'homec'
@@ -87,72 +105,106 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
                     templateUrl: 'views/initial_review.html',
                     controller: 'initial_review'
                 })
-
+                .when('/posts', {
+                    templateUrl: 'posts.html',
+                    controller: 'posts'
+                })
 //all category
                 .when('/categories', {
                     templateUrl: 'views/categories.html',
                     controller: 'categories',
                     resolve: {
+=======
+        .when('/initial_review', {
+            templateUrl: 'views/initial_review.html',
+            controller: 'initial_review'
+        })
 
-                        resolvedCategory: function (categories) {
-                            return categories.getAllCategory().then(function (res) {
-                                return res;
-                            });
-                        },
+        //all category
+        .when('/categories', {
+            templateUrl: 'views/categories.html',
+            controller: 'categories',
+            resolve: {
+>>>>>>> 3a79f320b5f705e59a8528e31d95485cdeaca37a
 
+<<<<<<< HEAD
                     }
                 })
+=======
+                resolvedCategory: function (categories) {
+                    return categories.getAllCategory().then(function (res) {
+                        return res;
+                    });
+                },
 
-//allposts in category
-                .when('/category/:category_id', {
-                    templateUrl: 'views/category.html',
-                    controller: 'oneCategory'
-                })
+            }
+        })
+        .when('/ar/categories', {
+            templateUrl: 'views/ar/categories.html',
+            controller: 'categories',
+            resolve: {
 
-//user subscribe in category
+                resolvedCategory: function (categories) {
+                    return categories.getAllCategory().then(function (res) {
+                        return res;
+                    });
+                },
 
-                .when('/category/subscribe/:category_id/:user_id', {
-                    // templateUrl:'views/category.html',
-                    controller: 'oneCategory'
-                })
+            }
+        })
+>>>>>>> 013b1df6b174b94b42f280fd5a4b1a827d33a609
 
-                .when('/category/unsubscribe/:category_id/:user_id', {
-                    // templateUrl:'views/category.html',
-                    controller: 'oneCategory'
-                })
+        //allposts in category
+        .when('/category/:category_id', {
+            templateUrl: 'views/category.html',
+            controller: 'oneCategory'
+        })
 
+        //user subscribe in category
 
+        .when('/category/subscribe/:category_id/:user_id', {
+            // templateUrl:'views/category.html',
+            controller: 'oneCategory'
+        })
 
-//user choose to be a talent under a certain category
-                .when('/category/betalent/:category_id/:user_id', {
-                    controller: 'talents'
-                })
-
-
-
-//user choose to be a mentor under a certain category
-                .when('/category/bementor/:category_id/:user_id', {
-                    controller: 'mentors'
-                })
-
-
-
-
-//add post
-                .when('/category/:category_id/addpost', {
-                    templateUrl: 'views/addpost.html',
-                    controller: 'addpost'
-                })
-// add workshop
-                .when('/category/:category_id/addworkshop', {
-                    templateUrl: 'views/addworkshop.html',
-                    controller: 'addworkshop'
-                })
-//add event
+        .when('/category/unsubscribe/:category_id/:user_id', {
+            // templateUrl:'views/category.html',
+            controller: 'oneCategory'
+        })
 
 
-//user routes
 
+        //user choose to be a talent under a certain category
+        .when('/category/betalent/:category_id/:user_id', {
+            controller: 'talents'
+        })
+
+
+
+        //user choose to be a mentor under a certain category
+        .when('/category/bementor/:category_id/:user_id', {
+            controller: 'mentors'
+        })
+
+
+
+
+        //add post
+        .when('/category/:category_id/addpost', {
+            templateUrl: 'views/addpost.html',
+            controller: 'addpost'
+        })
+        // add workshop
+        .when('/category/:category_id/addworkshop', {
+            templateUrl: 'views/addworkshop.html',
+            controller: 'addworkshop'
+        })
+        //add event
+
+
+        //user routes
+
+<<<<<<< HEAD
                 // .when('/register', {
                 //     templateUrl: 'views/register.html',
                 //     controller: 'register'
@@ -164,69 +216,82 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
                 //     controller: 'login'
                 //
                 // })
+=======
+        .when('/register', {
+            templateUrl: 'views/register.html',
+            controller: 'register'
 
-                .when('/showreview', {
-                    templateUrl: 'views/showreview.html',
-                    controller: 'showreview'
-                })
+        })
 
-                .when('/category/:category_id/posts', {
-                    templateUrl: 'views/categoryposts.html',
-                    controller: 'allCategoryPosts'
-                })
+        .when('/login', {
+            templateUrl: 'views/login.html',
+            controller: 'login'
 
-                .when('/category/:category_id/posts/:post_id', {
-                    templateUrl: 'views/categorypost.html',
-                    controller: 'oneCategory'
-                })
+        })
+>>>>>>> 013b1df6b174b94b42f280fd5a4b1a827d33a609
 
-                .when('/category/:category_id/events/:event_id', {
-                    templateUrl: 'views/categorypost.html',
-                    controller: 'oneCategory'
-                })
+        .when('/showreview', {
+            templateUrl: 'views/showreview.html',
+            controller: 'showreview'
+        })
 
-                .when('/myprofile', {
-                  templateUrl: 'views/myprofile.html',
-                  controller: 'userprofile'
-                })
-                .when('/category/:category_id/workshops', {
-                    templateUrl: 'views/categoryworkshops.html',
-                    controller: 'oneCategory'
-                })
+        .when('/category/:category_id/posts', {
+            templateUrl: 'views/categoryposts.html',
+            controller: 'allCategoryPosts'
+        })
 
-                .when('/category/:category_id/workshops/:workshop_id', {
-                    templateUrl: 'views/categoryworkshop.html',
-                    controller: 'oneCategory'
-                })
+        .when('/category/:category_id/posts/:post_id', {
+            templateUrl: 'views/categorypost.html',
+            controller: 'oneCategory'
+        })
+
+        .when('/category/:category_id/events/:event_id', {
+            templateUrl: 'views/categorypost.html',
+            controller: 'oneCategory'
+        })
+
+        .when('/myprofile', {
+            templateUrl: 'views/myprofile.html',
+            controller: 'userprofile'
+        })
+        .when('/category/:category_id/workshops', {
+            templateUrl: 'views/categoryworkshops.html',
+            controller: 'oneCategory'
+        })
+
+        .when('/category/:category_id/workshops/:workshop_id', {
+            templateUrl: 'views/categoryworkshop.html',
+            controller: 'oneCategory'
+        })
 
 
-                .when('/videoconference', {
-                    templateUrl: 'views/create_video_conference_class.html',
-                    controller: 'videoconference'
-                })
-                .when('/category/:category_id/workshops/:workshop_id/createSession', {
-                    templateUrl: 'views/createsession.html',
-                    controller: 'addsession'
-                })
+        .when('/videoconference', {
+            templateUrl: 'views/create_video_conference_class.html',
+            controller: 'videoconference'
+        })
+        .when('/category/:category_id/workshops/:workshop_id/createSession', {
+            templateUrl: 'views/createsession.html',
+            controller: 'addsession'
+        })
 
     $httpProvider.interceptors.push(['$q', '$location', function ($q, $location) {
-                return {
-                    'request': function (config) {
-                        config.headers = config.headers || {};
-                        var token = JSON.parse(localStorage.getItem("token"));
-                        if (token) {
-                            config.headers.Authorization = 'Bearer ' + token;
-                        }
-                        return config;
-                    },
-                    'responseError': function (response) {
-                        if (response.status === 401 || response.status === 403) {
-                            $location.path('/signin');
-                        }
-                        return $q.reject(response);
-                    }
-                };
-            }]);
-
-
+        return {
+            'request': function (config) {
+                config.headers = config.headers || {};
+                var token = JSON.parse(localStorage.getItem("token"));
+                if (token) {
+                    config.headers.Authorization = 'Bearer ' + token;
+                }
+                return config;
+            },
+            'responseError': function (response) {
+                if (response.status === 401 || response.status === 403) {
+                    $location.path('/signin');
+                }
+                return $q.reject(response);
+            }
+        };
     }]);
+
+
+}]);

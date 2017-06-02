@@ -20,6 +20,8 @@ class HomeController extends Controller
     public function index()
     {
         //
+
+
         $posts= Post::all();
         return response()->json(['posts' => $posts,'status' => '1','message' => 'data sent successfully']);
     }
