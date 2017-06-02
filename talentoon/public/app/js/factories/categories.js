@@ -186,7 +186,6 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 console.log("____________media type ", $rootScope.currentFile.type)
                 console.log('_________', $rootScope.currentFile.name)
 
-
                 /////////////////////////
                 $http({
                     method: 'POST',
