@@ -1,6 +1,4 @@
-//angular.module('myApp').config(['$routeProvider', function ($routeProvider) {
-angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
-
+angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translateProvider', function ($routeProvider, $httpProvider, $translateProvider) {
     var translations_en = {
       DESCOVER_MORE: 'Discover More',
       TOP_POSTS: 'Top Posts',
@@ -83,7 +81,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($ro
             controller: 'eventcontroller'
         })
 
-<<<<<<< HEAD
+
                 // .when('/category/createEvent', {
                 //     templateUrl: 'views/post.html',
                 //     controller: 'homec'
@@ -111,18 +109,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($ro
                     templateUrl: 'views/categories.html',
                     controller: 'categories',
                     resolve: {
-=======
-        .when('/initial_review', {
-            templateUrl: 'views/initial_review.html',
-            controller: 'initial_review'
-        })
-
-        //all category
-        .when('/categories', {
-            templateUrl: 'views/categories.html',
-            controller: 'categories',
-            resolve: {
->>>>>>> 3a79f320b5f705e59a8528e31d95485cdeaca37a
 
                 resolvedCategory: function (categories) {
                     return categories.getAllCategory().then(function (res) {
