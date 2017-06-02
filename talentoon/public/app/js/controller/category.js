@@ -66,16 +66,54 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 
     }
+
     $scope.editWorkshop=function (workshop_id,cat_id){
         console.log('gwa edit al workshop',workshop_id);
         var editable={workshop_id,cat_id}
         categories.editWorkshop(editable).then(function(data){
-            console.log('7asl al edit ya3ni haygeb al data',data)
+            $rootScope.editable_workshop=data
+            console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_workshop)
+            $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
         } , function(err){
             console.log(err);
 
 
         });
+    }
+    $scope.deleteWorkshop=function (workshop_id,cat_id) {
+        var editable={workshop_id,cat_id}
+        categories.deleteWorkshop(editable).then(function(data){
+            $rootScope.workshop_id=data
+            console.log('7asl al deleteeeeeee',$rootScope.workshop_id)
+            // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
+        } , function(err){
+            console.log(err);
+
+
+        });
+    }
+    $scope.saveupdated=function (vaild){
+
+        if (vaild) {
+            var category= $routeParams['category_id'];
+            var mentor_id= 1;
+            $scope.editable_workshop.category_id=category
+
+
+            var workshopdata = $scope.editable_workshop;
+            console.log('in update dataaaaa',workshopdata);
+            categories.updatedworkshop(workshopdata).then(function(data){
+                console.log('in update al workshop lma da5lt anadi 3la method al factory w geet')
+                console.log("the workshop request from server is ",data);
+
+            } , function(err){
+                console.log(err);
+
+            });
+
+        }
+
+
     }
     $scope.completeTalentProfile = function(){
 

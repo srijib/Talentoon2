@@ -365,6 +365,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             return def.promise;
 
         },
+
         complete_talent_profile: function (talent_data) {
 
             var def = $q.defer();
@@ -466,19 +467,19 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         getCategoryWorkshop: function (id) {
             //  var category_id= index;
             // // console.log("category_id",category_id)
-            // console.log("workshop id", id)
+            console.log("yaaa workshop id", id)
             var def = $q.defer();
             $http({
                 url: 'http://localhost:8000/api/workshop/'+id,
-                method: 'GET',
-                data: id
+                method: 'GET'
+
             }).then(function (res) {
                 console.log("single workshop from factory",res.data)
                 // console.log("user",res.data.user);
                 // console.log("enroll",res.data.enroll);
                 // console.log("single category from factory", res.data.workshop)
 
-                if (res) {
+                if (res.data) {
                     var data = localStorage.setItem("workshop_data", JSON.stringify(res.data.workshop));
                     def.resolve(res.data);
 
@@ -487,6 +488,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 }
 
             }, function (err) {
+                console.log('jjjjjjjjjjj',err)
                 def.reject(err);
             })
             return def.promise;
@@ -530,13 +532,13 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 var id=editable.workshop_id;
                 // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
                 $http({
-                    url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/workshops/'+editable.workshop_id+'/edit',
+                    url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/workshops/'+id+'/edit',
                     // url:'http://172.16.2.239:8000/api/posts',
-                    method: 'get',
-                    data: id
+                    method: 'GET'
+                    // data: id
                 }).then(function (res) {
 
-                    console.log('i tested',res.data.myrequest);
+                    console.log('i tested',res.data);
 
                     if (res.data) {
                         def.resolve(res.data)
@@ -552,6 +554,56 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
 
             },
+        updatedworkshop:function (workshopdata) {
+            var def = $q.defer();
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.category_id + '/workshops/'+workshopdata.id,
+                method: 'PUT',
+                data: workshopdata
+
+            }).then(function (res) {
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
+        deleteWorkshop:function (workshopdata) {
+            var def = $q.defer();
+            var id=workshopdata.workshop_id
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.cat_id + '/workshops/'+workshopdata.workshop_id,
+                method: 'DELETE',
+                data:id
+
+
+            }).then(function (res) {
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
 
     }
 

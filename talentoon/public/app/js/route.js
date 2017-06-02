@@ -121,7 +121,11 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($ro
                     controller: 'addworkshop'
                 })
 //add event
-
+//edit workshopp
+            .when('/category/:category_id/workshops/:workshop_id/editworkshop', {
+                templateUrl: 'views/editworkshop.html',
+                controller: 'oneCategory'
+            })
 
 //user routes
 
