@@ -1,5 +1,5 @@
 //angular.module('myApp').config(['$routeProvider', function ($routeProvider) {
-angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
+angular.module('myApp').config(['$routeProvider', '$httpProvider','$translateProvider', function ($routeProvider, $httpProvider,$translateProvider) {
 
     var translations_en = {
       DESCOVER_MORE: 'Discover More',
@@ -62,6 +62,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($ro
       .translations('en', translations_en)
       .translations('ar', translations_ar)
       .preferredLanguage('en');
+
+
+
+
 
     $routeProvider.when('/', {
         templateUrl: 'views/home.html',
