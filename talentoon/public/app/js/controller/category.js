@@ -220,24 +220,27 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         console.log(err);
     });
 //----------------------------------------------------------------------
-    $scope.comment = {};
-    $scope.addcomment = function (valid) {
-        if (valid) {
-            var comment = $scope.comment
-            // console.log(comment);
-            // console.log("vaild in add comment");
-
-        } else {
-            console.log("error in add comment");
-        }
-    }
+    // $scope.comment = {};
+    // $scope.addcomment = function (valid) {
+    //     if (valid) {
+    //         var comment = $scope.comment
+    //         // console.log(comment);
+    //         // console.log("vaild in add comment");
+	//
+    //     } else {
+    //         console.log("error in add comment");
+    //     }
+    // }
 //---------------------------------------------------------------
     //get 3  posts under category
     // $scope.allposts = function() {
     var user_id = 1;
     categories.getCategoryPost($scope.cat_id).then(function (data) {
         // console.log("inside controller" , data)
-        $scope.category_posts = data;
+        $scope.category_posts = data.post;
+		$scope.comments = data.comments;
+		console.log("ya 3m el comments",$scope.comments);
+
         // console.log("la2aa",$scope.category_posts);
 
         console.log("post detalis", $scope.category_posts);
@@ -353,6 +356,20 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
             console.log(err);
 
         });
-    }
+    },
+	$scope.newcomment = function(vaild) {
+	   if (vaild) {
+   var post_id=$routeParams['post_id'];
+   		$scope.comment.post_id=post_id
+		 var commentdata=$scope.comment
+		 console.log("comment data",commentdata);
+		 categories.addcomment(commentdata).then(function(data){
+
+		 } , function(err){
+		  console.log(err);
+
+		 });
+
+	   }}
 
 });

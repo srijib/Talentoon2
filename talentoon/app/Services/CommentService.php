@@ -16,12 +16,11 @@ class CommentService
 
 
 
-        Comment::create(array(
-            'text' => $request['text'],
+        Comment::create([
+            'comment' => $request->comment,
             'user_id' => $user_id,
-            'commentable_id' => $request['commentable_id'],
-            'commentable_type' => $request['commentable_type']
-        ));
+            'post_id' => $request->post_id,
+        ]);
 
         return Response::json(array('success' => true));
     }
