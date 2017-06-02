@@ -71,6 +71,7 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
+
         $user = JWTAuth::parseToken()->authenticate();
         $category=Category::find($id);
         // $posts = DB::table('posts')

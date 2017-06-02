@@ -51,6 +51,7 @@ class WorkShopsController extends Controller
     public function store(Request $request)
     {
         //
+        return response()->json(['req'=>$request]);
         $id=WorkShop::create($request->all())->id;
 
         return response()->json(['workshop_id'=>$id,'message' => 'data saved successfully']);
@@ -81,11 +82,13 @@ class WorkShopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {   //I need to take category id and workshop id and
         // by checking the mentor_id is the user id then edit else not
         //from Request $request we will git the editable data
         $user=JWTAuth::parseToken()->toUser();
+        dd($request->id);
+        return response()->json(['myrequest'=>$request->id]);
 
 
     }
@@ -112,6 +115,22 @@ class WorkShopsController extends Controller
     {
         //
     }
+    public function isWorkshopCraetor(Request $request){
+        $user=JWTAuth::parsetoken()->toUser();
+//        dd($user->id);
+//        dd($request->workshop_id);
+        $creator = DB::table('workshops')
+            ->select('workshops.*')
+            ->where("workshops.mentor_id",$user->id)
+            ->where("workshops.id",$request->workshop_id)
+            ->get()->first();
+        if ($creator){
+            return response()->json(['creator'=>1]);
+        }else{
+            return response()->json(['creator'=>0]);
+        }
+
+    }
     public function show($workshop_id){
         try {
             //dd($request->all());
@@ -134,7 +153,8 @@ class WorkShopsController extends Controller
             ->get();
       $workshop = DB::table('workshops')
           ->join('categories', 'workshops.category_id', '=', 'categories.id')
-          ->select('workshops.*', 'categories.title as category_title')
+          ->join('users', 'users.id', '=', 'workshops.mentor_id')
+          ->select('workshops.*', 'categories.title as category_title','users.first_name as first_name','users.last_name as last_name','users.first_name as first_name','users.image as image')
           ->where("workshops.id",$workshop_id)
           ->get()->first();
 
@@ -146,6 +166,7 @@ class WorkShopsController extends Controller
              ['workshop_enrollment.workshop_id','=',$workshop_id]])
               ->groupBy('workshop_enrollment.workshop_id')
                   ->get()->first();
+
 
         if(is_null($countcapacity)){
             return response()->json(['session'=>$session,'enroll'=>1,'user'=>$user,'workshop' => $workshop,'message' => 'workshop sent successfully']);
@@ -160,6 +181,7 @@ class WorkShopsController extends Controller
 
             return response()->json(['session'=>$session,'enroll'=>1,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
             }
+
     }
 }
     public function enroll(Request $request){
@@ -172,6 +194,7 @@ class WorkShopsController extends Controller
         if (is_null($enroll)) {
         WorkshopEnroll::create($request->all());
         return response()->json(['message' => 'data saved successfully']);
+
         }else{
         return response()->json(['message' => 'you already enroll in this workshop ']);
 
@@ -183,4 +206,5 @@ class WorkShopsController extends Controller
     $id=WorkshopSession::create($request->all())->id;
     return response()->json(['workshop_id'=>$id,'message' => 'data saved successfully']);
     }
+
 }
