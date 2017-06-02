@@ -154,11 +154,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'showreview'
         })
 
-        .when('/category/:category_id/posts', {
-            templateUrl: 'views/categoryposts.html',
-            controller: 'allCategoryPosts'
-        })
-
         .when('/category/:category_id/posts/:post_id', {
             templateUrl: 'views/categorypost.html',
             controller: 'oneCategory'
@@ -175,6 +170,14 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         })
         .when('/category/:category_id/workshops', {
             templateUrl: 'views/categoryworkshops.html',
+            controller: 'oneCategory'
+        })
+        .when('/category/:category_id/events', {
+            templateUrl: 'views/categoryevents.html',
+            controller: 'oneCategory'
+        })
+        .when('/category/:category_id/posts', {
+            templateUrl: 'views/categoryposts.html',
             controller: 'oneCategory'
         })
 
