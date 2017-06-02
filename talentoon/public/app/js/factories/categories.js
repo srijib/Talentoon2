@@ -50,7 +50,6 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
   		},
         getCategoryEvent:function(cat_id,event_id){
-            console.log('beforee ajaaaaaaaaaaaxxx',event_id);
   			var def =$q.defer();
   			$http({
   				url:'http://localhost:8000/api/categories/'+cat_id+'/events/'+event_id ,
@@ -374,10 +373,12 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 data: talent_data
 
             }).then(function (res) {
-                console.log("res is find the id now please ", res.data.category_talent_id)
+                // console.log("res is find the id now please hhhhhhhh ", res)
+
+                console.log("res is find the id now please ", res.data.id)
 
                 if (res) {
-                    $rootScope.category_talent_id = res.data.category_talent_id;
+                    $rootScope.category_talent_id = res.data.id;
                     console.log("7777777777777", $rootScope.category_talent_id);
                     def.resolve(res.data)
                 } else {

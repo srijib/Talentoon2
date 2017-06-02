@@ -1,3 +1,4 @@
+
 angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translateProvider', function ($routeProvider, $httpProvider, $translateProvider) {
     var translations_en = {
       DESCOVER_MORE: 'Discover More',
@@ -61,26 +62,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
       .translations('ar', translations_ar)
       .preferredLanguage('en');
 
-    $routeProvider.when('/', {
-        templateUrl: 'views/home.html',
-        controller: 'homec'
-    })
-
-
-    // .when('/category/createEvent', {
-    //     templateUrl: 'views/post.html',
-    //     controller: 'homec'
-    // })
-        .when('/post/:post_id', {
-            templateUrl: 'views/post.html',
-            controller: 'homec'
-        })
-
-        .when('/category/:category_id/createEvent', {
-            templateUrl: 'views/createEvent.html',
-            controller: 'eventcontroller'
-        })
-
 
                 // .when('/category/createEvent', {
                 //     templateUrl: 'views/post.html',
@@ -115,22 +96,41 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
                         return res;
                     });
                 },
+    $routeProvider.when('/', {
+        templateUrl: 'views/home.html',
+        controller: 'homec'
+    })
 
-            }
-        })
-        .when('/ar/categories', {
-            templateUrl: 'views/ar/categories.html',
-            controller: 'categories',
-            resolve: {
+    .when('/post/:post_id', {
+        templateUrl: 'views/post.html',
+        controller: 'homec'
+    })
 
-                resolvedCategory: function (categories) {
-                    return categories.getAllCategory().then(function (res) {
-                        return res;
-                    });
-                },
+    .when('/category/:category_id/createEvent', {
+        templateUrl: 'views/createEvent.html',
+        controller: 'eventcontroller'
+    })
 
-            }
-        })
+    .when('/initial_review', {
+        templateUrl: 'views/initial_review.html',
+        controller: 'initial_review'
+    })
+    .when('/posts', {
+        templateUrl: 'posts.html',
+        controller: 'posts'
+    })
+    //all category
+    .when('/categories', {
+        templateUrl: 'views/categories.html',
+        controller: 'categories',
+        resolve: {
+            resolvedCategory: function (categories) {
+                return categories.getAllCategory().then(function (res) {
+                    return res;
+                });
+            },
+        }
+    })
 
         //allposts in category
         .when('/category/:category_id', {
@@ -178,21 +178,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'addworkshop'
         })
         //add event
-
-
-        //user routes
-
-        .when('/register', {
-            templateUrl: 'views/register.html',
-            controller: 'register'
-
-        })
-
-        .when('/login', {
-            templateUrl: 'views/login.html',
-            controller: 'login'
-
-        })
 
         .when('/showreview', {
             templateUrl: 'views/showreview.html',
