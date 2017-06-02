@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Services\Notification;
-
+use DB;
 
 class CategoriesController extends Controller
 {
@@ -71,9 +71,24 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
+        $user = JWTAuth::parseToken()->authenticate();
         $category=Category::find($id);
+        // $posts = DB::table('posts')
+        //         ->join('users', 'posts.user_id', '=', 'users.id')
+	    // ->join('subscribers', 'subscribers.category_id', '=', 'posts.category_id')
+        //         ->select('posts.*','users.*')
+        //         ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1],['posts.category_id', '=',$id],['posts.is_approved', '=',1]])
+        //         ->get();
         $posts=Post::where('category_id','=', $id)->get();
         $workshops=WorkShop::where('category_id','=', $id)->get();
+
+        // $workshops = DB::table('workshops')
+        //         ->join('users', 'workshops.mentor_id', '=', 'users.id')
+        //         ->join('subscribers', 'subscribers.category_id', '=', 'workshops.category_id')
+        //         ->select('workshops.*','users.*')
+        //
+        //         ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1],['workshops.category_id', '=',$id],['workshops.is_approved', '=',1]])
+        //         ->get();
 
 
         // dd($posts);

@@ -46,7 +46,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($ro
                     templateUrl: 'views/initial_review.html',
                     controller: 'initial_review'
                 })
-
+                .when('/posts', {
+                    templateUrl: 'posts.html',
+                    controller: 'posts'
+                })
 //all category
                 .when('/categories', {
                     templateUrl: 'views/categories.html',
