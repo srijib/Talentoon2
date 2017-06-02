@@ -18,7 +18,7 @@ class WorkShopsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct(){
-     $this->middleware(['ability:mentor,create-workshop,true','checkmentorauthority'])->only('store');    
+     $this->middleware(['ability:mentor,create-workshop,true','checkmentorauthority'])->only('store');
     }
     public function index()
     {
@@ -82,13 +82,17 @@ class WorkShopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit($cat_id,$workshop_id)
     {   //I need to take category id and workshop id and
         // by checking the mentor_id is the user id then edit else not
         //from Request $request we will git the editable data
         $user=JWTAuth::parseToken()->toUser();
-        dd($request->id);
-        return response()->json(['myrequest'=>$request->id]);
+        $workshop = DB::table('workshops')
+            ->select('workshops.*')
+            ->where("workshops.category_id",$cat_id)
+            ->where("workshops.id",$workshop_id)
+            ->get()->first();
+        return response()->json($workshop);
 
 
     }
@@ -100,9 +104,25 @@ class WorkShopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $workshop=DB::table('workshops')
+                ->where('id', $request->id)
+                ->update(['name'=>$request->name,
+                'description'=>$request->description,
+                'time_from'=>$request->time_from,
+                'time_to'=>$request->time_to,
+                'date_from'=>$request->date_from,
+                'date_to'=>$request->date_to,
+                'level'=>$request->level,
+                'max_capacity'=>$request->max_capacity,
+                'media_type'=>$request->media_type,
+                'media_url'=>$request->media_url
+                ]);
+
+
+        return response()->json($workshop);
     }
 
     /**
@@ -111,9 +131,17 @@ class WorkShopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($cat_id,$id)
     {
-        //
+//        return response()->json($id);
+        $affectedRows = WorkShop::where('id', '=', $id)
+            ->delete();
+
+        if ($affectedRows){
+            return response()->json('true');
+        }else{
+            return response()->json('false');
+        }
     }
     public function isWorkshopCraetor(Request $request){
         $user=JWTAuth::parsetoken()->toUser();
@@ -132,6 +160,7 @@ class WorkShopsController extends Controller
 
     }
     public function show($workshop_id){
+//        return response()->json(['creator'=>$workshop_id]);
         try {
             //dd($request->all());
             if (!$user = JWTAuth::parseToken()->authenticate()) {
@@ -147,10 +176,12 @@ class WorkShopsController extends Controller
 
             return response()->json(['token_absent'], $e->getStatusCode());
         }
+
         $session=DB::table('workshop_session')
 
             ->where("workshop_session.workshop_id",$workshop_id)
             ->get();
+
       $workshop = DB::table('workshops')
           ->join('categories', 'workshops.category_id', '=', 'categories.id')
           ->join('users', 'users.id', '=', 'workshops.mentor_id')
@@ -169,6 +200,7 @@ class WorkShopsController extends Controller
 
 
         if(is_null($countcapacity)){
+
             return response()->json(['session'=>$session,'enroll'=>1,'user'=>$user,'workshop' => $workshop,'message' => 'workshop sent successfully']);
 
         }else{

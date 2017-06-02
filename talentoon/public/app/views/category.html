@@ -38,7 +38,7 @@
                 </div>
  <!-- data-aos="fade-up" data-aos-duration="2000"  -->
                 <div class="row mainrow" >
-                    <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in category3Posts | limitTo:3 track by $index">
+                    <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in categoryPosts | limitTo:3 track by $index">
                         <div class="thumbnail" data-toggle="modal" data-target="#po{{post.id}}">
                             <!-- defaultimg-->
                             <div class="row defaultimg" >
@@ -316,7 +316,7 @@
             <h1 class="h1">{{'TOP_EVENTS' | translate}}</h1>
         </div>
         <div class="evMainRow row">
-            <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" event in events| limitTo:3">
+            <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" event in categoryEvents| limitTo:3">
                 <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
                     <div class="row evDefaultImg" >
                         <img src="http://localhost:8000/{{event.media_url}}" alt="">
@@ -752,6 +752,14 @@
                                                     <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
 
 
+                                                <!--</div>-->
+                                            <!--</li>-->
+                                        </ul>
+                                        <!--<div ng-if="isCreator==1">-->
+                                            <div class="writePost">
+                                                <div class="posting">
+                                                    <button type="button" class="btn btn-default"  ng-click="editWorkshop(workshop.id,cat_id)">Edit</button>
+
                                                 </div>
                                             </li>
                                         </ul>
@@ -769,7 +777,7 @@
             </div>
         </div>
         <div class="btnsOn">
-            <a href="#!/category/{{cat_id}}/workshops" class="btn btn-default" role="button" ng-click="allworkshops()"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
+            <a href="#!/category/{{cat_id}}/workshops" class="btn btn-default" role="button"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
             <a href="#!/category/{{cat_id}}/addworkshop" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
         </div>
 

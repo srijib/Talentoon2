@@ -12,8 +12,6 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             var userdata = $scope.user
             console.log("inside login:", userdata);
             user.login(userdata).then(function (data) {
-                //console.log("blaaaaaaaaaaaa");
-                //console.log("data inside login-controller:", data.token);
                 console.log("dataaaaa minA",data);
                 localStorage.setItem('cur_user', JSON.stringify(data.user));
                 localStorage.setItem('token', JSON.stringify(data.token));
@@ -26,6 +24,13 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
 
     }
 
+    $scope.logoutFn = function () {
+            console.log("inside logout");
+            localStorage.removeItem('cur_user');
+            localStorage.removeItem('token');
+            $location.url('/');
+    }
+
     user.getAllCountry().then(function (data) {
         //console.log("countries:", data);
         $scope.countries = data;
@@ -36,27 +41,24 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
     });
 
     $scope.registerFn = function (valid) {
-
-//      $scope.user={};
+        console.log('inside register fn');
         console.log($scope.user);
-        console.log(valid);
-        if (valid) {
-            //console.log("ssssssssssssss");
+        if($scope.user.password && $scope.user.password.length>5){
+            $scope.pass=true;
+        }
+        if($scope.user.password==$scope.user.repassword){
+            $scope.repass=true;
+        }
+        if (valid && $scope.repass && $scope.pass) {
+            console.log('inside valid');
             var userdata = $scope.user
             console.log("userdata",userdata);
-            // $scope.user.date_of_birthday=	 dateFilter(date_of_birthday, 'yyyy-MM-dd')
-            // console.log($scope.user.date_of_birthday);
             user.register(userdata).then(function(data){
                 console.log("inside controller:",data);
                 $location.url('/login');
             },function(err){
                console.log(err);
             });
-
         }
-
     }
-
-    //console.log(resolvedProducts);
-
 })

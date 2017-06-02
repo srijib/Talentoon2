@@ -152,10 +152,28 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
 
 
 
+//add post
+                .when('/category/:category_id/addpost', {
+                    templateUrl: 'views/addpost.html',
+                    controller: 'addpost'
+                })
+// add workshop
+                .when('/category/:category_id/addworkshop', {
+                    templateUrl: 'views/addworkshop.html',
+                    controller: 'addworkshop'
+                })
+//add event
+//edit workshopp
+            .when('/category/:category_id/workshops/:workshop_id/editworkshop', {
+                templateUrl: 'views/editworkshop.html',
+                controller: 'oneCategory'
+            })
+
         //user choose to be a talent under a certain category
         .when('/category/betalent/:category_id/:user_id', {
             controller: 'talents'
         })
+
 
 
 
@@ -184,11 +202,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'showreview'
         })
 
-        .when('/category/:category_id/posts', {
-            templateUrl: 'views/categoryposts.html',
-            controller: 'allCategoryPosts'
-        })
-
         .when('/category/:category_id/posts/:post_id', {
             templateUrl: 'views/categorypost.html',
             controller: 'oneCategory'
@@ -205,6 +218,14 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         })
         .when('/category/:category_id/workshops', {
             templateUrl: 'views/categoryworkshops.html',
+            controller: 'oneCategory'
+        })
+        .when('/category/:category_id/events', {
+            templateUrl: 'views/categoryevents.html',
+            controller: 'oneCategory'
+        })
+        .when('/category/:category_id/posts', {
+            templateUrl: 'views/categoryposts.html',
             controller: 'oneCategory'
         })
 

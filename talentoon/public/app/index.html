@@ -25,11 +25,8 @@
 	<script type="text/javascript" src="js/controller/talent.js"></script>
     <script type="text/javascript" src="js/controller/home.js"></script>
     <script type="text/javascript" src="js/controller/addpost.js"></script>
-	<script type="text/javascript" src="js/controller/register.js"></script>
-	<script type="text/javascript" src="js/controller/login.js"></script>
 	<script type="text/javascript" src="js/controller/addevent.js"></script>
 	<script type="text/javascript" src="js/controller/addworkshop.js"></script>
-	<script type="text/javascript" src="js/controller/allCategoryPosts.js"></script>
 	<script type="text/javascript" src="js/controller/addsession.js"></script>
 	<script type="text/javascript" src="js/controller/showreview.js"></script>
 	<script type="text/javascript" src="js/controller/event.js"></script>
@@ -61,7 +58,7 @@
 
 
 <!-- style -->
-	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="node_modules/aos/dist/aos.css">
@@ -72,7 +69,6 @@
 	<link rel="stylesheet" href="css/categorySelected.css">
 	<link rel="stylesheet" href="css/createPost.css">
 	<link rel="stylesheet" href="css/posts.css">
-	<!-- <link rel="stylesheet" href="css/style.css"> -->
 
 	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
 	<script>
@@ -190,7 +186,7 @@
 	                                    <li><a href="#!/myprofile">{{'NAVBAR.PROFILE' | translate}}</a></li>
 	                                    <li><a href="#">{{'NAVBAR.SETTINGS' | translate}}</a></li>
 	                                    <li role="separator" class="divider"></li>
-	                                    <li><a href="#">{{'NAVBAR.LOGOUT' | translate}}</a></li>
+	                                    <li><a ng-click="logoutFn()">{{'NAVBAR.LOGOUT' | translate}}</a></li>
 	                                </ul>
 	                            </li>
 	                            <!--                            end user-->
@@ -211,15 +207,8 @@
 							</logged>
 
 							<notlogged ng-if="! token">
-								<!-- else if not logged in -->
-	                            <!--                            btn register-->
-	                          <!-- <a href="#!/login">  <button type="button" class="btn btn-default">Log In </button></a>
-
-	                           <a href="#!/register"> <button type="button" class="btn btn-primary ">Sign Up</button></a> -->
 							   <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login">Log In </button>
-
                                 <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#signup">Sign Up</button>
-
 							</notlogged>
 							<li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">en<span class="caret"></span></a>
@@ -382,6 +371,7 @@
                                             <div class="col-6">
                                                 <input class="form-control" type="password" id="example-password-input" placeholder="Password" name="password" required ng-model="user.password" ng-minlength="6">
 												<p class="error" ng-if="submitted && register.password.$error.required" >please enter your password</p>
+												<p class="error" ng-if="!pass && submitted">password must be more than 5 characters</p>
                                             </div>
                                         </div>
 
@@ -391,6 +381,7 @@
                                             <div class="col-6">
                                                 <input class="form-control" type="password"  id="example-password-input" placeholder="Retype Password" name="repassword" required ng-model="user.repassword">
 												<p class="error" ng-if="submitted && register.repassword.$error.required" >please retype your password</p>
+            									<p class="error" ng-if="!repass && submitted">password isn't match</p>
 											</div>
                                         </div>
 
@@ -402,7 +393,6 @@
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </select>
-											<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
 
                                             <!--countries-->
                                             <select name="country_id" ng-model="user.country_id" class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-offset-1">
@@ -410,6 +400,7 @@
                                                 <option value="{{country.id}}" ng-repeat="country in countries track by $index">{{country.name}}</option>
                                             </select>
 											<p class='error' ng-if='submitted && register.country_id.$error.required'>please choose your country</p>
+											<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
 
                                         </div>
                                         <!--profile image-->
