@@ -1,4 +1,4 @@
-angular.module('myApp',["ngRoute","pascalprecht.translate"]) ;
+angular.module('myApp',["ngRoute"]) ;
 
 angular.module("myApp").run(function($rootScope,$location){
 

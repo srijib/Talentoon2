@@ -32,7 +32,7 @@ Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelated
 
 
 //Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
-  Route::resource('categories.events','EventController');  
+  Route::resource('categories.events','EventController');
 //});
 
 Route::get('/mostLikeabe','PostsController@mostLikablePosts');
@@ -95,6 +95,9 @@ Route::get('/userprofile',[
     Route::get('/userprofile/userposts',[
         'uses'=>'UserProfile@userposts',
         'middleware'=> 'jwt.auth']);
+    Route::get('/userprofile/displayShared',[
+            'uses'=>'UserProfile@displayShared',
+            'middleware'=> 'jwt.auth']);
 
 Route::post('/categorytalent/store','CategoryTalentController@store');
 
@@ -137,6 +140,7 @@ Route::post('/share','ShareController@store');
 Route::get('/workshop/{workshop_id}','WorkShopsController@show');
 
 Route::post('/workshop_enroll','WorkShopsController@enroll');
+Route::post('/isWorkshopCraetor','WorkShopsController@isWorkshopCraetor');
 
 
 Route::get('/categorymentor/get_mentor_details/{mentor_id}', 'CategoryMentorController@get_mentor_details');

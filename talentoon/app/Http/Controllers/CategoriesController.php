@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Services\Notification;
-
+use DB;
 
 class CategoriesController extends Controller
 {
@@ -27,13 +27,16 @@ class CategoriesController extends Controller
     {
        $user = JWTAuth::parseToken()->authenticate();
        $categories= Category::all();
-
+       //N.B token had value however it is printed {}
+       $token=JWTAuth::getToken();
+       //dd($token);
         // $path=$categories[0]->getAttributes()['image'];
         // $categories[5]->getAttributes()['image'] = '/uploads/files/'.$categories[5]->getAttributes()['image'];
         // dd($categories[5]->getAttributes()['image']);
 
         return response()->json(['user' => $user,'data' => $categories,'status' => '1','message' => 'data sent successfully'
-                ]);
+          //'token'=>$token
+            ]);
         // return view('categories.index',['categories'=>$categories]);
     }
 
@@ -68,8 +71,19 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
+
+
+      $posts = DB::table('posts')
+          ->join('users', 'posts.user_id', '=', 'users.id')
+          ->select('posts.*', 'users.first_name', 'users.last_name', 'users.image')
+          ->where('category_id','=', $id)
+          ->get();
+
+
+
+
         $category=Category::find($id);
-        $posts=Post::where('category_id','=', $id)->get();
+        // $posts=Post::where('category_id','=', $id)->get();
         $workshops=WorkShop::where('category_id','=', $id)->get();
 
 

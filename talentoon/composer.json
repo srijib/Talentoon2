@@ -25,10 +25,11 @@
             "database"
         ],
         "files": [
-            "/var/www/html/graduation2/Talentoon2/talentoon/app/Http/Controllers/WizIQClass/AuthBase.php",
-            "/var/www/html/graduation2/Talentoon2/talentoon/app/Http/Controllers/WizIQClass/WiZiQService.php",
-            "/var/www/html/graduation2/Talentoon2/talentoon/app/Http/Controllers/WizIQClass/AddTeacher.php",
-            "/var/www/html/graduation2/Talentoon2/talentoon/app/Http/Controllers/WizIQClass/EditTeacher.php"
+
+            "/var/www/html/gradproj/Talentoon2/talentoon/app/Http/Controllers/WizIQClass/AuthBase.php",
+            "/var/www/html/gradproj/Talentoon2/talentoon/app/Http/Controllers/WizIQClass/WiZiQService.php",
+            "/var/www/html/gradproj/Talentoon2/talentoon/app/Http/Controllers/WizIQClass/AddTeacher.php",
+            "/var/www/html/gradproj/Talentoon2/talentoon/app/Http/Controllers/WizIQClass/EditTeacher.php"
 
         ],
         "psr-4": {

@@ -12,9 +12,9 @@ angular.module('myApp').controller("addworkshop",function($scope,$http,categorie
     //    $scope.workshop.media_type="image"
 
         var workshopdata = $scope.workshop;
-
+       console.log('in neworkshop');
        categories.addworkshop(workshopdata).then(function(data){
-
+           console.log('in neworkshop lma da5lt anadi 3la method al factory w geet')
            console.log("the workshop request from server is ",data);
 //when data retrived from server
 //            $location.url('/category/'+$scope.post.category_id);

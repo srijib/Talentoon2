@@ -2,7 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1330db7b-59c1-4aef-86aa-286381afc9ff" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/resources/icon1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/resources/splash1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/www/img/photo1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/talentoon/public/app/css/createPost.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/talentoon/public/app/css/posts.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/resources/icon.png" afterPath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/resources/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/resources/splash.png" afterPath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/resources/splash.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/www/img/photo.jpg" afterPath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/www/img/photo.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/app/Http/Controllers/CategoriesController.php" afterPath="$PROJECT_DIR$/talentoon/app/Http/Controllers/CategoriesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/app/Http/Controllers/ShareController.php" afterPath="$PROJECT_DIR$/talentoon/app/Http/Controllers/ShareController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/app/Http/Controllers/UserProfile.php" afterPath="$PROJECT_DIR$/talentoon/app/Http/Controllers/UserProfile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/app/Http/Controllers/WorkShopsController.php" afterPath="$PROJECT_DIR$/talentoon/app/Http/Controllers/WorkShopsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/app/Http/Kernel.php" afterPath="$PROJECT_DIR$/talentoon/app/Http/Kernel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/app/Http/Middleware/TokenEntrustAbility.php" afterPath="$PROJECT_DIR$/talentoon/app/Http/Middleware/TokenEntrustAbility.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/app/Services/CategoryShareService.php" afterPath="$PROJECT_DIR$/talentoon/app/Services/CategoryShareService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/app/Services/CategoryTalentService.php" afterPath="$PROJECT_DIR$/talentoon/app/Services/CategoryTalentService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/composer.json" afterPath="$PROJECT_DIR$/talentoon/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/composer.lock" afterPath="$PROJECT_DIR$/talentoon/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/index.html" afterPath="$PROJECT_DIR$/talentoon/public/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/app.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/controller/addworkshop.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/controller/addworkshop.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/controller/allCategoryPosts.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/controller/allCategoryPosts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/controller/category.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/controller/category.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/controller/post.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/controller/post.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/controller/userprofile.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/controller/userprofile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/factories/categories.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/factories/categories.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/factories/user.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/factories/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/route.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/route.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/views/categories.html" afterPath="$PROJECT_DIR$/talentoon/public/app/views/categories.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/views/category.html" afterPath="$PROJECT_DIR$/talentoon/public/app/views/category.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/views/categorypost.html" afterPath="$PROJECT_DIR$/talentoon/public/app/views/categorypost.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/views/categoryposts.html" afterPath="$PROJECT_DIR$/talentoon/public/app/views/categoryposts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/views/home.html" afterPath="$PROJECT_DIR$/talentoon/public/app/views/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/views/myprofile.html" afterPath="$PROJECT_DIR$/talentoon/public/app/views/myprofile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/routes/api.php" afterPath="$PROJECT_DIR$/talentoon/routes/api.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -71,7 +106,7 @@
         <entry file="file://$PROJECT_DIR$/talentoon/app/Http/Controllers/CategoryMentorController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+              <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
               </folding>
@@ -83,7 +118,7 @@
         <entry file="file://$PROJECT_DIR$/talentoon/public/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="449">
-              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -102,8 +137,8 @@
       <file leaf-file-name="route.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/talentoon/public/app/js/route.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="245" column="0" lean-forward="true" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+            <state relative-caret-position="121">
+              <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -463,12 +498,12 @@
       <workItem from="1496246230745" duration="1834000" />
       <workItem from="1496264355892" duration="4184000" />
       <workItem from="1496309467087" duration="6083000" />
-      <workItem from="1496394193589" duration="444000" />
+      <workItem from="1496394193589" duration="663000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12545000" />
+    <option name="totallyTimeSpent" value="12764000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -772,7 +807,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
+            <element signature="e#40#68#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -806,7 +841,7 @@
         <state relative-caret-position="60">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
+            <element signature="e#40#68#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -864,7 +899,7 @@
     <entry file="file://$PROJECT_DIR$/talentoon/app/Http/Controllers/CategoryMentorController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>
@@ -874,7 +909,7 @@
     <entry file="file://$PROJECT_DIR$/talentoon/public/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -889,8 +924,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/talentoon/public/app/js/route.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="245" column="0" lean-forward="true" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+        <state relative-caret-position="121">
+          <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
           <folding />
         </state>
       </provider>

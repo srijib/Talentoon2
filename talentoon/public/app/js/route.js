@@ -2,50 +2,50 @@
 angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 
     var translations_en = {
-        DESCOVER_MORE: 'Discover More',
-        TOP_POSTS: 'Top Posts',
-        TOP_EVENTS: 'Top Events',
-        TOP_WORKSHOPS:'Top Workshops',
-        NAVBAR: {
-            HOME: 'Home',
-            CATEGORIES: 'Categories',
-            ALL_CATEGORIES: 'All Categories',
-            PROFILE: 'Profile',
-            SETTINGS: 'Settings',
-            LOGOUT: 'Logout',
-        },
-        FOOTER: {
-            LINKS: 'Links',
-            STAY_TUNED: 'Stay tuned',
-            CONTACT_US: 'Contact us',
-        },
-        ONE_CATEGORY: {
-            SUBSCRIBE: 'Subscribe',
-            BE_MENTOR: 'Be Mentor',
-            BE_TALENT: 'Be Talent',
-            BE_UN_TALENT: 'Un Talent',
-            BE_UN_MENTOR: 'Un Mentor',
-            UN_SUBSCRIBE: 'Un Subscribe',
-        },
+      DESCOVER_MORE: 'Discover More',
+      TOP_POSTS: 'Top Posts',
+      TOP_EVENTS: 'Top Events',
+      TOP_WORKSHOPS:'Top Workshops',
+      NAVBAR: {
+        HOME: 'Home',
+        CATEGORIES: 'Categories',
+        ALL_CATEGORIES: 'All Categories',
+        PROFILE: 'Profile',
+        SETTINGS: 'Settings',
+        LOGOUT: 'Logout',
+    },
+      FOOTER: {
+        LINKS: 'Links',
+        STAY_TUNED: 'Stay tuned',
+        CONTACT_US: 'Contact us',
+    },
+      ONE_CATEGORY: {
+          SUBSCRIBE: 'Subscribe',
+          BE_MENTOR: 'Be Mentor',
+          BE_TALENT: 'Be Talent',
+          BE_UN_TALENT: 'Un Talent',
+          BE_UN_MENTOR: 'Un Mentor',
+          UN_SUBSCRIBE: 'Un Subscribe',
+    },
     };
     var translations_ar = {
-        DESCOVER_MORE: 'اكتشف المزيد',
-        TOP_POSTS: 'أجمد مواهب',
-        TOP_EVENTS: 'أقرب ايفنتات',
-        TOP_WORKSHOPS:'ورش عمل',
-        NAVBAR: {
-            HOME:'الرئيسيه',
-            CATEGORIES:'المجالات',
-            ALL_CATEGORIES:'كل المجالات',
-            PROFILE:'بروفايل',
-            SETTINGS:'الاعدادات',
-            LOGOUT:'تسجيل الخروج',
-        },
+      DESCOVER_MORE: 'اكتشف المزيد',
+      TOP_POSTS: 'أجمد مواهب',
+      TOP_EVENTS: 'أقرب ايفنتات',
+      TOP_WORKSHOPS:'ورش عمل',
+      NAVBAR: {
+        HOME:'الرئيسيه',
+        CATEGORIES:'المجالات',
+        ALL_CATEGORIES:'كل المجالات',
+        PROFILE:'بروفايل',
+        SETTINGS:'الاعدادات',
+        LOGOUT:'تسجيل الخروج',
+    },
         FOOTER: {
-            LINKS: 'روابط',
-            STAY_TUNED: 'ابقى معنا',
-            CONTACT_US: 'اتصل بنا',
-        },
+          LINKS: 'روابط',
+          STAY_TUNED: 'ابقى معنا',
+          CONTACT_US: 'اتصل بنا',
+      },
         ONE_CATEGORY: {
             SUBSCRIBE: 'تابع',
             BE_MENTOR: 'كن معلم ',
@@ -53,15 +53,15 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($ro
             BE_UN_TALENT: 'الغاء الموهبه',
             BE_UN_MENTOR: 'الغاء التعليم',
             UN_SUBSCRIBE: 'لا تتابع',
+
         },
-    };
+      };
 
     // add translation table
     $translateProvider
-        .translations('en', translations_en)
-        .translations('ar', translations_ar)
-        .preferredLanguage('en');
-
+      .translations('en', translations_en)
+      .translations('ar', translations_ar)
+      .preferredLanguage('en');
 
     $routeProvider.when('/', {
         templateUrl: 'views/home.html',
