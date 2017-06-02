@@ -1,5 +1,5 @@
 //angular.module('myApp').config(['$routeProvider', function ($routeProvider) {
-angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
+angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translateProvider', function ($routeProvider, $httpProvider, $translateProvider) {
 
     var translations_en = {
       DESCOVER_MORE: 'Discover More',
@@ -102,19 +102,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($ro
 
                     }
                 })
-                .when('/ar/categories', {
-                    templateUrl: 'views/ar/categories.html',
-                    controller: 'categories',
-                    resolve: {
-
-                        resolvedCategory: function (categories) {
-                            return categories.getAllCategory().then(function (res) {
-                                return res;
-                            });
-                        },
-
-                    }
-                })
 
 //allposts in category
                 .when('/category/:category_id', {
@@ -166,17 +153,17 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', function ($ro
 
 //user routes
 
-                .when('/register', {
-                    templateUrl: 'views/register.html',
-                    controller: 'register'
+                // .when('/register', {
+                //     templateUrl: 'views/register.html',
+                //     controller: 'register'
+                //
+                // })
 
-                })
-
-                .when('/login', {
-                    templateUrl: 'views/login.html',
-                    controller: 'login'
-
-                })
+                // .when('/login', {
+                //     templateUrl: 'views/login.html',
+                //     controller: 'login'
+                //
+                // })
 
                 .when('/showreview', {
                     templateUrl: 'views/showreview.html',

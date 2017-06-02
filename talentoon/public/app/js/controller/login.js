@@ -1,10 +1,11 @@
 angular.module('myApp').controller("login", function ($scope, $http, user, $routeParams,$location) {
 
 
-    $scope.loginFn = function (valid) {
+    $rootScope.loginFn = function (valid) {
+        console.log('before validation');
         if (valid) {
-            console.log(valid);
-            var userdata = $scope.user
+            console.log('ana sa7');
+            var userdata = $rootScope.user
             console.log("inside login:", userdata);
             user.login(userdata).then(function (data) {
                 //console.log("blaaaaaaaaaaaa");

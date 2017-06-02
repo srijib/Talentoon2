@@ -42,6 +42,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     categories.getCategoryEvents($scope.cat_id).then(function (data) {
         var user_id = 1;
         $rootScope.events = data;
+        console.log("EVENTSSSSSS",$rootScope.events);
     }, function (err) {
         console.log(err);
 

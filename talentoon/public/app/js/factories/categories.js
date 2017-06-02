@@ -50,7 +50,6 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
   		},
         getCategoryEvent:function(cat_id,event_id){
-            console.log('beforee ajaaaaaaaaaaaxxx',event_id);
   			var def =$q.defer();
   			$http({
   				url:'http://localhost:8000/api/categories/'+cat_id+'/events/'+event_id ,
