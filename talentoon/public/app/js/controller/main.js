@@ -1,5 +1,11 @@
-angular.module('myApp').controller("main", function ($scope,$rootScope, user,$location) {
+angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location) {
 
+    categories.getAllCategory().then(function (data) {
+        $scope.categories = data.data;
+        console.log("categoriesNames array", $scope.categories);
+    }, function (err) {
+        console.log(err);
+    });
 
     $scope.loginFn = function (valid) {
         if (valid) {

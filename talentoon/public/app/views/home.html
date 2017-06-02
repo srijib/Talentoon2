@@ -1,14 +1,4 @@
-<style>
-  .container {
-    font-size: 30px;
-  }
-</style>
-
 <header>
-
-
-
-
 
     <div id="topposts">
         <div class="container">
@@ -19,14 +9,14 @@
 
             <div class="row mainrow">
                 <div class="col-lg-4 col-md-4 col-sm-12 postSection"  ng-repeat="post in topposts | limitTo:3  track by $index" >
-                    <div class="thumbnail">
+                    <div class="thumbnail"  data-toggle="modal" data-target="#po{{post.id}}">
                         <!-- defaultimg-->
                         <div class="row defaultimg" >
-                            <img  class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="" data-toggle="modal" data-target="#po{{post.id}}">
+                            <img  class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
                         </div>
                         <!-- end defaultimg-->
                         <!-- caption-->
-                        <div class="caption row"  data-toggle="modal" data-target="#po{{post.id}}">
+                        <div class="caption row">
                             <p>{{post.description}}</p>
                         </div>
 
@@ -44,13 +34,13 @@
 
                             <!--comment-->
                             <div class="">
-                                <a href=""  data-toggle="modal" data-target="#po{{post.id}}">
+                                <a href="">
                                     <i class="fa fa-heart" aria-hidden="true" ></i>
                                     <span class="badge">12</span>
                                 </a>
 
                                 <!--like-->
-                                <a href=""  data-toggle="modal" data-target="#po{{post.id}}">
+                                <a href="">
                                     <i class="fa fa-commenting" aria-hidden="true"></i>
                                     <span class="badge">35</span>
                                 </a>
@@ -287,14 +277,14 @@
         </div>
         <div class="evMainRow row">
             <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" event in events| limitTo:3">
-                <div class="thumbnail">
+                <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
                     <div class="row evDefaultImg" >
                         <img src="http://localhost:8000/{{event.media_url}}" alt="">
                     </div><!--    top event default image-->
 
                     <div class="row evTitle"  >
                         <div class="col-lg-10 col-md-10 col-sm-8" >
-                            <a href="#" data-toggle="modal" data-target="#ev{{event.id}}">
+                            <a href="" >
                                 <h3>{{event.title}}</h3>
                             </a>
                         </div>
@@ -365,7 +355,7 @@
                             </span>
                         </div><!--    top event schdule-->
                     </div><!--    top event detaila-->
-                    <div class=" going" data-toggle="modal" data-target="#ev{{event.id}}">
+                    <div class=" going">
                         <button type="button" class="btn btn-default">Going</button>
                     </div>
                 </div>
@@ -545,10 +535,10 @@
 
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" ng-repeat="workshop in workshops | limitTo:3  track by $index">
-                <div class="thumbnail">
+                <div class="thumbnail"  data-toggle="modal" data-target="#ws{{workshop.id}}">
                     <!--                    <img src="http://placehold.it/350x250">-->
                     <img src="http://localhost:8000/{{workshop.media_url}}">
-                    <h3  data-toggle="modal" data-target="#ws{{workshop.id}}" >{{workshop.name}}</h3>
+                    <h3  >{{workshop.name}}</h3>
                     <div class="caption">
                         <p>{{workshop.description}}</p>
                     </div>
@@ -557,7 +547,7 @@
                     <div class="row">
                         <div class="workshopInfo">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                                <i class="fa fa-bar-chart" aria-hidden="true"></i>
                                 <span class="badge">level: {{workshop.level}}</span>
                             </div>
 
