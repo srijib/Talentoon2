@@ -72,70 +72,38 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider','$translatePro
         controller: 'homec'
     })
 
+    .when('/post/:post_id', {
+        templateUrl: 'views/post.html',
+        controller: 'homec'
+    })
 
-    // .when('/category/createEvent', {
-    //     templateUrl: 'views/post.html',
-    //     controller: 'homec'
-    // })
-        .when('/post/:post_id', {
-            templateUrl: 'views/post.html',
-            controller: 'homec'
-        })
+    .when('/category/:category_id/createEvent', {
+        templateUrl: 'views/createEvent.html',
+        controller: 'eventcontroller'
+    })
 
-        .when('/category/:category_id/createEvent', {
-            templateUrl: 'views/createEvent.html',
-            controller: 'eventcontroller'
-        })
 
-<<<<<<< HEAD
-                // .when('/category/createEvent', {
-                //     templateUrl: 'views/post.html',
-                //     controller: 'homec'
-                // })
-                    .when('/post/:post_id', {
-                    templateUrl: 'views/post.html',
-                    controller: 'homec'
-                })
+    .when('/initial_review', {
+        templateUrl: 'views/initial_review.html',
+        controller: 'initial_review'
+    })
+    .when('/posts', {
+        templateUrl: 'posts.html',
+        controller: 'posts'
+    })
+    //all category
+    .when('/categories', {
+        templateUrl: 'views/categories.html',
+        controller: 'categories',
+        resolve: {
+            resolvedCategory: function (categories) {
+                return categories.getAllCategory().then(function (res) {
+                    return res;
+                });
+            },
 
-                .when('/category/:category_id/createEvent', {
-                    templateUrl: 'views/createEvent.html',
-                    controller: 'eventcontroller'
-                })
-
-                .when('/initial_review', {
-                    templateUrl: 'views/initial_review.html',
-                    controller: 'initial_review'
-                })
-                .when('/posts', {
-                    templateUrl: 'posts.html',
-                    controller: 'posts'
-                })
-//all category
-                .when('/categories', {
-                    templateUrl: 'views/categories.html',
-                    controller: 'categories',
-                    resolve: {
-=======
-        .when('/initial_review', {
-            templateUrl: 'views/initial_review.html',
-            controller: 'initial_review'
-        })
-
-        //all category
-        .when('/categories', {
-            templateUrl: 'views/categories.html',
-            controller: 'categories',
-            resolve: {
->>>>>>> 3a79f320b5f705e59a8528e31d95485cdeaca37a
-
-                resolvedCategory: function (categories) {
-                    return categories.getAllCategory().then(function (res) {
-                        return res;
-                    });
-                },
-
-            }
-        })
+        }
+    })
         .when('/ar/categories', {
             templateUrl: 'views/ar/categories.html',
             controller: 'categories',
