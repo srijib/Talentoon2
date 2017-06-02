@@ -71,88 +71,36 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         controller: 'homec'
     })
 
+    .when('/post/:post_id', {
+        templateUrl: 'views/post.html',
+        controller: 'homec'
+    })
 
-    // .when('/category/createEvent', {
-    //     templateUrl: 'views/post.html',
-    //     controller: 'homec'
-    // })
-        .when('/post/:post_id', {
-            templateUrl: 'views/post.html',
-            controller: 'homec'
-        })
+    .when('/category/:category_id/createEvent', {
+        templateUrl: 'views/createEvent.html',
+        controller: 'eventcontroller'
+    })
 
-        .when('/category/:category_id/createEvent', {
-            templateUrl: 'views/createEvent.html',
-            controller: 'eventcontroller'
-        })
-
-<<<<<<< HEAD
-                // .when('/category/createEvent', {
-                //     templateUrl: 'views/post.html',
-                //     controller: 'homec'
-                // })
-                    .when('/post/:post_id', {
-                    templateUrl: 'views/post.html',
-                    controller: 'homec'
-                })
-
-                .when('/category/:category_id/createEvent', {
-                    templateUrl: 'views/createEvent.html',
-                    controller: 'eventcontroller'
-                })
-
-                .when('/initial_review', {
-                    templateUrl: 'views/initial_review.html',
-                    controller: 'initial_review'
-                })
-                .when('/posts', {
-                    templateUrl: 'posts.html',
-                    controller: 'posts'
-                })
-//all category
-                .when('/categories', {
-                    templateUrl: 'views/categories.html',
-                    controller: 'categories',
-                    resolve: {
-=======
-        .when('/initial_review', {
-            templateUrl: 'views/initial_review.html',
-            controller: 'initial_review'
-        })
-
-        //all category
-        .when('/categories', {
-            templateUrl: 'views/categories.html',
-            controller: 'categories',
-            resolve: {
->>>>>>> 3a79f320b5f705e59a8528e31d95485cdeaca37a
-
-<<<<<<< HEAD
-                    }
-                })
-=======
-                resolvedCategory: function (categories) {
-                    return categories.getAllCategory().then(function (res) {
-                        return res;
-                    });
-                },
-
-            }
-        })
-        .when('/ar/categories', {
-            templateUrl: 'views/ar/categories.html',
-            controller: 'categories',
-            resolve: {
-
-                resolvedCategory: function (categories) {
-                    return categories.getAllCategory().then(function (res) {
-                        return res;
-                    });
-                },
-
-            }
-        })
->>>>>>> 013b1df6b174b94b42f280fd5a4b1a827d33a609
+    .when('/initial_review', {
+        templateUrl: 'views/initial_review.html',
+        controller: 'initial_review'
+    })
+    .when('/posts', {
+        templateUrl: 'posts.html',
+        controller: 'posts'
+    })
+    //all category
+    .when('/categories', {
+        templateUrl: 'views/categories.html',
+        controller: 'categories',
+        resolve: {
+            resolvedCategory: function (categories) {
+                return categories.getAllCategory().then(function (res) {
+                    return res;
+                });
+            },
+        }
+    })
 
         //allposts in category
         .when('/category/:category_id', {
@@ -200,35 +148,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'addworkshop'
         })
         //add event
-
-
-        //user routes
-
-<<<<<<< HEAD
-                // .when('/register', {
-                //     templateUrl: 'views/register.html',
-                //     controller: 'register'
-                //
-                // })
-
-                // .when('/login', {
-                //     templateUrl: 'views/login.html',
-                //     controller: 'login'
-                //
-                // })
-=======
-        .when('/register', {
-            templateUrl: 'views/register.html',
-            controller: 'register'
-
-        })
-
-        .when('/login', {
-            templateUrl: 'views/login.html',
-            controller: 'login'
-
-        })
->>>>>>> 013b1df6b174b94b42f280fd5a4b1a827d33a609
 
         .when('/showreview', {
             templateUrl: 'views/showreview.html',
