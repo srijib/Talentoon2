@@ -19,13 +19,13 @@ class CommentController extends Controller
      * @return Response
      */
     public function __construct() {
-       $this->middleware('ability:audience,permission:create-comment|delete-comment',['only'=>['store','destroy']]);
-       $user=JWTAuth::parseToken()->toUser();
+    //    $this->middleware('ability:audience,permission:create-comment|delete-comment',['only'=>['store','destroy']]);
+       
       //dd($user->can('be-talent'));
        }
     public function index()
     {
-        return Response::json(Comment::get());
+        // return Response::json(Comment::get());
     }
 
     /**
@@ -35,12 +35,13 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+
         $user= JWTAuth::parseToken()->toUser();
-
         $comment=new CommentService();
-        $data=$comment->CreateComment($request,$user->id);
 
-        return Response::json(array('message' => $data));
+        $comment->CreateComment($request,$user->id);
+
+        return Response::json(array('message' => 'comment save'));
     }
 
     /**

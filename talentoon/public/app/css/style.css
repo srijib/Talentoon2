@@ -1,12 +1,12 @@
-input.ng-invalid{
+/*input.ng-invalid{
 	border: 1 px solid red;
-}
+}*/
 
 p.error {
 	color: red;
 }
 
-.ui{
+/*.ui{
 	color: red;
 }
 
@@ -24,7 +24,7 @@ width: 150px;
 
 button{
 	display: block;
-	
+
 }
 
 .search{
@@ -33,6 +33,6 @@ button{
 
 .panel-heading
 {
-    border-top-left-radius: inherit; 
+    border-top-left-radius: inherit;
     border-top-right-radius: inherit;
-}
+}*/

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use JWTAuth;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
 use App\Models\Like;
 use App\Services\Notification;
 //use JWTAuth;
@@ -16,8 +17,8 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  
-       
+
+
     public function index()
     {
         // $posts= Post::all();
@@ -81,6 +82,7 @@ class PostsController extends Controller
             ->select('posts.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image')
             ->where("posts.id",$id)
             ->get();
+
 
         return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully']);
 
@@ -176,6 +178,11 @@ public function showSinglePost($post_id){
 
           ->where("posts.id",$post_id)
       ->get()->first();
+      $comments=DB::table('comments')
+          ->join('users', 'comments.user_id', '=', 'users.id')
+          ->select('comments.*','users.first_name', 'users.last_name', 'users.image')
+          ->where("comments.post_id",$post_id)
+          ->get();
 
       $countlike = DB::table('likeables')
           ->join('posts','likeables.likeable_id', '=','posts.id')
@@ -188,7 +195,7 @@ public function showSinglePost($post_id){
 
           ->get()->first();
 
-  return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully','countlike'=>$countlike]);
+  return response()->json(['comments'=>$comments,'post' => $post,'status' => '1','message' => 'data sent successfully','countlike'=>$countlike]);
 
 
 
