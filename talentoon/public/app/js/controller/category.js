@@ -154,22 +154,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         reviewfilesuploaded.push(element.files[0])
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     $scope.completeMentorProfile = function () {
-
-
 
         mentor.mentor_id = $rootScope.cur_user.id;
         mentor.category_id = $routeParams['category_id'];
@@ -237,17 +222,17 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     //     console.log(err);
     // });
 //----------------------------------------------------------------------
-    $scope.comment = {};
-    $scope.addcomment = function (valid) {
-        if (valid) {
-            var comment = $scope.comment
-            // console.log(comment);
-            // console.log("vaild in add comment");
-
-        } else {
-            console.log("error in add comment");
-        }
-    }
+    // $scope.comment = {};
+    // $scope.addcomment = function (valid) {
+    //     if (valid) {
+    //         var comment = $scope.comment
+    //         // console.log(comment);
+    //         // console.log("vaild in add comment");
+	//
+    //     } else {
+    //         console.log("error in add comment");
+    //     }
+    // }
 //---------------------------------------------------------------
     //get 3  posts under category
     // $scope.allposts = function() {
@@ -373,6 +358,21 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 	//
     //     });
     // }
+
+	$scope.newcomment = function(vaild) {
+	   if (vaild) {
+   var post_id=$routeParams['post_id'];
+   		$scope.comment.post_id=post_id
+		 var commentdata=$scope.comment
+		 console.log("comment data",commentdata);
+		 categories.addcomment(commentdata).then(function(data){
+
+		 } , function(err){
+		  console.log(err);
+
+		 });
+
+	   }}
 
     if(localStorage.getItem("wiziq_presenter_url")){
         $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");

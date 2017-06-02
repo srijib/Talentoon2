@@ -571,6 +571,28 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
 
             },
+            addcomment: function (commentdata) {
+                var def = $q.defer();
+                $http({
+                    url: 'http://localhost:8000/api/comment',
+                    method: 'POST',
+                    data: commentdata
+
+                }).then(function (res) {
+console.log("comment result",res);
+                    if (res.data) {
+                        def.resolve(res.data)
+                    } else {
+                        def.reject('there is no data ')
+                    }
+
+                }, function (err) {
+                    // console.log(err);
+                    def.reject(err);
+                })
+                return def.promise;
+
+            }
 
     }
 
