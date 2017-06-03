@@ -5,7 +5,7 @@ angular.module('myApp').controller("homec",function(Home,$scope,$http,$routePara
 	console.log($rootScope.token);
 	Home.getTopPosts().then(function(data){
 
-		// console.log(data);
+		console.log("top posts",data);
 		$scope.topposts=data;
 // console.log("top posts",data[0].post);
 	} , function(err){

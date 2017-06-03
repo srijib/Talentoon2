@@ -1,7 +1,7 @@
 angular.module('myApp').controller("addpost",function($scope,$http,categories,$routeParams,$location,$rootScope){
     var filesuploaded = []
 
-  $scope.newpost = function(vaild) {
+  $scope.newpost = function(vaild) { 
      if (vaild) {
        var category= $routeParams['category_id'];
        var postdata = $scope.post;

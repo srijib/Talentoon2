@@ -3,7 +3,7 @@ angular.module('myApp').controller("categories",function($location,$scope,$http,
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
     $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
     console.log("category controller current user", $rootScope.cur_user);
-    
+
     var filesuploaded = []
     var filesmecategoriesntoruploaded = []
     var reviewfilesuploaded = []
@@ -13,10 +13,6 @@ angular.module('myApp').controller("categories",function($location,$scope,$http,
 
 
 	$scope.cat_id= $routeParams['category_id'];
-	$scope.lang= 'ar';
-	if ($scope.lang == 'ar') {
-		$location.url('/ar/categories');
-	}
 
     categories.getAllCategory().then(function (data) {
         $scope.categories = data.data;
