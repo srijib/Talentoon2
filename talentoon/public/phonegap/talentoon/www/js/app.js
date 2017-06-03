@@ -7,7 +7,51 @@ angular.module('talentoon', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+
     if(window.cordova && window.cordova.plugins.Keyboard) {
+
+      //------------push ----------------------------
+          var push = PushNotification.init({
+          	android: {
+              senderID:"794863664785"
+          	}
+          });
+
+          push.on('registration', function(data) {
+          	// data.registrationId
+          });
+
+          push.on('notification', function(data) {
+          	// data.message,
+          	// data.title,
+          	// data.count,
+          	// data.sound,
+          	// data.image,
+          	// data.additionalData
+          });
+
+          push.on('error', function(e) {
+          	// e.message
+          });
+
+
+      //-----------end push-----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
