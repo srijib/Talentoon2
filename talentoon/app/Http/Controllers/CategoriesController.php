@@ -75,11 +75,18 @@ class CategoriesController extends Controller
 
         $user = JWTAuth::parseToken()->authenticate();
         $category=Category::find($cat_id);
+
         $posts = DB::table('posts')
-            ->join('users', 'users.id', '=', 'posts.user_id')
-            ->select('posts.*','users.first_name', 'users.last_name', 'users.image as user_image')
-            ->where('posts.category_id','=',$cat_id)
-            ->get();
+        ->join('users', 'posts.user_id', '=','users.id' )
+        ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id,users.last_name,users.first_name,users.image as user_image')
+            ->leftJoin('likeables', function($join)
+                  {
+                      $join->on('posts.id','=','likeables.likeable_id')
+                      ->where('likeables.liked', '=', '1');
+                  })
+                  ->where('posts.category_id','=',$cat_id)
+                  ->groupBy('posts.id')
+                    ->get();
         $workshops = DB::table('workshops')
             ->join('users', 'users.id', '=', 'workshops.mentor_id')
             ->select('workshops.*','users.first_name', 'users.last_name', 'users.image as user_image')
@@ -90,6 +97,8 @@ class CategoriesController extends Controller
             ->select('events.*','users.first_name', 'users.last_name', 'users.image as user_image')
             ->where('events.category_id','=',$cat_id)
             ->get();
+            // return response()->json(['posts' => $posts,'status' => '1','message' => 'data sent successfully']);
+
         return response()->json(['cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
     }
 

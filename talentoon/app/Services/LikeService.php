@@ -33,7 +33,8 @@ return response()->json(['status' => 1,
 
     }
     public static function Dislike ($request){
-            $is_like=DB::table('likeables')->where('user_id',$request->user_id)->where('likeable_id',$request->likeable_id)->update(['liked' => 0]);
+            // $is_like=DB::table('likeables')->where('user_id',$request->user_id)->where('likeable_id',$request->likeable_id)->update(['liked' => 0]);
+    $is_like=DB::table('likeables')->where('user_id',$request->user_id)->where('likeable_id',$request->likeable_id)->delete();
 
     return response()->json(['status' => 0,
                                 'message' => 'dislike successfully',

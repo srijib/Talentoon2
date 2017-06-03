@@ -29,46 +29,25 @@ return response()->json(['status' => 1,
   public function userposts(Request $request){
 
     $user= JWTAuth::parseToken()->toUser();
+
     $post = DB::table('posts')
     // ->join('users', 'posts.user_id', '=','users.id' )
     ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id')
-    ->leftjoin('likeables','posts.id','=','likeables.likeable_id')
-      ->Where(function ($query) {
-          $user= JWTAuth::parseToken()->toUser();
-            $query->where("posts.user_id",$user->id)
-                ->where('likeables.liked', '=', '1');
-           })
-           ->groupBy('posts.id')
-        ->get();
-
-
+        ->leftJoin('likeables', function($join)
+              {
+                  $join->on('posts.id','=','likeables.likeable_id')
+                  ->where('likeables.liked', '=', '1');
+              })
+              ->where("posts.user_id",$user->id)
+              ->groupBy('posts.id')
+                ->get();
 //
 // select posts.id, posts.title, count(likeables.id) like_count from posts left join likeables on
 //  likeables.likeable_id = posts.id and likeables.liked = 1 group by posts.id
 
 
-        // $x = DB::table('posts')
-        //     ->join('likeables','likeables.likeable_id', '=','posts.id')
-        //     ->select(DB::raw('count(likeables.liked) as liked_count','likeables.liked'))
-        //     ->where([
-        //        ['likeables.likeable_id','=',$post[$i]->id],
-        //        ['likeables.liked', '=', '1'],
-        //        ])
-        //         ->groupBy('likeables.liked')
 
 
-    // $countlike=[];
-    // for ($i=0; $i <count($post) ; $i++) {
-    //       $countlike = DB::table('likeables')
-    //           ->join('posts','likeables.likeable_id', '=','posts.id')
-    //           ->select(DB::raw('count(likeables.liked) as liked_count','likeables.liked'))
-    //           ->where([
-    //              ['likeables.likeable_id','=',$post[$i]->id],
-    //              ['likeables.liked', '=', '1'],
-    //              ])
-    //               ->groupBy('likeables.liked')
-    //
-    //           ->get();
 
     return response()->json(['status' => 1,
                 'message' => 'user data send successfully',

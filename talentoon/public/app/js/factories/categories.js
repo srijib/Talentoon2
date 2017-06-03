@@ -108,33 +108,33 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         //
         // 		},
         //
-        // getCategoryPost: function (id) {
-        //     console.log("post id", id)
-        //     var def = $q.defer();
-        //     $http({
-        //         url: 'http://172.16.3.77:8000/api/post/' + id,
-        //         method: 'GET',
-        //         data: id
-        //     }).then(function (res) {
-        //         // console.log("single post from factory",res.data.post)
-        //         console.log("single post from factory", res.data)
-        //
-        //         if (res) {
-        //             var data = localStorage.setItem("data", JSON.stringify(res.data.post));
-        //             // def.resolve(res.data.post);
-        //             def.resolve(res.data);
-        //
-        //
-        //         } else {
-        //             def.reject('there is no data ')
-        //         }
-        //
-        //     }, function (err) {
-        //         def.reject(err);
-        //     })
-        //     return def.promise;
-        //
-        // },
+        getCategoryPost: function (id) {
+            console.log("post id", id)
+            var def = $q.defer();
+            $http({
+                url: 'http://localhost:8000/api/post/' + id,
+                method: 'GET',
+                data: id
+            }).then(function (res) {
+                // console.log("single post from factory",res.data.post)
+                console.log("single post from factory", res.data)
+
+                if (res) {
+                    var data = localStorage.setItem("data", JSON.stringify(res.data.post));
+                    // def.resolve(res.data.post);
+                    def.resolve(res.data);
+
+
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
         subscribe: function (data) {
             // console.log("from factories CAT ID",category_id);
             // console.log("from factories subscriber_id",subscriber_id);
@@ -144,7 +144,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
             $http({
 
-                url: 'http://172.16.3.77:8000/api/categorysubscribe',
+                url: 'http://localhost:8000/api/categorysubscribe',
                 method: 'POST',
                 data: data
 
@@ -170,7 +170,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
 
             $http({
-                url: 'http://172.16.3.77:8000/api/categoryunsubscribe',
+                url: 'http://localhost:8000/api/categoryunsubscribe',
                 method: 'POST',
                 data: data
 
@@ -194,7 +194,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
             // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
             $http({
-                url: 'http://172.16.3.77:8000/api/categories/' + postdata.category_id + '/posts',
+                url: 'http://localhost:8000/api/categories/' + postdata.category_id + '/posts',
                 // url:'http://172.16.2.239:8000/api/posts',
                 method: 'POST',
                 data: postdata
@@ -208,7 +208,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 /////////////////////////
                 $http({
                     method: 'POST',
-                    url: 'http://172.16.3.77:8000/api/single_upload/' + res.data.post_id,
+                    url: 'http://localhost:8000/api/single_upload/' + res.data.post_id,
                     processData: false,
                     data: {"media_url": "uploads/files" + $rootScope.currentFile.name, "media_type": $rootScope.currentFile.type},
                     transformRequest: function (data) {
@@ -246,7 +246,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
             $http({
                 method: 'POST',
-                url: 'http://172.16.3.77:8000/api/review_files_upload/' + category_talent_id,
+                url: 'http://localhost:8000/api/review_files_upload/' + category_talent_id,
                 processData: false,
                 data: reviewfilesuploaded,
                 transformRequest: function (data) {
@@ -282,7 +282,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             // /////////////////////////
             // $http({
             // 	method  : 'POST',
-            // 	url     : 'http://172.16.3.77:8000/api/review_files_upload/'+category_talent_id,
+            // 	url     : 'http://localhost:8000/api/review_files_upload/'+category_talent_id,
             // 	processData: false,
             // 	data:reviewfilesuploaded,
             // 	transformRequest: function (data) {
@@ -323,7 +323,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 console.log("workshop",res.data);
                 $http({
                     method: 'POST',
-                    url: 'http://172.16.3.77:8000/api/workshop_upload/' + res.data.workshop_id,
+                    url: 'http://localhost:8000/api/workshop_upload/' + res.data.workshop_id,
                     processData: false,
                     data: {"media_url": "uploads/files" + $rootScope.workshopFile.name, "media_type": $rootScope.workshopFile.type},
                     transformRequest: function (data) {
@@ -488,7 +488,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         //     // console.log("workshop id", id)
         //     var def = $q.defer();
         //     $http({
-        //         url: 'http://172.16.3.77:8000/api/workshop/'+id,
+        //         url: 'http://localhost:8000/api/workshop/'+id,
         //         method: 'GET',
         //         data: id
         //     }).then(function (res) {
