@@ -4,7 +4,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
             var def = $q.defer();
             $http({
-                url: 'http://172.16.3.77:8000/api/category',
+                url: 'http://localhost:8000/api/category',
                 // url:'json/categories.json',
                 method: 'GET'
 
