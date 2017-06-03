@@ -62,6 +62,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
       .translations('ar', translations_ar)
       .preferredLanguage('en');
 
+
     $routeProvider.when('/', {
         templateUrl: 'views/home.html',
         controller: 'homec'

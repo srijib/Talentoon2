@@ -1,4 +1,4 @@
-angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, $q, videoconference) {
+angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
 
 
 
@@ -237,6 +237,37 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 
 
+    categories.getMentorsReviews().then(function(data){
+        console.log("inside all category posts controller Nadaaaaaaaaaaaaa" , data)
+        $scope.allposts_mentorsreviews = data;
+    } , function(err){
+        console.log(err);
+
+    });
+
+    $scope.rev={}
+
+    $scope.add_review = function(i) {
+
+        console.log("jjjj mina")
+        $scope.categoryPosts[i].post_id = $scope.post_id;
+        $scope.categoryPosts[i].mentor_id = 2;
+
+        console.log("ana hena ",$scope.categoryPosts[i]);
+
+        categories.submitMentorReview($scope.categoryPosts[i]).then(function(data){
+            console.log("saved success review",data)
+            // $location.url('/category/'+$scope.cat_id+'/posts');
+            $route.reload();
+        } , function(err){
+            console.log(err);
+
+        });
+    }
+
+
+
+
     //assuming we have user id and the role that define him as mentor
     //here we will get the mentor status to make toggle button in views
     // categories.getUser(1).then(function(data){
@@ -371,7 +402,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 //be teacher in wizIQ
     $scope.add_wiziq_teacher = function () {
-        var mentor_id = 1;
+        var mentor_id = $rootScope.cur_user.id;
         console.log("Add Wiziq Teacher");
         videoconference.add_teacher(mentor_id).then(function (data) {
         }, function (err) {

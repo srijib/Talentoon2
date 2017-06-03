@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\WorkShop;
+use App\Models\MentorReviews;
 use Response;
 use Illuminate\Http\Request;
 use JWTAuth;
@@ -131,5 +132,31 @@ class CategoriesController extends Controller
         // $category->delete();
         // return Response::json($category);
         // return redirect()->route('admin.posts');
+    }
+
+
+    public function get_post_reviews()
+    {
+        //$mentor_reviews=MentorReviews::all();
+        $mentor_reviews = DB::table('mentor_reviews')
+                 ->join('users', 'mentor_reviews.mentor_id', '=', 'users.id')
+                 ->select('mentor_reviews.*','users.*')
+                 ->get();
+        return Response::json(['status' => '1','message' => 'data retrieved successfully','reviews'=>$mentor_reviews]);
+
+    }
+    public function add_mentor_post_review(Request $request)
+    {
+        $user= JWTAuth::parseToken()->toUser();
+
+        $mentor_review = new MentorReviews;
+
+        $mentor_review->post_id = $request->id;
+        $mentor_review->mentor_id = $user->id;
+        $mentor_review->points = $request->rev['points'];
+        $mentor_review->comment = $request->rev['comment'];
+        $mentor_review->save();
+
+        return Response::json(['status' => '1','message' => 'here successfully']);
     }
 }
