@@ -84,6 +84,11 @@ class PostsController extends Controller
             ->get();
 
 
+
+
+
+
+
         return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully']);
 
         // return view('posts.show',['post'=>$post]);
@@ -172,31 +177,43 @@ public function showSinglePost($post_id){
   $post = DB::table('posts')
       ->join('categories', 'posts.category_id', '=', 'categories.id')
       ->join('users', 'posts.user_id', '=', 'users.id')
-      ->select('posts.*', 'categories.title as category_title')
+      ->leftJoin('likeables', function($join)
+            {
+                $join->on('posts.id','=','likeables.likeable_id')
+                ->where('likeables.liked', '=', '1');
+            })
 
-      ->select('posts.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image as user_image')
+      ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id, categories.title as category_title, users.first_name, users.last_name, users.image as user_image')
 
           ->where("posts.id",$post_id)
+          ->groupBy('posts.id')
       ->get()->first();
+
+
+
+
+
+
+
       // $comments=DB::table('comments')
       //     ->join('users', 'comments.user_id', '=', 'users.id')
       //     ->select('comments.*','users.first_name', 'users.last_name', 'users.image')
       //     ->where("comments.post_id",$post_id)
       //     ->get();
 // 'comments'=>$comments,
-      $countlike = DB::table('likeables')
-          ->join('posts','likeables.likeable_id', '=','posts.id')
-          ->select(DB::raw('count(likeables.liked) as liked_count','likeables.liked'))
-          ->where([
-             ['likeables.likeable_id','=',$post_id],
-             ['likeables.liked', '=', '1'],
-             ])
-              ->groupBy('likeables.liked')
+      // $countlike = DB::table('likeables')
+      //     ->join('posts','likeables.likeable_id', '=','posts.id')
+      //     ->select(DB::raw('count(likeables.liked) as liked_count','likeables.liked'))
+      //     ->where([
+      //        ['likeables.likeable_id','=',$post_id],
+      //        ['likeables.liked', '=', '1'],
+      //        ])
+      //         ->groupBy('likeables.liked')
+      //
+      //     ->get()->first();
 
-          ->get()->first();
-
-  return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully','countlike'=>$countlike]);
-
+  return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully']);
+// 'countlike'=>$countlike
 
 
 }
