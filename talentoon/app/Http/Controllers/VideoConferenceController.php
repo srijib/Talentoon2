@@ -127,6 +127,11 @@ class VideoConferenceController extends Controller
         //require_once("AuthBase.php");
         $authBase = new AuthBase($secretAcessKey,$access_key);
         $method = "add_teacher";
+
+
+        echo json_encode("addddd teacher",$request);
+
+
         $requestParameters["signature"]=$authBase->GenerateSignature($method,$requestParameters);
         $requestParameters["name"] = "Alyaa";
         $requestParameters["email"]="alyaa@alyaa.com";

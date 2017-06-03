@@ -333,7 +333,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 //be teacher in wizIQ
     $scope.add_wiziq_teacher = function () {
-        var mentor_id = 1;
+        var mentor_id = $rootScope.cur_user.id;
         console.log("Add Wiziq Teacher");
         videoconference.add_teacher(mentor_id).then(function (data) {
         }, function (err) {

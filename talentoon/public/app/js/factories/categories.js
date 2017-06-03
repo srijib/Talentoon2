@@ -27,15 +27,19 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             return def.promise;
 
         },
+
+
         getCategoryPosts:function(index){
 
+            var i =0;
   			var def =$q.defer();
   			$http({
   				url:'http://localhost:8000/api/category/'+index ,
   				method:'GET'
   			}).then(function(res){
-  				// console.log("response is " , res.data.posts);
+  				console.log("response is yanada get reviews also" , res.data);
   				if(res.data.posts.length){
+                    //here of review on posts
   		     			def.resolve(res.data.posts);
   							// 			console.log("res.data.posts is " , res.data.posts )
   						// def.resolve(res.data[index])
@@ -551,6 +555,51 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 })
                 return def.promise;
 
+
+            },
+
+            getMentorsReviews:function(){
+                var def = $q.defer();
+                console.log("in mentors reviews");
+                $http({
+                    method: 'GET',
+                    url: 'http://localhost:8000/api/get_post_reviews',
+                }).then(function (data_of_reviews) {
+                    console.log("then in reviews of post", data_of_reviews.data.reviews)
+                    if (data_of_reviews) {
+                        def.resolve(data_of_reviews.data.reviews);
+                    } else {
+                        def.reject('there is no data ')
+                        // console.log("error",res.data)
+                    }
+
+                },function(err){
+                    def.reject(err);
+                })
+                return def.promise;
+
+            },
+
+            submitMentorReview:function(review){
+                var def = $q.defer();
+                console.log("in mentors add reviews",review);
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8000/api/add_mentor_post_review',
+                    data: review,
+                }).then(function (data) {
+                    console.log("then in added reviews of post", data)
+                    if (data) {
+                        def.resolve(data);
+                    } else {
+                        def.reject('there is no data ')
+                        // console.log("error",res.data)
+                    }
+
+                },function(err){
+                    def.reject(err);
+                })
+                return def.promise;
 
             },
 
