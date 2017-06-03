@@ -178,6 +178,9 @@ desired effect
                     <li><a href="{{ route('admin.register.form') }}">Register</a></li>
                 @else
                     <li><a href="{{ route('post.index') }}">Posts</a></li>
+                    <li><a href="{{ route('workshop.index') }}">Workshops</a></li>
+                    <li><a href="{{ route('event.index') }}">Events</a></li>
+
                     <li><a href="{{ route('category.index') }}">Categories</a></li>
                     <li><a href="{{ route('user.index') }}">users</a></li>
                     <li><a href="{{ route('mentor.index') }}">Mentors</a></li>

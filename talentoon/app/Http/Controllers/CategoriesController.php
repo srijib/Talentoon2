@@ -70,33 +70,27 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($cat_id)
     {
 
         $user = JWTAuth::parseToken()->authenticate();
-        $category=Category::find($id);
-        // $posts = DB::table('posts')
-        //         ->join('users', 'posts.user_id', '=', 'users.id')
-	    // ->join('subscribers', 'subscribers.category_id', '=', 'posts.category_id')
-        //         ->select('posts.*','users.*')
-        //         ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1],['posts.category_id', '=',$id],['posts.is_approved', '=',1]])
-        //         ->get();
-        $posts=Post::where('category_id','=', $id)->get();
-        $workshops=WorkShop::where('category_id','=', $id)->get();
-
-        // $workshops = DB::table('workshops')
-        //         ->join('users', 'workshops.mentor_id', '=', 'users.id')
-        //         ->join('subscribers', 'subscribers.category_id', '=', 'workshops.category_id')
-        //         ->select('workshops.*','users.*')
-        //
-        //         ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1],['workshops.category_id', '=',$id],['workshops.is_approved', '=',1]])
-        //         ->get();
-
-
-        // dd($posts);
-        // dd(response()->json(['category_details' => $category,'posts' => $posts,'status' => '1','message' => 'data sent successfully']));
-        return response()->json(['category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
-        // return view('category.show',['category'=>$category]);
+        $category=Category::find($cat_id);
+        $posts = DB::table('posts')
+            ->join('users', 'users.id', '=', 'posts.user_id')
+            ->select('posts.*','users.first_name', 'users.last_name', 'users.image as user_image')
+            ->where('posts.category_id','=',$cat_id)
+            ->get();
+        $workshops = DB::table('workshops')
+            ->join('users', 'users.id', '=', 'workshops.mentor_id')
+            ->select('workshops.*','users.first_name', 'users.last_name', 'users.image as user_image')
+            ->where('workshops.category_id','=',$cat_id)
+            ->get();
+        $events = DB::table('events')
+            ->join('users', 'users.id', '=', 'events.mentor_id')
+            ->select('events.*','users.first_name', 'users.last_name', 'users.image as user_image')
+            ->where('events.category_id','=',$cat_id)
+            ->get();
+        return response()->json(['cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
     }
 
     /**
