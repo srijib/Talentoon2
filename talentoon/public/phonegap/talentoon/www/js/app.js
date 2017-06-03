@@ -9,6 +9,7 @@ angular.module('talentoon', ['ionic'])
   $ionicPlatform.ready(function() {
 
     if(window.cordova && window.cordova.plugins.Keyboard) {
+      
 
       //------------push ----------------------------
           var push = PushNotification.init({
@@ -63,6 +64,8 @@ angular.module('talentoon', ['ionic'])
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
+
+
     }
   });
 })
