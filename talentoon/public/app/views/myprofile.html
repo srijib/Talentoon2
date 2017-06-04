@@ -61,7 +61,7 @@ margin-left: 138px;
                     </div>
                 </div>
             </div>
-</div>
+        </div>
 <h1>Shares</h1>
 <div  ng-repeat="share in usershare  track by $index" >
 
@@ -94,4 +94,573 @@ margin-left: 138px;
 
 
   </div>
+</div>
+
+
+
+
+
+<!-- ##################################################### -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="firstCol col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="userImg">
+                <div class="opacity">
+                    <img src="http://localhost:8000/{{userprofile.image}}">
+                    <button class="btn btn-default follow" type="submit">Follow</button>
+                </div>
+            </div>
+
+
+            <div class="userName row">
+                <span class="text-left col-lg-8 ">{{userprofile.first_name}}  {{userprofile.last_name}}</span>
+                <span class="text-center col-lg-4"><i class="fa fa-trophy" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Vertified"></i><i class="fa fa-cog" aria-hidden="true"></i></span>
+
+            </div>
+
+
+            <div class="info row">
+                <p class="col-lg-12">Talented</p>
+                <p class="col-lg-12">country: {{userprofile.date_of_birth}}</p>
+                <p class="col-lg-12">birth date: {{userprofile.date_of_birth}}</p>
+            </div>
+
+            <ul class="socialLink list-unstyled list-inline">
+                <li><i class="fa fa-facebook-square" aria-hidden="true"></i></li>
+                <li><i class="fa fa-twitter-square" aria-hidden="true"></i></li>
+                <li><i class="fa fa-google-plus-square" aria-hidden="true"></i></li>
+                <li><i class="fa fa-instagram" aria-hidden="true"></i></li>
+            </ul>
+
+            <!--share -->
+
+            <div id="socialHolder" class="share">
+                <div id="socialShare" class="btn-group share-group">
+                    <a data-toggle="dropdown" class="btn btn-info">
+                        <button class="btn btn-default btn-share" type="submit">
+                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                            Share Profile</button>                            </a>
+                    <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="thirdCol col-lg-3 col-lg-push-6 col-md-6 col-lg-push-12 col-sm-6 col-lg-push-12 col-xs-12">
+
+            <div class="newPost">
+                <a href="" class="btn btn-lg">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i> New Post
+                </a>
+            </div>
+
+            <div class="numbers ">
+
+                <div class="count">
+                    <div class="col-lg-6 titl">FOLLOWERS</div>
+                    <badge class="num col-lg-6 text-center">234</badge>
+                </div>
+
+                <div class="count">
+                    <div class="col-lg-6 titl">FOLLOWING</div>
+                    <badge class="num col-lg-6 text-center">54</badge>
+                </div>
+
+                <div class="count">
+                    <div class="col-lg-6 titl">SUBSCRIBE</div>
+                    <badge class="num col-lg-6 text-center">3</badge>
+                </div>
+
+            </div>
+
+            <div class="about">
+                <span>ABOUT</span>
+                <p>Lorem Ipsum is simply dummy text
+                    of the printing and typesetting
+                    industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever
+                    since the </p>
+
+            </div>
+
+            <div class="typeof">
+                <div><span>TALENTED ON</span></div>
+                <div class="review">
+                    <div class="categ  col-lg-6 ">Music</div>
+                    <div class="col-lg-6 text-center reviewrate">
+                        <i class="fa fa-star" aria-hidden="true"></i>5.5</div>
+                </div>
+
+
+                <div class="review">
+                    <div class="categ col-lg-6 ">Dance</div>
+                    <div class="col-lg-6 text-center reviewrate"><i class="fa fa-star" aria-hidden="true"></i>1.2</div>
+                </div>
+            </div>
+        </div>
+
+        src="http://localhost:8000/{{userprofile.image}}" width="150px">
+        <h2> welcome <span style="color:Purple ">{{userprofile.first_name}}  {{userprofile.last_name}}
+        Title: {{userpost.title}}</h4>
+                      <h4 style="color:Purple ">Description: {{userpost.description}}
+
+
+        <div class="secCol col-lg-6 col-lg-pull-3 col-md-12 col-lg-pull-6 col-sm-12 col-lg-pull-6 col-xs-12">
+
+            <div class="showPosts">
+                <div class="recentPosts imageArticle">
+                    <div class="userInfos">
+                        <img src="Imgs/Persons/face4.jpg" alt="">
+                        <span>Hossam Fouad</span>
+                    </div>
+
+                    <div class="conatinerComment">
+
+                        <div class="largePic">
+                            <img src="http://localhost:8000/{{userpost.media_url}}" alt="">
+                        </div>
+
+                        <div class="titleEdit row">
+                            <div class="col-lg-8 title">
+                                <h3>Lorem Ipsum is simply dummy </h3>
+                            </div>
+
+                            <div class="col-lg-4 edits ">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="disc">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has beenhe industry's standard dummy text ever since the 1500s, when an unknown printer took a galley ofype and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                        </div>
+
+                        <div class="interactionUser">
+                            <a>
+                                <i class="fa fa-heart" aria-hidden="true" ></i>
+                                <span class="badge">8</span>
+                            </a>
+
+                            <a>
+                                <i class="fa fa-commenting" aria-hidden="true"></i>
+                                <span class="badge">6</span>
+                            </a>
+
+
+                            <!--share -->
+                            <div id="socialHolder">
+                                <div id="socialShare" class="btn-group share-group">
+                                    <a data-toggle="dropdown" class="btn btn-info">
+                                        <i class="fa fa-share-alt fa-inverse"></i>
+                                    </a>
+                                    <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                                <i class="fa fa-envelope"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="UserComments">
+                            <div class="writePost">
+                                <textarea class="form-control" rows="3"></textarea>
+                                <div class="posting">
+                                    <button type="button" class="btn btn-default">Comment</button>
+                                </div>
+
+                            </div>
+
+                            <ul class="media-list">
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Omar Mourad</h4>
+                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+
+                                    </div>
+
+
+
+                                </li>
+
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Khaled Ali</h4>
+                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+                                    </div>
+                                </li>
+
+                            </ul>
+
+
+
+                        </div>
+
+                        <div class="seeComments">
+                            <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="recentPosts videoArticle">
+                    <div class="userInfos">
+                        <img src="Imgs/Persons/face3.jpg" alt="">
+                        <span>Adham Sami</span>
+                    </div>
+
+                    <div class="conatinerComment">
+
+                        <div class="largePic">
+                            <video controls><source src="videos/oceans.mp4"></video>
+                        </div>
+
+                        <div class="titleEdit row">
+                            <div class="col-lg-8 title">
+                                <h3>Talentoon Website is simply dummy </h3>
+                            </div>
+
+                            <div class="col-lg-4 edits ">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="disc">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has beenhe industry's standard dummy text ever since the 1500s, when an unknown printer took a galley ofype and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                        </div>
+
+                        <div class="interactionUser">
+                            <a>
+                                <i class="fa fa-heart" aria-hidden="true" ></i>
+                                <span class="badge">20</span>
+                            </a>
+
+                            <a>
+                                <i class="fa fa-commenting" aria-hidden="true"></i>
+                                <span class="badge">87</span>
+                            </a>
+
+
+                            <!--share -->
+                            <div id="socialHolder">
+                                <div id="socialShare" class="btn-group share-group">
+                                    <a data-toggle="dropdown" class="btn btn-info">
+                                        <i class="fa fa-share-alt fa-inverse"></i>
+                                    </a>
+                                    <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                                <i class="fa fa-envelope"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="UserComments">
+                            <div class="writePost">
+                                <textarea class="form-control" rows="3"></textarea>
+                                <div class="posting">
+                                    <button type="button" class="btn btn-default">Comment</button>
+                                </div>
+
+                            </div>
+
+                            <ul class="media-list">
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Omar Mourad</h4>
+                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+
+                                    </div>
+
+
+
+                                </li>
+
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Khaled Ali</h4>
+                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+                                    </div>
+                                </li>
+
+                            </ul>
+
+
+
+                        </div>
+
+                        <div class="seeComments">
+                            <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="recentPosts imgArticleAudio">
+                    <div class="userInfos">
+                        <img src="Imgs/Persons/face1.jpg" alt="">
+                        <span>Alaa Saleh</span>
+                    </div>
+
+                    <div class="conatinerComment">
+
+                        <div class="largePic">
+                            <img src="Imgs/Website/5536c78cccd436f31c8c66732cee72d2.jpg" alt="">
+                        </div>
+
+                        <div class="titleEdit row">
+                            <div class="col-lg-8 title">
+                                <h3>Website is simply dummy </h3>
+                            </div>
+
+                            <div class="col-lg-4 edits ">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="disc">
+
+                            <audio controls> <source src="Audios/music.mp3"></audio>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has beenhe industry's standard dummy text ever since the 1500s, when an unknown printer took a galley ofype and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                        </div>
+
+                        <div class="interactionUser">
+                            <a>
+                                <i class="fa fa-heart" aria-hidden="true" ></i>
+                                <span class="badge">20</span>
+                            </a>
+
+                            <a>
+                                <i class="fa fa-commenting" aria-hidden="true"></i>
+                                <span class="badge">87</span>
+                            </a>
+
+
+                            <!--share -->
+                            <div id="socialHolder">
+                                <div id="socialShare" class="btn-group share-group">
+                                    <a data-toggle="dropdown" class="btn btn-info">
+                                        <i class="fa fa-share-alt fa-inverse"></i>
+                                    </a>
+                                    <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                                <i class="fa fa-envelope"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="UserComments">
+                            <div class="writePost">
+                                <textarea class="form-control" rows="3"></textarea>
+                                <div class="posting">
+                                    <button type="button" class="btn btn-default">Comment</button>
+                                </div>
+
+                            </div>
+
+                            <ul class="media-list">
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Omar Mourad</h4>
+                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+
+                                    </div>
+
+
+
+                                </li>
+
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Khaled Ali</h4>
+                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+                                    </div>
+                                </li>
+
+                            </ul>
+
+
+
+                        </div>
+
+                        <div class="seeComments">
+                            <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>

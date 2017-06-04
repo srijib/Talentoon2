@@ -247,11 +247,13 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
     $scope.add_review = function(i) {
 
-        console.log("jjjj mina")
-        $scope.categoryPosts[i].post_id = $scope.post_id;
-        $scope.categoryPosts[i].mentor_id = 2;
 
-        console.log("ana hena ",$scope.categoryPosts[i]);
+        console.log("jjjj mina")
+        // console.log("JJJJ Y Bassant",$scope.categoryPosts[i].post_id)
+        // $scope.categoryPosts[i].post_id = $scope.post_id;
+        // $scope.categoryPosts[i].mentor_id = 2;
+
+        console.log("ana hena ",$scope.categoryPosts[i].id);
 
         categories.submitMentorReview($scope.categoryPosts[i]).then(function(data){
             console.log("saved success review",data)

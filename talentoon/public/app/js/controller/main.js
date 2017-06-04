@@ -1,4 +1,15 @@
-angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location) {
+angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location,$route) {
+
+    // $scope.lang=function(lang){
+    //     console.log('languageeeeeeeeeeeeeeeeeeeeeeeee');
+    //     if (lang == "ar") {
+    //         localStorage.setItem('language', 'ar');
+    //     else{
+    //         localStorage.setItem('language', 'en');
+    //     }
+    // }
+
+
 
     categories.getAllCategory().then(function (data) {
         $scope.categories = data.data;
@@ -12,10 +23,15 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             var userdata = $scope.user
             console.log("inside login:", userdata);
             user.login(userdata).then(function (data) {
-                console.log("dataaaaa minA",data);
-                localStorage.setItem('cur_user', JSON.stringify(data.user));
-                localStorage.setItem('token', JSON.stringify(data.token));
-                $location.url('/');
+                console.log("dataaaaa minA",data.status);
+                if (data.status == 'ok') {
+                    localStorage.setItem('cur_user', JSON.stringify(data.user));
+                    localStorage.setItem('token', JSON.stringify(data.token));
+                    $location.url('/');
+                    $route.reload();
+                }else{
+                    alert('invaled user name or password')
+                }
             }, function (err) {
                 console.log(err);
             });
