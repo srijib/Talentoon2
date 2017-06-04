@@ -29,11 +29,25 @@ return response()->json(['status' => 1,
   public function userposts(Request $request){
 
     $user= JWTAuth::parseToken()->toUser();
+
     $post = DB::table('posts')
-        ->join('users', 'posts.user_id', '=','users.id' )
-        ->select('posts.*')
-        ->where("posts.user_id",$user->id)
-        ->get();
+    // ->join('users', 'posts.user_id', '=','users.id' )
+    ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id')
+        ->leftJoin('likeables', function($join)
+              {
+                  $join->on('posts.id','=','likeables.likeable_id')
+                  ->where('likeables.liked', '=', '1');
+              })
+              ->where("posts.user_id",$user->id)
+              ->groupBy('posts.id')
+                ->get();
+//
+// select posts.id, posts.title, count(likeables.id) like_count from posts left join likeables on
+//  likeables.likeable_id = posts.id and likeables.liked = 1 group by posts.id
+
+
+
+
 
     return response()->json(['status' => 1,
                 'message' => 'user data send successfully',
@@ -42,10 +56,18 @@ return response()->json(['status' => 1,
                 'last_name'=>$user->last_name,
                 'image'=>$user->image,
                 'post'=>$post
+                // 'count'=>$countlike
+
               ]);
 
+        }
 
-  }
+
+
+
+
+
+
   public function displayShared(){
 
     //   $categories_id=DB::table('subscribers')

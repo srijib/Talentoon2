@@ -6,7 +6,7 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:' http://127.0.0.1:8000/api/mostLikeabe' ,
+				url:' http://172.16.3.77:8000/api/mostLikeabe' ,
 				method:'GET'
 
 			}).then(function(res){
