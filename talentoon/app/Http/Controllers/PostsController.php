@@ -61,8 +61,6 @@ class PostsController extends Controller
 
 
 
-
-
         return response()->json(['post_id' => $id,'message' => 'data saved successfully']);
         // return redirect('/post');
     }
@@ -201,19 +199,11 @@ public function showSinglePost($post_id){
           ->where("comments.post_id",$post_id)
           ->get();
 // 'comments'=>$comments,
-      // $countlike = DB::table('likeables')
-      //     ->join('posts','likeables.likeable_id', '=','posts.id')
-      //     ->select(DB::raw('count(likeables.liked) as liked_count','likeables.liked'))
-      //     ->where([
-      //        ['likeables.likeable_id','=',$post_id],
-      //        ['likeables.liked', '=', '1'],
-      //        ])
-      //         ->groupBy('likeables.liked')
-      //
-      //     ->get()->first();
+
 
   return response()->json(['post' => $post,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
 // 'countlike'=>$countlike
+
 
 
 }
