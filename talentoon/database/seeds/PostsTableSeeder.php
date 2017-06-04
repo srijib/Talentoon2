@@ -19,6 +19,7 @@ class PostsTableSeeder extends Seeder
             'category_id' => '1',
             'user_id' => '1',
             'media_url' => 'uploads/posts/1.jpg',
+            'media_type' => 'image'
         ]);
         DB::table('posts')->insert([
             'title' => 'The harmony tune',
@@ -27,6 +28,7 @@ class PostsTableSeeder extends Seeder
             'category_id' => '1',
             'user_id' => '1',
             'media_url' => 'uploads/posts/2.jpg',
+            'media_type' => 'image'
         ]);
         DB::table('posts')->insert([
             'title' => 'Feel the beat',
@@ -35,6 +37,7 @@ class PostsTableSeeder extends Seeder
             'category_id' => '1',
             'user_id' => '1',
             'media_url' => 'uploads/posts/3.jpg',
+            'media_type' => 'image'
         ]);
         DB::table('posts')->insert([
             'title' => 'The harmony tune',
@@ -43,6 +46,7 @@ class PostsTableSeeder extends Seeder
             'category_id' => '1',
             'user_id' => '1',
             'media_url' => 'uploads/posts/4.jpg',
+            'media_type' => 'image'
         ]);
         DB::table('posts')->insert([
             'title' => 'Feel the beat',
@@ -51,6 +55,7 @@ class PostsTableSeeder extends Seeder
             'category_id' => '1',
             'user_id' => '1',
             'media_url' => 'uploads/posts/5.jpg',
+            'media_type' => 'image'
         ]);
         DB::table('posts')->insert([
             'title' => 'Meet the melody',
@@ -59,6 +64,7 @@ class PostsTableSeeder extends Seeder
             'category_id' => '1',
             'user_id' => '1',
             'media_url' => 'uploads/posts/6.jpg',
+            'media_type' => 'image'
         ]);
     }
 }

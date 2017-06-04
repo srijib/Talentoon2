@@ -1,14 +1,13 @@
 angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location,$route) {
 
-    // $scope.lang=function(lang){
-    //     console.log('languageeeeeeeeeeeeeeeeeeeeeeeee');
-    //     if (lang == "ar") {
-    //         localStorage.setItem('language', 'ar');
-    //     else{
-    //         localStorage.setItem('language', 'en');
-    //     }
-    // }
-
+    $scope.lang=function(lang){
+        if (lang == "ar") {
+            localStorage.setItem('language', 'ar');
+        }else{
+            localStorage.setItem('language', 'en');
+        }
+        $route.reload();
+    }
 
 
     categories.getAllCategory().then(function (data) {
@@ -45,6 +44,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             localStorage.removeItem('cur_user');
             localStorage.removeItem('token');
             $location.url('/');
+            $route.reload();
     }
 
     user.getAllCountry().then(function (data) {
