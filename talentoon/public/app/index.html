@@ -64,6 +64,7 @@
     <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="node_modules/aos/dist/aos.css">
 	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/talentProfile.css">
 	<link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
 	<link rel="stylesheet" href="css/categories.css">
@@ -163,21 +164,6 @@
 
                         <!--                        nav right-->
                         <ul class="nav navbar-nav navbar-right">
-                            <!--                           span-->
-                            <span>
-                                <!--                               search bar-->
-                                <div class="search-bar">
-                                    <input type="text" placeholder="Search for category/friend" />
-                                </div>
-                                <!--                                end search bar-->
-                                <!--                                search-->
-                                <div class="search">
-                                    <div class="search-icon"></div>
-                                </div>
-                                <!--                                end search-->
-                            </span>
-                            <!--                         end  span-->
-
 
 							<!-- if logged in : -->
 							<logged ng-if="token">
@@ -191,20 +177,7 @@
 	                                </ul>
 	                            </li>
 	                            <!--                            end user-->
-	                            <!--                           notification-->
-	                            <li class="dropdown">
-	                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
-	                                    <i class="fa fa-bell" aria-hidden="true"></i>
-	                                </a>
-	                                <ul class="dropdown-menu notemenu">
-	                                    <a><img src="Persons/face2.jpg">Ahmed Fouad<span>comment on</span><p>your post</p></a>
-	                                    <ul role="separator" class="divider">
-	                                    </ul>
-	                                    <a><img src="Persons/face4.jpg">Ahmed Fouad<span>likes your</span><p>video</p></a>
-
-	                                </ul>
-	                            </li>
 							</logged>
 
 							<notlogged ng-if="! token">
@@ -212,12 +185,12 @@
                                 <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#signup">Sign Up</button>
 							</notlogged>
 							<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">en<span class="caret"></span></a>
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">en<span class="caret"></span></a>
 
                                 <!--                                drop menu for categories-->
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">en</a></li>
-                                    <li><a href="#">ar</a></li>
+                                    <li><a ng-click='lang("en")'>en</a></li>
+                                    <li><a ng-click='lang("ar")'>ar</a></li>
                                 </ul>
 
                                 <!--                                end drop menu for categories-->
@@ -529,38 +502,38 @@
 		</div>
 </footer>
 
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
-  <script>
-    var OneSignal = window.OneSignal || [];
-    OneSignal.push(["init", {
-      appId: "b77089cc-43a0-40b7-b93f-4a06348a932e",
-      autoRegister: false, /* Set to true to automatically prompt visitors */
-      subdomainName: 'talentoon',
-      /*
-      subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN
-      */
-      httpPermissionRequest: {
-        enable: true
-      },
-      notifyButton: {
-          enable: true, /* Set to false to hide */
-          text: {
-            'tip.state.unsubscribed': 'Subscribe to notifications Nadaaaaa',
-            'tip.state.subscribed': "You're subscribed to notifications",
-            'tip.state.blocked': "You've blocked notifications",
-            'message.prenotify': 'Click to subscribe to notifications',
-            'message.action.subscribed': "Thanks for subscribing!",
-            'message.action.resubscribed': "You're subscribed to notifications",
-            'message.action.unsubscribed': "You won't receive notifications again",
-            'dialog.main.title': 'Manage Site Notifications',
-            'dialog.main.button.subscribe': 'SUBSCRIBE',
-            'dialog.main.button.unsubscribe': 'UNSUBSCRIBE',
-            'dialog.blocked.title': 'Unblock Notifications',
-            'dialog.blocked.message': "Follow these instructions to allow notifications:"
-        }
-      }
-    }]);
-  </script>
+<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>-->
+  <!--<script>-->
+    <!--var OneSignal = window.OneSignal || [];-->
+    <!--OneSignal.push(["init", {-->
+      <!--appId: "b77089cc-43a0-40b7-b93f-4a06348a932e",-->
+      <!--autoRegister: false, /* Set to true to automatically prompt visitors */-->
+      <!--subdomainName: 'talentoon',-->
+      <!--/*-->
+      <!--subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN-->
+      <!--*/-->
+      <!--httpPermissionRequest: {-->
+        <!--enable: true-->
+      <!--},-->
+      <!--notifyButton: {-->
+          <!--enable: true, /* Set to false to hide */-->
+          <!--text: {-->
+            <!--'tip.state.unsubscribed': 'Subscribe to notifications Nadaaaaa',-->
+            <!--'tip.state.subscribed': "You're subscribed to notifications",-->
+            <!--'tip.state.blocked': "You've blocked notifications",-->
+            <!--'message.prenotify': 'Click to subscribe to notifications',-->
+            <!--'message.action.subscribed': "Thanks for subscribing!",-->
+            <!--'message.action.resubscribed': "You're subscribed to notifications",-->
+            <!--'message.action.unsubscribed': "You won't receive notifications again",-->
+            <!--'dialog.main.title': 'Manage Site Notifications',-->
+            <!--'dialog.main.button.subscribe': 'SUBSCRIBE',-->
+            <!--'dialog.main.button.unsubscribe': 'UNSUBSCRIBE',-->
+            <!--'dialog.blocked.title': 'Unblock Notifications',-->
+            <!--'dialog.blocked.message': "Follow these instructions to allow notifications:"-->
+        <!--}-->
+      <!--}-->
+    <!--}]);-->
+  <!--</script>-->
   <script type="text/javascript">
 	  $(window).on('load', function() {
 	  AOS.refresh();

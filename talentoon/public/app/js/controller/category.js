@@ -1,7 +1,5 @@
 angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
 
-
-
 	$rootScope.token = JSON.parse(localStorage.getItem("token"));
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 	console.log("category controller current user",$rootScope.cur_user);
@@ -130,6 +128,163 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 
     }
+    ////////////////////////////Strat POST edit delete update/////////////////
+    $scope.isPostCraetor = function (post_id) {
+        console.log('hnaaa al id bta3 al post',post_id);
+        var user_id=$rootScope.cur_user.id;
+        //$rootScope.cur_user['id']
+        console.log('hnaaa al id bta3 al user workshop',$rootScope.cur_user.id);
+        var data_ws={user_id,post_id};
+        console.log('hnaaa al data workshop',data_ws);
+        categories.isWorkshopCraetor(data_ws).then(function(data){
+            console.log('yess al data waslt',data)
+            $rootScope.isPostCreator=data.creator;
+            console.log($rootScope.isPostCreator)
+        } , function(err){
+            console.log(err);
+
+
+        });
+
+
+    }
+
+    $scope.editPost=function (post_id,cat_id){
+        console.log('gwa edit al post',post_id);
+        var editable={post_id,cat_id}
+        categories.editPost(editable).then(function(data){
+            $rootScope.editable_post=data
+            console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_post)
+            $location.url('/category/'+cat_id+'/posts/'+post_id+'/editpost')
+        } , function(err){
+            console.log(err);
+
+
+        });
+    }
+    $scope.deletePost=function (post_id,cat_id) {
+        var editable={post_id,cat_id}
+        categories.deletePost(editable).then(function(data){
+            $rootScope.post_id=data
+            console.log('7asl al deleteeeeeee',$rootScope.post_id)
+            $location.url('/category/'+cat_id+'/posts')
+            // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
+        } , function(err){
+            console.log(err);
+
+
+        });
+    }
+    $scope.saveupdatedpost=function (vaild){
+
+        if (vaild) {
+            var category= $routeParams['category_id'];
+            var mentor_id= 1;
+            $scope.editable_post.category_id=category
+
+
+            var postdata = $scope.editable_post;
+            console.log('in update dataaaaa',postdata);
+            categories.updatedpost(postdata).then(function(data){
+                console.log('in update al post lma da5lt anadi 3la method al factory w geet')
+                console.log("the workshop request from server is ",data);
+                $location.url('/category/'+cat_id+'/posts')
+
+            } , function(err){
+                console.log(err);
+
+            });
+
+        }
+
+
+    }
+    //////////////////END Post edit,delete,update//////////////////////
+    ////////////////////Start Event edit delete update///////////////////
+    $scope.isEventCraetor = function (event_id) {
+        console.log('hnaaa al id bta3 al event',event_id);
+        var user_id=$rootScope.cur_user.id;
+        //$rootScope.cur_user['id']
+        console.log('hnaaa al id bta3 al user event',$rootScope.cur_user.id);
+        var data_ws={user_id,event_id};
+        console.log('hnaaa al data event',data_ws);
+        categories.isEventCreator(data_ws).then(function(data){
+            console.log('yess al data waslt',data)
+            $rootScope.isEventCreator=data.creator;
+            console.log($rootScope.isEventCreator)
+        } , function(err){
+            console.log(err);
+
+
+        });
+
+
+    }
+
+    $scope.editEvent=function (event_id,cat_id){
+        console.log('gwa edit al event',event_id);
+        var editable={event_id,cat_id}
+        categories.editEvent(editable).then(function(data){
+
+            $rootScope.editable_event=data
+            $scope.editable_event.time_from =new Date(data.time_from)
+            $scope.editable_event.time_to =new Date(data.time_to)
+            // $scope.editable_event.time_from = new Time(data.time_from)
+            // $scope.editable_event.time_to = new Time(data.time_to)
+            $scope.editable_event.date_from = new Date(data.date_from)
+            $scope.editable_event.date_to = new Date(data.date_to)
+
+            console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_event)
+            $location.url('/category/'+cat_id+'/events/'+event_id+'/editevent')
+
+        } , function(err){
+            console.log(err);
+
+
+        });
+    }
+    $scope.deleteEvent=function (event_id,cat_id) {
+        var editable={event_id,cat_id}
+        categories.deleteEvent(editable).then(function(data){
+            $rootScope.event_id=data
+            console.log('7asl al deleteeeeeee',$rootScope.event_id)
+            // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
+        } , function(err){
+            console.log(err);
+
+
+        });
+    }
+    $scope.saveupdatedevent=function (vaild){
+        console.log('hhhhhhhhhhhhhhhh')
+        if (vaild) {
+            var category= $routeParams['category_id'];
+            var mentor_id= 1;
+            console.log('hhhhhhhhhhhhhhhh')
+            $scope.editable_event.category_id=category
+
+
+            var eventdata = $scope.editable_event;
+            console.log('in update dataaaaa cat',eventdata.category_id);
+            console.log('in update dataaaaa eve ',eventdata.id);
+            categories.updatedevent(eventdata).then(function(data){
+                console.log('in update al event lma da5lt anadi 3la method al factory w geet')
+                console.log("the event request from server is ",data);
+                $location.url('/category/'+category+'/events')
+                if(data){
+
+                }
+
+            } , function(err){
+                console.log(err);
+
+            });
+
+        }
+
+
+    }
+    /////////////////////END Event edit delete update///////////////////////////////////
     $scope.completeTalentProfile = function(){
 
         if (reviewfilesuploaded.length > 0)
@@ -249,11 +404,13 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
     $scope.add_review = function(i) {
 
-        console.log("jjjj mina")
-        $scope.categoryPosts[i].post_id = $scope.post_id;
-        $scope.categoryPosts[i].mentor_id = 2;
 
-        console.log("ana hena ",$scope.categoryPosts[i]);
+        console.log("jjjj mina")
+        // console.log("JJJJ Y Bassant",$scope.categoryPosts[i].post_id)
+        // $scope.categoryPosts[i].post_id = $scope.post_id;
+        // $scope.categoryPosts[i].mentor_id = 2;
+
+        console.log("ana hena ",$scope.categoryPosts[i].id);
 
         categories.submitMentorReview($scope.categoryPosts[i]).then(function(data){
             console.log("saved success review",data)
@@ -392,6 +549,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
             // $rootScope.status=data;
             $location.url('/category/' + category_id);
             // console.log("hiii")
+			 $route.reload();
         }, function (err) {
             console.log(err);
 
@@ -451,6 +609,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 	   $scope.comment={}
 
        $scope.add_comment = function(i) {
+		   console.log("hhh",i);
            categories.submitComment($scope.categoryPosts[i].comment,$scope.categoryPosts[i].id).then(function(data){
                console.log("saved success comment",data)
                $route.reload();
