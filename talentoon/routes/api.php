@@ -28,8 +28,11 @@ Route::post('/betalent',[
 Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelatedcategory']], function () {
 
 });
+//nahala ana tla3t al posts bara 3shan al middleware mkansh by5lini 23ml edit "simona"
 Route::resource('categories.posts','PostsController');
 
+
+Route::resource('categories.posts','PostsController');
 
 //Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
   Route::resource('categories.events','EventController');
@@ -141,6 +144,8 @@ Route::get('/workshop/{workshop_id}','WorkShopsController@show');
 
 Route::post('/workshop_enroll','WorkShopsController@enroll');
 Route::post('/isWorkshopCraetor','WorkShopsController@isWorkshopCraetor');
+Route::post('/isPostCreator','PostsController@isPostCraetor');
+Route::post('/isEventCraetor','EventsController@isEventCraetor');
 
 
 Route::get('/categorymentor/get_mentor_details/{mentor_id}', 'CategoryMentorController@get_mentor_details');

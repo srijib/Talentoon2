@@ -1,0 +1,80 @@
+<style>
+    .container{
+        font-size: 10px;
+    }
+</style>
+
+
+
+
+
+
+<div class="container" >
+
+
+
+    <!-- Form Start -->
+    <!--<form ng-submit="submit_event_file" name="form" role="form" enctype="multipart/form-data">-->
+        <!--<input name="event_file" ng-model="editable_event.file" value="editable_event.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >-->
+        <!--&lt;!&ndash;<input type="submit" id="submit_file" value="Submit" />&ndash;&gt;-->
+        <!--<br/>-->
+        <!--<img ng-src="{{editable_event.file}}" style="width:300px;">-->
+    <!--</form>-->
+    <!-- Form End -->
+
+
+
+    <form ng-submit="submitted=true ; saveupdatedevent(editevent.$valid)" name="editevent"  novalidate >
+
+
+
+        <!--<div class="field">-->
+            <!--<h4 style="color:Purple ">Time from</h4>-->
+            <!--<input type="time" name="time_from" required ng-model="editable_event.time_from" value="editable_event.time_from" class="form-control">-->
+            <!--<p class="error" ng-if="editevent.time_from.$error.required && submitted" >This field is required</p>-->
+        <!--</div>-->
+        <!--<div class="field">-->
+            <!--<h4 style="color:Purple ">Time to</h4>-->
+            <!--<input type="time" name="time_to" required ng-model="editable_event.time_to" value="editable_event.time_to" class="form-control">-->
+            <!--<p class="error" ng-if="editevent.time_to.$error.required && submitted" >This field is required</p>-->
+        <!--</div>-->
+
+        <div class="field">
+            <h4 style="color:Purple ">Date from</h4>
+            <input type="date" name="date_from" required ng-model="editable_event.date_from" value="editable_event.date_from" class="form-control">
+            <p class="error" ng-if="editevent.date_from.$error.required && submitted" >This field is required</p>
+        </div>
+        <div class="field">
+            <h4 style="color:Purple ">Date to</h4>
+            <input type="date" name="date_to" required ng-model="editable_event.date_to" value="editable_event.date_to" class="form-control">
+            <p class="error" ng-if="editevent.date_to.$error.required && submitted" >This field is required</p>
+        </div>
+        <div class="field">
+            <h4 style="color:Purple ">Location</h4>
+            <input type="text" name="location" required ng-model="editable_event.location" value="editable_event.location" class="form-control">
+            <p class="error" ng-if="editevent.location.$error.required && submitted" >This field is required</p>
+        </div>
+        <div class="field">
+            <h4 style="color:Purple ">Description</h4>
+            <input type="text" name="description" required ng-model="editable_event.description" value="editable_event.description" class="form-control">
+            <p class="error" ng-if="editevent.description.$error.required && submitted" >This field is required</p>
+        </div>
+        <div class="field">
+            <h4 style="color:Purple ">Paied</h4>
+            <input type="radio" name="paied" required ng-model="editable_event.is_paid" value="editable_event.is_paid"  class="form-control" value="1" checked>Paied<br>
+            <input type="radio" name="paied" required ng-model="editable_event.is_paid" class="form-control" value="0" checked> Free<br>
+            <p class="error" ng-if="editevent.paied.$error.required && submitted" >This field is required</p>
+        </div>
+
+
+        <input type="hidden" name="category_id"  ng-model="editable_event.category_id" class="form-control" value="{{cat_id}}">
+
+        <button  type="submit" name="button">Save</button>
+        <!-- <p type="submit" class="btnAction"><a class="btn btn-primary btnAction" role="button">Discover More</a></p> -->
+    </form>
+
+
+
+</div>
+<br>
+<br>

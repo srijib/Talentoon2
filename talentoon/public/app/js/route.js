@@ -63,6 +63,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     //   .preferredLanguage('en');
       .preferredLanguage(localStorage.getItem('language'));
 
+
     $routeProvider.when('/', {
         templateUrl: 'views/home.html',
         controller: 'homec'
@@ -135,6 +136,18 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
                 templateUrl: 'views/editworkshop.html',
                 controller: 'oneCategory'
             })
+        //edit post
+        .when('/category/:category_id/posts/:post_id/editpost', {
+            templateUrl: 'views/editpost.html',
+            controller: 'oneCategory'
+        })
+        //edit event
+
+        .when('/category/:category_id/events/:event_id/editevent', {
+            templateUrl: 'views/editevent.html',
+            controller: 'oneCategory'
+        })
+
 
         //user choose to be a talent under a certain category
         .when('/category/betalent/:category_id/:user_id', {
@@ -174,6 +187,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'oneCategory'
         })
 
+        .when('/category/:category_id/events', {
+            templateUrl: 'views/categorypost.html',
+            controller: 'oneCategory'
+        })
         .when('/category/:category_id/events/:event_id', {
             templateUrl: 'views/categorypost.html',
             controller: 'oneCategory'
@@ -196,7 +213,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'oneCategory'
         })
         .when('/category/:category_id/posts', {
-            templateUrl: 'views/categoryposts.html',
+            templateUrl: 'views/categoryevents.html',
             controller: 'oneCategory'
         })
 
