@@ -36,11 +36,6 @@ public function __construct(){
 //        return response()->json(['data' => $data,'status' => '1','message' => 'data sent successfully']);
         return response()->json(['data'=>$data]);
     }
-    //to give the creator the avaliblity to update in event's data
-    //it is'nt found in back log
-    public function edit(Request $request){
-
-    }
     //by clicking on the event a page is opened to see it's contents
     public function show($cat_id, $event_id){
         return response()->json(['eventttttttttttttt' => $event_id]);
@@ -48,5 +43,83 @@ public function __construct(){
         $data = $new_event->show_event($event_id);
         return $data;
     }
+
+    public function edit($cat_id,$event_id)
+    {
+        $user=JWTAuth::parseToken()->toUser();
+        $event = DB::table('events')
+            ->select('events.*')
+            ->where("events.category_id",$cat_id)
+            ->where("events.id",$event_id)
+            ->get()->first();
+        return response()->json($event);
+
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+
+        $event=DB::table('events')
+            ->where('id', $request->id)
+            ->update(['title'=>$request->title,
+                'description'=>$request->description,
+                'time_from'=>$request->time_from,
+                'time_to'=>$request->time_to,
+                'date_from'=>$request->date_from,
+                'date_to'=>$request->date_to,
+                'location'=>$request->location,
+                'title'=>$request->title,
+                'is_paid'=>$request->is_paid,
+                'media_type'=>$request->media_type,
+                'media_url'=>$request->media_url
+            ]);
+
+
+        return response()->json($event);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($cat_id,$id)
+    {
+//        return response()->json($id);
+        $affectedRows = Event::where('id', '=', $id)
+            ->delete();
+
+        if ($affectedRows){
+            return response()->json('true');
+        }else{
+            return response()->json('false');
+        }
+    }
+    public function isEventCreator(Request $request){
+        $user=JWTAuth::parsetoken()->toUser();
+//        dd($user->id);
+
+        $creator = DB::table('events')
+            ->select('events.*')
+            ->where("events.user_id",$user->id)
+            ->where("users.id",$request->user_id)
+            ->get()->first();
+        if ($creator){
+            return response()->json(['creator'=>1]);
+        }else{
+            return response()->json(['creator'=>0]);
+        }
+
+    }
+//***************************************************
 
 }

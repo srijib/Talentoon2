@@ -26,10 +26,10 @@ Route::post('/betalent',[
     'middleware'=> 'ability:audience,permission:be-talent']);
 
 Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelatedcategory']], function () {
-Route::resource('categories.posts','PostsController');
+
 });
 
-
+Route::resource('categories.posts','PostsController');
 
 //Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
   Route::resource('categories.events','EventController');
@@ -141,6 +141,8 @@ Route::get('/workshop/{workshop_id}','WorkShopsController@show');
 
 Route::post('/workshop_enroll','WorkShopsController@enroll');
 Route::post('/isWorkshopCraetor','WorkShopsController@isWorkshopCraetor');
+Route::post('/isPostCreator','PostsController@isPostCraetor');
+Route::post('/isEventCraetor','EventsController@isEventCraetor');
 
 
 Route::get('/categorymentor/get_mentor_details/{mentor_id}', 'CategoryMentorController@get_mentor_details');

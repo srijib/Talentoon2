@@ -67,35 +67,35 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
                 //     templateUrl: 'views/post.html',
                 //     controller: 'homec'
                 // })
-                    .when('/post/:post_id', {
-                    templateUrl: 'views/post.html',
-                    controller: 'homec'
-                })
-
-                .when('/category/:category_id/createEvent', {
-                    templateUrl: 'views/createEvent.html',
-                    controller: 'eventcontroller'
-                })
-
-                .when('/initial_review', {
-                    templateUrl: 'views/initial_review.html',
-                    controller: 'initial_review'
-                })
-                .when('/posts', {
-                    templateUrl: 'posts.html',
-                    controller: 'posts'
-                })
-//all category
-                .when('/categories', {
-                    templateUrl: 'views/categories.html',
-                    controller: 'categories',
-                    resolve: {
-
-                resolvedCategory: function (categories) {
-                    return categories.getAllCategory().then(function (res) {
-                        return res;
-                    });
-                },
+//                     .when('/post/:post_id', {
+//                     templateUrl: 'views/post.html',
+//                     controller: 'homec'
+//                 })
+//
+//                 .when('/category/:category_id/createEvent', {
+//                     templateUrl: 'views/createEvent.html',
+//                     controller: 'eventcontroller'
+//                 })
+//
+//                 .when('/initial_review', {
+//                     templateUrl: 'views/initial_review.html',
+//                     controller: 'initial_review'
+//                 })
+//                 .when('/posts', {
+//                     templateUrl: 'posts.html',
+//                     controller: 'posts'
+//                 })
+//    all category
+//                 .when('/categories', {
+//                     templateUrl: 'views/categories.html',
+//                     controller: 'categories',
+//                     resolve: {
+//
+//                 resolvedCategory: function (categories) {
+//                     return categories.getAllCategory().then(function (res) {
+//                         return res;
+//                     });
+//                 },
     $routeProvider.when('/', {
         templateUrl: 'views/home.html',
         controller: 'homec'
@@ -168,6 +168,18 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
                 templateUrl: 'views/editworkshop.html',
                 controller: 'oneCategory'
             })
+        //edit post
+        .when('/category/:category_id/posts/:post_id/editpost', {
+            templateUrl: 'views/editpost.html',
+            controller: 'oneCategory'
+        })
+        //edit event
+
+        .when('/category/:category_id/events/:event_id/editevent', {
+            templateUrl: 'views/editevent.html',
+            controller: 'oneCategory'
+        })
+
 
         //user choose to be a talent under a certain category
         .when('/category/betalent/:category_id/:user_id', {
@@ -207,6 +219,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'oneCategory'
         })
 
+        .when('/category/:category_id/events', {
+            templateUrl: 'views/categorypost.html',
+            controller: 'oneCategory'
+        })
         .when('/category/:category_id/events/:event_id', {
             templateUrl: 'views/categorypost.html',
             controller: 'oneCategory'
@@ -225,7 +241,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'oneCategory'
         })
         .when('/category/:category_id/posts', {
-            templateUrl: 'views/categoryposts.html',
+            templateUrl: 'views/categoryevents.html',
             controller: 'oneCategory'
         })
 

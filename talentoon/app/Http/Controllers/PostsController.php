@@ -97,18 +97,18 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-        $post = DB::table('posts')
-            ->join('categories', 'posts.category_id', '=', 'categories.id')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->select('posts.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image')
-            ->where("posts.id",$id)
-            ->get();
-        return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully']);
-
-    }
+//    public function edit($id)
+//    {
+//        //
+//        $post = DB::table('posts')
+//            ->join('categories', 'posts.category_id', '=', 'categories.id')
+//            ->join('users', 'posts.user_id', '=', 'users.id')
+//            ->select('posts.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image')
+//            ->where("posts.id",$id)
+//            ->get();
+//        return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully']);
+//
+//    }
 
     /**
      * Update the specified resource in storage.
@@ -117,12 +117,12 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-        post::find($id)->update($request->all());
-        return response()->json(['status' => '1','message' => 'data sent successfully']);
-    }
+//    public function update(Request $request, $id)
+//    {
+//        //
+//        post::find($id)->update($request->all());
+//        return response()->json(['status' => '1','message' => 'data sent successfully']);
+//    }
 
     /**
      * Remove the specified resource from storage.
@@ -159,13 +159,90 @@ class PostsController extends Controller
 //        $return = json_encode( $return);
         return response()->json(['msg'=>'success','posts'=>$data]);
     }
-    public function destroy($id)
-    {
-        //
-        $post=Post::findOrFail($id);
-        $post->delete();
-        return response()->json(['status' => '1','message' => 'post deleted successfully']);
+//    public function destroy($id)
+//    {
+//        //
+//        $post=Post::findOrFail($id);
+//        $post->delete();
+//        return response()->json(['status' => '1','message' => 'post deleted successfully']);
+//    }
+
+
+
+    public function edit($cat_id,$post_id)
+    {   //I need to take category id and workshop id and
+        // by checking the mentor_id is the user id then edit else not
+        //from Request $request we will git the editable data
+        $user=JWTAuth::parseToken()->toUser();
+//        return response()->json($post_id);
+        $post = DB::table('posts')
+            ->select('posts.*')
+            ->where("posts.category_id",$cat_id)
+            ->where("posts.id",$post_id)
+            ->get()->first();
+        return response()->json($post);
+
+
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+//        return response()->json($request);
+        $post=DB::table('posts')
+            ->where('id', $request->id)
+            ->update(['title'=>$request->title,
+                'description'=>$request->description,
+//                'media_type'=>$request->media_type,
+//                'media_url'=>$request->media_url
+            ]);
+
+
+        return response()->json($post);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($cat_id,$id)
+    {
+//        return response()->json($id);
+        $affectedRows = Post::where('id', '=', $id)
+            ->delete();
+
+        if ($affectedRows){
+            return response()->json('true');
+        }else{
+            return response()->json('false');
+        }
+    }
+    public function isPostCreator(Request $request){
+        $user=JWTAuth::parsetoken()->toUser();
+//        dd($user->id);
+
+        $creator = DB::table('posts')
+            ->select('posts.*')
+            ->where("posts.user_id",$user->id)
+            ->where("users.id",$request->user_id)
+            ->get()->first();
+        if ($creator){
+            return response()->json(['creator'=>1]);
+        }else{
+            return response()->json(['creator'=>0]);
+        }
+
+    }
+//***************************************************
+
 
 public function showSinglePost($post_id){
 

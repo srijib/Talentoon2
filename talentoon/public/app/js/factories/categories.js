@@ -624,6 +624,237 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             })
             return def.promise;
         },
+        //////////////////post ajax////////////
+        isPostCreator: function (data) {
+            //  var category_id= index;
+            // // console.log("category_id",category_id)
+            // console.log("workshop id", id)
+            var def = $q.defer();
+            console.log("data",data)
+            $http({
+                url: 'http://localhost:8000/api/isPostCreator',
+                method: 'POST',
+                data: data
+            }).then(function (res) {
+
+                console.log("hnshof hal hwa y3rf ya3ml edit (post)",res.data)
+                // console.log("user",res.data.user);
+                // console.log("enroll",res.data.enroll);
+                // console.log("single category from factory", res.data.workshop)
+
+                if (res) {
+
+                    def.resolve(res.data);
+
+                } else {
+                    def.reject('there is no data ')
+                    console.log("hnshof hal hwa y3rf ya3ml edit fl error",res.data)
+                }
+
+            }, function (err) {
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
+        editPost: function (editable) {
+            console.log("in factory to edit workshop",editable.cat_id);
+            var def = $q.defer();
+            var id=editable.post_id;
+            // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
+            $http({
+                url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/posts/'+id+'/edit',
+                // url:'http://172.16.2.239:8000/api/posts',
+                method: 'GET'
+                // data: id
+            }).then(function (res) {
+
+                console.log('i tested',res.data);
+
+                if (res.data) {
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+
+
+        },
+
+        updatedpost:function (postdata) {
+            var def = $q.defer();
+            console.log('bnshooof kkkkk',postdata)
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ postdata.category_id + '/posts/'+postdata.id,
+                method: 'PUT',
+                data: postdata
+
+            }).then(function (res) {
+                console.log('bnshooof kkkkk',postdata)
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
+        deletePost:function (postdata) {
+            var def = $q.defer();
+            var id=postdata.post_id
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ postdata.cat_id + '/posts/'+postdata.post_id,
+                method: 'DELETE',
+                data:id
+
+
+            }).then(function (res) {
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
+        //////////////////end post ajax////////////
+        //////////////////event ajax////////////
+        isEventCreator: function (data) {
+            //  var category_id= index;
+            // // console.log("category_id",category_id)
+            // console.log("workshop id", id)
+            var def = $q.defer();
+            console.log("data",data)
+            $http({
+                url: 'http://localhost:8000/api/isEventCreator',
+                method: 'POST',
+                data: data
+            }).then(function (res) {
+
+                console.log("hnshof hal hwa y3rf ya3ml edit",res.data)
+                // console.log("user",res.data.user);
+                // console.log("enroll",res.data.enroll);
+                // console.log("single category from factory", res.data.workshop)
+
+                if (res) {
+
+                    def.resolve(res.data);
+
+                } else {
+                    def.reject('there is no data ')
+                    console.log("hnshof hal hwa y3rf ya3ml edit fl error",res.data)
+                }
+
+            }, function (err) {
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
+        editEvent: function (editable) {
+            console.log("in factory to edit event",editable.cat_id);
+            var def = $q.defer();
+            var id=editable.event_id;
+            // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
+            $http({
+                url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/events/'+id+'/edit',
+                // url:'http://172.16.2.239:8000/api/posts',
+                method: 'GET'
+                // data: id
+            }).then(function (res) {
+
+                console.log('i tested',res.data);
+
+                if (res.data) {
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+
+
+        },
+
+        updatedevent:function (eventdata) {
+            console.log('jjjjjjj',eventdata)
+            var def = $q.defer();
+            console.log(eventdata.category_id)
+            console.log(eventdata.id)
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ eventdata.category_id + '/events/'+eventdata.id,
+                method: 'PUT',
+                data: eventdata
+
+            }).then(function (res) {
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
+        deleteEvent:function (eventdata) {
+            var def = $q.defer();
+            var id=eventdata.event_id
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ eventdata.cat_id + '/events/'+eventdata.event_id,
+                method: 'DELETE',
+                data:id
+
+
+            }).then(function (res) {
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
+        //////////////////end event ajax////////////
 
             addcomment: function (commentdata) {
                 var def = $q.defer();
