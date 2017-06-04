@@ -1,7 +1,5 @@
 angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
 
-
-
 	$rootScope.token = JSON.parse(localStorage.getItem("token"));
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 	console.log("category controller current user",$rootScope.cur_user);
@@ -392,6 +390,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
             // $rootScope.status=data;
             $location.url('/category/' + category_id);
             // console.log("hiii")
+			 $route.reload();
         }, function (err) {
             console.log(err);
 
@@ -451,6 +450,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 	   $scope.comment={}
 
        $scope.add_comment = function(i) {
+		   console.log("hhh",i);
            categories.submitComment($scope.categoryPosts[i].comment,$scope.categoryPosts[i].id).then(function(data){
                console.log("saved success comment",data)
                $route.reload();
