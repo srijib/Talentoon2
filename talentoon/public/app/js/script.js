@@ -1,4 +1,5 @@
 $('.search').click(function(){
+    alert('after')
     $('.search, .search-bar').toggleClass('active');
     $('input').focus();
 });

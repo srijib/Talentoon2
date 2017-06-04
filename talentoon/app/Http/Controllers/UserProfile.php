@@ -48,14 +48,14 @@ return response()->json(['status' => 1,
   }
   public function displayShared(){
 
-      $categories_id=DB::table('subscribers')
-          ->select('subscribers.category_id')
-          ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1]])
-          ->get();
-          $arr=[];
-          for ($i=0; $i <count($categories_id) ; $i++) {
-              array_push($arr,$categories_id[$i]->category_id);
-          }
+    //   $categories_id=DB::table('subscribers')
+    //       ->select('subscribers.category_id')
+    //       ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1]])
+    //       ->get();
+    //       $arr=[];
+    //       for ($i=0; $i <count($categories_id) ; $i++) {
+    //           array_push($arr,$categories_id[$i]->category_id);
+    //       }
 
       $user= JWTAuth::parseToken()->toUser();
       $post_ids= DB::table('shares')
@@ -63,12 +63,12 @@ return response()->json(['status' => 1,
           ->where("shares.user_id",$user->id)
           ->get();
 
-          $posts = DB::table('posts')
-              ->join('users', 'posts.user_id', '=', 'users.id')
-              ->select('posts.*','users.*')
-            //   ->where("posts.user_id",$user->id)
-              ->whereIn("posts.category_id", $arr)
-              ->get();
+        //   $posts = DB::table('posts')
+        //       ->join('users', 'posts.user_id', '=', 'users.id')
+        //       ->select('posts.*','users.*')
+        //     //   ->where("posts.user_id",$user->id)
+        //       ->whereIn("posts.category_id", $arr)
+        //       ->get();
 
       $arr=[];
       for ($i=0; $i <count($post_ids) ; $i++) {
@@ -81,7 +81,7 @@ return response()->json(['status' => 1,
         //   ->where("posts.user_id",$user->id)
           ->whereIn("posts.id", $arr)
           ->get();
-         
+
     return response()->json(['status' => 1,
                       'message' => 'posts send successfully',
                       'shares'=>$shares
