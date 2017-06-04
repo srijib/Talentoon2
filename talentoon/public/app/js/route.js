@@ -60,8 +60,8 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     $translateProvider
       .translations('en', translations_en)
       .translations('ar', translations_ar)
-      .preferredLanguage('en');
-    //   .preferredLanguage(localStorage.getItem('language'));
+    //   .preferredLanguage('en');
+      .preferredLanguage(localStorage.getItem('language'));
 
 
     $routeProvider.when('/', {
@@ -198,6 +198,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
 
         .when('/myprofile', {
             templateUrl: 'views/myprofile.html',
+            controller: 'userprofile'
+        })
+        .when('/editprofile', {
+            templateUrl: 'views/editProfile.html',
             controller: 'userprofile'
         })
         .when('/category/:category_id/workshops', {
