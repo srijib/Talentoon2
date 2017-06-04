@@ -148,3 +148,5 @@ Route::post('/conference/add_teacher', 'VideoConferenceController@add_wiziq_teac
 Route::post('/conference/create_class', 'VideoConferenceController@create_wiziq_class');
 Route::post('/session_upload/{id}', 'UploadController@session_upload');
 Route::post('/workshop/{workshop_id}','WorkShopsController@createSession');
+
+Route::get('/SubscribedPost','PostsController@Subscribedposts');

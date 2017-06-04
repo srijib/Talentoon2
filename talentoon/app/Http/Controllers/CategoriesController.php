@@ -77,17 +77,17 @@ class CategoriesController extends Controller
         $posts = DB::table('posts')
             ->join('users', 'users.id', '=', 'posts.user_id')
             ->select('posts.*','users.first_name', 'users.last_name', 'users.image as user_image')
-            ->where('posts.category_id','=',$cat_id)
+            ->where([['posts.category_id','=',$cat_id],['posts.is_approved','=',1]])
             ->get();
         $workshops = DB::table('workshops')
             ->join('users', 'users.id', '=', 'workshops.mentor_id')
             ->select('workshops.*','users.first_name', 'users.last_name', 'users.image as user_image')
-            ->where('workshops.category_id','=',$cat_id)
+            ->where([['workshops.category_id','=',$cat_id],['workshops.is_approved','=',1]])
             ->get();
         $events = DB::table('events')
             ->join('users', 'users.id', '=', 'events.mentor_id')
             ->select('events.*','users.first_name', 'users.last_name', 'users.image as user_image')
-            ->where('events.category_id','=',$cat_id)
+            ->where([['events.category_id','=',$cat_id],['events.is_approved','=',1]])
             ->get();
         return response()->json(['cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
     }
