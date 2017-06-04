@@ -60,7 +60,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     $translateProvider
       .translations('en', translations_en)
       .translations('ar', translations_ar)
-      .preferredLanguage('en');
+      .preferredLanguage('ar');
 
 
     $routeProvider.when('/', {
