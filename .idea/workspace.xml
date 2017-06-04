@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1330db7b-59c1-4aef-86aa-286381afc9ff" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/talentoon/public/app/css/talentProfile.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/talentoon/public/app/views/categoryevents.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/app/Http/Controllers/PostsController.php" afterPath="$PROJECT_DIR$/talentoon/app/Http/Controllers/PostsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/index.html" afterPath="$PROJECT_DIR$/talentoon/public/app/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/controller/category.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/controller/category.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/controller/main.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/controller/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/factories/categories.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/factories/categories.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/route.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/route.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/js/script.js" afterPath="$PROJECT_DIR$/talentoon/public/app/js/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/views/categorypost.html" afterPath="$PROJECT_DIR$/talentoon/public/app/views/categorypost.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/views/categoryposts.html" afterPath="$PROJECT_DIR$/talentoon/public/app/views/categoryposts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/app/views/myprofile.html" afterPath="$PROJECT_DIR$/talentoon/public/app/views/myprofile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/www/js/controller/addpost.js" afterPath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/www/js/controller/addpost.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/www/js/factories/categories.js" afterPath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/www/js/factories/categories.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/www/templates/categorieselement.html" afterPath="$PROJECT_DIR$/talentoon/public/phonegap/talentoon/www/templates/categorieselement.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/talentoon/routes/api.php" afterPath="$PROJECT_DIR$/talentoon/routes/api.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,21 +42,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="category.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="category.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/talentoon/public/app/js/controller/category.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="39" column="10" lean-forward="true" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+            <state relative-caret-position="105">
+              <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="route.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="route.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/talentoon/public/app/js/route.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+            <state relative-caret-position="507">
+              <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -605,12 +618,12 @@
       <workItem from="1496394193589" duration="20646000" />
       <workItem from="1496429943073" duration="10793000" />
       <workItem from="1496446154597" duration="39293000" />
-      <workItem from="1496583003451" duration="1619000" />
+      <workItem from="1496583003451" duration="1693000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84452000" />
+    <option name="totallyTimeSpent" value="84526000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -999,18 +1012,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/talentoon/public/app/js/controller/category.js">
+    <entry file="file://$PROJECT_DIR$/talentoon/public/app/js/route.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="39" column="10" lean-forward="true" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+        <state relative-caret-position="507">
+          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/talentoon/public/app/js/route.js">
+    <entry file="file://$PROJECT_DIR$/talentoon/public/app/js/controller/category.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+        <state relative-caret-position="105">
+          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
           <folding />
         </state>
       </provider>

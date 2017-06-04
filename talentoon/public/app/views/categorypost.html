@@ -42,6 +42,7 @@
             <form ng-submit="submitted=true ; newcomment(addcomment.$valid)" name="addcomment"  novalidate>
             <textarea class="form-control"name="comment"  ng-model="comment.comment" rows="3"></textarea>
             <input type="hidden" class="form-control" name="post_id" ng-model="comment.post_id" value="{{category_post.id}}">
+
             <div class="posting">
                 <button type="submit" class="btn btn-default">Comment</button>
             </div>

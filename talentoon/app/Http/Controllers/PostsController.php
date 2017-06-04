@@ -61,8 +61,6 @@ class PostsController extends Controller
 
 
 
-
-
         return response()->json(['post_id' => $id,'message' => 'data saved successfully']);
         // return redirect('/post');
     }
@@ -185,7 +183,7 @@ public function showSinglePost($post_id){
 
       ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id, categories.title as category_title, users.first_name, users.last_name, users.image as user_image')
 
-          ->where([["posts.id",$post_id][['posts.is_approved','=',1]]])
+          ->where([["posts.id",$post_id],['posts.is_approved','=',1]])
           ->groupBy('posts.id')
       ->get()->first();
 
@@ -195,25 +193,17 @@ public function showSinglePost($post_id){
 
 
 
-      // $comments=DB::table('comments')
-      //     ->join('users', 'comments.user_id', '=', 'users.id')
-      //     ->select('comments.*','users.first_name', 'users.last_name', 'users.image')
-      //     ->where("comments.post_id",$post_id)
-      //     ->get();
+      $comments=DB::table('comments')
+          ->join('users', 'comments.user_id', '=', 'users.id')
+          ->select('comments.*','users.first_name', 'users.last_name', 'users.image')
+          ->where("comments.post_id",$post_id)
+          ->get();
 // 'comments'=>$comments,
-      // $countlike = DB::table('likeables')
-      //     ->join('posts','likeables.likeable_id', '=','posts.id')
-      //     ->select(DB::raw('count(likeables.liked) as liked_count','likeables.liked'))
-      //     ->where([
-      //        ['likeables.likeable_id','=',$post_id],
-      //        ['likeables.liked', '=', '1'],
-      //        ])
-      //         ->groupBy('likeables.liked')
-      //
-      //     ->get()->first();
 
-  return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully']);
+
+  return response()->json(['post' => $post,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
 // 'countlike'=>$countlike
+
 
 
 }

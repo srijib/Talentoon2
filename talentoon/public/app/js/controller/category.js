@@ -39,19 +39,19 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     //     console.log(err);
     // });
 
-    // categories.getCategoryWorkshop($scope.workshop_id).then(function (data) {
-    //     console.log("inside controller", data)
-    //     $rootScope.category_workshop = data.workshop;
-    //     $rootScope.userId = data.user.id;
-    //     $rootScope.enroll = data.enroll;
-    //     $rootScope.media = data.session;
-	//
-    //     // $rootScope.category_post = localStorage.getItem("data");
-    //     console.log("single workshop from controller", $rootScope.category_workshop);
-	//
-    // }, function (err) {
-    //     console.log(err);
-    // });
+    categories.getCategoryWorkshop($scope.workshop_id).then(function (data) {
+        console.log("inside controller", data)
+        $rootScope.category_workshop = data.workshop;
+        $rootScope.userId = data.user.id;
+        $rootScope.enroll = data.enroll;
+        $rootScope.media = data.session;
+
+        // $rootScope.category_post = localStorage.getItem("data");
+        console.log("single workshop from controller", $rootScope.category_workshop);
+
+    }, function (err) {
+        console.log(err);
+    });
 
     // categories.getCategoryEvents($scope.cat_id).then(function (data) {
     //     var user_id = 1;
@@ -352,6 +352,8 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         // console.log("inside controller" , data)
         $rootScope.category_post = data.post;
         $rootScope.category_post_like_count = data.countlike;
+		$rootScope.comments = data.comments;
+
 
     }, function (err) {
         console.log(err);
@@ -447,6 +449,18 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 		 });
 
 	   }}
+
+	   $scope.comment={}
+
+       $scope.add_comment = function(i) {
+           categories.submitComment($scope.categoryPosts[i].comment,$scope.categoryPosts[i].id).then(function(data){
+               console.log("saved success comment",data)
+               $route.reload();
+           } , function(err){
+               console.log(err);
+
+           });
+       }
 
     if(localStorage.getItem("wiziq_presenter_url")){
         $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");

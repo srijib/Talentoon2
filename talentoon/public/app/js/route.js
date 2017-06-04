@@ -42,8 +42,8 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     },
         FOOTER: {
           LINKS: 'روابط',
-          STAY_TUNED: 'ابقى معنا',
-          CONTACT_US: 'اتصل بنا',
+          STAY_TUNED: 'خليك معانا ',
+          CONTACT_US: 'كلمنا',
       },
         ONE_CATEGORY: {
             SUBSCRIBE: 'تابع',
@@ -60,8 +60,8 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     $translateProvider
       .translations('en', translations_en)
       .translations('ar', translations_ar)
-      .preferredLanguage('ar');
-
+      .preferredLanguage('en');
+    //   .preferredLanguage(localStorage.getItem('language'));
 
     $routeProvider.when('/', {
         templateUrl: 'views/home.html',

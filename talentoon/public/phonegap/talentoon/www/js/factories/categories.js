@@ -40,7 +40,7 @@ console.log("token in factory",token)
   				method:'GET'
   			}).then(function(res){
   				// console.log("response is " , res.data.posts);
-  				if(res.data.posts.length){
+  				if(res.data.posts){
   		     			def.resolve(res.data.posts);
   							// 			console.log("res.data.posts is " , res.data.posts )
   						// def.resolve(res.data[index])
@@ -134,12 +134,11 @@ console.log("token in factory",token)
         }
         ,
         addpost: function (postdata) {
-            // console.log("Post Dataaaa",postdata);
+            console.log("Post Dataaaa",postdata);
             var def = $q.defer();
-            // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
-            console.log('the url ya esraa', 'http://172.16.3.77:8000/api/categories/'+$rootScope.cat_id+'/posts');
+            console.log('the url ya esraa', 'http://172.16.3.77:8000/api/categories/'+postdata.category_id+'/posts');
             $http({
-                url: 'http://172.16.3.77:8000/api/categories/' +$rootScope.cat_id+ '/posts',
+                url: 'http://172.16.3.77:8000/api/categories/' +postdata.category_id+ '/posts',
                 headers:{
               'Authorization':'Bearer'+ $rootScope.token
                  },
