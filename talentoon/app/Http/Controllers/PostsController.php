@@ -80,7 +80,7 @@ class PostsController extends Controller
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->select('posts.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image')
-            ->where("posts.id",$id)
+            ->where([["posts.id",$id],['posts.is_approved','=',1]])
             ->get();
 
 
@@ -185,7 +185,7 @@ public function showSinglePost($post_id){
 
       ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id, categories.title as category_title, users.first_name, users.last_name, users.image as user_image')
 
-          ->where("posts.id",$post_id)
+          ->where([["posts.id",$post_id][['posts.is_approved','=',1]]])
           ->groupBy('posts.id')
       ->get()->first();
 
@@ -208,6 +208,27 @@ public function showSinglePost($post_id){
 
 
 }
+
+    public function Subscribedposts(){
+        $user= JWTAuth::parseToken()->toUser();
+
+        $categories_id=DB::table('subscribers')
+           ->select('subscribers.category_id')
+           ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1]])
+           ->get();
+           $arr=[];
+           for ($i=0; $i <count($categories_id) ; $i++) {
+               array_push($arr,$categories_id[$i]->category_id);
+           }
+
+           $posts = DB::table('posts')
+               ->join('users', 'posts.user_id', '=', 'users.id')
+               ->select('posts.*','users.*')
+               ->where('posts.is_approved','=',1)
+               ->whereIn("posts.category_id", $arr)
+               ->get();
+            return response()->json(['posts'=>$posts,'status' => '1','message' => 'data sent successfully']);
+    }
 
 
 }

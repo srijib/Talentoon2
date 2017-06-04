@@ -83,7 +83,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         controller: 'initial_review'
     })
     .when('/posts', {
-        templateUrl: 'posts.html',
+        templateUrl: 'views/posts.html',
         controller: 'posts'
     })
     //all category
