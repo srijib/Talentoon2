@@ -482,35 +482,35 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         // 	return def.promise ;
         //
         // },
-        // getCategoryWorkshop: function (id) {
-        //     //  var category_id= index;
-        //     // // console.log("category_id",category_id)
-        //     // console.log("workshop id", id)
-        //     var def = $q.defer();
-        //     $http({
-        //         url: 'http://localhost:8000/api/workshop/'+id,
-        //         method: 'GET',
-        //         data: id
-        //     }).then(function (res) {
-        //         console.log("single workshop from factory",res.data)
-        //         // console.log("user",res.data.user);
-        //         // console.log("enroll",res.data.enroll);
-        //         // console.log("single category from factory", res.data.workshop)
-        //
-        //         if (res) {
-        //             var data = localStorage.setItem("workshop_data", JSON.stringify(res.data.workshop));
-        //             def.resolve(res.data);
-        //
-        //         } else {
-        //             def.reject('there is no data ')
-        //         }
-        //
-        //     }, function (err) {
-        //         def.reject(err);
-        //     })
-        //     return def.promise;
-        //
-        // },
+        getCategoryWorkshop: function (id) {
+            //  var category_id= index;
+            // // console.log("category_id",category_id)
+            // console.log("workshop id", id)
+            var def = $q.defer();
+            $http({
+                url: 'http://localhost:8000/api/workshop/'+id,
+                method: 'GET',
+                data: id
+            }).then(function (res) {
+                console.log("single workshop from factory",res.data)
+                // console.log("user",res.data.user);
+                // console.log("enroll",res.data.enroll);
+                // console.log("single category from factory", res.data.workshop)
+
+                if (res) {
+                    var data = localStorage.setItem("workshop_data", JSON.stringify(res.data.workshop));
+                    def.resolve(res.data);
+
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
 
         isWorkshopCraetor: function (data) {
             //  var category_id= index;
@@ -636,7 +636,32 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             })
             return def.promise;
 
-        },
+        },    submitComment:function(comment,post_id){
+
+                var def = $q.defer();
+                var data={};
+                data={post_id,comment};
+
+                console.log("in posts comment",data);
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8000/api/comment',
+                    data: data,
+                }).then(function (data) {
+                    console.log("then in added comment of post", data)
+                    if (data) {
+                        def.resolve(data);
+                    } else {
+                        def.reject('there is no data ')
+                        // console.log("error",res.data)
+                    }
+
+                },function(err){
+                    def.reject(err);
+                })
+                return def.promise;
+
+            }
 
     }
 
