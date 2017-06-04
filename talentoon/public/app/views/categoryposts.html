@@ -28,30 +28,124 @@
                 </div>
         </div>
         <!-- END OF Side Bar -->
-        <div class="showPosts col-lg-8 col-lg-pull-4 col-md-8 col-md-pull-4 col-sm-8 col-sm-pull-4 col-xm-12" ng-repeat="post in categoryPosts">
+        <div class="showPosts col-lg-8 col-lg-pull-4 col-md-8 col-md-pull-4 col-sm-8 col-sm-pull-4 col-xm-12" >
+
+
+                <div class="recentPosts imageArticle" ng-repeat="post in categoryPosts track by $index">
 
 
 
-<!-- IF IMAGE -->
-            <IMAGE ng-if="post.media_type == 'image'">
 
-                <div class="recentPosts imageArticle">
+
+
+                    <h2>___------_____-----_____------_____----</h2>
+
+    <a href="#!/category/{{post.category_id}}/posts/{{post.id}}" class="btn btn-default" role="button" >details</a>
+
+                    <h2>___------_____-----_____------_____----</h2>
+
+
+
+
+
+                    <div class="UserComments">
+                        <div class="writePost">
+
+                            <form ng-submit="add_review($index)" name="review_form_{{$index}}" >
+                                <textarea style="width:100% ;height:100% ; font-size: 20px;" name="comment_{{$index}}" rows="5" ng-model="post.rev.comment" required></textarea>
+
+                                <div class="posting">
+                                    <button type="submit" class="btn btn-default" name="button_{{$index}}">Submit My Professional Review</button>
+                                </div>
+
+
+
+                                <input type="text" ng-model="post_id"  value="{{post.id}}">
+                                <div class="field" style="font-size: 20px;" >
+                                    <label>Points (1-10)</label>
+                                    <select name="level_{{$index}}" ng-model="post.rev.points" required>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+
+
+                            </form>
+
+
+                        </div>
+
+
+
+
+                        <!--nada category posts reviews-->
+                        <ul class="media-list" ng-repeat="review in allposts_mentorsreviews track by $index">
+
+                            <li class="media" ng-if="post.id == review.post_id" >
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img style="border-radius: 50px; width:40px;" class="media-object" src="http://localhost:8000/{{review.image}}">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{review.first_name}} {{review.last_name}}</h4>
+                                    <p style="font-size:16px;"> {{review.comment}}</p>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                        <!--nada category posts reviews-->
+                    </div>
+                    <div class="seeComments">
+                        <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
+                    </div>
+
+
+
+                    <h2>___------_____-----_____------_____----</h2>
+
+
+
+
                     <div class="userInfos">
                         <img src="http://localhost:8000/{{user.image}}" alt="">
                         <span>{{user.first_name}} {{user.last_name}}</span>
                         <span>{{post.created_at}}</span>
                     </div>
 
+
+
+
                     <div class="conatinerComment">
 
                         <div class="largePic">
-                            <img src="http://localhost:8000/{{post.media_url}}" alt="">
+                            <!-- IF IMAGE -->
+                            <IMAGE ng-if="post.media_type == 'image'" >
+                                <img src="http://localhost:8000/{{post.media_url}}" alt="">
+                            </IMAGE>
+                            <!-- IF VEDIO -->
+                            <VIDEO ng-if="post.media_type == 'video'">
+                                <video controls><source src="http://localhost:8000/{{post.media_url}}"></video>
+                            </VIDEO>
+                            <!-- IF AUDIO -->
+                            <AUDIO ng-if="post.media_type == 'audio'">
+                                <img src="Imgs/Website/5536c78cccd436f31c8c66732cee72d2.jpg" alt="">
+                            </AUDIO>
                         </div>
 
                         <div class="titleEdit row">
                             <div class="col-lg-8 title">
                                 <h3>{{post.title}}</h3>
-                                <input type="hidden" ng-model=post.post_id value="{{post.id}}"></input>
+                                <input type="hidden" ng-model=post.post_id  value="{{post.id}}"></input>
                             </div>
 
                             <div class="col-lg-4 edits ">
@@ -62,13 +156,16 @@
                         </div>
 
                         <div class="disc">
+                            <AUDIO ng-if="post.media_type == 'audio'">
+                                 <audio controls> <source src="http://localhost:8000/{{post.media_url}}"></audio>
+                            </AUDIO>
                             <p>{{post.description}}</p>
                         </div>
 
                         <div class="interactionUser">
                             <a>
                                 <i class="fa fa-heart" aria-hidden="true" ></i>
-                                <span class="badge">8</span>
+                                <span class="badge">{{post.like_count}}</span>
                             </a>
 
                             <a>
@@ -120,12 +217,23 @@
 
                         </div>
 
+
+
+
                         <div class="UserComments">
                             <div class="writePost">
-                                <textarea class="form-control" rows="3"></textarea>
+                                <!-- <textarea class="form-control" rows="3"></textarea>
                                 <div class="posting">
                                     <button type="button" class="btn btn-default">Comment</button>
+                                </div> -->
+
+                                <form ng-submit="add_comment($index)" name="comment_form_{{$index}}">
+                                <textarea class="form-control" name="comments_{{$index}}"  ng-model="post.comment" rows="3"></textarea>
+                                <input type="text" class="form-control" name="post_id" ng-model="comment.post_id"  ng-init="comment.post_id='{{post.id}}'" value="{{post.id}}">
+                                <div class="posting">
+                                    <button type="submit" class="btn btn-default" name="button_{{$index}}">Comment</button>
                                 </div>
+                                </form>
 
                             </div>
 
@@ -173,301 +281,11 @@
                         </div>
 
                     </div>
-
-                </div>
-            </IMAGE>
-            <hr>
-<!-- IF VEDIO -->
-<VEDIO ng-if="post.media_type == 'vedio'">
-
-            <div class="recentPosts videoArticle">
-                <div class="userInfos">
-                    <img src="http://localhost:8000/{{user.image}}" alt="">
-                    <span>{{user.first_name}} {{user.last_name}}</span>
-                    <span>{{post.created_at}}</span>
                 </div>
 
-                <div class="conatinerComment">
 
-                    <div class="largePic">
-                        <video controls><source src="http://localhost:8000/{{post.media_url}}"></video>
-                    </div>
-
-                    <div class="titleEdit row">
-                        <div class="col-lg-8 title">
-                            <h3>{{post.title}}</h3>
-                        </div>
-
-                        <div class="col-lg-4 edits ">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </div>
-
-                    </div>
-
-                    <div class="disc">
-                        <p>{{post.description}}</p>
-                    </div>
-
-                    <div class="interactionUser">
-                        <a>
-                            <i class="fa fa-heart" aria-hidden="true" ></i>
-                            <span class="badge">20</span>
-                        </a>
-
-                        <a>
-                            <i class="fa fa-commenting" aria-hidden="true"></i>
-                            <span class="badge">87</span>
-                        </a>
-
-
-                        <!--share -->
-                        <div id="socialHolder">
-                            <div id="socialShare" class="btn-group share-group">
-                                <a data-toggle="dropdown" class="btn btn-info">
-                                    <i class="fa fa-share-alt fa-inverse"></i>
-                                </a>
-                                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                            <i class="fa fa-envelope"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <div class="UserComments">
-                        <div class="writePost">
-                            <textarea class="form-control" rows="3"></textarea>
-                            <div class="posting">
-                                <button type="button" class="btn btn-default">Comment</button>
-                            </div>
-
-                        </div>
-
-                        <ul class="media-list">
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object" src="Imgs/Persons/face2.jpg">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Omar Mourad</h4>
-                                    <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
-
-
-
-                                </div>
-
-
-
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object" src="Imgs/Persons/face3.jpg">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Khaled Ali</h4>
-                                    <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
-
-
-                                </div>
-                            </li>
-
-                        </ul>
-
-
-
-                    </div>
-
-                    <div class="seeComments">
-                        <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
-                    </div>
-
-                </div>
-
-            </div>
-</VEDIO>
             <hr>
 
-
-<!-- IF AUDIO -->
-    <audio ng-if="post.media_type == 'audio'">
-
-            <div class="recentPosts imgArticleAudio">
-                <div class="userInfos">
-                    <img src="http://localhost:8000/{{user.image}}" alt="">
-                    <span>{{user.first_name}} {{user.last_name}}</span>
-                    <span>{{post.created_at}}</span>
-                </div>
-
-                <div class="conatinerComment">
-
-                    <div class="largePic">
-                        <img src="Imgs/Website/5536c78cccd436f31c8c66732cee72d2.jpg" alt="">
-                    </div>
-
-                    <div class="titleEdit row">
-                        <div class="col-lg-8 title">
-                            <h3>{{post.title}}</h3>
-                        </div>
-
-                        <div class="col-lg-4 edits ">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </div>
-
-                    </div>
-
-                    <div class="disc">
-
-                        <audio controls> <source src="http://localhost:8000/{{post.media_url}}"></audio>
-                            <p>{{post.description}}</p>
-                    </div>
-
-                    <div class="interactionUser">
-                        <a>
-                            <i class="fa fa-heart" aria-hidden="true" ></i>
-                            <span class="badge">20</span>
-                        </a>
-
-                        <a>
-                            <i class="fa fa-commenting" aria-hidden="true"></i>
-                            <span class="badge">87</span>
-                        </a>
-
-
-                        <!--share -->
-                        <div id="socialHolder">
-                            <div id="socialShare" class="btn-group share-group">
-                                <a data-toggle="dropdown" class="btn btn-info">
-                                    <i class="fa fa-share-alt fa-inverse"></i>
-                                </a>
-                                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                            <i class="fa fa-envelope"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <div class="UserComments">
-                        <div class="writePost">
-                            <textarea class="form-control" rows="3"></textarea>
-                            <div class="posting">
-                                <button type="button" class="btn btn-default">Comment</button>
-                            </div>
-
-                        </div>
-
-                        <ul class="media-list">
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object" src="Imgs/Persons/face2.jpg">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Omar Mourad</h4>
-                                    <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
-
-
-
-                                </div>
-
-
-
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object" src="Imgs/Persons/face3.jpg">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Khaled Ali</h4>
-                                    <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
-
-
-                                </div>
-                            </li>
-
-                        </ul>
-
-
-
-                    </div>
-
-                    <div class="seeComments">
-                        <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
-                    </div>
-
-                </div>
-
-            </div>
-</audio>
         </div>
 
     </div>

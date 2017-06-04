@@ -7,7 +7,7 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
     };
 
     return {
-        add_teacher:function(mentor_id){
+        add_teacher:function(mentor_id,teacher_email,teacher_name){
             console.log("in add teacher d5l", mentor_id)
         var def =$q.defer();
         $http({
@@ -23,9 +23,14 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
                 // def.resolve(res.data)
                 $http({
                     url:'http://localhost:8000/api/conference/add_teacher' ,
-                    method:'POST'
+                    method:'POST',
+                    data: {"mentor_id":mentor_id,"teacher_email":teacher_email,"teacher_name":teacher_name}
                 }).then(function(res){
-                    console.log("Response of ADD Teacher",res.data)
+                    console.log("Response of ADD Teacher",res)
+
+
+
+
                     if(res.data['@attributes'].status == "fail"){
                         console.log("Not able to insert with message ",res.data.error['@attributes'].msg)
                         // console.log(res)

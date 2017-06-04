@@ -29,112 +29,112 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         },
         getCategoryAllData:function(cat_id){
             console.log('factory cat cat_iddd',cat_id);
-  			var def =$q.defer();
-  			$http({
-  				url:'http://localhost:8000/api/category/'+cat_id,
-  				method:'GET'
-  			}).then(function(res){
-  		// 		console.log("response is" , res);
-  				if(res.data){
-  		     			def.resolve(res.data);
-  				}else{
-  					def.reject('there is no data ')
-  				}
+            var def =$q.defer();
+            $http({
+                url:'http://localhost:8000/api/category/'+cat_id,
+                method:'GET'
+            }).then(function(res){
+                // 		console.log("response is" , res);
+                if(res.data){
+                    def.resolve(res.data);
+                }else{
+                    def.reject('there is no data ')
+                }
 
-  			},function(err){
-  				def.reject(err);
-  			})
-  			return def.promise ;
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise ;
 
-  		},
+        },
         // getCategoryPosts:function(cat_id){
         //     // console.log('factory cat cat_id',cat_id);
-  // 			var def =$q.defer();
-  // 			$http({
-  // 				url:'http://localhost:8000/api/category/'+cat_id ,
-  // 				method:'GET'
-  // 			}).then(function(res){
-  // 				console.log("response is 3abet" , res);
-  // 				if(res.data.posts.length){
-  // 		     			def.resolve(res.data.posts);
-  // 				}else{
-  // 					def.reject('there is no data ')
-  // 				}
+        // 			var def =$q.defer();
+        // 			$http({
+        // 				url:'http://localhost:8000/api/category/'+cat_id ,
+        // 				method:'GET'
+        // 			}).then(function(res){
+        // 				console.log("response is 3abet" , res);
+        // 				if(res.data.posts.length){
+        // 		     			def.resolve(res.data.posts);
+        // 				}else{
+        // 					def.reject('there is no data ')
+        // 				}
         //
-  // 			},function(err){
-  // 				def.reject(err);
-  // 			})
-  // 			return def.promise ;
+        // 			},function(err){
+        // 				def.reject(err);
+        // 			})
+        // 			return def.promise ;
         //
-  // 		},
+        // 		},
         // getCategoryEvent:function(cat_id,event_id){
-  // 			var def =$q.defer();
-  // 			$http({
-  // 				url:'http://localhost:8000/api/categories/'+cat_id+'/events/'+event_id ,
-  // 				method:'GET'
-  // 			}).then(function(res){
-  // 				console.log("all events in factory " , res.data);
-  // 				if(res.data.posts.length){
-  // 		     			def.resolve(res.data.posts);
+        // 			var def =$q.defer();
+        // 			$http({
+        // 				url:'http://localhost:8000/api/categories/'+cat_id+'/events/'+event_id ,
+        // 				method:'GET'
+        // 			}).then(function(res){
+        // 				console.log("all events in factory " , res.data);
+        // 				if(res.data.posts.length){
+        // 		     			def.resolve(res.data.posts);
         //
-  // 				}else{
-  // 					def.reject('there is no data ')
-  // 				}
+        // 				}else{
+        // 					def.reject('there is no data ')
+        // 				}
         //
-  // 			},function(err){
-  // 				def.reject(err);
-  // 			})
-  // 			return def.promise ;
+        // 			},function(err){
+        // 				def.reject(err);
+        // 			})
+        // 			return def.promise ;
         //
-  // 		},
+        // 		},
         // getCategoryEvents:function(cat_id){
-  // 			var def =$q.defer();
-  // 			$http({
-  // 				url:'http://localhost:8000/api/categories/'+cat_id+'/events' ,
-  // 				method:'GET'
-  // 			}).then(function(res){
-  // 				console.log("all events in factory " , res.data);
-  // 				if(res.data.data.length){
-  // 		     			def.resolve(res.data.data);
+        // 			var def =$q.defer();
+        // 			$http({
+        // 				url:'http://localhost:8000/api/categories/'+cat_id+'/events' ,
+        // 				method:'GET'
+        // 			}).then(function(res){
+        // 				console.log("all events in factory " , res.data);
+        // 				if(res.data.data.length){
+        // 		     			def.resolve(res.data.data);
         //
-  // 				}else{
-  // 					def.reject('there is no data ')
-  // 				}
+        // 				}else{
+        // 					def.reject('there is no data ')
+        // 				}
         //
-  // 			},function(err){
-  // 				def.reject(err);
-  // 			})
-  // 			return def.promise ;
+        // 			},function(err){
+        // 				def.reject(err);
+        // 			})
+        // 			return def.promise ;
         //
-  // 		},
+        // 		},
         //
-        // getCategoryPost: function (id) {
-        //     console.log("post id", id)
-        //     var def = $q.defer();
-        //     $http({
-        //         url: 'http://localhost:8000/api/post/' + id,
-        //         method: 'GET',
-        //         data: id
-        //     }).then(function (res) {
-        //         // console.log("single post from factory",res.data.post)
-        //         console.log("single post from factory", res.data)
-        //
-        //         if (res) {
-        //             var data = localStorage.setItem("data", JSON.stringify(res.data.post));
-        //             // def.resolve(res.data.post);
-        //             def.resolve(res.data);
-        //
-        //
-        //         } else {
-        //             def.reject('there is no data ')
-        //         }
-        //
-        //     }, function (err) {
-        //         def.reject(err);
-        //     })
-        //     return def.promise;
-        //
-        // },
+        getCategoryPost: function (id) {
+            console.log("post id", id)
+            var def = $q.defer();
+            $http({
+                url: 'http://localhost:8000/api/post/' + id,
+                method: 'GET',
+                data: id
+            }).then(function (res) {
+                // console.log("single post from factory",res.data.post)
+                console.log("single post from factory", res.data)
+
+                if (res) {
+                    var data = localStorage.setItem("data", JSON.stringify(res.data.post));
+                    // def.resolve(res.data.post);
+                    def.resolve(res.data);
+
+
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
         subscribe: function (data) {
             // console.log("from factories CAT ID",category_id);
             // console.log("from factories subscriber_id",subscriber_id);
@@ -307,18 +307,18 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         },
 
 
-		addworkshop:function(workshopdata){
+        addworkshop:function(workshopdata){
             console.log('in factory addworkshop')
-			console.log(workshopdata);
-			console.log(workshopdata.category_id);
-			var def =$q.defer();
-			$http({
+            console.log(workshopdata);
+            console.log(workshopdata.category_id);
+            var def =$q.defer();
+            $http({
 
-				url:'http://localhost:8000/api/categories/'+workshopdata.category_id+'/workshops' ,
-				method:'POST',
-				data:workshopdata
+                url:'http://localhost:8000/api/categories/'+workshopdata.category_id+'/workshops' ,
+                method:'POST',
+                data:workshopdata
 
-			}).then(function(res){
+            }).then(function(res){
                 console.log('in add workshop w 7salaha success')
                 console.log("workshop",res.data);
                 $http({
@@ -342,23 +342,23 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 });
 
                 //////////////////////////////////////////////
-				console.log(res);
+                console.log(res);
                 console.log("length: ",res.data.length);
-				if(res.data){
+                if(res.data){
 
-					def.resolve(res.data)
-				}else{
+                    def.resolve(res.data)
+                }else{
                     console.log('w 7sal al error')
-					def.reject('there is no data ')
-				}
+                    def.reject('there is no data ')
+                }
 
-			},function(err){
-				// console.log(err);
-				def.reject(err);
-			})
-			return def.promise ;
+            },function(err){
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise ;
 
-		},
+        },
 
         addevent: function (eventdata) {
             var def = $q.defer();
@@ -382,7 +382,6 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             return def.promise;
 
         },
-
         complete_talent_profile: function (talent_data) {
 
             var def = $q.defer();
@@ -462,157 +461,103 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
             return def.promise;
         },
-
         // getCategoryWorkshops:function(index){
         //
-		// 	var def =$q.defer();
-		// 	$http({
-		// 		url:'http://localhost:8000/api/category/'+index ,
-		// 		method:'GET'
-		// 	}).then(function(res){
+        // 	var def =$q.defer();
+        // 	$http({
+        // 		url:'http://localhost:8000/api/category/'+index ,
+        // 		method:'GET'
+        // 	}).then(function(res){
         //         console.log("workshops_bassant",res);
-		// 		console.log("response is " , res.data.workshops);
-		// 		if(res.data.workshops){
-		//      			def.resolve(res.data.workshops);
-		// 		}else{
-		// 			def.reject('there is no data ')
-		// 		}
+        // 		console.log("response is " , res.data.workshops);
+        // 		if(res.data.workshops){
+        //      			def.resolve(res.data.workshops);
+        // 		}else{
+        // 			def.reject('there is no data ')
+        // 		}
         //
-		// 	},function(err){
-		// 		def.reject(err);
-		// 	})
-		// 	return def.promise ;
-        //
-		// },
-        // getCategoryWorkshop: function (id) {
-        //     //  var category_id= index;
-        //     // // console.log("category_id",category_id)
-        //     // console.log("workshop id", id)
-        //     var def = $q.defer();
-        //     $http({
-        //         url: 'http://localhost:8000/api/workshop/'+id,
-        //         method: 'GET',
-        //         data: id
-        //     }).then(function (res) {
-        //         console.log("single workshop from factory",res.data)
-        //         // console.log("user",res.data.user);
-        //         // console.log("enroll",res.data.enroll);
-        //         // console.log("single category from factory", res.data.workshop)
-        //
-        //         if (res) {
-        //             var data = localStorage.setItem("workshop_data", JSON.stringify(res.data.workshop));
-        //             def.resolve(res.data);
-        //
-        //         } else {
-        //             def.reject('there is no data ')
-        //         }
-        //
-        //     }, function (err) {
-        //         def.reject(err);
-        //     })
-        //     return def.promise;
+        // 	},function(err){
+        // 		def.reject(err);
+        // 	})
+        // 	return def.promise ;
         //
         // },
-        isWorkshopCraetor: function (data) {
-                        //  var category_id= index;
-                        // // console.log("category_id",category_id)
-                        // console.log("workshop id", id)
-                        var def = $q.defer();
-                        console.log("data",data)
-                        $http({
-                            url: 'http://localhost:8000/api/isWorkshopCraetor',
-                            method: 'POST',
-                            data: data
-                        }).then(function (res) {
-
-                            console.log("hnshof hal hwa y3rf ya3ml edit",res.data)
-                            // console.log("user",res.data.user);
-                            // console.log("enroll",res.data.enroll);
-                            // console.log("single category from factory", res.data.workshop)
-
-                            if (res) {
-
-                                def.resolve(res.data);
-
-                            } else {
-                                def.reject('there is no data ')
-                                console.log("hnshof hal hwa y3rf ya3ml edit fl error",res.data)
-                            }
-
-                        }, function (err) {
-                            def.reject(err);
-                        })
-                        return def.promise;
-
-                    },
-            editWorkshop: function (editable) {
-                console.log("in factory to edit workshop",editable.cat_id);
-                var def = $q.defer();
-                var id=editable.workshop_id;
-                // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
-                $http({
-                    url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/workshops/'+id+'/edit',
-                    // url:'http://172.16.2.239:8000/api/posts',
-                    method: 'GET'
-                    // data: id
-                }).then(function (res) {
-
-                    console.log('i tested',res.data);
-
-                    if (res.data) {
-                        def.resolve(res.data)
-                    } else {
-                        def.reject('there is no data ')
-                    }
-
-                }, function (err) {
-                    // console.log(err);
-                    def.reject(err);
-                })
-                return def.promise;
-
-
-            },
-
-        updatedworkshop:function (workshopdata) {
+        getCategoryWorkshop: function (id) {
+            //  var category_id= index;
+            // // console.log("category_id",category_id)
+            // console.log("workshop id", id)
             var def = $q.defer();
             $http({
-                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.category_id + '/workshops/'+workshopdata.id,
-                method: 'PUT',
-                data: workshopdata
-
+                url: 'http://localhost:8000/api/workshop/'+id,
+                method: 'GET',
+                data: id
             }).then(function (res) {
-                console.log("b3tna al update ensha2 allah ", res.data)
+                console.log("single workshop from factory",res.data)
+                // console.log("user",res.data.user);
+                // console.log("enroll",res.data.enroll);
+                // console.log("single category from factory", res.data.workshop)
 
                 if (res) {
+                    var data = localStorage.setItem("workshop_data", JSON.stringify(res.data.workshop));
+                    def.resolve(res.data);
 
-                    console.log("d5lna gwa al res if", res.data);
-                    def.resolve(res.data)
                 } else {
                     def.reject('there is no data ')
                 }
 
             }, function (err) {
-                // console.log(err);
                 def.reject(err);
             })
             return def.promise;
+
         },
-        deleteWorkshop:function (workshopdata) {
+
+        isWorkshopCraetor: function (data) {
+            //  var category_id= index;
+            // // console.log("category_id",category_id)
+            // console.log("workshop id", id)
             var def = $q.defer();
-            var id=workshopdata.workshop_id
+            console.log("data",data)
             $http({
-                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.cat_id + '/workshops/'+workshopdata.workshop_id,
-                method: 'DELETE',
-                data:id
-
-
+                url: 'http://localhost:8000/api/isWorkshopCraetor',
+                method: 'POST',
+                data: data
             }).then(function (res) {
-                console.log("b3tna al update ensha2 allah ", res.data)
 
+                console.log("hnshof hal hwa y3rf ya3ml edit",res.data)
+                // console.log("user",res.data.user);
+                // console.log("enroll",res.data.enroll);
+                // console.log("single category from factory", res.data.workshop)
                 if (res) {
 
-                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data);
+
+                } else {
+                    def.reject('there is no data ')
+                    console.log("hnshof hal hwa y3rf ya3ml edit fl error",res.data)
+                }
+
+            }, function (err) {
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
+        editWorkshop: function (editable) {
+            console.log("in factory to edit workshop",editable.cat_id);
+            var def = $q.defer();
+            var id=editable.workshop_id;
+            // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
+            $http({
+                url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/workshops/'+editable.workshop_id+'/edit',
+                // url:'http://172.16.2.239:8000/api/posts',
+                method: 'get',
+                data: id
+            }).then(function (res) {
+
+                console.log('i tested',res.data.myrequest);
+
+                if (res.data) {
                     def.resolve(res.data)
                 } else {
                     def.reject('there is no data ')
@@ -623,6 +568,30 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 def.reject(err);
             })
             return def.promise;
+
+
+        },
+        addcomment: function (commentdata) {
+            var def = $q.defer();
+            $http({
+                url: 'http://localhost:8000/api/comment',
+                method: 'POST',
+                data: commentdata
+
+            }).then(function (res) {
+                console.log("comment result",res);
+                if (res.data) {
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+
         },
         //////////////////post ajax////////////
         isPostCreator: function (data) {
@@ -856,29 +825,74 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         },
         //////////////////end event ajax////////////
 
-            addcomment: function (commentdata) {
-                var def = $q.defer();
-                $http({
-                    url: 'http://localhost:8000/api/comment',
-                    method: 'POST',
-                    data: commentdata
+        getMentorsReviews:function(){
+            var def = $q.defer();
+            console.log("in mentors reviews");
+            $http({
+                method: 'GET',
+                url: 'http://localhost:8000/api/get_post_reviews',
+            }).then(function (data_of_reviews) {
+                console.log("then in reviews of post", data_of_reviews.data.reviews)
+                if (data_of_reviews) {
+                    def.resolve(data_of_reviews.data.reviews);
+                } else {
+                    def.reject('there is no data ')
+                    // console.log("error",res.data)
+                }
 
-                }).then(function (res) {
-console.log("comment result",res);
-                    if (res.data) {
-                        def.resolve(res.data)
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
+        submitMentorReview:function(review){
+            var def = $q.defer();
+            console.log("in mentors add reviews",review);
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8000/api/add_mentor_post_review',
+                data: review,
+            }).then(function (data) {
+                console.log("then in added reviews of post", data)
+                if (data) {
+                    def.resolve(data);
+                } else {
+                    def.reject('there is no data ')
+                    // console.log("error",res.data)
+                }
+
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise;
+
+        },    submitComment:function(comment,post_id){
+
+                var def = $q.defer();
+                var data={};
+                data={post_id,comment};
+
+                console.log("in posts comment",data);
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8000/api/comment',
+                    data: data,
+                }).then(function (data) {
+                    console.log("then in added comment of post", data)
+                    if (data) {
+                        def.resolve(data);
                     } else {
                         def.reject('there is no data ')
+                        // console.log("error",res.data)
                     }
 
-                }, function (err) {
-                    // console.log(err);
+                },function(err){
                     def.reject(err);
                 })
                 return def.promise;
 
             }
-
 
     }
 

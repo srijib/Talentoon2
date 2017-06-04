@@ -28,6 +28,9 @@ Route::post('/betalent',[
 Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelatedcategory']], function () {
 
 });
+//nahala ana tla3t al posts bara 3shan al middleware mkansh by5lini 23ml edit "simona"
+Route::resource('categories.posts','PostsController');
+
 
 Route::resource('categories.posts','PostsController');
 
@@ -150,3 +153,7 @@ Route::post('/conference/add_teacher', 'VideoConferenceController@add_wiziq_teac
 Route::post('/conference/create_class', 'VideoConferenceController@create_wiziq_class');
 Route::post('/session_upload/{id}', 'UploadController@session_upload');
 Route::post('/workshop/{workshop_id}','WorkShopsController@createSession');
+
+Route::get('/SubscribedPost','PostsController@Subscribedposts');
+Route::get('/get_post_reviews', 'CategoriesController@get_post_reviews');
+Route::post('/add_mentor_post_review', 'CategoriesController@add_mentor_post_review');

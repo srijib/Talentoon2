@@ -23,4 +23,5 @@ class CategorySubscribeController extends Controller
      return $response;
 
 }
+
 }

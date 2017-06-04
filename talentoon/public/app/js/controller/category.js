@@ -1,4 +1,4 @@
-angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, $q, videoconference) {
+angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
 
 
 
@@ -39,19 +39,19 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     //     console.log(err);
     // });
 
-    // categories.getCategoryWorkshop($scope.workshop_id).then(function (data) {
-    //     console.log("inside controller", data)
-    //     $rootScope.category_workshop = data.workshop;
-    //     $rootScope.userId = data.user.id;
-    //     $rootScope.enroll = data.enroll;
-    //     $rootScope.media = data.session;
-	//
-    //     // $rootScope.category_post = localStorage.getItem("data");
-    //     console.log("single workshop from controller", $rootScope.category_workshop);
-	//
-    // }, function (err) {
-    //     console.log(err);
-    // });
+    categories.getCategoryWorkshop($scope.workshop_id).then(function (data) {
+        console.log("inside controller", data)
+        $rootScope.category_workshop = data.workshop;
+        $rootScope.userId = data.user.id;
+        $rootScope.enroll = data.enroll;
+        $rootScope.media = data.session;
+
+        // $rootScope.category_post = localStorage.getItem("data");
+        console.log("single workshop from controller", $rootScope.category_workshop);
+
+    }, function (err) {
+        console.log(err);
+    });
 
     // categories.getCategoryEvents($scope.cat_id).then(function (data) {
     //     var user_id = 1;
@@ -394,6 +394,37 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 
 
+    categories.getMentorsReviews().then(function(data){
+        console.log("inside all category posts controller Nadaaaaaaaaaaaaa" , data)
+        $scope.allposts_mentorsreviews = data;
+    } , function(err){
+        console.log(err);
+
+    });
+
+    $scope.rev={}
+
+    $scope.add_review = function(i) {
+
+        console.log("jjjj mina")
+        $scope.categoryPosts[i].post_id = $scope.post_id;
+        $scope.categoryPosts[i].mentor_id = 2;
+
+        console.log("ana hena ",$scope.categoryPosts[i]);
+
+        categories.submitMentorReview($scope.categoryPosts[i]).then(function(data){
+            console.log("saved success review",data)
+            // $location.url('/category/'+$scope.cat_id+'/posts');
+            $route.reload();
+        } , function(err){
+            console.log(err);
+
+        });
+    }
+
+
+
+
     //assuming we have user id and the role that define him as mentor
     //here we will get the mentor status to make toggle button in views
     // categories.getUser(1).then(function(data){
@@ -470,16 +501,18 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // });
 
 //----------------------------single----post---------------------------------------
-    // $scope.post_id = $routeParams['post_id'];
-    // var user_id = 1;
-    // categories.getCategoryPost($scope.post_id).then(function (data) {
-    //     // console.log("inside controller" , data)
-    //     $rootScope.category_post = data.post;
-    //     $rootScope.category_post_like_count = data.countlike;
-	//
-    // }, function (err) {
-    //     console.log(err);
-    // });
+    $scope.post_id = $routeParams['post_id'];
+    var user_id = 1;
+    categories.getCategoryPost($scope.post_id).then(function (data) {
+        // console.log("inside controller" , data)
+        $rootScope.category_post = data.post;
+        $rootScope.category_post_like_count = data.countlike;
+		$rootScope.comments = data.comments;
+
+
+    }, function (err) {
+        console.log(err);
+    });
 
 
 // subscribe in category
@@ -528,9 +561,12 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 //be teacher in wizIQ
     $scope.add_wiziq_teacher = function () {
-        var mentor_id = 1;
+        var mentor_id = $rootScope.cur_user.id;
+        var teacher_name = $rootScope.cur_user.first_name + $rootScope.cur_user.last_name;
+        var teacher_email = $rootScope.cur_user.email;
         console.log("Add Wiziq Teacher");
-        videoconference.add_teacher(mentor_id).then(function (data) {
+        videoconference.add_teacher(mentor_id,teacher_email,teacher_name).then(function (data) {
+
         }, function (err) {
             console.log("Add Wiziq Teacher ERROR section");
             console.log(err);
@@ -568,6 +604,18 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 		 });
 
 	   }}
+
+	   $scope.comment={}
+
+       $scope.add_comment = function(i) {
+           categories.submitComment($scope.categoryPosts[i].comment,$scope.categoryPosts[i].id).then(function(data){
+               console.log("saved success comment",data)
+               $route.reload();
+           } , function(err){
+               console.log(err);
+
+           });
+       }
 
     if(localStorage.getItem("wiziq_presenter_url")){
         $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");

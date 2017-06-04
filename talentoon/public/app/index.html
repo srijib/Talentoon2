@@ -35,6 +35,7 @@
 	<script type="text/javascript" src="js/controller/userprofile.js"></script>
 	<script type="text/javascript" src="js/controller/workshop.js"></script>
 	<script type="text/javascript" src="js/controller/videoconference.js"></script>
+	<script type="text/javascript" src="js/controller/posts.js"></script>
 
 
 
@@ -63,6 +64,7 @@
     <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="node_modules/aos/dist/aos.css">
 	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/talentProfile.css">
 	<link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
 	<link rel="stylesheet" href="css/categories.css">
@@ -146,7 +148,7 @@
                             <!--                            end dropmenu-->
 
                             <li><a href="#">Workshops</a></li>
-                            <li><a href="#!/categories">Posts</a></li>
+                            <li><a href="#!/posts">Posts</a></li>
 
                         </ul>
                         <!--end of main links-->
@@ -162,21 +164,6 @@
 
                         <!--                        nav right-->
                         <ul class="nav navbar-nav navbar-right">
-                            <!--                           span-->
-                            <span>
-                                <!--                               search bar-->
-                                <div class="search-bar">
-                                    <input type="text" placeholder="Search for category/friend" />
-                                </div>
-                                <!--                                end search bar-->
-                                <!--                                search-->
-                                <div class="search">
-                                    <div class="search-icon"></div>
-                                </div>
-                                <!--                                end search-->
-                            </span>
-                            <!--                         end  span-->
-
 
 							<!-- if logged in : -->
 							<logged ng-if="token">
@@ -190,20 +177,7 @@
 	                                </ul>
 	                            </li>
 	                            <!--                            end user-->
-	                            <!--                           notification-->
-	                            <li class="dropdown">
-	                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
-	                                    <i class="fa fa-bell" aria-hidden="true"></i>
-	                                </a>
-	                                <ul class="dropdown-menu notemenu">
-	                                    <a><img src="Persons/face2.jpg">Ahmed Fouad<span>comment on</span><p>your post</p></a>
-	                                    <ul role="separator" class="divider">
-	                                    </ul>
-	                                    <a><img src="Persons/face4.jpg">Ahmed Fouad<span>likes your</span><p>video</p></a>
-
-	                                </ul>
-	                            </li>
 							</logged>
 
 							<notlogged ng-if="! token">
@@ -211,12 +185,12 @@
                                 <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#signup">Sign Up</button>
 							</notlogged>
 							<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">en<span class="caret"></span></a>
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">en<span class="caret"></span></a>
 
                                 <!--                                drop menu for categories-->
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">en</a></li>
-                                    <li><a href="#">ar</a></li>
+                                    <li><a ng-click='lang("en")'>en</a></li>
+                                    <li><a ng-click='lang("ar")'>ar</a></li>
                                 </ul>
 
                                 <!--                                end drop menu for categories-->

@@ -42,8 +42,8 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     },
         FOOTER: {
           LINKS: 'روابط',
-          STAY_TUNED: 'ابقى معنا',
-          CONTACT_US: 'اتصل بنا',
+          STAY_TUNED: 'خليك معانا ',
+          CONTACT_US: 'كلمنا',
       },
         ONE_CATEGORY: {
             SUBSCRIBE: 'تابع',
@@ -61,41 +61,9 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
       .translations('en', translations_en)
       .translations('ar', translations_ar)
       .preferredLanguage('en');
+    //   .preferredLanguage(localStorage.getItem('language'));
 
 
-                // .when('/category/createEvent', {
-                //     templateUrl: 'views/post.html',
-                //     controller: 'homec'
-                // })
-//                     .when('/post/:post_id', {
-//                     templateUrl: 'views/post.html',
-//                     controller: 'homec'
-//                 })
-//
-//                 .when('/category/:category_id/createEvent', {
-//                     templateUrl: 'views/createEvent.html',
-//                     controller: 'eventcontroller'
-//                 })
-//
-//                 .when('/initial_review', {
-//                     templateUrl: 'views/initial_review.html',
-//                     controller: 'initial_review'
-//                 })
-//                 .when('/posts', {
-//                     templateUrl: 'posts.html',
-//                     controller: 'posts'
-//                 })
-//    all category
-//                 .when('/categories', {
-//                     templateUrl: 'views/categories.html',
-//                     controller: 'categories',
-//                     resolve: {
-//
-//                 resolvedCategory: function (categories) {
-//                     return categories.getAllCategory().then(function (res) {
-//                         return res;
-//                     });
-//                 },
     $routeProvider.when('/', {
         templateUrl: 'views/home.html',
         controller: 'homec'
@@ -116,7 +84,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         controller: 'initial_review'
     })
     .when('/posts', {
-        templateUrl: 'posts.html',
+        templateUrl: 'views/posts.html',
         controller: 'posts'
     })
     //all category

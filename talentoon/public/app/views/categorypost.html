@@ -19,11 +19,11 @@
 
                           <!-- <div ng-if="status != 1 "> -->
                           <div ng-if="userstatu != 1">
-                            <a href="" class="interactions" ng-click="likepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">like</span><i class="fa fa-heart" aria-hidden="true"></i>  <span class="badge">{{category_post_like_count.liked_count}}</span></a>
+                            <a href="" class="interactions" ng-click="likepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">like</span><i class="fa fa-heart" aria-hidden="true"></i>  <span class="badge" style="font-size:16px">{{category_post.like_count}}</span></a>
                            </div>
                            <!-- <div ng-if="status == 1 "> -->
                            <div ng-if="userstatu == 1">
-                             <a href="" class="interactions" ng-click="dislikepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">dislike</span><i class="fa fa-heart" aria-hidden="true"></i>  <span class="badge">{{category_post_like_count.liked_count}}</span></a>
+                             <a href="" class="interactions" ng-click="dislikepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">dislike</span><i class="fa fa-heart" aria-hidden="true"></i>  <span class="badge">{{category_post.like_count}}</span></a>
                             </div>
                             <a href="#" class="interactions">  <i class="fa fa-commenting" aria-hidden="true"></i><span class="badge">35</span></a>
                             <!-- </div> -->
@@ -42,6 +42,7 @@
             <form ng-submit="submitted=true ; newcomment(addcomment.$valid)" name="addcomment"  novalidate>
             <textarea class="form-control"name="comment"  ng-model="comment.comment" rows="3"></textarea>
             <input type="hidden" class="form-control" name="post_id" ng-model="comment.post_id" value="{{category_post.id}}">
+
             <div class="posting">
                 <button type="submit" class="btn btn-default">Comment</button>
             </div>
