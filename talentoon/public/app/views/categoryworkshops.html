@@ -16,6 +16,8 @@
       <input type="hidden" ng-model=workshop.post_id value="{{workshop.id}}"></input>
     </div>
     <a href="#!/category/{{workshop.category_id}}/workshops/{{workshop.id}}" class="btn btn-default" role="button" >details</a>
+    <a ng-click="editWorkshop(workshop.id,workshop.category_id)" class="btn btn-default" role="button" >edit</a>
+    <a ng-click="deleteWorkshop(workshop.id,workshop.category_id)" class="btn btn-default" role="button" >delete</a>
 
   </div>
 </div>

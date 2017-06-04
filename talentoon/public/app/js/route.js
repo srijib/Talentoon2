@@ -83,7 +83,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         controller: 'initial_review'
     })
     .when('/posts', {
-        templateUrl: 'posts.html',
+        templateUrl: 'views/posts.html',
         controller: 'posts'
     })
     //all category
@@ -119,10 +119,28 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
 
 
 
+//add post
+                .when('/category/:category_id/addpost', {
+                    templateUrl: 'views/addpost.html',
+                    controller: 'addpost'
+                })
+// add workshop
+                .when('/category/:category_id/addworkshop', {
+                    templateUrl: 'views/addworkshop.html',
+                    controller: 'addworkshop'
+                })
+//add event
+//edit workshopp
+            .when('/category/:category_id/workshops/:workshop_id/editworkshop', {
+                templateUrl: 'views/editworkshop.html',
+                controller: 'oneCategory'
+            })
+
         //user choose to be a talent under a certain category
         .when('/category/betalent/:category_id/:user_id', {
             controller: 'talents'
         })
+
 
 
 
