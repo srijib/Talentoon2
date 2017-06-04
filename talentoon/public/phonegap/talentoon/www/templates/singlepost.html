@@ -32,11 +32,11 @@
 
 
                           <div ng-if="userstatu != 1">
-                            <a href="" class="interactions "style="color:#6A0C38" ng-click="likepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">like</span><i class="ion-heart" aria-hidden="true"></i>  <span class="badge" style="color:#6A0C38">{{category_post_like_count.liked_count}}</span></a>
+                            <a href="" class="interactions "style="color:#6A0C38" ng-click="likepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">like</span><i class="ion-heart" aria-hidden="true"></i>  <span class="badge" style="color:#6A0C38">{{category_post.like_count}}</span></a>
                            </div>
 
                            <div ng-if="userstatu == 1">
-                             <a href="" class="interactions " ng-click="dislikepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">dislike</span><i class="ion-heart royal" aria-hidden="true"></i>  <span class="badge">{{category_post_like_count.liked_count}}</span></a>
+                             <a href="" class="interactions " ng-click="dislikepost(category_post.id,category_post.user_id)" ng-controller="post"><span  style="font-size: 17px;">dislike</span><i class="ion-heart royal" aria-hidden="true"></i>  <span class="badge">{{category_post.like_count}}</span></a>
                             </div>
 
                 </div>
