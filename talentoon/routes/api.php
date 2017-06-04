@@ -26,9 +26,9 @@ Route::post('/betalent',[
     'middleware'=> 'ability:audience,permission:be-talent']);
 
 Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelatedcategory']], function () {
-Route::resource('categories.posts','PostsController');
-});
 
+});
+Route::resource('categories.posts','PostsController');
 
 
 //Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
