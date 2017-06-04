@@ -26,6 +26,7 @@ class WorkShopsController extends Controller
         $data = DB::table('workshops')
             ->join('users', 'users.id', '=', 'workshops.mentor_id')
             ->select('workshops.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
+            -where(['workshops.is_approved','=',1])
             ->get();
 //
         return response()->json(['msg1'=>$data]);
@@ -186,7 +187,7 @@ class WorkShopsController extends Controller
           ->join('categories', 'workshops.category_id', '=', 'categories.id')
           ->join('users', 'users.id', '=', 'workshops.mentor_id')
           ->select('workshops.*', 'categories.title as category_title','users.first_name as first_name','users.last_name as last_name','users.first_name as first_name','users.image as image')
-          ->where("workshops.id",$workshop_id)
+          ->where([["workshops.id",$workshop_id],[['workshops.is_approved','=',1]]])
           ->get()->first();
 
           $capacity=$workshop->max_capacity;

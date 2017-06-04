@@ -73,6 +73,33 @@ sharepost:function(data){
   })
   return def.promise ;
 
+},
+getSubscribePosts: function () {
+
+    var def = $q.defer();
+    $http({
+        url: 'http://localhost:8000/api/SubscribedPost',
+        // url:'json/categories.json',
+        method: 'GET'
+
+    }).then(function (res) {
+        console.log("subscribe posts",res.data);
+        if (res.data) {
+            // if(res.data.length){
+            def.resolve(res.data)
+            // def.resolve(res.data)
+
+
+        } else {
+            def.reject('there is no data ')
+        }
+
+    }, function (err) {
+        // console.log(err);
+        def.reject(err);
+    })
+    return def.promise;
+
 }
 
 }})

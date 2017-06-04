@@ -344,16 +344,16 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // });
 
 //----------------------------single----post---------------------------------------
-    // $scope.post_id = $routeParams['post_id'];
-    // var user_id = 1;
-    // categories.getCategoryPost($scope.post_id).then(function (data) {
-    //     // console.log("inside controller" , data)
-    //     $rootScope.category_post = data.post;
-    //     $rootScope.category_post_like_count = data.countlike;
-	//
-    // }, function (err) {
-    //     console.log(err);
-    // });
+    $scope.post_id = $routeParams['post_id'];
+    var user_id = 1;
+    categories.getCategoryPost($scope.post_id).then(function (data) {
+        // console.log("inside controller" , data)
+        $rootScope.category_post = data.post;
+        $rootScope.category_post_like_count = data.countlike;
+
+    }, function (err) {
+        console.log(err);
+    });
 
 
 // subscribe in category

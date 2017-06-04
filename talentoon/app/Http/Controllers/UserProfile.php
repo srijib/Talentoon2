@@ -42,11 +42,25 @@ return response()->json(['status' => 1,
   public function userposts(Request $request){
 
     $user= JWTAuth::parseToken()->toUser();
+
     $post = DB::table('posts')
-        ->join('users', 'posts.user_id', '=','users.id' )
-        ->select('posts.*')
-        ->where("posts.user_id",$user->id)
-        ->get();
+    // ->join('users', 'posts.user_id', '=','users.id' )
+    ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id')
+        ->leftJoin('likeables', function($join)
+              {
+                  $join->on('posts.id','=','likeables.likeable_id')
+                  ->where('likeables.liked', '=', '1');
+              })
+              ->where("posts.user_id",$user->id)
+              ->groupBy('posts.id')
+                ->get();
+//
+// select posts.id, posts.title, count(likeables.id) like_count from posts left join likeables on
+//  likeables.likeable_id = posts.id and likeables.liked = 1 group by posts.id
+
+
+
+
 
     return response()->json(['status' => 1,
                 'message' => 'user data send successfully',
@@ -55,33 +69,34 @@ return response()->json(['status' => 1,
                 'last_name'=>$user->last_name,
                 'image'=>$user->image,
                 'post'=>$post
+                // 'count'=>$countlike
+
               ]);
 
+        }
 
-  }
+
+
+
+
+
+
   public function displayShared(){
 
-      $categories_id=DB::table('subscribers')
-          ->select('subscribers.category_id')
-          ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1]])
-          ->get();
-          $arr=[];
-          for ($i=0; $i <count($categories_id) ; $i++) {
-              array_push($arr,$categories_id[$i]->category_id);
-          }
+    //   $categories_id=DB::table('subscribers')
+    //       ->select('subscribers.category_id')
+    //       ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1]])
+    //       ->get();
+    //       $arr=[];
+    //       for ($i=0; $i <count($categories_id) ; $i++) {
+    //           array_push($arr,$categories_id[$i]->category_id);
+    //       }
 
       $user= JWTAuth::parseToken()->toUser();
       $post_ids= DB::table('shares')
           ->select('shares.post_id')
           ->where("shares.user_id",$user->id)
           ->get();
-
-          $posts = DB::table('posts')
-              ->join('users', 'posts.user_id', '=', 'users.id')
-              ->select('posts.*','users.*')
-            //   ->where("posts.user_id",$user->id)
-              ->whereIn("posts.category_id", $arr)
-              ->get();
 
       $arr=[];
       for ($i=0; $i <count($post_ids) ; $i++) {
@@ -91,10 +106,11 @@ return response()->json(['status' => 1,
       $shares = DB::table('posts')
           ->join('users', 'posts.user_id', '=', 'users.id')
           ->select('posts.*','users.*')
-        //   ->where("posts.user_id",$user->id)
+
           ->whereIn("posts.id", $arr)
+
           ->get();
-         
+
     return response()->json(['status' => 1,
                       'message' => 'posts send successfully',
                       'shares'=>$shares
