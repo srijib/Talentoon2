@@ -13,6 +13,7 @@ class CategoryMentorService
 
     public function beMentor($mentor_data,$mentor_id){
 
+
 //        dd($mentor_id);
     $rules = [
 //        $mentor_data['id'] => 'required|unique:category_mentors',
@@ -40,7 +41,7 @@ class CategoryMentorService
 
         $mentor = DB::table('category_mentors')
             ->where('mentor_id', '=', $mentor_id)
-            ->where('category_id', '=', $mentor_data->category_id)
+            ->where('category_id', '=', $mentor_data['category_id'])
             ->first();
         if (is_null($mentor)) {
 

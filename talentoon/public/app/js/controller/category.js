@@ -403,8 +403,11 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 //be teacher in wizIQ
     $scope.add_wiziq_teacher = function () {
         var mentor_id = $rootScope.cur_user.id;
+        var teacher_name = $rootScope.cur_user.first_name + $rootScope.cur_user.last_name;
+        var teacher_email = $rootScope.cur_user.email;
         console.log("Add Wiziq Teacher");
-        videoconference.add_teacher(mentor_id).then(function (data) {
+        videoconference.add_teacher(mentor_id,teacher_email,teacher_name).then(function (data) {
+
         }, function (err) {
             console.log("Add Wiziq Teacher ERROR section");
             console.log(err);

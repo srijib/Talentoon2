@@ -15,12 +15,25 @@ class UserProfile extends Controller
  public function index(Request $request){
 
 $user= JWTAuth::parseToken()->toUser();
+
+
+$total_mentor_reviews_points = DB::table('mentor_reviews')
+     ->join('posts', 'posts.id', '=', 'mentor_reviews.post_id')
+     ->join('users', 'posts.user_id', '=', 'users.id')
+     ->where('posts.user_id', '=', 1)
+    ->select('posts.user_id',DB::raw('sum(points) as points'))
+     ->groupBy('posts.user_id')
+     ->get();
+
+
 return response()->json(['status' => 1,
                     'message' => 'user data send successfully',
                   'user_id'=>$user->id,
                 'first_name'=>$user->first_name,
                 'last_name'=>$user->last_name,
                 'image'=>$user->image,
+                'points' => $total_mentor_reviews_points,
+
               ]);
 
 
