@@ -2,10 +2,13 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
 
   user.userprofile().then(function(data){
       $scope.userprofile=data.data;
-      $scope.user_points_from_mentors_reviews = $scope.userprofile.points[0].points;
-      $scope.user_level = getuserlevel($scope.userprofile.points[0].points);
-      console.log("categories array",$scope.userprofile.points[0]);
-      console.log("user profile",$scope.userprofile);
+      $scope.user_points_from_mentors_reviews = $scope.userprofile.points_number;
+      $scope.reward_image = $scope.userprofile.reward_image;
+      $scope.level = $scope.userprofile.level;
+
+      // $scope.user_level = getuserlevel($scope.userprofile.points[0].points);
+      // console.log("user profile pointssss are ",$scope.userprofile.points[0]);
+      console.log("user profile is",$scope.userprofile);
 	} , function(err){
 		console.log(err);
 	});
