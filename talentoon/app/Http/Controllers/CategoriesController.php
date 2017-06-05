@@ -78,7 +78,7 @@ class CategoriesController extends Controller
 
         $posts = DB::table('posts')
         ->join('users', 'posts.user_id', '=','users.id' )
-        ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id,users.last_name,users.first_name,users.image as user_image')
+        ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id,users.last_name,users.first_name,users.image as user_image,users.id as user_id')
             ->leftJoin('likeables', function($join)
                   {
                       $join->on('posts.id','=','likeables.likeable_id')
