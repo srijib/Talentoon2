@@ -25,7 +25,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         $scope.categoryWorkshops = data.workshops;
         $rootScope.cur_user = data.cur_user;
         $scope.category_details = data.category_details;
-
     }, function (err) {
         console.log(err);
     });

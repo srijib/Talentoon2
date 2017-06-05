@@ -1,4 +1,3 @@
-
 angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translateProvider', function ($routeProvider, $httpProvider, $translateProvider) {
     var translations_en = {
       DESCOVER_MORE: 'Discover More',
@@ -82,6 +81,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     .when('/initial_review', {
         templateUrl: 'views/initial_review.html',
         controller: 'initial_review'
+    })
+    .when('/competitions', {
+        templateUrl: 'views/competitions.html',
+        controller: 'competitions'
     })
     .when('/posts', {
         templateUrl: 'views/posts.html',
@@ -187,12 +190,8 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'oneCategory'
         })
 
-        .when('/category/:category_id/events', {
-            templateUrl: 'views/categorypost.html',
-            controller: 'oneCategory'
-        })
         .when('/category/:category_id/events/:event_id', {
-            templateUrl: 'views/categorypost.html',
+            templateUrl: 'views/categoryevent.html',
             controller: 'oneCategory'
         })
 
@@ -230,6 +229,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         .when('/category/:category_id/workshops/:workshop_id/createSession', {
             templateUrl: 'views/createsession.html',
             controller: 'addsession'
+        })
+        .when('/profile/:user_id', {
+            templateUrl: 'views/userprofile.html',
+            controller: 'userprofile'
         })
 
     $httpProvider.interceptors.push(['$q', '$location', function ($q, $location) {

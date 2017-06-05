@@ -1,4 +1,4 @@
-angular.module('myApp').controller("userprofile", function ($scope, $http, user, $routeParams,$location) {
+angular.module('myApp').controller("userprofile", function ($rootScope,$route,$scope, $http, user, $routeParams,$location) {
 
   user.userprofile().then(function(data){
       $scope.userprofile=data.data;
@@ -15,6 +15,16 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
   user.userposts().then(function(data){
      console.log(data.data);
     $scope.allPosts=data.data.allPosts;
+    if(data.data.follower==null){
+        $scope.follower=0;
+    }else{
+    $scope.follower=data.data.follower.followers_count
+    }
+    if(data.data.following==null){
+        $scope.following=0;
+    }else{
+        $scope.following=data.data.following.following_count
+    }
     // $scope.userinfo=data.data;
         console.log("user profile posts MINAAA",data.data.allPosts);
         // console.log("user profile info",$scope.userinfo);
@@ -44,6 +54,65 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
   // } , function(err){
   //   console.log(err);
   // });
+  $scope.user_id = $routeParams['user_id'];
+
+  user.user($scope.user_id).then(function(data){
+     console.log(data.data);
+    $scope.userposts=data.data.allPosts;
+    $scope.user=data.data.user;
+    $scope.country=data.data.country;
+    $scope.status=data.data.follow;
+    if(data.data.follower==null){
+        $scope.follower=0;
+    }else{
+    $scope.follower=data.data.follower.followers_count
+    }
+    if(data.data.following==null){
+        $scope.following=0;
+    }else{
+        $scope.following=data.data.following.following_count
+    }
+    // $scope.following=data.data.following
 
 
+    console.log("eldataaaaa",$scope.following);
+    // $scope.userinfo=data.data;
+        console.log("user profile posts MINAAA",data.data.follow);
+
+  } , function(err){
+    console.log(err);
+
+  });
+  $scope.follow = function(following_id) {
+
+  // var user_id=user_id;
+
+  var obj={following_id}
+  console.log(obj);
+  		user.follow(obj).then(function(data){
+  			console.log(data);
+            $route.reload();
+
+  		} , function(err){
+  			console.log(err);
+
+  		});
+
+}
+$scope.unfollow = function(following_id) {
+
+// var user_id=user_id;
+
+var obj={following_id}
+console.log(obj);
+      user.unfollow(obj).then(function(data){
+          console.log(data);
+          $route.reload();
+
+      } , function(err){
+          console.log(err);
+
+      });
+
+}
 })

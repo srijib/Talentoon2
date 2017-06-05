@@ -101,7 +101,15 @@ Route::get('/userprofile',[
     Route::get('/userprofile/displayShared',[
             'uses'=>'UserProfile@displayShared',
             'middleware'=> 'jwt.auth']);
-
+Route::get('/userprofile/{post_id}',[
+    'uses'=>'UserProfile@show',
+    'middleware'=> 'jwt.auth']);
+Route::post('/userprofile/follow',[
+    'uses'=>'UserProfile@follow',
+    'middleware'=> 'jwt.auth']);
+Route::post('/userprofile/unfollow',[
+    'uses'=>'UserProfile@unfollow',
+    'middleware'=> 'jwt.auth']);
 Route::post('/categorytalent/store','CategoryTalentController@store');
 
 
