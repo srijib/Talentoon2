@@ -58,9 +58,7 @@
                                     <button type="submit" class="btn btn-default" name="button_{{$index}}">Submit My Professional Review</button>
                                 </div>
 
-
-
-                                <input type="text" ng-model="post_id"  value="{{post.id}}">
+                                <input type="hidden" ng-model="post_id"  value="{{post.id}}">
                                 <div class="field" style="font-size: 20px;" >
                                     <label>Points (1-10)</label>
                                     <select name="level_{{$index}}" ng-model="post.rev.points" required>
