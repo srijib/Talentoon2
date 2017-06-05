@@ -8,9 +8,7 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
       console.log("user profile",$scope.userprofile);
 	} , function(err){
 		console.log(err);
-
 	});
-
 
   user.userposts().then(function(data){
      console.log(data.data);
@@ -24,7 +22,16 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
 
   });
   user.displayShared().then(function(data){
-     console.log("shareeeeeeeeees",data.data.shares);
+     console.log("shares",data.data.shares);
+     $scope.allPosts = data.data.shares.concat($scope.userposts);
+     console.log('all postssssssssssssssssssssssssssssssss',$scope.allPosts);
+
+        $scope.allPosts.sort(function(a,b){
+            return new Date(b.created_at) - new Date(a.created_at);
+        });
+        console.log('all postssssssssssssssssssssssssssssssss after sort',$scope.allPosts);
+
+
      $scope.usershare=data.data.shares;
     // $scope.userinfo=data.data;
     //     console.log("user profile posts",$scope.userposts);
@@ -32,7 +39,6 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
 
   } , function(err){
     console.log(err);
-
   });
 
 
@@ -86,4 +92,3 @@ function getuserlevel(points){
     return level;
 
 }
-

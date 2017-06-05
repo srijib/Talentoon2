@@ -1,0 +1,55 @@
+<div class="container" >
+
+    <!-- Form Start -->
+    <form ng-submit="submit_post_file()" name="form" role="form" enctype="multipart/form-data">
+        <input name="post_file" ng-model="editable_post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+        <!--<input type="submit" id="submit_file" value="Submit" />-->
+        <br/>
+        <img ng-src="{{editable_post.file}}" style="width:300px;">
+    </form>
+    <!-- Form End -->
+
+</div>
+
+
+<!-- // na2s upload + submit -->
+
+
+<div class="container">
+    <div class="createPost col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
+        <form ng-submit="submitted=true ; saveupdatedpost(editpost.$valid)" name="editpost"  novalidate >
+            <input type="text" class="form-control" placeholder="Post title" name="title" required ng-model="editable_post.title" >
+            <p class="error" ng-if="editpost.title.$error.required && submitted" >please enter your post title</p>
+
+            <textarea class="form-control" rows="9" placeholder="Write your post here" name="description" required ng-model="editable_post.description"></textarea>
+            <p class="error" ng-if="editpost.description.$error.required && submitted" >please enter your post description</p>
+
+            <input type="hidden" name="category_id"  ng-model="editable_post.category_id" class="form-control" value="{{cat_id}}">
+
+            <!--profile image-->
+            <!--<i  class="fa fa-paper-plane" aria-hidden="true"></i>-->
+                <button type="submit" >Save</button>
+            <div class="row">
+                <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files">
+                </input>
+                <div class ="icons col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <input type="file" name="img[]" class="file">
+                        <div class="input-group col-xs-12">
+			                <span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">
+			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
+			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-video-camera" aria-hidden="true"></i></button>
+			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-headphones" aria-hidden="true"></i></button>
+			                </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="wpost  col-lg-6 col-md-6 col-sm-6">
+                    <!--<a class= "text-right "> <i  class="fa fa-paper-plane" aria-hidden="true"></i>-->
+                        <!--<button type="submit" >Save</button></a>-->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
