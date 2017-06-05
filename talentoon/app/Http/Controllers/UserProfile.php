@@ -14,7 +14,6 @@ class UserProfile extends Controller
 
  public function index(Request $request){
      $user= JWTAuth::parseToken()->toUser();
-
 //mentor review points
 $total_mentor_reviews_points = DB::table('mentor_reviews')
      ->join('posts', 'posts.id', '=', 'mentor_reviews.post_id')
@@ -303,6 +302,5 @@ $points = $total_mentor_reviews_points[0]->points;
   //                     'shares'=>$shares
   //                   ]);
   // }
-
 
 }

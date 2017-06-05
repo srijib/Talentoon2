@@ -6,7 +6,7 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
             //console.log("naaaaahla");
             var def = $q.defer();
             $http({
-                url: 'http://172.16.3.77:8000/api/signup',
+                url: 'http://192.168.6.4:8000/api/signup',
                 method: 'POST',
                 data: userdata
             }).then(function (res) {
@@ -27,7 +27,7 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
             console.log(userdata);
             var def = $q.defer();
             $http({
-                url: 'http://172.16.3.77:8000/api/login',
+                url: 'http://192.168.6.4:8000/api/login',
                 method: 'POST',
                 data: userdata
 
@@ -54,7 +54,7 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
             console.log('nahla  ')
             var def = $q.defer();
             $http({
-                url:'http://172.16.3.77:8000/api/countries',
+                url:'http://192.168.6.4:8000/api/countries',
                 method: 'GET'
 
             }).then(function (res) {
@@ -77,7 +77,7 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
 
             var def = $q.defer();
             $http({
-                url: 'http://172.16.3.77:8000/api/userprofile',
+                url: 'http://192.168.6.4:8000/api/userprofile',
                 headers:{
               'Authorization':'Bearer'+ $rootScope.token
                  },
@@ -106,7 +106,7 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
 
             var def = $q.defer();
             $http({
-                url: 'http://172.16.3.77:8000/api/userprofile/userposts',
+                url: 'http://192.168.6.4:8000/api/userprofile/userposts',
                 headers:{
               'Authorization':'Bearer'+ $rootScope.token
                  },
