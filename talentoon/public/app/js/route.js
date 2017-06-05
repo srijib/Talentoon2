@@ -213,7 +213,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'oneCategory'
         })
         .when('/category/:category_id/posts', {
-            templateUrl: 'views/categoryevents.html',
+            templateUrl: 'views/categoryposts.html',
             controller: 'oneCategory'
         })
 

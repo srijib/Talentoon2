@@ -14,8 +14,8 @@ class UserProfile extends Controller
 
  public function index(Request $request){
 
-    $user= JWTAuth::parseToken()->toUser();
 
+     $user= JWTAuth::parseToken()->toUser();
     //mentor review points
     $total_mentor_reviews_points = DB::table('mentor_reviews')
          ->join('posts', 'posts.id', '=', 'mentor_reviews.post_id')
@@ -149,6 +149,8 @@ class UserProfile extends Controller
          }
 
 
+
+
          $rewardimage = $rewardimage[0]->$levelname;
 
          return response()->json(['status' => 1,
@@ -163,16 +165,16 @@ class UserProfile extends Controller
                     'level' => $level
                   ]);
 
-
   }
 
   public function userposts(Request $request){
 
     $user= JWTAuth::parseToken()->toUser();
 
-    $post = DB::table('posts')
-    // ->join('users', 'posts.user_id', '=','users.id' )
-    ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id')
+    $my_posts = DB::table('posts')
+    ->join('users', 'posts.user_id', '=','users.id' )
+    ->selectRaw('posts.*,cast(posts.created_at as date) as formatted_created_at,count(likeables.id) as like_count,posts.id,users.first_name,users.last_name,users.image')
+    // ->join('users', 'posts.user_id', '=', 'users.id')
         ->leftJoin('likeables', function($join)
               {
                   $join->on('posts.id','=','likeables.likeable_id')
@@ -181,11 +183,34 @@ class UserProfile extends Controller
               ->where("posts.user_id",$user->id)
               ->groupBy('posts.id')
                 ->get();
+
+    $post_ids= DB::table('shares')
+        ->select('shares.post_id')
+        ->where("shares.user_id",$user->id)
+        ->get();
+
+    $arr=[];
+    for ($i=0; $i <count($post_ids) ; $i++) {
+        array_push($arr,$post_ids[$i]->post_id);
+    }
+
+   $shares = DB::table('posts')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->selectRaw('posts.* , cast(posts.created_at as date) as formatted_created_at , users.first_name , users.last_name , users.image')
+        ->whereIn("posts.id", $arr)
+        ->get();
+
 //
 // select posts.id, posts.title, count(likeables.id) like_count from posts left join likeables on
 //  likeables.likeable_id = posts.id and likeables.liked = 1 group by posts.id
 
+    $allPosts = array_merge($my_posts->toArray(),$shares->toArray());
 
+
+    foreach ($allPosts as $key => $part) {
+        $sort[$key] = strtotime($part->created_at);
+    }
+    array_multisort($sort, SORT_DESC, $allPosts);
 
 
 
@@ -195,7 +220,8 @@ class UserProfile extends Controller
                 'first_name'=>$user->first_name,
                 'last_name'=>$user->last_name,
                 'image'=>$user->image,
-                'post'=>$post
+                // 'post'=>$my_posts,
+                'allPosts'=>$allPosts
                 // 'count'=>$countlike
 
               ]);
@@ -210,15 +236,6 @@ class UserProfile extends Controller
 
   public function displayShared(){
 
-    //   $categories_id=DB::table('subscribers')
-    //       ->select('subscribers.category_id')
-    //       ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1]])
-    //       ->get();
-    //       $arr=[];
-    //       for ($i=0; $i <count($categories_id) ; $i++) {
-    //           array_push($arr,$categories_id[$i]->category_id);
-    //       }
-
       $user= JWTAuth::parseToken()->toUser();
       $post_ids= DB::table('shares')
           ->select('shares.post_id')
@@ -230,18 +247,65 @@ class UserProfile extends Controller
           array_push($arr,$post_ids[$i]->post_id);
       }
 
-      $shares = DB::table('posts')
+     $shares = DB::table('posts')
           ->join('users', 'posts.user_id', '=', 'users.id')
-          ->select('posts.*','users.*')
+          ->select('posts.*','users.first_name','users.last_name','users.image')
 
           ->whereIn("posts.id", $arr)
 
           ->get();
 
+  $his_posts = DB::table('posts')
+  // ->join('users', 'posts.user_id', '=','users.id' )
+  ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id')
+      ->leftJoin('likeables', function($join)
+            {
+                $join->on('posts.id','=','likeables.likeable_id')
+                ->where('likeables.liked', '=', '1');
+            })
+            ->where("posts.user_id",$user->id)
+            ->groupBy('posts.id')
+              ->get();
+    $aaa = array_merge($his_posts->toArray(),$shares->toArray());
+
+
+    foreach ($aaa as $key => $part) {
+        $sort[$key] = strtotime($part->created_at);
+    }
+    array_multisort($sort, SORT_DESC, $aaa);
+
     return response()->json(['status' => 1,
                       'message' => 'posts send successfully',
-                      'shares'=>$shares
+                      'shares'=>$shares,
+                      'his'=>$his_posts,
+                      'aaa'=>$aaa
                     ]);
   }
+  // public function displayShared(){
+  //
+  //     $user= JWTAuth::parseToken()->toUser();
+  //     $post_ids= DB::table('shares')
+  //         ->select('shares.post_id')
+  //         ->where("shares.user_id",$user->id)
+  //         ->get();
+  //
+  //     $arr=[];
+  //     for ($i=0; $i <count($post_ids) ; $i++) {
+  //         array_push($arr,$post_ids[$i]->post_id);
+  //     }
+  //
+  //     $shares = DB::table('posts')
+  //         ->join('users', 'posts.user_id', '=', 'users.id')
+  //         ->select('posts.*','users.*')
+  //
+  //         ->whereIn("posts.id", $arr)
+  //
+  //         ->get();
+  //
+  //   return response()->json(['status' => 1,
+  //                     'message' => 'posts send successfully',
+  //                     'shares'=>$shares
+  //                   ]);
+  // }
 
 }
