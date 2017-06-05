@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Like;
+use App\Models\Follow;
+
 use App\Services\Notification;
 //use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -297,12 +299,31 @@ public function showSinglePost($post_id){
                array_push($arr,$categories_id[$i]->category_id);
            }
 
-           $posts = DB::table('posts')
+           $all_posts = DB::table('posts')
                ->join('users', 'posts.user_id', '=', 'users.id')
                ->select('posts.*','users.*')
                ->where('posts.is_approved','=',1)
                ->whereIn("posts.category_id", $arr)
                ->get();
+               $following_id=DB::table('follow')
+                  ->select('follow.following_id')
+                  ->where([['follow.follower_id', '=', $user->id]])
+                  ->get();
+                  $following=[];
+                  for ($i=0; $i <count($following_id) ; $i++) {
+                      array_push($following,$following_id[$i]->following_id);
+                  }
+                  $allposts = DB::table('posts')
+                      ->join('users', 'posts.user_id', '=', 'users.id')
+                      ->select('posts.*','users.*')
+                      ->where('posts.is_approved','=',1)
+                      ->whereIn("posts.user_id", $following)
+                      ->get();
+                      $posts=array_merge($allposts->toArray(),$all_posts->toArray());
+                      foreach ($posts as $key => $part) {
+                          $sort[$key] = strtotime($part->created_at);
+                      }
+                      array_multisort($sort, SORT_DESC, $posts);
             return response()->json(['posts'=>$posts,'status' => '1','message' => 'data sent successfully']);
     }
 
