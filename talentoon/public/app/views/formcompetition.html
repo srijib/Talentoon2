@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="createPost col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
+		<form ng-submit="submitted=true ; newcompetition(addcompetition.$valid)" name="addcompetition" novalidate enctype="multipart/form-data">
+	        <input type="text" class="form-control" placeholder="Competition title" name="title" required ng-model="competition.title" >
+			<p class="error" ng-if="addcompetition.title.$error.required && submitted" >please enter your competition title</p>
+
+			<textarea class="form-control" rows="9" placeholder="Write your description here" name="description" required ng-model="competition.description"></textarea>
+			<p class="error" ng-if="addcompetition.description.$error.required && submitted" >please enter your competition description</p>
+
+            <input type="time" class="form-control" placeholder="Time from" name="time_from" required ng-model="competition.time_from" >
+			<p class="error" ng-if="addcompetition.time_from.$error.required && submitted" >please enter your competition time from</p>
+
+            <input type="time" class="form-control" placeholder="Time to" name="time_to" required ng-model="competition.time_to" >
+			<p class="error" ng-if="addcompetition.time_to.$error.required && submitted" >please enter your competition time to</p>
+
+            <input type="date" class="form-control" placeholder="Date from" name="date_from" required ng-model="competition.date_from" >
+			<p class="error" ng-if="addcompetition.date_from.$error.required && submitted" >please enter your competition date from</p>
+
+            <input type="date" class="form-control" placeholder="Date to" name="date_to" required ng-model="competition.date_to" >
+			<p class="error" ng-if="addcompetition.date_to.$error.required && submitted" >please enter your competition date to</p>
+
+			<input type="hidden" name="category_id"  ng-model="competition.category_id" class="form-control" value="{{cat_id}}">
+
+	        <!--profile image-->
+
+	        <div class="row">
+		        <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files"></input>
+			    <div class ="icons col-lg-6 col-md-6 col-sm-6">
+			        <div class="form-group">
+			            <input type="file" name="img[]" class="file">
+			            <div class="input-group col-xs-12">
+			                <span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">
+			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+			                </span>
+			            </div>
+			        </div>
+			    </div>
+				<div class="wpost  col-lg-6 col-md-6 col-sm-6">
+	                <a class= "text-right "> <i class="fa fa-paper-plane" aria-hidden="true"></i>
+	                    Post </a>
+	            </div>
+	        </div>
+		</form>
+    </div>
+</div>
