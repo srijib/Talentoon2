@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="myApp" ng-controller="main">
 <head>
 	<title>Angular js</title>
 	<!-- scripts -->
@@ -13,36 +13,32 @@
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
-  	<!-- angular file upload -->
-    <script type="text/javascript"  src="node_modules/angular-file-upload/dist/angular-file-upload.js"></script>
-
 	<!-- angular file translate -->
 	<script src="node_modules/angular-translate/dist/angular-translate.js"></script>
 
 	<!-- controller -->
 	<script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/route.js"></script>
+	<script type="text/javascript" src="js/controller/main.js"></script>
 	<script type="text/javascript" src="js/controller/category.js"></script>
 	<script type="text/javascript" src="js/controller/categories.js"></script>
+	<script type="text/javascript" src="js/controller/categorycompetitions.js"></script>
+	<script type="text/javascript" src="js/controller/competitions.js"></script>
+	<script type="text/javascript" src="js/controller/singleCompetition.js"></script>
 	<script type="text/javascript" src="js/controller/talent.js"></script>
     <script type="text/javascript" src="js/controller/home.js"></script>
     <script type="text/javascript" src="js/controller/addpost.js"></script>
-	<script type="text/javascript" src="js/controller/register.js"></script>
-	<script type="text/javascript" src="js/controller/login.js"></script>
 	<script type="text/javascript" src="js/controller/addevent.js"></script>
 	<script type="text/javascript" src="js/controller/addworkshop.js"></script>
-	<script type="text/javascript" src="js/controller/allCategoryPosts.js"></script>
 	<script type="text/javascript" src="js/controller/addsession.js"></script>
-
-
 	<script type="text/javascript" src="js/controller/showreview.js"></script>
 	<script type="text/javascript" src="js/controller/event.js"></script>
 	<script type="text/javascript" src="js/controller/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="js/controller/post.js"></script>
-	<script type="text/javascript" src="js/controller/userprofile.js"></script>
 	<script type="text/javascript" src="js/controller/workshop.js"></script>
 	<script type="text/javascript" src="js/controller/videoconference.js"></script>
-
+	<script type="text/javascript" src="js/controller/posts.js"></script>
+	<script type="text/javascript" src="js/controller/userprofile.js"></script>
 
 
 
@@ -65,16 +61,18 @@
 
 
 <!-- style -->
-	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="node_modules/aos/dist/aos.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/talentProfile.css">
 	<link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
 	<link rel="stylesheet" href="css/categories.css">
 	<link rel="stylesheet" href="css/categorySelected.css">
-    <link rel="stylesheet" href="css/fonts.css">
-	<!-- <link rel="stylesheet" href="css/style.css"> -->
+	<link rel="stylesheet" href="css/createPost.css">
+	<link rel="stylesheet" href="css/posts.css">
 
 	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
 	<script>
@@ -133,30 +131,26 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <!--            main links-->
                         <ul class="nav navbar-nav">
-                            <li ><a href="#!/">Home</a></li>
+                            <li ><a href="#!/">{{'NAVBAR.HOME' | translate}}</a></li>
 							<li class="dropdown">
-                                <a href="#!/categories" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'NAVBAR.CATEGORIES' | translate}}<span class="caret"></span></a>
                                 <!--                                drop menu for categories-->
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Harmony</a></li>
-                                    <li><a href="#">Origami</a></li>
-                                    <li><a href="#">Poetry</a></li>
-                                    <li><a href="#">Landscape Painting </a></li>
-                                    <li><a href="#">Photography </a></li>
-                                    <li><a href="#">Short Story Writing </a></li>
 
+                                    <li ng-repeat="category in categories track by $index">
+										<a href="#!/category/{{category.id}}">{{category.title}}</a>
+									</li>
                                     <li role="separator" class="divider"></li>
 
-                                    <li><a href="#!/categories" class="all">All Categories</a></li>
+                                    <li><a href="#!/categories" class="all">{{'NAVBAR.ALL_CATEGORIES' | translate}}</a></li>
                                 </ul>
-
                                 <!--                                end drop menu for categories-->
                             </li>
 
                             <!--                            end dropmenu-->
 
                             <li><a href="#">Workshops</a></li>
-                            <li><a href="#">Posts</a></li>
+                            <li><a href="#!/posts">Posts</a></li>
 
                         </ul>
                         <!--end of main links-->
@@ -165,72 +159,40 @@
                         <ul class="navbar-left list-unstyled list-inline">
                             <li><a href="#"> Store</a></li>
                             <li><a href="#!/initial_review">Initial review</a></li>
-                            <li><a href="#">Competition</a></li>
+                            <li><a href="#!/competitions">Competition</a></li>
                             <li><a href="#">Questionnaire</a></li>
                         </ul>
                         <!--                  end  main 4 link on lg right-->
 
                         <!--                        nav right-->
                         <ul class="nav navbar-nav navbar-right">
-                            <!--                           span-->
-                            <span>
-                                <!--                               search bar-->
-                                <div class="search-bar">
-                                    <input type="text" placeholder="Search for category/friend" />
-                                </div>
-                                <!--                                end search bar-->
-                                <!--                                search-->
-                                <div class="search">
-                                    <div class="search-icon"></div>
-                                </div>
-                                <!--                                end search-->
-                            </span>
-                            <!--                         end  span-->
-
 
 							<!-- if logged in : -->
 							<logged ng-if="token">
 								<li class="dropdown">
-	                                <a href="#" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://localhost:8000/{{cur_user.image}}" alt=""><span class="caret"></span></a>
+	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://localhost:8000/{{cur_user.image}}" alt=""><span class="caret"></span></a>
 	                                <ul class="dropdown-menu">
-	                                    <li><a href="#!/myprofile">Profile</a></li>
-	                                    <li><a href="#">Settings</a></li>
+	                                    <li><a href="#!/myprofile">{{'NAVBAR.PROFILE' | translate}}</a></li>
+	                                    <li><a href="#!/editprofile">{{'NAVBAR.SETTINGS' | translate}}</a></li>
 	                                    <li role="separator" class="divider"></li>
-	                                    <li><a href="#">Log Out</a></li>
+	                                    <li><a ng-click="logoutFn()">{{'NAVBAR.LOGOUT' | translate}}</a></li>
 	                                </ul>
 	                            </li>
 	                            <!--                            end user-->
-	                            <!--                           notification-->
-	                            <li class="dropdown">
-	                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
-	                                    <i class="fa fa-bell" aria-hidden="true"></i>
-	                                </a>
-	                                <ul class="dropdown-menu notemenu">
-	                                    <a><img src="Persons/face2.jpg">Ahmed Fouad<span>comment on</span><p>your post</p></a>
-	                                    <ul role="separator" class="divider">
-	                                    </ul>
-	                                    <a><img src="Persons/face4.jpg">Ahmed Fouad<span>likes your</span><p>video</p></a>
-
-	                                </ul>
-	                            </li>
 							</logged>
 
 							<notlogged ng-if="! token">
-								<!-- else if not logged in -->
-	                            <!--                            btn register-->
-	                          <a href="#!/login">  <button type="button" class="btn btn-default">Log In </button></a>
-
-	                           <a href="#!/register"> <button type="button" class="btn btn-primary ">Sign Up</button></a>
-
+							   <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login">Log In </button>
+                                <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#signup">Sign Up</button>
 							</notlogged>
 							<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">en<span class="caret"></span></a>
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">language<span class="caret"></span></a>
 
                                 <!--                                drop menu for categories-->
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">en</a></li>
-                                    <li><a href="#">ar</a></li>
+                                    <li><a ng-click='lang("en")'>en</a></li>
+                                    <li><a ng-click='lang("ar")'>ar</a></li>
                                 </ul>
 
                                 <!--                                end drop menu for categories-->
@@ -247,6 +209,249 @@
         </div>
 
 
+
+
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog">
+    <div class="modal-dialog logindialog" role="document">
+        <div class="modal-content logincontent">
+
+        </div>
+        <div class="loginBody">
+            <div class="modal-body">
+                <div class="top-content">
+
+                    <div class="inner-bg">
+                        <div class="row">
+                            <div class="col-md-12 form-box">
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <h3>Login</h3>
+                                        <!--                                                <p>Login by on of your social accounts:</p>-->
+                                    </div>
+                                    <div class="form-top-right">
+                                        <i class="fa fa-lock"></i>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class=" social-login">
+
+                                        <div class="social-login-buttons">
+                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
+                                                <i class="fa fa-facebook"></i> Facebook
+                                            </a>
+
+                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
+                                                <i class="fa fa-google-plus"></i> Google Plus
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <h3>Or Login With Your Account</h3>
+                                <div class="form-bottom">
+                                    <form class="login-form col-lg-8 col-lg-offset-2" ng-submit="submitted = true; loginFn(login.$valid)" name="login" novalidate>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-username">Email</label>
+                                            <input type="email" required name="email" ng-model="user.email" placeholder="Username" class="form-username form-control" id="form-username">
+								            <p class="error" ng-if="submitted && register.email.$error.required" >please enter your email</p>
+								            <p class="error" ng-if="submitted && register.email.$error.email"> please enter valid email</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-password">Password</label>
+                                            <input type="password" name="password"  required ng-model="user.password" placeholder="Password" class="form-password form-control" id="form-password">
+								            <p class="error" ng-if="submitted && login.password.$error.required" >please enter your password</p>
+										</div>
+                                        <a href="">forget your password ?</a>
+                                        <button type="submit" name="button" class="btn submit">Sign in!</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</div>
+
+
+<div class="modal fade" id="signup" tabindex="-1" role="dialog">
+    <div class="modal-dialog logindialog" role="document">
+        <div class="modal-content logincontent">
+
+        </div>
+        <div class="loginBody">
+            <div class="modal-body">
+                <div class="top-content">
+
+                    <div class="inner-bg">
+                        <div class="row">
+                            <div class="col-md-12 form-box">
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <h3>Sign Up</h3>
+                                        <!--                                                <p>Login by on of your social accounts:</p>-->
+                                    </div>
+                                    <div class="form-top-right">
+                                        <i class="fa fa-lock"></i>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class=" social-login">
+
+                                        <div class="social-login-buttons">
+                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
+                                                <i class="fa fa-facebook"></i> Facebook
+                                            </a>
+
+                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
+                                                <i class="fa fa-google-plus"></i> Google Plus
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <h3>Or Sign up by fill our form</h3>
+                                <div class="form-bottom">
+                                    <form name="register" ng-submit="submitted=true; registerFn(register.$valid)"  novalidate class="login-form col-lg-12 col-lg-offset-1">
+                                        <!--last first name-->
+                                        <div class="row">
+                                            <input type="text" name="first_name" required ng-model="user.first_name" class="form-control col-lg-6 col-sm-6" id="formGroupExampleInput" placeholder="Firstname">
+												<p class="error" ng-if="submitted && register.first_name.$error.required" >please enter your first name</p>
+
+                                            <input type="text" name="last_name" required ng-model="user.last_name" class="form-control col-lg-6 col-sm-6" id="formGroupExampleInput" placeholder="Lastname">
+												<p class="error" ng-if="submitted && register.last_name.$error.required" >please enter your last name</p>
+										</div>
+
+
+                                        <!--email-->
+                                        <div class="form-group row">
+                                            <div class="col-6">
+                                                <input class="form-control" ng-model="user.email" type="email" required name="email" placeholder="Email" id="example-email-input">
+												<p class="error" ng-if="submitted && register.email.$error.required" >please enter your email</p>
+												<p class="error" ng-if="submitted && register.email.$error.email"> please enter valid email</p>
+                                            </div>
+                                        </div>
+
+                                        <!--password-->
+                                        <div class="form-group row">
+                                            <div class="col-6">
+                                                <input class="form-control" type="password" id="example-password-input" placeholder="Password" name="password" required ng-model="user.password" ng-minlength="6">
+												<p class="error" ng-if="submitted && register.password.$error.required" >please enter your password</p>
+												<p class="error" ng-if="!pass && submitted">password must be more than 5 characters</p>
+                                            </div>
+                                        </div>
+
+
+                                        <!--confirm password-->
+                                        <div class="form-group row">
+                                            <div class="col-6">
+                                                <input class="form-control" type="password"  id="example-password-input" placeholder="Retype Password" name="repassword" required ng-model="user.repassword">
+												<p class="error" ng-if="submitted && register.repassword.$error.required" >please retype your password</p>
+            									<p class="error" ng-if="!repass && submitted">password isn't match</p>
+											</div>
+                                        </div>
+
+
+                                        <div class="dropSelected">
+                                            <!--gender-->
+                                            <select class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12" name="gender" ng-model="user.gender" required>
+                                                <option selected disabled>Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+
+                                            <!--countries-->
+                                            <select name="country_id" ng-model="user.country_id" class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-offset-1">
+                                                <option selected disabled>Country</option>
+                                                <option value="{{country.id}}" ng-repeat="country in countries track by $index">{{country.name}}</option>
+                                            </select>
+											<p class='error' ng-if='submitted && register.country_id.$error.required'>please choose your country</p>
+											<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
+
+                                        </div>
+                                        <!--profile image-->
+                                            <div class="form-group">
+                                                <input type="file" name="img[]" class="file">
+                                                <div class="input-group col-xs-12">
+                                                    <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control input-lg" disabled placeholder="profile pic">
+                                                    <span class="input-group-btn">
+                                                        <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i>Browse</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                        <!--date-->
+                                        <div class="form-group row">
+                                            <div class="col-6">
+                                                <input class="form-control date" type="date" name="date_of_birth" ng-model="user.date_of_birth" placeholder="Date of birth" id="example-date-input">
+                                            </div>
+                                        </div>
+
+
+
+                                        <!--telephone-->
+                                        <div class="form-group row">
+                                            <div class="col-6">
+                                                <input class="form-control" type="text" name="phone" placeholder="Telephone" id="example-tel-input" required ng-model="user.phone" ng-minlength="11" ng-maxlength="11">
+													<p class="error" ng-if="submitted && register.phone.$error.required" >please enter your phone</p>
+													<p class="error" ng-show="submitted && register.phone.$error.number" >please enter only number </p>
+													<p class="error" ng-show="register.phone.$error.minlength" > phone number should be 11 digits </p>
+                                            </div>
+                                        </div>
+
+
+                                        <a href="">Already have an account ?</a>
+                                        <button type="submit" name="button" class="btn submit">Sign Up!</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div ng-view></div>
 
 <footer>
@@ -254,7 +459,7 @@
 				<div class="row">
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
 								<ul>
-										<h4>Links</h4>
+										<h4>{{'FOOTER.LINKS' | translate}}</h4>
 										<li>Workshops</li>
 										<li>Categories</li>
 										<li>Posts</li>
@@ -264,7 +469,7 @@
 
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
 								<ul class="list-unstyled">
-										<h4> Stay Tuned</h4>
+										<h4>{{'FOOTER.STAY_TUNED' | translate}}</h4>
 										<li>Connect with us and
 												stay in the loop</li>
 
@@ -288,7 +493,7 @@
 
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
 								<ul class="list-unstyled">
-										<h4>Contact us</h4>
+									<h4>{{'FOOTER.CONTACT_US' | translate}}</h4>
 										<li>Questions ? we've got
 												answers.
 												<br>Try us.</li>
@@ -299,38 +504,38 @@
 		</div>
 </footer>
 
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
-  <script>
-    var OneSignal = window.OneSignal || [];
-    OneSignal.push(["init", {
-      appId: "b77089cc-43a0-40b7-b93f-4a06348a932e",
-      autoRegister: false, /* Set to true to automatically prompt visitors */
-      subdomainName: 'talentoon',
-      /*
-      subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN
-      */
-      httpPermissionRequest: {
-        enable: true
-      },
-      notifyButton: {
-          enable: true, /* Set to false to hide */
-          text: {
-            'tip.state.unsubscribed': 'Subscribe to notifications Nadaaaaa',
-            'tip.state.subscribed': "You're subscribed to notifications",
-            'tip.state.blocked': "You've blocked notifications",
-            'message.prenotify': 'Click to subscribe to notifications',
-            'message.action.subscribed': "Thanks for subscribing!",
-            'message.action.resubscribed': "You're subscribed to notifications",
-            'message.action.unsubscribed': "You won't receive notifications again",
-            'dialog.main.title': 'Manage Site Notifications',
-            'dialog.main.button.subscribe': 'SUBSCRIBE',
-            'dialog.main.button.unsubscribe': 'UNSUBSCRIBE',
-            'dialog.blocked.title': 'Unblock Notifications',
-            'dialog.blocked.message': "Follow these instructions to allow notifications:"
-        }
-      }
-    }]);
-  </script>
+<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>-->
+  <!--<script>-->
+    <!--var OneSignal = window.OneSignal || [];-->
+    <!--OneSignal.push(["init", {-->
+      <!--appId: "b77089cc-43a0-40b7-b93f-4a06348a932e",-->
+      <!--autoRegister: false, /* Set to true to automatically prompt visitors */-->
+      <!--subdomainName: 'talentoon',-->
+      <!--/*-->
+      <!--subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN-->
+      <!--*/-->
+      <!--httpPermissionRequest: {-->
+        <!--enable: true-->
+      <!--},-->
+      <!--notifyButton: {-->
+          <!--enable: true, /* Set to false to hide */-->
+          <!--text: {-->
+            <!--'tip.state.unsubscribed': 'Subscribe to notifications Nadaaaaa',-->
+            <!--'tip.state.subscribed': "You're subscribed to notifications",-->
+            <!--'tip.state.blocked': "You've blocked notifications",-->
+            <!--'message.prenotify': 'Click to subscribe to notifications',-->
+            <!--'message.action.subscribed': "Thanks for subscribing!",-->
+            <!--'message.action.resubscribed': "You're subscribed to notifications",-->
+            <!--'message.action.unsubscribed': "You won't receive notifications again",-->
+            <!--'dialog.main.title': 'Manage Site Notifications',-->
+            <!--'dialog.main.button.subscribe': 'SUBSCRIBE',-->
+            <!--'dialog.main.button.unsubscribe': 'UNSUBSCRIBE',-->
+            <!--'dialog.blocked.title': 'Unblock Notifications',-->
+            <!--'dialog.blocked.message': "Follow these instructions to allow notifications:"-->
+        <!--}-->
+      <!--}-->
+    <!--}]);-->
+  <!--</script>-->
   <script type="text/javascript">
 	  $(window).on('load', function() {
 	  AOS.refresh();

@@ -5,10 +5,12 @@
 
   <ion-card>
 
-    <img  class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
+    <center><img  class="img-responsive" src="http://172.16.3.77:8000/{{post.media_url}}" alt="" style="height:250px"></center>
     <center><h3 style="color: #FFB733">{{post.title}}</h3></center>
     <p>{{post.description}}</p>
     <p>{{post.created_at}}</p>
+    <i class="ion-heart" aria-hidden="true"></i>  <span class="badge" style="color:#6A0C38;font-size:15px">{{post.like_count}}</span>
+
 <input type="hidden" ng-model="post.category_id" value="{{post.category_id}}">
 
   </ion-card>

@@ -26,13 +26,16 @@ Route::post('/betalent',[
     'middleware'=> 'ability:audience,permission:be-talent']);
 
 Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelatedcategory']], function () {
-    Route::resource('categories.posts','PostsController');
+
 });
+//nahala ana tla3t al posts bara 3shan al middleware mkansh by5lini 23ml edit "simona"
+Route::resource('categories.posts','PostsController');
 
 
+Route::resource('categories.posts','PostsController');
 
 //Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
-  Route::resource('categories.events','EventController');  
+  Route::resource('categories.events','EventController');
 //});
 
 Route::get('/mostLikeabe','PostsController@mostLikablePosts');
@@ -95,7 +98,18 @@ Route::get('/userprofile',[
     Route::get('/userprofile/userposts',[
         'uses'=>'UserProfile@userposts',
         'middleware'=> 'jwt.auth']);
-
+    Route::get('/userprofile/displayShared',[
+            'uses'=>'UserProfile@displayShared',
+            'middleware'=> 'jwt.auth']);
+Route::get('/userprofile/{post_id}',[
+    'uses'=>'UserProfile@show',
+    'middleware'=> 'jwt.auth']);
+Route::post('/userprofile/follow',[
+    'uses'=>'UserProfile@follow',
+    'middleware'=> 'jwt.auth']);
+Route::post('/userprofile/unfollow',[
+    'uses'=>'UserProfile@unfollow',
+    'middleware'=> 'jwt.auth']);
 Route::post('/categorytalent/store','CategoryTalentController@store');
 
 
@@ -137,6 +151,9 @@ Route::post('/share','ShareController@store');
 Route::get('/workshop/{workshop_id}','WorkShopsController@show');
 
 Route::post('/workshop_enroll','WorkShopsController@enroll');
+Route::post('/isWorkshopCraetor','WorkShopsController@isWorkshopCraetor');
+Route::post('/isPostCreator','PostsController@isPostCraetor');
+Route::post('/isEventCraetor','EventController@isEventCraetor');
 
 
 Route::get('/categorymentor/get_mentor_details/{mentor_id}', 'CategoryMentorController@get_mentor_details');
@@ -145,6 +162,7 @@ Route::post('/conference/create_class', 'VideoConferenceController@create_wiziq_
 Route::post('/session_upload/{id}', 'UploadController@session_upload');
 Route::post('/workshop/{workshop_id}','WorkShopsController@createSession');
 
+
 //Route::resource('competition','CompetitionsController');
 Route::resource('competition','CompetitionsController');
 //Route::resource('categories.competitions','CategoryCompetitionController');
@@ -152,3 +170,8 @@ Route::resource('categories.competitions','CategoryCompetitionController');
 Route::resource('competitions.posts','CompetitionPostController');
 Route::get('/competition/{competition_id}/join','CompetitionJoinController@joinCompetition');
 Route::get('/competition/post/{post_id}/grantvote','CompetitionPostPointsConroller@grantVote');
+
+Route::get('/SubscribedPost','PostsController@Subscribedposts');
+Route::get('/get_post_reviews', 'CategoriesController@get_post_reviews');
+Route::post('/add_mentor_post_review', 'CategoriesController@add_mentor_post_review');
+

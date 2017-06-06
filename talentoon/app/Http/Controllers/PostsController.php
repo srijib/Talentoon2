@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 use JWTAuth;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
 use App\Models\Like;
+use App\Models\Follow;
+
 use App\Services\Notification;
 //use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -16,8 +19,8 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  
-       
+
+
     public function index()
     {
         // $posts= Post::all();
@@ -60,8 +63,6 @@ class PostsController extends Controller
 
 
 
-
-
         return response()->json(['post_id' => $id,'message' => 'data saved successfully']);
         // return redirect('/post');
     }
@@ -79,8 +80,14 @@ class PostsController extends Controller
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->select('posts.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image')
-            ->where("posts.id",$id)
+            ->where([["posts.id",$id],['posts.is_approved','=',1]])
             ->get();
+
+
+
+
+
+
 
         return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully']);
 
@@ -95,18 +102,18 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-        $post = DB::table('posts')
-            ->join('categories', 'posts.category_id', '=', 'categories.id')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->select('posts.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image')
-            ->where("posts.id",$id)
-            ->get();
-        return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully']);
-
-    }
+//    public function edit($id)
+//    {
+//        //
+//        $post = DB::table('posts')
+//            ->join('categories', 'posts.category_id', '=', 'categories.id')
+//            ->join('users', 'posts.user_id', '=', 'users.id')
+//            ->select('posts.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image')
+//            ->where("posts.id",$id)
+//            ->get();
+//        return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully']);
+//
+//    }
 
     /**
      * Update the specified resource in storage.
@@ -115,12 +122,12 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-        post::find($id)->update($request->all());
-        return response()->json(['status' => '1','message' => 'data sent successfully']);
-    }
+//    public function update(Request $request, $id)
+//    {
+//        //
+//        post::find($id)->update($request->all());
+//        return response()->json(['status' => '1','message' => 'data sent successfully']);
+//    }
 
     /**
      * Remove the specified resource from storage.
@@ -157,42 +164,168 @@ class PostsController extends Controller
 //        $return = json_encode( $return);
         return response()->json(['msg'=>'success','posts'=>$data]);
     }
-    public function destroy($id)
-    {
-        //
-        $post=Post::findOrFail($id);
-        $post->delete();
-        return response()->json(['status' => '1','message' => 'post deleted successfully']);
+//    public function destroy($id)
+//    {
+//        //
+//        $post=Post::findOrFail($id);
+//        $post->delete();
+//        return response()->json(['status' => '1','message' => 'post deleted successfully']);
+//    }
+
+
+
+    public function edit($cat_id,$post_id)
+    {   //I need to take category id and workshop id and
+        // by checking the mentor_id is the user id then edit else not
+        //from Request $request we will git the editable data
+        $user=JWTAuth::parseToken()->toUser();
+//        return response()->json($post_id);
+        $post = DB::table('posts')
+            ->select('posts.*')
+            ->where("posts.category_id",$cat_id)
+            ->where("posts.id",$post_id)
+            ->get()->first();
+        return response()->json($post);
+
+
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+//        return response()->json($request);
+        $post=DB::table('posts')
+            ->where('id', $request->id)
+            ->update(['title'=>$request->title,
+                'description'=>$request->description,
+//                'media_type'=>$request->media_type,
+//                'media_url'=>$request->media_url
+            ]);
+
+
+        return response()->json($post);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($cat_id,$id)
+    {
+//        return response()->json($id);
+        $affectedRows = Post::where('id', '=', $id)
+            ->delete();
+
+        if ($affectedRows){
+            return response()->json('true');
+        }else{
+            return response()->json('false');
+        }
+    }
+    public function isPostCreator(Request $request){
+        $user=JWTAuth::parsetoken()->toUser();
+//        dd($user->id);
+
+        $creator = DB::table('posts')
+            ->select('posts.*')
+            ->where("posts.user_id",$user->id)
+            ->where("users.id",$request->user_id)
+            ->get()->first();
+        if ($creator){
+            return response()->json(['creator'=>1]);
+        }else{
+            return response()->json(['creator'=>0]);
+        }
+
+    }
+//***************************************************
+
 
 public function showSinglePost($post_id){
 
   $post = DB::table('posts')
       ->join('categories', 'posts.category_id', '=', 'categories.id')
       ->join('users', 'posts.user_id', '=', 'users.id')
-      ->select('posts.*', 'categories.title as category_title')
+      ->leftJoin('likeables', function($join)
+            {
+                $join->on('posts.id','=','likeables.likeable_id')
+                ->where('likeables.liked', '=', '1');
+            })
 
-      ->select('posts.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image as user_image')
+      ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id, categories.title as category_title, users.first_name, users.last_name, users.image as user_image')
 
-          ->where("posts.id",$post_id)
+          ->where([["posts.id",$post_id],['posts.is_approved','=',1]])
+          ->groupBy('posts.id')
       ->get()->first();
 
-      $countlike = DB::table('likeables')
-          ->join('posts','likeables.likeable_id', '=','posts.id')
-          ->select(DB::raw('count(likeables.liked) as liked_count','likeables.liked'))
-          ->where([
-             ['likeables.likeable_id','=',$post_id],
-             ['likeables.liked', '=', '1'],
-             ])
-              ->groupBy('likeables.liked')
 
-          ->get()->first();
 
-  return response()->json(['post' => $post,'status' => '1','message' => 'data sent successfully','countlike'=>$countlike]);
+
+
+
+
+      $comments=DB::table('comments')
+          ->join('users', 'comments.user_id', '=', 'users.id')
+          ->select('comments.*','users.first_name', 'users.last_name', 'users.image')
+          ->where("comments.post_id",$post_id)
+          ->get();
+// 'comments'=>$comments,
+
+
+  return response()->json(['post' => $post,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
+// 'countlike'=>$countlike
 
 
 
 }
+
+    public function Subscribedposts(){
+        $user= JWTAuth::parseToken()->toUser();
+
+        $categories_id=DB::table('subscribers')
+           ->select('subscribers.category_id')
+           ->where([['subscribers.subscriber_id', '=', $user->id],['subscribers.subscribed', '=',1]])
+           ->get();
+           $arr=[];
+           for ($i=0; $i <count($categories_id) ; $i++) {
+               array_push($arr,$categories_id[$i]->category_id);
+           }
+
+           $all_posts = DB::table('posts')
+               ->join('users', 'posts.user_id', '=', 'users.id')
+               ->select('posts.*','users.*')
+               ->where('posts.is_approved','=',1)
+               ->whereIn("posts.category_id", $arr)
+               ->get();
+               $following_id=DB::table('follow')
+                  ->select('follow.following_id')
+                  ->where([['follow.follower_id', '=', $user->id]])
+                  ->get();
+                  $following=[];
+                  for ($i=0; $i <count($following_id) ; $i++) {
+                      array_push($following,$following_id[$i]->following_id);
+                  }
+                  $allposts = DB::table('posts')
+                      ->join('users', 'posts.user_id', '=', 'users.id')
+                      ->select('posts.*','users.*')
+                      ->where('posts.is_approved','=',1)
+                      ->whereIn("posts.user_id", $following)
+                      ->get();
+                      $posts=array_merge($allposts->toArray(),$all_posts->toArray());
+                      foreach ($posts as $key => $part) {
+                          $sort[$key] = strtotime($part->created_at);
+                      }
+                      array_multisort($sort, SORT_DESC, $posts);
+            return response()->json(['posts'=>$posts,'status' => '1','message' => 'data sent successfully']);
+    }
 
 
 }

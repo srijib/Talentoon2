@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\WorkShop;
+use App\Models\MentorReviews;
 use Response;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Services\Notification;
-
+use DB;
 
 class CategoriesController extends Controller
 {
@@ -75,17 +76,36 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($cat_id)
     {
-        $category=Category::find($id);
-        $posts=Post::where('category_id','=', $id)->get();
-        $workshops=WorkShop::where('category_id','=', $id)->get();
 
+        $user = JWTAuth::parseToken()->authenticate();
+        $category=Category::find($cat_id);
 
-        // dd($posts);
-        // dd(response()->json(['category_details' => $category,'posts' => $posts,'status' => '1','message' => 'data sent successfully']));
-        return response()->json(['category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
-        // return view('category.show',['category'=>$category]);
+        $posts = DB::table('posts')
+        ->join('users', 'posts.user_id', '=','users.id' )
+        ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id,users.last_name,users.first_name,users.image as user_image,users.id as user_id')
+            ->leftJoin('likeables', function($join)
+                  {
+                      $join->on('posts.id','=','likeables.likeable_id')
+                      ->where('likeables.liked', '=', '1');
+                  })
+                  ->where([['posts.category_id','=',$cat_id],['posts.is_approved','=',1]])
+                  ->groupBy('posts.id')
+                    ->get();
+        $workshops = DB::table('workshops')
+            ->join('users', 'users.id', '=', 'workshops.mentor_id')
+            ->select('workshops.*','users.first_name', 'users.last_name', 'users.image as user_image')
+            ->where([['workshops.category_id','=',$cat_id],['workshops.is_approved','=',1]])
+            ->get();
+        $events = DB::table('events')
+            ->join('users', 'users.id', '=', 'events.mentor_id')
+            ->select('events.*','users.first_name', 'users.last_name', 'users.image as user_image')
+            ->where([['events.category_id','=',$cat_id],['events.is_approved','=',1]])
+            ->get();
+            // return response()->json(['posts' => $posts,'status' => '1','message' => 'data sent successfully']);
+
+        return response()->json(['cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
     }
 
     /**
@@ -127,5 +147,31 @@ class CategoriesController extends Controller
         // $category->delete();
         // return Response::json($category);
         // return redirect()->route('admin.posts');
+    }
+
+
+    public function get_post_reviews()
+    {
+        //$mentor_reviews=MentorReviews::all();
+        $mentor_reviews = DB::table('mentor_reviews')
+                 ->join('users', 'mentor_reviews.mentor_id', '=', 'users.id')
+                 ->select('mentor_reviews.*','users.*')
+                 ->get();
+        return Response::json(['status' => '1','message' => 'data retrieved successfully','reviews'=>$mentor_reviews]);
+
+    }
+    public function add_mentor_post_review(Request $request)
+    {
+        $user= JWTAuth::parseToken()->toUser();
+
+        $mentor_review = new MentorReviews;
+
+        $mentor_review->post_id = $request->id;
+        $mentor_review->mentor_id = $user->id;
+        $mentor_review->points = $request->rev['points'];
+        $mentor_review->comment = $request->rev['comment'];
+        $mentor_review->save();
+
+        return Response::json(['status' => '1','message' => 'here successfully']);
     }
 }

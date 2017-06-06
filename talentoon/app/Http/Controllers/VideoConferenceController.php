@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Response;
 use Illuminate\Http\Request;
+use DateTime;
 
 use DOMDocument;
 use  App\Http\Controllers\WizIQClass\AuthBase;
@@ -127,9 +128,10 @@ class VideoConferenceController extends Controller
         //require_once("AuthBase.php");
         $authBase = new AuthBase($secretAcessKey,$access_key);
         $method = "add_teacher";
+
         $requestParameters["signature"]=$authBase->GenerateSignature($method,$requestParameters);
-        $requestParameters["name"] = "Alyaa";
-        $requestParameters["email"]="alyaa@alyaa.com";
+        $requestParameters["name"] = $request->teacher_name;
+        $requestParameters["email"]= $request->teacher_email;
         $requestParameters["password"]="123456";
 
         $httpRequest=new HttpRequest();
@@ -174,19 +176,30 @@ class VideoConferenceController extends Controller
 //      $requestParameters["presenter_email"]="kerrygun@gmail.com";
         #for room based account pass parameters 'presenter_id', 'presenter_name'
         $requestParameters["presenter_id"] = $request->input('teacher_id');
-        $requestParameters["presenter_name"] = "Nada Bay";
+        $requestParameters["presenter_name"] = "Teacher Name";
 
-        $requestParameters["start_time"] = "01/02/2018 12:11";
-        $requestParameters["title"]="new Talentoon Course 1"; //Required
-        $requestParameters["description"]="Talentoon Course 1 description"; //Required
-        $requestParameters["duration"]="60"; //optional
+
+
+
+//        $date = new Date($request->input('start_date'));
+//        $time = new DateTime($request->input('start_time'));
+
+
+        $requestParameters["start_time"] = $request->input('start_time');
+        $requestParameters["title"]= $request->input('title');
+        $requestParameters["description"]= $request->input('description');
+        $requestParameters["duration"]= $request->input('duration');
         $requestParameters["time_zone"]="Africa/Cairo"; //optional
-        $requestParameters["attendee_limit"]="10"; //optional
+        $requestParameters["attendee_limit"]= $request->input('attendee_limit');
 //        $requestParameters["control_category_id"]=""; //optional
         $requestParameters["create_recording"]="true"; //optional
 //        $requestParameters["return_url"]=""; //optional
 //        $requestParameters["status_ping_url"]=""; //optional
 //        $requestParameters["language_culture_name"]="en-us";
+
+
+
+
 
 
         $httpRequest=new HttpRequest();

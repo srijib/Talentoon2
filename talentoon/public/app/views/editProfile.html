@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="row infoName">
+        <div class="userInfos">
+            <img src="Imgs/Persons/face4.jpg" alt="">
+            <span>Hossam Fouad</span>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 basicInfo">
+            <h5>Your Basic Info</h5>
+            <input type="text" class="form-control col-lg-6 col-sm-6" id="formGroupExampleInput" placeholder="Name">
+            <input class="form-control" type="Email"  placeholder="Email" id="example-email-input">
+
+            <div class="changepass">
+                <h6>Change Password</h6>
+                <input class="form-control" type="password" id="example-password-input" placeholder="Old Password">
+                <input class="form-control" type="password" id="example-password-input" placeholder="Password">
+                <input class="form-control" type="password"  id="example-password-input" placeholder="Repeat Password">
+            </div>
+
+            <div class="done">
+                <a href="" class="btn btn-lg">
+                    <i class="fa fa-check" aria-hidden="true"></i>Done
+                </a>
+            </div>
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 personalInfo">
+            <h5>Your Personal Info</h5>
+
+            <div class="editSelected">
+                <!--gender-->
+                <select class="custom-select">
+                    <option selected disabled>Gender</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                </select>
+
+                <!--countries-->
+                <select class="custom-select">
+                    <option selected disabled>Country</option>
+                    <option value="1">Alexandria</option>
+                    <option value="2">Cairo</option>
+                    <option value="3">Hurghada</option>
+                    <option value="4">Luxor</option>
+                </select>
+
+                <!--type-->
+                <select class="custom-select">
+                    <option selected disabled>Type</option>
+                    <option value="1">Talent</option>
+                    <option value="2">Mentor</option>
+                </select>
+
+            </div>
+
+            <input class="form-control date" type="date" placeholder="Date of birth" id="example-date-input">
+            <input class="form-control" type="tel" placeholder="Telephone" id="example-tel-input">
+
+            <div class="about">
+                <h6>About</h6>
+                <textarea class="form-control" rows="3" id="comment" placeholder="Tell us about yourself"></textarea>
+            </div>
+
+            <div class="done">
+                <a href="" class="btn btn-lg">
+                    <i class="fa fa-check" aria-hidden="true"></i>Done
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 connectInfo">
+            <h5>Connect Infos</h5>
+
+            <!--profile image-->
+            <div class="form-group">
+                <input type="file" name="img[]" class="file">
+                <div class="input-group col-xs-12">
+                    <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control input-lg" disabled placeholder="profile pic">
+                    <span class="input-group-btn">
+                        <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i>Browse</button>
+                    </span>
+                </div>
+            </div>
+
+            <h6>Links</h6>
+            <div class="row lnk"><i class="fa fa-facebook  col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-10" id="formGroupExampleInput" placeholder="Facebook link"></div>
+
+            <div class="row lnk"><i class="fa fa-twitter col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-10" id="formGroupExampleInput" placeholder="Twitter link"></div>
+
+            <div class="row lnk"><i class="fa fa-google-plus col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-10" id="formGroupExampleInput" placeholder="Google plus link"></div>
+
+            <div class="row lnk other"><i class="fa col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-12 other" id="formGroupExampleInput" placeholder="Other link"></div>
+
+            <div class="done">
+                <a href="" class="btn btn-lg">
+                    <i class="fa fa-check" aria-hidden="true"></i>Done
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>

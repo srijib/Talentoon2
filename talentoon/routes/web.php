@@ -43,7 +43,8 @@ Route::prefix('admin')->group(function(){
   Route::resource('user','Admin\AdminUserController');
   Route::resource('mentor','Admin\AdminMentorController');
   Route::resource('news','Auth\AdminNewsController');
-
+  Route::resource('event','Admin\AdminEventController');
+  Route::resource('workshop','Admin\AdminWorkshopController');
 
 
   // Route::get('post','AdminController@posts')->name('admin.post');
@@ -56,8 +57,10 @@ Route::prefix('admin')->group(function(){
   Route::get('/user/{id}/active', 'Admin\AdminUserController@active_user')->name('user.active_user');
   Route::get('/mentor/{id}/be_mentor', 'Admin\AdminMentorController@be_mentor')->name('mentor.be_mentor');
   Route::get('/mentor/{id}/unmentor', 'Admin\AdminMentorController@unmentor')->name('mentor.unmentor');
-
-
+  Route::get('/event/{id}/approve', 'Admin\AdminEventController@isApprove')->name('event.approve');
+  Route::get('/event/{id}/unapprove', 'Admin\AdminEventController@unApprove')->name('event.unapprove');
+  Route::get('/workshop/{id}/approve', 'Admin\AdminWorkshopController@isApprove')->name('workshop.approve');
+  Route::get('/workshop/{id}/unapprove', 'Admin\AdminWorkshopController@unApprove')->name('workshop.unapprove');
 
 });
 //Route::get('/uploads/multiple','UploadController@uploded');

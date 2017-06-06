@@ -256,6 +256,306 @@ header #Navbar-home {
 header .navbar-default .navbar-nav > .open > a, header .navbar-default .navbar-nav > .open > a:hover, header .navbar-default .navbar-nav > .open > a:focus {
   background-color: transparent; }
 
+#login {
+  /***** Media queries *****/ }
+  #login .row {
+    margin: 0px; }
+  #login .logindialog {
+    background-color: #FFFFFF;
+    opacity: 0.9;
+    border: 0px; }
+    #login .logindialog .loginBody .modal-body {
+      padding: 0px;
+      border: 0px; }
+      #login .logindialog .loginBody .modal-body .top-content .text {
+        color: #FFFFFF; }
+      #login .logindialog .loginBody .modal-body .top-content h1 {
+        margin-top: 10px;
+        font-size: 30px;
+        font-family: bold;
+        font-weight: 100;
+        color: #FFB733;
+        text-align: center; }
+      #login .logindialog .loginBody .modal-body .top-content .row .form-box {
+        margin-top: 20px; }
+        #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-top {
+          text-align: center;
+          overflow: hidden;
+          border-radius: 4px 4px 0 0; }
+          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-left {
+            float: left;
+            width: 75%; }
+            #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-left h3 {
+              font-size: 30px;
+              color: #6A0C38;
+              font-family: Sansita One;
+              text-align: center;
+              line-height: 30px;
+              margin: 30px 0px;
+              margin-left: 135px; }
+          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-right {
+            float: left;
+            width: 25%;
+            padding-top: 5px;
+            font-size: 66px;
+            color: #FFB733;
+            line-height: 100px;
+            text-align: right;
+            opacity: 0.8;
+            text-align: center; }
+            #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-right .fa-lock {
+              color: #FFB733; }
+        #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons {
+          margin-top: 15px; }
+          #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2 {
+            height: 50px;
+            padding: 15px 20px 0 20px;
+            font-size: 20px;
+            font-family: bold;
+            line-height: 16px;
+            background-color: #6A0C38;
+            border-radius: 5px;
+            color: #FFB733;
+            text-decoration: none;
+            transition: all .3s;
+            margin: 20px; }
+            #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:hover, #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:focus, #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:active, #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:active:focus {
+              outline: 0;
+              opacity: 0.8;
+              color: #6A0C38;
+              background-color: #FFB733;
+              text-decoration: none;
+              transition: all .3s; }
+            #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2 .fa {
+              font-size: 20px; }
+        #login .logindialog .loginBody .modal-body .top-content .row .form-box h3 {
+          font-size: 25px;
+          color: #6A0C38;
+          text-align: center;
+          line-height: 30px;
+          margin-bottom: 0px;
+          font-family: Sansita One; }
+        #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom {
+          padding: 20px;
+          border-radius: 0 0 4px 4px; }
+          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form textarea {
+            height: 100px; }
+          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form a {
+            font-family: light;
+            font-size: 14px;
+            color: #808285; }
+          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit {
+            width: 100%;
+            height: 50px;
+            padding: 15px 20px;
+            font-size: 20px;
+            font-family: bold;
+            line-height: 16px;
+            background-color: #6A0C38;
+            border-radius: 5px;
+            color: #FFB733;
+            text-decoration: none;
+            transition: all .3s;
+            margin: 20px 0px; }
+            #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:hover, #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:focus, #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:active, #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:active:focus {
+              outline: 0;
+              opacity: 0.8;
+              color: #6A0C38;
+              background-color: #FFB733;
+              text-decoration: none;
+              transition: all .3s; }
+          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .input-error {
+            border-color: firebrick;
+            font-family: light;
+            font-size: 16px;
+            color: firebrick; }
+  @media (max-width: 767px) {
+    #login .inner-bg {
+      padding: 60px 0 110px 0; } }
+  @media (max-width: 415px) {
+    #login h1, #login h2 {
+      font-size: 32px; } }
+
+#signup {
+  /***** Media queries *****/ }
+  #signup .row {
+    margin: 0px; }
+  #signup .logindialog {
+    background-color: #FFFFFF;
+    opacity: 0.9;
+    border: 0px; }
+    #signup .logindialog .loginBody .modal-body {
+      padding: 0px;
+      border: 0px; }
+      #signup .logindialog .loginBody .modal-body .top-content .text {
+        color: #FFFFFF; }
+      #signup .logindialog .loginBody .modal-body .top-content h1 {
+        margin-top: 10px;
+        font-size: 30px;
+        font-family: bold;
+        font-weight: 100;
+        color: #FFB733;
+        text-align: center; }
+      #signup .logindialog .loginBody .modal-body .top-content .row .form-box {
+        margin-top: 20px; }
+        #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-top {
+          text-align: center;
+          overflow: hidden;
+          border-radius: 4px 4px 0 0; }
+          #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-left {
+            float: left;
+            width: 75%; }
+            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-left h3 {
+              font-size: 30px;
+              color: #6A0C38;
+              font-family: Sansita One;
+              text-align: center;
+              line-height: 30px;
+              margin: 30px 0px;
+              margin-left: 135px; }
+          #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-right {
+            float: left;
+            width: 25%;
+            padding-top: 5px;
+            font-size: 66px;
+            color: #FFB733;
+            line-height: 100px;
+            text-align: right;
+            opacity: 0.8;
+            text-align: center; }
+            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-right .fa-lock {
+              color: #FFB733; }
+        #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons {
+          margin-top: 15px; }
+          #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2 {
+            height: 50px;
+            padding: 15px 20px 0 20px;
+            font-size: 20px;
+            font-family: bold;
+            line-height: 16px;
+            background-color: #6A0C38;
+            border-radius: 5px;
+            color: #FFB733;
+            text-decoration: none;
+            transition: all .3s;
+            margin: 20px; }
+            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:hover, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:focus, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:active, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:active:focus {
+              outline: 0;
+              opacity: 0.8;
+              color: #6A0C38;
+              background-color: #FFB733;
+              text-decoration: none;
+              transition: all .3s; }
+            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2 .fa {
+              font-size: 20px; }
+        #signup .logindialog .loginBody .modal-body .top-content .row .form-box h3 {
+          font-size: 25px;
+          color: #6A0C38;
+          text-align: center;
+          line-height: 30px;
+          margin-bottom: 0px;
+          font-family: Sansita One; }
+        #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom {
+          padding: 20px;
+          border-radius: 0 0 4px 4px; }
+          #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form {
+            font-size: 16px;
+            color: #808285;
+            font-family: regular;
+            margin-left: 0px; }
+            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .row .form-control {
+              border: 0px;
+              border-bottom: 1px solid #808285;
+              box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+              background-color: transparent;
+              margin-bottom: 20px; }
+            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .dropSelected {
+              margin: 10px 0px; }
+              #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .dropSelected select {
+                border: 0px;
+                border-bottom: 1px solid #808285;
+                box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+                background-color: transparent;
+                border-radius: 4px; }
+            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group {
+              font-size: 16px;
+              color: #808285;
+              font-family: regular; }
+              #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .file {
+                visibility: hidden;
+                position: absolute; }
+              #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group {
+                margin-top: 50px; }
+                #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-addon {
+                  background-color: transparent;
+                  border: 0px;
+                  border-bottom: 1px solid gray; }
+                #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-lg {
+                  border-radius: 0;
+                  background-color: transparent;
+                  border: 0px;
+                  border-bottom: 1px solid gray;
+                  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+                  font-size: 16px;
+                  color: #808285;
+                  font-family: regular; }
+                #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-btn .browse {
+                  font-size: 16px;
+                  color: #FFFFFF;
+                  font-family: regular;
+                  background-color: #6A0C38;
+                  border-color: #45132E;
+                  outline: none;
+                  border-radius: 0;
+                  border: 0px;
+                  border-bottom: 1px solid gray;
+                  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075); }
+                  #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-btn .browse:hover {
+                    background-color: #3c0720;
+                    border-color: #3c0720; }
+                  #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-btn .browse:active, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-btn .browse:focus {
+                    background-color: #810f44;
+                    border-color: #810f44; }
+                  #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-btn .browse i {
+                    margin-right: 10px; }
+            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form a {
+              font-family: light;
+              font-size: 14px;
+              color: #FFB733; }
+              #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form a:hover {
+                color: #808285; }
+            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit {
+              width: 100%;
+              height: 50px;
+              padding: 15px 20px;
+              font-size: 20px;
+              font-family: bold;
+              line-height: 16px;
+              background-color: #6A0C38;
+              border-radius: 5px;
+              color: #FFB733;
+              text-decoration: none;
+              transition: all .3s;
+              margin: 20px 0px; }
+              #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:hover, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:focus, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:active, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:active:focus {
+                outline: 0;
+                opacity: 0.8;
+                color: #6A0C38;
+                background-color: #FFB733;
+                text-decoration: none;
+                transition: all .3s; }
+            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .input-error {
+              border-color: firebrick;
+              font-family: light;
+              font-size: 16px;
+              color: firebrick; }
+  @media (max-width: 767px) {
+    #signup .inner-bg {
+      padding: 60px 0 110px 0; } }
+  @media (max-width: 415px) {
+    #signup h1, #signup h2 {
+      font-size: 32px; } }
+
 #topposts {
   background-color: #FFFFFF; }
   #topposts .row {
@@ -365,6 +665,16 @@ header .navbar-default .navbar-nav > .open > a, header .navbar-default .navbar-n
             font-size: 14px;
             background-color: transparent;
             color: #808285; }
+
+.has-danger {
+  border: 0px;
+  border-bottom: 1px solid firebrick; }
+  .has-danger .inputHorizontalDnger {
+    color: firebrick; }
+  .has-danger .form-control-danger {
+    color: firebrick; }
+  .has-danger .form-control-feedback {
+    color: firebrick; }
 
 div .row {
   margin: 0px; }

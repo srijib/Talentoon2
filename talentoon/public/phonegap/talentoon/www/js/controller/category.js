@@ -96,7 +96,8 @@ $scope.post_id= $stateParams['post_id'];
 
 			console.log("inside controller" , data)
 			$rootScope.category_post=data.post;
-			$rootScope.category_post_like_count=data.countlike;
+			console.log("post in getCategoryPost",data.post);
+			// $rootScope.category_post_like_count=data.countlike;
 	} , function(err){
 			console.log(err);
 	});

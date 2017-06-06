@@ -1,0 +1,1108 @@
+@font-face {
+  font-family: regular;
+  src: url(../../Fonts/Roboto-Regular.ttf); }
+@font-face {
+  font-family: medium;
+  src: url(../../Fonts/Roboto-Medium.ttf); }
+@font-face {
+  font-family: blak;
+  src: url(../../Fonts/Roboto-Black.ttf); }
+@font-face {
+  font-family: bold;
+  src: url(../../Fonts/Roboto-Bold.ttf); }
+@font-face {
+  font-family: boldco;
+  src: url(../../Fonts/Roboto-BoldCondensed.ttf); }
+@font-face {
+  font-family: light;
+  src: url(../../Fonts/Roboto-Light.ttf); }
+@font-face {
+  font-family: thin;
+  src: url(../../Fonts/Roboto-Thin.ttf); }
+body {
+  font-size: 0px;
+  margin: 0px;
+  padding: 0px;
+  background-color: whitesmoke;
+  outline: 0px; }
+  body:focus, body:active, body:visited, body:hover {
+    outline: 0px; }
+
+header #Navbar-home {
+  background-image: url(../../Imgs/cover2.jpg);
+  background-size: cover;
+  height: 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat; }
+  header #Navbar-home .navbar {
+    background-color: transparent;
+    border: 0px;
+    border-radius: 0px; }
+    header #Navbar-home .navbar .container-fluid .navbar-header .navbar-brand {
+      padding: 0px; }
+      header #Navbar-home .navbar .container-fluid .navbar-header .navbar-brand img {
+        height: 100%;
+        padding: 0px; }
+    header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li {
+      font-size: 17px;
+      font-family: bold; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li:hover, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li:visited, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li:active {
+        background: transparent; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li a {
+        color: #E4E4E4; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li a:hover {
+          color: #FFB733; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li a:focus, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li a:visited, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li a:active {
+          background: transparent; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li .dropdown-menu {
+        background-color: #6A0C38;
+        border: 0px; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li .dropdown-menu a {
+          padding-top: 10px;
+          padding-right: 0px;
+          padding-left: 7px;
+          font-size: 14px;
+          font-family: regular; }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li .dropdown-menu a:hover, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li .dropdown-menu a:active, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li .dropdown-menu a:visited {
+            background: transparent; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-nav li .dropdown-menu .all {
+          font-size: 14px;
+          font-family: bold;
+          text-align: center;
+          padding-top: 10px; }
+    header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-left {
+      margin-top: 16px; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-left li {
+        padding-right: 0px;
+        font-size: 14px;
+        font-family: light; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-left li a {
+          padding: 15px 5px;
+          color: rgba(255, 255, 255, 0.58); }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-left li a:hover, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-left li a:active, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-left li a:visited, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-left li a:focus {
+            color: #FFFFFF;
+            text-decoration: none;
+            background-color: transparent; }
+          @media (max-width: 323px) {
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-left li a {
+              display: none; } }
+      @media (max-width: 1060px) {
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-left {
+          display: none; } }
+      @media (max-width: 767px) {
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-left {
+          display: block; } }
+    header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right {
+      margin-right: 0px; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span {
+        display: inline-block;
+        vertical-align: middle; }
+        @media (max-width: 1060px) {
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span {
+            display: none; } }
+        @media (max-width: 767px) {
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span {
+            display: block; } }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search-bar {
+          width: 0;
+          vertical-align: middle;
+          background: #FFFFFF;
+          transition: width 300ms ease-in-out;
+          display: inline-block;
+          margin-right: 12px;
+          border-radius: 15px; }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search-bar input {
+            background: transparent;
+            outline: 0;
+            border: 0;
+            font-size: 14px;
+            font-family: light;
+            color: #231F20;
+            box-sizing: border-box;
+            padding: 5px 12px;
+            display: none;
+            visibility: hidden;
+            position: relative;
+            right: 0px;
+            width: 100%; }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search-bar.active {
+            width: 200px; }
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search-bar.active input {
+              display: inline-block;
+              visibility: visible; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search {
+          display: inline-block; }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search:hover {
+            cursor: pointer; }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search.active .search-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle; }
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search.active .search-icon:before, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search.active .search-icon:after {
+              top: 2px;
+              right: 7px; }
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search.active .search-icon:after {
+              transform: rotate(45deg); }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search .search-icon {
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border: 2px solid #fff;
+            display: block;
+            border-radius: 15px;
+            position: relative;
+            transition: all .2s ease-in-out;
+            margin: 0px 0px;
+            display: inline-block;
+            vertical-align: middle; }
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search .search-icon:before, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .search .search-icon:after {
+              width: 2px;
+              height: 12px;
+              display: block;
+              content: '';
+              background: #fff;
+              position: absolute;
+              top: 15px;
+              right: -5px;
+              transform: rotate(-45deg);
+              transition: all .2s ease-in-out; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right span .circlemargin {
+          margin-top: 5px; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .search-signed {
+        margin-top: 10px; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right #userpic {
+        padding: 0px;
+        margin: 0px;
+        padding-right: 10px; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown {
+        margin-top: 4px; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-toggle {
+          padding-top: 12px; }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-toggle img {
+            width: 40px;
+            border: 2px solid #FFB733;
+            border-radius: 50px;
+            display: inline-block; }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-toggle span {
+            color: #FFFFFF; }
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-toggle span .fa-bell {
+              color: #FFFFFF; }
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-toggle span:hover, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-toggle span:active, header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-toggle span:focus {
+              color: #FFB733; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-menu {
+          min-width: 100px; }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-menu li a {
+            padding-left: 25px; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .notemenu {
+          min-width: 300px;
+          background-color: #FFFFFF;
+          padding: 0px;
+          top: 105%; }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .notemenu a {
+            display: block;
+            font-size: 12px;
+            font-family: regular;
+            color: #231F20;
+            padding: 10px;
+            width: 100%; }
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .notemenu a:hover {
+              text-decoration: none;
+              cursor: pointer; }
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .notemenu a img {
+              width: 25px;
+              border: 1px solid #45132E;
+              border-radius: 50px;
+              display: inline-block;
+              margin: 5px; }
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .notemenu a span {
+              font-size: 12px;
+              font-family: light;
+              color: #808285;
+              padding: 5px; }
+            header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .notemenu a p {
+              padding: 2px;
+              display: inline-block; }
+          header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .notemenu .divider {
+            margin: 0px;
+            background-color: #6A0C38;
+            text-align: center; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .btn {
+        margin: 8px 5px; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .btn-default {
+        background-color: #FFB733;
+        color: #45132E;
+        border: 0px;
+        border-radius: 50px;
+        font-family: bold;
+        margin-left: 15px; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .btn-default:hover {
+          background-color: #45132E;
+          color: #FFFFFF; }
+      header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .btn-primary {
+        background-color: #45132E;
+        color: #FFFFFF;
+        border: 0px;
+        border-radius: 50px;
+        font-family: bold; }
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right .btn-primary:hover {
+          background-color: #FFB733;
+          color: #FFFFFF; }
+      @media (max-width: 1089px) {
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right {
+          display: none; } }
+      @media (max-width: 767px) {
+        header #Navbar-home .navbar .container-fluid .navbar-collapse .navbar-right {
+          display: inline-block; } }
+header .navbar-default .navbar-nav > .open > a, header .navbar-default .navbar-nav > .open > a:hover, header .navbar-default .navbar-nav > .open > a:focus {
+  background-color: transparent; }
+
+#topposts {
+  background-color: #FFFFFF; }
+  #topposts .row {
+    margin: 0px; }
+  #topposts .container .title {
+    text-align: center;
+    margin-top: 20px;
+    background-image: url(../../Imgs/bground2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; }
+    #topposts .container .title h1 {
+      color: #FFB733;
+      font-family: bold;
+      margin-top: 60px;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-block;
+      font-size: 50px; }
+    @media (max-width: 615px) {
+      #topposts .container .title {
+        background-image: none; }
+        #topposts .container .title h1 {
+          text-align: left; } }
+  #topposts .container .mainrow {
+    margin-left: 0px;
+    margin-top: 15px;
+    display: block; }
+    #topposts .container .mainrow .postSection .thumbnail {
+      padding: 0px;
+      background-color: #f1f1f1;
+      width: 100%; }
+      #topposts .container .mainrow .postSection .thumbnail .defaultimg {
+        padding: 0px;
+        margin: 0px;
+        width: 100%; }
+        #topposts .container .mainrow .postSection .thumbnail .defaultimg img {
+          width: 100%;
+          max-height: 200px; }
+        #topposts .container .mainrow .postSection .thumbnail .defaultimg video {
+          width: 100%;
+          height: 200px;
+          object-fit: fill; }
+      #topposts .container .mainrow .postSection .thumbnail .caption {
+        margin: 0px;
+        padding: 20px;
+        width: 100%; }
+        #topposts .container .mainrow .postSection .thumbnail .caption p {
+          font-family: regular;
+          font-size: 14px;
+          text-align: left;
+          margin-bottom: 15px;
+          vertical-align: middle; }
+        #topposts .container .mainrow .postSection .thumbnail .caption audio {
+          width: 100%;
+          margin-bottom: 5px; }
+      #topposts .container .mainrow .postSection .thumbnail .userinfo {
+        font-family: regular;
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 20px;
+        background-color: #6A0C38;
+        width: 100%; }
+        #topposts .container .mainrow .postSection .thumbnail .userinfo img {
+          width: 40px;
+          border: 2px solid #FFB733;
+          border-radius: 50px;
+          display: inline-block; }
+        #topposts .container .mainrow .postSection .thumbnail .userinfo p {
+          display: inline-block;
+          color: #FFB733;
+          font-family: medium; }
+      #topposts .container .mainrow .postSection .thumbnail .interaction {
+        margin-bottom: 15px;
+        vertical-align: middle;
+        text-align: center;
+        width: 100%; }
+        #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder {
+          display: inline-block; }
+          #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .btn-info {
+            margin: 0px;
+            padding: 0px;
+            background-color: transparent;
+            border: 0px; }
+          #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .share .caret {
+            display: none; }
+          #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .share .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            min-width: 0px;
+            padding: 0;
+            margin: 0; }
+            #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .share .dropdown-menu li a:hover i {
+              color: #FFB733; }
+        #topposts .container .mainrow .postSection .thumbnail .interaction div a {
+          margin: 10px; }
+          #topposts .container .mainrow .postSection .thumbnail .interaction div a:hover {
+            text-decoration: none; }
+          #topposts .container .mainrow .postSection .thumbnail .interaction div a i {
+            font-size: 20px;
+            color: #808285;
+            vertical-align: top; }
+            #topposts .container .mainrow .postSection .thumbnail .interaction div a i:hover {
+              color: #FFB733; }
+          #topposts .container .mainrow .postSection .thumbnail .interaction div a .badge {
+            font-family: regular;
+            font-size: 14px;
+            background-color: transparent;
+            color: #808285; }
+
+div .row {
+  margin: 0px; }
+div .modal-dialog .modal-content .modal-header {
+  background-color: #6A0C38; }
+  div .modal-dialog .modal-content .modal-header .close {
+    color: #FFB733; }
+    div .modal-dialog .modal-content .modal-header .close span {
+      color: #FFB733; }
+  div .modal-dialog .modal-content .modal-header h4 {
+    text-align: center; }
+    div .modal-dialog .modal-content .modal-header h4 .popUserInfo {
+      background-color: transparent;
+      margin-bottom: 0px; }
+      div .modal-dialog .modal-content .modal-header h4 .popUserInfo img {
+        width: 40px;
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block; }
+      div .modal-dialog .modal-content .modal-header h4 .popUserInfo p {
+        display: inline-block;
+        color: #FFFFFF;
+        font-family: medium; }
+div .modal-dialog .modal-content .modal-body {
+  padding: 0px;
+  border: 0px; }
+  div .modal-dialog .modal-content .modal-body .popPostSection {
+    padding: 0px;
+    width: 100%;
+    margin: 0px;
+    margin-top: 0px; }
+    div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail {
+      background-color: #FFFFFF;
+      border: 0px;
+      padding: 0px;
+      padding-bottom: 10px; }
+      div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popdefaultimg {
+        border: 0px; }
+        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popdefaultimg img {
+          width: 100%; }
+        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popdefaultimg video {
+          width: 100%; }
+      div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popCaption {
+        font-size: 14px;
+        font-family: regular;
+        color: #231F20; }
+        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popCaption p {
+          padding: 20px; }
+        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popCaption audio {
+          width: 100%; }
+      div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser {
+        background-color: #E4E4E4;
+        text-align: center; }
+        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction {
+          font-size: 20px; }
+          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder {
+            display: inline-block; }
+            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .btn-info {
+              margin: 0px;
+              padding: 0px;
+              background-color: transparent;
+              border: 0px; }
+            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .share .caret {
+              display: none; }
+            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .share .dropdown-menu {
+              position: absolute;
+              top: 100%;
+              min-width: 0px;
+              padding: 0;
+              margin: 0; }
+              div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .share .dropdown-menu li a:hover i {
+                color: #FFB733; }
+          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div {
+            margin: 0px; }
+            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div a {
+              padding: 15px; }
+              div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div a:hover {
+                text-decoration: none; }
+            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div i {
+              color: #FFB733; }
+            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div span {
+              background-color: transparent;
+              font-size: 14px;
+              font-family: regular;
+              color: #808285; }
+      div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost {
+        padding: 10px; }
+        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .form-control {
+          width: 100%; }
+          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .form-control:focus {
+            border-color: #FFB733; }
+        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .posting {
+          display: block;
+          margin: 20px;
+          margin-right: 5px;
+          margin-bottom: 0;
+          text-align: right; }
+          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .posting .btn {
+            background-color: #6A0C38;
+            color: #FFFFFF;
+            border: 0px;
+            vertical-align: middle;
+            padding: 10px;
+            border-radius: 25px;
+            width: 120px; }
+      div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media {
+        margin-left: 20px;
+        margin-top: 10px; }
+        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-left {
+          width: 10%; }
+          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-left a img {
+            border: 2px solid #FFB733;
+            border-radius: 50px;
+            display: inline-block;
+            width: 100%; }
+        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-body {
+          font-family: regular;
+          font-size: 12px;
+          color: #808285; }
+          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-body h4 {
+            font-family: regular;
+            font-size: 16px;
+            color: #231F20; }
+          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-body p {
+            margin: 10px; }
+
+header #topposts .container .mainrow .postSection .thumbnail .interaction div a .fa-heart:hover {
+  color: darkred; }
+
+#topEvents {
+  background-color: #6A0C38; }
+  #topEvents .container .title {
+    text-align: center;
+    margin-top: 20px; }
+    #topEvents .container .title h1 {
+      color: #FFB733;
+      font-family: bold;
+      margin-top: 60px;
+      margin-bottom: 15px;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-block;
+      font-size: 50px; }
+    @media (max-width: 615px) {
+      #topEvents .container .title {
+        background-image: none; }
+        #topEvents .container .title h1 {
+          text-align: left; } }
+  #topEvents .container .evMainRow .eventSection .thumbnail {
+    background-color: #f1f1f1;
+    padding: 0px; }
+    #topEvents .container .evMainRow .eventSection .thumbnail .evDefaultImg {
+      padding: 0px;
+      margin: 0px;
+      width: 100%; }
+      #topEvents .container .evMainRow .eventSection .thumbnail .evDefaultImg img {
+        width: 100%;
+        max-height: 300px; }
+      #topEvents .container .evMainRow .eventSection .thumbnail .evDefaultImg video {
+        width: 100%;
+        height: 300px;
+        object-fit: fill; }
+    #topEvents .container .evMainRow .eventSection .thumbnail .evTitle {
+      font-family: bold;
+      font-size: 20px;
+      color: #FFB733; }
+      #topEvents .container .evMainRow .eventSection .thumbnail .evTitle div a {
+        font-family: bold;
+        font-size: 20px;
+        color: #FFB733; }
+        #topEvents .container .evMainRow .eventSection .thumbnail .evTitle div a:hover {
+          text-decoration: none; }
+      #topEvents .container .evMainRow .eventSection .thumbnail .evTitle div i {
+        font-size: 20px;
+        color: #808285;
+        margin-top: 20px; }
+    #topEvents .container .evMainRow .eventSection .thumbnail .evCaption {
+      margin: 0px;
+      padding: 20px; }
+      #topEvents .container .evMainRow .eventSection .thumbnail .evCaption p {
+        font-family: regular;
+        font-size: 14px;
+        text-align: left;
+        margin-bottom: 15px;
+        vertical-align: middle;
+        width: 100%; }
+    #topEvents .container .evMainRow .eventSection .thumbnail .evDetails {
+      font-size: 10px; }
+      #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd {
+        margin-bottom: 15px;
+        padding: 0;
+        padding-left: 10px; }
+        #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .bigdate {
+          width: 60%;
+          font-size: 12px;
+          font-family: light; }
+          #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .bigdate i {
+            font-size: 40px;
+            color: #6A0C38;
+            margin: 0px;
+            padding: 0px; }
+          #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .bigdate p {
+            font-size: 40px;
+            font-family: medium;
+            display: inline-block; }
+        #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .labels {
+          width: 46%;
+          display: inline-block;
+          text-align: left; }
+          #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .labels .label {
+            background-color: transparent;
+            color: #231F20;
+            text-align: left;
+            font-size: 12px;
+            font-family: light;
+            padding: 0px; }
+          #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .labels .first {
+            display: block;
+            padding: 0px;
+            margin-bottom: 7px; }
+    #topEvents .container .evMainRow .eventSection .thumbnail .userPic {
+      font-family: bold;
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #FFB733;
+      display: inline-block;
+      margin-bottom: 20px;
+      margin-left: 18px;
+      vertical-align: bottom; }
+      #topEvents .container .evMainRow .eventSection .thumbnail .userPic:hover {
+        text-decoration: none; }
+      #topEvents .container .evMainRow .eventSection .thumbnail .userPic span {
+        display: inline-block;
+        color: #525252;
+        font-family: medium; }
+      #topEvents .container .evMainRow .eventSection .thumbnail .userPic img {
+        width: 40px;
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block; }
+    #topEvents .container .evMainRow .eventSection .thumbnail .going {
+      margin: 20px;
+      margin-top: 0px;
+      display: block;
+      text-align: right; }
+      #topEvents .container .evMainRow .eventSection .thumbnail .going .btn {
+        background-color: #6A0C38;
+        color: #FFFFFF;
+        border: 0px;
+        vertical-align: middle;
+        padding: 10px;
+        border-radius: 25px;
+        width: 120px; }
+  #topEvents .container .evMainRow .row {
+    margin: 0px; }
+  #topEvents .container .evMainRow #s {
+    color: #231F20;
+    text-align: left;
+    font-size: 12px;
+    font-family: regular;
+    padding: 0px;
+    font-size: 12px; }
+  #topEvents .container .evMainRow div#secondp {
+    margin-top: 8px; }
+  #topEvents .container .evMainRow #socialHolder {
+    display: inline-block; }
+    #topEvents .container .evMainRow #socialHolder #socialShare .btn-info {
+      margin: 0px;
+      padding: 0px;
+      background-color: transparent;
+      border: 0px; }
+    #topEvents .container .evMainRow #socialHolder #socialShare .share .caret {
+      display: none; }
+    #topEvents .container .evMainRow #socialHolder #socialShare .share .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      min-width: 0px;
+      padding: 0;
+      margin: 0; }
+      #topEvents .container .evMainRow #socialHolder #socialShare .share .dropdown-menu li a:hover i {
+        color: #FFB733; }
+
+.modal .modal-dialog .modal-content .modal-header .modal-title .popUpEvTitle {
+  font-family: bold;
+  font-size: 20px;
+  color: #FFB733; }
+  .modal .modal-dialog .modal-content .modal-header .modal-title .popUpEvTitle a {
+    font-family: bold;
+    font-size: 20px;
+    color: #FFB733; }
+    .modal .modal-dialog .modal-content .modal-header .modal-title .popUpEvTitle a:hover {
+      text-decoration: none; }
+.modal .modal-dialog .modal-body .thumbnail {
+  padding: 0px; }
+  .modal .modal-dialog .modal-body .thumbnail .evDefaultImg {
+    padding: 0px;
+    margin: 0px;
+    width: 100%; }
+    .modal .modal-dialog .modal-body .thumbnail .evDefaultImg img {
+      width: 100%; }
+  .modal .modal-dialog .modal-body .thumbnail .evCaption {
+    margin: 0px;
+    padding: 20px; }
+    .modal .modal-dialog .modal-body .thumbnail .evCaption p {
+      font-family: regular;
+      font-size: 14px;
+      text-align: left;
+      margin-bottom: 15px;
+      vertical-align: middle;
+      width: 100%; }
+  .modal .modal-dialog .modal-body .thumbnail .evDetails {
+    font-size: 10px; }
+    .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd {
+      margin-bottom: 15px; }
+      .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .bigdate {
+        display: inline-block;
+        width: 35%;
+        font-size: 40px;
+        font-family: medium; }
+        .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .bigdate i {
+          font-size: 40px;
+          color: #6A0C38;
+          margin: 0px;
+          padding: 0px; }
+        .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .bigdate p {
+          font-size: 40px;
+          font-family: medium;
+          display: inline-block; }
+      .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .labels {
+        width: 46%;
+        display: inline-block;
+        text-align: left; }
+        .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .labels .label {
+          background-color: transparent;
+          color: #231F20;
+          text-align: left;
+          font-size: 12px;
+          font-family: light;
+          padding: 0px; }
+        .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .labels .first {
+          display: block;
+          padding: 0px;
+          margin-bottom: 7px; }
+      .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd #secondp {
+        margin-top: 8px; }
+      .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd #s {
+        color: #231F20;
+        text-align: left;
+        font-size: 12px;
+        font-family: regular;
+        padding: 0px;
+        font-size: 12px; }
+      .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd #span1 {
+        text-align: right; }
+  .modal .modal-dialog .modal-body .thumbnail .evTitle {
+    padding: 15px;
+    font-family: bold;
+    font-size: 20px;
+    color: #FFB733;
+    background-color: #E4E4E4; }
+    .modal .modal-dialog .modal-body .thumbnail .evTitle div {
+      padding: 0px; }
+      .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic {
+        font-family: bold;
+        font-size: 14px;
+        color: #FFB733;
+        display: inline-block;
+        margin-left: 18px;
+        vertical-align: bottom;
+        font-family: bold; }
+        .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic:hover {
+          text-decoration: none; }
+        .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic span {
+          display: inline-block;
+          color: #525252;
+          font-family: medium; }
+        .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic img {
+          width: 40px;
+          border: 2px solid #FFB733;
+          border-radius: 50px;
+          display: inline-block; }
+    .modal .modal-dialog .modal-body .thumbnail .evTitle .going {
+      margin-top: 0px;
+      display: block;
+      text-align: right; }
+      .modal .modal-dialog .modal-body .thumbnail .evTitle .going .btn {
+        background-color: #6A0C38;
+        color: #FFFFFF;
+        border: 0px;
+        vertical-align: middle;
+        padding: 10px;
+        border-radius: 25px;
+        width: 120px; }
+    .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder {
+      display: inline-block;
+      text-align: center;
+      margin-top: 9px; }
+      .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .btn-info {
+        margin: 0px;
+        padding: 0px;
+        background-color: transparent;
+        border: 0px; }
+        .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .btn-info .fa-share-alt {
+          font-size: 25px;
+          color: #6A0C38; }
+      .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .share .caret {
+        display: none; }
+      .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        min-width: 0px;
+        padding: 0;
+        margin: 0; }
+        .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .dropdown-menu li a:hover i {
+          color: #FFB733; }
+  .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost {
+    padding: 10px; }
+    .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .form-control {
+      width: 100%; }
+      .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .form-control:focus {
+        border-color: #FFB733; }
+    .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .posting {
+      display: block;
+      margin: 20px;
+      margin-right: 5px;
+      margin-bottom: 0;
+      text-align: right; }
+      .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .posting .btn {
+        background-color: #6A0C38;
+        color: #FFFFFF;
+        border: 0px;
+        vertical-align: middle;
+        padding: 10px;
+        border-radius: 25px;
+        width: 120px; }
+  .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media {
+    margin-left: 20px;
+    margin-top: 10px; }
+    .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-left {
+      width: 10%; }
+      .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-left a img {
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block;
+        width: 100%; }
+    .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-body {
+      font-family: regular;
+      font-size: 12px;
+      color: #808285; }
+      .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-body h4 {
+        font-family: regular;
+        font-size: 16px;
+        color: #231F20; }
+      .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-body p {
+        margin: 10px; }
+
+@media (max-width: 994px) {
+  #socialHolder {
+    display: block;
+    text-align: left; }
+
+  .going {
+    display: block;
+    text-align: left; } }
+#topWorkshops {
+  background-color: #E4E4E4; }
+  #topWorkshops .row {
+    margin: 0px; }
+  #topWorkshops .container .title {
+    text-align: center;
+    margin-top: 20px;
+    background-image: url(../../Imgs/bground2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; }
+    #topWorkshops .container .title h1 {
+      color: #FFB733;
+      font-family: bold;
+      margin-top: 60px;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-block;
+      font-size: 50px; }
+    @media (max-width: 615px) {
+      #topWorkshops .container .title {
+        background-image: none; }
+        #topWorkshops .container .title h1 {
+          text-align: left; } }
+  #topWorkshops .container .workshopsSection {
+    margin-top: 25px;
+    height: inherit; }
+    #topWorkshops .container .workshopsSection .thumbnail {
+      padding: 0px; }
+      #topWorkshops .container .workshopsSection .thumbnail img {
+        width: 100%;
+        margin: 0px; }
+      #topWorkshops .container .workshopsSection .thumbnail h3 {
+        font-family: bold;
+        color: #FFB733;
+        text-align: center; }
+      #topWorkshops .container .workshopsSection .thumbnail .caption p {
+        font-family: regular;
+        font-size: 14px;
+        text-align: left;
+        margin-bottom: 25px; }
+      #topWorkshops .container .workshopsSection .thumbnail .workshopInfo div {
+        display: inline-block;
+        padding: 0px;
+        text-align: center; }
+        #topWorkshops .container .workshopsSection .thumbnail .workshopInfo div i {
+          margin-right: 5px;
+          color: #6A0C38;
+          font-size: 20px; }
+        #topWorkshops .container .workshopsSection .thumbnail .workshopInfo div .badge {
+          font-size: 12px;
+          font-family: light;
+          background-color: transparent;
+          color: #808285;
+          vertical-align: bottom;
+          padding: 0px;
+          vertical-align: top;
+          margin-top: 5px; }
+      #topWorkshops .container .workshopsSection .thumbnail .userPic {
+        display: inline-block;
+        color: #FFB733;
+        font-family: light;
+        font-size: 14px;
+        display: block;
+        background-color: #6A0C38;
+        margin-top: 15px;
+        width: 100%; }
+        #topWorkshops .container .workshopsSection .thumbnail .userPic .mintor {
+          font-family: medium;
+          font-size: 14px;
+          color: #FFFFFF;
+          display: inline-block;
+          margin-top: 10px;
+          text-align: right;
+          padding-right: 0px;
+          margin-bottom: 10px; }
+          #topWorkshops .container .workshopsSection .thumbnail .userPic .mintor img {
+            width: 40px;
+            border: 2px solid #FFB733;
+            border-radius: 50px;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0px; }
+        #topWorkshops .container .workshopsSection .thumbnail .userPic span {
+          font-family: medium;
+          font-size: 14px;
+          color: #FFB733;
+          display: inline-block;
+          margin-top: 20px;
+          margin-bottom: 10px;
+          padding-left: 5px;
+          text-align: left; }
+
+.modal .modal-dialog .modal-content .modal-header .modal-title .popWorkshopTitle {
+  font-family: bold;
+  font-size: 20px;
+  color: #FFB733; }
+  .modal .modal-dialog .modal-content .modal-header .modal-title .popWorkshopTitle a {
+    font-family: bold;
+    font-size: 20px;
+    color: #FFB733; }
+    .modal .modal-dialog .modal-content .modal-header .modal-title .popWorkshopTitle a:hover {
+      text-decoration: none; }
+.modal .modal-dialog .modal-body .thumbnail {
+  padding: 0px; }
+  .modal .modal-dialog .modal-body .thumbnail .popWorkshopDefaultImg {
+    padding: 0px;
+    margin: 0px;
+    width: 100%; }
+    .modal .modal-dialog .modal-body .thumbnail .popWorkshopDefaultImg img {
+      width: 100%; }
+  .modal .modal-dialog .modal-body .thumbnail .popWorkshopCaption {
+    margin: 0px;
+    padding: 20px; }
+    .modal .modal-dialog .modal-body .thumbnail .popWorkshopCaption p {
+      font-family: regular;
+      font-size: 14px;
+      text-align: left;
+      margin-bottom: 15px;
+      vertical-align: middle;
+      width: 100%; }
+  .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo {
+    margin-bottom: 20px; }
+    .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo div {
+      display: inline-block;
+      padding: 0px;
+      text-align: center; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo div i {
+        margin-right: 5px;
+        color: #6A0C38;
+        font-size: 20px; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo div .badge {
+        font-size: 12px;
+        font-family: light;
+        background-color: transparent;
+        color: #808285;
+        vertical-align: bottom;
+        padding: 0px;
+        vertical-align: top;
+        margin-top: 5px; }
+  .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle {
+    margin-top: 20px;
+    padding: 15px;
+    font-family: bold;
+    font-size: 20px;
+    color: #FFB733;
+    background-color: #E4E4E4; }
+    .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div {
+      padding: 0px; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic {
+        font-family: bold;
+        font-size: 14px;
+        color: #FFB733;
+        display: inline-block;
+        margin-left: 18px;
+        vertical-align: bottom;
+        font-family: bold; }
+        .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic:hover {
+          text-decoration: none; }
+        .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic span {
+          display: inline-block;
+          color: #525252;
+          font-family: medium; }
+        .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic img {
+          width: 40px;
+          border: 2px solid #FFB733;
+          border-radius: 50px;
+          display: inline-block; }
+    .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle .going {
+      margin-top: 0px;
+      display: block;
+      text-align: right; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle .going .btn {
+        background-color: #6A0C38;
+        color: #FFFFFF;
+        border: 0px;
+        vertical-align: middle;
+        padding: 10px;
+        border-radius: 25px;
+        width: 120px; }
+    .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder {
+      display: inline-block;
+      text-align: center;
+      margin-top: 9px; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .btn-info {
+        margin: 0px;
+        padding: 0px;
+        background-color: transparent;
+        border: 0px; }
+        .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .btn-info .fa-share-alt {
+          font-size: 25px;
+          color: #6A0C38; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .share .caret {
+        display: none; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        min-width: 0px;
+        padding: 0;
+        margin: 0; }
+        .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .dropdown-menu li a:hover i {
+          color: #FFB733; }
+  .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost {
+    padding: 10px; }
+    .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .form-control {
+      width: 100%; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .form-control:focus {
+        border-color: #FFB733; }
+    .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .posting {
+      display: block;
+      margin: 20px;
+      margin-right: 5px;
+      margin-bottom: 0;
+      text-align: right; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .posting .btn {
+        background-color: #6A0C38;
+        color: #FFFFFF;
+        border: 0px;
+        vertical-align: middle;
+        padding: 10px;
+        border-radius: 25px;
+        width: 120px; }
+  .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media {
+    margin-left: 20px;
+    margin-top: 10px; }
+    .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-left {
+      width: 10%; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-left a img {
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block;
+        width: 100%; }
+    .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-body {
+      font-family: regular;
+      font-size: 12px;
+      color: #808285; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-body h4 {
+        font-family: regular;
+        font-size: 16px;
+        color: #231F20; }
+      .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-body p {
+        margin: 10px; }
+
+footer {
+  font-size: 14px;
+  background-color: #6A0C38;
+  color: #E4E4E4; }
+  footer .row {
+    padding: 25px; }
+    footer .row .footerSection ul h4 {
+      color: #FFFFFF; }
+    footer .row .footerSection ul li {
+      color: #808285; }
+    footer .row .footerSection ul .includedUl li {
+      margin: 10px; }
+      footer .row .footerSection ul .includedUl li i {
+        color: #FFB733;
+        font-size: 35px; }
+    footer .row .footerSection ul .inputEmail {
+      border: 3px #808285 solid;
+      margin-top: 10px; }
+      footer .row .footerSection ul .inputEmail .glyphicon-envelope {
+        color: #808285;
+        padding: 5px;
+        margin-left: 10px; }
+      footer .row .footerSection ul .inputEmail input {
+        background-color: transparent;
+        border: 0px;
+        padding: 5px; }
+    footer .row .footerSection ul .emailBtn {
+      border: 3px #FFB733 solid;
+      color: #FFB733;
+      padding: 5px 10px;
+      width: 100px;
+      margin-top: 8px; }
+
+/*# sourceMappingURL=homestyle.css.map */
