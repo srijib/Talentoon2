@@ -1,46 +1,46 @@
-<center>
-  <a href="#!/category/{{cat_id}}/betalent" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_TALENT' | translate}}</a>
+<!-- <center> -->
+  <!-- <a href="#!/category/{{cat_id}}/betalent" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_TALENT' | translate}}</a> -->
 
   <!-- <a ng-class="untalent()" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_UN_TALENT' | translate}}</a> -->
 
 
-  <a href="#!/category/bementor/{{cat_id}}/{{user_id}}" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_MENTOR' | translate}}</a>
+  <!-- <a href="#!/category/bementor/{{cat_id}}/{{user_id}}" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_MENTOR' | translate}}</a>
 
-  <a ng-click="unmentor()" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_UN_MENTOR' | translate}}</a>
+  <a ng-click="unmentor()" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_UN_MENTOR' | translate}}</a> -->
 
-  <a ng-href="{{current_presenter_class_url}}" class="btn btn-info" role="button">Join Current Session NOW</a> </center>
+  <!-- <a ng-href="{{current_presenter_class_url}}" class="btn btn-info" role="button">Join Current Session NOW</a> </center>
 
-</center>
+</center> -->
 
 
 
-<br>
+<!-- <br> -->
 
 <div class="container">
   <div class="btn-group " role="group" aria-label="...">
 
-    <button type="button" class="btn btn-default btn-lg">{{'ONE_CATEGORY.BE_MENTOR' | translate}}</button>
+    <!-- <button type="button" class="btn btn-default btn-lg">{{'ONE_CATEGORY.BE_MENTOR' | translate}}</button> -->
 
-    <div ng-if="is_mentor != 1">
+    <mentor ng-if="is_mentor != 1">
         <a href="#!/category/{{cat_id}}/bementor" type="button" class="btn btn-default btn-lg">{{'ONE_CATEGORY.BE_MENTOR' | translate}}</a>
-    </div>
-    <div ng-if="is_mentor == 1">
-        <a  class="btn btn-info" role="button" ng-click="unmentor()">{{'ONE_CATEGORY.BE_UN_MENTOR' | translate}}</a>
-    </div>
+    </mentor>
+    <mentor ng-if="is_mentor == 1">
+        <a class="btn btn-default btn-lg" role="button" ng-click="unmentor()">{{'ONE_CATEGORY.BE_UN_MENTOR' | translate}}</a>
+    </mentor>
 
-    <div ng-if="is_talent != 1">
+    <talent ng-if="is_talent != 1">
         <a href="#!/category/{{cat_id}}/betalent" type="button" class="btn btn-default btn-lg">{{'ONE_CATEGORY.BE_TALENT' | translate}}</a>
-    </div>
-    <div ng-if="is_talent == 1">
-        <a class="btn btn-info" role="button" ng-click="untalent()">{{'ONE_CATEGORY.BE_UN_TALENT' | translate}}</a>
-    </div>
+    </talent>
+    <talent ng-if="is_talent == 1">
+        <a class="btn btn-default btn-lg" role="button" ng-click="untalent()">{{'ONE_CATEGORY.BE_UN_TALENT' | translate}}</a>
+    </talent>
 
-    <div ng-if="is_subscribed != 1">
-      <a type="button" class="btn btn-default btn-lg active" ng-click="subscribe()">{{'ONE_CATEGORY.SUBSCRIBE' | translate}}</a>
-    </div>
-    <div ng-if="is_subscribed == 1">
-      <a type="button" class="btn btn-default btn-lg active" ng-click="unsubscribe()">{{'ONE_CATEGORY.UN_SUBSCRIBE' | translate}}</a>
-    </div>
+    <subscribe ng-if="is_subscribed != 1">
+      <button type="button" class="btn btn-default btn-lg " ng-click="subscribe()">{{'ONE_CATEGORY.SUBSCRIBE' | translate}}</button>
+    </subscribe>
+    <subscribe ng-if="is_subscribed == 1">
+      <button type="button" class="btn btn-default btn-lg " ng-click="unsubscribe()">{{'ONE_CATEGORY.UN_SUBSCRIBE' | translate}}</button>
+    </subscribe>
 
   </div>
 </div>
@@ -948,7 +948,7 @@
           <!--
 -->
           <div class=" going">
-            <button type="button" class="btn btn-default">Details</button>
+            <button type="button" class="btn btn-default">Join</button>
           </div>
 
         </div>
@@ -963,54 +963,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ######################################################################## -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <hr/>
-
-
-    <h1>Please Complete Your Profile to be Mentor.. ()</h1>
-    <div class="completementor">
-
-      <form ng-submit="completeMentorProfile()" name="complete_mentor_profile">
-        <label>Mentor Experience Text</label>
-        <input type="text" name="experience" required ng-model="mentor.experience">
-        <label>Experience Years</label>
-        <input type="text" name="years_of_experience" required ng-model="mentor.years_of_experience">
-        <button type="submit" name="button">Send My Mentor Profile</button>
-      </form>
-
-
-      <input type="button" name="teacher_button" value="Be Teacher In Talentoon" ng-click="add_wiziq_teacher()" />
-      <a href="#!/videoconference" class="btn btn-info" role="button">Add New Video Conference Session</a>
-
-    </div>
-    <hr/>

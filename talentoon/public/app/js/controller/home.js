@@ -1,11 +1,6 @@
 angular.module('myApp').controller("homec",function(Home,$scope,$http,$routeParams,$rootScope,categories){
 
-    localStorage.setItem("language","en");
-
-	$rootScope.token = JSON.parse(localStorage.getItem("token"));
-	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 	Home.getTopPosts().then(function(data){
-
 		$scope.topposts=data;
         $scope.post_exist = true;
 	} , function(err){

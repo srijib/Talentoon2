@@ -1,4 +1,4 @@
-angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
+angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
 
 	$rootScope.token = JSON.parse(localStorage.getItem("token"));
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
@@ -53,12 +53,12 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         console.log(err);
     });
 
-	// Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
-	// 	console.log('getCategoryCompetitions',data.competitions);
-    //     $scope.categoryCompetitions = data.competitions;
-    // }, function (err) {
-    //     console.log(err);
-    // });
+	Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
+		console.log('getCategoryCompetitions',data.competitions);
+        $scope.categoryCompetitions = data.competitions;
+    }, function (err) {
+        console.log(err);
+    });
 
 
     // categories.getCategoryWorkshops($scope.cat_id).then(function (data) {

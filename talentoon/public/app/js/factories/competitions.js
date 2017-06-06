@@ -24,6 +24,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
 
     },
     getCategoryCompetitions:function(cat_id){
+        console.log('factory commmmm');
       var def =$q.defer();
       $http({
         url:'http://localhost:8000/api/categories/'+cat_id+'/competitions',
