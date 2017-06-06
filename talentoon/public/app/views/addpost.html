@@ -1,14 +1,5 @@
 <div class="container" >
 
-	<!-- Form Start -->
-	<form ng-submit="submit_post_file()" name="form" role="form" enctype="multipart/form-data">
-		<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
-		<!--<input type="submit" id="submit_file" value="Submit" />-->
-		<br/>
-		<img ng-src="{{post.file}}" style="width:300px;">
-	</form>
-	<!-- Form End -->
-
 	<!-- <form ng-submit="submitted=true ; newpost(addpost.$valid)" name="addpost"  novalidate >
 		<div class="field">
 		<h4 style="color:Purple ">post title</h4>
@@ -34,6 +25,19 @@
 
 <div class="container">
     <div class="createPost col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
+
+
+		<!-- Form Start -->
+		<form ng-submit="submit_post_file()" name="form" role="form" enctype="multipart/form-data">
+			<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+			<!--<input type="submit" id="submit_file" value="Submit" />-->
+			<br/>
+			<img ng-src="{{post.file}}" style="width:300px;">
+		</form>
+		<!-- Form End -->
+
+
+
 		<form ng-submit="submitted=true ; newpost(addpost.$valid)" name="addpost"  novalidate >
 	        <input type="text" class="form-control" placeholder="Post title" name="title" required ng-model="post.title" >
 			<p class="error" ng-if="addpost.title.$error.required && submitted" >please enter your post title</p>
@@ -43,11 +47,16 @@
 
 			<input type="hidden" name="category_id"  ng-model="post.category_id" class="form-control" value="{{cat_id}}">
 
-	        <!--profile image-->
+	        <!--&lt;!&ndash;profile image&ndash;&gt;-->
 
 	        <div class="row">
+				<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+
+				<img ng-src="{{post.file}}" style="width:300px;">
+
 		        <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files">
 		        </input>
+
 			    <div class ="icons col-lg-6 col-md-6 col-sm-6">
 			        <div class="form-group">
 			            <input type="file" name="img[]" class="file">
@@ -66,6 +75,8 @@
 	                    Post </a>
 	            </div>
 	        </div>
+
+			<button  type="submit" name="button" style="font-size: 20px;">OK</button>
 		</form>
     </div>
 </div>

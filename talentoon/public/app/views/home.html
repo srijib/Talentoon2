@@ -1,6 +1,6 @@
 <header>
 
-    <div id="topposts">
+    <div id="topposts" ng-if="post_exist">
         <div class="container">
             <div class="title">
                 <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
@@ -269,7 +269,7 @@
 
 
 
-<div id="topEvents">
+<div id="topEvents" ng-if="event_exist">
     <div class="container">
         <div class="title">
             <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
@@ -526,7 +526,7 @@
 <!-- "#!/event/{{event.id}}" -->
 
 
-<div id="topWorkshops">
+<div id="topWorkshops" ng-if="workshop_exist">
     <div class="container">
         <div class="title">
             <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->

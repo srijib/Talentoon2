@@ -320,7 +320,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
             }).then(function(res){
                 console.log('in add workshop w 7salaha success')
-                console.log("workshop",res.data);
+                console.log("workshop",res);
                 $http({
                     method: 'POST',
                     url: 'http://localhost:8000/api/workshop_upload/' + res.data.workshop_id,
@@ -360,28 +360,28 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },
 
-        addevent: function (eventdata) {
-            var def = $q.defer();
-            $http({
-                url: 'addevent url',
-                method: 'GET',
-                data: eventdata
-
-            }).then(function (res) {
-
-                if (res.data.length) {
-                    def.resolve(res.data)
-                } else {
-                    def.reject('there is no data ')
-                }
-
-            }, function (err) {
-                // console.log(err);
-                def.reject(err);
-            })
-            return def.promise;
-
-        },
+        // addevent: function (eventdata) {
+        //     var def = $q.defer();
+        //     $http({
+        //         url: 'addevent url',
+        //         method: 'GET',
+        //         data: eventdata
+        //
+        //     }).then(function (res) {
+        //
+        //         if (res.data.length) {
+        //             def.resolve(res.data)
+        //         } else {
+        //             def.reject('there is no data ')
+        //         }
+        //
+        //     }, function (err) {
+        //         // console.log(err);
+        //         def.reject(err);
+        //     })
+        //     return def.promise;
+        //
+        // },
         complete_talent_profile: function (talent_data) {
 
             var def = $q.defer();

@@ -13,9 +13,9 @@ return {
 				console.log(res)
 				console.log('y bashrrrrr',res.data.posts);
 				if(res.data.posts){
-					def.resolve(res.data.posts)
+                    def.resolve(res.data.posts)
 				}else{
-					def.reject('there is no data ')
+                    def.reject('Sorry, No posts found')
 				}
 
 			},function(err){

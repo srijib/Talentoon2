@@ -1,15 +1,16 @@
 angular.module('myApp').controller("homec",function(Home,$scope,$http,$routeParams,$rootScope,categories){
 
+    localStorage.setItem("language","en");
+
 	$rootScope.token = JSON.parse(localStorage.getItem("token"));
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 	console.log($rootScope.token);
 	Home.getTopPosts().then(function(data){
-
-		console.log("top posts",data);
 		$scope.topposts=data;
-// console.log("top posts",data[0].post);
+        $scope.post_exist = true;
 	} , function(err){
-		console.log(err);
+		console.log("No posts existing, error: ",err);
+        $scope.post_exist = false;
 
 	});
 
@@ -17,18 +18,20 @@ angular.module('myApp').controller("homec",function(Home,$scope,$http,$routePara
 
         $scope.events=data;
 		console.log("Eventsssssssssssss here",data);
-
+        $scope.event_exist = true;
     } , function(err){
         console.log(err);
+        $scope.event_exist = false;
 
     });
     Home.getWorkshops().then(function(data){
 
         $scope.workshops=data;
 		console.log("workshopsssssssssssss is here",data);
-
+        $scope.workshop_exist = true;
     } , function(err){
         console.log(err);
+        $scope.workshop_exist = false;
 
     });
 

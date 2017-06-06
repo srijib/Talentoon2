@@ -9,7 +9,8 @@ angular.module('myApp').controller("categories",function($location,$scope,$http,
     var reviewfilesuploaded = []
     var talent = {}
     var mentor = {}
-    var user_id = 1;
+    var user_id = $rootScope.cur_user.id
+
 
 
 	$scope.cat_id= $routeParams['category_id'];
@@ -17,7 +18,9 @@ angular.module('myApp').controller("categories",function($location,$scope,$http,
     categories.getAllCategory().then(function (data) {
         $scope.categories = data.data;
         console.log("categories array", $scope.categories);
+        $scope.category_exist = 1
     }, function (err) {
+        $scope.category_exist = 0
         console.log(err);
     });
 });

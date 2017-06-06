@@ -32,7 +32,7 @@ Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelated
 Route::resource('categories.posts','PostsController');
 
 
-Route::resource('categories.posts','PostsController');
+//Route::resource('categories.posts','PostsController');
 
 //Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
   Route::resource('categories.events','EventController');

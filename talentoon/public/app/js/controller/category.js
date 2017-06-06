@@ -10,7 +10,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     var reviewfilesuploaded = []
     var talent = {}
     var mentor = {}
-    var user_id = 1;
+    var user_id = $rootScope.cur_user.id;
 
 
     $scope.cat_id = $routeParams['category_id'];
@@ -25,6 +25,27 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         $scope.categoryWorkshops = data.workshops;
         $rootScope.cur_user = data.cur_user;
         $scope.category_details = data.category_details;
+
+        if($scope.categoryPosts.length){
+            $scope.category_posts_exists = 1;
+        }
+
+        if($scope.categoryEvents.length){
+            $scope.category_events_exists = 1;
+        }
+
+        if($scope.categoryWorkshops.length){
+            $scope.category_workshops_exists = 1;
+        }
+
+        if($scope.cur_user){
+            $scope.cur_user_exists = 1;
+        }
+
+        if($scope.category_details){
+            $scope.category_details_exists = 1;
+        }
+
 
     }, function (err) {
         console.log(err);
@@ -109,7 +130,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
         if (vaild) {
             var category= $routeParams['category_id'];
-            var mentor_id= 1;
+            var mentor_id= $rootScope.cur_user.id;
             $scope.editable_workshop.category_id=category
 
 
@@ -179,7 +200,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
         if (vaild) {
             var category= $routeParams['category_id'];
-            var mentor_id= 1;
+            var mentor_id= $rootScope.cur_user.id;
             $scope.editable_post.category_id=category
 
 
@@ -259,7 +280,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         console.log('hhhhhhhhhhhhhhhh')
         if (vaild) {
             var category= $routeParams['category_id'];
-            var mentor_id= 1;
+            var mentor_id= $rootScope.cur_user.id;
             console.log('hhhhhhhhhhhhhhhh')
             $scope.editable_event.category_id=category
 
@@ -517,14 +538,16 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 // subscribe in category
     $scope.subscribe = function () {
-        $routeParams['user_id'] = 1;
+        $routeParams['user_id'] = $rootScope.cur_user.id;
         var subscriber_id = $routeParams['user_id'];
         var subscribed = 1;
+
         var category_id = $routeParams['category_id'];
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.subscribe(obj).then(function (data) {
             localStorage.setItem('status', data);
+            $scope.subscribed_cat =1;
             $rootScope.status = localStorage.getItem("status");
             $location.url('/category/' + category_id);
         }, function (err) {
@@ -540,11 +563,13 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         $routeParams['user_id'] = 1;
         var subscriber_id = $routeParams['user_id'];
         var subscribed = 0;
+
         var category_id = $routeParams['category_id'];
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.unsubscribe(obj).then(function (data) {
             localStorage.setItem('status', data);
+            $scope.subscribed_cat =0;
             $rootScope.status = localStorage.getItem("status");
             // $rootScope.status=data;
             $location.url('/category/' + category_id);
