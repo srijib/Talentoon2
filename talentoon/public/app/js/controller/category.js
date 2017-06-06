@@ -30,6 +30,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         $scope.categoryWorkshops = data.workshops;
         $rootScope.cur_user = data.cur_user;
         $scope.category_details = data.category_details;
+
 		if($scope.categoryPosts.length){
             $scope.category_posts_exists = 1;
         }
@@ -54,6 +55,17 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 	// Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
 	// 	console.log('getCategoryCompetitions',data.competitions);
+    //     $scope.categoryCompetitions = data.competitions;
+    // }, function (err) {
+    //     console.log(err);
+    // });
+
+
+
+
+
+    // Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
+		// console.log('getCategoryCompetitions',data.competitions);
     //     $scope.categoryCompetitions = data.competitions;
     // }, function (err) {
     //     console.log(err);

@@ -101,7 +101,7 @@ class UploadController extends Controller
             $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/events/'.$_FILES['file']['name']);
 //            return response()->json(['id'=>$id]);
             $event =Event::find($id);
-            $event->media_url = 'uploads/files/'.$_FILES['file']['name'];
+            $event->media_url = 'uploads/events/'.$_FILES['file']['name'];
             $event->media_type = $_FILES['file']['type'];
             $event->save();
 
