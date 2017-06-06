@@ -31,6 +31,7 @@ class UserProfile extends Controller
 
 
     //user points
+    if($total_mentor_reviews_points){
     $points = $total_mentor_reviews_points[0]->points;
 
 
@@ -155,7 +156,7 @@ class UserProfile extends Controller
 
 
          $rewardimage = $rewardimage[0]->$levelname;
-
+}
          return response()->json(['status' => 1,
                         'message' => 'user data send successfully',
                       'user_id'=>$user->id,
