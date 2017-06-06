@@ -34,4 +34,11 @@ class CategoryTalentService
 
     }
 
+    public static function untalent ($request){
+            $is_talent=DB::table('category_talents')->where([['talent_id',$request->talent_id],['category_id',$request->category_id]])->update(['status' => 0]);
+            return response()->json(['status' => 200,
+                                'message' => 'unTalent successfully']);
+
+        }
+
 }

@@ -4,8 +4,8 @@ angular.module('myApp').controller("homec",function(Home,$scope,$http,$routePara
 
 	$rootScope.token = JSON.parse(localStorage.getItem("token"));
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
-	console.log($rootScope.token);
 	Home.getTopPosts().then(function(data){
+
 		$scope.topposts=data;
         $scope.post_exist = true;
 	} , function(err){

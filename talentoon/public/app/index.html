@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
 	<!-- <script type="text/javascript" src="node_modules/angular-modal-service/dst/angular-modal-service.js"></script> -->
 	<script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
 	<script type="text/javascript" src="node_modules/aos/dist/aos.js"></script>
@@ -22,13 +23,13 @@
 	<script type="text/javascript" src="js/controller/main.js"></script>
 	<script type="text/javascript" src="js/controller/category.js"></script>
 	<script type="text/javascript" src="js/controller/categories.js"></script>
-	<script type="text/javascript" src="js/controller/categorycompetitions.js"></script>
+	<script type="text/javascript" src="js/controller/categoryCompetitions.js"></script>
 	<script type="text/javascript" src="js/controller/competitions.js"></script>
 	<script type="text/javascript" src="js/controller/singleCompetition.js"></script>
 	<script type="text/javascript" src="js/controller/talent.js"></script>
+	<script type="text/javascript" src="js/controller/mentor.js"></script>
     <script type="text/javascript" src="js/controller/home.js"></script>
     <script type="text/javascript" src="js/controller/addpost.js"></script>
-	<script type="text/javascript" src="js/controller/addevent.js"></script>
 	<script type="text/javascript" src="js/controller/addworkshop.js"></script>
 	<script type="text/javascript" src="js/controller/addsession.js"></script>
 	<script type="text/javascript" src="js/controller/showreview.js"></script>
@@ -71,6 +72,7 @@
     <link rel="stylesheet" href="css/navbar.css">
 	<link rel="stylesheet" href="css/categories.css">
 	<link rel="stylesheet" href="css/categorySelected.css">
+	<link rel="stylesheet" href="css/talentConfirmation.css">
 	<link rel="stylesheet" href="css/createPost.css">
 	<link rel="stylesheet" href="css/posts.css">
 
@@ -188,7 +190,7 @@
                                 <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#signup">Sign Up</button>
 							</notlogged>
 							<li class="dropdown">
-                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">language<span class="caret"></span></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">language<span class="caret"></span></a>
 
                                 <!--                                drop menu for categories-->
                                 <ul class="dropdown-menu">

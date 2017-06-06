@@ -16,6 +16,7 @@ use Session;
 use App\Models\Upload;
 use App\Models\Event;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+// use Illuminate\Support\Facades\Image;
 
 class UploadController extends Controller
 {
@@ -28,6 +29,9 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $name = $request->input('image');
+    //     $img = Image::make(public_path($name));
+    // $img->insert(public_path('favicon.ico'), 'bottom-right', 10, 10);
+    // $img->save(public_path($name));
         return $name;
         //
     }
