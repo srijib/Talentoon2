@@ -144,3 +144,11 @@ Route::post('/conference/add_teacher', 'VideoConferenceController@add_wiziq_teac
 Route::post('/conference/create_class', 'VideoConferenceController@create_wiziq_class');
 Route::post('/session_upload/{id}', 'UploadController@session_upload');
 Route::post('/workshop/{workshop_id}','WorkShopsController@createSession');
+
+//Route::resource('competition','CompetitionsController');
+Route::resource('competition','CompetitionsController');
+//Route::resource('categories.competitions','CategoryCompetitionController');
+Route::resource('categories.competitions','CategoryCompetitionController');
+Route::resource('competitions.posts','CompetitionPostController');
+Route::get('/competition/{competition_id}/join','CompetitionJoinController@joinCompetition');
+Route::get('/competition/post/{post_id}/grantvote','CompetitionPostPointsConroller@grantVote');

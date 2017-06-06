@@ -6,5 +6,5 @@ class Competition extends Model
 {
 
     protected $table = 'competitions';
-    protected $fillable =['mentor_id','category_id','winner_talent_id','winner_points','competition_level','competition_start_date','competition_start_time','competition_end_date', 'competition_end_time', 'voting_start_date', 'voting_start_time', 'voting_end_date', 'voting_end_time'];
+    protected $fillable =['mentor_id','category_id','description','points_description','competition_from_level','competition_to_level','competition_start_date','competition_start_time','competition_end_date', 'competition_end_time','first_winner_talent_id','second_winner_talent_id','third_winner_talent_id'];
 }
