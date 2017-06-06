@@ -28,10 +28,16 @@ class CategoriesController extends Controller
     }
     public function index()
     {
-       $user = JWTAuth::parseToken()->authenticate();
+        
+        
+        try{
+        $user = JWTAuth::parseToken()->authenticate();
        $categories= Category::all();
        //N.B token had value however it is printed {}
        $token=JWTAuth::getToken();
+        } catch (Exception $ex) {
+            dd(['here']);
+        }
        //dd($token);
         // $path=$categories[0]->getAttributes()['image'];
         // $categories[5]->getAttributes()['image'] = '/uploads/files/'.$categories[5]->getAttributes()['image'];

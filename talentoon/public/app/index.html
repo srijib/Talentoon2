@@ -36,14 +36,13 @@
 	<script type="text/javascript" src="js/controller/event.js"></script>
 	<script type="text/javascript" src="js/controller/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="js/controller/post.js"></script>
-	<script type="text/javascript" src="js/controller/userprofile.js"></script>
 	<script type="text/javascript" src="js/controller/workshop.js"></script>
 	<script type="text/javascript" src="js/controller/videoconference.js"></script>
 	<script type="text/javascript" src="js/controller/posts.js"></script>
+	<script type="text/javascript" src="js/controller/userprofile.js"></script>
 
 
-
-
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
 
 	<!-- factory -->
 	<script type="text/javascript" src="js/factories/categories.js"></script>
@@ -176,11 +175,12 @@
 	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://localhost:8000/{{cur_user.image}}" alt=""><span class="caret"></span></a>
 	                                <ul class="dropdown-menu">
 	                                    <li><a href="#!/myprofile">{{'NAVBAR.PROFILE' | translate}}</a></li>
-	                                    <li><a href="#!/editprofile">{{'NAVBAR.SETTINGS' | translate}}</a></li>
+	                                    <li><a ng-controller="userprofile" ng-click="editprofile()">{{'NAVBAR.SETTINGS' | translate}}</a></li>
 	                                    <li role="separator" class="divider"></li>
 	                                    <li><a ng-click="logoutFn()">{{'NAVBAR.LOGOUT' | translate}}</a></li>
 	                                </ul>
 	                            </li>
+                                <!--href="#!/editprofile"-->
 	                            <!--                            end user-->
 
 							</logged>

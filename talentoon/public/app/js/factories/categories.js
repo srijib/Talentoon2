@@ -67,6 +67,8 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         // 			return def.promise ;
         //
         // 		},
+
+        // *************************
         // getCategoryEvent:function(cat_id,event_id){
         // 			var def =$q.defer();
         // 			$http({
@@ -87,6 +89,8 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         // 			return def.promise ;
         //
         // 		},
+        // /*********************************
+
         // getCategoryEvents:function(cat_id){
         // 			var def =$q.defer();
         // 			$http({
@@ -343,7 +347,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
             }).then(function(res){
                 console.log('in add workshop w 7salaha success')
-                console.log("workshop",res.data);
+                console.log("workshop",res);
                 $http({
                     method: 'POST',
                     url: 'http://localhost:8000/api/workshop_upload/' + res.data.workshop_id,
@@ -383,28 +387,28 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },
 
-        addevent: function (eventdata) {
-            var def = $q.defer();
-            $http({
-                url: 'addevent url',
-                method: 'GET',
-                data: eventdata
-
-            }).then(function (res) {
-
-                if (res.data.length) {
-                    def.resolve(res.data)
-                } else {
-                    def.reject('there is no data ')
-                }
-
-            }, function (err) {
-                // console.log(err);
-                def.reject(err);
-            })
-            return def.promise;
-
-        },
+        // addevent: function (eventdata) {
+        //     var def = $q.defer();
+        //     $http({
+        //         url: 'addevent url',
+        //         method: 'GET',
+        //         data: eventdata
+        //
+        //     }).then(function (res) {
+        //
+        //         if (res.data.length) {
+        //             def.resolve(res.data)
+        //         } else {
+        //             def.reject('there is no data ')
+        //         }
+        //
+        //     }, function (err) {
+        //         // console.log(err);
+        //         def.reject(err);
+        //     })
+        //     return def.promise;
+        //
+        // },
         complete_talent_profile: function (talent_data) {
 
             var def = $q.defer();
@@ -592,6 +596,30 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             return def.promise;
 
 
+        },
+        updatedworkshop:function (workshopdata) {
+            var def = $q.defer();
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.category_id + '/workshops/'+workshopdata.id,
+                method: 'PUT',
+                data: workshopdata
+
+            }).then(function (res) {
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
         },
         addcomment: function (commentdata) {
             var def = $q.defer();

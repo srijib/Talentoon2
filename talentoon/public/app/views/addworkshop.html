@@ -29,22 +29,22 @@
 	</div>
     <div class="field">
    <h4 style="color:Purple ">start time</h4>
-       <input type="text" name="time_from" required ng-model="workshop.time_from" class="form-control">
+       <input type="time" name="time_from" required ng-model="workshop.time_from" class="form-control">
            <p class="error" ng-if="addworkshop.time_from.$error.required && submitted" >please enter start time</p>
    </div>
    <div class="field">
   <h4 style="color:Purple ">end time</h4>
-      <input type="text" name="time_to" required ng-model="workshop.time_to" class="form-control">
+      <input type="time" name="time_to" required ng-model="workshop.time_to" class="form-control">
           <p class="error" ng-if="addworkshop.time_to.$error.required && submitted" >please enter end time</p>
   </div>
   <div class="field">
  <h4 style="color:Purple ">start date</h4>
-     <input type="text" name="date_from" required ng-model="workshop.date_from" class="form-control">
+     <input type="date" name="date_from" required ng-model="workshop.date_from" class="form-control">
          <p class="error" ng-if="addworkshop.date_from.$error.required && submitted" >please enter start date</p>
  </div>
  <div class="field">
 <h4 style="color:Purple ">end date</h4>
-    <input type="text" name="date_to" required ng-model="workshop.date_to" class="form-control">
+    <input type="date" name="date_to" required ng-model="workshop.date_to" class="form-control">
         <p class="error" ng-if="addworkshop.date_to.$error.required && submitted" >please enter end date</p>
 </div>
 <div class="field">

@@ -9,6 +9,12 @@ use DB;
 use App\Models\Share;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Hash;
+
+use App\Models\Country;
+use App\Models\Follow;
+
+
 class UserProfile extends Controller
 {
 
@@ -212,7 +218,22 @@ class UserProfile extends Controller
     }
     array_multisort($sort, SORT_DESC, $allPosts);
 
+    $follower_count = DB::table('follow')
+    ->select(DB::raw('count(follow.follower_id) as followers_count'))
+    ->where([
+       ['follow.following_id','=',$user->id]])
+        ->groupBy('follow.following_id')
+            ->get()->first();
+          //   if(is_null( $follower_count)){
+          //       json([$follower_count=>0]);
+          //   }
 
+  $following_count = DB::table('follow')
+  ->select(DB::raw('count(follow.following_id) as following_count'))
+  ->where([
+      ['follow.follower_id','=',$user->id]])
+      ->groupBy('follow.follower_id')
+      ->get()->first();
 
     return response()->json(['status' => 1,
                 'message' => 'user data send successfully',
@@ -221,7 +242,10 @@ class UserProfile extends Controller
                 'last_name'=>$user->last_name,
                 'image'=>$user->image,
                 // 'post'=>$my_posts,
-                'allPosts'=>$allPosts
+                'allPosts'=>$allPosts,
+                'follower'=>$follower_count,
+                'following'=>$following_count
+
                 // 'count'=>$countlike
 
               ]);
@@ -230,9 +254,54 @@ class UserProfile extends Controller
 
 
 
+public function edit(){
+    $userToken=JWTAuth::parseToken()->toUser();
+    $user = DB::table('users')
+        ->join('countries', 'countries.id', '=', 'users.country_id')
+        ->select('users.*','countries.name as country_name')
+        ->where("users.id",$userToken->id)
+        ->get()->first();
+    return response()->json($user);
+}
+public function checkpassword(Request $request)
+{
+
+    $userToken=JWTAuth::parseToken()->toUser();
+
+    if(!Hash::check($request->userpassword ,$userToken->password)) {
+        return response()->json('wrong');
+    }else{
+//        return response()->json('right');
+//    $return=self::update($request);
+        $user=DB::table('users')
+            ->where('id', $request->id)
+            ->update(['first_name'=>$request->first_name,
+                'last_name'=>$request->last_name,
+                'email'=>$request->email,
+                'phone'=>$request->phone,
+                'password'=>$request->repassword,
+//                'date_of_bith'=>$request->date_of_bith,
+//            'country_id'=>$request->country_name
+            ]);
+        return response()->json($user);
+}
+
+}
+public function update(Request $request){
+//    return response()->json('simona12');
+    $user=DB::table('users')
+        ->where('id', $request->id)
+        ->update(['first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+//            'date_of_bith'=>$request->date_of_bith,
+//            'country_id'=>$request->country_name
+        ]);
 
 
-
+    return response()->json($user);
+}
 
   public function displayShared(){
 
@@ -281,31 +350,118 @@ class UserProfile extends Controller
                       'aaa'=>$aaa
                     ]);
   }
-  // public function displayShared(){
+  public function show($id){
+      $follower_count = DB::table('follow')
+      ->select(DB::raw('count(follow.follower_id) as followers_count'))
+      ->where([
+         ['follow.following_id','=',$id]])
+          ->groupBy('follow.following_id')
+              ->get()->first();
+            //   if(is_null( $follower_count)){
+            //       json([$follower_count=>0]);
+            //   }
+
+    $following_count = DB::table('follow')
+    ->select(DB::raw('count(follow.following_id) as following_count'))
+    ->where([
+        ['follow.follower_id','=',$id]])
+        ->groupBy('follow.follower_id')
+        ->get()->first();
+        // if(is_null( $following_count)){
+        //     $following_count=0;
+        // }
+    $my_posts = DB::table('posts')
+    ->join('users', 'posts.user_id', '=','users.id' )
+    ->selectRaw('posts.*,cast(posts.created_at as date) as formatted_created_at,count(likeables.id) as like_count,posts.id,users.first_name,users.last_name,users.image')
+    // ->join('users', 'posts.user_id', '=', 'users.id')
+        ->leftJoin('likeables', function($join)
+              {
+                  $join->on('posts.id','=','likeables.likeable_id')
+                  ->where('likeables.liked', '=', '1');
+              })
+              ->where("posts.user_id",$id)
+              ->groupBy('posts.id')
+                ->get();
+
+    $post_ids= DB::table('shares')
+        ->select('shares.post_id')
+        ->where("shares.user_id",$id)
+        ->get();
+
+    $arr=[];
+    for ($i=0; $i <count($post_ids) ; $i++) {
+        array_push($arr,$post_ids[$i]->post_id);
+    }
+
+   $shares = DB::table('posts')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->selectRaw('posts.* , cast(posts.created_at as date) as formatted_created_at , users.first_name , users.last_name , users.image')
+        ->whereIn("posts.id", $arr)
+        ->get();
+
   //
-  //     $user= JWTAuth::parseToken()->toUser();
-  //     $post_ids= DB::table('shares')
-  //         ->select('shares.post_id')
-  //         ->where("shares.user_id",$user->id)
-  //         ->get();
-  //
-  //     $arr=[];
-  //     for ($i=0; $i <count($post_ids) ; $i++) {
-  //         array_push($arr,$post_ids[$i]->post_id);
-  //     }
-  //
-  //     $shares = DB::table('posts')
-  //         ->join('users', 'posts.user_id', '=', 'users.id')
-  //         ->select('posts.*','users.*')
-  //
-  //         ->whereIn("posts.id", $arr)
-  //
-  //         ->get();
-  //
-  //   return response()->json(['status' => 1,
-  //                     'message' => 'posts send successfully',
-  //                     'shares'=>$shares
-  //                   ]);
-  // }
+  // select posts.id, posts.title, count(likeables.id) like_count from posts left join likeables on
+  //  likeables.likeable_id = posts.id and likeables.liked = 1 group by posts.id
+
+    $allPosts = array_merge($my_posts->toArray(),$shares->toArray());
+
+
+    foreach ($allPosts as $key => $part) {
+        $sort[$key] = strtotime($part->created_at);
+    }
+    array_multisort($sort, SORT_DESC, $allPosts);
+    $user=User::find($id);
+    $country=Country::find($user->country_id);
+
+    $current_user= JWTAuth::parseToken()->toUser();
+
+    $follow = DB::table('follow')
+    ->where('following_id', '=', $id)
+    ->where('follower_id', '=', $current_user->id)
+    ->first();
+
+if (is_null($follow)) {
+    return response()->json(['status' => 1,
+                'message' => 'user data send successfully',
+                'user'=>$user,
+                'country'=>$country,
+                // 'post'=>$my_posts,
+                'allPosts'=>$allPosts,
+                'follow'=>0,
+                'follower'=>$follower_count,
+                'following'=>$following_count
+                // 'count'=>$countlike
+
+              ]);
+}else{
+
+    return response()->json(['status' => 1,
+                'message' => 'user data send successfully',
+                'user'=>$user,
+                'country'=>$country,
+                // 'post'=>$my_posts,
+                'allPosts'=>$allPosts,
+                'follow'=>1,
+                'follower'=>$follower_count,
+                'following'=>$following_count
+                // 'count'=>$countlike
+
+              ]);
+}
+        }
+public function follow(Request $request){
+    $user= JWTAuth::parseToken()->toUser();
+Follow::create(['following_id'=>$request->following_id,'follower_id'=>$user->id]);
+
+return response()->json(['status' => 1,
+                    'message' => 'follow successfully']);
+}
+public function unfollow(Request $request){
+    $user= JWTAuth::parseToken()->toUser();
+    DB::table('follow')->where(['following_id'=>$request->following_id,'follower_id'=>$user->id])->delete();
+
+return response()->json(['status' => 1,
+                    'message' => 'unfollow successfully']);
+}
 
 }

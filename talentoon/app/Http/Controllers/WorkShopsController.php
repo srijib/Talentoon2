@@ -26,9 +26,9 @@ class WorkShopsController extends Controller
         $data = DB::table('workshops')
             ->join('users', 'users.id', '=', 'workshops.mentor_id')
             ->select('workshops.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
-            -where(['workshops.is_approved','=',1])
+//            -where(['workshops.is_approved','=',1])
             ->get();
-//
+//        dd($data);
         return response()->json(['msg1'=>$data]);
 
     }
@@ -52,7 +52,7 @@ class WorkShopsController extends Controller
     public function store(Request $request)
     {
         //
-        return response()->json(['req'=>$request]);
+//        return response()->json(['req'=>$request]);
         $id=WorkShop::create($request->all())->id;
 
         return response()->json(['workshop_id'=>$id,'message' => 'data saved successfully']);

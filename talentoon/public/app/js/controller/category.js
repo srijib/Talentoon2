@@ -10,12 +10,13 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     var reviewfilesuploaded = []
     var talent = {}
     var mentor = {}
-    var user_id = 1;
+    var user_id = $rootScope.cur_user.id;
 
 
     $scope.cat_id = $routeParams['category_id'];
     $scope.workshop_id = $routeParams['workshop_id'];
     $scope.event_id = $routeParams['event_id'];
+
 
 
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
@@ -29,7 +30,25 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         $scope.categoryWorkshops = data.workshops;
         $rootScope.cur_user = data.cur_user;
         $scope.category_details = data.category_details;
+		if($scope.categoryPosts.length){
+            $scope.category_posts_exists = 1;
+        }
 
+        if($scope.categoryEvents.length){
+            $scope.category_events_exists = 1;
+        }
+
+        if($scope.categoryWorkshops.length){
+            $scope.category_workshops_exists = 1;
+        }
+
+        if($scope.cur_user){
+            $scope.cur_user_exists = 1;
+        }
+
+        if($scope.category_details){
+            $scope.category_details_exists = 1;
+        }
     }, function (err) {
         console.log(err);
     });
@@ -61,6 +80,20 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     }, function (err) {
         console.log(err);
     });
+    // categories.getCategoryEvent($scope.cat_id,$scope.workshop_id).then(function (data) {
+    //     $rootScope.editable_event=data;
+    //     console.log("single event from controller", $rootScope.category_workshop);
+    //
+    // }, function (err) {
+    //     console.log(err);
+    // });
+    // categories.getCategoryPost($scope.workshop_id).then(function (data) {
+    //     $rootScope.editable_post=data;
+    //     console.log("single post from controller", $rootScope.category_workshop);
+    //
+    // }, function (err) {
+    //     console.log(err);
+    // });
 
     // categories.getCategoryEvents($scope.cat_id).then(function (data) {
     //     var user_id = 1;
@@ -120,7 +153,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
         if (vaild) {
             var category= $routeParams['category_id'];
-            var mentor_id= 1;
+            var mentor_id= $rootScope.cur_user.id;
             $scope.editable_workshop.category_id=category
 
 
@@ -190,7 +223,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
         if (vaild) {
             var category= $routeParams['category_id'];
-            var mentor_id= 1;
+            var mentor_id= $rootScope.cur_user.id;
             $scope.editable_post.category_id=category
 
 
@@ -270,7 +303,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         console.log('hhhhhhhhhhhhhhhh')
         if (vaild) {
             var category= $routeParams['category_id'];
-            var mentor_id= 1;
+            var mentor_id= $rootScope.cur_user.id;
             console.log('hhhhhhhhhhhhhhhh')
             $scope.editable_event.category_id=category
 
@@ -422,9 +455,9 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 // subscribe in category
     $scope.subscribe = function () {
-
         var subscriber_id = $rootScope.cur_user.id
         var subscribed = 1;
+
         var category_id = $routeParams['category_id'];
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
@@ -444,12 +477,11 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     $scope.unsubscribe = function () {
         var subscriber_id = $rootScope.cur_user.id
         var subscribed = 0;
+
         var category_id = $routeParams['category_id'];
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.unsubscribe(obj).then(function (data) {
-            // localStorage.setItem('status', data);
-            // $rootScope.status = localStorage.getItem("status");
             // $rootScope.status=data;
             // $location.url('/category/' + category_id);
             // console.log("hiii")

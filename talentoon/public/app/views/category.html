@@ -49,8 +49,11 @@
   <div class="container">
     <div class="title">
       <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
-      <h1 class="h1">{{'TOP_POSTS' | translate}}</h1>
+      <h1 class="h1" >{{'TOP_POSTS' | translate}}</h1>
     </div>
+
+    <h1 ng-if="category_posts_exists != 1"  style="text-align: center; color:red;">Sorry No Current approved posts exists</h1>
+
     <!-- data-aos="fade-up" data-aos-duration="2000"  -->
     <div class="row mainrow">
       <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in categoryPosts | limitTo:3 track by $index">
@@ -346,10 +349,15 @@
       <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
       <h1 class="h1">{{'TOP_EVENTS' | translate}}</h1>
     </div>
+
+    <h1 ng-if="category_events_exists != 1"  style="text-align: center; color:red;">Sorry No Current approved events exists</h1>
+
+
     <div class="evMainRow row">
       <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" event in categoryEvents| limitTo:3">
         <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
           <div class="row evDefaultImg">
+            <!--<h2>{{event.media_url}}</h2>-->
             <img src="http://localhost:8000/{{event.media_url}}" alt="">
           </div>
           <!--    top event default image-->
@@ -622,6 +630,8 @@
       <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
       <h1 class="h1">{{'TOP_WORKSHOPS' | translate}}</h1>
     </div>
+
+    <h1 ng-if="category_workshops_exists != 1"  style="text-align: center; color:red;">Sorry No Current approved workshops exists</h1>
 
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" ng-repeat="workshop in categoryWorkshops | limitTo:3 track by $index">
