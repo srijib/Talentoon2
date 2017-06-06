@@ -119,15 +119,15 @@ angular.module('myApp').factory("user", function ($http, $q) {
             return def.promise;
 
         },
-        displayShared: function () {
+        user: function (user_id) {
 
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/userprofile/displayShared',
+                url: 'http://localhost:8000/api/userprofile/'+user_id,
                 method: 'GET'
 
             }).then(function (res) {
-                console.log("shareposts",res);
+                console.log("posts",res);
                 if (res) {
                     // if(res.data.length){
                     def.resolve(res)
@@ -144,6 +144,136 @@ angular.module('myApp').factory("user", function ($http, $q) {
             })
             return def.promise;
 
-        }
+        },
+
+        editprofile: function (id) {
+        console.log("in factory to edit profile",id);
+        var def = $q.defer();
+
+        $http({
+            url: 'http://localhost:8000/api/editprofile/',
+            // url:'http://172.16.2.239:8000/api/posts',
+            method: 'GET'
+            // data: id
+        }).then(function (res) {
+
+            console.log('i tested in profile',res.data);
+
+            if (res.data) {
+                def.resolve(res.data)
+            } else {
+                def.reject('there is no data ')
+            }
+
+        }, function (err) {
+            // console.log(err);
+            def.reject(err);
+        })
+        return def.promise;
+
+
+    },
+
+        checkpassword:function (userdata) {
+        console.log('in factory updated',userdata)
+        var def = $q.defer();
+
+        $http({
+            url: 'http://127.0.0.1:8000/api/checkpassword',
+            method: 'post',
+            data: userdata
+
+        }).then(function (res) {
+            console.log("b3tna al update ensha2 allah ", res.data)
+
+            if (res) {
+
+                console.log("d5lna gwa al res if", res.data);
+                def.resolve(res.data)
+            } else {
+                def.reject('there is no data ')
+            }
+
+        }, function (err) {
+            // console.log(err);
+            def.reject(err);
+        })
+        return def.promise;
+    },
+        updateuser:function (userdata) {
+        console.log('in factory updated',userdata)
+        var def = $q.defer();
+
+        $http({
+            url: 'http://127.0.0.1:8000/api/updateprofile',
+            method:'put',
+            data: userdata
+
+        }).then(function (res) {
+            console.log("b3tna al update ensha2 allah ", res.data)
+
+            if (res) {
+
+                console.log("d5lna gwa al res if", res.data);
+                def.resolve(res.data)
+            } else {
+                def.reject('there is no data ')
+            }
+
+        }, function (err) {
+            // console.log(err);
+            def.reject(err);
+        })
+        return def.promise;
+    },
+     follow:function(data){
+          console.log("from factory",data);
+          var def =$q.defer();
+          $http({
+            url:'http://localhost:8000/api/userprofile/follow',
+            method:'POST',
+            data:data
+
+          }).then(function(res){
+            console.log("res from follow",res);
+            if(res.data){
+              console.log(res.data);
+             def.resolve(res.data);
+
+            }else{
+              def.reject('there is no data ')
+            }
+
+          },function(err){
+            def.reject(err);
+          })
+          return def.promise ;
+
+      },
+      unfollow:function(data){
+        console.log("from factory",data);
+        var def =$q.defer();
+        $http({
+          url:'http://localhost:8000/api/userprofile/unfollow',
+          method:'POST',
+          data:data
+
+        }).then(function(res){
+          console.log("res from unfollow",res);
+          if(res.data){
+            console.log(res.data);
+           def.resolve(res.data);
+
+          }else{
+            def.reject('there is no data ')
+          }
+
+        },function(err){
+          def.reject(err);
+        })
+        return def.promise ;
+
+      }
+
     };
 });

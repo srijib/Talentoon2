@@ -11,6 +11,23 @@ angular.module('talentoon', ['ionic'])
     if(window.cordova && window.cordova.plugins.Keyboard) {
 
 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+//-local notification---------------------
+cordova.plugins.notification.local.schedule({
+    id: 1,
+    title: "Production Jour fixe",
+    text: "Duration 1h",
+    firstAt: Tuesday_2_am,
+    every: "week",
+    // sound: "file://sounds/reminder.mp3",
+    // icon: "http://icons.com/?cal_id=1",
+    data: { meetingId:"123#fg8" }
+});
+
+cordova.plugins.notification.local.on("click", function (notification) {
+    joinMeeting(notification.data.meetingId);
+});
+
+//---------------------
       //------------push ----------------------------
           var push = PushNotification.init({
           	android: {
@@ -19,7 +36,8 @@ cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
           });
 
           push.on('registration', function(data) {
-          	// data.registrationId
+          	console.log(data.registrationId)
+            localStorage.setItem('pushtoken',data.registrationId);
           });
 
           push.on('notification', function(data) {

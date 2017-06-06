@@ -16,12 +16,11 @@
     <form ng-submit="submitted=true;saveupdated(editworkshop.$valid)" name="editworkshop"  novalidate >
 <!--<div  ng-repeat="editable_workshop in editable_workshop" >-->
 
-
-    <div class="field">
-        <h4 style="color:Purple ">workshop image</h4>
-        <input name="workshop_file" ng-model="editable_workshop.file" type="file"  class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
-        <!--<input type="submit" id="submit_file" value="Submit" />-->
-    </div>
+    <!--<div class="field">-->
+        <!--<h4 style="color:Purple ">workshop image</h4>-->
+        <!--<input name="workshop_file" ng-model="editable_workshop.file" type="file" value="{{editable_workshop.media_url}}" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >-->
+        <!--&lt;!&ndash;<input type="submit" id="submit_file" value="Submit" />&ndash;&gt;-->
+    <!--</div>-->
     <div class="field">
         <h4 style="color:Purple ">workshop name</h4>
         <input type="text" name="name" required ng-model="editable_workshop.name" value="{{editable_workshop.name}}"class="form-control">

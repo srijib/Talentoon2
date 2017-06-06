@@ -4,7 +4,7 @@ angular.module('talentoon').factory("categories", function ($q, $http, $rootScop
 console.log("token in factory",token)
             var def = $q.defer();
             $http({
-                url: 'http://192.168.6.4:8000/api/category',
+                url: 'http://172.16.3.77:8000/api/category',
                 headers:{
               'Authorization':'Bearer'+ token
                  },
@@ -18,6 +18,7 @@ console.log("token in factory",token)
                     // def.resolve(res.data)
 
 // 172.16.3.77
+//172.16.3.77
                 } else {
                     def.reject('there is no data ')
                 }
@@ -33,7 +34,7 @@ console.log("token in factory",token)
 
   			var def =$q.defer();
   			$http({
-  				url:'http://192.168.6.4:8000/api/category/'+index ,
+  				url:'http://172.16.3.77:8000/api/category/'+index ,
           headers:{
         'Authorization':'Bearer'+ $rootScope.token
            },
@@ -58,7 +59,7 @@ console.log("token in factory",token)
             console.log('beforee ajaaaaaaaaaaaxxx',event_id);
   			var def =$q.defer();
   			$http({
-  				url:'http://192.168.6.4:8000/api/categories/'+cat_id+'/events/'+event_id ,
+  				url:'http://172.16.3.77:8000/api/categories/'+cat_id+'/events/'+event_id ,
           headers:{
         'Authorization':'Bearer'+ $rootScope.token
            },
@@ -81,7 +82,7 @@ console.log("token in factory",token)
         getCategoryEvents:function(cat_id){
   			var def =$q.defer();
   			$http({
-  				url:'http://192.168.6.4:8000/api/categories/'+cat_id+'/events' ,
+  				url:'http://172.16.3.77:8000/api/categories/'+cat_id+'/events' ,
           headers:{
         'Authorization':'Bearer'+ $rootScope.token
            },
@@ -106,7 +107,7 @@ console.log("token in factory",token)
             console.log("post id", id)
             var def = $q.defer();
             $http({
-                url: 'http://192.168.6.4:8000/api/post/' + id,
+                url: 'http://172.16.3.77:8000/api/post/' + id,
                 headers:{
               'Authorization':'Bearer'+ $rootScope.token
                  },
@@ -136,9 +137,9 @@ console.log("token in factory",token)
         addpost: function (postdata) {
             console.log("Post Dataaaa",postdata);
             var def = $q.defer();
-            console.log('the url ya esraa', 'http://192.168.6.4:8000/api/categories/'+postdata.category_id+'/posts');
+            console.log('the url ya esraa', 'http://172.16.3.77:8000/api/categories/'+postdata.category_id+'/posts');
             $http({
-                url: 'http://192.168.6.4:8000/api/categories/' +postdata.category_id+ '/posts',
+                url: 'http://172.16.3.77:8000/api/categories/' +postdata.category_id+ '/posts',
                 headers:{
               'Authorization':'Bearer'+ $rootScope.token
                  },
@@ -156,7 +157,7 @@ console.log("token in factory",token)
                 /////////////////////////
                 $http({
                     method: 'POST',
-                    url: 'http://192.168.6.4:8000/api/single_upload/' + res.data.post_id,
+                    url: 'http://172.16.3.77:8000/api/single_upload/' + res.data.post_id,
                     headers:{
                   'Authorization':'Bearer'+ $rootScope.token
                      },
@@ -198,7 +199,7 @@ console.log("add post in factory",res)
             var def = $q.defer();
             $http({
                 method: 'POST',
-                url: 'http://192.168.6.4:8000/api/review_files_upload/' + category_talent_id,
+                url: 'http://172.16.3.77:8000/api/review_files_upload/' + category_talent_id,
                 headers:{
               'Authorization':'Bearer'+ $rootScope.token
                  },

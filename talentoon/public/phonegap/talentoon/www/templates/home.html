@@ -7,12 +7,12 @@
   <ion-content>
       <div ng-repeat="post in topposts | limitTo:3  track by $index">
         <ion-card>
-          <img  class="img-responsive" src="http://172.16.3.77:8000/{{post.media_url}}" alt="">
-
+      <center>    <img  class="img-responsive" src="http://172.16.3.77:8000/{{post.media_url}}" alt="" style="height:250px">
+</center>
           <ion-card-content>
 
             <p>
-              <p>{{post.description}}</p>
+              <p style="margin-left:22px;mergin-right:16px">{{post.description}}</p>
             </p>
             <a class="item item-avatar" href="" style="background-color: #6A0C38">
               <img src="http://172.16.3.77:8000/{{post.user_image}}" alt="">

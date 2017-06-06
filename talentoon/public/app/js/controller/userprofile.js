@@ -1,4 +1,9 @@
-angular.module('myApp').controller("userprofile", function ($scope, $http, user, $routeParams,$location) {
+angular.module('myApp').controller("userprofile", function ($scope, $http, user, $rootScope, $route,$routeParams,$location) {
+
+    $rootScope.userupdate=JSON.parse(localStorage.getItem("cur_user"));;
+    $rootScope.fname= $rootScope.userupdate.first_name;
+    $rootScope.lname=$rootScope.userupdate.last_name;
+
 
   user.userprofile().then(function(data){
       $scope.userprofile=data.data;
@@ -15,6 +20,16 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
   user.userposts().then(function(data){
      console.log(data.data);
     $scope.allPosts=data.data.allPosts;
+    if(data.data.follower==null){
+        $scope.follower=0;
+    }else{
+    $scope.follower=data.data.follower.followers_count
+    }
+    if(data.data.following==null){
+        $scope.following=0;
+    }else{
+        $scope.following=data.data.following.following_count
+    }
     // $scope.userinfo=data.data;
         console.log("user profile posts MINAAA",data.data.allPosts);
         // console.log("user profile info",$scope.userinfo);
@@ -44,6 +59,135 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
   // } , function(err){
   //   console.log(err);
   // });
+  $scope.user_id = $routeParams['user_id'];
+
+  user.user($scope.user_id).then(function(data){
+     console.log(data.data);
+    $scope.userposts=data.data.allPosts;
+    $scope.user=data.data.user;
+    $scope.country=data.data.country;
+    $scope.status=data.data.follow;
+    if(data.data.follower==null){
+        $scope.follower=0;
+    }else{
+    $scope.follower=data.data.follower.followers_count
+    }
+    if(data.data.following==null){
+        $scope.following=0;
+    }else{
+        $scope.following=data.data.following.following_count
+    }
+    // $scope.following=data.data.following
 
 
+    console.log("eldataaaaa",$scope.following);
+    // $scope.userinfo=data.data;
+        console.log("user profile posts MINAAA",data.data.follow);
+
+  } , function(err){
+    console.log(err);
+
+  });
+  $scope.follow = function(following_id) {
+
+
+    //edit user profile function
+    $scope.editprofile=function () {
+        console.log($rootScope.cur_user.id);
+        user.editprofile($rootScope.cur_user.id).then(function(data){
+            console.log(data);
+        $rootScope.userupdate=data;
+        $location.url('/editprofile');
+        $rootScope.fname= $rootScope.userupdate.first_name;
+        $rootScope.lname=$rootScope.userupdate.last_name;
+        } , function(err){
+            console.log(err);
+
+        });
+
+    }
+
+
+    $scope.updateuserprofile=function(valid){
+        console.log('kkkkkkkkkkk',$scope.userupdate)
+
+        if($scope.userupdate.userpassword ){
+            $scope.password=true;
+            console.log('i entered here')
+        }
+        if($scope.userupdate.newpassword===$scope.userupdate.repassword && $scope.userupdate.newpassword && $scope.userupdate.repassword){
+            $scope.repassword=true;
+            console.log('iam here')
+        }
+        if (valid) {
+            console.log('feh user password',$scope.password)
+            console.log('da5lt al etnen passwords',$scope.repassword)
+            console.log($scope.userupdate.newpassword)
+            //for checking on password in backend
+            var userdata = $scope.userupdate
+            if ($scope.repassword && $scope.password){
+                console.log('da5lt koll 7aga ')
+                // var userdata = $scope.userupdate
+                console.log('y simnaaaaaaa');
+                user.checkpassword(userdata).then(function (data) {
+                    console.log('y simnaaaaaaa');
+                    if (data == 'ok') {
+                        $location.url('/');
+                        $route.reload();
+                    }else{
+                        console.log(data)
+                        // alert('enter your password right')
+                    }
+                }, function (err) {
+                    console.log(err);
+                });
+
+            }else{
+                //for updating data directly
+
+                console.log('dddddddddddggggggggggg')
+
+                user.updateuser(userdata).then(function (data) {
+                    console.log(data)
+                }, function (err) {
+                    console.log(err);
+                });
+
+            }
+
+
+        }
+    }
+
+
+  var obj={following_id}
+  console.log(obj);
+  		user.follow(obj).then(function(data){
+  			console.log(data);
+            $route.reload();
+
+  		} , function(err){
+  			console.log(err);
+
+  		});
+
+
+}
+$scope.unfollow = function(following_id) {
+
+
+// var user_id=user_id;
+
+var obj={following_id}
+console.log(obj);
+      user.unfollow(obj).then(function(data){
+          console.log(data);
+          $route.reload();
+
+      } , function(err){
+          console.log(err);
+
+      });
+
+}
 })

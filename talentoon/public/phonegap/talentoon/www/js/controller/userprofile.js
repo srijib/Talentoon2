@@ -14,7 +14,7 @@ angular.module('talentoon').controller("userprofile", function ($scope, $http, u
 
   user.userposts().then(function(data){
      console.log(data.data);
-    $scope.userposts=data.data.post;
+    $scope.userposts=data.data.allPosts;
     $scope.userinfo=data.data;
         console.log("user profile posts",$scope.userposts);
         console.log("user profile info",$scope.userinfo);
