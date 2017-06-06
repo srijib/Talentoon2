@@ -78,7 +78,7 @@ Route::post('/single_upload/{id}', 'UploadController@single_upload');
 Route::post('/event_upload/{id}', 'UploadController@event_upload');
 
 Route::post('/test2', 'UploadController@test2');
-Route::put('/categorymentor/update','CategoryMentorController@update');
+Route::POST('/categorymentor/update','CategoryMentorController@update');
 Route::post('/categorymentor/store','CategoryMentorController@store');
 
 //Route::post('/signup','JWTAuth\SignUpController@signup');
@@ -88,6 +88,7 @@ Route::get('/authenticate','JWTAuth\LoginController@getAuthenticatedUser');
 
 Route::post('/categorysubscribe','CategorySubscribeController@store');
 Route::post('/categoryunsubscribe','CategorySubscribeController@update');
+Route::post('/categoryuntalent','CategoryTalentController@untalent');
 
 Route::post('/like','LikeController@store');
 Route::post('/dislike','LikeController@update');

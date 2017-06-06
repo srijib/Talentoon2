@@ -187,8 +187,31 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             })
             return def.promise;
 
-        }
-        ,
+        },
+        untalent: function (data) {
+            // console.log("from factories",index,user_id,status);
+            console.log(data);
+            var def = $q.defer();
+
+            $http({
+                url: 'http://localhost:8000/api/categoryuntalent',
+                method: 'POST',
+                data: data
+
+            }).then(function (res) {
+                console.log(res);
+                console.log(res.data.status);
+
+                console.log(res.data.status);
+                def.resolve(res.data.status);
+
+            }, function (err) {
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
+
         addpost: function (postdata) {
             console.log("Post Dataaaa",postdata);
             var def = $q.defer();
@@ -436,13 +459,12 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         }
         ,
-
         unmentor: function (mentor_data) {
             var def = $q.defer();
 
             $http({
                 url: 'http://127.0.0.1:8000/api/categorymentor/update',
-                method: 'PUT',
+                method: 'POST',
                 data: mentor_data
 
             }).then(function (res) {

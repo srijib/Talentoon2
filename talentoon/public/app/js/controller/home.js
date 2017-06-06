@@ -2,10 +2,8 @@ angular.module('myApp').controller("homec",function(Home,$scope,$http,$routePara
 
 	$rootScope.token = JSON.parse(localStorage.getItem("token"));
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
-	console.log($rootScope.token);
 	Home.getTopPosts().then(function(data){
 
-		console.log("top posts",data);
 		$scope.topposts=data;
 // console.log("top posts",data[0].post);
 	} , function(err){
@@ -16,7 +14,6 @@ angular.module('myApp').controller("homec",function(Home,$scope,$http,$routePara
     Home.getEvents().then(function(data){
 
         $scope.events=data;
-		console.log("Eventsssssssssssss here",data);
 
     } , function(err){
         console.log(err);
@@ -25,7 +22,6 @@ angular.module('myApp').controller("homec",function(Home,$scope,$http,$routePara
     Home.getWorkshops().then(function(data){
 
         $scope.workshops=data;
-		console.log("workshopsssssssssssss is here",data);
 
     } , function(err){
         console.log(err);

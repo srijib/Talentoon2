@@ -29,4 +29,9 @@ class CategoryTalentController extends Controller
         $response=$CTS_Obj->mentorApprove($request);
         return $response;
     }
+    public function untalent(Request $request){
+        $response=CategoryTalentService::untalent($request);
+        return $response;
+
+    }
 }

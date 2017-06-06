@@ -28,12 +28,23 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
             $scope.post.category_id=$routeParams['category_id'];
             $scope.post.competition_id=$routeParams['competition_id'];
 
-            Competitions.createCompetition($scope.post).then(function(data){
+            Competitions.createCompetitionPost($scope.post).then(function(data){
                 console.log("the post request from server is ",data);
             } , function(err){
                 console.log(err);
             });
+            $location.url('/category/'+$scope.post.category_id+'/competitions/'+$scope.post.competition_id);
         }
+    };
+    $scope.deleteCompetitionPost = function(post_id) {
+            $scope.post.category_id=$routeParams['category_id'];
+            $scope.post.competition_id=$routeParams['competition_id'];
+
+            Competitions.deleteCompetitionPost($scope.post.competition_id,post_id).then(function(data){
+                console.log("the post request from server is ",data);
+            } , function(err){
+                console.log(err);
+            });
     };
 
 
