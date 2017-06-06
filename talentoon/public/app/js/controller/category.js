@@ -18,6 +18,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     $scope.event_id = $routeParams['event_id'];
 
 
+
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
         $scope.categoryPosts = data.posts;
@@ -50,6 +51,20 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     }, function (err) {
         console.log(err);
     });
+    // categories.getCategoryEvent($scope.cat_id,$scope.workshop_id).then(function (data) {
+    //     $rootScope.editable_event=data;
+    //     console.log("single event from controller", $rootScope.category_workshop);
+    //
+    // }, function (err) {
+    //     console.log(err);
+    // });
+    // categories.getCategoryPost($scope.workshop_id).then(function (data) {
+    //     $rootScope.editable_post=data;
+    //     console.log("single post from controller", $rootScope.category_workshop);
+    //
+    // }, function (err) {
+    //     console.log(err);
+    // });
 
     // categories.getCategoryEvents($scope.cat_id).then(function (data) {
     //     var user_id = 1;

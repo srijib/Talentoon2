@@ -144,6 +144,86 @@ angular.module('myApp').factory("user", function ($http, $q) {
             })
             return def.promise;
 
-        }
+        },
+        editprofile: function (id) {
+        console.log("in factory to edit profile",id);
+        var def = $q.defer();
+
+        $http({
+            url: 'http://localhost:8000/api/editprofile/',
+            // url:'http://172.16.2.239:8000/api/posts',
+            method: 'GET'
+            // data: id
+        }).then(function (res) {
+
+            console.log('i tested in profile',res.data);
+
+            if (res.data) {
+                def.resolve(res.data)
+            } else {
+                def.reject('there is no data ')
+            }
+
+        }, function (err) {
+            // console.log(err);
+            def.reject(err);
+        })
+        return def.promise;
+
+
+    },
+
+        checkpassword:function (userdata) {
+        console.log('in factory updated',userdata)
+        var def = $q.defer();
+
+        $http({
+            url: 'http://127.0.0.1:8000/api/checkpassword',
+            method: 'post',
+            data: userdata
+
+        }).then(function (res) {
+            console.log("b3tna al update ensha2 allah ", res.data)
+
+            if (res) {
+
+                console.log("d5lna gwa al res if", res.data);
+                def.resolve(res.data)
+            } else {
+                def.reject('there is no data ')
+            }
+
+        }, function (err) {
+            // console.log(err);
+            def.reject(err);
+        })
+        return def.promise;
+    },
+        updateuser:function (userdata) {
+        console.log('in factory updated',userdata)
+        var def = $q.defer();
+
+        $http({
+            url: 'http://127.0.0.1:8000/api/updateprofile',
+            method:'put',
+            data: userdata
+
+        }).then(function (res) {
+            console.log("b3tna al update ensha2 allah ", res.data)
+
+            if (res) {
+
+                console.log("d5lna gwa al res if", res.data);
+                def.resolve(res.data)
+            } else {
+                def.reject('there is no data ')
+            }
+
+        }, function (err) {
+            // console.log(err);
+            def.reject(err);
+        })
+        return def.promise;
+    }
     };
 });

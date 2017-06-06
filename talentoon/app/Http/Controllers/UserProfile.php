@@ -8,6 +8,7 @@ use App\Models\Post;
 use DB;
 use App\Models\Share;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserProfile extends Controller
 {
@@ -76,7 +77,54 @@ return response()->json(['status' => 1,
         }
 
 
+public function edit(){
+    $userToken=JWTAuth::parseToken()->toUser();
+    $user = DB::table('users')
+        ->join('countries', 'countries.id', '=', 'users.country_id')
+        ->select('users.*','countries.name as country_name')
+        ->where("users.id",$userToken->id)
+        ->get()->first();
+    return response()->json($user);
+}
+public function checkpassword(Request $request)
+{
 
+    $userToken=JWTAuth::parseToken()->toUser();
+
+    if(!Hash::check($request->userpassword ,$userToken->password)) {
+        return response()->json('wrong');
+    }else{
+//        return response()->json('right');
+//    $return=self::update($request);
+        $user=DB::table('users')
+            ->where('id', $request->id)
+            ->update(['first_name'=>$request->first_name,
+                'last_name'=>$request->last_name,
+                'email'=>$request->email,
+                'phone'=>$request->phone,
+                'password'=>$request->repassword,
+//                'date_of_bith'=>$request->date_of_bith,
+//            'country_id'=>$request->country_name
+            ]);
+        return response()->json($user);
+}
+
+}
+public function update(Request $request){
+//    return response()->json('simona12');
+    $user=DB::table('users')
+        ->where('id', $request->id)
+        ->update(['first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+//            'date_of_bith'=>$request->date_of_bith,
+//            'country_id'=>$request->country_name
+        ]);
+
+
+    return response()->json($user);
+}
 
 
 

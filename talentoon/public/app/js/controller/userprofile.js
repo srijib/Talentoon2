@@ -1,4 +1,8 @@
-angular.module('myApp').controller("userprofile", function ($scope, $http, user, $routeParams,$location) {
+angular.module('myApp').controller("userprofile", function ($scope, $http, user, $rootScope, $routeParams,$location) {
+
+    $rootScope.userupdate=JSON.parse(localStorage.getItem("cur_user"));;
+    $rootScope.fname= $rootScope.userupdate.first_name;
+    $rootScope.lname=$rootScope.userupdate.last_name;
 
   user.userprofile().then(function(data){
       $scope.userprofile=data.data;
@@ -41,8 +45,78 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
     console.log(err);
   });
 
+    //edit user profile function
+    $scope.editprofile=function () {
+        console.log($rootScope.cur_user.id);
+        user.editprofile($rootScope.cur_user.id).then(function(data){
+            console.log(data);
+        $rootScope.userupdate=data;
+        $location.url('/editprofile');
+        $rootScope.fname= $rootScope.userupdate.first_name;
+        $rootScope.lname=$rootScope.userupdate.last_name;
+        } , function(err){
+            console.log(err);
+
+        });
+
+    }
+
+
+    $scope.updateuserprofile=function(valid){
+        console.log('kkkkkkkkkkk',$scope.userupdate)
+
+        if($scope.userupdate.userpassword ){
+            $scope.password=true;
+            console.log('i entered here')
+        }
+        if($scope.userupdate.newpassword===$scope.userupdate.repassword && $scope.userupdate.newpassword && $scope.userupdate.repassword){
+            $scope.repassword=true;
+            console.log('iam here')
+        }
+        if (valid) {
+            console.log('feh user password',$scope.password)
+            console.log('da5lt al etnen passwords',$scope.repassword)
+            console.log($scope.userupdate.newpassword)
+            //for checking on password in backend
+            var userdata = $scope.userupdate
+            if ($scope.repassword && $scope.password){
+                console.log('da5lt koll 7aga ')
+                // var userdata = $scope.userupdate
+                console.log('y simnaaaaaaa');
+                user.checkpassword(userdata).then(function (data) {
+                    console.log('y simnaaaaaaa');
+                    if (data == 'ok') {
+                        $location.url('/');
+                        $route.reload();
+                    }else{
+                        console.log(data)
+                        // alert('enter your password right')
+                    }
+                }, function (err) {
+                    console.log(err);
+                });
+
+            }else{
+                //for updating data directly
+
+                console.log('dddddddddddggggggggggg')
+
+                user.updateuser(userdata).then(function (data) {
+                    console.log(data)
+                }, function (err) {
+                    console.log(err);
+                });
+
+            }
+
+
+        }
+    }
+
+
 
 })
+
 
 
 

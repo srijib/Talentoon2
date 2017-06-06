@@ -25,9 +25,6 @@ Route::post('/betalent',[
     'uses'=>'CategoryTalentController@store',
     'middleware'=> 'ability:audience,permission:be-talent']);
 
-Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelatedcategory']], function () {
-
-});
 //nahala ana tla3t al posts bara 3shan al middleware mkansh by5lini 23ml edit "simona"
 Route::resource('categories.posts','PostsController');
 
@@ -101,6 +98,11 @@ Route::get('/userprofile',[
     Route::get('/userprofile/displayShared',[
             'uses'=>'UserProfile@displayShared',
             'middleware'=> 'jwt.auth']);
+    //ask nahala to add middleware
+Route::get('/editprofile','UserProfile@edit');
+Route::put('/updateprofile','UserProfile@update');
+Route::post('/checkpassword','UserProfile@checkpassword');
+
 
 Route::post('/categorytalent/store','CategoryTalentController@store');
 

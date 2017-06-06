@@ -67,6 +67,8 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         // 			return def.promise ;
         //
         // 		},
+
+        // *************************
         // getCategoryEvent:function(cat_id,event_id){
         // 			var def =$q.defer();
         // 			$http({
@@ -87,6 +89,8 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         // 			return def.promise ;
         //
         // 		},
+        // /*********************************
+
         // getCategoryEvents:function(cat_id){
         // 			var def =$q.defer();
         // 			$http({
