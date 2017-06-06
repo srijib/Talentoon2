@@ -28,12 +28,12 @@
 
 
 		<!-- Form Start -->
-		<form ng-submit="submit_post_file()" name="form" role="form" enctype="multipart/form-data">
-			<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
-			<!--<input type="submit" id="submit_file" value="Submit" />-->
-			<br/>
-			<img ng-src="{{post.file}}" style="width:300px;">
-		</form>
+		<!--<form ng-submit="submit_post_file()" name="form" role="form" enctype="multipart/form-data">-->
+			<!--<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >-->
+			<!--&lt;!&ndash;<input type="submit" id="submit_file" value="Submit" />&ndash;&gt;-->
+			<!--<br/>-->
+			<!--<img ng-src="{{post.file}}" style="width:300px;">-->
+		<!--</form>-->
 		<!-- Form End -->
 
 
@@ -57,21 +57,23 @@
 		        <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files">
 		        </input>
 
-			    <div class ="icons col-lg-6 col-md-6 col-sm-6">
-			        <div class="form-group">
-			            <input type="file" name="img[]" class="file">
-			            <div class="input-group col-xs-12">
-			                <span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">
-			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
-			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
-			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-video-camera" aria-hidden="true"></i></button>
-			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-headphones" aria-hidden="true"></i></button>
-			                </span>
-			            </div>
-			        </div>
-			    </div>
+			    <!--<div class ="icons col-lg-6 col-md-6 col-sm-6">-->
+			        <!--<div class="form-group">-->
+			            <!--<input type="file" name="img[]" class="file">-->
+			            <!--<div class="input-group col-xs-12">-->
+			                <!--<span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">-->
+			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-paperclip" aria-hidden="true"></i></button>-->
+			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>-->
+			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-video-camera" aria-hidden="true"></i></button>-->
+			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-headphones" aria-hidden="true"></i></button>-->
+			                <!--</span>-->
+			            <!--</div>-->
+			        <!--</div>-->
+			    <!--</div>-->
+
+
 				<div class="wpost  col-lg-6 col-md-6 col-sm-6">
-	                <a class= "text-right "> <i class="fa fa-paper-plane" aria-hidden="true"></i>
+	                <a class= "text-right " > <i class="fa fa-paper-plane" aria-hidden="true"></i>
 	                    Post </a>
 	            </div>
 	        </div>

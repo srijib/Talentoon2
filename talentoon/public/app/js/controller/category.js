@@ -26,20 +26,17 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         $scope.categoryWorkshops = data.workshops;
         $rootScope.cur_user = data.cur_user;
         $scope.category_details = data.category_details;
-    }, function (err) {
-        console.log(err);
-    });
 
 
-        if($scope.categoryPosts.length){
+        if($scope.categoryPosts){
             $scope.category_posts_exists = 1;
         }
 
-        if($scope.categoryEvents.length){
+        if($scope.categoryEvents){
             $scope.category_events_exists = 1;
         }
 
-        if($scope.categoryWorkshops.length){
+        if($scope.categoryWorkshops){
             $scope.category_workshops_exists = 1;
         }
 
@@ -52,12 +49,21 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         }
 
 
-	Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
-		console.log('getCategoryCompetitions',data.competitions);
-        $scope.categoryCompetitions = data.competitions;
+
     }, function (err) {
         console.log(err);
     });
+
+
+
+
+
+    // Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
+		// console.log('getCategoryCompetitions',data.competitions);
+    //     $scope.categoryCompetitions = data.competitions;
+    // }, function (err) {
+    //     console.log(err);
+    // });
 
 
     // categories.getCategoryWorkshops($scope.cat_id).then(function (data) {
