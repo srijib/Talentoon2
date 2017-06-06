@@ -6,7 +6,7 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:' http://192.168.6.4:8000/api/mostLikeabe' ,
+				url:' http://172.16.3.77:8000/api/mostLikeabe' ,
 				method:'GET'
 
 			}).then(function(res){
@@ -52,7 +52,7 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:'http://192.168.6.4:8000/api/event/showall' ,
+				url:'http://172.16.3.77:8000/api/event/showall' ,
 				method:'GET'
 
 			}).then(function(res){
@@ -98,7 +98,7 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:'http://192.168.6.4:8000/api/push' ,
+				url:'http://172.16.3.77:8000/api/push' ,
 			// 	headers:{
 			// 'Authorization':'Bearer'+ $rootScope.token
 			// 	 },
