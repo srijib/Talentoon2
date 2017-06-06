@@ -1,28 +1,42 @@
 angular.module('myApp').controller("addworkshop",function($scope,$http,categories,$routeParams,$location,$rootScope){
 
+    $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 
   $scope.newworkshop = function(vaild) {
-     if (vaild) {
-       var category= $routeParams['category_id'];
-       var mentor_id= 1;
-       $scope.workshop.category_id=category
-       $scope.workshop.mentor_id=mentor_id
-       $scope.workshop.is_approved=0
-    //    $scope.workshop.media_url="image"
-    //    $scope.workshop.media_type="image"
+      var today = new Date();
+      console.log("Today is ", today)
 
-        var workshopdata = $scope.workshop;
-       console.log('in neworkshop');
-       categories.addworkshop(workshopdata).then(function(data){
-           console.log('in neworkshop lma da5lt anadi 3la method al factory w geet')
-           console.log("the workshop request from server is ",data);
+     if (vaild) {
+
+         if (Date.parse($scope.workshop.date_to) < Date.parse($scope.workshop.date_from)){
+             $scope.End_Start_Date_validation = false;
+         }
+         else if(today > Date.parse($scope.workshop.date_from)){
+             $scope.Start_Today_Date_validation = false;
+         }
+         else {
+             var category = $routeParams['category_id'];
+             var mentor_id = $rootScope.cur_user.id;
+             $scope.workshop.category_id = category
+             $scope.workshop.mentor_id = mentor_id
+             $scope.workshop.is_approved = 0
+             //    $scope.workshop.media_url="image"
+             //    $scope.workshop.media_type="image"
+
+             var workshopdata = $scope.workshop;
+             console.log('in neworkshop');
+             categories.addworkshop(workshopdata).then(function (data) {
+                 console.log('in neworkshop lma da5lt anadi 3la method al factory w geet')
+                 console.log("the workshop request from server is ", data);
+                 $scope.workshop_created = true;
 //when data retrived from server
 //            $location.url('/category/'+$scope.post.category_id);
-       } , function(err){
-       	console.log(err);
+             }, function (err) {
+                 console.log(err);
+                 $scope.workshop_created = false;
 
-       });
-
+             });
+         }
      }
 
  },
