@@ -100,7 +100,7 @@ class UploadController extends Controller
 //        return response()->json(['request'=> $_FILES['file'],'message' => 'data sent successfully']);
         if(!empty($_FILES)){
 
-            $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/files/'.$_FILES['file']['name']);
+            $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/events/'.$_FILES['file']['name']);
 //            return response()->json(['id'=>$id]);
             $event =Event::find($id);
             $event->media_url = 'uploads/files/'.$_FILES['file']['name'];

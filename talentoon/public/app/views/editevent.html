@@ -28,16 +28,16 @@
 
 
 
-        <!--<div class="field">-->
-            <!--<h4 style="color:Purple ">Time from</h4>-->
-            <!--<input type="time" name="time_from" required ng-model="editable_event.time_from" value="editable_event.time_from" class="form-control">-->
-            <!--<p class="error" ng-if="editevent.time_from.$error.required && submitted" >This field is required</p>-->
-        <!--</div>-->
-        <!--<div class="field">-->
-            <!--<h4 style="color:Purple ">Time to</h4>-->
-            <!--<input type="time" name="time_to" required ng-model="editable_event.time_to" value="editable_event.time_to" class="form-control">-->
-            <!--<p class="error" ng-if="editevent.time_to.$error.required && submitted" >This field is required</p>-->
-        <!--</div>-->
+        <div class="field">
+            <h4 style="color:Purple ">Time from</h4>
+            <input type="time" name="time_from" required ng-model="editable_event.time_from" value="editable_event.time_from" class="form-control">
+            <p class="error" ng-if="editevent.time_from.$error.required && submitted" >This field is required</p>
+        </div>
+        <div class="field">
+            <h4 style="color:Purple ">Time to</h4>
+            <input type="time" name="time_to" required ng-model="editable_event.time_to" value="editable_event.time_to" class="form-control">
+            <p class="error" ng-if="editevent.time_to.$error.required && submitted" >This field is required</p>
+        </div>
 
         <div class="field">
             <h4 style="color:Purple ">Date from</h4>
@@ -61,8 +61,8 @@
         </div>
         <div class="field">
             <h4 style="color:Purple ">Paied</h4>
-            <input type="radio" name="paied" required ng-model="editable_event.is_paid" value="editable_event.is_paid"  class="form-control" value="1" checked>Paied<br>
-            <input type="radio" name="paied" required ng-model="editable_event.is_paid" class="form-control" value="0" checked> Free<br>
+            <input type="radio" name="paied" required ng-model="editable_event.is_paid" value="editable_event.is_paid"  class="form-control" checked>Paied<br>
+
             <p class="error" ng-if="editevent.paied.$error.required && submitted" >This field is required</p>
         </div>
 

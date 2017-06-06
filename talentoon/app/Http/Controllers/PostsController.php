@@ -20,6 +20,11 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
+        $this->middleware(['ability:talent|mentor,create-post','checkrelatedcategory'])->only('store');
+
+    }
 
     public function index()
     {

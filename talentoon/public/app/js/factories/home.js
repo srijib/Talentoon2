@@ -10,12 +10,10 @@ return {
 				method:'GET'
 
 			}).then(function(res){
-				console.log(res)
-				console.log('y bashrrrrr',res.data.posts);
 				if(res.data.posts){
-					def.resolve(res.data.posts)
+                    def.resolve(res.data.posts)
 				}else{
-					def.reject('there is no data ')
+                    def.reject('Sorry, No posts found')
 				}
 
 			},function(err){
@@ -33,9 +31,7 @@ return {
             method:'GET'
 
         }).then(function(res){
-            console.log('gggfff',res);
             if(res.data){
-                console.log(res.data);
                 def.resolve(res.data.msg1)
             }else{
                 def.reject('there is no data ')
@@ -56,9 +52,7 @@ return {
 				method:'GET'
 
 			}).then(function(res){
-				console.log('gggfff',res);
 				if(res.data){
-					console.log(res.data);
 					def.resolve(res.data.data)
 				}else{
 					def.reject('there is no data ')

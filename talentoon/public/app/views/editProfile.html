@@ -1,46 +1,61 @@
+<style>
+.container{
+    font-size:10px;
+}
+
+</style>
 <div class="container">
     <div class="row infoName">
         <div class="userInfos">
-            <img src="Imgs/Persons/face4.jpg" alt="">
-            <span>Hossam Fouad</span>
+            <img src="http://localhost:8000/{{userupdate.image}}" alt="">
+            <span>{{fname}} {{lname}}</span>
         </div>
     </div>
 
+<form name="editform" ng-submit="submitted=true; updateuserprofile(editform.$valid)"  id="idform" novalidate>
+
+
 
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 basicInfo">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 basicInfo">
             <h5>Your Basic Info</h5>
-            <input type="text" class="form-control col-lg-6 col-sm-6" id="formGroupExampleInput" placeholder="Name">
-            <input class="form-control" type="Email"  placeholder="Email" id="example-email-input">
-
+            <input type="text" name="firstname" ng-model="userupdate.first_name" class="form-control col-lg-6 col-sm-6" id="formGroupExampleInput"  value="{{userupdate.first_name}}" required>
+                <br>
+            <p class="error" ng-if="submitted && editform.firstname.$error.required" >please enter your user first name</p>
+            <input name="lastname" class="form-control" ng-model="userupdate.last_name" type="text"  placeholder="LastName" id="example-name-input" value="{{userupdate.last_name}}" required>
+                <p class="error" ng-if="submitted && editform.lastname.$error.required" >please enter your last name</p>
+            <input name="email" class="form-control"  ng-model="userupdate.email" type="Email"  placeholder="Email" id="example-email-input" value="{{userupdate.email}}" required>
+                <p class="error" ng-if="submitted && editform.email.$error.required" >please enter your email</p>
+                <p class="error" ng-if="submitted && editform.email.$error.email"> please enter valid email</p>
             <div class="changepass">
                 <h6>Change Password</h6>
-                <input class="form-control" type="password" id="example-password-input" placeholder="Old Password">
-                <input class="form-control" type="password" id="example-password-input" placeholder="Password">
-                <input class="form-control" type="password"  id="example-password-input" placeholder="Repeat Password">
+                <input name="userpassword" ng-model="userupdate.userpassword" class="form-control"  type="password" id="example-password-input" placeholder="Old Password">
+                <!--<p class="error" ng-if="submitted && editform.password != {{userupdate}}" >please enter your last name</p>-->
+                <input name="newpassword" class="form-control" ng-model="userupdate.newpassword" type="password" id="example-newpassword-input" placeholder="Password">
+                <input name="repassword" class="form-control" ng-model="userupdate.repassword" type="password"  id="example-repassword-input" placeholder="Repeat Password">
             </div>
 
-            <div class="done">
-                <a href="" class="btn btn-lg">
-                    <i class="fa fa-check" aria-hidden="true"></i>Done
-                </a>
-            </div>
+            <!--<div class="done">-->
+                <!--<a href="" class="btn btn-lg">-->
+                    <!--<i class="fa fa-check" aria-hidden="true"></i>Done-->
+                <!--</a>-->
+            <!--</div>-->
 
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 personalInfo">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 personalInfo">
             <h5>Your Personal Info</h5>
 
             <div class="editSelected">
                 <!--gender-->
                 <select class="custom-select">
-                    <option selected disabled>Gender</option>
+                    <option selected name="gender" ng-model="userupdate.gender">{{userupdate.gender}}</option>
                     <option value="1">Male</option>
                     <option value="2">Female</option>
                 </select>
 
                 <!--countries-->
                 <select class="custom-select">
-                    <option selected disabled>Country</option>
+                    <option selected  name="country" ng-model="userupdate.country">{{userupdate.country_name}}</option>
                     <option value="1">Alexandria</option>
                     <option value="2">Cairo</option>
                     <option value="3">Hurghada</option>
@@ -48,58 +63,74 @@
                 </select>
 
                 <!--type-->
-                <select class="custom-select">
-                    <option selected disabled>Type</option>
-                    <option value="1">Talent</option>
-                    <option value="2">Mentor</option>
-                </select>
+                <!--<select class="custom-select">-->
+                    <!--<option selected disabled>Type</option>-->
+                    <!--<option value="1">Talent</option>-->
+                    <!--<option value="2">Mentor</option>-->
+                <!--</select>-->
 
             </div>
 
-            <input class="form-control date" type="date" placeholder="Date of birth" id="example-date-input">
-            <input class="form-control" type="tel" placeholder="Telephone" id="example-tel-input">
+            <input name="dob" ng-model="userupdate.date_of_birth" class="form-control date" type="date"  id="example-date-input" value="{{userupdate.date_of_birth}}">
 
-            <div class="about">
-                <h6>About</h6>
-                <textarea class="form-control" rows="3" id="comment" placeholder="Tell us about yourself"></textarea>
-            </div>
+            <input name="phone" ng-model="userupdate.phone"class="form-control" type="tel" placeholder="Telephone" id="example-tel-input" value="{{userupdate.phone}}" required>
+                <p class="error" ng-if="submitted && editform.phone.$error.required" >please enter your phone</p>
+                <p class="error" ng-show="submitted && editform.phone.$error.number" >please enter only number </p>
+                <p class="error" ng-show="editform.phone.$error.minlength" > phone number should be 11 digits </p>
+            <!--<div class="about">-->
+                <!--<h6>About</h6>-->
+                <!--<textarea class="form-control" rows="3" id="comment" placeholder="Tell us about yourself"></textarea>-->
+            <!--</div>-->
 
+            <!--<div class="done">-->
+                <!--<a href="" class="btn btn-lg" id="subanc" >-->
+                    <!--<i class="fa fa-check" aria-hidden="true"></i>Done-->
+                <!--</a>-->
+            <!--</div>-->
             <div class="done">
-                <a href="" class="btn btn-lg">
-                    <i class="fa fa-check" aria-hidden="true"></i>Done
-                </a>
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <button type="submit" class="btn btn-default">Done</button>
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 connectInfo">
-            <h5>Connect Infos</h5>
+        <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 connectInfo">-->
+            <!--<h5>Connect Infos</h5>-->
 
-            <!--profile image-->
-            <div class="form-group">
-                <input type="file" name="img[]" class="file">
-                <div class="input-group col-xs-12">
-                    <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control input-lg" disabled placeholder="profile pic">
-                    <span class="input-group-btn">
-                        <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i>Browse</button>
-                    </span>
-                </div>
-            </div>
+            <!--&lt;!&ndash;profile image&ndash;&gt;-->
+            <!--<div class="form-group">-->
+                <!--<input type="file" name="img[]" class="file">-->
+                <!--<div class="input-group col-xs-12">-->
+                    <!--<span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>-->
+                    <!--<input type="text" class="form-control input-lg" disabled placeholder="profile pic">-->
+                    <!--<span class="input-group-btn">-->
+                        <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i>Browse</button>-->
+                    <!--</span>-->
+                <!--</div>-->
+            <!--</div>-->
 
-            <h6>Links</h6>
-            <div class="row lnk"><i class="fa fa-facebook  col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-10" id="formGroupExampleInput" placeholder="Facebook link"></div>
+            <!--<h6>Links</h6>-->
+            <!--<div class="row lnk"><i class="fa fa-facebook  col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-10" id="formGroupExampleInput" placeholder="Facebook link"></div>-->
 
-            <div class="row lnk"><i class="fa fa-twitter col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-10" id="formGroupExampleInput" placeholder="Twitter link"></div>
+            <!--<div class="row lnk"><i class="fa fa-twitter col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-10" id="formGroupExampleInput" placeholder="Twitter link"></div>-->
 
-            <div class="row lnk"><i class="fa fa-google-plus col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-10" id="formGroupExampleInput" placeholder="Google plus link"></div>
+            <!--<div class="row lnk"><i class="fa fa-google-plus col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-10" id="formGroupExampleInput" placeholder="Google plus link"></div>-->
 
-            <div class="row lnk other"><i class="fa col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-12 other" id="formGroupExampleInput" placeholder="Other link"></div>
+            <!--<div class="row lnk other"><i class="fa col-lg-2" aria-hidden="true"></i><input type="text" class="form-control col-lg-12 other" id="formGroupExampleInput" placeholder="Other link"></div>-->
 
-            <div class="done">
-                <a href="" class="btn btn-lg">
-                    <i class="fa fa-check" aria-hidden="true"></i>Done
-                </a>
-            </div>
+            <!--<div class="done">-->
+                <!--<a href="" class="btn btn-lg">-->
+                    <!--<i class="fa fa-check" aria-hidden="true"></i>Done-->
+                <!--</a>-->
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
     </div>
+</form>
+
 </div>
+<!--<script>-->
+    <!--$("a#subanc").click(function()-->
+    <!--{-->
+        <!--$("#idform").submit();-->
+        <!--return false;-->
+    <!--});-->
+<!--</script>-->

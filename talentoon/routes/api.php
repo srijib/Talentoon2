@@ -25,14 +25,11 @@ Route::post('/betalent',[
     'uses'=>'CategoryTalentController@store',
     'middleware'=> 'ability:audience,permission:be-talent']);
 
-Route::group(['middleware' => ['ability:talent|mentor,create-post','checkrelatedcategory']], function () {
-
-});
 //nahala ana tla3t al posts bara 3shan al middleware mkansh by5lini 23ml edit "simona"
 Route::resource('categories.posts','PostsController');
 
 
-Route::resource('categories.posts','PostsController');
+//Route::resource('categories.posts','PostsController');
 
 //Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
   Route::resource('categories.events','EventController');
@@ -78,7 +75,7 @@ Route::post('/single_upload/{id}', 'UploadController@single_upload');
 Route::post('/event_upload/{id}', 'UploadController@event_upload');
 
 Route::post('/test2', 'UploadController@test2');
-Route::put('/categorymentor/update','CategoryMentorController@update');
+Route::POST('/categorymentor/update','CategoryMentorController@update');
 Route::post('/categorymentor/store','CategoryMentorController@store');
 
 //Route::post('/signup','JWTAuth\SignUpController@signup');
@@ -88,6 +85,7 @@ Route::get('/authenticate','JWTAuth\LoginController@getAuthenticatedUser');
 
 Route::post('/categorysubscribe','CategorySubscribeController@store');
 Route::post('/categoryunsubscribe','CategorySubscribeController@update');
+Route::post('/categoryuntalent','CategoryTalentController@untalent');
 
 Route::post('/like','LikeController@store');
 Route::post('/dislike','LikeController@update');
@@ -101,6 +99,12 @@ Route::get('/userprofile',[
     Route::get('/userprofile/displayShared',[
             'uses'=>'UserProfile@displayShared',
             'middleware'=> 'jwt.auth']);
+
+    //ask nahala to add middleware
+Route::get('/editprofile','UserProfile@edit');
+Route::put('/updateprofile','UserProfile@update');
+Route::post('/checkpassword','UserProfile@checkpassword');
+
 Route::get('/userprofile/{post_id}',[
     'uses'=>'UserProfile@show',
     'middleware'=> 'jwt.auth']);
@@ -110,6 +114,7 @@ Route::post('/userprofile/follow',[
 Route::post('/userprofile/unfollow',[
     'uses'=>'UserProfile@unfollow',
     'middleware'=> 'jwt.auth']);
+
 Route::post('/categorytalent/store','CategoryTalentController@store');
 
 
