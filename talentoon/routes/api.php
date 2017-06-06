@@ -157,3 +157,8 @@ Route::post('/workshop/{workshop_id}','WorkShopsController@createSession');
 Route::get('/SubscribedPost','PostsController@Subscribedposts');
 Route::get('/get_post_reviews', 'CategoriesController@get_post_reviews');
 Route::post('/add_mentor_post_review', 'CategoriesController@add_mentor_post_review');
+
+// Route::post('/push','HomeController@index');
+Route::post('/push',[
+    'uses'=>'HomeController@index',
+    'middleware'=> 'jwt.auth']);

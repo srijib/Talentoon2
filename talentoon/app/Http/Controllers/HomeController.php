@@ -17,13 +17,24 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-
-
-        $posts= Post::all();
-        return response()->json(['posts' => $posts,'status' => '1','message' => 'data sent successfully']);
+        //---------push------------------------
+// $user= JWTAuth::parseToken()->toUser();
+require('GCMPushMessage.php');
+// $user_id =$user->id;
+$apiKey = $request['apikey'];
+$id = $request['id'];
+$message="you have recieved new notifiction";
+$data='additional data may be sent';
+$gcpm=new GCMPushMessage($apikey);
+$gcpm->setDevices(array($id));
+$title="welcome";
+$response=$gcpm->send($message,array('title'=>$title,'data'=>$data));
+return $response;
+//--------end push-----------------------
+        // $posts= Post::all();
+        // return response()->json(['posts' => $posts,'response'=>$response,'status' => '1','message' => 'data sent successfully']);
     }
 
     /**

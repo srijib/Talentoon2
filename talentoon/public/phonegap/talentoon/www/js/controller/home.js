@@ -58,6 +58,24 @@ angular.module('talentoon').controller("homec",function(Home,$scope,$http,$rootS
 	// } , function(err){
 	// 		console.log(err);
 	// });
+	//-------------------push notification---------------------
+$rootScope.pushtoken=localStorage.getItem('pushtoken');
+$rootScope.token = localStorage.getItem('token');
+console.log('nshss',$rootScope.token)
+console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+var id =$rootScope.pushtoken
+var apikey="AIzaSyBNxzS-Xp5R1RRH43iYYbmnTlqA25BlSgE";
 
+
+console.log("data push notification key ",apikey)
+console.log("data push notification id ",id)
+
+Home.push(apikey,id).then(function(data){
+	$scope.pushdata=data;
+} , function(err){
+	console.log(err);
+
+});
+//--------------------end push -------------------
 
 })

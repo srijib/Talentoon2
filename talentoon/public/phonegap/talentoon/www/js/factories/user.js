@@ -130,6 +130,8 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
             })
             return def.promise;
 
-        }
+        },
+
+
     };
 });

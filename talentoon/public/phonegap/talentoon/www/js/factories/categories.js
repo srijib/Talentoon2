@@ -18,6 +18,7 @@ console.log("token in factory",token)
                     // def.resolve(res.data)
 
 // 172.16.3.77
+//192.168.6.4
                 } else {
                     def.reject('there is no data ')
                 }
