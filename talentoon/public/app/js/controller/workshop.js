@@ -1,4 +1,4 @@
-angular.module('myApp').controller("workshop", function ($scope, $http, workshops, $routeParams,$location,$rootScope) {
+angular.module('myApp').controller("workshop", function ($route,$scope, $http, workshops, $routeParams,$location,$rootScope) {
 
 $scope.workshop_enroll = function(workshop_id,userId) {
 var workshop_id=workshop_id;
@@ -10,7 +10,7 @@ var obj={user_id,workshop_id}
 console.log("objjjjjjjjjjjjjjjjjjjjjjj",obj);
 		workshops.workshop_enroll(obj).then(function(data){
 			console.log("dataaaaaaaaaaaa",data);
-
+			$route.reload();
 		} , function(err){
 			console.log(err);
 

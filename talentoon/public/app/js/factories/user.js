@@ -119,15 +119,15 @@ angular.module('myApp').factory("user", function ($http, $q) {
             return def.promise;
 
         },
-        displayShared: function () {
+        user: function (user_id) {
 
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/userprofile/displayShared',
+                url: 'http://localhost:8000/api/userprofile/'+user_id,
                 method: 'GET'
 
             }).then(function (res) {
-                console.log("shareposts",res);
+                console.log("posts",res);
                 if (res) {
                     // if(res.data.length){
                     def.resolve(res)
@@ -145,6 +145,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
             return def.promise;
 
         },
+
         editprofile: function (id) {
         console.log("in factory to edit profile",id);
         var def = $q.defer();
@@ -224,6 +225,55 @@ angular.module('myApp').factory("user", function ($http, $q) {
             def.reject(err);
         })
         return def.promise;
-    }
+    },
+     follow:function(data){
+          console.log("from factory",data);
+          var def =$q.defer();
+          $http({
+            url:'http://localhost:8000/api/userprofile/follow',
+            method:'POST',
+            data:data
+
+          }).then(function(res){
+            console.log("res from follow",res);
+            if(res.data){
+              console.log(res.data);
+             def.resolve(res.data);
+
+            }else{
+              def.reject('there is no data ')
+            }
+
+          },function(err){
+            def.reject(err);
+          })
+          return def.promise ;
+
+      },
+      unfollow:function(data){
+        console.log("from factory",data);
+        var def =$q.defer();
+        $http({
+          url:'http://localhost:8000/api/userprofile/unfollow',
+          method:'POST',
+          data:data
+
+        }).then(function(res){
+          console.log("res from unfollow",res);
+          if(res.data){
+            console.log(res.data);
+           def.resolve(res.data);
+
+          }else{
+            def.reject('there is no data ')
+          }
+
+        },function(err){
+          def.reject(err);
+        })
+        return def.promise ;
+
+      }
+
     };
 });

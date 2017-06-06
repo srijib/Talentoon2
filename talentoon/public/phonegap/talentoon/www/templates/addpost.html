@@ -13,10 +13,9 @@
 <div class="container" >
 
 
-
 	<!-- Form Start -->
 	<form ng-submit="submit_post_file()" name="form" role="form" enctype="multipart/form-data">
-		<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+		<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px;background-color:#6A0C38;color:white" >
 		<!--<input type="submit" id="submit_file" value="Submit" />-->
 		<br/>
 		<img ng-src="{{post.file}}" style="width:300px;">
@@ -30,25 +29,27 @@
 
 
 	<div class="field">
-	<h4 style="color:Purple ">post title</h4>
-		<input type="text" name="title" required ng-model="post.title" class="form-control">
+	<h4 style="color:#6A0C38">post title</h4>
+		<input type="text" name="title" required ng-model="post.title" class="form-control" placeholder="post title">
 			<p class="error" ng-if="addpost.title.$error.required && submitted" >please enter your post title</p>
 	</div>
   <div class="field">
-	<h4 style="color:Purple ">description</h4>
-		<input type="text" name="description" required ng-model="post.description" class="form-control">
+	<h4 style="color:#6A0C38 ">description</h4>
+		<input type="text" name="description" required ng-model="post.description" class="form-control"placeholder="post description">
 			<p class="error" ng-if="addpost.description.$error.required && submitted" >please enter your post description</p>
 	</div>
 
 
     <input type="hidden" name="category_id"  ng-model="post.category_id" class="form-control" value="{{cat_id}}">
 
-	<button  type="submit" name="button">OK</button>
+	<!-- <button  type="submit" name="button">OK</button> -->
+	<button type="submit" name="button"class=" button-block" style="background-color:#6A0C38;height: 60px;color:white;width: 360px;"><i class="fa fa-pencil" aria-hidden="true"></i> OK</button>
+
+
 </form>
 
-
-
 </div>
+
 <br>
 <br>
 </ion-content>

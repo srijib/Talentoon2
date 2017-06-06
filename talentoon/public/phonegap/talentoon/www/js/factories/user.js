@@ -79,7 +79,7 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
             $http({
                 url: 'http://172.16.3.77:8000/api/userprofile',
                 headers:{
-              'Authorization':'Bearer'+ $rootScope.token
+              'Authorization':'Bearer: ' + $rootScope.token
                  },
                 method: 'GET'
 
@@ -108,12 +108,12 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
             $http({
                 url: 'http://172.16.3.77:8000/api/userprofile/userposts',
                 headers:{
-              'Authorization':'Bearer'+ $rootScope.token
+              'Authorization':'Bearer: ' + $rootScope.token
                  },
                 method: 'GET'
 
             }).then(function (res) {
-                console.log("userpost",res);
+                console.log("userpost in factory",res.data);
                 if (res) {
                     // if(res.data.length){
                     def.resolve(res)
@@ -130,6 +130,8 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
             })
             return def.promise;
 
-        }
+        },
+
+
     };
 });

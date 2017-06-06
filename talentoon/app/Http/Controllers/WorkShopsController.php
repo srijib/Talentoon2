@@ -179,15 +179,16 @@ class WorkShopsController extends Controller
         }
 
         $session=DB::table('workshop_session')
+            ->join('workshop_enrollment','workshop_enrollment.workshop_id','=','workshop_session.workshop_id')
 
-            ->where("workshop_session.workshop_id",$workshop_id)
+            ->where([["workshop_session.workshop_id",$workshop_id],['workshop_enrollment.workshop_id','=',$workshop_id],['workshop_enrollment.user_id','=',$user->id]])
             ->get();
 
       $workshop = DB::table('workshops')
           ->join('categories', 'workshops.category_id', '=', 'categories.id')
           ->join('users', 'users.id', '=', 'workshops.mentor_id')
           ->select('workshops.*', 'categories.title as category_title','users.first_name as first_name','users.last_name as last_name','users.first_name as first_name','users.image as image')
-          ->where([["workshops.id",$workshop_id],[['workshops.is_approved','=',1]]])
+          ->where([["workshops.id",$workshop_id],['workshops.is_approved','=',1]])
           ->get()->first();
 
           $capacity=$workshop->max_capacity;
