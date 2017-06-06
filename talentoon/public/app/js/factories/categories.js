@@ -575,6 +575,30 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
 
         },
+        updatedworkshop:function (workshopdata) {
+            var def = $q.defer();
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.category_id + '/workshops/'+workshopdata.id,
+                method: 'PUT',
+                data: workshopdata
+
+            }).then(function (res) {
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
         addcomment: function (commentdata) {
             var def = $q.defer();
             $http({
