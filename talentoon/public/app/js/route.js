@@ -1,4 +1,3 @@
-
 angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translateProvider', function ($routeProvider, $httpProvider, $translateProvider) {
     var translations_en = {
       DESCOVER_MORE: 'Discover More',
@@ -25,6 +24,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
           BE_UN_TALENT: 'Un Talent',
           BE_UN_MENTOR: 'Un Mentor',
           UN_SUBSCRIBE: 'Un Subscribe',
+          TOP_COMPETITIONS: 'Top Competitions'
     },
     };
     var translations_ar = {
@@ -52,6 +52,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             BE_UN_TALENT: 'الغاء الموهبه',
             BE_UN_MENTOR: 'الغاء التعليم',
             UN_SUBSCRIBE: 'لا تتابع',
+            TOP_COMPETITIONS: 'المسابقات'
 
         },
       };
@@ -68,6 +69,30 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         templateUrl: 'views/home.html',
         controller: 'homec'
     })
+    .when('/competitions', {
+        templateUrl: 'views/allcompetitions.html',
+        controller: 'competitions'
+    })
+    .when('/category/:category_id/competitions', {
+        templateUrl: 'views/categoryCompetitions.html',
+        controller: 'categoryCompetitions'
+    })
+    .when('/category/:category_id/createcompetitions', {
+        templateUrl: 'views/formcompetition.html',
+        controller: 'categoryCompetitions'
+    })
+    .when('/category/:category_id/competitions/competition_id', {
+        templateUrl: 'views/singleCompetition.html',
+        controller: 'singleCompetition'
+    })
+    .when('/category/:category_id/competitions/competition_id/edit', {
+        templateUrl: 'views/formcompetition.html',
+        controller: 'singleCompetition'
+    })
+    .when('/category/:category_id/competitions/competition_id/addpost', {
+        templateUrl: 'views/addcompetitionpost.html',
+        controller: 'singleCompetition'
+    })
 
     .when('/post/:post_id', {
         templateUrl: 'views/post.html',
@@ -82,6 +107,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     .when('/initial_review', {
         templateUrl: 'views/initial_review.html',
         controller: 'initial_review'
+    })
+    .when('/competitions', {
+        templateUrl: 'views/competitions.html',
+        controller: 'competitions'
     })
     .when('/posts', {
         templateUrl: 'views/posts.html',
@@ -187,12 +216,8 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'oneCategory'
         })
 
-        .when('/category/:category_id/events', {
-            templateUrl: 'views/categorypost.html',
-            controller: 'oneCategory'
-        })
         .when('/category/:category_id/events/:event_id', {
-            templateUrl: 'views/categorypost.html',
+            templateUrl: 'views/categoryevent.html',
             controller: 'oneCategory'
         })
 
@@ -213,7 +238,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'oneCategory'
         })
         .when('/category/:category_id/posts', {
-            templateUrl: 'views/categoryevents.html',
+            templateUrl: 'views/categoryposts.html',
             controller: 'oneCategory'
         })
 
@@ -230,6 +255,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         .when('/category/:category_id/workshops/:workshop_id/createSession', {
             templateUrl: 'views/createsession.html',
             controller: 'addsession'
+        })
+        .when('/profile/:user_id', {
+            templateUrl: 'views/userprofile.html',
+            controller: 'userprofile'
         })
 
     $httpProvider.interceptors.push(['$q', '$location', function ($q, $location) {

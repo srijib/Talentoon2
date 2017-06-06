@@ -23,7 +23,7 @@ class CheckRelatedCategory extends BaseMiddleware {
     public function handle($request, Closure $next) {
             $user=JWTAuth::parseToken()->toUser();
         if ($talent = DB::table('category_talents')->where('talent_id', $user->id)->first()) {
-         dd($talent);
+         //dd($talent);
             if (!$talentrecord = DB::table('category_talents')
                     ->where('talent_id', $user->id)
                     ->where('category_id', $request->category_id)

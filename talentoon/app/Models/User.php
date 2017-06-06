@@ -35,4 +35,11 @@ class User extends Authenticatable
     {
         return $this->morphedByMany('App\Models\Post', 'likeable')->whereDeletedAt(null);
     }
+    
+    
+//    public function ability($roles, $permissions, $options = array()) {
+//        
+//        parent::ability($roles, $permissions, $options);
+//    }
+    
 }
