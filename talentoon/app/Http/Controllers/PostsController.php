@@ -280,9 +280,12 @@ public function showSinglePost($post_id){
       ->get()->first();
 
 
-
-
-
+  $post_comment = DB::table('posts')
+  ->join('comments', 'comments.post_id', '=', 'posts.id')
+  ->selectRaw('count(comments.id)as count_comment,posts.id')
+  ->where("comments.post_id",$post_id)
+    ->groupBy('posts.id')
+    ->get();
 
 
       $comments=DB::table('comments')
@@ -293,7 +296,7 @@ public function showSinglePost($post_id){
 // 'comments'=>$comments,
 
 
-  return response()->json(['post' => $post,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
+  return response()->json(['post_comment'=>$post_comment,'post' => $post,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
 // 'countlike'=>$countlike
 
 
