@@ -8,7 +8,7 @@
 
     <table class="table table-striped" border="1">
       <thead>
-          <th>title</th><th>Image</th><th  colspan="4">action</th>
+          <th>title</th><th>Image</th><th  colspan="4">actions</th>
       </thead>
       <tbody>
           @foreach ($categories as $category)
@@ -16,18 +16,20 @@
 
                   <td>{{$category->title}}</td>
                   <td>{{$category->image}}</td>
-                  <td><form method="post" action="{{route('category.destroy',$category->id)}}">
-                  <input name="_method" type="hidden" value="DELETE">
-                  <div class="form-group">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                       <button type="submit" class="btn btn-primary">Delete</button>
-                       </div>
-                    </form>
-                  <a class="btn btn-danger" href="{{route('category.edit',$category->id)}}">Edit</a>
-                  <a class="btn btn-danger" href="{{route('category.show',$category->id)}}">Show</a>
-
-
-                </td>
+                  <td>
+                      <form method="post" action="{{route('category.destroy',$category->id)}}">
+                          <input name="_method" type="hidden" value="DELETE">
+                          <div class="form-group">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                               <button type="submit" class="btn btn-primary">Delete</button>
+                          </div>
+                     </form>
+                  <td>
+                      <a class="btn btn-danger" href="{{route('category.edit',$category->id)}}">Edit</a>
+                  </td>
+                  <td>
+                      <a class="btn btn-danger" href="{{route('category.show',$category->id)}}">Show</a>
+                  </td>
 
           </tr>
           @endforeach

@@ -29,7 +29,7 @@ Route::post('/betalent',[
 Route::resource('categories.posts','PostsController');
 
 
-Route::resource('categories.posts','PostsController');
+//Route::resource('categories.posts','PostsController');
 
 //Route::group(['middleware'=>['ability:mentor,create-event,true','checkmentorauthority']],function(){
   Route::resource('categories.events','EventController');
@@ -75,7 +75,7 @@ Route::post('/single_upload/{id}', 'UploadController@single_upload');
 Route::post('/event_upload/{id}', 'UploadController@event_upload');
 
 Route::post('/test2', 'UploadController@test2');
-Route::put('/categorymentor/update','CategoryMentorController@update');
+Route::POST('/categorymentor/update','CategoryMentorController@update');
 Route::post('/categorymentor/store','CategoryMentorController@store');
 
 //Route::post('/signup','JWTAuth\SignUpController@signup');
@@ -85,6 +85,7 @@ Route::get('/authenticate','JWTAuth\LoginController@getAuthenticatedUser');
 
 Route::post('/categorysubscribe','CategorySubscribeController@store');
 Route::post('/categoryunsubscribe','CategorySubscribeController@update');
+Route::post('/categoryuntalent','CategoryTalentController@untalent');
 
 Route::post('/like','LikeController@store');
 Route::post('/dislike','LikeController@update');
@@ -173,7 +174,14 @@ Route::resource('competition','CompetitionsController');
 Route::resource('categories.competitions','CategoryCompetitionController');
 Route::resource('competitions.posts','CompetitionPostController');
 Route::get('/competition/{competition_id}/join','CompetitionJoinController@joinCompetition');
-Route::get('/competition/post/{post_id}/grantvote','CompetitionPostPointsConroller@grantVote');
+Route::get('/competition/post/{post_id}/grantvote','CompetitionPostPointsController@grantVote');
+Route::post('/competition/post/{post_id}/grantpoints','CompetitionPostPointsController@grantMentorPoints');
+//these two should run by a scheduler after the end date of the comeptition
+Route::get('/competition/{competition_id}/competitior_vote_points','CompetitionPostPointsController@getCompetitiorAudiencePoints');
+Route::get('/competition/{competition_id}/competitior_mentor_points','CompetitionPostPointsController@getCompetitiorMentorPoints');
+
+Route::get('/competition/{competition_id}/competition_final_points','CompetitionPostPointsController@getFinalCompetitionPoints');
+Route::get('/competition/{competition_id}/competition_winners','CompetitionPostPointsController@getFinalCompetitionWinners');
 
 Route::get('/SubscribedPost','PostsController@Subscribedposts');
 Route::get('/get_post_reviews', 'CategoriesController@get_post_reviews');

@@ -18,11 +18,16 @@
         <form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
         {{csrf_field()}}
         <label> Enter title</label>
-            <input type="text" name="title">
-            <br>
-            <label> Enter image</label>
+        <input type="text" name="title" required>
+        <br>
 
-            <input type="file" name="image">
+        <label> Enter Description</label>
+        <input type="textarea" rows="5" name="description" required>
+        <br>
+
+        <label> Enter image</label>
+
+        <input type="file" name="image" required>
         <input type="submit" value="Save category" >
 
     </form>

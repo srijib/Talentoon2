@@ -1,0 +1,65 @@
+<!-- <h1>Please Complete Your Profile to be Mentor.. ()</h1>
+<div class="completementor">
+
+  <form ng-submit="completeMentorProfile()" name="complete_mentor_profile">
+    <label>Mentor Experience Text</label>
+    <input type="text" name="experience" required ng-model="mentor.experience">
+    <label>Experience Years</label>
+    <input type="text" name="years_of_experience" required ng-model="mentor.years_of_experience">
+    <button type="submit" name="button">Send My Mentor Profile</button>
+  </form>
+
+
+  <input type="button" name="teacher_button" value="Be Teacher In Talentoon" ng-click="add_wiziq_teacher()" />
+  <a href="#!/videoconference" class="btn btn-info" role="button">Add New Video Conference Session</a>
+
+</div> -->
+
+
+
+
+
+<div class="container">
+    <div class="mainTitle">
+        <h1>Please Upload 1 - 3 of your work</h1>
+        <small>To confirm you as a mentor with us</small>
+    </div>
+    <div class="row">
+        <div class="createConfirmation col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
+             <form ng-submit="completeMentorProfile()" name="complete_mentor_profile">
+                 <textarea name="experience" required ng-model="mentor.experience" class="form-control" rows="8" placeholder="Your Experience"></textarea>
+                 <!-- <input type="text" name="years_of_experience" required ng-model="mentor.years_of_experience" placeholder="years of experience"> -->
+                <div class="row">
+                    <!-- <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files"></input>
+                    <div class ="icons col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input type="file" name="img" class="file" multiple>
+                            <div class="input-group col-xs-12">
+                                <span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">
+                                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
+                                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+                                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-video-camera" aria-hidden="true"></i></button>
+                                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-headphones" aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="wpost  col-lg-6 col-md-6 col-sm-6">
+                        <a class= "text-right " data-toggle="modal" data-target=".bs-example-modal-sm"> <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            Send</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <h2>Congratulation , </h2><br/>
+                We will notify you with the confirmation within 24 hr maximum.
+            </div>
+        </div>
+    </div>
+</div>

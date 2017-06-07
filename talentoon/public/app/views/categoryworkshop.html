@@ -1,12 +1,14 @@
 
 
 <div class="container">
-    <h1 style="color:#6A0C38;font-family:Times New Roman">TOP POSTS</h1>
+    <h1 style="color:#6A0C38;font-family:Times New Roman">{{category_workshop.name}} Work Shop Details</h1>
     <div class="row">
 
             <div class="thumbnail">
 
-                <img src="{{workshop.media.media_url}}" style=" height:200px">
+
+                <!--{{category_workshop.media.media_url}}-->
+                <img src="http://localhost:8000/{{category_workshop.media_url}}" >
                 <div class="caption">
 
                   <h4 style="color:Purple ">Title: {{category_workshop.name}}</h4>
@@ -24,18 +26,23 @@
 
                 </div>
             </div>
-            <div ng-if="enroll == 1">
+        <center>
+
+            <div ng-if="enroll == 1" style="display: inline-block;vertical-align: top; margin: 10px;">
             <a href=""  ng-click="workshop_enroll(category_workshop.id,userId)" ng-controller="workshop" class="btn btn-success" role="button">Enroll </a>
             </div>
-            <div ng-if="enroll == 0">
+            <div ng-if="enroll == 0" style="display: inline-block;vertical-align: top; margin: 10px;">
             <button type="button" href=""  ng-click="workshop_enroll(category_workshop.id,userId)" ng-controller="workshop" class="btn btn-success" disabled>Enroll </button>
 
             </div>
-            <a href="#!/category/{{category_post.category_id}}" class="btn btn-default" role="button">GO To My Category </a>
-            <a href="#!/category/{{category_workshop.category_id}}/workshops/{{category_workshop.id}}/createSession" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create session</a>
+            <a href="#!/category/{{category_workshop.category_id}}" class="btn btn-default" role="button" style="margin: 10px;">GO To My Category </a>
+            <a href="#!/category/{{category_workshop.category_id}}/workshops/{{category_workshop.id}}/createSession" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true" style="margin: 10px;"></i> Create Offline Video</a>
+            <a href="#!/videoconference" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true" style="margin: 10px;"></i> Create Interactive Scheduled Class</a>
 
             </div>
-            <div ng-repeat="session in media">
+        </center>
+
+    <div ng-repeat="session in media">
                 <div class="thumbnail">
                   <video width="320" height="240" controls >
                    <source src="http://127.0.0.1:8000/{{session.media_url}}" type="{{session.media_type}}">

@@ -27,12 +27,9 @@ class CategoryMentorController extends Controller
             $user= JWTAuth::parseToken()->toUser();
 //            $user->id;
             $category_mentor= new CategoryMentorService();
-            $data = $category_mentor->UnMentor($request,$user->id);
+            $data = $category_mentor->UnMentor($request);
             return $data;
-//        }elseif ($request->all()['action']=="approve"){
-//            $category_mentor= new CategoryMentorService();
-//            $data =$category_mentor->ApproveMentor($request);
-//            return $data;
+
         }else{
             return response()->json(['status' => 0, 'message' => 'unkown action']);
         }

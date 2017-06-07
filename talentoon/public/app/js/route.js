@@ -89,8 +89,12 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         templateUrl: 'views/formcompetition.html',
         controller: 'singleCompetition'
     })
-    .when('/category/:category_id/competitions/competition_id/addpost', {
+    .when('/competitions/competition_id/addpost', {
         templateUrl: 'views/addcompetitionpost.html',
+        controller: 'singleCompetition'
+    })
+    .when('/competitions/:competition_id/posts/:post_id/delete', {
+        templateUrl: 'views/singleCompetition.html',
         controller: 'singleCompetition'
     })
 
@@ -104,10 +108,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         controller: 'eventcontroller'
     })
 
-    .when('/initial_review', {
-        templateUrl: 'views/initial_review.html',
-        controller: 'initial_review'
-    })
+    // .when('/initial_review', {
+    //     templateUrl: 'views/showreview.html',
+    //     controller: 'showreview'
+    // })
     .when('/competitions', {
         templateUrl: 'views/competitions.html',
         controller: 'competitions'
@@ -137,15 +141,15 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
 
         //user subscribe in category
 
-        .when('/category/subscribe/:category_id/:user_id', {
-            // templateUrl:'views/category.html',
-            controller: 'oneCategory'
-        })
-
-        .when('/category/unsubscribe/:category_id/:user_id', {
-            // templateUrl:'views/category.html',
-            controller: 'oneCategory'
-        })
+        // .when('/category/:category_id/subscribe/:user_id', {
+        //     // templateUrl:'views/category.html',
+        //     controller: 'oneCategory'
+        // })
+        //
+        // .when('/category/unsubscribe/:category_id/:user_id', {
+        //     // templateUrl:'views/category.html',
+        //     controller: 'oneCategory'
+        // })
 
 
 
@@ -179,7 +183,8 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
 
 
         //user choose to be a talent under a certain category
-        .when('/category/betalent/:category_id/:user_id', {
+        .when('/category/:category_id/betalent', {
+            templateUrl: 'views/betalent.html',
             controller: 'talents'
         })
 
@@ -187,7 +192,8 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
 
 
         //user choose to be a mentor under a certain category
-        .when('/category/bementor/:category_id/:user_id', {
+        .when('/category/:category_id/bementor', {
+            templateUrl: 'views/bementor.html',
             controller: 'mentors'
         })
 

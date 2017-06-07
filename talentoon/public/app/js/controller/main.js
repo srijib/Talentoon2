@@ -1,5 +1,8 @@
 angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location,$route) {
 
+    $rootScope.token = JSON.parse(localStorage.getItem("token"));
+	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+    
     $scope.lang=function(lang){
         if (lang == "ar") {
             localStorage.setItem('language', 'ar');

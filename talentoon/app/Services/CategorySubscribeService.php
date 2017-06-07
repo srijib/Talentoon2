@@ -28,7 +28,7 @@ return response()->json(['status' => 1,
 
     }
     public static function unsubscribe ($request){
-            $is_subscribe=DB::table('subscribers')->where('subscriber_id',$request->subscriber_id)->update(['subscribed' => 0]);
+            $is_subscribe=DB::table('subscribers')->where([['subscriber_id',$request->subscriber_id],['category_id',$request->category_id]])->update(['subscribed' => 0]);
 
     return response()->json(['status' => 0,
                                 'message' => 'UnSubscribed successfully']);
