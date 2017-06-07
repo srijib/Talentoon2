@@ -22,43 +22,63 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
         $scope.categoryPosts = data.posts;
-        $scope.is_subscribed = data.is_sub[0].subscribed;
-        $scope.is_talent = data.is_talent[0].status;
-        $scope.is_mentor = data.is_mentor[0].status;
+        if(data.is_sub.length){
+            $scope.is_subscribed = data.is_sub[0].subscribed;
+        }
+
+        if(data.is_talent.length){
+            $scope.is_talent = data.is_talent[0].status;
+        }
+
+        if(data.is_mentor.length){
+            $scope.is_mentor = data.is_mentor[0].status;
+        }
+
 		console.log('$scope.is_subscribed',data.is_mentor[0].status);
         $scope.categoryEvents = data.events;
+        console.log( data.events,"<<<<events")
         $scope.categoryWorkshops = data.workshops;
         $rootScope.cur_user = data.cur_user;
         $scope.category_details = data.category_details;
 
 		if($scope.categoryPosts.length){
             $scope.category_posts_exists = 1;
+        }else{
+            $scope.category_posts_exists = 0;
         }
         if($scope.categoryEvents.length){
             $scope.category_events_exists = 1;
+        }else{
+            $scope.category_events_exists = 0;
         }
 
         if($scope.categoryWorkshops.length){
             $scope.category_workshops_exists = 1;
+        }else{
+            $scope.category_workshops_exists = 0;
         }
 
         if($scope.cur_user){
             $scope.cur_user_exists = 1;
+        }else{
+            $scope.cur_user_exists = 0;
         }
 
         if($scope.category_details){
             $scope.category_details_exists = 1;
+        }else{
+            $scope.category_details_exists = 0;
         }
     }, function (err) {
         console.log(err);
     });
 
-	Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
-		console.log('getCategoryCompetitions',data.competitions);
-        $scope.categoryCompetitions = data.competitions;
-    }, function (err) {
-        console.log(err);
-    });
+    // Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
+		// console.log('getCategoryCompetitions',data.competitions);
+    //     $scope.categoryCompetitions = data.competitions;
+    // }, function (err) {
+    //     console.log(err);
+    // });
 
 
 
