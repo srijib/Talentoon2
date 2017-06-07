@@ -1,0 +1,28 @@
+<style>
+    body {
+        font-size: 10px;
+    }
+</style>
+
+
+<div ng-repeat="competition in categoryCompetitions">
+    <ul >
+        <li>{{competition.category_id}}</li>
+        <li>{{competition.competition_end_date}}</li>
+        <li>{{competition.competition_end_time}}</li>
+        <li>{{competition.competition_from_level}}</li>
+        <li>{{competition.competition_start_date}}</li>
+        <li>{{competition.competition_start_time}}</li>
+        <li>{{competition.competition_to_level}}</li>
+        <li>{{competition.created_at}}</li>
+        <li>{{competition.description}}</li>
+        <li>{{competition.first_winner_talent_id}}</li>
+        <li>{{competition.id}}</li>
+        <li>{{competition.image}}</li>
+        <li>{{competition.mentor_id}}</li>
+        <li>{{competition.points_description}}</li>
+        <li>{{competition.second_winner_talent_id}}</li>
+        <li>{{competition.third_winner_talent_id}}</li>
+        <li>{{competition.title}}</li>
+    </ul>
+</div>

@@ -14,6 +14,8 @@ use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Services\Notification;
 use DB;
+use App\Models\Comment;
+
 
 class CategoriesController extends Controller
 {
@@ -28,8 +30,8 @@ class CategoriesController extends Controller
     }
     public function index()
     {
-        
-        
+
+
         try{
         $user = JWTAuth::parseToken()->authenticate();
        $categories= Category::all();
@@ -106,6 +108,11 @@ class CategoriesController extends Controller
                       $join->on('posts.id','=','likeables.likeable_id')
                       ->where('likeables.liked', '=', '1');
                   })
+                //   ->rightJoin('comments', function($join)
+                //         {
+                //             $join->on('comments.post_id','=','posts.id');
+                //         })
+        // ->join('comments','comments.post_id','=','posts.id')
                   ->where([['posts.category_id','=',$cat_id],['posts.is_approved','=',1]])
                   ->groupBy('posts.id')
                     ->get();
