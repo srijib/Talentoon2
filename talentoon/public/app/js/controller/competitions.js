@@ -1,8 +1,8 @@
-angular.module('myApp').controller("competitions",function($location,$route,categories,$scope,$http,posts,$rootScope,$q){
+angular.module('myApp').controller("competitions",function($location,$route,Competitions,categories,$scope,$http,posts,$rootScope,$q){
 
     Competitions.getAllCompetitions().then(function (data) {
-        // $scope.posts = data.posts;
-        console.log("data posts",data );
+        $scope.competitions = data.data;
+        console.log("Compooo dataa controller",$scope.competitions );
     }, function (err) {
         console.log(err);
     });

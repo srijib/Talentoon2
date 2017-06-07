@@ -1,8 +1,10 @@
-angular.module('myApp').controller("categoryCompetitions",function($location,$route,categories,$scope,$http,posts,$rootScope,$q){
+angular.module('myApp').controller("categoryCompetitions",function($location,$route,Competitions,categories,$scope,$http,posts,$rootScope,$q, $routeParams){
 
-    Competitions.getAllCompetitions().then(function (data) {
-        // $scope.posts = data.posts;
-        console.log("data posts",data );
+    $scope.cat_id = $routeParams['category_id'];
+
+    Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
+        $scope.categoryCompetitions = data.data;
+        console.log("compo new dataaaa",$scope.categoryCompetitions );
     }, function (err) {
         console.log(err);
     });
