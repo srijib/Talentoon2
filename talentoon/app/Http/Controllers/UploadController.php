@@ -16,7 +16,8 @@ use Session;
 use App\Models\Upload;
 use App\Models\Event;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-// use Illuminate\Support\Facades\Image;
+
+
 
 class UploadController extends Controller
 {
