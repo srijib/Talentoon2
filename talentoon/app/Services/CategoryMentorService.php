@@ -62,18 +62,17 @@ class CategoryMentorService
 
     }
 
-    public function UnMentor($update_data,$mentor_id){
+    public function UnMentor($request){
 
-        $category=$update_data['category_id'];
-        $mentor=$mentor_id;
-
-
-
-        DB::table('category_mentors')->where('category_id', $category)
-            ->where('mentor_id', $mentor)
-            ->update(['deleted_at' => Carbon::now()]);
-
-        return response()->json(["msg" => "done"]);
+        // $category=$update_data['category_id'];
+        // $mentor=$mentor_id;
+        // DB::table('category_mentors')->where('category_id', $category)
+        //     ->where('mentor_id', $mentor)
+        //     ->update(['deleted_at' => Carbon::now()]);
+        //
+        // return response()->json(["msg" => "done"]);
+        $is_mentor=DB::table('category_mentors')->where([['mentor_id',$request->mentor_id],['category_id',$request->category_id]])->update(['status' => 0]);
+        return response()->json(['status' => 200,'message' => 'UnMentor successfully']);
 
     }
     public function ApproveMentor($update_data){
@@ -92,4 +91,3 @@ class CategoryMentorService
 
 
 }
-

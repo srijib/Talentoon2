@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\WorkShop;
+use App\Models\CategoryTalent;
+use App\Models\CategoryMentor;
 use App\Models\MentorReviews;
 use Response;
 use Illuminate\Http\Request;
@@ -82,6 +84,20 @@ class CategoriesController extends Controller
         $user = JWTAuth::parseToken()->authenticate();
         $category=Category::find($cat_id);
 
+        $subscribed = DB::table('subscribers')
+                    -> select('subscribed')
+                    ->where([['subscriber_id', '=', $user->id],['category_id','=',$cat_id]])
+                    ->get();
+        $talent = DB::table('category_talents')
+                    -> select('status')
+                    ->where([['talent_id', '=', $user->id],['category_id','=',$cat_id]])
+                    ->get();
+
+        $mentor = DB::table('category_mentors')
+                    -> select('status')
+                    ->where([['mentor_id', '=', $user->id],['category_id','=',$cat_id]])
+                    ->get();
+
         $posts = DB::table('posts')
         ->join('users', 'posts.user_id', '=','users.id' )
         ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id,users.last_name,users.first_name,users.image as user_image,users.id as user_id')
@@ -105,9 +121,9 @@ class CategoriesController extends Controller
             ->get();
             // return response()->json(['posts' => $posts,'status' => '1','message' => 'data sent successfully']);
 
-        return response()->json(['cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
+        return response()->json(['is_mentor'=>$mentor,'is_talent'=>$talent,'is_sub'=>$subscribed,'cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
     }
-
+//
     /**
      * Show the form for editing the specified resource.
      *

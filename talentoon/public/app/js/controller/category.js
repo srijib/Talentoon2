@@ -1,4 +1,4 @@
-angular.module('myApp').controller("oneCategory", function ($location, $scope, $http, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
+angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
 
 	$rootScope.token = JSON.parse(localStorage.getItem("token"));
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
@@ -10,7 +10,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     var reviewfilesuploaded = []
     var talent = {}
     var mentor = {}
-    var user_id = 1;
+    var user_id = $rootScope.cur_user.id;
 
 
     $scope.cat_id = $routeParams['category_id'];
@@ -18,13 +18,37 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     $scope.event_id = $routeParams['event_id'];
 
 
+
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
         $scope.categoryPosts = data.posts;
+        $scope.is_subscribed = data.is_sub[0].subscribed;
+        $scope.is_talent = data.is_talent[0].status;
+        $scope.is_mentor = data.is_mentor[0].status;
+		console.log('$scope.is_subscribed',data.is_mentor[0].status);
         $scope.categoryEvents = data.events;
         $scope.categoryWorkshops = data.workshops;
         $rootScope.cur_user = data.cur_user;
         $scope.category_details = data.category_details;
+
+		if($scope.categoryPosts.length){
+            $scope.category_posts_exists = 1;
+        }
+        if($scope.categoryEvents.length){
+            $scope.category_events_exists = 1;
+        }
+
+        if($scope.categoryWorkshops.length){
+            $scope.category_workshops_exists = 1;
+        }
+
+        if($scope.cur_user){
+            $scope.cur_user_exists = 1;
+        }
+
+        if($scope.category_details){
+            $scope.category_details_exists = 1;
+        }
     }, function (err) {
         console.log(err);
     });
@@ -35,6 +59,17 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     }, function (err) {
         console.log(err);
     });
+
+
+
+
+
+    // Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
+		// console.log('getCategoryCompetitions',data.competitions);
+    //     $scope.categoryCompetitions = data.competitions;
+    // }, function (err) {
+    //     console.log(err);
+    // });
 
 
     // categories.getCategoryWorkshops($scope.cat_id).then(function (data) {
@@ -56,6 +91,20 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     }, function (err) {
         console.log(err);
     });
+    // categories.getCategoryEvent($scope.cat_id,$scope.workshop_id).then(function (data) {
+    //     $rootScope.editable_event=data;
+    //     console.log("single event from controller", $rootScope.category_workshop);
+    //
+    // }, function (err) {
+    //     console.log(err);
+    // });
+    // categories.getCategoryPost($scope.workshop_id).then(function (data) {
+    //     $rootScope.editable_post=data;
+    //     console.log("single post from controller", $rootScope.category_workshop);
+    //
+    // }, function (err) {
+    //     console.log(err);
+    // });
 
     // categories.getCategoryEvents($scope.cat_id).then(function (data) {
     //     var user_id = 1;
@@ -115,7 +164,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
         if (vaild) {
             var category= $routeParams['category_id'];
-            var mentor_id= 1;
+            var mentor_id= $rootScope.cur_user.id;
             $scope.editable_workshop.category_id=category
 
 
@@ -185,7 +234,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
         if (vaild) {
             var category= $routeParams['category_id'];
-            var mentor_id= 1;
+            var mentor_id= $rootScope.cur_user.id;
             $scope.editable_post.category_id=category
 
 
@@ -265,7 +314,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         console.log('hhhhhhhhhhhhhhhh')
         if (vaild) {
             var category= $routeParams['category_id'];
-            var mentor_id= 1;
+            var mentor_id= $rootScope.cur_user.id;
             console.log('hhhhhhhhhhhhhhhh')
             $scope.editable_event.category_id=category
 
@@ -291,112 +340,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
     }
     /////////////////////END Event edit delete update///////////////////////////////////
-    $scope.completeTalentProfile = function(){
-
-        if (reviewfilesuploaded.length > 0)
-        {
-            talent.talent_id = $rootScope.cur_user.id;
-            talent.category_id = $routeParams['category_id'];
-            talent.from_when = $scope.talent.from_when;
-            talent.description = $scope.talent.description;
-            talent.files_of_initial_review = reviewfilesuploaded;
-
-            console.log("Talent Object is ", talent);
-
-            categories.complete_talent_profile(talent).then(function (data) {
-                console.log("inside category talent profile",data.id)
-                category_talent_id = data.id;
-                console.log("get the id from here", category_talent_id)
-
-
-                categories.insert_media_reviews_uploads(reviewfilesuploaded, category_talent_id).then(function () {
-
-                    console.log("in then ")
-                }, function (error) {
-                    console.log(error)
-                });
-
-
-            }, function (err) {
-                console.log(err)
-            });
-
-
-        } else {
-            alert("sorry files is required")
-        }
-
-    }
-
-
-
-    $scope.uploadedFile = function (element) {
-        console.log("element is ", element)
-        $scope.currentFile = element.files[0];
-
-        filesuploaded.push(element.files[0])
-
-        var reader = new FileReader();
-
-        reader.onload = function (event) {
-            $scope.image_source = event.target.result
-            $scope.$apply(function ($scope) {
-                $scope.files = element.files;
-            });
-        }
-        reader.readAsDataURL(element.files[0]);
-    }
-
-
-
-    $scope.uploadedReviewFile = function (element) {
-        reviewfilesuploaded.push(element.files[0])
-    }
-
-    $scope.completeMentorProfile = function () {
-
-        mentor.mentor_id = $rootScope.cur_user.id;
-        mentor.category_id = $routeParams['category_id'];
-        mentor.years_of_experience = $scope.mentor.years_of_experience;
-        mentor.experience = $scope.mentor.experience;
-        mentor.status = 0;
-
-        console.log("Mentor Object is ", mentor);
-
-        categories.complete_mentor_profile(mentor).then(function (data) {
-            console.log(data)
-            console.log("in complete mentor profile")
-
-        }, function (err) {
-            console.log(err)
-            console.log("in complete mentor profile error")
-        });
-    }
-
-    $scope.unmentor = function () {
-
-        mentor.mentor_id =$rootScope.cur_user.id;
-        //$routeParams['category_id']
-        mentor.category_id = $routeParams['category_id'];
-        mentor.action = "unmentor";
-
-
-        console.log("Mentor Object is ", mentor);
-
-        categories.unmentor(mentor).then(function (data) {
-            console.log(data)
-
-        }, function (err) {
-            console.log(err)
-        });
-
-
-
-
-    }
-
-
-
 
     categories.getMentorsReviews().then(function(data){
         console.log("inside all category posts controller Nadaaaaaaaaaaaaa" , data)
@@ -523,19 +466,19 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 // subscribe in category
     $scope.subscribe = function () {
-        $routeParams['user_id'] = 1;
-        var subscriber_id = $routeParams['user_id'];
+        var subscriber_id = $rootScope.cur_user.id
         var subscribed = 1;
+
         var category_id = $routeParams['category_id'];
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.subscribe(obj).then(function (data) {
-            localStorage.setItem('status', data);
-            $rootScope.status = localStorage.getItem("status");
-            $location.url('/category/' + category_id);
+            // localStorage.setItem('status', data);
+            // $rootScope.status = localStorage.getItem("status");
+            // $location.url('/category/' + category_id);
+			$route.reload();
         }, function (err) {
             console.log(err);
-
         });
 
     }
@@ -543,27 +486,51 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 // unsubscribe in category
     $scope.unsubscribe = function () {
-        $routeParams['user_id'] = 1;
-        var subscriber_id = $routeParams['user_id'];
+        var subscriber_id = $rootScope.cur_user.id
         var subscribed = 0;
+
         var category_id = $routeParams['category_id'];
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.unsubscribe(obj).then(function (data) {
-            localStorage.setItem('status', data);
-            $rootScope.status = localStorage.getItem("status");
             // $rootScope.status=data;
-            $location.url('/category/' + category_id);
+            // $location.url('/category/' + category_id);
             // console.log("hiii")
 			 $route.reload();
         }, function (err) {
             console.log(err);
-
         });
-
-
     }
-
+// untalent in category
+    $scope.untalent = function () {
+        var talent_id = $rootScope.cur_user.id
+        var category_id = $routeParams['category_id'];
+        var obj = {talent_id, category_id}
+        console.log(obj);
+        categories.untalent(obj).then(function (data) {
+            // localStorage.setItem('status', data);
+            // $rootScope.status = localStorage.getItem("status");
+            // $rootScope.status=data;
+            // $location.url('/category/' + category_id);
+            // console.log("hiii")
+			 $route.reload();
+        }, function (err) {
+            console.log(err);
+        });
+    }
+// unsmentor in category
+    $scope.unmentor = function () {
+        var mentor_id = $rootScope.cur_user.id
+        var category_id = $routeParams['category_id'];
+		// mentor.action = "unmentor";
+        var obj = {mentor_id, category_id}
+        console.log(obj);
+        categories.unmentor(obj).then(function (data) {
+			 $route.reload();
+        }, function (err) {
+            console.log(err);
+        });
+    }
 
 
 //be teacher in wizIQ

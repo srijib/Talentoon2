@@ -6,7 +6,7 @@ likepost:function(data){
   console.log("from factory",data);
   var def =$q.defer();
   $http({
-    url:'http://192.168.6.4:8000/api/like',
+    url:'http://192.168.6.5:8000/api/like',
     method:'POST',
     data:data
 
@@ -30,7 +30,7 @@ dislikepost:function(data){
   console.log("from factory",data);
   var def =$q.defer();
   $http({
-    url:'http://192.168.6.4:8000/api/dislike',
+    url:'http://192.168.6.5:8000/api/dislike',
     method:'POST',
     data:data
 
@@ -54,7 +54,7 @@ sharepost:function(data){
   console.log("from factory",data);
   var def =$q.defer();
   $http({
-    url:'http://192.168.6.4:8000/api/share',
+    url:'http://192.168.6.5:8000/api/share',
     method:'POST',
     data:data
 

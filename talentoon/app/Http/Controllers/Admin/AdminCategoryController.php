@@ -61,8 +61,8 @@ class AdminCategoryController extends Controller
            $extension =$request->file('image')->getClientOriginalExtension();
            $fileName = uniqid().'.'.$extension;
            $request->file('image')->move($destinationPath, $fileName);
-   }
-   }
+            }
+        }
          Category::create([
             'title' => $data['title'],
             'image' => 'uploads/categories_pic/'.$fileName,
@@ -106,7 +106,54 @@ class AdminCategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
-        Category::find($id)->update($request->all());
+
+
+
+//        if(!empty($_FILES)){
+//            $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/categories_pic/'.$_FILES['file']['name']);
+//        }else{
+//            echo "Image Is Empty";
+//        }
+
+
+        $data=$request->all();
+        $fileName = 'null';
+        if ($request->hasFile('image')) {
+            if($request->file('image')->isValid()) {
+                $destinationPath = public_path('uploads/categories_pic');
+                $extension =$request->file('image')->getClientOriginalExtension();
+                $fileName = uniqid().'.'.$extension;
+                $request->file('image')->move($destinationPath, $fileName);
+            }
+        }
+
+
+
+//        $data=$request->all();
+//        $fileName = 'null';
+//        if ($request->hasFile('image')) {
+//            if($request->file('image')->isValid()) {
+//                $destinationPath = public_path('uploads/categories_pic');
+//                $extension =$request->file('image')->getClientOriginalExtension();
+//                $fileName = uniqid().'.'.$extension;
+//                $request->file('image')->move($destinationPath, $fileName);
+//            }
+//        }
+
+
+        $category =Category::find($id);
+        $category->title =  $request->title;
+        $category->description = $request->description;
+        $category->image = 'uploads/categories_pic/'.$fileName;
+        $category->save();
+
+
+
+
+
+
+
+//        Category::find($id)->update($request->all());
         return redirect()->route('category.index');
     }
 

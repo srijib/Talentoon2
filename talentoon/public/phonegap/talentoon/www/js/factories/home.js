@@ -1,4 +1,4 @@
-angular.module('talentoon').factory("Home",function($q,$http){
+angular.module('talentoon').factory("Home",function($q,$http,$rootScope){
 
 return {
 
@@ -6,7 +6,7 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:' http://192.168.6.4:8000/api/mostLikeabe' ,
+				url:' http://192.168.6.5:8000/api/mostLikeabe' ,
 				method:'GET'
 
 			}).then(function(res){
@@ -52,7 +52,7 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:'http://127.0.0.1:8000/api/event/showall' ,
+				url:'http://192.168.6.5:8000/api/event/showall' ,
 				method:'GET'
 
 			}).then(function(res){
@@ -89,6 +89,35 @@ return {
 				}
 
 			},function(err){
+				def.reject(err);
+			})
+			return def.promise ;
+
+		},
+		push:function(apikey,id){
+
+			var def =$q.defer();
+			$http({
+				url:'http://192.168.6.5:8000/api/push' ,
+			// 	headers:{
+			// 'Authorization':'Bearer'+ $rootScope.token
+			// 	 },
+				method:'POST',
+				data:{"apikey":apikey,"id":id}
+
+
+			}).then(function(res){
+				// console.log(res);
+
+				if(res.data){
+						def.resolve(res.data)
+
+				}else{
+					def.reject('there is no data ')
+				}
+
+			},function(err){
+
 				def.reject(err);
 			})
 			return def.promise ;

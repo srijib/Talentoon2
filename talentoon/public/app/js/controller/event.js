@@ -1,24 +1,39 @@
-angular.module('myApp').controller("eventcontroller",function(event,$scope,$http,$routeParams,$rootScope){
+angular.module('myApp').controller("eventcontroller",function(event,$scope,$http,$routeParams,$rootScope,$location){
     var filesuploaded = []
 
+    // $rootScope.token = JSON.parse(localStorage.getItem("token"));
+    $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+
     $scope.newevent = function(vaild) {
+        var today = new Date();
+        console.log("Today is ", today)
+
         if (vaild) {
-            var category= $routeParams['category_id'];
-            var user_id= 1;
-            $scope.event.category_id=category
-            console.log("ddddffffffffffffffffffff",$scope.event);
-            $scope.event.mentor_id=user_id
-            var data = $scope.event;
+            if (Date.parse($scope.event.date_to) < Date.parse($scope.event.date_from)){
+                $scope.End_Start_Date_validation = false;
+            }
+            else if(today > Date.parse($scope.event.date_from)){
+                    $scope.Start_Today_Date_validation = false;
+            }
+            else {
+                var category = $routeParams['category_id'];
+                var user_id = $rootScope.cur_user.id;
+                $scope.event.category_id = category
+                $scope.event.mentor_id = user_id
+                var data = $scope.event;
 
+                event.addevent(data).then(function (data) {
+                    $scope.event_created = true;
+                    console.log("the post request from server is ", data);
 
-            event.addevent(data).then(function(data){
+                    $location.url('/category/'+$routeParams['category_id']+"/events");
+                }, function (err) {
+                    $scope.event_created = false;
+                    console.log(err);
+                    console.log("________________________________error in event new");
 
-                console.log("the post request from server is ",data);
-            } , function(err){
-                console.log(err);
-
-            });
-
+                });
+            }
         }
 
     };
@@ -58,6 +73,6 @@ angular.module('myApp').controller("eventcontroller",function(event,$scope,$http
 
     $scope.uploadedFile = function(element) {
         console.log("element is ",element)
-        $rootScope.currentFile = element.files[0];
+        $rootScope.EventcurrentFile = element.files[0];
     }
 });

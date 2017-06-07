@@ -24,6 +24,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
 
     },
     getCategoryCompetitions:function(cat_id){
+        console.log('factory commmmm');
       var def =$q.defer();
       $http({
         url:'http://localhost:8000/api/categories/'+cat_id+'/competitions',
@@ -90,10 +91,30 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     createCompetitionPost:function(competitionPost_data){
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/categories/'+competitionPost_data.category_id+'/competitions/'+competitionPost_data.competition_id+'/posts/create',
+        url:'http://localhost:8000/api/competitions/'+competitionPost_data.competition_id+'/posts/create',
         method:'POST',
         data: competitionPost_data
 
+      }).then(function(res){
+        console.log("resssssssssssssss",res);
+        if(res.data){
+          console.log(res.data);
+         def.resolve(res.data);
+
+        }else{
+          def.reject('there is no data ')
+        }
+
+      },function(err){
+        def.reject(err);
+      })
+      return def.promise ;
+    },
+    deleteCompetitionPost:function(competition_id,post_id){
+      var def =$q.defer();
+      $http({
+        url:'http://localhost:8000/api/competitions/'+competition_id+'/posts/'+post_id,
+        method:'DELETE',
       }).then(function(res){
         console.log("resssssssssssssss",res);
         if(res.data){

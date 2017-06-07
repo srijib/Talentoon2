@@ -16,6 +16,7 @@ use Session;
 use App\Models\Upload;
 use App\Models\Event;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+// use Illuminate\Support\Facades\Image;
 
 class UploadController extends Controller
 {
@@ -28,8 +29,9 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $name = $request->input('image');
+
         return $name;
-        //
+
     }
 
     public function multiple_upload(Request $request)
@@ -96,10 +98,10 @@ class UploadController extends Controller
 //        return response()->json(['request'=> $_FILES['file'],'message' => 'data sent successfully']);
         if(!empty($_FILES)){
 
-            $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/files/'.$_FILES['file']['name']);
+            $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/events/'.$_FILES['file']['name']);
 //            return response()->json(['id'=>$id]);
             $event =Event::find($id);
-            $event->media_url = 'uploads/files/'.$_FILES['file']['name'];
+            $event->media_url = 'uploads/events/'.$_FILES['file']['name'];
             $event->media_type = $_FILES['file']['type'];
             $event->save();
 
