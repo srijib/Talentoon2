@@ -108,10 +108,10 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         controller: 'eventcontroller'
     })
 
-    .when('/initial_review', {
-        templateUrl: 'views/initial_review.html',
-        controller: 'initial_review'
-    })
+    // .when('/initial_review', {
+    //     templateUrl: 'views/showreview.html',
+    //     controller: 'showreview'
+    // })
     .when('/competitions', {
         templateUrl: 'views/competitions.html',
         controller: 'competitions'

@@ -1,4 +1,16 @@
+<style>
+    .godetails{
 
+        background-color: #6A0C38;
+        border-radius: 50px;
+        color: #FFB733;
+        font-family: medium;
+        font-size: 16px;
+        padding: 15px;
+        width: 226px;
+        margin-bottom: 10px;
+    }
+</style>
 
 
 
@@ -78,6 +90,14 @@
                     <div class="disc">
                          <p>{{workshop.description}}</p>
                     </div>
+
+                    <center>
+                    <a href="#!/category/{{workshop.category_id}}/workshops/{{workshop.id}}" class="btn btn-lg godetails">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i> Go to WorkShop Details
+                    </a>
+                    </center>
+
+
 
                 </div>
         </div>

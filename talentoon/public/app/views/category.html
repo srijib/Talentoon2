@@ -52,7 +52,7 @@
       <h1 class="h1" >{{'TOP_POSTS' | translate}}</h1>
     </div>
 
-    <h1 ng-if="category_posts_exists != 1"  style="text-align: center; color:red;">Sorry No Current approved posts exists</h1>
+    <h1 ng-if="category_posts_exists == 0"  style="text-align: center; color:red;">Sorry No Current approved posts exists</h1>
 
     <!-- data-aos="fade-up" data-aos-duration="2000"  -->
     <div class="row mainrow">
