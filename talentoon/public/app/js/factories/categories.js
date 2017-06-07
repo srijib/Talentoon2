@@ -69,26 +69,26 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         // 		},
 
         // *************************
-        // getCategoryEvent:function(cat_id,event_id){
-        // 			var def =$q.defer();
-        // 			$http({
-        // 				url:'http://localhost:8000/api/categories/'+cat_id+'/events/'+event_id ,
-        // 				method:'GET'
-        // 			}).then(function(res){
-        // 				console.log("all events in factory " , res.data);
-        // 				if(res.data.posts.length){
-        // 		     			def.resolve(res.data.posts);
-        //
-        // 				}else{
-        // 					def.reject('there is no data ')
-        // 				}
-        //
-        // 			},function(err){
-        // 				def.reject(err);
-        // 			})
-        // 			return def.promise ;
-        //
-        // 		},
+        getCategoryEvent:function(cat_id,event_id){
+        			var def =$q.defer();
+        			$http({
+        				url:'http://localhost:8000/api/categories/'+cat_id+'/events/'+event_id ,
+        				method:'GET'
+        			}).then(function(res){
+        				console.log("all events in factory " , res.data);
+        				if(res.data.posts.length){
+        		     			def.resolve(res.data.posts);
+
+        				}else{
+        					def.reject('there is no data ')
+        				}
+
+        			},function(err){
+        				def.reject(err);
+        			})
+        			return def.promise ;
+
+        		},
         // /*********************************
 
         // getCategoryEvents:function(cat_id){
@@ -575,30 +575,6 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
 
         },
-        updatedworkshop:function (workshopdata) {
-            var def = $q.defer();
-            $http({
-                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.category_id + '/workshops/'+workshopdata.id,
-                method: 'PUT',
-                data: workshopdata
-
-            }).then(function (res) {
-                console.log("b3tna al update ensha2 allah ", res.data)
-
-                if (res) {
-
-                    console.log("d5lna gwa al res if", res.data);
-                    def.resolve(res.data)
-                } else {
-                    def.reject('there is no data ')
-                }
-
-            }, function (err) {
-                // console.log(err);
-                def.reject(err);
-            })
-            return def.promise;
-        },
         addcomment: function (commentdata) {
             var def = $q.defer();
             $http({
@@ -897,30 +873,30 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },    submitComment:function(comment,post_id){
 
-                var def = $q.defer();
-                var data={};
-                data={post_id,comment};
+            var def = $q.defer();
+            var data={};
+            data={post_id,comment};
 
-                console.log("in posts comment",data);
-                $http({
-                    method: 'POST',
-                    url: 'http://localhost:8000/api/comment',
-                    data: data,
-                }).then(function (data) {
-                    console.log("then in added comment of post", data)
-                    if (data) {
-                        def.resolve(data);
-                    } else {
-                        def.reject('there is no data ')
-                        // console.log("error",res.data)
-                    }
+            console.log("in posts comment",data);
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8000/api/comment',
+                data: data,
+            }).then(function (data) {
+                console.log("then in added comment of post", data)
+                if (data) {
+                    def.resolve(data);
+                } else {
+                    def.reject('there is no data ')
+                    // console.log("error",res.data)
+                }
 
-                },function(err){
-                    def.reject(err);
-                })
-                return def.promise;
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise;
 
-            }
+        }
 
     }
 

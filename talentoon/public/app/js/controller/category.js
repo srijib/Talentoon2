@@ -57,29 +57,29 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     }, function (err) {
         console.log(err);
     });
-    // categories.getCategoryEvent($scope.cat_id,$scope.workshop_id).then(function (data) {
-    //     $rootScope.editable_event=data;
-    //     console.log("single event from controller", $rootScope.category_workshop);
-    //
-    // }, function (err) {
-    //     console.log(err);
-    // });
-    // categories.getCategoryPost($scope.workshop_id).then(function (data) {
-    //     $rootScope.editable_post=data;
-    //     console.log("single post from controller", $rootScope.category_workshop);
-    //
-    // }, function (err) {
-    //     console.log(err);
-    // });
+    categories.getCategoryEvent($scope.cat_id,$scope.workshop_id).then(function (data) {
+        $rootScope.editable_event=data;
+        console.log("single event from controller", $rootScope.category_workshop);
 
-    // categories.getCategoryEvents($scope.cat_id).then(function (data) {
-    //     var user_id = 1;
-    //     $rootScope.events = data;
-    //     console.log("EVENTSSSSSS",$rootScope.events);
-    // }, function (err) {
-    //     console.log(err);
-	//
-    // });
+    }, function (err) {
+        console.log(err);
+    });
+    categories.getCategoryPost($scope.workshop_id).then(function (data) {
+        $rootScope.editable_post=data;
+        console.log("single post from controller", $rootScope.category_workshop);
+
+    }, function (err) {
+        console.log(err);
+    });
+
+    categories.getCategoryEvents($scope.cat_id).then(function (data) {
+        var user_id = 1;
+        $rootScope.events = data;
+        console.log("EVENTSSSSSS",$rootScope.events);
+    }, function (err) {
+        console.log(err);
+
+    });
 
     $scope.isWorkshopCraetor = function (workshop_id) {
     	console.log('hnaaa al id bta3 al workshop',workshop_id);
