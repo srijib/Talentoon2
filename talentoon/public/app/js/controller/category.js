@@ -464,6 +464,15 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     categories.getCategoryPost($scope.post_id).then(function (data) {
         // console.log("inside controller" , data)
         $rootScope.category_post = data.post;
+				  $rootScope.type=data.post.media_type;
+					console.log("type", $rootScope.type)
+				// 	if( $rootScope.type =="video/mp4" ||$rootScope.type =="video/Avi"){
+				// 		$rootScope.mediaType ="video"
+				// 	}
+				// 	else if ($rootScope.type="image/jpg"||rootScope.type="image/jpeg"||rootScope.type="image/png") {
+        //  $rootScope.mediaType ="image"
+				// 	}
+					// video/mp4
         $rootScope.category_post_like_count = data.countlike;
 		$rootScope.comments = data.comments;
 
@@ -604,6 +613,12 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     if(localStorage.getItem("wiziq_presenter_url")){
         $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
     }
+
+
+		// $scope.pauseOrPlay = function(ele){
+	  //           var video = angular.element(ele.srcElement);
+	  //            video[0].pause(); // video.play()
+	  //   }
 
 
 });
