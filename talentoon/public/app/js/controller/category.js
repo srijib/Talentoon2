@@ -21,6 +21,9 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
         $scope.categoryPosts = data.posts;
+		$scope.comments=data.comments
+		console.log("commm",$scope.comments);
+
         if(data.is_sub.length){
             $scope.is_subscribed = data.is_sub[0].subscribed;
         }
