@@ -6,7 +6,7 @@ console.log("token in factory",token)
             $http({
                 url: 'http://172.16.3.77:8000/api/category',
                 headers:{
-              'Authorization':'Bearer'+ token
+              'Authorization':'Bearer: '+ token
                  },
                 method: 'GET'
 
@@ -36,7 +36,7 @@ console.log("token in factory",token)
   			$http({
   				url:'http://172.16.3.77:8000/api/category/'+index ,
           headers:{
-        'Authorization':'Bearer'+ $rootScope.token
+        'Authorization':'Bearer: '+ $rootScope.token
            },
   				method:'GET'
   			}).then(function(res){
@@ -61,7 +61,7 @@ console.log("token in factory",token)
   			$http({
   				url:'http://172.16.3.77:8000/api/categories/'+cat_id+'/events/'+event_id ,
           headers:{
-        'Authorization':'Bearer'+ $rootScope.token
+        'Authorization':'Bearer: '+ $rootScope.token
            },
   				method:'GET'
   			}).then(function(res){
@@ -84,7 +84,7 @@ console.log("token in factory",token)
   			$http({
   				url:'http://172.16.3.77:8000/api/categories/'+cat_id+'/events' ,
           headers:{
-        'Authorization':'Bearer'+ $rootScope.token
+        'Authorization':'Bearer: '+ $rootScope.token
            },
   				method:'GET'
   			}).then(function(res){
@@ -109,7 +109,7 @@ console.log("token in factory",token)
             $http({
                 url: 'http://172.16.3.77:8000/api/post/' + id,
                 headers:{
-              'Authorization':'Bearer'+ $rootScope.token
+              'Authorization':'Bearer: '+ $rootScope.token
                  },
                 method: 'GET',
                 data: id
@@ -141,7 +141,7 @@ console.log("token in factory",token)
             $http({
                 url: 'http://172.16.3.77:8000/api/categories/' +postdata.category_id+ '/posts',
                 headers:{
-              'Authorization':'Bearer'+ $rootScope.token
+              'Authorization':'Bearer: '+ $rootScope.token
                  },
                 // url:'http://172.16.2.239:8000/api/posts',
                 method: 'POST',
@@ -155,11 +155,12 @@ console.log("token in factory",token)
 
 
                 /////////////////////////
+                console.log("test image in sinfle post ",res.data)
                 $http({
                     method: 'POST',
                     url: 'http://172.16.3.77:8000/api/single_upload/' + res.data.post_id,
                     headers:{
-                  'Authorization':'Bearer'+ $rootScope.token
+                  'Authorization':'Bearer: '+ $rootScope.token
                      },
                     processData: false,
                     data: {"media_url": "uploads/files" + $rootScope.currentFile.name, "media_type": $rootScope.currentFile.type},
@@ -201,7 +202,7 @@ console.log("add post in factory",res)
                 method: 'POST',
                 url: 'http://172.16.3.77:8000/api/review_files_upload/' + category_talent_id,
                 headers:{
-              'Authorization':'Bearer'+ $rootScope.token
+              'Authorization':'Bearer: '+ $rootScope.token
                  },
                 processData: false,
                 data: reviewfilesuploaded,
@@ -243,7 +244,7 @@ console.log("add post in factory",res)
             $http({
                 url: 'addevent url',
                 headers:{
-              'Authorization':'Bearer'+ $rootScope.token
+              'Authorization':'Bearer: '+ $rootScope.token
                  },
                 method: 'GET',
                 data: eventdata

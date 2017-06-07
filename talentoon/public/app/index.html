@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
-	<script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+	<!-- <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script> -->
 	<!-- <script type="text/javascript" src="node_modules/angular-modal-service/dst/angular-modal-service.js"></script> -->
 	<script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
 	<script type="text/javascript" src="node_modules/aos/dist/aos.js"></script>
@@ -46,6 +46,7 @@
 
 	<!-- factory -->
 	<script type="text/javascript" src="js/factories/categories.js"></script>
+	<script type="text/javascript" src="js/factories/competitions.js"></script>
 	<script type="text/javascript" src="js/factories/home.js"></script>
 	<script type="text/javascript" src="js/factories/user.js"></script>
 	<script type="text/javascript" src="js/factories/showreview.js"></script>
@@ -71,7 +72,8 @@
 	<link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
 	<link rel="stylesheet" href="css/categories.css">
-	<link rel="stylesheet" href="css/categorySelected.css">
+	<!-- <link rel="stylesheet" href="css/categorySelected.css"> -->
+	<link rel="stylesheet" href="css/clickedCategory.css">
 	<link rel="stylesheet" href="css/talentConfirmation.css">
 	<link rel="stylesheet" href="css/createPost.css">
 	<link rel="stylesheet" href="css/posts.css">
@@ -160,7 +162,7 @@
                         <!--                    main 4 link on lg right-->
                         <ul class="navbar-left list-unstyled list-inline">
                             <li><a href="#"> Store</a></li>
-                            <li><a href="#!/initial_review">Initial review</a></li>
+                            <li><a href="#!/showreview">Initial review</a></li>
                             <li><a href="#!/competitions">Competition</a></li>
                             <li><a href="#">Questionnaire</a></li>
                         </ul>

@@ -174,7 +174,14 @@ Route::resource('competition','CompetitionsController');
 Route::resource('categories.competitions','CategoryCompetitionController');
 Route::resource('competitions.posts','CompetitionPostController');
 Route::get('/competition/{competition_id}/join','CompetitionJoinController@joinCompetition');
-Route::get('/competition/post/{post_id}/grantvote','CompetitionPostPointsConroller@grantVote');
+Route::get('/competition/post/{post_id}/grantvote','CompetitionPostPointsController@grantVote');
+Route::post('/competition/post/{post_id}/grantpoints','CompetitionPostPointsController@grantMentorPoints');
+//these two should run by a scheduler after the end date of the comeptition
+Route::get('/competition/{competition_id}/competitior_vote_points','CompetitionPostPointsController@getCompetitiorAudiencePoints');
+Route::get('/competition/{competition_id}/competitior_mentor_points','CompetitionPostPointsController@getCompetitiorMentorPoints');
+
+Route::get('/competition/{competition_id}/competition_final_points','CompetitionPostPointsController@getFinalCompetitionPoints');
+Route::get('/competition/{competition_id}/competition_winners','CompetitionPostPointsController@getFinalCompetitionWinners');
 
 Route::get('/SubscribedPost','PostsController@Subscribedposts');
 Route::get('/get_post_reviews', 'CategoriesController@get_post_reviews');

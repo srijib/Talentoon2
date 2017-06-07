@@ -6,7 +6,7 @@ angular.module('myApp').controller("eventcontroller",function(event,$scope,$http
 
     $scope.newevent = function(vaild) {
         var today = new Date();
-        console.log("Today s ", today)
+        console.log("Today is ", today)
 
         if (vaild) {
             if (Date.parse($scope.event.date_to) < Date.parse($scope.event.date_from)){

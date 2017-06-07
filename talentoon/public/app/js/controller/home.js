@@ -1,15 +1,10 @@
 angular.module('myApp').controller("homec",function(categories,$route,Home,$scope,$http,$routeParams,$rootScope,categories){
 
-    localStorage.setItem("language","en");
-
-	$rootScope.token = JSON.parse(localStorage.getItem("token"));
-	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 	Home.getTopPosts().then(function(data){
         console.log("el top posts ba2a",data);
 		$scope.topposts=data.posts;
         $scope.comments=data.comments;
         console.log("comments",$scope.comments);
-
         $scope.post_exist = true;
 	} , function(err){
 		console.log("No posts existing, error: ",err);
@@ -37,12 +32,6 @@ angular.module('myApp').controller("homec",function(categories,$route,Home,$scop
         $scope.workshop_exist = false;
 
     });
-
-
-
-
-
-
 
 
 	var post_id= $routeParams['post_id'];

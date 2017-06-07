@@ -9,11 +9,11 @@
         "5dmatweb/streamlab": "dev-master",
         "barryvdh/laravel-cors": "^0.9.2",
         "doctrine/dbal": "^2.5",
+        "intervention/image": "^2.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "tymon/jwt-auth": "0.5.*",
         "zizaco/entrust": "5.2.x-dev"
-
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
