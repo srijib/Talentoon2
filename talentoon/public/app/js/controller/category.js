@@ -18,7 +18,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     $scope.event_id = $routeParams['event_id'];
 
 
-
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
         $scope.categoryPosts = data.posts;
