@@ -4,7 +4,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     getAllCompetitions:function(){
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/allcompetitions',
+        url:'http://localhost:8000/api/competition',
         method:'GET',
 
       }).then(function(res){
@@ -46,6 +46,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
       return def.promise ;
     },
     getSingleCompetition:function(cat_id,competition_id){
+        console.log('fac fac fac');
       var def =$q.defer();
       $http({
         url:'http://localhost:8000/api/categories/'+cat_id+'/competitions/'+competition_id,
@@ -115,6 +116,26 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
       $http({
         url:'http://localhost:8000/api/competitions/'+competition_id+'/posts/'+post_id,
         method:'DELETE',
+      }).then(function(res){
+        console.log("resssssssssssssss",res);
+        if(res.data){
+          console.log(res.data);
+         def.resolve(res.data);
+
+        }else{
+          def.reject('there is no data ')
+        }
+
+      },function(err){
+        def.reject(err);
+      })
+      return def.promise ;
+    },
+    getSingleCompetitionPosts:function(competition_id){
+      var def =$q.defer();
+      $http({
+        url:'http://localhost:8000/api/competitions/'+competition_id+'/posts/',
+        method:'GET',
       }).then(function(res){
         console.log("resssssssssssssss",res);
         if(res.data){

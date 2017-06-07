@@ -1,11 +1,17 @@
-angular.module('myApp').controller("singleCompetition",function($location,$route,categories,$scope,$http,posts,$rootScope,$q){
-
+angular.module('myApp').controller("singleCompetition",function($location,$routeParams,$route,categories,Competitions,$scope,$http,posts,$rootScope,$q){
     $scope.cat_id= $routeParams['category_id'];
     $scope.competition_id= $routeParams['competition_id'];
 
     Competitions.getSingleCompetition($scope.cat_id,$scope.competition_id).then(function (data) {
-        // $scope.competition = data.post;
-        console.log("data posts",data );
+        $scope.competition = data.data[0];
+        console.log("single comppoooooooo data ",data.data[0] );
+    }, function (err) {
+        console.log(err);
+    });
+
+    Competitions.getSingleCompetitionPosts($scope.cat_id,$scope.competition_id).then(function (data) {
+        $scope.competitionPosts = data.data;
+        console.log("single comppoooooooo  popooo data ",data );
     }, function (err) {
         console.log(err);
     });
@@ -37,11 +43,15 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
         }
     };
     $scope.deleteCompetitionPost = function(post_id) {
-            $scope.post.category_id=$routeParams['category_id'];
-            $scope.post.competition_id=$routeParams['competition_id'];
+            $scope.competition_id= $routeParams['competition_id'];
 
-            Competitions.deleteCompetitionPost($scope.post.competition_id,post_id).then(function(data){
+            Competitions.deleteCompetitionPost($scope.competition_id,post_id).then(function(data){
                 console.log("the post request from server is ",data);
+                if (data.status == 'ok') {
+                    $route.reload();
+                }else {
+                    alert("sorry it's not your post")
+                }
             } , function(err){
                 console.log(err);
             });

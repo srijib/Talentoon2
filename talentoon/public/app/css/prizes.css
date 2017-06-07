@@ -1,0 +1,44 @@
+@font-face {
+  font-family: regular;
+  src: url(../../Fonts/Roboto-Regular.ttf); }
+@font-face {
+  font-family: medium;
+  src: url(../../Fonts/Roboto-Medium.ttf); }
+@font-face {
+  font-family: blak;
+  src: url(../../Fonts/Roboto-Black.ttf); }
+@font-face {
+  font-family: bold;
+  src: url(../../Fonts/Roboto-Bold.ttf); }
+@font-face {
+  font-family: boldco;
+  src: url(../../Fonts/Roboto-BoldCondensed.ttf); }
+@font-face {
+  font-family: light;
+  src: url(../../Fonts/Roboto-Light.ttf); }
+@font-face {
+  font-family: thin;
+  src: url(../../Fonts/Roboto-Thin.ttf); }
+body {
+  font-size: 0px;
+  margin: 0px;
+  padding: 0px;
+  outline: 0px;
+  background-color: #FFFFFF; }
+  body:focus, body:active, body:visited, body:hover {
+    outline: 0px; }
+
+div {
+  display: block; }
+  div span {
+    font-size: 40px;
+    font-family: medium;
+    color: #FFB733;
+    display: inline-block;
+    opacity: 0.8; }
+  div .fa-trophy {
+    font-size: 40px;
+    color: #FFB733;
+    display: inline-block; }
+
+/*# sourceMappingURL=prizes.css.map */

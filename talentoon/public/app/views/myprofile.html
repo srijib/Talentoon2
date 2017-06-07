@@ -151,11 +151,11 @@
                                 <img src="http://localhost:8000/{{userpost.media_url}}" alt="">
                             </IMAGE>
                             <!-- IF VEDIO -->
-                            <VIDEO ng-if="post.media_type == 'video'">
+                            <VIDEO ng-if="userpost.media_type == 'video'">
                                 <video controls><source src="http://localhost:8000/{{userpost.media_url}}"></video>
                             </VIDEO>
                             <!-- IF AUDIO -->
-                            <AUDIO ng-if="post.media_type == 'audio'">
+                            <AUDIO ng-if="userpost.media_type == 'audio'">
                                 <img src="Imgs/Website/5536c78cccd436f31c8c66732cee72d2.jpg" alt="">
                             </AUDIO>
 
@@ -175,7 +175,7 @@
 
                         <div class="disc">
                             <AUDIO ng-if="post.media_type == 'audio'">
-                                <audio controls> <source src="Audios/music.mp3"></audio>
+                                <audio controls> <source src="http://localhost:8000/{{userpost.media_url}}"></audio>
                             </AUDIO>
                             <p>{{userpost.description}}</p>
                         </div>

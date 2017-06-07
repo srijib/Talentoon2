@@ -72,23 +72,13 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         console.log(err);
     });
 
-    // Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
-		// console.log('getCategoryCompetitions',data.competitions);
-    //     $scope.categoryCompetitions = data.competitions;
-    // }, function (err) {
-    //     console.log(err);
-    // });
 
-
-
-
-
-    // Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
-		// console.log('getCategoryCompetitions',data.competitions);
-    //     $scope.categoryCompetitions = data.competitions;
-    // }, function (err) {
-    //     console.log(err);
-    // });
+    Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
+		console.log('getCategoryCompetitions',data.data);
+        $scope.categoryCompetitions = data.data;
+    }, function (err) {
+        console.log(err);
+    });
 
 
     // categories.getCategoryWorkshops($scope.cat_id).then(function (data) {

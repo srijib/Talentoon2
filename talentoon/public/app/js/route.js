@@ -81,7 +81,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         templateUrl: 'views/formcompetition.html',
         controller: 'categoryCompetitions'
     })
-    .when('/category/:category_id/competitions/competition_id', {
+    .when('/category/:category_id/competitions/:competition_id', {
         templateUrl: 'views/singleCompetition.html',
         controller: 'singleCompetition'
     })
@@ -89,7 +89,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         templateUrl: 'views/formcompetition.html',
         controller: 'singleCompetition'
     })
-    .when('/competitions/competition_id/addpost', {
+    .when('/category/:category_id/competitions/:competition_id/addpost', {
         templateUrl: 'views/addcompetitionpost.html',
         controller: 'singleCompetition'
     })
@@ -112,10 +112,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     //     templateUrl: 'views/showreview.html',
     //     controller: 'showreview'
     // })
-    .when('/competitions', {
-        templateUrl: 'views/competitions.html',
-        controller: 'competitions'
-    })
+
     .when('/posts', {
         templateUrl: 'views/posts.html',
         controller: 'posts'
