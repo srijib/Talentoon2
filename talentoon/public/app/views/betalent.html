@@ -1,30 +1,14 @@
-<div class="container">
-  <!-- Form Start -->
-  <form ng-submit="submit_talent_file()" name="form" role="form" enctype="multipart/form-data">
-    <input name="talent_files[]" ng-model="talent.file" type="file" class="form-control input-lg" onchange="angular.element(this).scope().uploadedReviewFile(this)" style="width:400px">
-    <br/>
-    <img ng-src="{{talent.file}}" style="width:300px;">
-  </form>
-  <!-- Form End -->
-<!--
-  <form ng-submit="submitted=true ; completeTalentProfile(addtalentprofile.$valid)" name="addtalentprofile" novalidate>
-    <label>Talent Description</label>
-    <input type="text" name="description" required ng-model="talent.description" placeholder="description">
-    <label>Talented From When?</label>
-    <input type="text" name="from_when" required ng-model="talent.from_when" placeholder="12 years"> -->
-    <!-- <input type="submit" name="button" value="Send My Talent Profile" />
-  </form> -->
-</div>
-
-
-
-
-
+<style>
+.container{
+  font-size: 30px;
+}
+</style>
 
 
 <div class="container">
     <div class="mainTitle">
         <h1>Please Upload 1 - 3 of your work</h1>
+        <h1 ng-model="talent.file">{{talent.file}}</h1>
         <small>TO HELP US EVALUATE YOUR LEVEL</small>
     </div>
     <div class="row">
@@ -34,7 +18,14 @@
                 <!-- <input type="text" name="from_when" required ng-model="talent.from_when" placeholder="talented from 12 years"> -->
 
                 <div class="row">
-                    <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files">
+
+                    <!-- <input type="text" name="description" required ng-model="talent.description" placeholder="description"> -->
+
+                    <input name="talent_files[]" class="form-control upload input-lg" ng-model="talent.file" type="file" class="form-control input-lg" onchange="angular.element(this).scope().uploadedReviewFile(this)" style="width:400px">
+
+                    <input type="text" name="from_when" required ng-model="talent.from_when" placeholder="12 years">
+
+                    <input type="text"  class="form-control upload input-lg" disabled placeholder="Uploaded Files">
                     </input>
                     <div class ="icons col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">
@@ -53,7 +44,13 @@
 
                     <div class="wpost  col-lg-6 col-md-6 col-sm-6">
                         <a class= "text-right " data-toggle="modal" data-target=".bs-example-modal-sm"> <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            Send</a>
+                            Send </a>
+                    </div>
+
+                    <div class="wpost  col-lg-6 col-md-6 col-sm-6">
+
+                      <input type="submit" name="button" value="Send My Talent Profile" />
+
                     </div>
 
                 </div>

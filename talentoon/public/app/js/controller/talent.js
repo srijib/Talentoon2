@@ -1,4 +1,11 @@
 angular.module('myApp').controller("talents",function($scope,$http,categories,$routeParams,$rootScope,$timeout){
+	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+
+  var reviewfilesuploaded = []
+  var talent = {}
+
+
+	$scope.completeTalentProfile = function(valid){
 
 	if (reviewfilesuploaded.length > 0)
 	{
@@ -32,7 +39,7 @@ angular.module('myApp').controller("talents",function($scope,$http,categories,$r
 	} else {
 		alert("sorry files is required")
 	}
-
+}
 	$scope.uploadedFile = function (element) {
         console.log("element is ", element)
         $scope.currentFile = element.files[0];
@@ -53,7 +60,12 @@ angular.module('myApp').controller("talents",function($scope,$http,categories,$r
 
 
     $scope.uploadedReviewFile = function (element) {
+			console.log("hhhhhhhhhhhhh");
         reviewfilesuploaded.push(element.files[0])
+				console.log(reviewfilesuploaded)
+				$scope.files_in_form =reviewfilesuploaded;
+
+
     }
 
 })
