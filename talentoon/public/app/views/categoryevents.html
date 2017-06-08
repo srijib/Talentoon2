@@ -29,7 +29,7 @@
             <h4 style="color:Purple ">{{event.created_at}}</h4>
             <input type="hidden" ng-model=event.event_id value="{{event.id}}">
         </div>
-        <a href="#!/category/{{event.category_id}}/events/{{event.id}}" class="btn btn-default" role="button" >details</a>
+        <!-- <a href="#!/category/{{event.category_id}}/events/{{event.id}}" class="btn btn-default" role="button" >details</a> -->
         <a ng-click="editEvent(event.id,event.category_id)" class="btn btn-default" role="button" >edit</a>
         <a ng-click="deleteEvent(event.id,event.category_id)" class="btn btn-default" role="button" >delete</a>
     </div>
