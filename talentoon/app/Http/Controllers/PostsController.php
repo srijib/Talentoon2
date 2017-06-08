@@ -153,20 +153,19 @@ class PostsController extends Controller
 //        dd($posts_id);
         $data=array();
         foreach ($posts_id as &$value) {
+
             $post = DB::table('posts')
-                ->join('users', 'users.id', '=', 'posts.user_id')
+//                $users = DB::table('users')
+//                    ->join('contacts', 'users.id', '=', 'contacts.user_id')
+                ->join('users', 'posts.user_id' , '=', 'users.id' )
+                //,'users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image'
                 ->select('posts.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
                 ->where("posts.id",$value->likeable_id)
                 ->get();
             array_push($data, $post[0]);
-//            dd($data);
+//            dd($post);
         }
-//        dd($data);
-//        $notify=new Notification();
-//        $device=$notify->addDevice();
-//        $response = $notify->sendMessageAll();
-//        $return["allresponses"] = $response;
-//        $return = json_encode( $return);
+
         return response()->json(['msg'=>'success','posts'=>$data]);
     }
 //    public function destroy($id)
@@ -230,7 +229,14 @@ class PostsController extends Controller
             ->delete();
 
         if ($affectedRows){
-            return response()->json('true');
+//            $post->likes()->detach();
+
+            $deleteLikes = DB::table('likeables')
+                ->where('likeable_id', '=', $id)
+                ->where('likeable_type', '=', 'post')
+                ->delete();
+
+            return response()->json(['result'=>'true','deleted likes'=>$deleteLikes]);
         }else{
             return response()->json('false');
         }
