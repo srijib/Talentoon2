@@ -55,11 +55,8 @@
 
                 <!--countries-->
                 <select class="custom-select">
-                    <option selected  name="country" ng-model="cur_user.country">{{cur_user.country_name}}</option>
-                    <option value="1">Alexandria</option>
-                    <option value="2">Cairo</option>
-                    <option value="3">Hurghada</option>
-                    <option value="4">Luxor</option>
+                    <option selected  name="country" ng-model="cur_user.country_name">{{cur_user.country_name}}</option>
+                    <option value="{{country.id}}" ng-repeat="country in countries_edit_user track by $index">{{country.name}}</option>
                 </select>
 
                 <!--type-->

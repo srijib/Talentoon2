@@ -35,6 +35,17 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
     console.log(err);
 
   });
+    user.editprofile($rootScope.cur_user.id).then(function(data){
+        console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
+        $rootScope.cur_user=data;
+        var dob=$rootScope.cur_user.date_of_birth;
+        $rootScope.cur_user.date_of_birth=new Date(dob);
+        $rootScope.fname= $rootScope.cur_user.first_name;
+        $rootScope.lname=$rootScope.cur_user.last_name;
+    } , function(err){
+        console.log(err);
+
+    });
   // user.displayShared().then(function(data){
   //    console.log("shares",data.data.shares);
   //   //  $scope.allPosts = data.data.shares.concat($scope.userposts);
@@ -83,15 +94,19 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
     console.log(err);
 
   });
-  $scope.follow = function(following_id) {
+
 
 
     //edit user profile function
+
     // $scope.editprofile=function () {
     //     console.log($rootScope.cur_user.id);
     //     user.editprofile($rootScope.cur_user.id).then(function(data){
-    //         console.log(data);
+    //         console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
     //     $rootScope.cur_user=data;
+    //     var dob=$rootScope.cur_user.date_of_birth;
+    //     $rootScope.cur_user.date_of_birth=new Date(dob);
+    //     // $rootScope.cur_user.date_of_birth=new Date(data.date_of_birth)
     //     $location.url('/editprofile');
     //     $rootScope.fname= $rootScope.cur_user.first_name;
     //     $rootScope.lname=$rootScope.cur_user.last_name;
@@ -102,6 +117,14 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
     //
     // }
 
+    user.getAllCountry().then(function (data) {
+        //console.log("countries:", data);
+        $rootScope.countries_edit_user = data;
+        console.log("countries", $scope.countries);
+    }, function (err) {
+        console.log(err);
+
+    });
 
     $scope.updateuserprofile=function(valid){
         console.log('kkkkkkkkkkk',$scope.cur_user)
@@ -153,7 +176,7 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
 
         }
     }
-
+$scope.follow = function(following_id) {
 
   var obj={following_id}
   console.log(obj);

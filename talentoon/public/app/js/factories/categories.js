@@ -69,26 +69,27 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         // 		},
 
         // *************************
-        // getCategoryEvent:function(cat_id,event_id){
-        // 			var def =$q.defer();
-        // 			$http({
-        // 				url:'http://localhost:8000/api/categories/'+cat_id+'/events/'+event_id ,
-        // 				method:'GET'
-        // 			}).then(function(res){
-        // 				console.log("all events in factory " , res.data);
-        // 				if(res.data.posts.length){
-        // 		     			def.resolve(res.data.posts);
-        //
-        // 				}else{
-        // 					def.reject('there is no data ')
-        // 				}
-        //
-        // 			},function(err){
-        // 				def.reject(err);
-        // 			})
-        // 			return def.promise ;
-        //
-        // 		},
+        getCategoryEventEdit:function(cat_id,event_id){
+        			var def =$q.defer();
+        			$http({
+        				url:'http://localhost:8000/api/categories/'+cat_id+'/events/'+event_id ,
+        				method:'GET'
+        			}).then(function(res){
+        				console.log("<<<<<<<<<event in factory>>>>>>>>>" , res.data.event[0]);
+        				if(res.data){
+                            var data = localStorage.setItem("event", JSON.stringify(res.data.event[0]));
+        		     			def.resolve(res.data.event[0]);
+
+        				}else{
+        					def.reject('there is no data ')
+        				}
+
+        			},function(err){
+        				def.reject(err);
+        			})
+        			return def.promise ;
+
+        		},
         // /*********************************
 
         // getCategoryEvents:function(cat_id){
@@ -112,6 +113,33 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         //
         // 		},
         //
+        getCategoryPostEdit: function (cat_id,id) {
+            console.log("post id", id)
+            var def = $q.defer();
+            $http({
+                url: 'http://localhost:8000/api/categories/'+cat_id+'/posts/'+id,
+                method: 'GET',
+
+            }).then(function (res) {
+                // console.log("single post from factory",res.data.post)
+                console.log("<<<<<<<<<<<<single post from factory>>>>>>>>>>", res.data.post[0])
+
+                if (res) {
+                    var data = localStorage.setItem("post", JSON.stringify(res.data.post[0]));
+                    // def.resolve(res.data.post);
+                    def.resolve(res.data.post[0]);
+
+
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
         getCategoryPost: function (id) {
             console.log("post id", id)
             var def = $q.defer();
@@ -139,6 +167,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             return def.promise;
 
         },
+
         subscribe: function (data) {
             // console.log("from factories CAT ID",category_id);
             // console.log("from factories subscriber_id",subscriber_id);
@@ -509,6 +538,35 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         // 	return def.promise ;
         //
         // },
+        getCategoryWorkshopEdit: function (cat_id,id) {
+            //  var category_id= index;
+            // // console.log("category_id",category_id)
+            // console.log("workshop id", id)
+            var def = $q.defer();
+            $http({
+                url: 'http://localhost:8000/api/categories/'+cat_id+'/workshops/'+id,
+                method: 'GET',
+
+            }).then(function (res) {
+                console.log("<<<<<<<<single workshop from factory>>>>>>>>",res.data.workshop)
+                // console.log("user",res.data.user);
+                // console.log("enroll",res.data.enroll);
+                // console.log("single category from factory", res.data.workshop)
+
+                if (res.data) {
+                    var data = localStorage.setItem("workshop", JSON.stringify(res.data.workshop));
+                    def.resolve(res.data.workshop);
+
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
         getCategoryWorkshop: function (id) {
             //  var category_id= index;
             // // console.log("category_id",category_id)
@@ -598,30 +656,6 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
 
         },
-        updatedworkshop:function (workshopdata) {
-            var def = $q.defer();
-            $http({
-                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.category_id + '/workshops/'+workshopdata.id,
-                method: 'PUT',
-                data: workshopdata
-
-            }).then(function (res) {
-                console.log("b3tna al update ensha2 allah ", res.data)
-
-                if (res) {
-
-                    console.log("d5lna gwa al res if", res.data);
-                    def.resolve(res.data)
-                } else {
-                    def.reject('there is no data ')
-                }
-
-            }, function (err) {
-                // console.log(err);
-                def.reject(err);
-            })
-            return def.promise;
-        },
         addcomment: function (commentdata) {
             var def = $q.defer();
             $http({
@@ -678,7 +712,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },
         editPost: function (editable) {
-            console.log("in factory to edit workshop",editable.cat_id);
+            console.log("in factory to edit post",editable.cat_id);
             var def = $q.defer();
             var id=editable.post_id;
             // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
@@ -920,30 +954,30 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },    submitComment:function(comment,post_id){
 
-                var def = $q.defer();
-                var data={};
-                data={post_id,comment};
+            var def = $q.defer();
+            var data={};
+            data={post_id,comment};
 
-                console.log("in posts comment",data);
-                $http({
-                    method: 'POST',
-                    url: 'http://localhost:8000/api/comment',
-                    data: data,
-                }).then(function (data) {
-                    console.log("then in added comment of post", data)
-                    if (data) {
-                        def.resolve(data);
-                    } else {
-                        def.reject('there is no data ')
-                        // console.log("error",res.data)
-                    }
+            console.log("in posts comment",data);
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8000/api/comment',
+                data: data,
+            }).then(function (data) {
+                console.log("then in added comment of post", data)
+                if (data) {
+                    def.resolve(data);
+                } else {
+                    def.reject('there is no data ')
+                    // console.log("error",res.data)
+                }
 
-                },function(err){
-                    def.reject(err);
-                })
-                return def.promise;
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise;
 
-            }
+        }
 
     }
 

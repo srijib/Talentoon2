@@ -32,32 +32,32 @@
     <!--</div>-->
     <div class="field">
         <h4 style="color:Purple ">workshop name</h4>
-        <input type="text" name="name" required ng-model="editable_workshop.name" value="{{editable_workshop.name}}"class="form-control">
+        <input type="text" name="name" required ng-model="editable_workshop.name" class="form-control">
         <p class="error" ng-if="editworkshop.name.$error.required && submitted" >please enter your workshop name</p>
     </div>
     <div class="field">
         <h4 style="color:Purple ">description</h4>
-        <input type="text" name="description" required ng-model="editable_workshop.description" value="{{editable_workshop.description}}"class="form-control">
+        <input type="text" name="description" required ng-model="editable_workshop.description" class="form-control">
         <p class="error" ng-if="editworkshop.description.$error.required && submitted" >please enter your workshop description</p>
     </div>
     <div class="field">
         <h4 style="color:Purple ">start time</h4>
-        <input type="text" name="time_from" required ng-model="editable_workshop.time_from" value="{{editable_workshop.time_from}}"class="form-control">
+        <input type="text" name="time_from" required ng-model="editable_workshop.time_from" class="form-control">
         <p class="error" ng-if="editworkshop.time_from.$error.required && submitted" >please enter start time</p>
     </div>
     <div class="field">
         <h4 style="color:Purple ">end time</h4>
-        <input type="text" name="time_to" required ng-model="editable_workshop.time_to" value="{{editable_workshop.time_to}}"class="form-control">
+        <input type="text" name="time_to" required ng-model="editable_workshop.time_to" class="form-control">
         <p class="error" ng-if="editworkshop.time_to.$error.required && submitted" >please enter end time</p>
     </div>
     <div class="field">
         <h4 style="color:Purple ">start date</h4>
-        <input type="text" name="date_from" required ng-model="editable_workshop.date_from" value="{{editable_workshop.date_from}}"class="form-control">
+        <input type="text" name="date_from" required ng-model="editable_workshop.date_from" class="form-control">
         <p class="error" ng-if="editworkshop.date_from.$error.required && submitted" >please enter start date</p>
     </div>
     <div class="field">
         <h4 style="color:Purple ">end date</h4>
-        <input type="text" name="date_to" required ng-model="editable_workshop.date_to" value="{{editable_workshop.date_to}}"class="form-control">
+        <input type="text" name="date_to" required ng-model="editable_workshop.date_to" class="form-control">
         <p class="error" ng-if="editworkshop.date_to.$error.required && submitted" >please enter end date</p>
     </div>
     <div class="field">
@@ -67,11 +67,11 @@
     </div>
     <div class="field">
         <h4 style="color:Purple ">Level</h4>
-        <input type="text" name="level" required ng-model="editable_workshop.level" value="{{editable_workshop.level}}"class="form-control">
+        <input type="text" name="level" required ng-model="editable_workshop.level" class="form-control">
         <p class="error" ng-if="editworkshop.level.$error.required && submitted" >please enter level</p>
     </div>
 
-    <input type="hidden" name="category_id"  ng-model="editable_workshop.category_id" class="form-control" value="{{editable_workshop.category_id}}">
+    <input type="hidden" name="category_id"  ng-model="editable_workshop.category_id" class="form-control" >
 
     <button  type="submit"  name="button">Save</button>
 

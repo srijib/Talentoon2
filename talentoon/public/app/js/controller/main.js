@@ -5,10 +5,12 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
 		$rootScope.cur_user=data.cur_user;
         $rootScope.fname= $rootScope.cur_user.first_name;
         $rootScope.lname=$rootScope.cur_user.last_name;
+        var dob=$rootScope.cur_user.date_of_birth;
+        $rootScope.cur_user.date_of_birth=new Date(dob);
 	}, function (err) {
         console.log(err);
     });
-    
+
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
 	// $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 

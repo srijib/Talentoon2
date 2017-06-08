@@ -10,8 +10,8 @@ return {
 				method:'GET'
 
 			}).then(function(res){
-				if(res.data.posts){
-                    def.resolve(res.data.posts)
+				if(res.data){
+                    def.resolve(res.data)
 				}else{
                     def.reject('Sorry, No posts found')
 				}
