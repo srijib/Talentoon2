@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Illuminate\Support\Facades\Hash;
-
+use App\Services\Notification;
+use OneSignal;
 class LoginController extends Controller {
 
     public function login(Request $request, JWTAuth $JWTAuth) {
@@ -41,14 +42,18 @@ class LoginController extends Controller {
                 } catch (JWTException $e) {
                     throw new HttpException(500);
                 }
+//                $notify = new Notification();
+//                $n=$notify->sendMessageAll();
+//                OneSignal::sendNotificationToAll("welcome to Talentooooon !", $url = null, $data = null);
 
                 return response()
-                                ->json([
-                                    'status' => 'ok',
-                                    'message'=>'User Authenticated SUccessfully',
-                                    'token' => $token,
-                                    'user' => $RegisteredUser
-                ]);
+                    ->json([
+                        'status' => 'ok',
+                        'message'=>'User Authenticated SUccessfully',
+                        'token' => $token,
+                        'user' => $RegisteredUser
+                    ]);
+
             }
         }
     }

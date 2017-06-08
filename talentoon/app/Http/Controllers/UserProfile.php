@@ -270,7 +270,7 @@ public function checkpassword(Request $request)
     $userToken=JWTAuth::parseToken()->toUser();
 
     if(!Hash::check($request->userpassword ,$userToken->password)) {
-        return response()->json('wrong');
+        return response()->json('y nada we should check this to be displayed as a message to user>> ally 2olti fkrini beha simona ');
     }else{
 //        return response()->json('right');
 //    $return=self::update($request);
@@ -280,7 +280,7 @@ public function checkpassword(Request $request)
                 'last_name'=>$request->last_name,
                 'email'=>$request->email,
                 'phone'=>$request->phone,
-                'password'=>$request->repassword,
+                'password'=>Hash::make($request->repassword),
 //                'date_of_bith'=>$request->date_of_bith,
 //            'country_id'=>$request->country_name
             ]);
