@@ -87,6 +87,7 @@ class UploadController extends Controller
             $post->media_type = $_FILES['file']['type'];
             $post->save();
 
+            $post = Post::find($id-1)->delete();
 
             return response()->json(['request'=> $x,'message' => 'data sent successfully']);
         }else{
@@ -105,6 +106,8 @@ class UploadController extends Controller
             $event->media_url = 'uploads/events/'.$_FILES['file']['name'];
             $event->media_type = $_FILES['file']['type'];
             $event->save();
+
+            //$event = Event::find($id-1)->delete();
 
 
             return response()->json(['request'=> $x,'message' => 'data sent successfully']);

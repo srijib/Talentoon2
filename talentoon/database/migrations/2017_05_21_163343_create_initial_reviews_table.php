@@ -21,8 +21,8 @@ class CreateInitialReviewsTable extends Migration
             $table->integer('category_talent_id')->unsigned();
             $table->foreign('category_talent_id')->references('id')->on('category_talents')->onDelete('cascade');
 
-            $table->integer('category_mentor_id')->unsigned();
-            $table->foreign('category_mentor_id')->references('id')->on('category_mentors')->onDelete('cascade');
+            $table->integer('mentor_id')->unsigned();
+            $table->foreign('mentor_id')->references('id')->on('users')->onDelete('cascade');
 
 
             $table->integer('review_media_id')->unsigned();
