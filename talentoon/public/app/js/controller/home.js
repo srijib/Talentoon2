@@ -1,4 +1,4 @@
-angular.module('myApp').controller("homec",function(Home,$scope,$http,$routeParams,$rootScope,categories){
+angular.module('myApp').controller("homec",function(Home,$scope,$http,$routeParams,$rootScope,categories,user){
 
 	Home.getTopPosts().then(function(data){
 		$scope.topposts=data;

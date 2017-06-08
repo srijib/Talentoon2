@@ -17,6 +17,10 @@ use App\Models\Follow;
 
 class UserProfile extends Controller
 {
+    public function cur_user(){
+        $user= JWTAuth::parseToken()->toUser();
+        return response()->json(['cur_user'=>$user]);
+    }
 
  public function index(Request $request){
 

@@ -44,11 +44,11 @@ class CompetitionPostPointsService {
 
 //should be called when competition ends
 //------------------------------------------
-// select competition_post_id as post_id, talent_id, competition_id ,SUM(competition_post_points.points) as sum 
-//from competition_post_points 
+// select competition_post_id as post_id, talent_id, competition_id ,SUM(competition_post_points.points) as sum
+//from competition_post_points
 //inner join users on users.id = competition_post_points.voter_id
 //inner join role_user on role_user.user_id = users.id
-//where competition_id =1 and competition_post_points.voter_id IN (role_user.user_id) and role_user.role_id <> 3 
+//where competition_id =1 and competition_post_points.voter_id IN (role_user.user_id) and role_user.role_id <> 3
 //group by competition_post_id,talent_id;
 
     public function calculateCompetitiorAudiencePoints($competition_id) {

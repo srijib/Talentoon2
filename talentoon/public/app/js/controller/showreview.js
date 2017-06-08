@@ -1,6 +1,6 @@
 angular.module('myApp').controller("showreview", function($rootScope,$scope, $http,showreview, $routeParams) {
 
-    $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+    // $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 
     var mentor_id=$rootScope.cur_user.id;
 

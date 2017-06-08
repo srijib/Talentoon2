@@ -1,10 +1,5 @@
 angular.module('myApp').controller("userprofile", function ($scope, $http, user, $rootScope, $route,$routeParams,$location) {
 
-    $rootScope.userupdate=JSON.parse(localStorage.getItem("cur_user"));;
-    $rootScope.fname= $rootScope.userupdate.first_name;
-    $rootScope.lname=$rootScope.userupdate.last_name;
-
-
   user.userprofile().then(function(data){
       $scope.userprofile=data.data;
       $scope.user_points_from_mentors_reviews = $scope.userprofile.points_number;
@@ -92,42 +87,42 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
 
 
     //edit user profile function
-    $scope.editprofile=function () {
-        console.log($rootScope.cur_user.id);
-        user.editprofile($rootScope.cur_user.id).then(function(data){
-            console.log(data);
-        $rootScope.userupdate=data;
-        $location.url('/editprofile');
-        $rootScope.fname= $rootScope.userupdate.first_name;
-        $rootScope.lname=$rootScope.userupdate.last_name;
-        } , function(err){
-            console.log(err);
-
-        });
-
-    }
+    // $scope.editprofile=function () {
+    //     console.log($rootScope.cur_user.id);
+    //     user.editprofile($rootScope.cur_user.id).then(function(data){
+    //         console.log(data);
+    //     $rootScope.cur_user=data;
+    //     $location.url('/editprofile');
+    //     $rootScope.fname= $rootScope.cur_user.first_name;
+    //     $rootScope.lname=$rootScope.cur_user.last_name;
+    //     } , function(err){
+    //         console.log(err);
+    //
+    //     });
+    //
+    // }
 
 
     $scope.updateuserprofile=function(valid){
-        console.log('kkkkkkkkkkk',$scope.userupdate)
+        console.log('kkkkkkkkkkk',$scope.cur_user)
 
-        if($scope.userupdate.userpassword ){
+        if($scope.cur_user.userpassword ){
             $scope.password=true;
             console.log('i entered here')
         }
-        if($scope.userupdate.newpassword===$scope.userupdate.repassword && $scope.userupdate.newpassword && $scope.userupdate.repassword){
+        if($scope.cur_user.newpassword===$scope.cur_user.repassword && $scope.cur_user.newpassword && $scope.cur_user.repassword){
             $scope.repassword=true;
             console.log('iam here')
         }
         if (valid) {
             console.log('feh user password',$scope.password)
             console.log('da5lt al etnen passwords',$scope.repassword)
-            console.log($scope.userupdate.newpassword)
+            console.log($scope.cur_user.newpassword)
             //for checking on password in backend
-            var userdata = $scope.userupdate
+            var userdata = $scope.cur_user
             if ($scope.repassword && $scope.password){
                 console.log('da5lt koll 7aga ')
-                // var userdata = $scope.userupdate
+                // var userdata = $scope.cur_user
                 console.log('y simnaaaaaaa');
                 user.checkpassword(userdata).then(function (data) {
                     console.log('y simnaaaaaaa');

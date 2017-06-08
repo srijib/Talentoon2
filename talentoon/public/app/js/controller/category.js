@@ -1,23 +1,15 @@
-angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
+angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,user,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
 
-	$rootScope.token = JSON.parse(localStorage.getItem("token"));
-	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
-	console.log("category controller current user",$rootScope.cur_user);
-	console.log("category controller token",$rootScope.token);
 	var filesuploaded = []
 
     var filesmentoruploaded = []
     var reviewfilesuploaded = []
     var talent = {}
     var mentor = {}
-    var user_id = $rootScope.cur_user.id;
-
 
     $scope.cat_id = $routeParams['category_id'];
     $scope.workshop_id = $routeParams['workshop_id'];
     $scope.event_id = $routeParams['event_id'];
-
-
 
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
@@ -34,7 +26,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
             $scope.is_mentor = data.is_mentor[0].status;
         }
 
-		console.log('$scope.is_subscribed',data.is_mentor[0].status);
         $scope.categoryEvents = data.events;
         console.log( data.events,"<<<<events")
         $scope.categoryWorkshops = data.workshops;
@@ -117,7 +108,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // });
 
     // categories.getCategoryEvents($scope.cat_id).then(function (data) {
-    //     var user_id = 1;
     //     $rootScope.events = data;
     //     console.log("EVENTSSSSSS",$rootScope.events);
     // }, function (err) {
@@ -421,7 +411,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 //---------------------------------------------------------------
     //get 3  posts under category
     // $scope.allposts = function() {
-    // var user_id = 1;
     // categories.getCategoryPost($scope.cat_id).then(function (data) {
     //     // console.log("inside controller" , data)
     //     $scope.category_posts = data;
@@ -436,7 +425,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 //when click on show all posts
     // $scope.allposts = function () {
 	//
-    //     var user_id = 1;
     //     categories.getCategoryPosts($scope.cat_id).then(function (data) {
     //         $rootScope.categoryPosts = data;
 	// 		console.log('allllllllll ya mina');
@@ -449,7 +437,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // }
 //--------------------------------------------------------------
 
-    // var user_id = 1;
     // categories.getCategoryPosts($scope.cat_id).then(function (data) {
     //     $rootScope.category3Posts = data;
 	// 	console.log("user from esraaa to minaaaaaa" , data)
@@ -461,7 +448,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 //----------------------------single----post---------------------------------------
     $scope.post_id = $routeParams['post_id'];
-    var user_id = 1;
     categories.getCategoryPost($scope.post_id).then(function (data) {
         // console.log("inside controller" , data)
         $rootScope.category_post = data.post;
@@ -561,7 +547,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
     // $scope.allworkshops = function () {
 	//
-    //     var user_id = 1;
     //     categories.getCategoryWorkshops($scope.cat_id).then(function (data) {
     //         $rootScope.categoryWorkshops = data;
 	//
