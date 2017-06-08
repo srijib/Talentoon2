@@ -211,6 +211,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
             $rootScope.workshop_id=data
             console.log('7asl al deleteeeeeee',$rootScope.workshop_id)
             // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
+            $location.url('/category/'+cat_id+'/workshops')
         } , function(err){
             console.log(err);
 
@@ -230,6 +231,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
             categories.updatedworkshop(workshopdata).then(function(data){
                 console.log('in update al workshop lma da5lt anadi 3la method al factory w geet')
                 console.log("the workshop request from server is ",data);
+                $location.url('/category/'+cat_id+'/workshops')
 
             } , function(err){
                 console.log(err);
@@ -362,7 +364,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         categories.deleteEvent(editable).then(function(data){
             $rootScope.event_id=data
             console.log('7asl al deleteeeeeee',$rootScope.event_id)
-
+            $location.url('/category/'+cat_id+'/events')
             // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
         } , function(err){
             console.log(err);
