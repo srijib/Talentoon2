@@ -92,11 +92,13 @@ class UploadController extends Controller
 $post = DB::table('posts')
 ->where('id', '=', $id)
 ->first();
+$type=substr($_FILES['file']['type'], 0, 5);
+// 'media_type'=>$_FILES['file']['type']
 if (is_null($post)) {
     $update=Post::create($request->all());}
     else{
       $update=DB::table('posts')->where('id',$id)->update(['media_url' => 'uploads/files/'.$_FILES['file']['name']
-,'media_type'=>$_FILES['file']['type']
+,'media_type'=>$type
       ]);
 
     }

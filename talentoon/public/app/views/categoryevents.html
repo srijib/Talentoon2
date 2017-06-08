@@ -3,7 +3,27 @@
     <div ng-repeat="event in categoryEvents">
 
         <div class="thumbnail">
-            <img src="http://localhost:8000/{{event.media_url}}" class="img-circle" style="height:80px;" />
+
+          <div ng-if="event.media_type == 'image'">
+          <img src="http://localhost:8000/{{event.media_url}}" alt="" class="img-circle" style="height:80px;" >
+          </div>
+          <div ng-if="event.media_type == 'video' ">
+
+           <video   controls  preload="auto" style="height: 240px;">
+
+          <source src="http://localhost:8000/{{event.media_url}}"  />
+        </video>
+
+          </div>
+            <div ng-if="event.media_type == 'audio'">
+          <audio controls>
+
+        <source src="http://localhost:8000/{{event.media_url}}" />
+
+        </audio>
+        </div>
+
+            <!-- <img src="http://localhost:8000/{{event.media_url}}" class="img-circle" style="height:80px;" /> -->
             <h4 style="color:Purple ">{{event.title}}</h4>
             <h4 style="color:Purple ">{{event.description}}</h4>
             <h4 style="color:Purple ">{{event.created_at}}</h4>

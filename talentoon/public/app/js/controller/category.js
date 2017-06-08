@@ -21,6 +21,8 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
         $scope.categoryPosts = data.posts;
+				
+				console.log("type",$rootScope.type);
 		$scope.comments=data.comments
 		console.log("commm",$scope.comments);
 
@@ -618,10 +620,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     }
 
 
-		// $scope.pauseOrPlay = function(ele){
-	  //           var video = angular.element(ele.srcElement);
-	  //            video[0].pause(); // video.play()
-	  //   }
+
 
 
 });
