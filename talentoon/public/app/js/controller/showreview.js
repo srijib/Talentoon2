@@ -1,4 +1,4 @@
-angular.module('myApp').controller("showreview", function($rootScope,$scope, $http,showreview, $routeParams) {
+angular.module('myApp').controller("showreview", function($rootScope,$scope, $http,showreview, $routeParams,$route) {
 
     $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 
@@ -6,7 +6,7 @@ angular.module('myApp').controller("showreview", function($rootScope,$scope, $ht
 
     showreview.getAllInitialPosts(mentor_id).then(function(data){
 
-        // console.log("data Mina",data);
+        console.log("data Mina",data);
         $rootScope.all_initial_posts=data;
     } , function(err){
         console.log(err);
@@ -19,10 +19,11 @@ angular.module('myApp').controller("showreview", function($rootScope,$scope, $ht
       $scope.all_initial_posts[i].rev.review_media_id=$rootScope.all_initial_posts[i].id
       $scope.all_initial_posts[i].rev.category_talent_id=$rootScope.all_initial_posts[i].category_talent_id
       //now it is mentor id not category mentor id
-      $scope.all_initial_posts[i].rev.category_mentor_id=mentor_id;
-    console.log("review data sis",$scope.all_initial_posts[i].rev);
+      $scope.all_initial_posts[i].rev.mentor_id=mentor_id;
+      console.log("review data sis",$scope.all_initial_posts[i].rev);
       showreview.storeSingleInitialReview($scope.all_initial_posts[i].rev).then(function(data){
         console.log("data Mina",data);
+          //$route.reload();
       } , function(err){
         console.log(err);
       });

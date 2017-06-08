@@ -201,6 +201,7 @@ class InitialReviewController extends Controller
             ->whereNotIn("review_media.id", $arr)
             ->where("initial_reviews.mentor_id","!=",$mentor_id)
             ->get();
+
         return response()->json(['all_initial_posts' => $all_initial_posts,'status' => '1','message' => 'data sent successfully']);
     }
 

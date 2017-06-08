@@ -88,27 +88,21 @@ class UploadController extends Controller
             // $post->media_type = $_FILES['file']['type'];
             //
             // $post->save();
-//-----------------------------
-$post = DB::table('posts')
-->where('id', '=', $id)
-->first();
-if (is_null($post)) {
-    $update=Post::create($request->all());}
-    else{
-      $update=DB::table('posts')->where('id',$id)->update(['media_url' => 'uploads/files/'.$_FILES['file']['name']
-,'media_type'=>$_FILES['file']['type']
-      ]);
-
-    }
-$post = Post::find($id)->
-    where('posts.id',$id-1)->delete();
+            //-----------------------------
+            $post = DB::table('posts')
+            ->where('id', '=', $id)
+            ->first();
+            if (is_null($post)) {
+                $update=Post::create($request->all());}
+                else{
+                  $update=DB::table('posts')->where('id',$id)->update(['media_url' => 'uploads/files/'.$_FILES['file']['name']
+            ,'media_type'=>$_FILES['file']['type']
+                  ]);
+                }
+            $post = Post::find($id-1)->delete();
 
 
-
-// $post->media_url = 'uploads/files/'.$_FILES['file']['name'];
-// $post->media_type = $_FILES['file']['type']
-
-//-----------------------------------
+            //-----------------------------------
             return response()->json(['request'=> $x,'message' => 'data sent successfully']);
         }else{
             echo "Image Is Empty";
@@ -126,6 +120,8 @@ $post = Post::find($id)->
             $event->media_url = 'uploads/events/'.$_FILES['file']['name'];
             $event->media_type = $_FILES['file']['type'];
             $event->save();
+
+            //$event = Event::find($id-1)->delete();
 
 
             return response()->json(['request'=> $x,'message' => 'data sent successfully']);

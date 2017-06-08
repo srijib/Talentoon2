@@ -34,6 +34,8 @@ return {
 				if(res.data){
 					// console.log("Mina res ",res.data.all_initial_posts);
 					def.resolve(res.data)
+
+
 				}else{
 					def.reject('there is no data ')
 				}
