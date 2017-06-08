@@ -45,7 +45,6 @@ angular.module('myApp').factory("user", function ($http, $q) {
         },
 
         getAllCountry: function () {
-            console.log('nahla  ')
             var def = $q.defer();
             $http({
                 url:'http://localhost:8000/api/countries',

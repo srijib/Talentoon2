@@ -31,10 +31,12 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 
 
-
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
         $scope.categoryPosts = data.posts;
+		$scope.comments=data.comments
+		console.log("commm",$scope.comments);
+
         if(data.is_sub.length){
             $scope.is_subscribed = data.is_sub[0].subscribed;
         }
@@ -86,23 +88,13 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         console.log(err);
     });
 
-    // Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
-		// console.log('getCategoryCompetitions',data.competitions);
-    //     $scope.categoryCompetitions = data.competitions;
-    // }, function (err) {
-    //     console.log(err);
-    // });
 
-
-
-
-
-    // Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
-		// console.log('getCategoryCompetitions',data.competitions);
-    //     $scope.categoryCompetitions = data.competitions;
-    // }, function (err) {
-    //     console.log(err);
-    // });
+    Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
+		console.log('getCategoryCompetitions',data.data);
+        $scope.categoryCompetitions = data.data;
+    }, function (err) {
+        console.log(err);
+    });
 
 
     // categories.getCategoryWorkshops($scope.cat_id).then(function (data) {
@@ -523,6 +515,15 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     categories.getCategoryPost($scope.post_id).then(function (data) {
         // console.log("inside controller" , data)
         $rootScope.category_post = data.post;
+				  $rootScope.type=data.post.media_type;
+					console.log("type", $rootScope.type)
+				// 	if( $rootScope.type =="video/mp4" ||$rootScope.type =="video/Avi"){
+				// 		$rootScope.mediaType ="video"
+				// 	}
+				// 	else if ($rootScope.type="image/jpg"||rootScope.type="image/jpeg"||rootScope.type="image/png") {
+        //  $rootScope.mediaType ="image"
+				// 	}
+					// video/mp4
         $rootScope.category_post_like_count = data.countlike;
         $rootScope.comments = data.comments;
 
@@ -664,6 +665,12 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     if(localStorage.getItem("wiziq_presenter_url")){
         $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
     }
+
+
+		// $scope.pauseOrPlay = function(ele){
+	  //           var video = angular.element(ele.srcElement);
+	  //            video[0].pause(); // video.play()
+	  //   }
 
 
 });

@@ -1,12 +1,3 @@
-<!-- <center> -->
-  <!-- <a href="#!/category/{{cat_id}}/betalent" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_TALENT' | translate}}</a> -->
-
-  <!-- <a ng-class="untalent()" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_UN_TALENT' | translate}}</a> -->
-
-
-  <!-- <a href="#!/category/bementor/{{cat_id}}/{{user_id}}" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_MENTOR' | translate}}</a>
-
-  <a ng-click="unmentor()" class="btn btn-info" role="button">{{'ONE_CATEGORY.BE_UN_MENTOR' | translate}}</a> -->
 
   <!-- <a ng-href="{{current_presenter_class_url}}" class="btn btn-info" role="button">Join Current Session NOW</a> </center>
 
@@ -94,7 +85,7 @@
               <!--like-->
               <a href="">
                 <i class="fa fa-commenting" aria-hidden="true"></i>
-                <span class="badge">35</span>
+                <span class="badge">  </span>
               </a>
 
               <!--share -->
@@ -192,13 +183,13 @@
                         <div class="">
                           <a>
                             <i class="fa fa-heart" aria-hidden="true"></i>
-                            <span class="badge">8</span>
+                            <span class="badge">{{post.like_count}}</span>
                           </a>
 
                           <!--like-->
                           <a>
                             <i class="fa fa-commenting" aria-hidden="true"></i>
-                            <span class="badge">6</span>
+                            <span class="badge">  </span>
                           </a>
 
                           <!--share -->
@@ -252,65 +243,36 @@
 
                     <div class="popUsersComments">
                       <div class="writePost">
-                        <textarea class="form-control" rows="3"></textarea>
-                        <div class="posting">
-                          <button type="button" class="btn btn-default">Comment</button>
-                        </div>
+                          <form ng-submit="add_comment($index)" name="comment_form_{{$index}}">
+                          <textarea class="form-control" name="comments_{{$index}}"  ng-model="post.comment" rows="3"></textarea>
+                          <div class="posting">
+                              <button type="submit" class="btn btn-default" name="button_{{$index}}">Comment</button>
+                          </div>
+                          </form>
 
                       </div>
 
                       <ul class="media-list">
                         <li class="media">
-                          <div class="media-left">
-                            <a href="#">
-                              <img class="media-object" src="Imgs/Persons/face2.jpg">
-                            </a>
-                          </div>
-                          <div class="media-body">
-                            <h4 class="media-heading">Omar Mourad</h4>
-                            <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                              ultricies vehicu</p>
+                            <div ng-repeat="comment in comments track by $index">
+                                <span ng-if="post.id == comment.post_id">
+                            <!-- <li class="media"> -->
+                                <div class="media-left" >
+                                    <a href="#">
+                                        <img class="media-object" src="http://localhost:8000/{{comment.user_image}}">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{comment.first_name}}</h4>
+                                    <p>{{comment.comment}}</p>
 
 
+                                </div>
 
-                          </div>
+                            <!-- </li> -->
+                        </span>
 
-
-
-                        </li>
-
-                        <li class="media">
-                          <div class="media-left">
-                            <a href="#">
-                              <img class="media-object" src="Imgs/Persons/face3.jpg">
-                            </a>
-                          </div>
-                          <div class="media-body">
-                            <h4 class="media-heading">Khaled Ali</h4>
-                            <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                              ultricies vehicu</p>
-
-
-                          </div>
-                        </li>
-
-
-                        <li class="media">
-                          <div class="media-left">
-                            <a href="#">
-                              <img class="media-object" src="Imgs/Persons/face2.jpg">
-                            </a>
-                          </div>
-                          <div class="media-body">
-                            <h4 class="media-heading">Hossam Abdelrhman</h4>
-                            <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                              ultricies vehicu</p>
-
-
-
-                          </div>
-
-
+                    </div>
 
                         </li>
 
@@ -948,7 +910,7 @@
           <!--
 -->
           <div class=" going">
-            <button type="button" class="btn btn-default">Join</button>
+            <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Accept Challenge</a>
           </div>
 
         </div>

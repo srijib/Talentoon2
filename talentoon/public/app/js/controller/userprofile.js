@@ -34,7 +34,7 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
         console.log("user profile posts MINAAA",data.data.allPosts);
         // console.log("user profile info",$scope.userinfo);
         var d = new Date(data.data.allPosts[0].created_at);
-        console.log('ddddddddddddddddddddddddddddddd',d);
+        // console.log('ddddddddddddddddddddddddddddddd',d);
 
   } , function(err){
     console.log(err);

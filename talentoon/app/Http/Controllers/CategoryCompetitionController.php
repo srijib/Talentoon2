@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use JWTAuth;
-
+use DB;
 use App\Models\Competition;
 
 use App\Services\CompetitionService;
@@ -59,6 +59,11 @@ class CategoryCompetitionController extends Controller {
     public function show($category_id, $competition_id) {
         try {
             $competitionDetails = Competition::where('category_id', $category_id)->findOrFail($competition_id);
+            $competitionDetails = DB::table('competitions')
+                ->join('users', 'users.id', '=', 'competitions.mentor_id')
+                ->select('competitions.*','users.first_name', 'users.last_name', 'users.image as mentor_image')
+                ->where([['competitions.id','=',$competition_id],['competitions.category_id','=',$category_id]])
+                ->get();
         } catch (ModelNotFoundException $e) {
             $code = $e->getCode();
             $SQLmessage = $e->getMessage();
@@ -109,7 +114,7 @@ class CategoryCompetitionController extends Controller {
         $user = JWTAuth::parseToken()->toUser();
         try {
             $competitionDetails = Competition::where('mentor_id', $user->id)->where('category_id', $category_id)->findOrFail($competition_id);
-            //dd($competitionDetails);       
+            //dd($competitionDetails);
         } catch (ModelNotFoundException $e) {
             $code = $e->getCode();
             $SQLmessage = $e->getMessage();

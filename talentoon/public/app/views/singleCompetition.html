@@ -1,24 +1,422 @@
-<ul>
-    <li>{{competition.title}}</li>
+
+<!-- <ul>
+    <li>{{competition.category_id}}</li>
+    <li>{{competition.competition_end_date}}</li>
+    <li>{{competition.competition_end_time}}</li>
+    <li>{{competition.competition_from_level}}</li>
+    <li>{{competition.competition_start_date}}</li>
+    <li>{{competition.competition_start_time}}</li>
+    <li>{{competition.competition_to_level}}</li>
+    <li>{{competition.created_at}}</li>
     <li>{{competition.description}}</li>
+    <li>{{competition.first_winner_talent_id}}</li>
+    <li>{{competition.id}}</li>
     <li>{{competition.image}}</li>
+    <li>{{competition.mentor_id}}</li>
     <li>{{competition.points_description}}</li>
-    <li>{{competition.date_from}}</li>
-    <li>{{competition.date_to}}</li>
-    <li>{{competition.time_from}}</li>
-    <li>{{competition.time_to}}</li>
-    <li>{{competition.level_from}}</li>
-    <li>{{competition.level_to}}</li>
-</ul>
+    <li>{{competition.second_winner_talent_id}}</li>
+    <li>{{competition.third_winner_talent_id}}</li>
+    <li>{{competition.title}}</li>
+</ul> -->
 
-<a href="#!/category/:category_id/competitions/competition_id/addpost"></a>
+<!-- <a href="#!/category/{{competition.category_id}}/competitions/{{competition.id}}/addpost">add post</a> -->
 
-<div ng-repeat="post in posts">
-
-
-
-
-
-
+<!-- <div ng-repeat="post in posts">
     <a ng-click="deleteCompetitionPost({{post_id}})">delete</a>
+</div> -->
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="firstCol col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="compImg">
+                <div class="opacity">
+                    <img src="http://localhost:8000/{{competition.image}}">
+                    <button class="btn btn-default accept" type="submit">Accept Challenge</button>
+                </div>
+            </div>
+
+
+            <div class="compName row">
+                <span class="text-left col-lg-8 ">{{competition.title}}</span>
+
+            </div>
+
+
+            <div class="info">
+                <div class="compScd">
+                    <span  class="bigdate">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <p>{{competition.competition_start_date | date : 'd'}}</p>
+                    </span>
+                    <span class="labels">
+                        <span class="label first label-default"> {{competition.competition_start_date | date : 'MMM'}} - {{competition.competition_end_date | date : 'd-MMM'}} </span>
+                        <span class="label label-default">{{competition.competition_start_time}} - {{competition.competition_end_time}}</span>
+                    </span>
+                </div><!--    top event schdule-->
+
+                <div class="compLevel">
+                    <span  class="level">
+                        <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    </span>
+                    <span class="lLabels">
+                        <span class="label first label-default">{{competition.competition_from_level}}</span><small>Level</small>
+                        -
+                        <span class="label label-default">{{competition.competition_to_level}}</span><small>Level</small>
+                    </span>
+                </div><!--    top event schdule-->
+
+
+            </div>
+
+
+
+            <!--share -->
+
+            <!-- <div id="socialHolder" class="share">
+                <div id="socialShare" class="btn-group share-group">
+                    <a data-toggle="dropdown" class="btn btn-info">
+                        <button class="btn btn-default btn-share" type="submit">
+                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                            Share Competition</button>                            </a>
+                    <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+
+
+
+        </div>
+        <div class="thirdCol col-lg-3 col-lg-push-6 col-md-6 col-lg-push-12 col-sm-6 col-lg-push-12 col-xs-12">
+
+            <div class="newPost">
+                <a href="#!/category/{{competition.category_id}}/competitions/{{competition.id}}/addpost" class="btn btn-lg">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i> New Post
+                </a>
+            </div>
+
+            <div class="aboutt">
+                <span>ABOUT</span>
+                <p>{{competition.description}}</p>
+
+            </div>
+
+            <div class="reward">
+                <span>REWARDS</span>
+                <p>{{competition.points_description}}</p>
+
+            </div>
+
+            <div class="madeby">
+                <div><span>MADE BY</span></div>
+                <div class="supervise">
+                    <div class="superviseInfos">
+                        <img src="http://localhost:8000/{{competition.mentor_image}}" alt="">
+                        <span>{{competition.first_name}} {{competition.last_name}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="secCol col-lg-6 col-lg-pull-3 col-md-12 col-lg-pull-6 col-sm-12 col-lg-pull-6 col-xs-12">
+
+            <div class="showPosts">
+                <div class="recentPosts imageArticle" ng-repeat="post in competitionPosts  track by $index">
+                    <div class="userInfos">
+                        <img src="http://localhost:8000/{{post.user_image}}" alt="">
+                        <span>{{post.first_name}} {{post.last_name}}</span>
+                    </div>
+
+                    <div class="conatinerComment">
+
+                        <div class="largePic">
+                            <IMAGE ng-if="post.competition_post_media_type == 'image'" >
+                                <img src="http://localhost:8000/{{post.competition_post_media_url}}" alt="">
+                            </IMAGE>
+                            <!-- IF VEDIO -->
+                            <VIDEO ng-if="post.competition_post_media_type == 'video'">
+                                <video controls><source src="http://localhost:8000/{{post.competition_post_media_url}}"></video>
+                            </VIDEO>
+                            <!-- IF AUDIO -->
+                            <AUDIO ng-if="post.competition_post_media_type == 'audio'">
+                                <img src="Imgs/Website/5536c78cccd436f31c8c66732cee72d2.jpg" alt="">
+                            </AUDIO>
+
+                        </div>
+
+                        <div class="titleEdit row">
+                            <div class="col-lg-8 title">
+                                <h3>{{post.competition_post_title}} </h3>
+                            </div>
+
+                            <div class="col-lg-4 edits " ng-if="">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <a href="" ng-click="deleteCompetitionPost(post.id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            </div>
+
+                        </div>
+
+                        <div class="disc">
+                            <AUDIO ng-if="post.competition_post_media_type == 'audio'">
+                                <audio controls> <source src="http://localhost:8000/{{post.competition_post_media_url}}"></audio>
+                            </AUDIO>
+                            <p>{{post.competition_post_description}}</p>
+                        </div>
+
+                        <div class="interactionUser">
+                            <a>
+                                <i class="fa fa-heart" aria-hidden="true" ></i>
+                                <span class="badge">8</span>
+                            </a>
+
+                            <a>
+                                <i class="fa fa-commenting" aria-hidden="true"></i>
+                                <span class="badge">6</span>
+                            </a>
+
+
+                            <!--share -->
+                            <div id="socialHolder">
+                                <div id="socialShare" class="btn-group share-group">
+                                    <a data-toggle="dropdown" class="btn btn-info">
+                                        <i class="fa fa-share-alt fa-inverse"></i>
+                                    </a>
+                                    <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                                <i class="fa fa-envelope"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" class="collapse">
+                            <div class="panel panel-default comments" >
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Comments
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+
+                                        <div class="UserComments">
+                                            <div class="writePost">
+                                                <textarea class="form-control" rows="3"></textarea>
+                                                <div class="posting">
+                                                    <button type="button" class="btn btn-default">Comment</button>
+                                                </div>
+
+                                            </div>
+
+                                            <ul class="media-list">
+                                                <li class="media">
+                                                    <div class="media-left">
+                                                        <a href="#">
+                                                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading">Omar Mourad</h4>
+                                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+
+                                                    </div>
+
+
+
+                                                </li>
+
+                                                <li class="media">
+                                                    <div class="media-left">
+                                                        <a href="#">
+                                                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading">Khaled Ali</h4>
+                                                        <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+
+
+
+                                        </div>
+
+                                        <div class="seeComments">
+                                            <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default reviews">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Reviews
+                                        </a>
+                                    </h4>
+                                </div>
+
+
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        <div class="UserReview">
+                                            <div class="rating">
+                                            </div>
+                                            <div class="writePost">
+                                                <textarea class="form-control" rows="3"></textarea>
+                                                <div class="row">
+                                                    <div class="col-lg-9 rating">
+                                                        <div class="title col-lg-2">Rate</div>
+                                                        <div class="range col-lg-10 " >
+
+                                                            <output id="range" class="output">0</output>
+                                                            <input type="range" name="range" min="0" max="10" class="input" value="0" onchange="range.value=value">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="posting  col-lg-2">
+                                                        <button type="button" class="btn btn-default">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <ul class="media-list">
+                                                <li class="media">
+                                                    <div class="media-left">
+                                                        <a href="#">
+                                                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading col-lg-12">Omar Mourad</h4>
+
+                                                        <div class="col-lg-1 rating">
+                                                            <div class="range " >
+                                                                <output id="range" class="output">0</output>
+                                                                <input type="range" name="range" min="0" max="10" class="input" value="0" onchange="range.value=value">
+                                                            </div>
+                                                        </div>
+
+                                                        <p class="col-lg-12">non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+
+                                                    </div>
+
+
+
+                                                </li>
+
+                                                <li class="media">
+                                                    <div class="media-left">
+                                                        <a href="#">
+                                                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading col-lg-12">Khaled Ali</h4>
+                                                        <div class="col-lg-1 rating outcomment">
+                                                            <div class="range " >
+                                                                <output id="range" class="output ">0</output>
+                                                                <input type="range" name="range" min="0" max="10" class="input" value="0" onchange="range.value=value">
+                                                            </div>
+                                                        </div>
+                                                        <p class="col-lg-12">non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+
+
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+
+
+
+                                        </div>
+
+                                        <div class="seeReview">
+                                            <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE REVIEWS</span>
+                                        </div>
+                                    </div><!--panel-body-->
+                                </div><!--panel-collapse-->
+                            </div><!--2nd panel-->
+
+                        </div><!--panel-group-->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>

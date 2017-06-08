@@ -4,8 +4,16 @@
     <div class="row">
 
             <div class="thumbnail">
-
+   <div ng-if="type == 'image/jpg' || type == 'image/jpeg' ||type == 'image/jpeg' ">
                 <img src="http://localhost:8000/{{category_post.media_url}}" style=" height:200px">
+              </div>
+              <div ng-if="type == 'video/mp4'">
+                <h1 style="color:red"> videoooooooooooo</h1>
+                <video autoplay="autoplay" preload="auto" ng-click="pauseOrPlay()"  style="height: 219px;" id="video">
+              <source src="http://localhost:8000/{{category_post.media_url}}" type="video/mp4" />
+           </video>
+        
+              </div>
                 <div class="caption">
                   <h4 style="color:Purple ">Title: {{category_post.title}}</h4>
                   <h4 style="color:Purple ">Description: {{category_post.description}}</h4>

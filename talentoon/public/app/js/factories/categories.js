@@ -319,6 +319,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                     'Process-Data': false
                 }
             }).then(function (res) {
+              console.log("upload filessss",res);
                 def.resolve(res.data)
                 // if(res.data){
                 //     def.resolve(res.data)

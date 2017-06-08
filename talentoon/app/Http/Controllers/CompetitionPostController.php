@@ -7,6 +7,7 @@ use App\Services\CompetitionPostService;
 use App\Models\CompetitionPost;
 use App\Models\Competition;
 use App\Models\CompetitionJoin;
+use DB;
 use JWTAuth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -24,7 +25,14 @@ class CompetitionPostController extends Controller {
     }
 
     public function index($competition_id) {
-        $data = CompetitionPost::where('competition_id', $competition_id)->get();
+
+        $data= DB::table('competitions_posts')
+            ->join('users', 'users.id', '=', 'competitions_posts.talent_id')
+            ->select('competitions_posts.*','users.first_name', 'users.last_name', 'users.image as user_image')
+            ->where('competition_id','=',$competition_id)
+            ->get();
+
+        // $data = CompetitionPost::where('competition_id', $competition_id)->get();
         return response()->json(['status' => 'ok', 'message' => 'Posts under competition ' . $competition_id . ' retrieved successfully', 'data' => $data], 201);
     }
 
@@ -129,7 +137,7 @@ class CompetitionPostController extends Controller {
         $user = JWTAuth::parseToken()->toUser();
         try {
             $postDetails = CompetitionPost::where('talent_id', $user->id)->where('competition_id', $competition_id)->findOrFail($post_id);
-            //dd($competitionDetails);       
+            //dd($competitionDetails);
         } catch (ModelNotFoundException $e) {
             $code = $e->getCode();
             $SQLmessage = $e->getMessage();
