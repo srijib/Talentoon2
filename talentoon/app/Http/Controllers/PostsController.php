@@ -150,24 +150,33 @@ class PostsController extends Controller
             ->orderBy('total', 'desc')
             ->take(3)
             ->get();
-//        dd($posts_id);
         $data=array();
+        // $comments=array();
         foreach ($posts_id as &$value) {
+
             $post = DB::table('posts')
-                ->join('users', 'users.id', '=', 'posts.user_id')
+//                $users = DB::table('users')
+//                    ->join('contacts', 'users.id', '=', 'contacts.user_id')
+                ->join('users', 'posts.user_id' , '=', 'users.id' )
+                //,'users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image'
                 ->select('posts.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
                 ->where("posts.id",$value->likeable_id)
                 ->get();
+            $post[0]->total = $value->total;
+
+                // dd($post[0]);
             array_push($data, $post[0]);
-//            dd($data);
+
+
+
         }
-//        dd($data);
-//        $notify=new Notification();
-//        $device=$notify->addDevice();
-//        $response = $notify->sendMessageAll();
-//        $return["allresponses"] = $response;
-//        $return = json_encode( $return);
-        return response()->json(['msg'=>'success','posts'=>$data]);
+        $comments = DB::table('comments')
+            ->join('users', 'users.id', '=', 'comments.user_id')
+            ->select('comments.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
+            ->get();
+
+        return response()->json(['msg'=>'success','posts'=>$data,'comments'=>$comments]);
+
     }
 //    public function destroy($id)
 //    {
@@ -230,7 +239,14 @@ class PostsController extends Controller
             ->delete();
 
         if ($affectedRows){
-            return response()->json('true');
+//            $post->likes()->detach();
+
+            $deleteLikes = DB::table('likeables')
+                ->where('likeable_id', '=', $id)
+                ->where('likeable_type', '=', 'post')
+                ->delete();
+
+            return response()->json(['result'=>'true','deleted likes'=>$deleteLikes]);
         }else{
             return response()->json('false');
         }
@@ -272,9 +288,12 @@ public function showSinglePost($post_id){
       ->get()->first();
 
 
-
-
-
+  $post_comment = DB::table('posts')
+  ->join('comments', 'comments.post_id', '=', 'posts.id')
+  ->selectRaw('count(comments.id)as count_comment,posts.id')
+  ->where("comments.post_id",$post_id)
+    ->groupBy('posts.id')
+    ->get();
 
 
       $comments=DB::table('comments')
@@ -285,7 +304,7 @@ public function showSinglePost($post_id){
 // 'comments'=>$comments,
 
 
-  return response()->json(['post' => $post,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
+  return response()->json(['post_comment'=>$post_comment,'post' => $post,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
 // 'countlike'=>$countlike
 
 

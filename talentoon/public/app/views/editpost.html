@@ -17,11 +17,11 @@
 
 <div class="container">
     <div class="createPost col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
-        <form ng-submit="submitted=true ; saveupdatedpost(editpost.$valid)" name="editpost"  novalidate >
-            <input type="text" class="form-control" placeholder="Post title" name="title" required ng-model="editable_post.title" >
+        <form ng-submit="submitted=true ; saveupdatedpost(editpost.$valid)" name="editpost"  novalidate>
+            <input type="text" class="form-control" placeholder="Post title" name="title" required ng-model="editable_post.title" value="editable_post.title">
             <p class="error" ng-if="editpost.title.$error.required && submitted" >please enter your post title</p>
 
-            <textarea class="form-control" rows="9" placeholder="Write your post here" name="description" required ng-model="editable_post.description"></textarea>
+            <textarea class="form-control" rows="9" placeholder="Write your post here" name="description" required ng-model="editable_post.description" value="editable_post.description"></textarea>
             <p class="error" ng-if="editpost.description.$error.required && submitted" >please enter your post description</p>
 
             <input type="hidden" name="category_id"  ng-model="editable_post.category_id" class="form-control" value="{{cat_id}}">

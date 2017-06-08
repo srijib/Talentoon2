@@ -16,6 +16,7 @@ use Session;
 use App\Models\Upload;
 use App\Models\Event;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use DB;
 
 
 
@@ -82,13 +83,26 @@ class UploadController extends Controller
         if(!empty($_FILES)){
             $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/files/'.$_FILES['file']['name']);
 
-            $post = Post::find($id);
-            $post->media_url = 'uploads/files/'.$_FILES['file']['name'];
-            $post->media_type = $_FILES['file']['type'];
-            $post->save();
-
+            // $post = Post::find($id);
+            // $post->media_url = 'uploads/files/'.$_FILES['file']['name'];
+            // $post->media_type = $_FILES['file']['type'];
+            //
+            // $post->save();
+            //-----------------------------
+            $post = DB::table('posts')
+            ->where('id', '=', $id)
+            ->first();
+            if (is_null($post)) {
+                $update=Post::create($request->all());}
+                else{
+                  $update=DB::table('posts')->where('id',$id)->update(['media_url' => 'uploads/files/'.$_FILES['file']['name']
+            ,'media_type'=>$_FILES['file']['type']
+                  ]);
+                }
             $post = Post::find($id-1)->delete();
 
+
+            //-----------------------------------
             return response()->json(['request'=> $x,'message' => 'data sent successfully']);
         }else{
             echo "Image Is Empty";

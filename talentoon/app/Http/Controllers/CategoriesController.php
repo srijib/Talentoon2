@@ -14,6 +14,8 @@ use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Services\Notification;
 use DB;
+use App\Models\Comment;
+
 
 class CategoriesController extends Controller
 {
@@ -28,8 +30,8 @@ class CategoriesController extends Controller
     }
     public function index()
     {
-        
-        
+
+
         try{
         $user = JWTAuth::parseToken()->authenticate();
        $categories= Category::all();
@@ -106,6 +108,11 @@ class CategoriesController extends Controller
                       $join->on('posts.id','=','likeables.likeable_id')
                       ->where('likeables.liked', '=', '1');
                   })
+                //   ->rightJoin('comments', function($join)
+                //         {
+                //             $join->on('comments.post_id','=','posts.id');
+                //         })
+        // ->join('comments','comments.post_id','=','posts.id')
                   ->where([['posts.category_id','=',$cat_id],['posts.is_approved','=',1]])
                   ->groupBy('posts.id')
                     ->get();
@@ -120,8 +127,11 @@ class CategoriesController extends Controller
             ->where([['events.category_id','=',$cat_id],['events.is_approved','=',1]])
             ->get();
             // return response()->json(['posts' => $posts,'status' => '1','message' => 'data sent successfully']);
-
-        return response()->json(['is_mentor'=>$mentor,'is_talent'=>$talent,'is_sub'=>$subscribed,'cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
+            $comments = DB::table('comments')
+                ->join('users', 'users.id', '=', 'comments.user_id')
+                ->select('comments.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
+                ->get();
+        return response()->json(['comments'=>$comments,'is_mentor'=>$mentor,'is_talent'=>$talent,'is_sub'=>$subscribed,'cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
     }
 //
     /**

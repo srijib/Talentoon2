@@ -46,12 +46,12 @@ class EventService
 
 
 
-    }public function show_event($id){
+    }public function show_event($cat_id,$id){
 
         $event = DB::table('events')
-            ->join('categories', 'posts.category_id', '=', 'categories.id')
-            ->join('users', 'events.user_id', '=', 'users.id')
-            ->select('users.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image')
+            ->join('categories', 'events.category_id', '=', 'categories.id')
+            ->join('users', 'events.mentor_id', '=', 'users.id')
+            ->select('categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image','events.*')
             ->where("events.id",$id)
             ->get();
         return response()->json(['event' => $event,'status' => '1','message' => 'data sent successfully']);

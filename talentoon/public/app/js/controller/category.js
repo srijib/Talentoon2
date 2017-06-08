@@ -4,6 +4,12 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 	console.log("category controller current user",$rootScope.cur_user);
 	console.log("category controller token",$rootScope.token);
+
+    // $rootScope.editable_workshop=JSON.parse(localStorage.getItem("workshop"));;
+    // $rootScope.editable_event=JSON.parse(localStorage.getItem("event"));;
+    // $rootScope.editable_post=JSON.parse(localStorage.getItem("post"));;
+
+
 	var filesuploaded = []
 
     var filesmentoruploaded = []
@@ -13,28 +19,37 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     var user_id = $rootScope.cur_user.id;
 
 
-    $scope.cat_id = $routeParams['category_id'];
-    $scope.workshop_id = $routeParams['workshop_id'];
-    $scope.event_id = $routeParams['event_id'];
+    $rootScope.cat_id = $routeParams['category_id'];
+    $rootScope.workshop_id = $routeParams['workshop_id'];
+    $rootScope.event_id = $routeParams['event_id'];
+    $rootScope.post_id = $routeParams['post_id'];
+
+    console.log('category id',$rootScope.cat_id);
+    console.log('workshop id',$rootScope.workshop_id);
+    console.log('event id',$rootScope.event_id );
+    console.log('post id',$rootScope.post_id);
 
 
 
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
         $scope.categoryPosts = data.posts;
+		$scope.comments=data.comments
+		console.log("commm",$scope.comments);
+
         if(data.is_sub.length){
             $scope.is_subscribed = data.is_sub[0].subscribed;
         }
 
-        if(data.is_talent.length){
+        if(data.is_talent.length != 0){
             $scope.is_talent = data.is_talent[0].status;
         }
 
-        if(data.is_mentor.length){
+        if(data.is_mentor.length != 0 ){
             $scope.is_mentor = data.is_mentor[0].status;
         }
 
-		console.log('$scope.is_subscribed',data.is_mentor[0].status);
+		console.log('$scope.is_subscribed',data.is_mentor.length);
         $scope.categoryEvents = data.events;
         console.log( data.events,"<<<<events")
         $scope.categoryWorkshops = data.workshops;
@@ -73,23 +88,13 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         console.log(err);
     });
 
-    // Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
-		// console.log('getCategoryCompetitions',data.competitions);
-    //     $scope.categoryCompetitions = data.competitions;
-    // }, function (err) {
-    //     console.log(err);
-    // });
 
-
-
-
-
-    // Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
-		// console.log('getCategoryCompetitions',data.competitions);
-    //     $scope.categoryCompetitions = data.competitions;
-    // }, function (err) {
-    //     console.log(err);
-    // });
+    Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
+		console.log('getCategoryCompetitions',data.data);
+        $scope.categoryCompetitions = data.data;
+    }, function (err) {
+        console.log(err);
+    });
 
 
     // categories.getCategoryWorkshops($scope.cat_id).then(function (data) {
@@ -97,7 +102,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // }, function (err) {
     //     console.log(err);
     // });
-
     categories.getCategoryWorkshop($scope.workshop_id).then(function (data) {
         console.log("inside controller", data)
         $rootScope.category_workshop = data.workshop;
@@ -111,13 +115,44 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     }, function (err) {
         console.log(err);
     });
-    // categories.getCategoryEvent($scope.cat_id,$scope.workshop_id).then(function (data) {
-    //     $rootScope.editable_event=data;
-    //     console.log("single event from controller", $rootScope.category_workshop);
-    //
-    // }, function (err) {
-    //     console.log(err);
-    // });
+    //---------------------- FOR REFRESHING BUG---------------------------------
+    categories.getCategoryWorkshopEdit($rootScope.cat_id,$rootScope.workshop_id).then(function (data) {
+
+        $rootScope.editable_workshop=data;
+        // $rootScope.editable_workshop.time_from =new Date(data.time_from)
+        // $rootScope.editable_workshop.time_to =new Date(data.time_to)
+        // $rootScope.editable_workshop.date_from = new Date(data.date_from)
+        // $rootScope.editable_workshop.date_to = new Date(data.date_to)
+
+
+        // $rootScope.category_post = localStorage.getItem("data");
+        console.log("single workshop from controller", $rootScope.category_workshop);
+
+    }, function (err) {
+        console.log(err);
+    });
+
+    categories.getCategoryEventEdit($rootScope.cat_id,$rootScope.event_id).then(function (data) {
+        console.log('hna al data',data)
+        $rootScope.editable_event=data;
+        // $rootScope.editable_event.time_from =new Date(data.time_from)
+        // $rootScope.editable_event.time_to =new Date(data.time_to)
+        // $rootScope.editable_event.date_from = new Date(data.date_from)
+        // $rootScope.editable_event.date_to = new Date(data.date_to)
+        console.log("single event from controller", $rootScope.category_workshop);
+
+    }, function (err) {
+        console.log(err);
+    });
+    categories.getCategoryPostEdit($rootScope.cat_id, $scope.post_id).then(function (data) {
+
+        $rootScope.editable_post=data;
+
+
+    }, function (err) {
+        console.log(err);
+    });
+    //------------------------------------------------------------
     // categories.getCategoryPost($scope.workshop_id).then(function (data) {
     //     $rootScope.editable_post=data;
     //     console.log("single post from controller", $rootScope.category_workshop);
@@ -132,7 +167,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     //     console.log("EVENTSSSSSS",$rootScope.events);
     // }, function (err) {
     //     console.log(err);
-	//
+    //
     // });
 
     $scope.isWorkshopCraetor = function (workshop_id) {
@@ -160,7 +195,9 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         var editable={workshop_id,cat_id}
         categories.editWorkshop(editable).then(function(data){
             $rootScope.editable_workshop=data
+            var data = localStorage.setItem("workshop", JSON.stringify(data));
             console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_workshop)
+
             $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
         } , function(err){
             console.log(err);
@@ -185,10 +222,10 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         if (vaild) {
             var category= $routeParams['category_id'];
             var mentor_id= $rootScope.cur_user.id;
-            $scope.editable_workshop.category_id=category
+            $rootScope.editable_workshop.category_id=category
 
 
-            var workshopdata = $scope.editable_workshop;
+            var workshopdata = $rootScope.editable_workshop;
             console.log('in update dataaaaa',workshopdata);
             categories.updatedworkshop(workshopdata).then(function(data){
                 console.log('in update al workshop lma da5lt anadi 3la method al factory w geet')
@@ -230,6 +267,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         categories.editPost(editable).then(function(data){
             $rootScope.editable_post=data
             console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_post)
+            var store= localStorage.setItem("post", JSON.stringify(data));
             $location.url('/category/'+cat_id+'/posts/'+post_id+'/editpost')
         } , function(err){
             console.log(err);
@@ -255,10 +293,10 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         if (vaild) {
             var category= $routeParams['category_id'];
             var mentor_id= $rootScope.cur_user.id;
-            $scope.editable_post.category_id=category
+            $rootScope.editable_post.category_id=category
 
 
-            var postdata = $scope.editable_post;
+            var postdata = $rootScope.editable_post;
             console.log('in update dataaaaa',postdata);
             categories.updatedpost(postdata).then(function(data){
                 console.log('in update al post lma da5lt anadi 3la method al factory w geet')
@@ -302,12 +340,13 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         categories.editEvent(editable).then(function(data){
 
             $rootScope.editable_event=data
-            $scope.editable_event.time_from =new Date(data.time_from)
-            $scope.editable_event.time_to =new Date(data.time_to)
+            var store= localStorage.setItem("event", JSON.stringify(data))
+            $rootScope.editable_event.time_from =new Date(data.time_from)
+            $rootScope.editable_event.time_to =new Date(data.time_to)
             // $scope.editable_event.time_from = new Time(data.time_from)
             // $scope.editable_event.time_to = new Time(data.time_to)
-            $scope.editable_event.date_from = new Date(data.date_from)
-            $scope.editable_event.date_to = new Date(data.date_to)
+            $rootScope.editable_event.date_from = new Date(data.date_from)
+            $rootScope.editable_event.date_to = new Date(data.date_to)
 
             console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_event)
             $location.url('/category/'+cat_id+'/events/'+event_id+'/editevent')
@@ -323,6 +362,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         categories.deleteEvent(editable).then(function(data){
             $rootScope.event_id=data
             console.log('7asl al deleteeeeeee',$rootScope.event_id)
+
             // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
         } , function(err){
             console.log(err);
@@ -336,10 +376,10 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
             var category= $routeParams['category_id'];
             var mentor_id= $rootScope.cur_user.id;
             console.log('hhhhhhhhhhhhhhhh')
-            $scope.editable_event.category_id=category
+            $rootScope.editable_event.category_id=category
 
 
-            var eventdata = $scope.editable_event;
+            var eventdata = $rootScope.editable_event;
             console.log('in update dataaaaa cat',eventdata.category_id);
             console.log('in update dataaaaa eve ',eventdata.id);
             categories.updatedevent(eventdata).then(function(data){
@@ -475,13 +515,23 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     categories.getCategoryPost($scope.post_id).then(function (data) {
         // console.log("inside controller" , data)
         $rootScope.category_post = data.post;
+				  $rootScope.type=data.post.media_type;
+					console.log("type", $rootScope.type)
+				// 	if( $rootScope.type =="video/mp4" ||$rootScope.type =="video/Avi"){
+				// 		$rootScope.mediaType ="video"
+				// 	}
+				// 	else if ($rootScope.type="image/jpg"||rootScope.type="image/jpeg"||rootScope.type="image/png") {
+        //  $rootScope.mediaType ="image"
+				// 	}
+					// video/mp4
         $rootScope.category_post_like_count = data.countlike;
-		$rootScope.comments = data.comments;
+        $rootScope.comments = data.comments;
 
 
     }, function (err) {
         console.log(err);
     });
+
 
 
 // subscribe in category
@@ -615,6 +665,12 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     if(localStorage.getItem("wiziq_presenter_url")){
         $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
     }
+
+
+		// $scope.pauseOrPlay = function(ele){
+	  //           var video = angular.element(ele.srcElement);
+	  //            video[0].pause(); // video.play()
+	  //   }
 
 
 });

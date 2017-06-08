@@ -18,13 +18,13 @@ class CompetitionsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function __construct(CompetitionService $service) {
-        //use middleware  
+        //use middleware
         $this->service = $service;
     }
 
     public function index() {
 
-        $data = Competition::all();
+        $data = Competition::all(); 
         return response()->json(['status' => 'ok', 'message' => 'Competitions retrieved successfully', 'data' => $data], 201);
     }
 
@@ -91,7 +91,7 @@ class CompetitionsController extends Controller {
         try {
             $competitionDetails = Competition::where('mentor_id',$user->id)->findOrFail($id);
             //dd($competitionDetails);
-            
+
             } catch (ModelNotFoundException $e) {
             $code = $e->getCode();
             $SQLmessage = $e->getMessage();
@@ -111,7 +111,7 @@ class CompetitionsController extends Controller {
       $user = JWTAuth::parseToken()->toUser();
        try {
             $competitionDetails = Competition::where('mentor_id',$user->id)->findOrFail($id);
-            //dd($competitionDetails);       
+            //dd($competitionDetails);
             } catch (ModelNotFoundException $e) {
             $code = $e->getCode();
             $SQLmessage = $e->getMessage();
@@ -119,7 +119,7 @@ class CompetitionsController extends Controller {
         }
         $response = $this->service->deleteCompetition($competitionDetails);
         return $response;
-  
+
     }
 
 }
