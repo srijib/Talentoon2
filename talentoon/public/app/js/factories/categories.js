@@ -615,14 +615,14 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },
 
-        isWorkshopCraetor: function (data) {
+        isWorkshopCreator: function (data) {
             //  var category_id= index;
             // // console.log("category_id",category_id)
             // console.log("workshop id", id)
             var def = $q.defer();
             console.log("data",data)
             $http({
-                url: 'http://localhost:8000/api/isWorkshopCraetor',
+                url: 'http://localhost:8000/api/isWorkshopCreator',
                 method: 'POST',
                 data: data
             }).then(function (res) {

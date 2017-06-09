@@ -24,7 +24,7 @@ class CategoryCompetitionController extends Controller {
     }
 
     public function index($id) {
-        $data = Competition::where('category_id', $id)->get();
+        $data = Competition::where('category_id', $id)->orderBy('competition_end_date', 'DESC')->get();
         //join users (retrieve first name+lastname+image /return competitions*) + add image column to the compeition
         return response()->json(['status' => 'ok', 'message' => 'Competitions under category ' . $id . ' retrieved successfully', 'data' => $data], 201);
     }

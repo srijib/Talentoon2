@@ -17,7 +17,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     $rootScope.event_id = $routeParams['event_id'];
     $scope.post_id = $routeParams['post_id'];
 
-
 	categories.getUserRoles($scope.cat_id).then(function (data) {
 		console.log("ROLESSSSS FROM CONTROLLER", data)
 		if(data.is_sub.length){
@@ -165,14 +164,14 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     //
     // });
 
-    $scope.isWorkshopCraetor = function (workshop_id) {
+    $scope.isWorkshopCreator = function (workshop_id) {
     	console.log('hnaaa al id bta3 al workshop',workshop_id);
     	var user_id=$rootScope.cur_user.id;
         //$rootScope.cur_user['id']
         console.log('hnaaa al id bta3 al user workshop',$rootScope.cur_user.id);
         var data_ws={user_id,workshop_id};
         console.log('hnaaa al data workshop',data_ws);
-        categories.isWorkshopCraetor(data_ws).then(function(data){
+        categories.isWorkshopCreator(data_ws).then(function(data){
 			console.log('yess al data waslt',data)
             $rootScope.isCreator=data.creator;
 			console.log($rootScope.isCreator)
