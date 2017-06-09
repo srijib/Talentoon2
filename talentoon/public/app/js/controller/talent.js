@@ -1,5 +1,5 @@
 angular.module('myApp').controller("talents",function($scope,$http,categories,$routeParams,$rootScope,$timeout){
-	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+	// $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 
   var reviewfilesuploaded = []
   var talent = {}

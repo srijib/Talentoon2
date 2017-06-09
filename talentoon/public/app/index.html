@@ -77,29 +77,29 @@
 	<link rel="stylesheet" href="css/createPost.css">
 	<link rel="stylesheet" href="css/posts.css">
 	<link rel="stylesheet" href="css/createCompetition.css">
-	<link rel="stylesheet" href="css/allCompetition.css">
+	<link rel="stylesheet" href="css/allCompetiton.css">
 	<link rel="stylesheet" href="css/prizes.css">
 	<link rel="stylesheet" href="css/singleCompetition.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
-	<script>
-        var OneSignal = window.OneSignal || [];
-        OneSignal.push(["init", {
-            appId: "5e0081b4-a54d-46be-b6bb-a42fa5af576b",
-            autoRegister: false, /* Set to true to automatically prompt visitors */
-            subdomainName: 'simona',
-			/*
-			 subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN
-			 */
-            httpPermissionRequest: {
-                enable: true
-            },
-            notifyButton: {
-                enable: true /* Set to false to hide */
-            }
-        }]);
-	</script>
+	<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>-->
+	<!--<script>-->
+        <!--var OneSignal = window.OneSignal || [];-->
+        <!--OneSignal.push(["init", {-->
+            <!--appId: "5e0081b4-a54d-46be-b6bb-a42fa5af576b",-->
+            <!--autoRegister: false, /* Set to true to automatically prompt visitors */-->
+            <!--subdomainName: 'simona',-->
+			<!--/*-->
+			 <!--subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN-->
+			 <!--*/-->
+            <!--httpPermissionRequest: {-->
+                <!--enable: true-->
+            <!--},-->
+            <!--notifyButton: {-->
+                <!--enable: true /* Set to false to hide */-->
+            <!--}-->
+        <!--}]);-->
+	<!--</script>-->
 
 </head>
 <body>
@@ -181,7 +181,7 @@
 	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://localhost:8000/{{cur_user.image}}" alt=""><span class="caret"></span></a>
 	                                <ul class="dropdown-menu">
 	                                    <li><a href="#!/myprofile">{{'NAVBAR.PROFILE' | translate}}</a></li>
-	                                    <li><a ng-controller="userprofile" ng-click="editprofile()">{{'NAVBAR.SETTINGS' | translate}}</a></li>
+	                                    <li><a href="#!/editprofile">{{'NAVBAR.SETTINGS' | translate}}</a></li>
 	                                    <li role="separator" class="divider"></li>
 	                                    <li><a ng-click="logoutFn()">{{'NAVBAR.LOGOUT' | translate}}</a></li>
 	                                </ul>

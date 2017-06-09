@@ -1,6 +1,5 @@
 angular.module('myApp').controller("posts",function($location,$route,categories,$scope,$http,posts,$rootScope,$q){
 
-
     posts.getSubscribePosts().then(function (data) {
         $scope.posts = data.posts;
         console.log("data posts",data );

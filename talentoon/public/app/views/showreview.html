@@ -4,40 +4,99 @@
     }
 </style>
 
-<br>
- <div class="container">
-     <h1>Show Review</h1>
-  <div ng-repeat="initial_post in all_initial_posts track by $index">
-    <div class="thumbnail">
-        <img src="{{initial_post.review_media_url}}" class="img-circle" style="  height: 80px;"/>
-        <p>from when: {{initial_post.from_when}}</p>
-        <p>category title: {{initial_post.category_title}}</p>
-        <p>description: {{initial_post.description}}</p>
-        <p>created_at: {{initial_post.created_at}}</p>
-        <p>first_name: {{initial_post.first_name}}</p>
-        <input type="hidden" ng-model="initial_post.category_id" value="{{initial_post.category_id}}">
-        <input type="hidden" ng-model="initial_post.talent_id" value="{{initial_post.talent_id}}">
-    </div>
-    <form ng-submit="review($index)" name="review_form_{{$index}}"  novalidate>
-        <div class="field">
-              <label>Level</label>
-              <select name="level_{{$index}}" ng-model="initial_post.rev.level_single">
-                    <option value="1">Level 1</option>
-                    <option value="2">Level 2</option>
-                    <option value="3">Level 3</option>
-                    <option value="4">Level 4</option>
-                    <option value="5">Level 5</option>
-                    <option value="6">Level 6</option>
-                    <option value="7">Level 7</option>
-                    <option value="8">Level 8</option>
-                    <option value="9">Level 9</option>
-                    <option value="10">Level 10</option>
-              </select>
-              <label>Comment</label>
-              <textarea name="comment_{{$index}}" rows="4" cols="40" ng-model="initial_post.rev.comment"></textarea>
-        </div>
-        <button type="submit" name="button_{{$index}}">add review</button>
-    </form>
-  </div>
 
+
+<div class="container">
+    <div class="row">
+        <div class="showPosts col-md-12" >
+            <div class="recentPosts imageArticle" ng-repeat="initial_post in all_initial_posts track by $index">
+                <div class="userInfos">
+                    <!--user image comes here-->
+                    <img src="http://localhost:8000/{{initial_post.image}}" alt="">
+                    <span ng-if ='initial_post.id != cur_user.id'>
+                        <a href="#!/profile/{{initial_post.id}}"><span>{{initial_post.first_name}} {{initial_post.last_name}}</span></a>
+                        </span>
+                    <span ng-if ='initial_post.id == cur_user.id'>
+                        <a href="#!/myprofile"><span>{{initial_post.first_name}} {{initial_post.last_name}}</span></a>
+                        </span>
+                    <span>{{initial_post.created_at}}</span>
+                </div>
+
+
+
+
+
+                <div class="jumbotron">
+                    <h3>Some Information about this Piece of work</h3>
+                        <div class="conatinerComment">
+                            <div class="largePic">
+                                <!-- IF IMAGE -->
+                                <center>
+                                    <IMAGE ng-if="initial_post.review_media_type == 'image/jpeg'" >
+                                        <img  style="width: 490px;" src="http://localhost:8000/{{initial_post.review_media_url}}" alt="">
+                                    </IMAGE>
+                                    <!-- IF VEDIO -->
+                                    <VIDEO ng-if="initial_post.review_media_type == 'video'">
+                                        <video controls><source src="http://localhost:8000/{{initial_post.review_media_url}}"></video>
+                                    </VIDEO>
+                                    <!-- IF AUDIO -->
+                                    <AUDIO ng-if="initial_post.review_media_type == 'audio'">
+                                        <img src="Imgs/Website/5536c78cccd436f31c8c66732cee72d2.jpg" alt="">
+                                    </AUDIO>
+                                </center>
+                            </div>
+                    </div>
+                    <div class="disc">
+                        <AUDIO ng-if="initial_post.media_type == 'audio'">
+                            <audio controls> <source src="http://localhost:8000/{{initial_post.review_media_url}}"></audio>
+                        </AUDIO>
+                        <p>{{initial_post.description}}</p>
+
+                        <p>from when: {{initial_post.from_when}}</p>
+                        <p>category title: {{initial_post.category_title}}</p>
+                        <p>description: {{initial_post.description}}</p>
+                        <p>created_at: {{initial_post.created_at}}</p>
+                        <p>first_name: {{initial_post.first_name}}</p>
+
+                        <input type="hidden" ng-model="initial_post.category_id" value="{{initial_post.category_id}}">
+                        <input type="hidden" ng-model="initial_post.talent_id" value="{{initial_post.talent_id}}">
+
+                    </div>
+
+
+
+                    <div class="UserComments">
+                        <div class="writePost">
+
+                            <form ng-submit="review($index)" name="review_form_{{$index}}"  novalidate>
+                                <div class="field">
+                                    <label>I Give This Work Level</label>
+                                    <select name="level_{{$index}}" ng-model="initial_post.rev.level_single" required>
+                                        <option value="1">Level 1</option>
+                                        <option value="2">Level 2</option>
+                                        <option value="3">Level 3</option>
+                                        <option value="4">Level 4</option>
+                                        <option value="5">Level 5</option>
+                                        <option value="6">Level 6</option>
+                                        <option value="7">Level 7</option>
+                                        <option value="8">Level 8</option>
+                                        <option value="9">Level 9</option>
+                                        <option value="10">Level 10</option>
+                                    </select>
+
+                                    <br/>
+                                    <textarea class="form-control" name="comment_{{$index}}" rows="3" ng-model="initial_post.rev.comment" required></textarea>
+                                </div>
+                                <div class="posting">
+                                    <button style="width: 170px;" type="submit" class="btn btn-default" name="button_{{$index}}">Add Initial Review</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 </div>

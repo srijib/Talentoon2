@@ -1,10 +1,5 @@
 angular.module('myApp').controller("userprofile", function (categories,$scope, $http, user, $rootScope, $route,$routeParams,$location) {
 
-    $rootScope.userupdate=JSON.parse(localStorage.getItem("cur_user"));;
-    $rootScope.fname= $rootScope.userupdate.first_name;
-    $rootScope.lname=$rootScope.userupdate.last_name;
-
-
   user.userprofile().then(function(data){
       $scope.userprofile=data.data;
       $scope.user_points_from_mentors_reviews = $scope.userprofile.points_number;
@@ -42,6 +37,17 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
     console.log(err);
 
   });
+    user.editprofile($rootScope.cur_user.id).then(function(data){
+        console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
+        $rootScope.cur_user=data;
+        var dob=$rootScope.cur_user.date_of_birth;
+        $rootScope.cur_user.date_of_birth=new Date(dob);
+        $rootScope.fname= $rootScope.cur_user.first_name;
+        $rootScope.lname=$rootScope.cur_user.last_name;
+    } , function(err){
+        console.log(err);
+
+    });
   // user.displayShared().then(function(data){
   //    console.log("shares",data.data.shares);
   //   //  $scope.allPosts = data.data.shares.concat($scope.userposts);
@@ -101,8 +107,8 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
       } , function(err){
           console.log(err);
 
-      });
 
+      });
   }
 
 
@@ -156,12 +162,39 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
 
       }
   }
-  $scope.follow = function(following_id) {
 
 
     //edit user profile function
 
+    // $scope.editprofile=function () {
+    //     console.log($rootScope.cur_user.id);
+    //     user.editprofile($rootScope.cur_user.id).then(function(data){
+    //         console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
+    //     $rootScope.cur_user=data;
+    //     var dob=$rootScope.cur_user.date_of_birth;
+    //     $rootScope.cur_user.date_of_birth=new Date(dob);
+    //     // $rootScope.cur_user.date_of_birth=new Date(data.date_of_birth)
+    //     $location.url('/editprofile');
+    //     $rootScope.fname= $rootScope.cur_user.first_name;
+    //     $rootScope.lname=$rootScope.cur_user.last_name;
+    //     } , function(err){
+    //         console.log(err);
+    //
+    //     });
+    //
+    // }
 
+    user.getAllCountry().then(function (data) {
+        //console.log("countries:", data);
+        $rootScope.countries_edit_user = data;
+        console.log("countries", $scope.countries);
+    }, function (err) {
+        console.log(err);
+
+    });
+
+
+$scope.follow = function(following_id) {
 
   var obj={following_id}
   console.log(obj);

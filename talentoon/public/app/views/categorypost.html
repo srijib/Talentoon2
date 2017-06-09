@@ -4,8 +4,24 @@
     <div class="row">
 
             <div class="thumbnail">
-
+   <div ng-if="type == 'image'">
                 <img src="http://localhost:8000/{{category_post.media_url}}" style=" height:200px">
+              </div>
+              <div ng-if="type == 'video'">
+
+               <video  width="320" height="240" controls  preload="auto">
+
+              <source src="http://localhost:8000/{{category_post.media_url}}"  />
+           </video>
+
+              </div>
+                <div ng-if="type == 'audio'">
+              <audio controls>
+
+ <source src="http://localhost:8000/{{category_post.media_url}}" />
+
+</audio>
+    </div>
                 <div class="caption">
                   <h4 style="color:Purple ">Title: {{category_post.title}}</h4>
                   <h4 style="color:Purple ">Description: {{category_post.description}}</h4>

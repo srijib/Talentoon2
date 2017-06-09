@@ -39,9 +39,9 @@ public function __construct(){
     }
     //by clicking on the event a page is opened to see it's contents
     public function show($cat_id, $event_id){
-        return response()->json(['eventttttttttttttt' => $event_id]);
+//        return response()->json(['eventttttttttttttt' => $event_id]);
         $new_event= new EventService();
-        $data = $new_event->show_event($event_id);
+        $data = $new_event->show_event($cat_id,$event_id);
         return $data;
     }
 

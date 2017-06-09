@@ -50,17 +50,45 @@
       <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in categoryPosts | limitTo:3 track by $index">
         <div class="thumbnail" data-toggle="modal" data-target="#po{{post.id}}">
           <!-- defaultimg-->
+
           <div class="row defaultimg">
+
+         <div ng-if="post.media_type == 'image'">
+
             <img class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
+          </div>
+
+          <div ng-if="post.media_type == 'video' ">
+
+           <video  style="height: 242px;" controls  preload="auto">
+
+          <source src="http://localhost:8000/{{post.media_url}}"  />
+       </video>
+
+          </div>
+            <div ng-if="post.media_type == 'audio'">
+              <img src="http://localhost:8000/uploads/events/2.jpg" alt="">
+                <p style="font-size:15px">{{post.title}}</p>
+          <audio controls style="width: 348px;">
+
+<source src="http://localhost:8000/{{post.media_url}}" >
+
+</audio>
+<div class="caption row">
+<p>{{post.description}}</p>
+<p>{{post.created_at}}</p>
+</div>
+</div>
           </div>
           <!-- end defaultimg-->
           <!-- caption-->
+            <div ng-if="post.media_type == 'video'||post.media_type == 'image'">
           <div class="caption row">
             <p>{{post.title}}</p>
             <p>{{post.description}}</p>
             <p>{{post.created_at}}</p>
           </div>
-
+</div>
           <!-- user-->
 
 
@@ -160,7 +188,28 @@
                   <div class="thumbnail">
                     <!-- defaultimg-->
                     <div class="row  popdefaultimg">
-                      <img src="http://localhost:8000/{{post.media_url}}" alt="">
+
+                      <div ng-if="post.media_type == 'image'">
+
+                         <img src="http://localhost:8000/{{post.media_url}}" alt="">
+                       </div>
+
+                       <div ng-if="post.media_type == 'video' ">
+
+                        <video controls  preload="auto" style="height: 242px;">
+
+                       <source src="http://localhost:8000/{{post.media_url}}"  />
+                    </video>
+
+                       </div>
+                         <div ng-if="post.media_type == 'audio'">
+                       <audio controls>
+
+                   <source src="http://localhost:8000/{{post.media_url}}" />
+
+                   </audio>
+                   </div>
+
                     </div>
                     <!-- end defaultimg-->
                     <!-- caption-->
@@ -320,7 +369,38 @@
         <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
           <div class="row evDefaultImg">
             <!--<h2>{{event.media_url}}</h2>-->
+            <div ng-if="event.media_type == 'image'">
             <img src="http://localhost:8000/{{event.media_url}}" alt="">
+            </div>
+            <div ng-if="event.media_type == 'video' ">
+
+             <video   controls  preload="auto" style="height: 242px;">
+
+            <source src="http://localhost:8000/{{event.media_url}}"  />
+         </video>
+
+            </div>
+              <div ng-if="event.media_type == 'audio'">
+            <audio controls>
+
+         <source src="http://localhost:8000/{{event.media_url}}" />
+
+         </audio>
+         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
           <!--    top event default image-->
 
@@ -428,7 +508,27 @@
               <div class="modal-body">
                 <div class="thumbnail">
                   <div class="row evDefaultImg">
+
+
+                    <div ng-if="event.media_type == 'image'">
                     <img src="http://localhost:8000/{{event.media_url}}" alt="">
+                    </div>
+                    <div ng-if="event.media_type == 'video' ">
+
+                     <video   controls  preload="auto">
+
+                    <source src="http://localhost:8000/{{event.media_url}}"  />
+                  </video>
+
+                    </div>
+                      <div ng-if="event.media_type == 'audio'">
+                    <audio controls>
+
+                  <source src="http://localhost:8000/{{event.media_url}}" />
+
+                  </audio>
+                  </div>
+
                   </div>
                   <!--    top event default image-->
 
@@ -599,7 +699,27 @@
       <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" ng-repeat="workshop in categoryWorkshops | limitTo:3 track by $index">
         <div class="thumbnail" data-toggle="modal" data-target="#ws{{workshop.id}}">
           <!--                    <img src="http://placehold.it/350x250">-->
-          <img src="http://localhost:8000/{{workshop.media_url}}">
+
+
+          <div ng-if="workshop.media_type == 'image'">
+          <img src="http://localhost:8000/{{workshop.media_url}}" alt="">
+          </div>
+          <div ng-if="workshop.media_type == 'video' ">
+
+           <video   controls  preload="auto" style="height: 242px;">
+
+          <source src="http://localhost:8000/{{workshop.media_url}}"  />
+        </video>
+
+          </div>
+            <div ng-if="workshop.media_type == 'audio'">
+          <audio controls>
+
+        <source src="http://localhost:8000/{{workshop.media_url}}" />
+
+        </audio>
+        </div>
+
           <h3 ng-click="isWorkshopCraetor(workshop.id);">{{workshop.name}}</h3>
           <div class="caption">
             <p>{{workshop.description}}</p>
@@ -648,7 +768,26 @@
               <div class="modal-body">
                 <div class="thumbnail">
                   <div class="row popWorkshopDefaultImg">
+
+                    <div ng-if="workshop.media_type == 'image'">
                     <img src="http://localhost:8000/{{workshop.media_url}}" alt="">
+                    </div>
+                    <div ng-if="workshop.media_type == 'video' ">
+
+                     <video   controls  preload="auto">
+
+                    <source src="http://localhost:8000/{{workshop.media_url}}"  />
+                  </video>
+
+                    </div>
+                      <div ng-if="workshop.media_type == 'audio'">
+                    <audio controls>
+
+                  <source src="http://localhost:8000/{{workshop.media_url}}" />
+
+                  </audio>
+                  </div>
+
                   </div>
                   <!--    top event default image-->
 
@@ -910,7 +1049,7 @@
           <!--
 -->
           <div class=" going">
-            <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Accept Challenge</a>
+            <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Challenge</a>
           </div>
 
         </div>

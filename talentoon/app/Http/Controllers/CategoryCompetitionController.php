@@ -58,7 +58,7 @@ class CategoryCompetitionController extends Controller {
      */
     public function show($category_id, $competition_id) {
         try {
-            $competitionDetails = Competition::where('category_id', $category_id)->findOrFail($competition_id);
+            // $competitionDetails = Competition::where('category_id', $category_id)->findOrFail($competition_id);
             $competitionDetails = DB::table('competitions')
                 ->join('users', 'users.id', '=', 'competitions.mentor_id')
                 ->select('competitions.*','users.first_name', 'users.last_name', 'users.image as mentor_image')

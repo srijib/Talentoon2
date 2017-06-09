@@ -1,8 +1,19 @@
 angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location,$route) {
 
+    user.get_cur_user().then(function(data){
+		console.log('currrr usssserrrrr',data);
+		$rootScope.cur_user=data.cur_user;
+        $rootScope.fname= $rootScope.cur_user.first_name;
+        $rootScope.lname=$rootScope.cur_user.last_name;
+        var dob=$rootScope.cur_user.date_of_birth;
+        $rootScope.cur_user.date_of_birth=new Date(dob);
+	}, function (err) {
+        console.log(err);
+    });
+
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
-	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
-    
+	// $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+
     $scope.lang=function(lang){
         if (lang == "ar") {
             localStorage.setItem('language', 'ar');
@@ -27,7 +38,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             user.login(userdata).then(function (data) {
                 console.log("dataaaaa minA",data.status);
                 if (data.status == 'ok') {
-                    localStorage.setItem('cur_user', JSON.stringify(data.user));
+                    // localStorage.setItem('cur_user', JSON.stringify(data.user));
                     localStorage.setItem('token', JSON.stringify(data.token));
                     $location.url('/');
                     $route.reload();
