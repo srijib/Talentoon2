@@ -88,18 +88,30 @@ class UploadController extends Controller
             // $post->media_type = $_FILES['file']['type'];
             //
             // $post->save();
+
+//-----------------------------
+$post = DB::table('posts')
+->where('id', '=', $id)
+->first();
+$type=substr($_FILES['file']['type'], 0, 5);
+// 'media_type'=>$_FILES['file']['type']
+if (is_null($post)) {
+    $update=Post::create($request->all());}
+    else{
+      $update=DB::table('posts')->where('id',$id)->update(['media_url' => 'uploads/files/'.$_FILES['file']['name']
+,'media_type'=>$type
+      ]);
+
+    }
+// $post = Post::find($id)->
+//     where('posts.id',$id-1)->delete();
+  $post = Post::find($id-1)->delete();
+
+
             //-----------------------------
-            $post = DB::table('posts')
-            ->where('id', '=', $id)
-            ->first();
-            if (is_null($post)) {
-                $update=Post::create($request->all());}
-                else{
-                  $update=DB::table('posts')->where('id',$id)->update(['media_url' => 'uploads/files/'.$_FILES['file']['name']
-            ,'media_type'=>$_FILES['file']['type']
-                  ]);
-                }
-            $post = Post::find($id-1)->delete();
+
+
+
 
 
             //-----------------------------------

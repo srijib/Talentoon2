@@ -1,9 +1,4 @@
-angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
-
-	$rootScope.token = JSON.parse(localStorage.getItem("token"));
-	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
-	console.log("category controller current user",$rootScope.cur_user);
-	console.log("category controller token",$rootScope.token);
+angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,user,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
 
     // $rootScope.editable_workshop=JSON.parse(localStorage.getItem("workshop"));;
     // $rootScope.editable_event=JSON.parse(localStorage.getItem("event"));;
@@ -16,8 +11,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     var reviewfilesuploaded = []
     var talent = {}
     var mentor = {}
-    var user_id = $rootScope.cur_user.id;
-
 
     $rootScope.cat_id = $routeParams['category_id'];
     $rootScope.workshop_id = $routeParams['workshop_id'];
@@ -29,11 +22,11 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     console.log('event id',$rootScope.event_id );
     console.log('post id',$rootScope.post_id);
 
-
-
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
         $scope.categoryPosts = data.posts;
+
+				console.log("type",$rootScope.type);
 		$scope.comments=data.comments
 		console.log("commm",$scope.comments);
 
@@ -49,7 +42,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
             $scope.is_mentor = data.is_mentor[0].status;
         }
 
-		console.log('$scope.is_subscribed',data.is_mentor.length);
         $scope.categoryEvents = data.events;
         console.log( data.events,"<<<<events")
         $scope.categoryWorkshops = data.workshops;
@@ -102,19 +94,22 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // }, function (err) {
     //     console.log(err);
     // });
-    categories.getCategoryWorkshop($scope.workshop_id).then(function (data) {
-        console.log("inside controller", data)
-        $rootScope.category_workshop = data.workshop;
-        $rootScope.userId = data.user.id;
-        $rootScope.enroll = data.enroll;
-        $rootScope.media = data.session;
+	if ($rootScope.workshop_id) {
+		categories.getCategoryWorkshop($rootScope.workshop_id).then(function (data) {
+	        console.log("inside controller", data)
+	        $rootScope.category_workshop = data.workshop;
+	        $rootScope.userId = data.user.id;
+	        $rootScope.enroll = data.enroll;
+	        $rootScope.media = data.session;
 
-        // $rootScope.category_post = localStorage.getItem("data");
-        console.log("single workshop from controller", $rootScope.category_workshop);
+	        // $rootScope.category_post = localStorage.getItem("data");
+	        console.log("single workshop from controller", $rootScope.category_workshop);
 
-    }, function (err) {
-        console.log(err);
-    });
+	    }, function (err) {
+	        console.log(err);
+	    });
+	}
+
     //---------------------- FOR REFRESHING BUG---------------------------------
     categories.getCategoryWorkshopEdit($rootScope.cat_id,$rootScope.workshop_id).then(function (data) {
 
@@ -162,7 +157,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // });
 
     // categories.getCategoryEvents($scope.cat_id).then(function (data) {
-    //     var user_id = 1;
     //     $rootScope.events = data;
     //     console.log("EVENTSSSSSS",$rootScope.events);
     // }, function (err) {
@@ -473,7 +467,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 //---------------------------------------------------------------
     //get 3  posts under category
     // $scope.allposts = function() {
-    // var user_id = 1;
     // categories.getCategoryPost($scope.cat_id).then(function (data) {
     //     // console.log("inside controller" , data)
     //     $scope.category_posts = data;
@@ -488,7 +481,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 //when click on show all posts
     // $scope.allposts = function () {
 	//
-    //     var user_id = 1;
     //     categories.getCategoryPosts($scope.cat_id).then(function (data) {
     //         $rootScope.categoryPosts = data;
 	// 		console.log('allllllllll ya mina');
@@ -501,7 +493,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // }
 //--------------------------------------------------------------
 
-    // var user_id = 1;
     // categories.getCategoryPosts($scope.cat_id).then(function (data) {
     //     $rootScope.category3Posts = data;
 	// 	console.log("user from esraaa to minaaaaaa" , data)
@@ -513,26 +504,28 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 //----------------------------single----post---------------------------------------
     $scope.post_id = $routeParams['post_id'];
-    var user_id = 1;
-    categories.getCategoryPost($scope.post_id).then(function (data) {
-        // console.log("inside controller" , data)
-        $rootScope.category_post = data.post;
-				  $rootScope.type=data.post.media_type;
-					console.log("type", $rootScope.type)
-				// 	if( $rootScope.type =="video/mp4" ||$rootScope.type =="video/Avi"){
-				// 		$rootScope.mediaType ="video"
-				// 	}
-				// 	else if ($rootScope.type="image/jpg"||rootScope.type="image/jpeg"||rootScope.type="image/png") {
-        //  $rootScope.mediaType ="image"
-				// 	}
-					// video/mp4
-        $rootScope.category_post_like_count = data.countlike;
-        $rootScope.comments = data.comments;
+	if ($scope.post_id) {
+		categories.getCategoryPost($scope.post_id).then(function (data) {
+	        // console.log("inside controller" , data)
+	        $rootScope.category_post = data.post;
+					  $rootScope.type=data.post.media_type;
+						console.log("type", $rootScope.type)
+					// 	if( $rootScope.type =="video/mp4" ||$rootScope.type =="video/Avi"){
+					// 		$rootScope.mediaType ="video"
+					// 	}
+					// 	else if ($rootScope.type="image/jpg"||rootScope.type="image/jpeg"||rootScope.type="image/png") {
+	        //  $rootScope.mediaType ="image"
+					// 	}
+						// video/mp4
+	        $rootScope.category_post_like_count = data.countlike;
+	        $rootScope.comments = data.comments;
 
 
-    }, function (err) {
-        console.log(err);
-    });
+	    }, function (err) {
+	        console.log(err);
+	    });
+	}
+
 
 
 
@@ -623,7 +616,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
     // $scope.allworkshops = function () {
 	//
-    //     var user_id = 1;
     //     categories.getCategoryWorkshops($scope.cat_id).then(function (data) {
     //         $rootScope.categoryWorkshops = data;
 	//
@@ -669,10 +661,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     }
 
 
-		// $scope.pauseOrPlay = function(ele){
-	  //           var video = angular.element(ele.srcElement);
-	  //            video[0].pause(); // video.play()
-	  //   }
+
 
 
 });

@@ -28,8 +28,9 @@ class CompetitionPostController extends Controller {
 
         $data= DB::table('competitions_posts')
             ->join('users', 'users.id', '=', 'competitions_posts.talent_id')
-            ->select('competitions_posts.*','users.first_name', 'users.last_name', 'users.image as user_image')
-            ->where('competition_id','=',$competition_id)
+            ->leftjoin('competition_post_points', 'competition_post_points.competition_post_id', '=', 'competitions_posts.id')
+            ->select('competitions_posts.*','users.first_name', 'users.last_name', 'users.image as user_image','competition_post_points.is_voted')
+            ->where('competitions_posts.competition_id','=',$competition_id)
             ->get();
 
         // $data = CompetitionPost::where('competition_id', $competition_id)->get();

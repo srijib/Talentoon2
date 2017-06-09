@@ -102,6 +102,7 @@ Route::get('/userprofile',[
 
     //ask nahala to add middleware
 Route::get('/editprofile','UserProfile@edit');
+Route::get('/userprofile/cur_user','UserProfile@cur_user');
 Route::put('/updateprofile','UserProfile@update');
 Route::post('/checkpassword','UserProfile@checkpassword');
 

@@ -40,6 +40,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
                 }
             }, function (err) {
                 console.log(err);
+                alert("server error ")
             });
             return def.promise;
         },
@@ -272,7 +273,28 @@ angular.module('myApp').factory("user", function ($http, $q) {
         })
         return def.promise ;
 
-      }
+    },
+      get_cur_user:function(){
+        var def =$q.defer();
+        $http({
+          url:'http://localhost:8000/api/userprofile/cur_user',
+          method:'GET',
+        }).then(function(res){
+          console.log("res from unfollow",res);
+          if(res.data){
+            console.log(res.data);
+           def.resolve(res.data);
+
+          }else{
+            def.reject('there is no data ')
+          }
+
+        },function(err){
+          def.reject(err);
+        })
+        return def.promise ;
+
+    },
 
     };
 });

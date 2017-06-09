@@ -1,17 +1,14 @@
-angular.module('myApp').controller("showreview", function($rootScope,$scope, $http,showreview, $routeParams,$route) {
+angular.module('myApp').controller("showreview", function($timeout,$rootScope,$scope, $http,showreview, $routeParams,$route) {
 
-    $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
-
-    var mentor_id=$rootScope.cur_user.id;
-
-    showreview.getAllInitialPosts(mentor_id).then(function(data){
-
-        console.log("data Mina",data);
-        $rootScope.all_initial_posts=data;
-    } , function(err){
-        console.log(err);
-
-    });
+    // $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+    $timeout(function () {
+        var mentor_id=$rootScope.cur_user.id;
+        showreview.getAllInitialPosts(mentor_id).then(function(data){
+            $rootScope.all_initial_posts=data;
+        } , function(err){
+            console.log(err);
+        });
+    }, 10);
 
     $scope.rev={}
 

@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row infoName">
         <div class="userInfos">
-            <img src="http://localhost:8000/{{userupdate.image}}" alt="">
+            <img src="http://localhost:8000/{{cur_user.image}}" alt="">
             <span>{{fname}} {{lname}}</span>
         </div>
     </div>
@@ -19,20 +19,20 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 basicInfo">
             <h5>Your Basic Info</h5>
-            <input type="text" name="firstname" ng-model="userupdate.first_name" class="form-control col-lg-6 col-sm-6" id="formGroupExampleInput"  value="{{userupdate.first_name}}" required>
+            <input type="text" name="firstname" ng-model="cur_user.first_name" class="form-control col-lg-6 col-sm-6" id="formGroupExampleInput"  value="{{cur_user.first_name}}" required>
                 <br>
             <p class="error" ng-if="submitted && editform.firstname.$error.required" >please enter your user first name</p>
-            <input name="lastname" class="form-control" ng-model="userupdate.last_name" type="text"  placeholder="LastName" id="example-name-input" value="{{userupdate.last_name}}" required>
+            <input name="lastname" class="form-control" ng-model="cur_user.last_name" type="text"  placeholder="LastName" id="example-name-input" value="{{cur_user.last_name}}" required>
                 <p class="error" ng-if="submitted && editform.lastname.$error.required" >please enter your last name</p>
-            <input name="email" class="form-control"  ng-model="userupdate.email" type="Email"  placeholder="Email" id="example-email-input" value="{{userupdate.email}}" required>
+            <input name="email" class="form-control"  ng-model="cur_user.email" type="Email"  placeholder="Email" id="example-email-input" value="{{cur_user.email}}" required>
                 <p class="error" ng-if="submitted && editform.email.$error.required" >please enter your email</p>
                 <p class="error" ng-if="submitted && editform.email.$error.email"> please enter valid email</p>
             <div class="changepass">
                 <h6>Change Password</h6>
-                <input name="userpassword" ng-model="userupdate.userpassword" class="form-control"  type="password" id="example-password-input" placeholder="Old Password">
-                <!--<p class="error" ng-if="submitted && editform.password != {{userupdate}}" >please enter your last name</p>-->
-                <input name="newpassword" class="form-control" ng-model="userupdate.newpassword" type="password" id="example-newpassword-input" placeholder="Password">
-                <input name="repassword" class="form-control" ng-model="userupdate.repassword" type="password"  id="example-repassword-input" placeholder="Repeat Password">
+                <input name="userpassword" ng-model="cur_user.userpassword" class="form-control"  type="password" id="example-password-input" placeholder="Old Password">
+                <!--<p class="error" ng-if="submitted && editform.password != {{cur_user}}" >please enter your last name</p>-->
+                <input name="newpassword" class="form-control" ng-model="cur_user.newpassword" type="password" id="example-newpassword-input" placeholder="Password">
+                <input name="repassword" class="form-control" ng-model="cur_user.repassword" type="password"  id="example-repassword-input" placeholder="Repeat Password">
             </div>
 
             <!--<div class="done">-->
@@ -48,14 +48,14 @@
             <div class="editSelected">
                 <!--gender-->
                 <select class="custom-select">
-                    <option selected name="gender" ng-model="userupdate.gender">{{userupdate.gender}}</option>
+                    <option selected name="gender" ng-model="cur_user.gender">{{cur_user.gender}}</option>
                     <option value="1">Male</option>
                     <option value="2">Female</option>
                 </select>
 
                 <!--countries-->
                 <select class="custom-select">
-                    <option selected  name="country" ng-model="userupdate.country_name">{{userupdate.country_name}}</option>
+                    <option selected  name="country" ng-model="cur_user.country_name">{{cur_user.country_name}}</option>
                     <option value="{{country.id}}" ng-repeat="country in countries_edit_user track by $index">{{country.name}}</option>
                 </select>
 
@@ -68,9 +68,9 @@
 
             </div>
 
-            <input name="dob" ng-model="userupdate.date_of_birth" class="form-control date" type="date"  id="example-date-input" value="{{userupdate.date_of_birth}}">
+            <input name="dob" ng-model="cur_user.date_of_birth" class="form-control date" type="date"  id="example-date-input" value="{{cur_user.date_of_birth}}">
 
-            <input name="phone" ng-model="userupdate.phone"class="form-control" type="tel" placeholder="Telephone" id="example-tel-input" value="{{userupdate.phone}}" required>
+            <input name="phone" ng-model="cur_user.phone"class="form-control" type="tel" placeholder="Telephone" id="example-tel-input" value="{{cur_user.phone}}" required>
                 <p class="error" ng-if="submitted && editform.phone.$error.required" >please enter your phone</p>
                 <p class="error" ng-show="submitted && editform.phone.$error.number" >please enter only number </p>
                 <p class="error" ng-show="editform.phone.$error.minlength" > phone number should be 11 digits </p>
