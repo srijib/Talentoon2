@@ -2,9 +2,16 @@
   <div class="row">
     <!-- Side Bar -->
     <div class="topPosts col-lg-4 col-lg-push-8 col-md-4 col-md-push-8 col-sm-4 col-sm-push-8 col-xs-12">
-      <a href="#!/category/{{category_id}}/addpost" class="btn btn-lg">
-        <i class="fa fa-paper-plane" aria-hidden="true"></i> New Post
-      </a>
+        <!-- <mentor ng-if="is_mentor == 1 || is_talent == 1">
+            <a href="#!/category/{{cat_id}}/addpost" class="btn btn-lg">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i> New Post
+            </a>
+        </mentor> -->
+        <mentor ng-if="is_mentor != 1 && is_talent != 1">
+            <button  class="btn btn-lg disabled" title="You have to be Mentor Or Talent in this category to add post">
+                <i class="fa fa-paper-plane "  aria-hidden="true"></i> New Post
+            </button>
+        </mentor>
       <h2>Top Posts</h2>
 
       <div class="top1 col-lg-10 col-md-10 col-sm-12">

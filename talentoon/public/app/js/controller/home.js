@@ -1,4 +1,4 @@
-angular.module('myApp').controller("homec",function(categories,$route,Home,$scope,$http,$routeParams,$rootScope,categories){
+angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$routeParams,$rootScope,categories,user){
 
 	Home.getTopPosts().then(function(data){
         console.log("el top posts ba2a",data);

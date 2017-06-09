@@ -1,7 +1,7 @@
-angular.module('myApp').controller("categories",function($location,$scope,$http,categories,$routeParams,$rootScope,$timeout,$q){
+angular.module('myApp').controller("categories",function($location,$scope,$http,user,categories,$routeParams,$rootScope,$timeout,$q){
 
-    $rootScope.token = JSON.parse(localStorage.getItem("token"));
-    $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+    // $rootScope.token = JSON.parse(localStorage.getItem("token"));
+    // $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
     console.log("category controller current user", $rootScope.cur_user);
 
     var filesuploaded = []
@@ -9,9 +9,6 @@ angular.module('myApp').controller("categories",function($location,$scope,$http,
     var reviewfilesuploaded = []
     var talent = {}
     var mentor = {}
-    var user_id = $rootScope.cur_user.id
-
-
 
 	$scope.cat_id= $routeParams['category_id'];
 

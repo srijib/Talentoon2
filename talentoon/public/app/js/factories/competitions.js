@@ -134,7 +134,47 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     getSingleCompetitionPosts:function(competition_id){
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/competitions/'+competition_id+'/posts/',
+        url:'http://localhost:8000/api/competitions/'+competition_id+'/posts',
+        method:'GET',
+      }).then(function(res){
+        console.log("resssssssssssssss",res);
+        if(res.data){
+          console.log(res.data);
+         def.resolve(res.data);
+
+        }else{
+          def.reject('there is no data ')
+        }
+
+      },function(err){
+        def.reject(err);
+      })
+      return def.promise ;
+    },
+    joinCompetition:function(competition_id){
+      var def =$q.defer();
+      $http({
+        url:'http://localhost:8000/api/competition/'+competition_id+'/join',
+        method:'GET',
+      }).then(function(res){
+        console.log("resssssssssssssss",res);
+        if(res.data){
+          console.log(res.data);
+         def.resolve(res.data);
+
+        }else{
+          def.reject('there is no data ')
+        }
+
+      },function(err){
+        def.reject(err);
+      })
+      return def.promise ;
+    },
+    vote:function(post_id){
+      var def =$q.defer();
+      $http({
+        url:'http://localhost:8000/api/competition/post/'+post_id+'/grantvote',
         method:'GET',
       }).then(function(res){
         console.log("resssssssssssssss",res);

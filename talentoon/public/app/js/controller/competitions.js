@@ -7,5 +7,13 @@ angular.module('myApp').controller("competitions",function($location,$route,Comp
         console.log(err);
     });
 
+    $scope.joinCompetition = function(category_id,competition_id){
+        Competitions.joinCompetition(competition_id).then(function (data) {
+            $location.url('/category/'+category_id+'/competitions/'+competition_id);
+            console.log(data);
+        }, function (err) {
+            console.log(err);
+        });
+    }
 
 });

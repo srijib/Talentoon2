@@ -17,6 +17,15 @@ use App\Models\Follow;
 
 class UserProfile extends Controller
 {
+    public function cur_user(){
+        $user= JWTAuth::parseToken()->toUser();
+        $talent_in = DB::table('category_talents')
+             ->where('talent_id', '=', $user->id)
+            ->select('category_id')
+             ->get();
+
+        return response()->json(['cur_user'=>$user,'talent_in'=>$talent_in]);
+    }
 
  public function index(Request $request){
 

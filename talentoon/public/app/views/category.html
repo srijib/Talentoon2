@@ -347,7 +347,12 @@
     </div>
     <div class="btnsOn">
       <a href="#!/category/{{cat_id}}/posts" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
-      <a href="#!/category/{{cat_id}}/addpost" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      <mentor ng-if="is_mentor == 1 || is_talent == 1">
+          <a href="#!/category/{{cat_id}}/addpost" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      </mentor>
+      <mentor ng-if="is_mentor != 1 && is_talent != 1">
+          <button class="btn btn-default disabled" title="You have to be Mentor Or Talent in this category to add post" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
+      </mentor>
     </div>
   </div>
 </div>
@@ -681,7 +686,12 @@
     </div>
     <div class="btnsOn">
       <a href="#!/category/{{cat_id}}/events" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
-      <a href="#!/category/{{cat_id}}/createEvent" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      <mentor ng-if="is_mentor == 1">
+          <a href="#!/category/{{cat_id}}/createEvent" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      </mentor>
+      <mentor ng-if="is_mentor != 1">
+          <button class="btn btn-default disabled" title="You have to be Mentor in this category to create an Event" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
+      </mentor>
     </div>
   </div>
 </div>
@@ -939,7 +949,12 @@
         </div>
         <div class="btnsOn">
           <a href="#!/category/{{cat_id}}/workshops" class="btn btn-default" role="button"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
-          <a href="#!/category/{{cat_id}}/addworkshop" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+          <mentor ng-if="is_mentor == 1">
+              <a href="#!/category/{{cat_id}}/addworkshop" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+          </mentor>
+          <mentor ng-if="is_mentor != 1">
+              <button class="btn btn-default disabled" title="You have to be Mentor in this category to create a workshop" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
+          </mentor>
         </div>
 
       </div>
@@ -1049,7 +1064,7 @@
           <!--
 -->
           <div class=" going">
-            <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Accept Challenge</a>
+            <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Challenge</a>
           </div>
 
         </div>
@@ -1060,7 +1075,12 @@
     </div>
     <div class="btnsOn">
       <a href="#!/category/{{cat_id}}/competitions" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
-      <a href="#!/category/{{cat_id}}/createcompetition" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      <mentor ng-if="is_mentor == 1">
+          <a href="#!/category/{{cat_id}}/createcompetition" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      </mentor>
+      <mentor ng-if="is_mentor != 1">
+          <button class="btn btn-default disabled" title="You have to be Mentor in this category to create a competition" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
+      </mentor>
     </div>
   </div>
 </div>
