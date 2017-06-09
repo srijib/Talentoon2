@@ -120,11 +120,13 @@ class CategoriesController extends Controller
             ->join('users', 'users.id', '=', 'workshops.mentor_id')
             ->select('workshops.*','users.first_name', 'users.last_name', 'users.image as user_image')
             ->where([['workshops.category_id','=',$cat_id],['workshops.is_approved','=',1]])
+            ->where('workshops.date_to','>=', date('Y-m-d').' 00:00:00')
             ->get();
         $events = DB::table('events')
             ->join('users', 'users.id', '=', 'events.mentor_id')
             ->select('events.*','users.first_name', 'users.last_name', 'users.image as user_image')
             ->where([['events.category_id','=',$cat_id],['events.is_approved','=',1]])
+            ->where('events.date_to','>=', date('Y-m-d').' 00:00:00')
             ->get();
             // return response()->json(['posts' => $posts,'status' => '1','message' => 'data sent successfully']);
             $comments = DB::table('comments')

@@ -21,7 +21,10 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     console.log('workshop id',$rootScope.workshop_id);
     console.log('event id',$rootScope.event_id );
     console.log('post id',$rootScope.post_id);
-
+    //check on event competiton workshop datefrom and date to
+    // categories.check_for_display().then(function (data) {
+    //     console.log('check for display');
+    // })
 	categories.getCategoryAllData($scope.cat_id).then(function (data) {
 		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
         $scope.categoryPosts = data.posts;

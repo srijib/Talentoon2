@@ -22,6 +22,7 @@ public function __construct(){
                 ->join('users', 'users.id', '=', 'events.mentor_id')
                 ->select('events.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
                 ->where('events.is_approved','=',1)
+                ->where('date_from','>=', date('Y-m-d').' 00:00:00')
                 ->get();
 
         return response()->json(['data'=>$data]);

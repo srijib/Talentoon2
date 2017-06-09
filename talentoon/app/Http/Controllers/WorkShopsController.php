@@ -27,6 +27,7 @@ class WorkShopsController extends Controller
             ->join('users', 'users.id', '=', 'workshops.mentor_id')
             ->select('workshops.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
 //            -where(['workshops.is_approved','=',1])
+            ->where('workshops.date_to','>=', date('Y-m-d').' 00:00:00')
             ->get();
 //        dd($data);
         return response()->json(['msg1'=>$data]);
