@@ -94,19 +94,22 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // }, function (err) {
     //     console.log(err);
     // });
-    categories.getCategoryWorkshop($scope.workshop_id).then(function (data) {
-        console.log("inside controller", data)
-        $rootScope.category_workshop = data.workshop;
-        $rootScope.userId = data.user.id;
-        $rootScope.enroll = data.enroll;
-        $rootScope.media = data.session;
+	if ($rootScope.workshop_id) {
+		categories.getCategoryWorkshop($rootScope.workshop_id).then(function (data) {
+	        console.log("inside controller", data)
+	        $rootScope.category_workshop = data.workshop;
+	        $rootScope.userId = data.user.id;
+	        $rootScope.enroll = data.enroll;
+	        $rootScope.media = data.session;
 
-        // $rootScope.category_post = localStorage.getItem("data");
-        console.log("single workshop from controller", $rootScope.category_workshop);
+	        // $rootScope.category_post = localStorage.getItem("data");
+	        console.log("single workshop from controller", $rootScope.category_workshop);
 
-    }, function (err) {
-        console.log(err);
-    });
+	    }, function (err) {
+	        console.log(err);
+	    });
+	}
+
     //---------------------- FOR REFRESHING BUG---------------------------------
     categories.getCategoryWorkshopEdit($rootScope.cat_id,$rootScope.workshop_id).then(function (data) {
 
@@ -501,25 +504,28 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 //----------------------------single----post---------------------------------------
     $scope.post_id = $routeParams['post_id'];
-    categories.getCategoryPost($scope.post_id).then(function (data) {
-        // console.log("inside controller" , data)
-        $rootScope.category_post = data.post;
-				  $rootScope.type=data.post.media_type;
-					console.log("type", $rootScope.type)
-				// 	if( $rootScope.type =="video/mp4" ||$rootScope.type =="video/Avi"){
-				// 		$rootScope.mediaType ="video"
-				// 	}
-				// 	else if ($rootScope.type="image/jpg"||rootScope.type="image/jpeg"||rootScope.type="image/png") {
-        //  $rootScope.mediaType ="image"
-				// 	}
-					// video/mp4
-        $rootScope.category_post_like_count = data.countlike;
-        $rootScope.comments = data.comments;
+	if ($scope.post_id) {
+		categories.getCategoryPost($scope.post_id).then(function (data) {
+	        // console.log("inside controller" , data)
+	        $rootScope.category_post = data.post;
+					  $rootScope.type=data.post.media_type;
+						console.log("type", $rootScope.type)
+					// 	if( $rootScope.type =="video/mp4" ||$rootScope.type =="video/Avi"){
+					// 		$rootScope.mediaType ="video"
+					// 	}
+					// 	else if ($rootScope.type="image/jpg"||rootScope.type="image/jpeg"||rootScope.type="image/png") {
+	        //  $rootScope.mediaType ="image"
+					// 	}
+						// video/mp4
+	        $rootScope.category_post_like_count = data.countlike;
+	        $rootScope.comments = data.comments;
 
 
-    }, function (err) {
-        console.log(err);
-    });
+	    }, function (err) {
+	        console.log(err);
+	    });
+	}
+
 
 
 

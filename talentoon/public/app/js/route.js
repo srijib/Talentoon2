@@ -108,11 +108,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         controller: 'eventcontroller'
     })
 
-    // .when('/initial_review', {
-    //     templateUrl: 'views/showreview.html',
-    //     controller: 'showreview'
-    // })
-
     .when('/posts', {
         templateUrl: 'views/posts.html',
         controller: 'posts'
@@ -135,20 +130,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             templateUrl: 'views/category.html',
             controller: 'oneCategory'
         })
-
-        //user subscribe in category
-
-        // .when('/category/:category_id/subscribe/:user_id', {
-        //     // templateUrl:'views/category.html',
-        //     controller: 'oneCategory'
-        // })
-        //
-        // .when('/category/unsubscribe/:category_id/:user_id', {
-        //     // templateUrl:'views/category.html',
-        //     controller: 'oneCategory'
-        // })
-
-
 
 //add post
                 .when('/category/:category_id/addpost', {
@@ -194,21 +175,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'mentors'
         })
 
-
-
-
-        //add post
-        .when('/category/:category_id/addpost', {
-            templateUrl: 'views/addpost.html',
-            controller: 'addpost'
-        })
-        // add workshop
-        .when('/category/:category_id/addworkshop', {
-            templateUrl: 'views/addworkshop.html',
-            controller: 'addworkshop'
-        })
         //add event
-
         .when('/showreview', {
             templateUrl: 'views/showreview.html',
             controller: 'showreview'
