@@ -46,7 +46,6 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
       return def.promise ;
     },
     getSingleCompetition:function(cat_id,competition_id){
-        console.log('fac fac fac');
       var def =$q.defer();
       $http({
         url:'http://localhost:8000/api/categories/'+cat_id+'/competitions/'+competition_id,

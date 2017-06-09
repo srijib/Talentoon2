@@ -28,13 +28,31 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },
         getCategoryAllData:function(cat_id){
-            console.log('factory cat cat_iddd',cat_id);
             var def =$q.defer();
             $http({
                 url:'http://localhost:8000/api/category/'+cat_id,
                 method:'GET'
             }).then(function(res){
                 // 		console.log("response is" , res);
+                if(res.data){
+                    def.resolve(res.data);
+                }else{
+                    def.reject('there is no data ')
+                }
+
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise ;
+
+        },
+        getUserRoles:function(cat_id){
+            var def =$q.defer();
+            $http({
+                url:'http://localhost:8000/api/category/'+cat_id+'/roles',
+                method:'GET'
+            }).then(function(res){
+                		// console.log("ROLESSSSS FROM FACTORY" , res);
                 if(res.data){
                     def.resolve(res.data);
                 }else{

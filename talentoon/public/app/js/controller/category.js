@@ -12,25 +12,15 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     var talent = {}
     var mentor = {}
 
-    $rootScope.cat_id = $routeParams['category_id'];
+    $scope.cat_id = $routeParams['category_id'];
     $rootScope.workshop_id = $routeParams['workshop_id'];
     $rootScope.event_id = $routeParams['event_id'];
-    $rootScope.post_id = $routeParams['post_id'];
+    $scope.post_id = $routeParams['post_id'];
 
-    console.log('category id',$rootScope.cat_id);
-    console.log('workshop id',$rootScope.workshop_id);
-    console.log('event id',$rootScope.event_id );
-    console.log('post id',$rootScope.post_id);
 
-	categories.getCategoryAllData($scope.cat_id).then(function (data) {
-		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
-        $scope.categoryPosts = data.posts;
-
-				console.log("type",$rootScope.type);
-		$scope.comments=data.comments
-		console.log("commm",$scope.comments);
-
-        if(data.is_sub.length){
+	categories.getUserRoles($scope.cat_id).then(function (data) {
+		console.log("ROLESSSSS FROM CONTROLLER", data)
+		if(data.is_sub.length){
             $scope.is_subscribed = data.is_sub[0].subscribed;
         }
 
@@ -41,6 +31,17 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
         if(data.is_mentor.length != 0 ){
             $scope.is_mentor = data.is_mentor[0].status;
         }
+	}, function (err) {
+		console.log(err);
+	});
+
+	categories.getCategoryAllData($scope.cat_id).then(function (data) {
+		console.log('getCategoryAllDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',data);
+        $scope.categoryPosts = data.posts;
+
+				console.log("type",$rootScope.type);
+		$scope.comments=data.comments
+		console.log("commm",$scope.comments);
 
         $scope.categoryEvents = data.events;
         console.log( data.events,"<<<<events")
@@ -177,11 +178,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 			console.log($rootScope.isCreator)
         } , function(err){
             console.log(err);
-
-
         });
-
-
     }
 
     $scope.editWorkshop=function (workshop_id,cat_id){
@@ -274,8 +271,8 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     $scope.deletePost=function (post_id,cat_id) {
         var editable={post_id,cat_id}
         categories.deletePost(editable).then(function(data){
-            $rootScope.post_id=data
-            console.log('7asl al deleteeeeeee',$rootScope.post_id)
+            $scope.post_id=data
+            console.log('7asl al deleteeeeeee',$scope.post_id)
             $location.url('/category/'+cat_id+'/posts')
             // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
         } , function(err){
@@ -409,12 +406,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
     $scope.add_review = function(i) {
 
-
-        console.log("jjjj mina")
-        // console.log("JJJJ Y Bassant",$scope.categoryPosts[i].post_id)
-        // $scope.categoryPosts[i].post_id = $scope.post_id;
-        // $scope.categoryPosts[i].mentor_id = 2;
-
         console.log("ana hena ",$scope.categoryPosts[i].id);
 
         categories.submitMentorReview($scope.categoryPosts[i]).then(function(data){
@@ -503,7 +494,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // });
 
 //----------------------------single----post---------------------------------------
-    $scope.post_id = $routeParams['post_id'];
 	if ($scope.post_id) {
 		categories.getCategoryPost($scope.post_id).then(function (data) {
 	        // console.log("inside controller" , data)

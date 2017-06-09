@@ -74,18 +74,9 @@ class CategoriesController extends Controller
         // return Response::json(['status' => '1','message' => 'data saved successfully']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($cat_id)
+    public function roles($cat_id)
     {
-
         $user = JWTAuth::parseToken()->authenticate();
-        $category=Category::find($cat_id);
-
         $subscribed = DB::table('subscribers')
                     -> select('subscribed')
                     ->where([['subscriber_id', '=', $user->id],['category_id','=',$cat_id]])
@@ -99,6 +90,22 @@ class CategoriesController extends Controller
                     -> select('status')
                     ->where([['mentor_id', '=', $user->id],['category_id','=',$cat_id]])
                     ->get();
+
+        return response()->json(['is_mentor'=>$mentor,'is_talent'=>$talent,'is_sub'=>$subscribed,'status' => '1','message' => 'data sent successfully']);
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($cat_id)
+    {
+
+        $user = JWTAuth::parseToken()->authenticate();
+        $category=Category::find($cat_id);
 
         $posts = DB::table('posts')
         ->join('users', 'posts.user_id', '=','users.id' )

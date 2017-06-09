@@ -1,12 +1,27 @@
 angular.module('myApp').controller("singleCompetition",function($location,$routeParams,$route,categories,Competitions,$scope,$http,posts,$rootScope,$q){
     $scope.cat_id= $routeParams['category_id'];
     $scope.competition_id= $routeParams['competition_id'];
-    // $scope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
-        console.log("CURRENT USER",$scope.cur_user.id );
-        console.log("CURRENT COMPETITION",$scope.competition_id );
+
+    categories.getUserRoles($scope.cat_id).then(function (data) {
+		console.log("ROLESSSSS FROM CONTROLLER", data)
+
+        if(data.is_talent.length != 0){
+            $scope.is_talent = data.is_talent[0].status;
+        }
+
+        if(data.is_mentor.length != 0 ){
+            $scope.is_mentor = data.is_mentor[0].status;
+        }
+	}, function (err) {
+		console.log(err);
+	});
+
     Competitions.getSingleCompetition($scope.cat_id,$scope.competition_id).then(function (data) {
         $scope.competition = data.data[0];
-        console.log("single comppoooooooo data ",data.data[0] );
+        if (data.is_joined) {
+            $scope.is_joined = data.is_joined.joined
+        }
+        console.log("single comppoooooooo data ",data );
     }, function (err) {
         console.log(err);
     });
@@ -58,6 +73,15 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
                 console.log(err);
             });
     };
+
+    $scope.joinCompetition = function(){
+        Competitions.joinCompetition($scope.competition_id).then(function (data) {
+            $location.url('/category/'+$scope.cat_id+'/competitions/'+$scope.competition_id);
+            console.log(data);
+        }, function (err) {
+            console.log(err);
+        });
+    }
 
     $scope.vote = function(post_id) {
         console.log('POST ID',post_id);
