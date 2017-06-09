@@ -104,7 +104,7 @@
                         <!--nada category posts reviews-->
                     </div>
                     <div class="seeComments">
-                        <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
+                        <span> <i class="fa fa-plus" aria-hidden="true" ></i>MORE COMMENTS</span>
                     </div>
 
 
@@ -189,7 +189,7 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
-                                                <i class="fa fa-share" ng-click="sharepost(post.id,post.user_id)" ng-controller="post"></i>
+                                                <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
                                             </a>
                                         </li>
                                         <li>
@@ -239,7 +239,7 @@
 
                             </div>
 
-                            <ul class="media-list">
+                            <!-- <ul class="media-list">
                                 <li class="media">
                                     <div class="media-left">
                                         <a href="#">
@@ -272,14 +272,16 @@
                                     </div>
                                 </li>
 
-                            </ul>
+                            </ul> -->
 
 
 
                         </div>
 
                         <div class="seeComments">
-                            <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
+                            <span> <a class="fa fa-plus" aria-hidden="true" href="#!/category/{{post.category_id}}/posts/{{post.id}}">MORE COMMENTS</a></span>
+
+                            <!-- <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span> -->
                         </div>
 
                     </div>

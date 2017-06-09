@@ -85,7 +85,8 @@ var post_id=post_id;
 // var user_id=user_id;
 
 var obj={post_id}
-console.log(obj);
+
+console.log("hhhhhhhhhhhhhhhhhhhhhhhhhh",obj);
 		posts.sharepost(obj).then(function(data){
 			console.log(data);
 
