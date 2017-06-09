@@ -24,12 +24,7 @@ class CompetitionsController extends Controller {
 
     public function index() {
 
-        $data = DB::table('competitions')
-            ->join('users', 'users.id', '=', 'events.mentor_id')
-            ->select('competitions.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
-            ->where('competition_end_date','>=', date('Y-m-d').' 00:00:00')
-            ->get();
-//        $data = Competition::all();
+        $data = Competition::orderBy('competition_end_date', 'DESC')->get();
         return response()->json(['status' => 'ok', 'message' => 'Competitions retrieved successfully', 'data' => $data], 201);
     }
 
@@ -48,7 +43,6 @@ class CompetitionsController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $request) {
         $user = JWTAuth::parseToken()->toUser();
         $response = $this->service->createCompetition($user, $request->category_id, $request->description, $request->competition_from_level, $request->competition_to_level, $request->competition_start_date, $request->competition_end_date, $request->competition_start_time, $request->competition_end_time);
