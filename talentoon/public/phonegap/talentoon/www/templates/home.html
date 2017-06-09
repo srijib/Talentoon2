@@ -7,15 +7,40 @@
   <ion-content>
       <div ng-repeat="post in topposts | limitTo:3  track by $index">
         <ion-card>
-      <center>    <img  class="img-responsive" src="http://172.16.3.77:8000/{{post.media_url}}" alt="" style="height:250px">
-</center>
+      <!-- <center> <img  class="img-responsive" src="http://192.168.6.5:8000/{{post.media_url}}" alt="" style="height:250px">
+</center> -->
+
+
+<div ng-if="post.media_type === 'image'">
+
+  <img class="img-responsive" src="http://192.168.6.5:8000/{{post.media_url}}" alt=""style="height:250px">
+</div>
+
+<div ng-if="post.media_type  == 'video'  ">
+
+  <video  controls preload="auto" ng-src="{{trustSrc(video_paths.src)}}">
+
+           <!-- <source ng-src="http://192.168.6.5:8000/{{post.media_url}}"  />  -->
+            </video>
+
+</div>
+<div ng-if="post.media_type == 'audio'">
+  <audio controls>
+
+           <source src="http://192.168.6.5:8000/{{post.media_url}}"/>
+
+           </audio>
+</div>
+
+
+
           <ion-card-content>
 
             <p>
               <p style="margin-left:22px;mergin-right:16px">{{post.description}}</p>
             </p>
             <a class="item item-avatar" href="" style="background-color: #6A0C38">
-              <img src="http://172.16.3.77:8000/{{post.user_image}}" alt="">
+              <img src="http://192.168.6.5:8000/{{post.user_image}}" alt="">
                  <p>{{post.first_name}} {{post.last_name}}</p>
                </a>
           </ion-card-content>

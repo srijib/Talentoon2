@@ -40,6 +40,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
                 }
             }, function (err) {
                 console.log(err);
+                alert("server error ")
             });
             return def.promise;
         },

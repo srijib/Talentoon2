@@ -1,4 +1,4 @@
-angular.module('talentoon').controller("login", function ($scope, $http, user,$state,$rootScope) {
+angular.module('talentoon').controller("login", function ($scope, $http, user,$state,$rootScope,$ionicPopup) {
 $scope.user={}
 
     $scope.loginFn = function (valid) {
@@ -19,6 +19,23 @@ $scope.user={}
                 $state.go('app.home');
             }, function (err) {
                 console.log(err);
+
+                if(err.status == -1 ){
+
+                  $ionicPopup.show({
+                template: 'There is problem in serve ',
+                title: 'server connenection error',
+                subTitle: 'Please check of your connection ',
+                scope: $scope,
+                buttons: [
+                  { text: 'Cancel' },
+
+                ]
+              });
+
+
+
+                }
             });
 
         }
