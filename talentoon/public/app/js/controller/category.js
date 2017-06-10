@@ -678,13 +678,13 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 
 
-    if(localStorage.getItem("wiziq_presenter_url")){
-        $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
-    }
-
-    if(localStorage.getItem("attendee_"+$rootScope.cur_user.id)){
-        $scope.current_student_join_class_url =  localStorage.getItem("attendee_"+$rootScope.cur_user.id);
-    }
+    // if(localStorage.getItem("wiziq_presenter_url")){
+    //     $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
+    // }
+    //
+    // if(localStorage.getItem("attendee_"+$rootScope.cur_user.id)){
+    //     $scope.current_student_join_class_url =  localStorage.getItem("attendee_"+$rootScope.cur_user.id);
+    // }
 
 
 

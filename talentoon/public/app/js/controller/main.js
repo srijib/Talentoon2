@@ -58,10 +58,10 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
 
     $scope.logoutFn = function () {
             // console.log("inside logout");
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
+            // var auth2 = gapi.auth2.getAuthInstance();
+            // auth2.signOut().then(function () {
+            //     console.log('User signed out.');
+            // });
 
             localStorage.removeItem('token');
             $rootScope.cur_user={}
