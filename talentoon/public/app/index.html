@@ -74,8 +74,6 @@
 	<link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
 	<link rel="stylesheet" href="css/categories.css">
-	<!-- <link rel="stylesheet" href="css/categorySelected.css"> -->
-	<link rel="stylesheet" href="css/clickedCategory.css">
 	<link rel="stylesheet" href="css/talentConfirmation.css">
 	<link rel="stylesheet" href="css/createPost.css">
 	<link rel="stylesheet" href="css/posts.css">
@@ -83,6 +81,7 @@
 	<link rel="stylesheet" href="css/allCompetiton.css">
 	<link rel="stylesheet" href="css/prizes.css">
 	<link rel="stylesheet" href="css/singleCompetition.css">
+	<link rel="stylesheet" href="css/clickedCategory.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>-->
@@ -116,6 +115,7 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 
+<div ng-class="{'IN_home':in_home}">
 	<div id="Navbar">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -186,7 +186,18 @@
 
                         <!--                        nav right-->
                         <ul class="nav navbar-nav navbar-right">
-
+							<span>
+                                <!--                               search bar-->
+                                <div class="search-bar">
+                                    <input type="text" placeholder="Search for category/friend" />
+                                </div>
+                                <!--                                end search bar-->
+                                <!--                                search-->
+                                <div class="search">
+                                    <div class="search-icon"></div>
+                                </div>
+                                <!--                                end search-->
+                            </span>
 							<!-- if logged in : -->
 							<logged ng-if="token">
 								<li class="dropdown">
@@ -228,6 +239,8 @@
                 </div><!-- /.container-fluid -->
             </nav> <!-- nav default-->
         </div>
+</div>
+
 
 
 
@@ -385,19 +398,23 @@
 
                                         <div class="dropSelected">
                                             <!--gender-->
+																						<div>
                                             <select class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12" name="gender" ng-model="user.gender" required>
                                                 <option selected disabled>Gender</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </select>
-
+																						<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
+</div>
                                             <!--countries-->
+																						<div>
                                             <select name="country_id" ng-model="user.country_id" class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-offset-1">
                                                 <option selected disabled>Country</option>
                                                 <option value="{{country.id}}" ng-repeat="country in countries track by $index">{{country.name}}</option>
                                             </select>
-											<p class='error' ng-if='submitted && register.country_id.$error.required'>please choose your country</p>
-											<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
+																						<p class="error" ng-if="submitted && register.country_id.$error.required">please choose your country</p>
+
+																					</div>
 
                                         </div>
                                         <!--profile image-->
@@ -453,24 +470,6 @@
     </div><!-- /.modal -->
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -560,11 +559,7 @@
       <!--}-->
     <!--}]);-->
   <!--</script>-->
-  <script type="text/javascript">
-	  $(window).on('load', function() {
-	  AOS.refresh();
-	});
-  </script>
+
 
   <!-- <script type="text/javascript">
       function $scope.onSignIn(googleUser) {

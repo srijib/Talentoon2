@@ -8,136 +8,127 @@
       </div>
 
       <div class="row mainrow">
-        <div class="col-lg-4 col-md-4 col-sm-12 postSection" data-aos="fade-up" data-aos-duration="2000" ng-repeat="post in topposts | limitTo:3  track by $index">
-          <div class="thumbnail" data-toggle="modal" data-target="#po{{post.id}}">
-            <!-- defaultimg-->
-            <div class="row defaultimg">
+        <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in topposts | limitTo:3  track by $index">
+            <div data-aos="fade-up" data-aos-duration="2000" >
+                <div class="thumbnail" data-toggle="modal" data-target="#po{{post.id}}">
+                  <!-- defaultimg-->
+                  <div class="row defaultimg">
 
 
-              <div ng-if="post.media_type == 'image'">
+                    <div ng-if="post.media_type == 'image'">
 
-                <img class="img-responsive" ng-src="http://localhost:8000/{{post.media_url}}" alt="">
-              </div>
+                      <img class="img-responsive" ng-src="http://localhost:8000/{{post.media_url}}" alt="">
+                    </div>
 
-              <div ng-if="post.media_type == 'video' ">
+                    <div ng-if="post.media_type == 'video' ">
 
-                <video  controls preload="auto" style="height: 242px;">
+                      <video  controls preload="auto" style="height: 242px;">
 
-                           <source ng-src="http://localhost:8000/{{post.media_url}}"  />
-                         </video>
+                                 <source ng-src="http://localhost:8000/{{post.media_url}}"  />
+                               </video>
 
-              </div>
-              <div ng-if="post.media_type == 'audio'">
-                <audio controls>
+                    </div>
+                    <div ng-if="post.media_type == 'audio'">
+                      <audio controls>
 
-                         <source ng-src="http://localhost:8000/{{post.media_url}}"/>
+                               <source ng-src="http://localhost:8000/{{post.media_url}}"/>
 
-                         </audio>
-              </div>
+                               </audio>
+                    </div>
 
+                  </div>
+                  <!-- end defaultimg-->
+                  <!-- caption-->
+                  <div class="caption row">
+                    <p>{{post.description}}</p>
+                  </div>
+
+                  <!-- user-->
+                  <!--                               userinfo-->
+                  <div class="row userinfo">
+                    <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
+                    <p>{{post.first_name}} {{post.last_name}}</p>
+                  </div>
+                  <!--                              end userinfo-->
+                  <!--small row  like comment share-->
+                  <div class="interaction row">
+
+                    <!--comment like -->
+
+                    <!--comment-->
+                    <div class="">
+                      <a href="">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <span class="badge">{{post.total}}</span>
+                      </a>
+
+                      <!--like-->
+                      <a href="">
+                        <i class="fa fa-commenting" aria-hidden="true"></i>
+                        <span class="badge">  </span>
+                      </a>
+
+                      <!--share -->
+
+                      <div id="socialHolder">
+                        <div id="socialShare" class="btn-group share-group">
+                          <a data-toggle="dropdown" class="btn btn-info">
+                            <i class="fa fa-share-alt fa-inverse"></i>
+                          </a>
+                          <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                                  <span class="caret"></span>
+                                              </button>
+
+                                              <ul class="dropdown-menu">
+                                                  <li>
+                                                      <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
+                                                          <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
+                                                      </a>
+                                                  </li>
+                                                  <li>
+                                                      <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                                          <i class="fa fa-facebook"></i>
+                                                      </a>
+                                                  </li>
+                                                  <li>
+                                                      <a data-original-title="e+" rel="tooltip"  href="#" class="btn btn-e" data-placement="left">
+                                                          <i class="fa fa-e-plus"></i>
+                                                      </a>
+                                                  </li>
+                                                  <li>
+                                                      <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                                          <i class="fa fa-linkedin"></i>
+                                                      </a>
+                                                  </li>
+
+                                                  <li>
+                                                      <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                                          <i class="fa fa-envelope"></i>
+                                                      </a>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                  </div>  <!--end comment like share -->
+                              </div><!--end small row -->
+                          </div><!--end thumbnail-->
             </div>
-            <!-- end defaultimg-->
-            <!-- caption-->
-            <div class="caption row">
-              <p>{{post.description}}</p>
-            </div>
 
-            <!-- user-->
-            <!--                               userinfo-->
-            <div class="row userinfo">
-              <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
-              <p>{{post.first_name}} {{post.last_name}}</p>
-            </div>
-            <!--                              end userinfo-->
-            <!--small row  like comment share-->
-            <div class="interaction row">
-
-              <!--comment like -->
-
-              <!--comment-->
-              <div class="">
-                <a href="">
-                  <i class="fa fa-heart" aria-hidden="true"></i>
-                  <span class="badge">{{post.total}}</span>
-                </a>
-
-                <!--like-->
-                <a href="">
-                  <i class="fa fa-commenting" aria-hidden="true"></i>
-                  <span class="badge">  </span>
-                </a>
-
-                <!--share -->
-
-                <div id="socialHolder">
-                  <div id="socialShare" class="btn-group share-group">
-                    <a data-toggle="dropdown" class="btn btn-info">
-                      <i class="fa fa-share-alt fa-inverse"></i>
-                    </a>
-                    <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                            <span class="caret"></span>
-                                        </button>
-
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
-                                                    <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-original-title="e+" rel="tooltip"  href="#" class="btn btn-e" data-placement="left">
-                                                    <i class="fa fa-e-plus"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
-                                                    <i class="fa fa-linkedin"></i>
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                                    <i class="fa fa-envelope"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>  <!--end comment like share -->
-                        </div><!--end small row -->
-                    </div><!--end thumbnail-->
 <!-- MODAAAAAAAAAAAAAAL -->
-                    <div class="modal fade" id="po{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                </div>
-              </div>
-              <!--end comment like share -->
-            </div>
-            <!--end small row -->
-          </div>
-          <!--end thumbnail-->
-          <!-- MODAAAAAAAAAAAAAAL -->
+
           <div class="modal fade" id="po{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                   <h4 class="modal-title" id="myModalLabel">
-                                        <div class="row popUserInfo">
-                                            <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
-                                            <p>{{post.first_name}} {{post.last_name}}</p>
-                                        </div>
-                                    </h4>
+                        <div class="row popUserInfo">
+                            <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
+                            <p>{{post.first_name}} {{post.last_name}}</p>
+                        </div>
+                    </h4>
                 </div>
                 <div class="modal-body">
                   <div class="col-lg-4 col-md-4 col-sm-12 popPostSection">
@@ -264,62 +255,25 @@
                           <div ng-repeat="comment in comments track by $index">
                             <span ng-if="post.id == comment.post_id">
 
-                                                    <li class="media" >
+                                <li class="media" >
 
-                                                        <div class="media-left" >
-                                                            <a href="#">
-                                                                <img class="media-object" ng-src="http://localhost:8000/{{comment.user_image}}">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">{{comment.first_name}}</h4>
-                                                            <p>{{comment.comment}}</p>
-
-
-
-                                                        </div>
-
-
-                                                    </li>
-                                                </span>
-                                            </div>
-                                                    <!-- <li class="media">
-=======
-                          </div>
-                          <!-- <li class="media">
->>>>>>> bebba9e45efe2a63da8225955725fb113335ac6a
-                                                        <div class="media-left">
-                                                            <a href="#">
-                                                                <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">Khaled Ali</h4>
-                                                            <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
-
-
-                                                        </div>
-                                                    </li> -->
-
-
-                          <!-- <li class="media">
-                                                        <div class="media-left">
-                                                            <a href="#">
-                                                                <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">Hossam Abdelrhman</h4>
-                                                            <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+                                    <div class="media-left" >
+                                        <a href="#">
+                                            <img class="media-object" ng-src="http://localhost:8000/{{comment.user_image}}">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{comment.first_name}}</h4>
+                                        <p>{{comment.comment}}</p>
 
 
 
-                                                        </div>
+                                    </div>
 
 
-
-                                                    </li> -->
-
+                                </li>
+                            </span>
+                        </div>
                         </ul>
                       </div>
                     </div>
