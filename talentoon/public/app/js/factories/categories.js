@@ -274,7 +274,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 data: postdata
             }).then(function (res) {
 
-                console.log("____________in res add post ", res.data.post_id)
+                console.log("____________in res add post ", res.data.post_id) 
                 console.log("____________media type ", $rootScope.currentFile.type)
                 console.log('_________', $rootScope.currentFile.name)
 

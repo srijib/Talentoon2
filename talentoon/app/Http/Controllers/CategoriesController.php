@@ -140,7 +140,7 @@ class CategoriesController extends Controller
                 ->join('users', 'users.id', '=', 'comments.user_id')
                 ->select('comments.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
                 ->get();
-        return response()->json(['comments'=>$comments,'is_mentor'=>$mentor,'is_talent'=>$talent,'is_sub'=>$subscribed,'cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
+        return response()->json(['comments'=>$comments,'cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
     }
 //
     /**

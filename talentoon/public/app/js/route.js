@@ -57,6 +57,9 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         },
       };
 
+    if (! localStorage.getItem('language')) {
+        localStorage.setItem('language', 'en');
+    }
     // add translation table
     $translateProvider
       .translations('en', translations_en)

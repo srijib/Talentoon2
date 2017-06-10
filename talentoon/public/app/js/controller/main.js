@@ -21,6 +21,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
         }else{
             localStorage.setItem('language', 'en');
         }
+        window.location.reload();
     }
 
 
@@ -48,13 +49,18 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             }, function (err) {
                 console.log(err);
             });
-
         }
-
     }
+
+
 
     $scope.logoutFn = function () {
             // console.log("inside logout");
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+
             localStorage.removeItem('token');
             $rootScope.cur_user={}
             $rootScope.token=''

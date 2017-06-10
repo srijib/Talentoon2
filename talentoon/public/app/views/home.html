@@ -1,14 +1,14 @@
 <header>
 
-  <div id="topposts" ng-if="post_exist">
+  <div id="topposts" ng-if="post_exist"  >
     <div class="container">
       <div class="title">
-        <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+        <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
         <h1 class="h1">{{'TOP_POSTS' | translate}}</h1>
       </div>
 
       <div class="row mainrow">
-        <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in topposts | limitTo:3  track by $index">
+        <div class="col-lg-4 col-md-4 col-sm-12 postSection" data-aos="fade-up" data-aos-duration="2000" ng-repeat="post in topposts | limitTo:3  track by $index">
           <div class="thumbnail" data-toggle="modal" data-target="#po{{post.id}}">
             <!-- defaultimg-->
             <div class="row defaultimg">
@@ -16,21 +16,21 @@
 
               <div ng-if="post.media_type == 'image'">
 
-                <img class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
+                <img class="img-responsive" ng-src="http://localhost:8000/{{post.media_url}}" alt="">
               </div>
 
               <div ng-if="post.media_type == 'video' ">
 
                 <video  controls preload="auto" style="height: 242px;">
 
-                           <source src="http://localhost:8000/{{post.media_url}}"  />
+                           <source ng-src="http://localhost:8000/{{post.media_url}}"  />
                          </video>
 
               </div>
               <div ng-if="post.media_type == 'audio'">
                 <audio controls>
 
-                         <source src="http://localhost:8000/{{post.media_url}}"/>
+                         <source ng-src="http://localhost:8000/{{post.media_url}}"/>
 
                          </audio>
               </div>
@@ -45,7 +45,7 @@
             <!-- user-->
             <!--                               userinfo-->
             <div class="row userinfo">
-              <img src="http://localhost:8000/{{post.user_image}}" alt="">
+              <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
               <p>{{post.first_name}} {{post.last_name}}</p>
             </div>
             <!--                              end userinfo-->
@@ -90,8 +90,8 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
-                                                    <i class="fa fa-google-plus"></i>
+                                                <a data-original-title="e+" rel="tooltip"  href="#" class="btn btn-e" data-placement="left">
+                                                    <i class="fa fa-e-plus"></i>
                                                 </a>
                                             </li>
                                             <li>
@@ -134,7 +134,7 @@
                                     </button>
                   <h4 class="modal-title" id="myModalLabel">
                                         <div class="row popUserInfo">
-                                            <img src="http://localhost:8000/{{post.user_image}}" alt="">
+                                            <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
                                             <p>{{post.first_name}} {{post.last_name}}</p>
                                         </div>
                                     </h4>
@@ -148,21 +148,21 @@
 
                         <div ng-if="post.media_type == 'image'">
 
-                          <img class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
+                          <img class="img-responsive" ng-src="http://localhost:8000/{{post.media_url}}" alt="">
                         </div>
 
                         <div ng-if="post.media_type == 'video' ">
 
                           <video  controls preload="auto">
 
-                                                 <source src="http://localhost:8000/{{post.media_url}}"  />
+                                                 <source ng-src="http://localhost:8000/{{post.media_url}}"  />
                                                  </video>
 
                         </div>
                         <div ng-if="post.media_type == 'audio'">
                           <audio controls>
 
-                                                   <source src="http://localhost:8000/{{post.media_url}}"/>
+                                                   <source ng-src="http://localhost:8000/{{post.media_url}}"/>
 
                                                              </audio>
                         </div>
@@ -220,8 +220,8 @@
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
-                                                                            <i class="fa fa-google-plus"></i>
+                                                                        <a data-original-title="e+" rel="tooltip"  href="#" class="btn btn-e" data-placement="left">
+                                                                            <i class="fa fa-e-plus"></i>
                                                                         </a>
                                                                     </li>
                                                                     <li>
@@ -268,7 +268,7 @@
 
                                                         <div class="media-left" >
                                                             <a href="#">
-                                                                <img class="media-object" src="http://localhost:8000/{{comment.user_image}}">
+                                                                <img class="media-object" ng-src="http://localhost:8000/{{comment.user_image}}">
                                                             </a>
                                                         </div>
                                                         <div class="media-body">
@@ -290,7 +290,7 @@
 >>>>>>> bebba9e45efe2a63da8225955725fb113335ac6a
                                                         <div class="media-left">
                                                             <a href="#">
-                                                                <img class="media-object" src="Imgs/Persons/face3.jpg">
+                                                                <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
                                                             </a>
                                                         </div>
                                                         <div class="media-body">
@@ -305,7 +305,7 @@
                           <!-- <li class="media">
                                                         <div class="media-left">
                                                             <a href="#">
-                                                                <img class="media-object" src="Imgs/Persons/face2.jpg">
+                                                                <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
                                                             </a>
                                                         </div>
                                                         <div class="media-body">
@@ -355,11 +355,11 @@
 <div id="topEvents" ng-if="event_exist">
   <div class="container">
     <div class="title">
-      <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+      <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
       <h1 class="h1">{{'TOP_EVENTS' | translate}}</h1>
     </div>
     <div class="evMainRow row">
-      <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" event in events| limitTo:3">
+      <div class="eventSection col-sm-12 col-md-4 " data-aos="zoom-in-down" data-aos-duration="2000" ng-repeat=" event in events| limitTo:3">
         <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
           <div class="row evDefaultImg">
 
@@ -367,17 +367,17 @@
 
       <div ng-if="event.media_type == 'image'">
 
-        <img class="img-responsive" src="http://localhost:8000/{{event.media_url}}" alt="">
+        <img class="img-responsive" ng-src="http://localhost:8000/{{event.media_url}}" alt="">
         </div>
 
            <div ng-if="event.media_type == 'video' ">
                 <video   controls  preload="auto" style="height: 242px;">
-                 <source src="http://localhost:8000/{{event.media_url}}"  />
+                 <source ng-src="http://localhost:8000/{{event.media_url}}"  />
                </video>
            </div>
           <div ng-if="event.media_type == 'audio'">
               <audio controls>
-                <source src="http://localhost:8000/{{event.media_url}}"/>
+                <source ng-src="http://localhost:8000/{{event.media_url}}"/>
                  </audio>
          </div>
 
@@ -414,8 +414,8 @@
                     </a>
                   </li>
                   <li>
-                    <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                      <i class="fa fa-google-plus"></i>
+                    <a data-original-title="e+" rel="tooltip" href="#" class="btn btn-e" data-placement="left">
+                      <i class="fa fa-e-plus"></i>
                     </a>
                   </li>
                   <li>
@@ -487,17 +487,17 @@
                   <div class="row evDefaultImg">
 
                     <div ng-if="event.media_type == 'image'">
-                      <img class="img-responsive" src="http://localhost:8000/{{event.media_url}}" alt="">
+                      <img class="img-responsive" ng-src="http://localhost:8000/{{event.media_url}}" alt="">
                       </div>
 
          <div ng-if="event.media_type == 'video' ">
               <video   controls  preload="auto">
-              <source src="http://localhost:8000/{{event.media_url}}"  />
+              <source ng-src="http://localhost:8000/{{event.media_url}}"  />
               </video>
          </div>
       <div ng-if="event.media_type == 'audio'">
             <audio controls>
-            <source src="http://localhost:8000/{{event.media_url}}"/>
+            <source ng-src="http://localhost:8000/{{event.media_url}}"/>
            </audio>
      </div>
 
@@ -544,7 +544,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                       <a class="userPic">
                         <span>Mintoring by : </span>
-                        <img src="Imgs/Persons/face1.jpg" alt=""> {{event.first_name}} {{event.last_name}}
+                        <img ng-src="Imgs/Persons/face1.jpg" alt=""> {{event.first_name}} {{event.last_name}}
                       </a>
 
                       <!--    top event userPic-->
@@ -576,8 +576,8 @@
                             </a>
                           </li>
                           <li>
-                            <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                              <i class="fa fa-google-plus"></i>
+                            <a data-original-title="e+" rel="tooltip" href="#" class="btn btn-e" data-placement="left">
+                              <i class="fa fa-e-plus"></i>
                             </a>
                           </li>
                           <li>
@@ -607,7 +607,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
                           </a>
                         </div>
                         <div class="media-body">
@@ -626,7 +626,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
                           </a>
                         </div>
                         <div class="media-body">
@@ -658,29 +658,29 @@
 <div id="topWorkshops" ng-if="workshop_exist">
   <div class="container">
     <div class="title">
-      <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+      <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
       <h1 class="h1">{{'TOP_WORKSHOPS' | translate}}</h1>
     </div>
 
     <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" ng-repeat="workshop in workshops | limitTo:3  track by $index">
+      <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" ng-repeat="workshop in workshops | limitTo:3  track by $index">
         <div class="thumbnail" data-toggle="modal" data-target="#ws{{workshop.id}}">
-          <!--                    <img src="http://placehold.it/350x250">-->
+          <!--                    <img ng-src="http://placehold.it/350x250">-->
 
 
           <div ng-if="workshop.media_type == 'image'">
 
-            <img class="img-responsive" src="http://localhost:8000/{{workshop.media_url}}" alt="">
+            <img class="img-responsive" ng-src="http://localhost:8000/{{workshop.media_url}}" alt="">
             </div>
 
                <div ng-if="workshop.media_type == 'video' ">
                     <video   controls  preload="auto">
-                     <source src="http://localhost:8000/{{workshop.media_url}}"  />
+                     <source ng-src="http://localhost:8000/{{workshop.media_url}}"  />
                    </video>
                </div>
               <div ng-if="workshop.media_type == 'audio'">
                   <audio controls>
-                    <source src="http://localhost:8000/{{workshop.media_url}}"/>
+                    <source ng-src="http://localhost:8000/{{workshop.media_url}}"/>
                      </audio>
              </div>
 
@@ -709,7 +709,7 @@
           </div>
 
           <a class="userPic row">
-            <span class="col-lg-6 col-md-6 col-sm-6 mintor">Mintoring by   <img src="http://localhost:8000/{{workshop.user_image}}"></span>
+            <span class="col-lg-6 col-md-6 col-sm-6 mintor">Mintoring by   <img ng-src="http://localhost:8000/{{workshop.user_image}}"></span>
             <span class="col-lg-6 col-md-6 col-sm-6">{{workshop.first_name}} {{workshop.last_name}}</span>
           </a>
         </div>
@@ -732,7 +732,7 @@
               <div class="modal-body">
                 <div class="thumbnail">
                   <div class="row popWorkshopDefaultImg">
-                    <img src="http://localhost:8000/{{workshop.media_url}}" alt="">
+                    <img ng-src="http://localhost:8000/{{workshop.media_url}}" alt="">
                   </div>
                   <!--    top event default image-->
 
@@ -766,7 +766,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                       <a class="userPic">
                         <span>Mintoring by : </span>
-                        <img src="http://localhost:8000/{{workshop.user_image}}" alt=""> {{workshop.first_name}} {{workshop.last_name}}
+                        <img ng-src="http://localhost:8000/{{workshop.user_image}}" alt=""> {{workshop.first_name}} {{workshop.last_name}}
                       </a>
 
                       <!--    top event userPic-->
@@ -798,8 +798,8 @@
                             </a>
                           </li>
                           <li>
-                            <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                              <i class="fa fa-google-plus"></i>
+                            <a data-original-title="e+" rel="tooltip" href="#" class="btn btn-e" data-placement="left">
+                              <i class="fa fa-e-plus"></i>
                             </a>
                           </li>
                           <li>
@@ -829,7 +829,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
                           </a>
                         </div>
                         <div class="media-body">
@@ -848,7 +848,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
                           </a>
                         </div>
                         <div class="media-body">
