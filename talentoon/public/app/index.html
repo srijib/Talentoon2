@@ -74,8 +74,6 @@
 	<link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
 	<link rel="stylesheet" href="css/categories.css">
-	<!-- <link rel="stylesheet" href="css/categorySelected.css"> -->
-	<link rel="stylesheet" href="css/clickedCategory.css">
 	<link rel="stylesheet" href="css/talentConfirmation.css">
 	<link rel="stylesheet" href="css/createPost.css">
 	<link rel="stylesheet" href="css/posts.css">
@@ -83,6 +81,7 @@
 	<link rel="stylesheet" href="css/allCompetiton.css">
 	<link rel="stylesheet" href="css/prizes.css">
 	<link rel="stylesheet" href="css/singleCompetition.css">
+	<link rel="stylesheet" href="css/clickedCategory.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>-->
@@ -116,6 +115,7 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 
+<div ng-class="{'IN_home':in_home}">
 	<div id="Navbar">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -239,6 +239,8 @@
                 </div><!-- /.container-fluid -->
             </nav> <!-- nav default-->
         </div>
+</div>
+
 
 
 
@@ -469,24 +471,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div ng-view></div>
 
 <footer>
@@ -571,11 +555,7 @@
       <!--}-->
     <!--}]);-->
   <!--</script>-->
-  <script type="text/javascript">
-	  $(window).on('load', function() {
-	  AOS.refresh();
-	});
-  </script>
+
 
   <!-- <script type="text/javascript">
       function $scope.onSignIn(googleUser) {

@@ -1,4 +1,6 @@
 angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route,workshops) {
+
+    $rootScope.in_home = false;
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
 
     $rootScope.wiziq_class_id = JSON.parse(localStorage.getItem("wiziq_class_id"));

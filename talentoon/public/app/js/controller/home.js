@@ -1,5 +1,7 @@
 angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$routeParams,$rootScope,categories,user){
 
+
+
 	Home.getTopPosts().then(function(data){
         console.log("el top posts ba2a",data);
 		$scope.topposts=data.posts;
