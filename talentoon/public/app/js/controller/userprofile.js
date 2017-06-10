@@ -234,7 +234,7 @@ $scope.uploadedFile = function(element) {
     console.log("element is ",element)
     $rootScope.profilePictureFile = element.files[0];
     filesuploaded.push(element.files[0]);
-})
+}
 
 $scope.add_comment = function(i) {
     console.log("hhh",i);
@@ -256,6 +256,3 @@ $scope.new_comment = function(i) {
 
     });
 }
-
-
-
