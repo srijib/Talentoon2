@@ -463,7 +463,8 @@
           </div>
           <!--    top event detaila-->
           <div class=" going">
-            <button type="button" class="btn btn-default">Going</button>
+
+            <button type="button" class="btn btn-default" ng-click="going(event.id)" >Going</button>
           </div>
         </div>
         <!-- MODAAAAAAAAAAAAAAAAAAAAL -->
@@ -553,7 +554,7 @@
 
                     <!--share -->
                     <div class="going  col-lg-4 col-md-4 col-sm-12">
-                      <button type="button" class=" btn btn-default">Going</button>
+                      <button type="button" class=" btn btn-default" ng-click="going(event.id)" >Going</button>
                     </div>
 
                     <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
@@ -699,7 +700,7 @@
 
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <i class="fa fa-users" aria-hidden="true"></i>
-                <span class="badge">{{workshop.max_capacity}} place left</span>
+                <span class="badge">{{workshop.max_capacity-workshop.enroll_count}} place left</span>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -753,7 +754,7 @@
 
                       <div class="col-lg-4 col-md-12 col-sm-12">
                         <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="badge">{{workshop.max_capacity}} place left</span>
+                        <span class="badge">{{workshop.max_capacity-workshop.enroll_count}} place left</span>
                       </div>
                       <div class="col-lg-4 col-md-12 col-sm-12">
                         <i class="fa fa-clock-o" aria-hidden="true"></i>

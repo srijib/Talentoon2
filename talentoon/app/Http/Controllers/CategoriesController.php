@@ -118,9 +118,16 @@ class CategoriesController extends Controller
                     ->get();
         $workshops = DB::table('workshops')
             ->join('users', 'users.id', '=', 'workshops.mentor_id')
-            ->select('workshops.*','users.first_name', 'users.last_name', 'users.image as user_image')
+            ->selectRaw('workshops.*,count(workshop_enrollment.id) as enroll_count,users.last_name,users.first_name,users.image as user_image,users.id as user_id')
+            ->leftJoin('workshop_enrollment', function($join)
+            {
+              $join->on('workshops.id','=','workshop_enrollment.workshop_id');
+            })
             ->where([['workshops.category_id','=',$cat_id],['workshops.is_approved','=',1]])
+            ->groupBy('workshops.id')
             ->get();
+
+
         $events = DB::table('events')
             ->join('users', 'users.id', '=', 'events.mentor_id')
             ->select('events.*','users.first_name', 'users.last_name', 'users.image as user_image')

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
 use DB;
 use JWTAuth;
+use App\Models\GoingEvent;
 
 class EventController extends Controller
 {
@@ -17,11 +18,19 @@ public function __construct(){
 
     public function index(){
 
-//            $user->id;
+
             $data = DB::table('events')
                 ->join('users', 'users.id', '=', 'events.mentor_id')
-                ->select('events.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
+                ->selectRaw('events.*,count(going_event.id) as going_count,users.last_name,users.first_name,users.image as user_image,users.id as user_id')
+
+                // ->select('events.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
+                ->leftJoin('going_event', function($join)
+                      {
+                          $join->on('events.id','=','going_event.event_id');
+                      })
                 ->where('events.is_approved','=',1)
+                ->groupBy('events.id')
+
                 ->get();
 
         return response()->json(['data'=>$data]);
@@ -122,5 +131,22 @@ public function __construct(){
 
     }
 //***************************************************
+public function goingEvent(Request $request){
+    $user=JWTAuth::parsetoken()->toUser();
+    $event = DB::table('going_event')
+    ->where('event_id', '=', $request->event_id)
+    ->where('user_id', '=', $user->id)
+    ->first();
+
+if (is_null($event)) {
+    GoingEvent::create(['event_id'=>$request->event_id,'user_id'=>$user->id]);
+    return response()->json(['message' => 'going successfully']);
+
+
+}else{
+    return response()->json(['going'=>1,'message' => 'you are already going']);
+}
+
+}
 
 }
