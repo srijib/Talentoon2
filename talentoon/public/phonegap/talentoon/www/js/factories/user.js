@@ -6,7 +6,10 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
             //console.log("naaaaahla");
             var def = $q.defer();
             $http({
-                url: 'http://192.168.6.5:8000/api/signup',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/signup',
+                headers:{
+              'Authorization':'Bearer: '+ $rootScope.token
+                 },
                 method: 'POST',
                 data: userdata
             }).then(function (res) {
@@ -27,7 +30,10 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
             console.log(userdata);
             var def = $q.defer();
             $http({
-                url: 'http://192.168.6.5:8000/api/login',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/login',
+                headers:{
+              'Authorization':'Bearer: '+ $rootScope.token
+                 },
                 method: 'POST',
                 data: userdata
 
@@ -55,7 +61,10 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
             console.log('nahla  ')
             var def = $q.defer();
             $http({
-                url:'http://192.168.6.5:8000/api/countries',
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/countries',
+                headers:{
+              'Authorization':'Bearer: '+ $rootScope.token
+                 },
                 method: 'GET'
 
             }).then(function (res) {
@@ -78,7 +87,8 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
 
             var def = $q.defer();
             $http({
-                url: 'http://192.168.6.5:8000/api/userprofile',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/userprofile',
+
                 headers:{
               'Authorization':'Bearer: ' + $rootScope.token
                  },
@@ -107,7 +117,7 @@ angular.module('talentoon').factory("user", function ($http, $q,$rootScope) {
 
             var def = $q.defer();
             $http({
-                url: 'http://192.168.6.5:8000/api/userprofile/userposts',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/userprofile/userposts',
                 headers:{
               'Authorization':'Bearer: ' + $rootScope.token
                  },

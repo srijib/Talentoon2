@@ -373,19 +373,23 @@
 
                                         <div class="dropSelected">
                                             <!--gender-->
+																						<div>
                                             <select class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12" name="gender" ng-model="user.gender" required>
                                                 <option selected disabled>Gender</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </select>
-
+																						<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
+</div>
                                             <!--countries-->
+																						<div>
                                             <select name="country_id" ng-model="user.country_id" class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-offset-1">
                                                 <option selected disabled>Country</option>
                                                 <option value="{{country.id}}" ng-repeat="country in countries track by $index">{{country.name}}</option>
                                             </select>
-											<p class='error' ng-if='submitted && register.country_id.$error.required'>please choose your country</p>
-											<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
+																						<p class="error" ng-if="submitted && register.country_id.$error.required">please choose your country</p>
+
+																					</div>
 
                                         </div>
                                         <!--profile image-->

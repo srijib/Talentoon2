@@ -2,6 +2,18 @@ angular.module('talentoon').controller("login", function ($scope, $http, user,$s
 $scope.user={}
 
     $scope.loginFn = function (valid) {
+
+    //   $ionicPopup.show({
+    // template: 'invaild user name or password ',
+    // title: 'Password is Incorrect',
+    // subTitle: 'Please rewrite your password ',
+    // scope: $scope,
+    // buttons: [
+    //   { text: 'Cancel' },
+    //
+    // ]
+    // });
+
         console.log('in controller');
         if (valid) {
             console.log(valid);
@@ -9,6 +21,21 @@ $scope.user={}
             console.log($scope.user);
             console.log("inside login:", userdata);
             user.login(userdata).then(function (data) {
+              if(data.status == 'wrong'  && data.message =='Password is Incorrect'){
+                $ionicPopup.show({
+              template: 'invaild user name or password ',
+              title: 'Password is Incorrect',
+              subTitle: 'Please rewrite your password ',
+              scope: $scope,
+              buttons: [
+                { text: 'Cancel' },
+
+              ]
+              });
+
+
+
+              }
                 console.log("dataaaaa minA",data);
                 $rootScope.user_info = data.user
                 $rootScope.token = data.token

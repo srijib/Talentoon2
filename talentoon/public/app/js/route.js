@@ -230,6 +230,13 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             templateUrl: 'views/userprofile.html',
             controller: 'userprofile'
         })
+        .when('/404',{
+            templateUrl: 'views/404.html',
+        })
+
+        .otherwise({
+         redirectTo: '/404'
+     });
 
     $httpProvider.interceptors.push(['$q', '$location', function ($q, $location) {
         return {

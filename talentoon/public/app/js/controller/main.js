@@ -42,11 +42,17 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
                     $rootScope.cur_user=data.user;
                     localStorage.setItem('token', JSON.stringify(data.token));
                     $location.url('/');
-                }else{
+                }
+
+
+                else{
                     alert('invaled user name or password')
                 }
             }, function (err) {
                 console.log(err);
+                console.log(err.status)
+
+                // alert("server connection error");
             });
 
         }

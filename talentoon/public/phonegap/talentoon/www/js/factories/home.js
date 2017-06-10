@@ -6,7 +6,10 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:' http://192.168.6.5:8000/api/mostLikeabe' ,
+				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/mostLikeabe' ,
+				headers:{
+			'Authorization':'Bearer: '+ $rootScope.token
+				 },
 				method:'GET'
 
 			}).then(function(res){
@@ -30,6 +33,9 @@ return {
         var def =$q.defer();
         $http({
             url:'http://127.0.0.1:8000/api/allworkshops' ,
+						headers:{
+					'Authorization':'Bearer: '+ $rootScope.token
+						 },
             method:'GET'
 
         }).then(function(res){
@@ -52,7 +58,10 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:'http://192.168.6.5:8000/api/event/showall' ,
+				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/event/showall' ,
+				headers:{
+			'Authorization':'Bearer: '+ $rootScope.token
+				 },
 				method:'GET'
 
 			}).then(function(res){
@@ -98,7 +107,7 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:'http://192.168.6.5:8000/api/push' ,
+				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/push' ,
 			// 	headers:{
 			// 'Authorization':'Bearer'+ $rootScope.token
 			// 	 },
