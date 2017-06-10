@@ -2,16 +2,33 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
     $scope.cat_id= $routeParams['category_id'];
     $scope.competition_id= $routeParams['competition_id'];
 
+    categories.getUserRoles($scope.cat_id).then(function (data) {
+		console.log("ROLESSSSS FROM CONTROLLER", data)
+
+        if(data.is_talent.length != 0){
+            $scope.is_talent = data.is_talent[0].status;
+        }
+
+        if(data.is_mentor.length != 0 ){
+            $scope.is_mentor = data.is_mentor[0].status;
+        }
+	}, function (err) {
+		console.log(err);
+	});
+
     Competitions.getSingleCompetition($scope.cat_id,$scope.competition_id).then(function (data) {
         $scope.competition = data.data[0];
-        console.log("single comppoooooooo data ",data.data[0] );
+        if (data.is_joined) {
+            $scope.is_joined = data.is_joined.joined
+        }
+        console.log("single comppoooooooo data ",data );
     }, function (err) {
         console.log(err);
     });
 
-    Competitions.getSingleCompetitionPosts($scope.cat_id,$scope.competition_id).then(function (data) {
+    Competitions.getSingleCompetitionPosts($scope.competition_id).then(function (data) {
         $scope.competitionPosts = data.data;
-        console.log("single comppoooooooo  popooo data ",data );
+        console.log("single comppoooooooo popooo data ",data );
     }, function (err) {
         console.log(err);
     });
@@ -19,7 +36,7 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
     $scope.newcompetition = function(vaild) {
         if (vaild) {
             $scope.competition.category_id=$routeParams['category_id'];
-            $scope.competition.mentor_id=JSON.parse(localStorage.getItem("cur_user")).id;
+            $scope.competition.mentor_id=$rootScope.cur_user.id;
 
             Competitions.createCompetition($scope.competition).then(function(data){
                 console.log("the post request from server is ",data);
@@ -52,6 +69,24 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
                 }else {
                     alert("sorry it's not your post")
                 }
+            } , function(err){
+                console.log(err);
+            });
+    };
+
+    $scope.joinCompetition = function(){
+        Competitions.joinCompetition($scope.competition_id).then(function (data) {
+            $location.url('/category/'+$scope.cat_id+'/competitions/'+$scope.competition_id);
+            console.log(data);
+        }, function (err) {
+            console.log(err);
+        });
+    }
+
+    $scope.vote = function(post_id) {
+        console.log('POST ID',post_id);
+            Competitions.vote(post_id).then(function(data){
+                console.log("VOTE CONTROLLERRR",data);
             } , function(err){
                 console.log(err);
             });

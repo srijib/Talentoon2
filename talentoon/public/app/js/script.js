@@ -1,10 +1,10 @@
+//search
 $('.search').click(function(){
-    alert('after')
     $('.search, .search-bar').toggleClass('active');
     $('input').focus();
 });
 
-
+//Share
 $(document).ready(function(){
 
   //Share Tool Function
@@ -49,4 +49,16 @@ $(document).ready(function(){
     $(".tool-handle").click();
   }
   setTimeout(function() { clickShare();}, 2000);
+});
+
+
+
+//upload file
+$(document).on('click', '.browse', function(){
+    var file = $(this).parent().parent().parent().find('.file');
+    file.trigger('click');
+});
+$(document).on('change', '.file', function(){
+    $(this).parent().parent().parent().parent().find('.upload').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+
 });

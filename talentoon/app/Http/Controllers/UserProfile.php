@@ -17,6 +17,15 @@ use App\Models\Follow;
 
 class UserProfile extends Controller
 {
+    public function cur_user(){
+        $user= JWTAuth::parseToken()->toUser();
+        $talent_in = DB::table('category_talents')
+             ->where('talent_id', '=', $user->id)
+            ->select('category_id')
+             ->get();
+
+        return response()->json(['cur_user'=>$user,'talent_in'=>$talent_in]);
+    }
 
  public function index(Request $request){
 
@@ -176,7 +185,8 @@ class UserProfile extends Controller
 
   public function userposts(Request $request){
 
-    $user= JWTAuth::parseToken()->toUser();
+    $cur_user= JWTAuth::parseToken()->toUser();
+    $user=User::find($cur_user->id);
 
     $my_posts = DB::table('posts')
     ->join('users', 'posts.user_id', '=','users.id' )
@@ -235,6 +245,7 @@ class UserProfile extends Controller
       ['follow.follower_id','=',$user->id]])
       ->groupBy('follow.follower_id')
       ->get()->first();
+      $country=Country::find($user->country_id);
 
     return response()->json(['status' => 1,
                 'message' => 'user data send successfully',
@@ -242,10 +253,12 @@ class UserProfile extends Controller
                 'first_name'=>$user->first_name,
                 'last_name'=>$user->last_name,
                 'image'=>$user->image,
+                'user'=>$user,
                 // 'post'=>$my_posts,
                 'allPosts'=>$allPosts,
                 'follower'=>$follower_count,
-                'following'=>$following_count
+                'following'=>$following_count,
+                'country'=>$country
 
                 // 'count'=>$countlike
 
@@ -270,7 +283,7 @@ public function checkpassword(Request $request)
     $userToken=JWTAuth::parseToken()->toUser();
 
     if(!Hash::check($request->userpassword ,$userToken->password)) {
-        return response()->json('wrong');
+        return response()->json('y nada we should check this to be displayed as a message to user>> ally 2olti fkrini beha simona ');
     }else{
 //        return response()->json('right');
 //    $return=self::update($request);
@@ -280,7 +293,7 @@ public function checkpassword(Request $request)
                 'last_name'=>$request->last_name,
                 'email'=>$request->email,
                 'phone'=>$request->phone,
-                'password'=>$request->repassword,
+                'password'=>Hash::make($request->repassword),
 //                'date_of_bith'=>$request->date_of_bith,
 //            'country_id'=>$request->country_name
             ]);

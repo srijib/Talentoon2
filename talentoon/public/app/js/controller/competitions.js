@@ -7,5 +7,4 @@ angular.module('myApp').controller("competitions",function($location,$route,Comp
         console.log(err);
     });
 
-
 });

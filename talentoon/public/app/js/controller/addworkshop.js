@@ -1,7 +1,5 @@
 angular.module('myApp').controller("addworkshop",function($scope,$http,categories,$routeParams,$location,$rootScope){
 
-    $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
-
   $scope.newworkshop = function(vaild) {
       var today = new Date();
       console.log("Today is ", today)

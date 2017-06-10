@@ -1,4 +1,4 @@
-angular.module('myApp').controller("homec",function(categories,$route,Home,$scope,$http,$routeParams,$rootScope,categories){
+angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$routeParams,$rootScope,categories,user){
 
 	Home.getTopPosts().then(function(data){
         console.log("el top posts ba2a",data);
@@ -25,6 +25,8 @@ angular.module('myApp').controller("homec",function(categories,$route,Home,$scop
     Home.getWorkshops().then(function(data){
 
         $scope.workshops=data;
+		// $scope.places=data.max_capacity-data.enroll_count;
+
 		console.log("workshopsssssssssssss is here",data);
         $scope.workshop_exist = true;
     } , function(err){
@@ -52,7 +54,21 @@ angular.module('myApp').controller("homec",function(categories,$route,Home,$scop
         });
     }
 
+	$scope.going= function(event_id) {
+    var event_id=event_id;
+    // var user_id=user_id;
 
+
+
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhh",event_id);
+    		Home.goingevent(event_id).then(function(data){
+    			console.log(data);
+
+    		} , function(err){
+    			console.log(err);
+
+    		});
+    }
 
 	// categories.getCategoryPost(id).then(function(data){
 	// 		// console.log("inside controller" , data)

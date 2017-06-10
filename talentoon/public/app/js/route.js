@@ -77,7 +77,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         templateUrl: 'views/categoryCompetitions.html',
         controller: 'categoryCompetitions'
     })
-    .when('/category/:category_id/createcompetitions', {
+    .when('/category/:category_id/createcompetition', {
         templateUrl: 'views/formcompetition.html',
         controller: 'categoryCompetitions'
     })
@@ -93,7 +93,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         templateUrl: 'views/addcompetitionpost.html',
         controller: 'singleCompetition'
     })
-    .when('/competitions/:competition_id/posts/:post_id/delete', {
+    .when('/category/:category_id/competitions/:competition_id/delete', {
         templateUrl: 'views/singleCompetition.html',
         controller: 'singleCompetition'
     })
@@ -107,11 +107,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         templateUrl: 'views/createEvent.html',
         controller: 'eventcontroller'
     })
-
-    // .when('/initial_review', {
-    //     templateUrl: 'views/showreview.html',
-    //     controller: 'showreview'
-    // })
 
     .when('/posts', {
         templateUrl: 'views/posts.html',
@@ -135,20 +130,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             templateUrl: 'views/category.html',
             controller: 'oneCategory'
         })
-
-        //user subscribe in category
-
-        // .when('/category/:category_id/subscribe/:user_id', {
-        //     // templateUrl:'views/category.html',
-        //     controller: 'oneCategory'
-        // })
-        //
-        // .when('/category/unsubscribe/:category_id/:user_id', {
-        //     // templateUrl:'views/category.html',
-        //     controller: 'oneCategory'
-        // })
-
-
 
 //add post
                 .when('/category/:category_id/addpost', {
@@ -194,21 +175,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'mentors'
         })
 
-
-
-
-        //add post
-        .when('/category/:category_id/addpost', {
-            templateUrl: 'views/addpost.html',
-            controller: 'addpost'
-        })
-        // add workshop
-        .when('/category/:category_id/addworkshop', {
-            templateUrl: 'views/addworkshop.html',
-            controller: 'addworkshop'
-        })
         //add event
-
         .when('/showreview', {
             templateUrl: 'views/showreview.html',
             controller: 'showreview'

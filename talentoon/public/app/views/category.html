@@ -50,17 +50,45 @@
       <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in categoryPosts | limitTo:3 track by $index">
         <div class="thumbnail" data-toggle="modal" data-target="#po{{post.id}}">
           <!-- defaultimg-->
+
           <div class="row defaultimg">
+
+         <div ng-if="post.media_type == 'image'">
+
             <img class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
+          </div>
+
+          <div ng-if="post.media_type == 'video' ">
+
+           <video  style="height: 242px;" controls  preload="auto">
+
+          <source src="http://localhost:8000/{{post.media_url}}"  />
+       </video>
+
+          </div>
+            <div ng-if="post.media_type == 'audio'">
+              <img src="http://localhost:8000/uploads/events/2.jpg" alt="">
+                <p style="font-size:15px">{{post.title}}</p>
+          <audio controls style="width: 348px;">
+
+<source src="http://localhost:8000/{{post.media_url}}" >
+
+</audio>
+<div class="caption row">
+<p>{{post.description}}</p>
+<p>{{post.created_at}}</p>
+</div>
+</div>
           </div>
           <!-- end defaultimg-->
           <!-- caption-->
+            <div ng-if="post.media_type == 'video'||post.media_type == 'image'">
           <div class="caption row">
             <p>{{post.title}}</p>
             <p>{{post.description}}</p>
             <p>{{post.created_at}}</p>
           </div>
-
+</div>
           <!-- user-->
 
 
@@ -101,7 +129,7 @@
                   <ul class="dropdown-menu">
                     <li>
                       <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                        <i class="fa fa-twitter"></i>
+                          <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
                       </a>
                     </li>
                     <li>
@@ -160,7 +188,28 @@
                   <div class="thumbnail">
                     <!-- defaultimg-->
                     <div class="row  popdefaultimg">
-                      <img src="http://localhost:8000/{{post.media_url}}" alt="">
+
+                      <div ng-if="post.media_type == 'image'">
+
+                         <img src="http://localhost:8000/{{post.media_url}}" alt="">
+                       </div>
+
+                       <div ng-if="post.media_type == 'video' ">
+
+                        <video controls  preload="auto" style="height: 242px;">
+
+                       <source src="http://localhost:8000/{{post.media_url}}"  />
+                    </video>
+
+                       </div>
+                         <div ng-if="post.media_type == 'audio'">
+                       <audio controls>
+
+                   <source src="http://localhost:8000/{{post.media_url}}" />
+
+                   </audio>
+                   </div>
+
                     </div>
                     <!-- end defaultimg-->
                     <!-- caption-->
@@ -204,7 +253,7 @@
                               <ul class="dropdown-menu">
                                 <li>
                                   <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                                    <i class="fa fa-twitter"></i>
+                                      <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
                                   </a>
                                 </li>
                                 <li>
@@ -298,7 +347,12 @@
     </div>
     <div class="btnsOn">
       <a href="#!/category/{{cat_id}}/posts" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
-      <a href="#!/category/{{cat_id}}/addpost" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      <mentor ng-if="is_mentor == 1 || is_talent == 1">
+          <a href="#!/category/{{cat_id}}/addpost" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      </mentor>
+      <mentor ng-if="is_mentor != 1 && is_talent != 1">
+          <button class="btn btn-default disabled" title="You have to be Mentor Or Talent in this category to add post" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
+      </mentor>
     </div>
   </div>
 </div>
@@ -320,7 +374,38 @@
         <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
           <div class="row evDefaultImg">
             <!--<h2>{{event.media_url}}</h2>-->
+            <div ng-if="event.media_type == 'image'">
             <img src="http://localhost:8000/{{event.media_url}}" alt="">
+            </div>
+            <div ng-if="event.media_type == 'video' ">
+
+             <video   controls  preload="auto" style="height: 242px;">
+
+            <source src="http://localhost:8000/{{event.media_url}}"  />
+         </video>
+
+            </div>
+              <div ng-if="event.media_type == 'audio'">
+            <audio controls>
+
+         <source src="http://localhost:8000/{{event.media_url}}" />
+
+         </audio>
+         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
           <!--    top event default image-->
 
@@ -403,7 +488,7 @@
           <!--
 -->
           <div class=" going">
-            <button type="button" class="btn btn-default">Going</button>
+            <button type="button" class="btn btn-default" ng-click="going(event.id)" ng-controller="homec">Going</button>
           </div>
 
         </div>
@@ -428,7 +513,27 @@
               <div class="modal-body">
                 <div class="thumbnail">
                   <div class="row evDefaultImg">
+
+
+                    <div ng-if="event.media_type == 'image'">
                     <img src="http://localhost:8000/{{event.media_url}}" alt="">
+                    </div>
+                    <div ng-if="event.media_type == 'video' ">
+
+                     <video   controls  preload="auto">
+
+                    <source src="http://localhost:8000/{{event.media_url}}"  />
+                  </video>
+
+                    </div>
+                      <div ng-if="event.media_type == 'audio'">
+                    <audio controls>
+
+                  <source src="http://localhost:8000/{{event.media_url}}" />
+
+                  </audio>
+                  </div>
+
                   </div>
                   <!--    top event default image-->
 
@@ -481,7 +586,7 @@
 
                     <!--share -->
                     <div class="going  col-lg-4 col-md-4 col-sm-12">
-                      <button type="button" class=" btn btn-default">Going</button>
+                      <button type="button" class=" btn btn-default" ng-click="going(event.id)" ng-controller="homec">Going</button>
                     </div>
 
                     <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
@@ -581,7 +686,12 @@
     </div>
     <div class="btnsOn">
       <a href="#!/category/{{cat_id}}/events" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
-      <a href="#!/category/{{cat_id}}/createEvent" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      <mentor ng-if="is_mentor == 1">
+          <a href="#!/category/{{cat_id}}/createEvent" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      </mentor>
+      <mentor ng-if="is_mentor != 1">
+          <button class="btn btn-default disabled" title="You have to be Mentor in this category to create an Event" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
+      </mentor>
     </div>
   </div>
 </div>
@@ -599,7 +709,27 @@
       <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" ng-repeat="workshop in categoryWorkshops | limitTo:3 track by $index">
         <div class="thumbnail" data-toggle="modal" data-target="#ws{{workshop.id}}">
           <!--                    <img src="http://placehold.it/350x250">-->
-          <img src="http://localhost:8000/{{workshop.media_url}}">
+
+
+          <div ng-if="workshop.media_type == 'image'">
+          <img src="http://localhost:8000/{{workshop.media_url}}" alt="">
+          </div>
+          <div ng-if="workshop.media_type == 'video' ">
+
+           <video   controls  preload="auto" style="height: 242px;">
+
+          <source src="http://localhost:8000/{{workshop.media_url}}"  />
+        </video>
+
+          </div>
+            <div ng-if="workshop.media_type == 'audio'">
+          <audio controls>
+
+        <source src="http://localhost:8000/{{workshop.media_url}}" />
+
+        </audio>
+        </div>
+
           <h3 ng-click="isWorkshopCraetor(workshop.id);">{{workshop.name}}</h3>
           <div class="caption">
             <p>{{workshop.description}}</p>
@@ -615,7 +745,7 @@
 
               <div class="col-lg-4 col-md-12 col-sm-12">
                 <i class="fa fa-users" aria-hidden="true"></i>
-                <span class="badge">{{workshop.max_capacity}} place left</span>
+                <span class="badge">{{workshop.max_capacity-workshop.enroll_count}} place left</span>
               </div>
               <div class="col-lg-4 col-md-12 col-sm-12">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -648,7 +778,26 @@
               <div class="modal-body">
                 <div class="thumbnail">
                   <div class="row popWorkshopDefaultImg">
+
+                    <div ng-if="workshop.media_type == 'image'">
                     <img src="http://localhost:8000/{{workshop.media_url}}" alt="">
+                    </div>
+                    <div ng-if="workshop.media_type == 'video' ">
+
+                     <video   controls  preload="auto">
+
+                    <source src="http://localhost:8000/{{workshop.media_url}}"  />
+                  </video>
+
+                    </div>
+                      <div ng-if="workshop.media_type == 'audio'">
+                    <audio controls>
+
+                  <source src="http://localhost:8000/{{workshop.media_url}}" />
+
+                  </audio>
+                  </div>
+
                   </div>
                   <!--    top event default image-->
 
@@ -669,7 +818,7 @@
 
                       <div class="col-lg-4 col-md-12 col-sm-12">
                         <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="badge">{{workshop.max_capacity}} place left</span>
+                        <span class="badge">{{workshop.max_capacity-workshop.enroll_count}} place left</span>
                       </div>
                       <div class="col-lg-4 col-md-12 col-sm-12">
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -800,7 +949,12 @@
         </div>
         <div class="btnsOn">
           <a href="#!/category/{{cat_id}}/workshops" class="btn btn-default" role="button"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
-          <a href="#!/category/{{cat_id}}/addworkshop" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+          <mentor ng-if="is_mentor == 1">
+              <a href="#!/category/{{cat_id}}/addworkshop" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+          </mentor>
+          <mentor ng-if="is_mentor != 1">
+              <button class="btn btn-default disabled" title="You have to be Mentor in this category to create a workshop" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
+          </mentor>
         </div>
 
       </div>
@@ -910,7 +1064,7 @@
           <!--
 -->
           <div class=" going">
-            <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Accept Challenge</a>
+            <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Challenge</a> 
           </div>
 
         </div>
@@ -921,7 +1075,12 @@
     </div>
     <div class="btnsOn">
       <a href="#!/category/{{cat_id}}/competitions" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
-      <a href="#!/category/{{cat_id}}/createcompetition" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      <mentor ng-if="is_mentor == 1">
+          <a href="#!/category/{{cat_id}}/createcompetition" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+      </mentor>
+      <mentor ng-if="is_mentor != 1">
+          <button class="btn btn-default disabled" title="You have to be Mentor in this category to create a competition" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
+      </mentor>
     </div>
   </div>
 </div>

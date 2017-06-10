@@ -2,16 +2,27 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
 
     var filesuploaded = []
 
+    user.get_cur_user().then(function(data){
+		console.log('currrr usssserrrrr',data);
+		$rootScope.cur_user=data.cur_user;
+        $rootScope.fname= $rootScope.cur_user.first_name;
+        $rootScope.lname=$rootScope.cur_user.last_name;
+        var dob=$rootScope.cur_user.date_of_birth;
+        $rootScope.cur_user.date_of_birth=new Date(dob);
+	}, function (err) {
+        console.log(err);
+    });
+
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
-	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
-    
-    $scope.lang=function(lang){
+	// $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+
+    $scope.language=function(lang){
+        console.log(lang);
         if (lang == "ar") {
             localStorage.setItem('language', 'ar');
         }else{
             localStorage.setItem('language', 'en');
         }
-        $route.reload();
     }
 
 
@@ -27,12 +38,12 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             var userdata = $scope.user
             console.log("inside login:", userdata);
             user.login(userdata).then(function (data) {
-                console.log("dataaaaa minA",data.status);
+                console.log("dataaaaa minA",data.user);
                 if (data.status == 'ok') {
-                    localStorage.setItem('cur_user', JSON.stringify(data.user));
+                    $rootScope.token=data.token;
+                    $rootScope.cur_user=data.user;
                     localStorage.setItem('token', JSON.stringify(data.token));
                     $location.url('/');
-                    $route.reload();
                 }else{
                     alert('invaled user name or password')
                 }
@@ -45,11 +56,11 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
     }
 
     $scope.logoutFn = function () {
-            console.log("inside logout");
-            localStorage.removeItem('cur_user');
+            // console.log("inside logout");
             localStorage.removeItem('token');
+            $rootScope.cur_user={}
+            $rootScope.token=''
             $location.url('/');
-            $route.reload();
     }
 
     user.getAllCountry().then(function (data) {
