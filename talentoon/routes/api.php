@@ -73,6 +73,7 @@ Route::get('/get_media_for_initial_review/{category_talent_id}/{category_mentor_
 
 Route::post('/single_upload/{id}', 'UploadController@single_upload');
 Route::post('/event_upload/{id}', 'UploadController@event_upload');
+Route::post('/profile_picture_upload/{id}', 'UploadController@profile_picture_upload');
 
 Route::post('/test2', 'UploadController@test2');
 Route::POST('/categorymentor/update','CategoryMentorController@update');
@@ -164,6 +165,7 @@ Route::post('/isEventCraetor','EventController@isEventCraetor');
 Route::get('/categorymentor/get_mentor_details/{mentor_id}', 'CategoryMentorController@get_mentor_details');
 Route::post('/conference/add_teacher', 'VideoConferenceController@add_wiziq_teacher');
 Route::post('/conference/create_class', 'VideoConferenceController@create_wiziq_class');
+Route::post('/conference/add_attendee_to_class', 'VideoConferenceController@add_wiziq_attendee_class');
 Route::post('/session_upload/{id}', 'UploadController@session_upload');
 Route::post('/workshop/{workshop_id}','WorkShopsController@createSession');
 

@@ -390,14 +390,17 @@
                                         </div>
                                         <!--profile image-->
                                             <div class="form-group">
-                                                <input type="file" name="img[]" class="file">
-                                                <div class="input-group col-xs-12">
-                                                    <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control input-lg" disabled placeholder="profile pic">
-                                                    <span class="input-group-btn">
-                                                        <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i>Browse</button>
-                                                    </span>
-                                                </div>
+
+                                                <input name="profile_picture" ng-model="register.profile_picture" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+
+                                                <!--<input type="file" name="img[]" class="file">-->
+                                                <!--<div class="input-group col-xs-12">-->
+                                                    <!--<span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>-->
+                                                    <!--<input type="text" class="form-control input-lg" disabled placeholder="profile pic">-->
+                                                    <!--<span class="input-group-btn">-->
+                                                        <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i>Browse</button>-->
+                                                    <!--</span>-->
+                                                <!--</div>-->
                                             </div>
 
                                         <!--date-->

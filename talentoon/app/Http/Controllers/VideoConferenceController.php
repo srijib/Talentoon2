@@ -198,10 +198,6 @@ class VideoConferenceController extends Controller
 //        $requestParameters["language_culture_name"]="en-us";
 
 
-
-
-
-
         $httpRequest=new HttpRequest();
         try
         {
@@ -209,12 +205,6 @@ class VideoConferenceController extends Controller
 
             //here find <recording_url> and find </recording_url>
             //to get url then give it as link to a button start class
-
-
-
-
-
-
 
             if(!empty($XMLReturn))
             {
@@ -279,14 +269,6 @@ class VideoConferenceController extends Controller
                 }
             }//end if
 
-
-
-
-
-
-
-
-
 //            echo json_encode($XMLReturn);    // returns a string with JSON object
 //
 //            $xml_cnt = $XMLReturn;
@@ -302,6 +284,99 @@ class VideoConferenceController extends Controller
 
         }
     }
+
+
+
+
+
+
+    //add attendee to class
+
+    public function add_wiziq_attendee_class(Request $request)
+    {
+
+        $secretAcessKey = __secretAcessKey;
+        $access_key=__access_key;
+        $webServiceUrl = __webServiceUrl;
+
+
+        $authBase = new AuthBase($secretAcessKey,$access_key);
+        $XMLAttendee = "<attendee_list><attendee><attendee_id><![CDATA[+ $request->user_id +]]></attendee_id><screen_name><![CDATA[+$request->name+]]></screen_name><language_culture_name><![CDATA[es-ES]]></language_culture_name></attendee></attendee_list>";
+
+
+        $method = "add_attendees";
+        $requestParameters["signature"]=$authBase->GenerateSignature($method,$requestParameters);
+
+        $requestParameters["class_id"]= $request->class_id;
+        $requestParameters["attendee_list"]= $XMLAttendee;
+
+
+        $httpRequest=new HttpRequest();
+        try
+        {
+            $XMLReturn=$httpRequest->wiziq_do_post_request($webServiceUrl.'?method=add_attendees',http_build_query($requestParameters, '', '&'));
+        }
+        catch(Exception $e)
+        {
+            echo $e->getMessage();
+        }
+        if(!empty($XMLReturn))
+        {
+            try
+            {
+                $objDOM = new DOMDocument();
+                $objDOM->loadXML($XMLReturn);
+            }
+            catch(Exception $e)
+            {
+                echo $e->getMessage();
+            }
+            $status=$objDOM->getElementsByTagName("rsp")->item(0);
+            $attribNode = $status->getAttribute("status");
+            if($attribNode=="ok")
+            {
+                $methodTag=$objDOM->getElementsByTagName("method");
+                //echo "<br>method=".$method=$methodTag->item(0)->nodeValue;
+
+                $class_idTag=$objDOM->getElementsByTagName("class_id");
+                //echo "<br>class_id=".$class_id=$class_idTag->item(0)->nodeValue;
+
+                $add_attendeesTag=$objDOM->getElementsByTagName("add_attendees")->item(0);
+                //echo "<br>add_attendeesStatus=".$add_attendeesStatus = $add_attendeesTag->getAttribute("status");
+
+                $attendeeTag=$objDOM->getElementsByTagName("attendee");
+                $length=$attendeeTag->length;
+                for($i=0;$i<$length;$i++)
+                {
+                    $attendee_idTag=$objDOM->getElementsByTagName("attendee_id");
+                    //echo "<br>attendee_id=".$attendee_id=$attendee_idTag->item($i)->nodeValue;
+
+                    $attendee_urlTag=$objDOM->getElementsByTagName("attendee_url");
+                    //echo "<br>attendee_url=".$attendee_url=$attendee_urlTag->item($i)->nodeValue;
+
+                    $myObj["method"] = $methodTag->item(0)->nodeValue;
+                    $myObj["class_id"] = $class_idTag->item(0)->nodeValue;
+                    $myObj["add_attendees_status"] = $add_attendeesTag->getAttribute("status");
+                    $myObj["attendee_id"] = $attendee_idTag->item($i)->nodeValue;
+                    $myObj["attendee_url"] = $attendee_urlTag->item($i)->nodeValue;
+
+
+                    $myJSON = json_encode($myObj);
+
+                    echo $myJSON;
+                }
+
+            }
+            else if($attribNode=="fail")
+            {
+                $error=$objDOM->getElementsByTagName("error")->item(0);
+                echo "<br>errorcode=".$errorcode = $error->getAttribute("code");
+                echo "<br>errormsg=".$errormsg = $error->getAttribute("msg");
+            }
+        }//end if
+    }
+
+
 
 }
 

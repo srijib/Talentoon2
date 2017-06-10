@@ -24,7 +24,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
           BE_UN_TALENT: 'Un Talent',
           BE_UN_MENTOR: 'Un Mentor',
           UN_SUBSCRIBE: 'Un Subscribe',
-          TOP_COMPETITIONS: 'Top Competitions'
+          TOP_COMPETITIONS: 'Top Competitions',
     },
     };
     var translations_ar = {

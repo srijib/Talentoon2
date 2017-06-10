@@ -24,7 +24,7 @@ angular.module('myApp').controller("addpost",function($scope,$http,categories,$r
          console.log("element is ",element)
          $rootScope.currentFile = element.files[0];
          filesuploaded.push(element.files[0]);
-}
+     }
 
 });//end of module
 

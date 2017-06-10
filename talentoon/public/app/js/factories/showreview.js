@@ -24,6 +24,7 @@ return {
 
 		},
 		storeSingleInitialReview:function(rev_data){
+			console.log("review data is ",rev_data)
 			var def =$q.defer();
 			$http({
 				url:'http://localhost:8000/api/single_review' ,

@@ -469,7 +469,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         }
         ,
         complete_mentor_profile: function (mentor_data) {
-
+            console.log("mentor object in complete mentor profile ",mentor_data)
             var def = $q.defer();
             $http({
                 url: 'http://127.0.0.1:8000/api/categorymentor/store',
@@ -477,7 +477,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 data: mentor_data
 
             }).then(function (res) {
-
+                console.log(res);
                 if (res.data) {
                     console.log(res.data);
                     def.resolve(res.data)

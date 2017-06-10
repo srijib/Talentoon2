@@ -1,4 +1,4 @@
-angular.module('myApp').factory("user", function ($http, $q) {
+angular.module('myApp').factory("user", function ($http, $q,$rootScope) {
 
     return {
         register: function (userdata) {
@@ -10,8 +10,32 @@ angular.module('myApp').factory("user", function ($http, $q) {
                 method: 'POST',
                 data: userdata
             }).then(function (res) {
-                console.log(res);
+                console.log("_________ inside register __ ", res.data.user.id);
                 if (res.data) {
+
+                    /////////////////////////
+                    $http({
+                        method: 'POST',
+                        url: 'http://localhost:8000/api/profile_picture_upload/' + res.data.user.id,
+                        processData: false,
+                        data: {"media_url": "uploads/profile_pic" + $rootScope.profilePictureFile.name, "media_type": $rootScope.profilePictureFile.type},
+                        transformRequest: function (data) {
+                            var formData = new FormData();
+                            formData.append("file", $rootScope.profilePictureFile);
+                            return formData;
+                        },
+                        headers: {
+                            'Content-Type': undefined,
+                            'Process-Data': false
+                        }
+                    }).then(function (data) {
+                        // alert(data);
+                        console.log("thennnnn in add post", data)
+                    });
+
+                    //////////////////////////////////////////////
+
+
                     def.resolve(res.data)
                 } else {
                     def.reject('Couldnot create User')
@@ -155,6 +179,28 @@ angular.module('myApp').factory("user", function ($http, $q) {
             method: 'GET'
             // data: id
         }).then(function (res) {
+
+            /////////////////////////
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8000/api/profile_picture_upload/' + res.data.user.id,
+                processData: false,
+                data: {"media_url": "uploads/profile_pic" + $rootScope.profilePictureFile.name, "media_type": $rootScope.profilePictureFile.type},
+                transformRequest: function (data) {
+                    var formData = new FormData();
+                    formData.append("file", $rootScope.profilePictureFile);
+                    return formData;
+                },
+                headers: {
+                    'Content-Type': undefined,
+                    'Process-Data': false
+                }
+            }).then(function (data) {
+                // alert(data);
+                console.log("thennnnn in add post", data)
+            });
+            //////////////////////////////////////////////
+
 
             console.log('i tested in profile',res.data);
 

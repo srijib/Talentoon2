@@ -1,5 +1,8 @@
 angular.module('myApp').controller("userprofile", function ($scope, $http, user, $rootScope, $route,$routeParams,$location) {
 
+    var filesuploaded = []
+
+
     $rootScope.userupdate=JSON.parse(localStorage.getItem("cur_user"));;
     $rootScope.fname= $rootScope.userupdate.first_name;
     $rootScope.lname=$rootScope.userupdate.last_name;
@@ -111,6 +114,10 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
     $scope.updateuserprofile=function(valid){
         console.log('kkkkkkkkkkk',$scope.userupdate)
 
+        $scope.userupdate.image = $rootScope.profilePictureFile.name;
+        console.log("user image is",$scope.userupdate.image);
+
+
         if($scope.userupdate.userpassword ){
             $scope.password=true;
             console.log('i entered here')
@@ -190,4 +197,12 @@ console.log(obj);
       });
 
 }
+
+$scope.uploadedFile = function(element) {
+    console.log("element is ",element)
+    $rootScope.profilePictureFile = element.files[0];
+    filesuploaded.push(element.files[0]);
+}
+
+
 })

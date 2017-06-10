@@ -2,6 +2,7 @@ angular.module('myApp').controller("talents",function($scope,$http,categories,$r
 	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 
   var reviewfilesuploaded = []
+	var reviewfilesuploaded_names = []
   var talent = {}
 
 
@@ -60,10 +61,11 @@ angular.module('myApp').controller("talents",function($scope,$http,categories,$r
 
 
     $scope.uploadedReviewFile = function (element) {
-			console.log("hhhhhhhhhhhhh");
         reviewfilesuploaded.push(element.files[0])
-				console.log(reviewfilesuploaded)
-				$scope.files_in_form =reviewfilesuploaded;
+        reviewfilesuploaded_names.push(element.files[0].name)
+		console.log(reviewfilesuploaded)
+        console.log(reviewfilesuploaded_names)
+		$rootScope.files_in_form = reviewfilesuploaded_names;
 
 
     }
