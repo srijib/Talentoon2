@@ -28,7 +28,7 @@ public function __construct(){
                       {
                           $join->on('events.id','=','going_event.event_id');
                       })
-                ->where('events.is_approved','=',1)
+                ->where([['events.is_approved','=',1],['date_from','>=', date('Y-m-d').' 00:00:00']])
                 ->groupBy('events.id')
 
                 ->get();

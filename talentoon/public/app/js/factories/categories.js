@@ -28,13 +28,31 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },
         getCategoryAllData:function(cat_id){
-            console.log('factory cat cat_iddd',cat_id);
             var def =$q.defer();
             $http({
                 url:'http://localhost:8000/api/category/'+cat_id,
                 method:'GET'
             }).then(function(res){
                 // 		console.log("response is" , res);
+                if(res.data){
+                    def.resolve(res.data);
+                }else{
+                    def.reject('there is no data ')
+                }
+
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise ;
+
+        },
+        getUserRoles:function(cat_id){
+            var def =$q.defer();
+            $http({
+                url:'http://localhost:8000/api/category/'+cat_id+'/roles',
+                method:'GET'
+            }).then(function(res){
+                		// console.log("ROLESSSSS FROM FACTORY" , res);
                 if(res.data){
                     def.resolve(res.data);
                 }else{
@@ -597,14 +615,14 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },
 
-        isWorkshopCraetor: function (data) {
+        isWorkshopCreator: function (data) {
             //  var category_id= index;
             // // console.log("category_id",category_id)
             // console.log("workshop id", id)
             var def = $q.defer();
             console.log("data",data)
             $http({
-                url: 'http://localhost:8000/api/isWorkshopCraetor',
+                url: 'http://localhost:8000/api/isWorkshopCreator',
                 method: 'POST',
                 data: data
             }).then(function (res) {

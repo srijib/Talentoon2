@@ -31,7 +31,7 @@ class WorkShopsController extends Controller
           {
               $join->on('workshops.id','=','workshop_enrollment.workshop_id');
           })
-            ->where('workshops.is_approved','=',1)
+            ->where([['workshops.is_approved','=',1],['workshops.date_to','>=', date('Y-m-d').' 00:00:00']])
 
             ->groupBy('workshops.id')
 

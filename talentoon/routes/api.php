@@ -100,11 +100,12 @@ Route::get('/userprofile',[
             'uses'=>'UserProfile@displayShared',
             'middleware'=> 'jwt.auth']);
 
-    //ask nahala to add middleware
+    //ask nahla to add middleware
 Route::get('/editprofile','UserProfile@edit');
 Route::get('/userprofile/cur_user','UserProfile@cur_user');
 Route::put('/updateprofile','UserProfile@update');
 Route::post('/checkpassword','UserProfile@checkpassword');
+Route::get('/category/{category_mentor_id}/roles','CategoriesController@roles');
 
 Route::get('/userprofile/{post_id}',[
     'uses'=>'UserProfile@show',

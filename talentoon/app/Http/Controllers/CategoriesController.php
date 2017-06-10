@@ -74,18 +74,9 @@ class CategoriesController extends Controller
         // return Response::json(['status' => '1','message' => 'data saved successfully']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($cat_id)
+    public function roles($cat_id)
     {
-
         $user = JWTAuth::parseToken()->authenticate();
-        $category=Category::find($cat_id);
-
         $subscribed = DB::table('subscribers')
                     -> select('subscribed')
                     ->where([['subscriber_id', '=', $user->id],['category_id','=',$cat_id]])
@@ -99,6 +90,22 @@ class CategoriesController extends Controller
                     -> select('status')
                     ->where([['mentor_id', '=', $user->id],['category_id','=',$cat_id]])
                     ->get();
+
+        return response()->json(['is_mentor'=>$mentor,'is_talent'=>$talent,'is_sub'=>$subscribed,'status' => '1','message' => 'data sent successfully']);
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($cat_id)
+    {
+
+        $user = JWTAuth::parseToken()->authenticate();
+        $category=Category::find($cat_id);
 
         $posts = DB::table('posts')
         ->join('users', 'posts.user_id', '=','users.id' )
@@ -123,8 +130,9 @@ class CategoriesController extends Controller
             {
               $join->on('workshops.id','=','workshop_enrollment.workshop_id');
             })
-            ->where([['workshops.category_id','=',$cat_id],['workshops.is_approved','=',1]])
+            ->where([['workshops.category_id','=',$cat_id],['workshops.is_approved','=',1],['workshops.date_to','>=', date('Y-m-d').' 00:00:00']])
             ->groupBy('workshops.id')
+
             ->get();
 
 
@@ -132,6 +140,7 @@ class CategoriesController extends Controller
             ->join('users', 'users.id', '=', 'events.mentor_id')
             ->select('events.*','users.first_name', 'users.last_name', 'users.image as user_image')
             ->where([['events.category_id','=',$cat_id],['events.is_approved','=',1]])
+            ->where('events.date_to','>=', date('Y-m-d').' 00:00:00')
             ->get();
             // return response()->json(['posts' => $posts,'status' => '1','message' => 'data sent successfully']);
             $comments = DB::table('comments')
