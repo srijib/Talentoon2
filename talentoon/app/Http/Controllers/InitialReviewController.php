@@ -187,20 +187,57 @@ class InitialReviewController extends Controller
 
     public function show_not_reviewed_initial_posts(Request $request,$mentor_id)
     {
-        $all_media_id=InitialReview::select("review_media_id")->get();
+//        $all_media_id=InitialReview::select("review_media_id")->get();
+        $all_media_id = DB::table('initial_reviews')
+            ->select('review_media_id')
+            ->where("initial_reviews.mentor_id","!=",$mentor_id)
+            ->get()->toArray();
+//        ->toSql();
+
+
+
         $arr=[];
+
+
         for ($i=0; $i <count($all_media_id) ; $i++) {
-            array_push($arr,$all_media_id[$i]['review_media_id']);
+            array_push($arr,$all_media_id[$i]->review_media_id);
         }
+//        dd($arr);
+
+        $all_media_iddddd = DB::table('initial_reviews')
+            ->select('review_media_id')
+            ->whereNotIn("initial_reviews.review_media_id",$arr)
+            ->where("initial_reviews.mentor_id","=",$mentor_id)
+            ->get()->toArray();
+
+//        dd($all_media_iddddd);
+
         $all_initial_posts = DB::table('category_talents')
             ->join('review_media', 'category_talents.id', '=', 'review_media.category_talent_id')
             ->join('users', 'category_talents.talent_id', '=', 'users.id')
             ->join('categories', 'category_talents.category_id', '=', 'categories.id')
-            ->join('initial_reviews', 'category_talents.id', '=', 'initial_reviews.category_talent_id')
-            ->select('category_talents.*','review_media.*', 'categories.title as category_title', 'users.first_name', 'users.last_name', 'users.image')
-            ->whereNotIn("review_media.id", $arr)
-            ->where("initial_reviews.mentor_id","!=",$mentor_id)
+            ->select('category_talents.*','review_media.*', 'categories.title as category_title','users.first_name', 'users.last_name', 'users.image')
+            ->whereIn("review_media.id", $arr)
             ->get();
+
+
+//        $query = "";
+
+        //this query tells that any mentor puts review on the piece of work it will not be visible again to any mentor
+        //to decide the talent level i can makee sure that all piece of works has been reviewed by any mentor in order to decide his level
+
+
+
+//        $all_initial_posts_raw = DB::select('select * from users where id = :id', ['id' => 1]);
+        $all_initial_posts = DB::select(DB::raw("Select  review_media.id as review_media_id ,review_media.*, review_media.category_talent_id as review_category_talent_id ,review_media.id as review_media_id , review_media.review_media_url,category_talents.id as category_talent_id , category_talents.* from  category_talents join review_media on review_media.category_talent_id = category_talents.id where  review_media.id not in (select initial_reviews.review_media_id from initial_reviews)"));
+
+
+
+
+//        ->toSql();
+
+//        dd($all_initial_posts_raw);
+
 
         return response()->json(['all_initial_posts' => $all_initial_posts,'status' => '1','message' => 'data sent successfully']);
     }
@@ -208,6 +245,50 @@ class InitialReviewController extends Controller
     public function store_single_review(Request $request)
     {
         InitialReview::create($request->all());
+
+        //i need here to check if there is any more piece of work for the same talent id or not , if all his work has been reviewed please decide his level
+        // and no need to wait 24 hours to decide his level according to the average points on all mentors
+
+        $talent_id = $request->talent_id;
+
+//        dd($talent_id);
+        //select * from review_media JOIN initial_reviews on review_media.id = initial_reviews.review_media_id
+        // join category_talents on category_talents.id = initial_reviews.category_talent_id
+        // where category_talents.talent_id =6
+
+
+        $talent_media_remaining = DB::select(DB::raw("Select  review_media.id as review_media_id ,review_media.*, review_media.category_talent_id as review_category_talent_id ,review_media.id as review_media_id , review_media.review_media_url,category_talents.id as category_talent_id , category_talents.* from  category_talents join review_media on review_media.category_talent_id = category_talents.id where  review_media.id not in (select initial_reviews.review_media_id from initial_reviews)"));
+
+
+
+        $talent_media_remaining = DB::table('review_media')
+            ->join('initial_reviews','review_media.id', '=', 'initial_reviews.review_media_id')
+            ->join('category_talents','category_talents.id' ,'=' ,'initial_reviews.category_talent_id')
+            ->select('*')
+            ->where('category_talents.talent_id', $talent_id)
+            ->get();
+
+
+//        dd($talent_media_remaining);
+
+
+
+
+
+
+
+
+//        $all_initial_posts = DB::table('category_talents')
+//            ->join('review_media', 'category_talents.id', '=', 'review_media.category_talent_id')
+//            ->join('users', 'category_talents.talent_id', '=', 'users.id')
+//            ->join('categories', 'category_talents.category_id', '=', 'categories.id')
+//            ->select('category_talents.*','review_media.*', 'categories.title as category_title','users.first_name', 'users.last_name', 'users.image')
+//            ->whereIn("review_media.id", $arr)
+//            ->get();
+
+
+
+
         return response()->json(['status' => '1','message' => 'review saved successfully']);
     }
 }

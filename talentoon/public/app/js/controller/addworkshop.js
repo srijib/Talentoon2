@@ -61,4 +61,11 @@ angular.module('myApp').controller("addworkshop",function($scope,$http,categorie
  }
 
 
+    if(localStorage.getItem("wiziq_presenter_url")){
+        $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
+    }
+
+
+
+
 });

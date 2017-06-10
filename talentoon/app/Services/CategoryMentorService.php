@@ -20,7 +20,7 @@ class CategoryMentorService
 //        $mentor_data['mentor_id'] =>'required|numeric',
 //        $mentor_data['category_id'] =>'required|numeric',
 //        $mentor_data['experience'] =>'required',
-        $mentor_data['years_of_experience'] =>'numeric'
+//        $mentor_data['years_of_experience'] =>'numeric'
 
     ];
     $messages=[

@@ -51,6 +51,8 @@ angular.module('myApp').factory("event",function($q,$http,$rootScope){
             return def.promise;
 
         }
+
+        
     }
 
 });

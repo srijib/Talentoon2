@@ -13,7 +13,9 @@ angular.module('myApp').controller("showreview", function($timeout,$rootScope,$s
     $scope.rev={}
 
   $scope.review = function(i) {
-      $scope.all_initial_posts[i].rev.review_media_id=$rootScope.all_initial_posts[i].id
+      // $scope.all_initial_posts[i].rev.review_media_id=$rootScope.all_initial_posts[i].id
+      $scope.all_initial_posts[i].rev.review_media_id=$rootScope.all_initial_posts[i].review_media_id
+      $scope.all_initial_posts[i].rev.talent_id =$rootScope.all_initial_posts[i].talent_id
       $scope.all_initial_posts[i].rev.category_talent_id=$rootScope.all_initial_posts[i].category_talent_id
       //now it is mentor id not category mentor id
       $scope.all_initial_posts[i].rev.mentor_id=mentor_id;

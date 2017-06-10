@@ -75,4 +75,20 @@ angular.module('myApp').controller("eventcontroller",function(event,$scope,$http
         console.log("element is ",element)
         $rootScope.EventcurrentFile = element.files[0];
     }
+
+    // $scope.going= function(event_id) {
+    // var event_id=event_id;
+    // // var user_id=user_id;
+    //
+    //
+    //
+    // console.log("hhhhhhhhhhhhhhhhhhhhhhhhhh",event_id);
+    // 		event.goingevent(event_id).then(function(data){
+    // 			console.log(data);
+    //
+    // 		} , function(err){
+    // 			console.log(err);
+    //
+    // 		});
+    // }
 });

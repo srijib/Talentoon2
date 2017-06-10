@@ -1,4 +1,14 @@
-angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,user,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route) {
+angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route,workshops) {
+    $rootScope.token = JSON.parse(localStorage.getItem("token"));
+
+    $rootScope.wiziq_class_id = JSON.parse(localStorage.getItem("wiziq_class_id"));
+
+
+
+    console.log("category controller current user",$rootScope.cur_user);
+    console.log("category controller token",$rootScope.token);
+
+
 
     // $rootScope.editable_workshop=JSON.parse(localStorage.getItem("workshop"));;
     // $rootScope.editable_event=JSON.parse(localStorage.getItem("event"));;
@@ -391,6 +401,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 
     }
+
     /////////////////////END Event edit delete update///////////////////////////////////
 
     categories.getMentorsReviews().then(function(data){
@@ -416,6 +427,20 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -587,7 +612,7 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     }
 
 
-//be teacher in wizIQ
+    //be teacher in wizIQ
     $scope.add_wiziq_teacher = function () {
         var mentor_id = $rootScope.cur_user.id;
         var teacher_name = $rootScope.cur_user.first_name + $rootScope.cur_user.last_name;
@@ -645,9 +670,24 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
            });
        }
 
+
+
+
+
+
+
+
+
     if(localStorage.getItem("wiziq_presenter_url")){
         $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
     }
+
+    if(localStorage.getItem("attendee_"+$rootScope.cur_user.id)){
+        $scope.current_student_join_class_url =  localStorage.getItem("attendee_"+$rootScope.cur_user.id);
+    }
+
+
+
 
 
 

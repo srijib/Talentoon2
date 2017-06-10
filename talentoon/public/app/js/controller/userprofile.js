@@ -1,4 +1,5 @@
 angular.module('myApp').controller("userprofile", function (categories,$scope, $http, user, $rootScope, $route,$routeParams,$location) {
+    var filesuploaded = []
 
   user.userprofile().then(function(data){
       $scope.userprofile=data.data;
@@ -38,7 +39,6 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
 
   });
     user.editprofile($rootScope.cur_user.id).then(function(data){
-        console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
         $rootScope.cur_user=data;
         var dob=$rootScope.cur_user.date_of_birth;
         $rootScope.cur_user.date_of_birth=new Date(dob);
@@ -112,59 +112,60 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
   }
 
 
-  $scope.updateuserprofile=function(valid){
-      console.log('kkkkkkkkkkk',$scope.userupdate)
+    $scope.updateuserprofile=function(valid){
+        console.log('kkkkkkkkkkk',$scope.userupdate)
 
-      if($scope.userupdate.userpassword ){
-          $scope.password=true;
-          console.log('i entered here')
-      }
-      if($scope.userupdate.newpassword===$scope.userupdate.repassword && $scope.userupdate.newpassword && $scope.userupdate.repassword){
-          $scope.repassword=true;
-          console.log('iam here')
-      }
-      if (valid) {
-          console.log('feh user password',$scope.password)
-          console.log('da5lt al etnen passwords',$scope.repassword)
-          console.log($scope.userupdate.newpassword)
-          //for checking on password in backend
-          var userdata = $scope.userupdate
-          if ($scope.repassword && $scope.password){
-              console.log('da5lt koll 7aga ')
-              // var userdata = $scope.userupdate
-              console.log('y simnaaaaaaa');
-              user.checkpassword(userdata).then(function (data) {
-                  console.log('y simnaaaaaaa');
-                  if (data == 'ok') {
-                      $location.url('/');
-                      $route.reload();
-                  }else{
-                      console.log(data)
-                      // alert('enter your password right')
-                  }
-              }, function (err) {
-                  console.log(err);
-              });
-
-          }else{
-              //for updating data directly
-
-              console.log('dddddddddddggggggggggg')
-
-              user.updateuser(userdata).then(function (data) {
-                  console.log(data)
-              }, function (err) {
-                  console.log(err);
-              });
-
-          }
+        $scope.userupdate.image = $rootScope.profilePictureFile.name;
+        console.log("user image is",$scope.userupdate.image);
 
 
-      }
-  }
+        if($scope.userupdate.userpassword ){
+            $scope.password=true;
+            console.log('i entered here')
+        }
+        if($scope.userupdate.newpassword===$scope.userupdate.repassword && $scope.userupdate.newpassword && $scope.userupdate.repassword){
+            $scope.repassword=true;
+            console.log('iam here')
+        }
+        if (valid) {
+            console.log('feh user password',$scope.password)
+            console.log('da5lt al etnen passwords',$scope.repassword)
+            console.log($scope.userupdate.newpassword)
+            //for checking on password in backend
+            var userdata = $scope.userupdate
+            if ($scope.repassword && $scope.password){
+                console.log('da5lt koll 7aga ')
+                // var userdata = $scope.userupdate
+                console.log('y simnaaaaaaa');
+                user.checkpassword(userdata).then(function (data) {
+                    console.log('y simnaaaaaaa');
+                    if (data == 'ok') {
+                        $location.url('/');
+                        $route.reload();
+                    }else{
+                        console.log(data)
+                        // alert('enter your password right')
+                    }
+                }, function (err) {
+                    console.log(err);
+                });
+
+            }else{
+                //for updating data directly
+
+                console.log('dddddddddddggggggggggg')
+
+                user.updateuser(userdata).then(function (data) {
+                    console.log(data)
+                }, function (err) {
+                    console.log(err);
+                });
+
+            }
 
 
-    //edit user profile function
+        }
+    }
 
     // $scope.editprofile=function () {
     //     console.log($rootScope.cur_user.id);
@@ -228,6 +229,13 @@ var obj={following_id}
 
 }
 
+
+$scope.uploadedFile = function(element) {
+    console.log("element is ",element)
+    $rootScope.profilePictureFile = element.files[0];
+    filesuploaded.push(element.files[0]);
+})
+
 $scope.add_comment = function(i) {
     console.log("hhh",i);
     categories.submitComment($scope.allPosts[i].comment,$scope.allPosts[i].id).then(function(data){
@@ -250,4 +258,4 @@ $scope.new_comment = function(i) {
 }
 
 
-})
+

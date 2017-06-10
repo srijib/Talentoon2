@@ -27,6 +27,10 @@
             </div>
 
 
+            <input name="profile_picture" ng-model="user.profile_picture" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+
+
+
             <div class="userName row">
                 <span class="text-left col-lg-8 ">{{user.first_name}}  {{user.last_name}}</span>
                 <span class="text-center col-lg-4"><i class="fa fa-trophy" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Vertified"></i><i class="fa fa-cog" aria-hidden="true"></i></span>
@@ -58,7 +62,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                            <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                            <a data-original-title="Twitter" rel="tooltip" class="btn btn-twitter" data-placement="left">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>

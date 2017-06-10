@@ -87,7 +87,31 @@ return {
 			})
 			return def.promise ;
 
-		}
+		},
+		goingevent:function(event_id){
+          console.log("from factory",event_id);
+          var def =$q.defer();
+          $http({
+            url:'http://localhost:8000/api/event/'+event_id+'/goingevent',
+            method:'POST',
+            data:event_id
+
+          }).then(function(res){
+            console.log("res from share",res);
+            if(res.data){
+              console.log(res.data);
+             def.resolve(res.data);
+
+            }else{
+              def.reject('there is no data ')
+            }
+
+          },function(err){
+            def.reject(err);
+          })
+          return def.promise ;
+
+        }
 		}
 
 
