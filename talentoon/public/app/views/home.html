@@ -80,7 +80,7 @@
 
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                                <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
                                                     <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
                                                 </a>
                                             </li>
@@ -210,7 +210,7 @@
 
                                                                 <ul class="dropdown-menu">
                                                                     <li>
-                                                                        <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                                                        <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
                                                                             <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
                                                                         </a>
                                                                     </li>
@@ -464,7 +464,7 @@
           <!--    top event detaila-->
           <div class=" going">
 
-            <button type="button" class="btn btn-default" ng-click="going(event.id)" >Going</button>
+            <button type="button" class="btn btn-default" ng-click="going(event.id)" >{{event.going_count}} Going</button>
           </div>
         </div>
         <!-- MODAAAAAAAAAAAAAAAAAAAAL -->
@@ -554,7 +554,7 @@
 
                     <!--share -->
                     <div class="going  col-lg-4 col-md-4 col-sm-12">
-                      <button type="button" class=" btn btn-default" ng-click="going(event.id)" >Going</button>
+                      <button type="button" class=" btn btn-default" ng-click="going(event.id)" > {{event.going_count}} Going</button>
                     </div>
 
                     <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
