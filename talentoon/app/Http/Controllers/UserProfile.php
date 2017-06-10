@@ -185,7 +185,8 @@ class UserProfile extends Controller
 
   public function userposts(Request $request){
 
-    $user= JWTAuth::parseToken()->toUser();
+    $cur_user= JWTAuth::parseToken()->toUser();
+    $user=User::find($cur_user->id);
 
     $my_posts = DB::table('posts')
     ->join('users', 'posts.user_id', '=','users.id' )
@@ -244,6 +245,7 @@ class UserProfile extends Controller
       ['follow.follower_id','=',$user->id]])
       ->groupBy('follow.follower_id')
       ->get()->first();
+      $country=Country::find($user->country_id);
 
     return response()->json(['status' => 1,
                 'message' => 'user data send successfully',
@@ -251,10 +253,12 @@ class UserProfile extends Controller
                 'first_name'=>$user->first_name,
                 'last_name'=>$user->last_name,
                 'image'=>$user->image,
+                'user'=>$user,
                 // 'post'=>$my_posts,
                 'allPosts'=>$allPosts,
                 'follower'=>$follower_count,
-                'following'=>$following_count
+                'following'=>$following_count,
+                'country'=>$country
 
                 // 'count'=>$countlike
 

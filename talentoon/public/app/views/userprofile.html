@@ -27,6 +27,10 @@
             </div>
 
 
+            <input name="profile_picture" ng-model="user.profile_picture" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+
+
+
             <div class="userName row">
                 <span class="text-left col-lg-8 ">{{user.first_name}}  {{user.last_name}}</span>
                 <span class="text-center col-lg-4"><i class="fa fa-trophy" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Vertified"></i><i class="fa fa-cog" aria-hidden="true"></i></span>
@@ -58,7 +62,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                            <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                            <a data-original-title="Twitter" rel="tooltip" class="btn btn-twitter" data-placement="left">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
@@ -158,7 +162,7 @@
                                 <img src="http://localhost:8000/{{userpost.media_url}}" alt="">
                             </IMAGE>
                             <!-- IF VEDIO -->
-                            <VIDEO ng-if="post.media_type == 'video'">
+                            <VIDEO ng-if="userpost.media_type == 'video'">
                                 <video controls><source src="http://localhost:8000/{{userpost.media_url}}"></video>
                             </VIDEO>
                             <!-- IF AUDIO -->
@@ -211,7 +215,7 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
-                                                <i class="fa fa-twitter"></i>
+                                                <i class="fa fa-share" ng-click="sharepost(userpost.id)" ng-controller="post"></i>
                                             </a>
                                         </li>
                                         <li>
@@ -244,14 +248,16 @@
 
                         <div class="UserComments">
                             <div class="writePost">
-                                <textarea class="form-control" rows="3"></textarea>
+                                <form ng-submit="new_comment($index)" name="comment_form_{{$index}}">
+                                <textarea class="form-control" name="comments_{{$index}}"  ng-model="userpost.comment" rows="3"></textarea>
                                 <div class="posting">
-                                    <button type="button" class="btn btn-default">Comment</button>
+                                    <button type="submit" class="btn btn-default" name="button_{{$index}}">Comment</button>
                                 </div>
+                                </form>
 
                             </div>
 
-                            <ul class="media-list">
+                            <!-- <ul class="media-list">
                                 <li class="media">
                                     <div class="media-left">
                                         <a href="#">
@@ -275,10 +281,10 @@
                                         <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
                                     </div>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                         <div class="seeComments">
-                            <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
+                            <span> <a class="fa fa-plus" aria-hidden="true" href="#!/category/{{userpost.category_id}}/posts/{{userpost.id}}">MORE COMMENTS</a></span>
                         </div>
                     </div>
                 </div>

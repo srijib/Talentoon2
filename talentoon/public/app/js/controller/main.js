@@ -1,5 +1,7 @@
 angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location,$route) {
 
+    var filesuploaded = []
+
     user.get_cur_user().then(function(data){
 		console.log('currrr usssserrrrr',data);
 		$rootScope.cur_user=data.cur_user;
@@ -21,6 +23,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
         }else{
             localStorage.setItem('language', 'en');
         }
+        window.location.reload();
     }
 
 
@@ -54,13 +57,18 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
 
                 // alert("server connection error");
             });
-
         }
-
     }
+
+
 
     $scope.logoutFn = function () {
             // console.log("inside logout");
+            // var auth2 = gapi.auth2.getAuthInstance();
+            // auth2.signOut().then(function () {
+            //     console.log('User signed out.');
+            // });
+
             localStorage.removeItem('token');
             $rootScope.cur_user={}
             $rootScope.token=''
@@ -79,6 +87,12 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
     $scope.registerFn = function (valid) {
         console.log('inside register fn');
         console.log($scope.user);
+
+
+        $scope.user.image = $rootScope.profilePictureFile.name;
+
+        console.log("user image is",$scope.user.image);
+
         if($scope.user.password && $scope.user.password.length>5){
             $scope.pass=true;
         }
@@ -97,4 +111,12 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             });
         }
     }
+
+
+    $scope.uploadedFile = function(element) {
+        console.log("element is ",element)
+        $rootScope.profilePictureFile = element.files[0];
+        filesuploaded.push(element.files[0]);
+    }
+
 })

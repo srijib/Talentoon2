@@ -1,4 +1,5 @@
-angular.module('myApp').controller("userprofile", function ($scope, $http, user, $rootScope, $route,$routeParams,$location) {
+angular.module('myApp').controller("userprofile", function (categories,$scope, $http, user, $rootScope, $route,$routeParams,$location) {
+    var filesuploaded = []
 
   user.userprofile().then(function(data){
       $scope.userprofile=data.data;
@@ -13,8 +14,10 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
 	});
 
   user.userposts().then(function(data){
-     console.log(data.data);
+     console.log("data of users",data.data);
     $scope.allPosts=data.data.allPosts;
+    $scope.users=data.data.user;
+    $scope.user_country=data.data.country;
     if(data.data.follower==null){
         $scope.follower=0;
     }else{
@@ -36,7 +39,6 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
 
   });
     user.editprofile($rootScope.cur_user.id).then(function(data){
-        console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
         $rootScope.cur_user=data;
         var dob=$rootScope.cur_user.date_of_birth;
         $rootScope.cur_user.date_of_birth=new Date(dob);
@@ -94,58 +96,46 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
     console.log(err);
 
   });
+  $scope.editprofile=function () {
+      console.log($rootScope.cur_user.id);
+      user.editprofile($rootScope.cur_user.id).then(function(data){
+          console.log(data);
+      $rootScope.userupdate=data;
+      $location.url('/editprofile');
+      $rootScope.fname= $rootScope.userupdate.first_name;
+      $rootScope.lname=$rootScope.userupdate.last_name;
+      } , function(err){
+          console.log(err);
 
 
+      });
+  }
 
-    //edit user profile function
-
-    // $scope.editprofile=function () {
-    //     console.log($rootScope.cur_user.id);
-    //     user.editprofile($rootScope.cur_user.id).then(function(data){
-    //         console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
-    //     $rootScope.cur_user=data;
-    //     var dob=$rootScope.cur_user.date_of_birth;
-    //     $rootScope.cur_user.date_of_birth=new Date(dob);
-    //     // $rootScope.cur_user.date_of_birth=new Date(data.date_of_birth)
-    //     $location.url('/editprofile');
-    //     $rootScope.fname= $rootScope.cur_user.first_name;
-    //     $rootScope.lname=$rootScope.cur_user.last_name;
-    //     } , function(err){
-    //         console.log(err);
-    //
-    //     });
-    //
-    // }
-
-    user.getAllCountry().then(function (data) {
-        //console.log("countries:", data);
-        $rootScope.countries_edit_user = data;
-        console.log("countries", $scope.countries);
-    }, function (err) {
-        console.log(err);
-
-    });
 
     $scope.updateuserprofile=function(valid){
-        console.log('kkkkkkkkkkk',$scope.cur_user)
+        console.log('kkkkkkkkkkk',$scope.userupdate)
 
-        if($scope.cur_user.userpassword ){
+        $scope.userupdate.image = $rootScope.profilePictureFile.name;
+        console.log("user image is",$scope.userupdate.image);
+
+
+        if($scope.userupdate.userpassword ){
             $scope.password=true;
             console.log('i entered here')
         }
-        if($scope.cur_user.newpassword===$scope.cur_user.repassword && $scope.cur_user.newpassword && $scope.cur_user.repassword){
+        if($scope.userupdate.newpassword===$scope.userupdate.repassword && $scope.userupdate.newpassword && $scope.userupdate.repassword){
             $scope.repassword=true;
             console.log('iam here')
         }
         if (valid) {
             console.log('feh user password',$scope.password)
             console.log('da5lt al etnen passwords',$scope.repassword)
-            console.log($scope.cur_user.newpassword)
+            console.log($scope.userupdate.newpassword)
             //for checking on password in backend
-            var userdata = $scope.cur_user
+            var userdata = $scope.userupdate
             if ($scope.repassword && $scope.password){
                 console.log('da5lt koll 7aga ')
-                // var userdata = $scope.cur_user
+                // var userdata = $scope.userupdate
                 console.log('y simnaaaaaaa');
                 user.checkpassword(userdata).then(function (data) {
                     console.log('y simnaaaaaaa');
@@ -176,6 +166,35 @@ angular.module('myApp').controller("userprofile", function ($scope, $http, user,
 
         }
     }
+
+    // $scope.editprofile=function () {
+    //     console.log($rootScope.cur_user.id);
+    //     user.editprofile($rootScope.cur_user.id).then(function(data){
+    //         console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
+    //     $rootScope.cur_user=data;
+    //     var dob=$rootScope.cur_user.date_of_birth;
+    //     $rootScope.cur_user.date_of_birth=new Date(dob);
+    //     // $rootScope.cur_user.date_of_birth=new Date(data.date_of_birth)
+    //     $location.url('/editprofile');
+    //     $rootScope.fname= $rootScope.cur_user.first_name;
+    //     $rootScope.lname=$rootScope.cur_user.last_name;
+    //     } , function(err){
+    //         console.log(err);
+    //
+    //     });
+    //
+    // }
+
+    user.getAllCountry().then(function (data) {
+        //console.log("countries:", data);
+        $rootScope.countries_edit_user = data;
+        console.log("countries", $scope.countries);
+    }, function (err) {
+        console.log(err);
+
+    });
+
+
 $scope.follow = function(following_id) {
 
   var obj={following_id}
@@ -197,9 +216,10 @@ $scope.unfollow = function(following_id) {
 // var user_id=user_id;
 
 var obj={following_id}
-console.log(obj);
       user.unfollow(obj).then(function(data){
           console.log(data);
+          console.log("el un follow",data);
+
           $route.reload();
 
       } , function(err){
@@ -208,4 +228,33 @@ console.log(obj);
       });
 
 }
+
+
+$scope.uploadedFile = function(element) {
+    console.log("element is ",element)
+    $rootScope.profilePictureFile = element.files[0];
+    filesuploaded.push(element.files[0]);
+}
+
+$scope.add_comment = function(i) {
+    console.log("hhh",i);
+    categories.submitComment($scope.allPosts[i].comment,$scope.allPosts[i].id).then(function(data){
+        console.log("saved success comment",data)
+        $route.reload();
+    } , function(err){
+        console.log(err);
+
+    });
+}
+$scope.new_comment = function(i) {
+    console.log("hhh",i);
+    categories.submitComment($scope.userposts[i].comment,$scope.userposts[i].id).then(function(data){
+        console.log("saved success comment",data)
+        $route.reload();
+    } , function(err){
+        console.log(err);
+
+    });
+}
+
 })

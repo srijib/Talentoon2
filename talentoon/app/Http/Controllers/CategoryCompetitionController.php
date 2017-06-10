@@ -24,7 +24,7 @@ class CategoryCompetitionController extends Controller {
     }
 
     public function index($id) {
-        $data = Competition::where('category_id', $id)->get();
+        $data = Competition::where('category_id', $id)->orderBy('competition_end_date', 'DESC')->get();
         //join users (retrieve first name+lastname+image /return competitions*) + add image column to the compeition
         return response()->json(['status' => 'ok', 'message' => 'Competitions under category ' . $id . ' retrieved successfully', 'data' => $data], 201);
     }
@@ -59,17 +59,22 @@ class CategoryCompetitionController extends Controller {
     public function show($category_id, $competition_id) {
         try {
             // $competitionDetails = Competition::where('category_id', $category_id)->findOrFail($competition_id);
+            $user = JWTAuth::parseToken()->toUser();
             $competitionDetails = DB::table('competitions')
                 ->join('users', 'users.id', '=', 'competitions.mentor_id')
                 ->select('competitions.*','users.first_name', 'users.last_name', 'users.image as mentor_image')
                 ->where([['competitions.id','=',$competition_id],['competitions.category_id','=',$category_id]])
                 ->get();
+            $is_joined =  DB::table('competition_join')
+                ->select('joined')
+                ->where([['competition_id','=',$competition_id],['talent_id','=',$user->id]])
+                ->first();
         } catch (ModelNotFoundException $e) {
             $code = $e->getCode();
             $SQLmessage = $e->getMessage();
             return response()->json(['code' => $code, 'SQLmessage' => $SQLmessage, 'message' => 'No Competition Found Under the Specified Category']);
         }
-        return response()->json(['status' => 'ok', 'message' => 'Competition Found under Category ' . $category_id . ' and Retrieved Successfully', 'data' => $competitionDetails]);
+        return response()->json(['status' => 'ok', 'message' => 'Competition Found under Category ' . $category_id . ' and Retrieved Successfully', 'data' => $competitionDetails,'is_joined'=>$is_joined]);
     }
 
     /**

@@ -15,21 +15,21 @@
         <div class="firstCol col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <div class="userImg">
                 <div class="opacity">
-                    <img src="http://localhost:8000/{{userprofile.image}}">
+                    <img src="http://localhost:8000/{{users.image}}">
                 </div>
             </div>
 
 
             <div class="userName row">
-                <span class="text-left col-lg-8 ">{{userprofile.first_name}}  {{userprofile.last_name}}</span>
+                <span class="text-left col-lg-8 ">{{users.first_name}}  {{users.last_name}}</span>
                 <span class="text-center col-lg-4"><i class="fa fa-trophy" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Vertified"></i><i class="fa fa-cog" aria-hidden="true"></i></span>
             </div>
 
 
             <div class="info row">
                 <p class="col-lg-12">Talented</p>
-                <p class="col-lg-12">country: {{userprofile.country}}</p>
-                <p class="col-lg-12">birth date: {{userprofile.date_of_birth}}</p>
+                <p class="col-lg-12">country: {{user_country.name}}</p>
+                <p class="col-lg-12">birth date: {{users.date_of_birth}}</p>
             </div>
 
             <ul class="socialLink list-unstyled list-inline">
@@ -51,7 +51,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                            <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                            <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
@@ -188,7 +188,7 @@
 
                             <a>
                                 <i class="fa fa-commenting" aria-hidden="true"></i>
-                                <span class="badge">6</span>
+                                <span class="badge"> </span>
                             </a>
 
 
@@ -204,7 +204,7 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
-                                                <i class="fa fa-twitter"></i>
+                                                <i class="fa fa-share" ng-click="sharepost(userpost.id)" ng-controller="post"></i>
                                             </a>
                                         </li>
                                         <li>
@@ -237,13 +237,15 @@
 
                         <div class="UserComments">
                             <div class="writePost">
-                                <textarea class="form-control" rows="3"></textarea>
+                                <form ng-submit="add_comment($index)" name="comment_form_{{$index}}">
+                                <textarea class="form-control" name="comments_{{$index}}"  ng-model="userpost.comment" rows="3"></textarea>
                                 <div class="posting">
-                                    <button type="button" class="btn btn-default">Comment</button>
+                                    <button type="submit" class="btn btn-default" name="button_{{$index}}">Comment</button>
                                 </div>
+                                </form>
 
                             </div>
-
+<!--
                             <ul class="media-list">
                                 <li class="media">
                                     <div class="media-left">
@@ -268,10 +270,10 @@
                                         <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
                                     </div>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                         <div class="seeComments">
-                            <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
+                            <span> <a class="fa fa-plus" aria-hidden="true" href="#!/category/{{userpost.category_id}}/posts/{{userpost.id}}">MORE COMMENTS</a></span>
                         </div>
                     </div>
                 </div>

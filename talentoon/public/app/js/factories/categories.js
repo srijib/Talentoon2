@@ -28,13 +28,31 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },
         getCategoryAllData:function(cat_id){
-            console.log('factory cat cat_iddd',cat_id);
             var def =$q.defer();
             $http({
                 url:'http://localhost:8000/api/category/'+cat_id,
                 method:'GET'
             }).then(function(res){
                 // 		console.log("response is" , res);
+                if(res.data){
+                    def.resolve(res.data);
+                }else{
+                    def.reject('there is no data ')
+                }
+
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise ;
+
+        },
+        getUserRoles:function(cat_id){
+            var def =$q.defer();
+            $http({
+                url:'http://localhost:8000/api/category/'+cat_id+'/roles',
+                method:'GET'
+            }).then(function(res){
+                		// console.log("ROLESSSSS FROM FACTORY" , res);
                 if(res.data){
                     def.resolve(res.data);
                 }else{
@@ -256,7 +274,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 data: postdata
             }).then(function (res) {
 
-                console.log("____________in res add post ", res.data.post_id)
+                console.log("____________in res add post ", res.data.post_id) 
                 console.log("____________media type ", $rootScope.currentFile.type)
                 console.log('_________', $rootScope.currentFile.name)
 
@@ -469,7 +487,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         }
         ,
         complete_mentor_profile: function (mentor_data) {
-
+            console.log("mentor object in complete mentor profile ",mentor_data)
             var def = $q.defer();
             $http({
                 url: 'http://127.0.0.1:8000/api/categorymentor/store',
@@ -477,7 +495,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 data: mentor_data
 
             }).then(function (res) {
-
+                console.log(res);
                 if (res.data) {
                     console.log(res.data);
                     def.resolve(res.data)
@@ -597,14 +615,14 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
         },
 
-        isWorkshopCraetor: function (data) {
+        isWorkshopCreator: function (data) {
             //  var category_id= index;
             // // console.log("category_id",category_id)
             // console.log("workshop id", id)
             var def = $q.defer();
             console.log("data",data)
             $http({
-                url: 'http://localhost:8000/api/isWorkshopCraetor',
+                url: 'http://localhost:8000/api/isWorkshopCreator',
                 method: 'POST',
                 data: data
             }).then(function (res) {

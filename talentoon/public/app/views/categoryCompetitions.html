@@ -24,15 +24,22 @@
 <div class="container">
     <div id="allTopComps" class=" col-lg-4 col-lg-push-8 col-md-4 col-md-push-8 col-sm-4 col-sm-push-8 col-xs-12">
         <div class="topEvents">
-            <a href="" class="btn btn-lg">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create New
-            </a>
+            <mentor ng-if="is_mentor == 1">
+                <a href="/category/{{cat_id}}/createcompetition" class="btn btn-lg">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create New
+                </a>
+            </mentor>
+            <mentor ng-if="is_mentor != 1">
+                <button class="btn btn-lg disabled" title="You have to be Mentor Or Talent in this category to add workshop">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create New
+                </button>
+            </mentor>
             <h2>Top Events</h2>
 
             <div class="top1 col-lg-10 col-md-10 col-sm-12">
-                <img src="Imgs/Website/3.jpg" alt="">
+                <img ng-src="Imgs/Website/3.jpg" alt="">
                 <div>
-                    <img src="Imgs/Persons/face5.jpg" alt="">
+                    <img ng-src="Imgs/Persons/face5.jpg" alt="">
                     <span>Adel Mohsen</span>
                     <a>Lorem Ipsum is simply dummy </a>
                 </div>
@@ -40,9 +47,9 @@
 
 
             <div class="top1 col-lg-10 col-md-10 col-sm-12">
-                <img src="Imgs/Website/4.jpg" alt="">
+                <img ng-src="Imgs/Website/4.jpg" alt="">
                 <div>
-                    <img src="Imgs/Persons/face4.jpg" alt="">
+                    <img ng-src="Imgs/Persons/face4.jpg" alt="">
                     <span>George Rafaat</span>
                     <a>Lorem Ipsum</a>
                 </div>
@@ -55,12 +62,14 @@
             <div class="CompSection col-sm-12 col-md-12 col-lg-12 " ng-repeat="competition in categoryCompetitions">
                 <div class="thumbnail">
                     <div class="col-lg-4 col-md-4 col-sm-12 CompDefaultImg" >
-                        <img src="http://localhost:8000/{{competition.image}}" alt="">
+                        <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}">
+                            <img ng-src="http://localhost:8000/{{competition.image}}" alt="">
+                        </a>
                     </div><!--    top event default image-->
 
                     <div class="col-lg-8  col-md-8 col-sm-12 CompTitle"  >
                         <div class="col-lg-10 col-md-10 col-sm-8" >
-                            <a href="#" data-toggle="modal" data-target="#ev1">
+                            <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" data-toggle="modal" data-target="#ev1">
                                 <h3>{{competition.title}}</h3>
                             </a>
                         </div>
@@ -135,11 +144,9 @@
                             </div>
                         </div><!--    top event schdule-->
                     </div><!--    top event detaila-->
-
                     <div class=" col-lg-8  col-md-8 col-sm-12 going" data-toggle="modal" data-target="#Comp1">
-                        <button type="button" class="btn btn-default">Challenge</button>
+                        <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Challenge</a>
                     </div>
-
                 </div> <!--    top event thumbnail-->
             </div><!--    top event section-->
 

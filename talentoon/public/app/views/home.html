@@ -1,132 +1,134 @@
 <header>
 
-  <div id="topposts" ng-if="post_exist">
+  <div id="topposts" ng-if="post_exist"  >
     <div class="container">
       <div class="title">
-        <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+        <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
         <h1 class="h1">{{'TOP_POSTS' | translate}}</h1>
       </div>
 
       <div class="row mainrow">
         <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in topposts | limitTo:3  track by $index">
-          <div class="thumbnail" data-toggle="modal" data-target="#po{{post.id}}">
-            <!-- defaultimg-->
-            <div class="row defaultimg">
+            <div data-aos="fade-up" data-aos-duration="2000" >
+                <div class="thumbnail" data-toggle="modal" data-target="#po{{post.id}}">
+                  <!-- defaultimg-->
+                  <div class="row defaultimg">
 
 
-              <div ng-if="post.media_type == 'image'">
+                    <div ng-if="post.media_type == 'image'">
 
-                <img class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
-              </div>
+                      <img class="img-responsive" ng-src="http://localhost:8000/{{post.media_url}}" alt="">
+                    </div>
 
-              <div ng-if="post.media_type == 'video' ">
+                    <div ng-if="post.media_type == 'video' ">
 
-                <video  controls preload="auto" style="height: 242px;">
+                      <video  controls preload="auto" style="height: 242px;">
 
-                           <source src="http://localhost:8000/{{post.media_url}}"  />
-                         </video>
+                                 <source ng-src="http://localhost:8000/{{post.media_url}}"  />
+                               </video>
 
-              </div>
-              <div ng-if="post.media_type == 'audio'">
-                <audio controls>
+                    </div>
+                    <div ng-if="post.media_type == 'audio'">
+                      <audio controls>
 
-                         <source src="http://localhost:8000/{{post.media_url}}"/>
+                               <source ng-src="http://localhost:8000/{{post.media_url}}"/>
 
-                         </audio>
-              </div>
+                               </audio>
+                    </div>
 
-            </div>
-            <!-- end defaultimg-->
-            <!-- caption-->
-            <div class="caption row">
-              <p>{{post.description}}</p>
-            </div>
-
-            <!-- user-->
-            <!--                               userinfo-->
-            <div class="row userinfo">
-              <img src="http://localhost:8000/{{post.user_image}}" alt="">
-              <p>{{post.first_name}} {{post.last_name}}</p>
-            </div>
-            <!--                              end userinfo-->
-            <!--small row  like comment share-->
-            <div class="interaction row">
-
-              <!--comment like -->
-
-              <!--comment-->
-              <div class="">
-                <a href="">
-                  <i class="fa fa-heart" aria-hidden="true"></i>
-                  <span class="badge">{{post.total}}</span>
-                </a>
-
-                <!--like-->
-                <a href="">
-                  <i class="fa fa-commenting" aria-hidden="true"></i>
-                  <span class="badge">  </span>
-                </a>
-
-                <!--share -->
-
-                <div id="socialHolder">
-                  <div id="socialShare" class="btn-group share-group">
-                    <a data-toggle="dropdown" class="btn btn-info">
-                      <i class="fa fa-share-alt fa-inverse"></i>
-                    </a>
-                    <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                            <span class="caret"></span>
-                                        </button>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                          <i class="fa fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                          <i class="fa fa-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                          <i class="fa fa-google-plus"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                          <i class="fa fa-linkedin"></i>
-                        </a>
-                      </li>
-
-                      <li>
-                        <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                          <i class="fa fa-envelope"></i>
-                        </a>
-                      </li>
-                    </ul>
                   </div>
-                </div>
-              </div>
-              <!--end comment like share -->
+                  <!-- end defaultimg-->
+                  <!-- caption-->
+                  <div class="caption row">
+                    <p>{{post.description}}</p>
+                  </div>
+
+                  <!-- user-->
+                  <!--                               userinfo-->
+                  <div class="row userinfo">
+                    <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
+                    <p>{{post.first_name}} {{post.last_name}}</p>
+                  </div>
+                  <!--                              end userinfo-->
+                  <!--small row  like comment share-->
+                  <div class="interaction row">
+
+                    <!--comment like -->
+
+                    <!--comment-->
+                    <div class="">
+                      <a href="">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <span class="badge">{{post.total}}</span>
+                      </a>
+
+                      <!--like-->
+                      <a href="">
+                        <i class="fa fa-commenting" aria-hidden="true"></i>
+                        <span class="badge">  </span>
+                      </a>
+
+                      <!--share -->
+
+                      <div id="socialHolder">
+                        <div id="socialShare" class="btn-group share-group">
+                          <a data-toggle="dropdown" class="btn btn-info">
+                            <i class="fa fa-share-alt fa-inverse"></i>
+                          </a>
+                          <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                                  <span class="caret"></span>
+                                              </button>
+
+                                              <ul class="dropdown-menu">
+                                                  <li>
+                                                      <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
+                                                          <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
+                                                      </a>
+                                                  </li>
+                                                  <li>
+                                                      <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                                          <i class="fa fa-facebook"></i>
+                                                      </a>
+                                                  </li>
+                                                  <li>
+                                                      <a data-original-title="e+" rel="tooltip"  href="#" class="btn btn-e" data-placement="left">
+                                                          <i class="fa fa-e-plus"></i>
+                                                      </a>
+                                                  </li>
+                                                  <li>
+                                                      <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                                          <i class="fa fa-linkedin"></i>
+                                                      </a>
+                                                  </li>
+
+                                                  <li>
+                                                      <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                                          <i class="fa fa-envelope"></i>
+                                                      </a>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                  </div>  <!--end comment like share -->
+                              </div><!--end small row -->
+                          </div><!--end thumbnail-->
             </div>
-            <!--end small row -->
-          </div>
-          <!--end thumbnail-->
-          <!-- MODAAAAAAAAAAAAAAL -->
+
+<!-- MODAAAAAAAAAAAAAAL -->
+
           <div class="modal fade" id="po{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                   <h4 class="modal-title" id="myModalLabel">
-                                        <div class="row popUserInfo">
-                                            <img src="http://localhost:8000/{{post.user_image}}" alt="">
-                                            <p>{{post.first_name}} {{post.last_name}}</p>
-                                        </div>
-                                    </h4>
+                        <div class="row popUserInfo">
+                            <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
+                            <p>{{post.first_name}} {{post.last_name}}</p>
+                        </div>
+                    </h4>
                 </div>
                 <div class="modal-body">
                   <div class="col-lg-4 col-md-4 col-sm-12 popPostSection">
@@ -137,21 +139,21 @@
 
                         <div ng-if="post.media_type == 'image'">
 
-                          <img class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
+                          <img class="img-responsive" ng-src="http://localhost:8000/{{post.media_url}}" alt="">
                         </div>
 
                         <div ng-if="post.media_type == 'video' ">
 
                           <video  controls preload="auto">
 
-                                                 <source src="http://localhost:8000/{{post.media_url}}"  />
+                                                 <source ng-src="http://localhost:8000/{{post.media_url}}"  />
                                                  </video>
 
                         </div>
                         <div ng-if="post.media_type == 'audio'">
                           <audio controls>
 
-                                                   <source src="http://localhost:8000/{{post.media_url}}"/>
+                                                   <source ng-src="http://localhost:8000/{{post.media_url}}"/>
 
                                                              </audio>
                         </div>
@@ -196,36 +198,38 @@
                                 <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
                                                                     <span class="caret"></span>
                                                                 </button>
-                                <ul class="dropdown-menu">
-                                  <li>
-                                    <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                                      <i class="fa fa-twitter"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                                      <i class="fa fa-facebook"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                                      <i class="fa fa-google-plus"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                                      <i class="fa fa-linkedin"></i>
-                                    </a>
-                                  </li>
 
-                                  <li>
-                                    <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                      <i class="fa fa-envelope"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
+                                                                <ul class="dropdown-menu">
+                                                                    <li>
+                                                                        <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
+                                                                            <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                                                            <i class="fa fa-facebook"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a data-original-title="e+" rel="tooltip"  href="#" class="btn btn-e" data-placement="left">
+                                                                            <i class="fa fa-e-plus"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                                                            <i class="fa fa-linkedin"></i>
+                                                                        </a>
+                                                                    </li>
+
+                                                                    <li>
+                                                                        <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                                                            <i class="fa fa-envelope"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
 
 
                           </div>
@@ -251,59 +255,25 @@
                           <div ng-repeat="comment in comments track by $index">
                             <span ng-if="post.id == comment.post_id">
 
-                                                    <li class="media" >
+                                <li class="media" >
 
-                                                        <div class="media-left" >
-                                                            <a href="#">
-                                                                <img class="media-object" src="http://localhost:8000/{{comment.user_image}}">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">{{comment.first_name}}</h4>
-                                                            <p>{{comment.comment}}</p>
-
-
-
-                                                        </div>
-
-
-                                                    </li>
-                                                </span>
-
-                          </div>
-                          <!-- <li class="media">
-                                                        <div class="media-left">
-                                                            <a href="#">
-                                                                <img class="media-object" src="Imgs/Persons/face3.jpg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">Khaled Ali</h4>
-                                                            <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
-
-
-                                                        </div>
-                                                    </li> -->
-
-
-                          <!-- <li class="media">
-                                                        <div class="media-left">
-                                                            <a href="#">
-                                                                <img class="media-object" src="Imgs/Persons/face2.jpg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">Hossam Abdelrhman</h4>
-                                                            <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
+                                    <div class="media-left" >
+                                        <a href="#">
+                                            <img class="media-object" ng-src="http://localhost:8000/{{comment.user_image}}">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{comment.first_name}}</h4>
+                                        <p>{{comment.comment}}</p>
 
 
 
-                                                        </div>
+                                    </div>
 
 
-
-                                                    </li> -->
-
+                                </li>
+                            </span>
+                        </div>
                         </ul>
                       </div>
                     </div>
@@ -339,11 +309,11 @@
 <div id="topEvents" ng-if="event_exist">
   <div class="container">
     <div class="title">
-      <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+      <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
       <h1 class="h1">{{'TOP_EVENTS' | translate}}</h1>
     </div>
     <div class="evMainRow row">
-      <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" event in events| limitTo:3">
+      <div class="eventSection col-sm-12 col-md-4 " data-aos="zoom-in-down" data-aos-duration="2000" ng-repeat=" event in events| limitTo:3">
         <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
           <div class="row evDefaultImg">
 
@@ -351,17 +321,17 @@
 
       <div ng-if="event.media_type == 'image'">
 
-        <img class="img-responsive" src="http://localhost:8000/{{event.media_url}}" alt="">
+        <img class="img-responsive" ng-src="http://localhost:8000/{{event.media_url}}" alt="">
         </div>
 
            <div ng-if="event.media_type == 'video' ">
                 <video   controls  preload="auto" style="height: 242px;">
-                 <source src="http://localhost:8000/{{event.media_url}}"  />
+                 <source ng-src="http://localhost:8000/{{event.media_url}}"  />
                </video>
            </div>
           <div ng-if="event.media_type == 'audio'">
               <audio controls>
-                <source src="http://localhost:8000/{{event.media_url}}"/>
+                <source ng-src="http://localhost:8000/{{event.media_url}}"/>
                  </audio>
          </div>
 
@@ -398,8 +368,8 @@
                     </a>
                   </li>
                   <li>
-                    <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                      <i class="fa fa-google-plus"></i>
+                    <a data-original-title="e+" rel="tooltip" href="#" class="btn btn-e" data-placement="left">
+                      <i class="fa fa-e-plus"></i>
                     </a>
                   </li>
                   <li>
@@ -447,7 +417,8 @@
           </div>
           <!--    top event detaila-->
           <div class=" going">
-            <button type="button" class="btn btn-default">Going</button>
+
+            <button type="button" class="btn btn-default" ng-click="going(event.id)" >{{event.going_count}} Going</button>
           </div>
         </div>
         <!-- MODAAAAAAAAAAAAAAAAAAAAL -->
@@ -471,17 +442,17 @@
                   <div class="row evDefaultImg">
 
                     <div ng-if="event.media_type == 'image'">
-                      <img class="img-responsive" src="http://localhost:8000/{{event.media_url}}" alt="">
+                      <img class="img-responsive" ng-src="http://localhost:8000/{{event.media_url}}" alt="">
                       </div>
 
          <div ng-if="event.media_type == 'video' ">
               <video   controls  preload="auto">
-              <source src="http://localhost:8000/{{event.media_url}}"  />
+              <source ng-src="http://localhost:8000/{{event.media_url}}"  />
               </video>
          </div>
       <div ng-if="event.media_type == 'audio'">
             <audio controls>
-            <source src="http://localhost:8000/{{event.media_url}}"/>
+            <source ng-src="http://localhost:8000/{{event.media_url}}"/>
            </audio>
      </div>
 
@@ -528,7 +499,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                       <a class="userPic">
                         <span>Mintoring by : </span>
-                        <img src="Imgs/Persons/face1.jpg" alt=""> {{event.first_name}} {{event.last_name}}
+                        <img ng-src="Imgs/Persons/face1.jpg" alt=""> {{event.first_name}} {{event.last_name}}
                       </a>
 
                       <!--    top event userPic-->
@@ -537,7 +508,7 @@
 
                     <!--share -->
                     <div class="going  col-lg-4 col-md-4 col-sm-12">
-                      <button type="button" class=" btn btn-default">Going</button>
+                      <button type="button" class=" btn btn-default" ng-click="going(event.id)" > {{event.going_count}} Going</button>
                     </div>
 
                     <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
@@ -560,8 +531,8 @@
                             </a>
                           </li>
                           <li>
-                            <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                              <i class="fa fa-google-plus"></i>
+                            <a data-original-title="e+" rel="tooltip" href="#" class="btn btn-e" data-placement="left">
+                              <i class="fa fa-e-plus"></i>
                             </a>
                           </li>
                           <li>
@@ -591,7 +562,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
                           </a>
                         </div>
                         <div class="media-body">
@@ -610,7 +581,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
                           </a>
                         </div>
                         <div class="media-body">
@@ -642,29 +613,29 @@
 <div id="topWorkshops" ng-if="workshop_exist">
   <div class="container">
     <div class="title">
-      <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+      <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
       <h1 class="h1">{{'TOP_WORKSHOPS' | translate}}</h1>
     </div>
 
     <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" ng-repeat="workshop in workshops | limitTo:3  track by $index">
+      <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" ng-repeat="workshop in workshops | limitTo:3  track by $index">
         <div class="thumbnail" data-toggle="modal" data-target="#ws{{workshop.id}}">
-          <!--                    <img src="http://placehold.it/350x250">-->
+          <!--                    <img ng-src="http://placehold.it/350x250">-->
 
 
           <div ng-if="workshop.media_type == 'image'">
 
-            <img class="img-responsive" src="http://localhost:8000/{{workshop.media_url}}" alt="">
+            <img class="img-responsive" ng-src="http://localhost:8000/{{workshop.media_url}}" alt="">
             </div>
 
                <div ng-if="workshop.media_type == 'video' ">
                     <video   controls  preload="auto">
-                     <source src="http://localhost:8000/{{workshop.media_url}}"  />
+                     <source ng-src="http://localhost:8000/{{workshop.media_url}}"  />
                    </video>
                </div>
               <div ng-if="workshop.media_type == 'audio'">
                   <audio controls>
-                    <source src="http://localhost:8000/{{workshop.media_url}}"/>
+                    <source ng-src="http://localhost:8000/{{workshop.media_url}}"/>
                      </audio>
              </div>
 
@@ -683,7 +654,7 @@
 
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <i class="fa fa-users" aria-hidden="true"></i>
-                <span class="badge">{{workshop.max_capacity}} place left</span>
+                <span class="badge">{{workshop.max_capacity-workshop.enroll_count}} place left</span>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -693,7 +664,7 @@
           </div>
 
           <a class="userPic row">
-            <span class="col-lg-6 col-md-6 col-sm-6 mintor">Mintoring by   <img src="http://localhost:8000/{{workshop.user_image}}"></span>
+            <span class="col-lg-6 col-md-6 col-sm-6 mintor">Mintoring by   <img ng-src="http://localhost:8000/{{workshop.user_image}}"></span>
             <span class="col-lg-6 col-md-6 col-sm-6">{{workshop.first_name}} {{workshop.last_name}}</span>
           </a>
         </div>
@@ -716,7 +687,7 @@
               <div class="modal-body">
                 <div class="thumbnail">
                   <div class="row popWorkshopDefaultImg">
-                    <img src="http://localhost:8000/{{workshop.media_url}}" alt="">
+                    <img ng-src="http://localhost:8000/{{workshop.media_url}}" alt="">
                   </div>
                   <!--    top event default image-->
 
@@ -737,7 +708,7 @@
 
                       <div class="col-lg-4 col-md-12 col-sm-12">
                         <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="badge">{{workshop.max_capacity}} place left</span>
+                        <span class="badge">{{workshop.max_capacity-workshop.enroll_count}} place left</span>
                       </div>
                       <div class="col-lg-4 col-md-12 col-sm-12">
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -750,7 +721,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                       <a class="userPic">
                         <span>Mintoring by : </span>
-                        <img src="http://localhost:8000/{{workshop.user_image}}" alt=""> {{workshop.first_name}} {{workshop.last_name}}
+                        <img ng-src="http://localhost:8000/{{workshop.user_image}}" alt=""> {{workshop.first_name}} {{workshop.last_name}}
                       </a>
 
                       <!--    top event userPic-->
@@ -782,8 +753,8 @@
                             </a>
                           </li>
                           <li>
-                            <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                              <i class="fa fa-google-plus"></i>
+                            <a data-original-title="e+" rel="tooltip" href="#" class="btn btn-e" data-placement="left">
+                              <i class="fa fa-e-plus"></i>
                             </a>
                           </li>
                           <li>
@@ -813,7 +784,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
                           </a>
                         </div>
                         <div class="media-body">
@@ -832,7 +803,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
                           </a>
                         </div>
                         <div class="media-body">

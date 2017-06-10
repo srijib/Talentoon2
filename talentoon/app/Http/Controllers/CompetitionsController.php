@@ -24,7 +24,7 @@ class CompetitionsController extends Controller {
 
     public function index() {
 
-        $data = Competition::all(); 
+        $data = Competition::orderBy('competition_end_date', 'DESC')->get();
         return response()->json(['status' => 'ok', 'message' => 'Competitions retrieved successfully', 'data' => $data], 201);
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\InitialReview;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\ReviewMedia;
 use App\Models\WorkShop;
 use App\Models\WorkshopSession;
@@ -83,38 +84,13 @@ class UploadController extends Controller
         if(!empty($_FILES)){
             $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/files/'.$_FILES['file']['name']);
 
-            // $post = Post::find($id);
-            // $post->media_url = 'uploads/files/'.$_FILES['file']['name'];
-            // $post->media_type = $_FILES['file']['type'];
-            //
-            // $post->save();
+             $post = Post::find($id);
+             $post->media_url = 'uploads/files/'.$_FILES['file']['name'];
+             $post->media_type = $_FILES['file']['type'];
+             $post->save();
 
-//-----------------------------
-$post = DB::table('posts')
-->where('id', '=', $id)
-->first();
-$type=substr($_FILES['file']['type'], 0, 5);
-// 'media_type'=>$_FILES['file']['type']
-if (is_null($post)) {
-    $update=Post::create($request->all());}
-    else{
-      $update=DB::table('posts')->where('id',$id)->update(['media_url' => 'uploads/files/'.$_FILES['file']['name']
-,'media_type'=>$type
-      ]);
+            $post = Post::find($id-1)->delete();
 
-    }
-// $post = Post::find($id)->
-//     where('posts.id',$id-1)->delete();
-  $post = Post::find($id-1)->delete();
-
-
-            //-----------------------------
-
-
-
-
-
-            //-----------------------------------
             return response()->json(['request'=> $x,'message' => 'data sent successfully']);
         }else{
             echo "Image Is Empty";
@@ -133,7 +109,7 @@ if (is_null($post)) {
             $event->media_type = $_FILES['file']['type'];
             $event->save();
 
-            //$event = Event::find($id-1)->delete();
+            $event = Event::find($id-1)->delete();
 
 
             return response()->json(['request'=> $x,'message' => 'data sent successfully']);
@@ -226,6 +202,7 @@ if (is_null($post)) {
             $workshop->media_type = $_FILES['file']['type'];
             $workshop->save();
 
+            $workshop = WorkShop::find($id-1)->delete();
 
             return response()->json(['request'=> $x,'message' => 'data sent successfully']);
         }else{
@@ -233,6 +210,33 @@ if (is_null($post)) {
         }
 
     }
+
+
+    public function profile_picture_upload (Request $request,$id){
+//        return response()->json(['request'=> $_FILES['file'],'message' => 'data sent successfully']);
+        if(!empty($_FILES)){
+            $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/profile_pic/'.$_FILES['file']['name']);
+
+            $user = User::find($id);
+            $user->image = 'uploads/profile_pic/'.$_FILES['file']['name'];
+//            $user->media_type = $_FILES['file']['type'];
+            $user->save();
+
+//            $workshop = WorkShop::find($id-1)->delete();
+
+            return response()->json(['request'=> $x,'message' => 'data sent successfully']);
+        }else{
+            echo "Image Is Empty";
+        }
+
+    }
+
+
+
+
+
+
+
     public function session_upload (Request $request,$id){
 //        return response()->json(['request'=> $_FILES['file'],'message' => 'data sent successfully']);
     if(!empty($_FILES)){

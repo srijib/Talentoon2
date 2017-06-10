@@ -25,8 +25,16 @@ class WorkShopsController extends Controller
         //
         $data = DB::table('workshops')
             ->join('users', 'users.id', '=', 'workshops.mentor_id')
-            ->select('workshops.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
 //            -where(['workshops.is_approved','=',1])
+            ->selectRaw('workshops.*,count(workshop_enrollment.id) as enroll_count,users.last_name,users.first_name,users.image as user_image,users.id as user_id')
+            ->leftJoin('workshop_enrollment', function($join)
+          {
+              $join->on('workshops.id','=','workshop_enrollment.workshop_id');
+          })
+            ->where([['workshops.is_approved','=',1],['workshops.date_to','>=', date('Y-m-d').' 00:00:00']])
+
+            ->groupBy('workshops.id')
+
             ->get();
 //        dd($data);
         return response()->json(['msg1'=>$data]);
@@ -199,7 +207,6 @@ class WorkShopsController extends Controller
              ['workshop_enrollment.workshop_id','=',$workshop_id]])
               ->groupBy('workshop_enrollment.workshop_id')
                   ->get()->first();
-
 
         if(is_null($countcapacity)){
 

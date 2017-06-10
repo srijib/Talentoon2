@@ -15,6 +15,8 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Services\Notification;
 use DB;
 use App\Models\Comment;
+use App\Models\GoingEvent;
+
 
 
 class CategoriesController extends Controller
@@ -74,18 +76,9 @@ class CategoriesController extends Controller
         // return Response::json(['status' => '1','message' => 'data saved successfully']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($cat_id)
+    public function roles($cat_id)
     {
-
         $user = JWTAuth::parseToken()->authenticate();
-        $category=Category::find($cat_id);
-
         $subscribed = DB::table('subscribers')
                     -> select('subscribed')
                     ->where([['subscriber_id', '=', $user->id],['category_id','=',$cat_id]])
@@ -99,6 +92,22 @@ class CategoriesController extends Controller
                     -> select('status')
                     ->where([['mentor_id', '=', $user->id],['category_id','=',$cat_id]])
                     ->get();
+
+        return response()->json(['is_mentor'=>$mentor,'is_talent'=>$talent,'is_sub'=>$subscribed,'status' => '1','message' => 'data sent successfully']);
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($cat_id)
+    {
+
+        $user = JWTAuth::parseToken()->authenticate();
+        $category=Category::find($cat_id);
 
         $posts = DB::table('posts')
         ->join('users', 'posts.user_id', '=','users.id' )
@@ -118,20 +127,34 @@ class CategoriesController extends Controller
                     ->get();
         $workshops = DB::table('workshops')
             ->join('users', 'users.id', '=', 'workshops.mentor_id')
-            ->select('workshops.*','users.first_name', 'users.last_name', 'users.image as user_image')
-            ->where([['workshops.category_id','=',$cat_id],['workshops.is_approved','=',1]])
+            ->selectRaw('workshops.*,count(workshop_enrollment.id) as enroll_count,users.last_name,users.first_name,users.image as user_image,users.id as user_id')
+            ->leftJoin('workshop_enrollment', function($join)
+            {
+              $join->on('workshops.id','=','workshop_enrollment.workshop_id');
+            })
+            ->where([['workshops.category_id','=',$cat_id],['workshops.is_approved','=',1],['workshops.date_to','>=', date('Y-m-d').' 00:00:00']])
+            ->groupBy('workshops.id')
             ->get();
+
+
+            // ->select('events.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
+
         $events = DB::table('events')
             ->join('users', 'users.id', '=', 'events.mentor_id')
-            ->select('events.*','users.first_name', 'users.last_name', 'users.image as user_image')
-            ->where([['events.category_id','=',$cat_id],['events.is_approved','=',1]])
+            ->selectRaw('events.*,count(going_event.id) as going_count,users.last_name,users.first_name,users.image as user_image,users.id as user_id')
+            ->leftJoin('going_event', function($join)
+                  {
+                      $join->on('events.id','=','going_event.event_id');
+                  })
+            ->where([['events.category_id','=',$cat_id],['events.is_approved','=',1],['events.date_to','>=', date('Y-m-d').' 00:00:00']])
+            ->groupBy('events.id')
             ->get();
             // return response()->json(['posts' => $posts,'status' => '1','message' => 'data sent successfully']);
             $comments = DB::table('comments')
                 ->join('users', 'users.id', '=', 'comments.user_id')
                 ->select('comments.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
                 ->get();
-        return response()->json(['comments'=>$comments,'is_mentor'=>$mentor,'is_talent'=>$talent,'is_sub'=>$subscribed,'cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
+        return response()->json(['comments'=>$comments,'cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
     }
 //
     /**

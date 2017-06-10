@@ -1,4 +1,23 @@
-angular.module('myApp').controller("post", function ($scope, $http, posts, $routeParams,$location,$rootScope) {
+angular.module('myApp').controller("post", function ($scope, $http, posts,categories, $routeParams,$location,$rootScope) {
+
+	// $scope.cat_id = $routeParams['category_id'];
+
+	// categories.getUserRoles($scope.cat_id).then(function (data) {
+	// 	console.log("ROLESSSSS FROM CONTROLLER", data)
+	// 	if(data.is_sub.length){
+    //         $scope.is_subscribed = data.is_sub[0].subscribed;
+    //     }
+	//
+    //     if(data.is_talent.length != 0){
+    //         $scope.is_talent = data.is_talent[0].status;
+    //     }
+	//
+    //     if(data.is_mentor.length != 0 ){
+    //         $scope.is_mentor = data.is_mentor[0].status;
+    //     }
+	// }, function (err) {
+	// 	console.log(err);
+	// });
 
 	$scope.likepost = function(post_id,user_id) {
 	var likeable_id=post_id;
@@ -83,7 +102,8 @@ var post_id=post_id;
 // var user_id=user_id;
 
 var obj={post_id}
-console.log(obj);
+
+console.log("hhhhhhhhhhhhhhhhhhhhhhhhhh",obj);
 		posts.sharepost(obj).then(function(data){
 			console.log(data);
 

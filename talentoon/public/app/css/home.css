@@ -1,24 +1,3 @@
-@font-face {
-  font-family: regular;
-  src: url(../../Fonts/Roboto-Regular.ttf); }
-@font-face {
-  font-family: medium;
-  src: url(../../Fonts/Roboto-Medium.ttf); }
-@font-face {
-  font-family: blak;
-  src: url(../../Fonts/Roboto-Black.ttf); }
-@font-face {
-  font-family: bold;
-  src: url(../../Fonts/Roboto-Bold.ttf); }
-@font-face {
-  font-family: boldco;
-  src: url(../../Fonts/Roboto-BoldCondensed.ttf); }
-@font-face {
-  font-family: light;
-  src: url(../../Fonts/Roboto-Light.ttf); }
-@font-face {
-  font-family: thin;
-  src: url(../../Fonts/Roboto-Thin.ttf); }
 body {
   font-size: 0px;
   margin: 0px;
@@ -28,9 +7,17 @@ body {
   body:focus, body:active, body:visited, body:hover {
     outline: 0px; }
 
+.IN_home {
+    background-image: url(../imgs/cover2.jpg);
+    height: 650px;
+    background-size: cover;
+    /*height: 100%;*/
+    background-size: 100% auto;
+}
+
 header #Navbar-home {
-  background-image: url(../../Imgs/cover2.jpg);
-  background-size: cover;
+  /*background-image: url(../imgs/cover2.jpg);*/
+  /*background-size: cover;*/
   height: 100%;
   background-size: 100% auto;
   background-repeat: no-repeat; }
@@ -563,7 +550,7 @@ header .navbar-default .navbar-nav > .open > a, header .navbar-default .navbar-n
   #topposts .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -1146,7 +1133,7 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
   #topWorkshops .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }

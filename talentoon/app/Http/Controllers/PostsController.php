@@ -164,7 +164,11 @@ class PostsController extends Controller
                 ->get();
 
 
+
             $post[0]->total = $value->total;
+
+
+
 
                 // dd($post[0]);
             array_push($data, $post[0]);
@@ -327,7 +331,7 @@ public function showSinglePost($post_id){
 
            $all_posts = DB::table('posts')
                ->join('users', 'posts.user_id', '=', 'users.id')
-               ->select('posts.*','users.*')
+               ->select('posts.*','users.first_name','users.last_name','users.image')
                ->where('posts.is_approved','=',1)
                ->whereIn("posts.category_id", $arr)
                ->get();
@@ -341,7 +345,7 @@ public function showSinglePost($post_id){
                   }
                   $allposts = DB::table('posts')
                       ->join('users', 'posts.user_id', '=', 'users.id')
-                      ->select('posts.*','users.*')
+                      ->select('posts.*','users.first_name','users.last_name','users.image')
                       ->where('posts.is_approved','=',1)
                       ->whereIn("posts.user_id", $following)
                       ->get();
@@ -350,6 +354,7 @@ public function showSinglePost($post_id){
                           $sort[$key] = strtotime($part->created_at);
                       }
                       array_multisort($sort, SORT_DESC, $posts);
+
             return response()->json(['posts'=>$posts,'status' => '1','message' => 'data sent successfully']);
     }
 

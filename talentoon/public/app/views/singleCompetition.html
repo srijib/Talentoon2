@@ -33,14 +33,22 @@
             <div class="compImg">
                 <div class="opacity">
                     <img src="http://localhost:8000/{{competition.image}}">
-                    <button class="btn btn-default accept" type="submit">Accept Challenge</button>
+                    <JOINED ng-if="is_joined == 1">
+                        <button title="Yes, you can win it" class="btn btn-default accept">Share Competition</button>
+                    </JOINED>
+                    <JOINED ng-if="is_joined == 0">
+                        <button title="add post to beat your friends" class="btn btn-default accept desabled">Challenge Accepted</button>
+                    </JOINED>
+                    <JOINED ng-if="is_joined != 0 && is_joined != 1">
+                        <button ng-click="joinCompetition()"  class="btn btn-default accept">Accept Challenge</button>
+                    </JOINED>
                 </div>
             </div>
 
 
             <div class="compName row">
                 <span class="text-left col-lg-8 ">{{competition.title}}</span>
-
+                <div class="fb-share-button" data-href="http://talentoon.com/#!/category/{{competition.category_id}}/competitions/{{competition.id}}" data-layout="button_count" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftalentoon.com%2F%23%21%2Fcategory%2F2%2Fcompetitions%2F1&amp;src=sdkpreparse">Share</a></div>
             </div>
 
 
@@ -195,15 +203,23 @@
                         <div class="interactionUser">
                             <VOTED ng-if="post.is_voted == 1">
                                 <a ng-click="vote(post.id)">
-                                    <i class="fa fa-heart" aria-hidden="true" ></i>
+                                    <i class="glyphicon glyphicon-check" aria-hidden="true" ></i>
                                     <span class="badge">8</span>
                                 </a>
                             </VOTED>
                             <NOTVOTED ng-if="post.is_voted != 1">
-                                <a ng-click="vote(post.id)">
-                                    <i class="fa fa-heart" aria-hidden="true" ></i>
-                                    <span class="badge">8</span>
-                                </a>
+                                <YOURS ng-if="post.talent_id == cur_user.id">
+                                    <a ng-click="vote(post.id)">
+                                        <i class="fa fa-heart" aria-hidden="true" ></i>
+                                        <span class="badge">8</span>
+                                    </a>
+                                </YOURS>
+                                <NOTYOURS ng-if="post.talent_id != cur_user.id">
+                                    <a ng-click="vote(post.id)">
+                                        <i class="fa fa-heart" aria-hidden="true" ></i>
+                                        <span class="badge">8</span>
+                                    </a>
+                                </NOTYOURS>
                             </NOTVOTED>
 
                             <a>
