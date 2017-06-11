@@ -30,7 +30,7 @@ body {
   #topposts .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -649,7 +649,7 @@ div .modal-dialog .modal-content .modal-body {
   #topWorkshops .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -912,7 +912,7 @@ div .modal-dialog .modal-content .modal-body {
   #topComp .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }

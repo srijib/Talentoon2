@@ -119,13 +119,13 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     .when('/categories', {
         templateUrl: 'views/categories.html',
         controller: 'categories',
-        resolve: {
-            resolvedCategory: function (categories) {
-                return categories.getAllCategory().then(function (res) {
-                    return res;
-                });
-            },
-        }
+        // resolve: {
+        //     resolvedCategory: function (categories) {
+        //         return categories.getAllCategory().then(function (res) {
+        //             return res;
+        //         });
+        //     },
+        // }
     })
 
         //allposts in category
