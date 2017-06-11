@@ -1,7 +1,6 @@
 angular.module('myApp').controller("mentors",function($scope,$http,categories,$routeParams,$rootScope,$timeout,videoconference){
 
     var mentor = {}
-    $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 
     $scope.completeMentorProfile = function(valid) {
 
