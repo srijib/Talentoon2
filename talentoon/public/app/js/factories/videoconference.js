@@ -42,8 +42,8 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
                             //after success of adding a New Teacher and now I have teacher_id, I want to set it in the rootScope to add new class with it
                             //make sure before adding a new class that teacher id in root Scope is not null
                             $rootScope.wiziq_teacher_id = res.data.add_teacher.teacher_id;
-                            $window.localStorage.setItem("wiziq_teacher_id", res.data.add_teacher.teacher_id);
-                            $window.localStorage.setItem("wiziq_teacher_email", res.data.add_teacher.teacher_email);
+                            // $window.localStorage.setItem("wiziq_teacher_id", res.data.add_teacher.teacher_id);
+                            // $window.localStorage.setItem("wiziq_teacher_email", res.data.add_teacher.teacher_email);
                             // $window.localStorage.setItem(key,value)
                             def.resolve(res.data.add_teacher.teacher_id)
 
@@ -80,8 +80,8 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
                     console.log("Successfully added a new class with class_id : ",res.data.class_id)
                     $rootScope.wiziq_class_id = res.data.class_id;
                     console.log(res.data)
-                    $window.localStorage.setItem("wiziq_class_id", res.data.class_id);
-                    $window.localStorage.setItem("wiziq_presenter_url", res.data.presenter_url);
+                    // $window.localStorage.setItem("wiziq_class_id", res.data.class_id);
+                    // $window.localStorage.setItem("wiziq_presenter_url", res.data.presenter_url);
                     // $window.localStorage.setItem("wiziq_class_url", res.data.create.class_details.class_url);
                     def.resolve(res.data.class_id)
                 }
@@ -113,7 +113,7 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
                     var local_storage_key = "attendee_" + add_attendee_object.user_id;
                     var local_storage_value = res.data.attendee_url;
 
-                    $window.localStorage.setItem(local_storage_key, local_storage_value);
+                    // $window.localStorage.setItem(local_storage_key, local_storage_value);
 
                     def.resolve(res)
                 }
@@ -121,6 +121,29 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
                 def.reject(err);
             })
             return def.promise ;
+        },
+
+        get_wiziq_data:function(data){
+            console.log("from wiziq factory",data);
+            var def =$q.defer();
+            $http({
+                url:'http://localhost:8000/api/conference/video_conference_details',
+                method:'GET',
+            }).then(function(res){
+                console.log("res of wiz iq data",res);
+                if(res.data){
+                    console.log(res.data);
+                    def.resolve(res.data);
+
+                }else{
+                    def.reject('there is no data ')
+                }
+
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise ;
+
         },
 
 

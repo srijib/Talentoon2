@@ -71,6 +71,7 @@ addsession:function(data){
     })
     return def.promise ;
 
-}
+},
+
 
 }})

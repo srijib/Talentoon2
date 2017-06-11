@@ -1,5 +1,6 @@
 angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route,workshops) {
 
+console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $rootScope.in_home = false;
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
 
@@ -679,7 +680,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 
 
-
     // if(localStorage.getItem("wiziq_presenter_url")){
     //     $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
     // }
@@ -687,12 +687,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // if(localStorage.getItem("attendee_"+$rootScope.cur_user.id)){
     //     $scope.current_student_join_class_url =  localStorage.getItem("attendee_"+$rootScope.cur_user.id);
     // }
-
-
-
-
-
-
 
 
 });

@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\WizIQAttendee;
+use App\Models\WizIQTeacher;
+use App\Models\WizIQClass;
 use Response;
+use DB;
 use Illuminate\Http\Request;
 use DateTime;
 
@@ -144,8 +148,18 @@ class VideoConferenceController extends Controller
             // replace double quotes with single quotes, to ensure the simple XML function can parse the XML
             $xml_cnt = trim(str_replace('"', "'", $xml_cnt));
             $simpleXml = simplexml_load_string($xml_cnt);
+
+            //save into db table class
+            $wiziq_teacher_obj = new WizIQTeacher;
+            $wiziq_teacher_obj->wiziq_teacher_name =  $request->teacher_name;
+            $wiziq_teacher_obj->wiziq_teacher_email = $request->teacher_email;
+            $wiziq_teacher_obj->save();
+            //end save in db
+
             echo json_encode($simpleXml);    // returns a string with JSON object
 //            echo json_decode($simpleXml,true);
+
+
         }
         catch(Exception $e)
         {
@@ -243,6 +257,22 @@ class VideoConferenceController extends Controller
                     $myObj["start_time"] = $requestParameters["start_time"];
                     $myObj["duration"] = $requestParameters["duration"];
                     $myObj["attendee_limit"] = $requestParameters["attendee_limit"];
+
+
+
+                    //save into table class
+                    $wiziq_class_obj = new WizIQClass;
+                    $wiziq_class_obj->wiziq_class_id =  $myObj["class_id"];
+                    $wiziq_class_obj->wiziq_recording_url = $myObj["recording_url"];
+                    $wiziq_class_obj->wiziq_class_start_time =$myObj["start_time"];
+                    $wiziq_class_obj->wiziq_class_duration =  $myObj["duration"];
+                    $wiziq_class_obj->wiziq_class_attendee_limit = $myObj["attendee_limit"];
+                    $wiziq_class_obj->wiziq_presenter_url = $myObj["presenter_url"];
+                    $wiziq_class_obj->wiziq_teacher_email = $myObj["presenter_email"];
+                    $wiziq_class_obj->wiziq_teacher_id = $request->input('teacher_id');
+                    $wiziq_class_obj->save();
+                    //save into table class
+
 
                     $myJSON = json_encode($myObj);
 
@@ -361,6 +391,18 @@ class VideoConferenceController extends Controller
                     $myObj["attendee_url"] = $attendee_urlTag->item($i)->nodeValue;
 
 
+
+
+                    //save into attendee table
+                    $wiziq_attendee_obj = new WizIQAttendee;
+                    $wiziq_attendee_obj->class_id =  $myObj["class_id"];
+                    $wiziq_attendee_obj->wiziq_attendee_id = $myObj["attendee_id"];
+                    $wiziq_attendee_obj->wiziq_attendee_url = $myObj["attendee_url"];
+                    $wiziq_attendee_obj->save();
+                    //save into table attendee class
+
+
+
                     $myJSON = json_encode($myObj);
 
                     echo $myJSON;
@@ -374,6 +416,19 @@ class VideoConferenceController extends Controller
                 echo "<br>errormsg=".$errormsg = $error->getAttribute("msg");
             }
         }//end if
+    }
+
+
+    public function video_conference_details(Request $request)
+    {
+
+        $video_conference_details = DB::table('video_conference_class')
+            ->join('video_conference_attendee','video_conference_class.wiziq_class_id','=','video_conference_attendee.class_id')
+            ->select('video_conference_attendee.wiziq_attendee_id','video_conference_attendee.wiziq_attendee_url','video_conference_class.wiziq_class_id','video_conference_class.wiziq_presenter_url','video_conference_class.wiziq_class_start_time','video_conference_class.wiziq_teacher_id','video_conference_class.wiziq_teacher_email')
+            ->get();
+
+        return response()->json(['status'=>'1','message'=>'data retrieved successfully','data'=>$video_conference_details]);
+
     }
 
 
