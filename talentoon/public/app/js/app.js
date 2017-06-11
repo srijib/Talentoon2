@@ -3,6 +3,11 @@ angular.module('myApp',["ngRoute","pascalprecht.translate"]) ;
 angular.module("myApp").run(function($rootScope,$location,$timeout){
 
     AOS.init();
+
+    $rootScope.CONSTANSTS={
+      baseURL:"http://localhost",
+      port:"8000"
+    }
   // $rootScope.searchPosts=  function(){
   //   $location.url('/search');
   // var path = $location.path()

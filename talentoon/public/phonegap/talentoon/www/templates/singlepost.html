@@ -4,22 +4,22 @@
   <ion-content>
 
       <ion-card>
-          <div ng-if="post.media_type  == 'image'  ">
-        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_post.media_url}}">
+          <div ng-if="category_post.media_type  == 'image'  ">
+        <img ng-src="{{category_post.url}}">
          </div>
 
-        <div ng-if="post.media_type  == 'video'  ">
+        <div ng-if="category_post.media_type  == 'video'  ">
           <video  controls preload="auto" class="video" width="100%">
-            <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}"  type="video/mp4"/>
+            <source ng-src="{{category_post.url}}"  type="video/mp4"/>
              </video>
            </div>
 
-        <div ng-if="post.media_type == 'audio'">
+        <div ng-if="category_post.media_type == 'audio'">
           <!-- <center><img  class="img-responsive" src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="" style="height:250px"></center> -->
 
           <audio controls>
 
-                   <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" type="audio/mp3"/>
+                   <source ng-src="{{category_post.url}}" type="audio/mp3"/>
 
                    </audio>
         </div>
@@ -35,7 +35,7 @@
             <h4 style="color:black ">{{category_post.description}}</h4>
           </p>
           <a class="item item-avatar" href="#" style="background-color: #6A0C38">
-          <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_post.user_image}}" alt="">
+          <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_post.user_image}}" alt="">
       <p>    BY : {{category_post.first_name}} {{category_post.last_name}}</p>
 
              </a>

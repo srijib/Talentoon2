@@ -287,7 +287,7 @@ public function showSinglePost($post_id){
                 ->where('likeables.liked', '=', '1');
             })
 
-      ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id, categories.title as category_title, users.first_name, users.last_name, users.image as user_image')
+      ->selectRaw('CONCAT("http://172.16.3.77:8000","/",posts.media_url) as url,posts.*,count(likeables.id) as like_count,posts.id, categories.title as category_title, users.first_name, users.last_name, users.image as user_image')
 
           ->where([["posts.id",$post_id],['posts.is_approved','=',1]])
           ->groupBy('posts.id')

@@ -4,7 +4,7 @@ angular.module('talentoon').config(function($stateProvider,$httpProvider,$sceDel
      // Allow same origin resource loads.
      'self',
      // Allow loading from our assets domain.  Notice the difference between * and **.
-     'http://192.168.6.4:8000/**'
+     'http://172.16.3.77:8000/**'
    ]);  $stateProvider
     //
     .state('app', {

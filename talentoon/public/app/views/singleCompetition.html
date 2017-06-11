@@ -32,7 +32,7 @@
         <div class="firstCol col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <div class="compImg">
                 <div class="opacity">
-                    <img src="http://localhost:8000/{{competition.image}}">
+                    <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}">
                     <JOINED ng-if="is_joined == 1">
                         <button title="Yes, you can win it" class="btn btn-default accept">Share Competition</button>
                     </JOINED>
@@ -148,7 +148,7 @@
                 <div><span>MADE BY</span></div>
                 <div class="supervise">
                     <div class="superviseInfos">
-                        <img src="http://localhost:8000/{{competition.mentor_image}}" alt="">
+                        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.mentor_image}}" alt="">
                         <span>{{competition.first_name}} {{competition.last_name}}</span>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
             <div class="showPosts">
                 <div class="recentPosts imageArticle" ng-repeat="post in competitionPosts  track by $index">
                     <div class="userInfos">
-                        <img src="http://localhost:8000/{{post.user_image}}" alt="">
+                        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.user_image}}" alt="">
                         <span>{{post.first_name}} {{post.last_name}}</span>
                     </div>
 
@@ -168,11 +168,11 @@
 
                         <div class="largePic">
                             <IMAGE ng-if="post.competition_post_media_type == 'image'" >
-                                <img src="http://localhost:8000/{{post.competition_post_media_url}}" alt="">
+                                <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.competition_post_media_url}}" alt="">
                             </IMAGE>
                             <!-- IF VEDIO -->
                             <VIDEO ng-if="post.competition_post_media_type == 'video'">
-                                <video controls><source src="http://localhost:8000/{{post.competition_post_media_url}}"></video>
+                                <video controls><source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.competition_post_media_url}}"></video>
                             </VIDEO>
                             <!-- IF AUDIO -->
                             <AUDIO ng-if="post.competition_post_media_type == 'audio'">
@@ -195,7 +195,7 @@
 
                         <div class="disc">
                             <AUDIO ng-if="post.competition_post_media_type == 'audio'">
-                                <audio controls> <source src="http://localhost:8000/{{post.competition_post_media_url}}"></audio>
+                                <audio controls> <source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.competition_post_media_url}}"></audio>
                             </AUDIO>
                             <p>{{post.competition_post_description}}</p>
                         </div>

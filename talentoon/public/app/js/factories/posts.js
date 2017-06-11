@@ -1,12 +1,12 @@
 
-angular.module('myApp').factory("posts", function ($http, $q) {
+angular.module('myApp').factory("posts", function ($http, $q,$rootScope) {
 
     return {
 likepost:function(data){
   console.log("from factory",data);
   var def =$q.defer();
   $http({
-    url:'http://localhost:8000/api/like',
+    url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/like',
     method:'POST',
     data:data
 
@@ -30,7 +30,7 @@ dislikepost:function(data){
   console.log("from factory",data);
   var def =$q.defer();
   $http({
-    url:'http://localhost:8000/api/dislike',
+    url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/dislike',
     method:'POST',
     data:data
 
@@ -54,7 +54,7 @@ sharepost:function(data){
   console.log("from factory",data);
   var def =$q.defer();
   $http({
-    url:'http://localhost:8000/api/share',
+    url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/share',
     method:'POST',
     data:data
 
@@ -78,7 +78,7 @@ getSubscribePosts: function () {
 
     var def = $q.defer();
     $http({
-        url: 'http://localhost:8000/api/SubscribedPost',
+        url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/SubscribedPost',
         // url:'json/categories.json',
         method: 'GET'
 
