@@ -102,7 +102,15 @@ angular.module('talentoon').config(function($stateProvider,$httpProvider,$sceDel
           }
         })
 
-
+        .state('app.competitions', {
+          url: '/competitions',
+          views: {
+            "pageContent": {
+              templateUrl: "templates/competitions.html",
+              controller: "competitions"
+            }
+          }
+        })
 
 
 })
