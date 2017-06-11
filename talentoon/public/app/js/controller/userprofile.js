@@ -1,6 +1,6 @@
 angular.module('myApp').controller("userprofile", function (categories,$scope, $http, user, $rootScope, $route,$routeParams,$location) {
     var filesuploaded = []
-
+    console.log($rootScope.cur_user);
   user.userprofile().then(function(data){
       $scope.userprofile=data.data;
       $scope.user_points_from_mentors_reviews = $scope.userprofile.points_number;
@@ -38,16 +38,16 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
     console.log(err);
 
   });
-    user.editprofile($rootScope.cur_user.id).then(function(data){
-        $rootScope.cur_user=data;
-        var dob=$rootScope.cur_user.date_of_birth;
-        $rootScope.cur_user.date_of_birth=new Date(dob);
-        $rootScope.fname= $rootScope.cur_user.first_name;
-        $rootScope.lname=$rootScope.cur_user.last_name;
-    } , function(err){
-        console.log(err);
-
-    });
+    // user.editprofile($rootScope.cur_user.id).then(function(data){
+    //     $rootScope.cur_user=data;
+    //     var dob=$rootScope.cur_user.date_of_birth;
+    //     $rootScope.cur_user.date_of_birth=new Date(dob);
+    //     $rootScope.fname= $rootScope.cur_user.first_name;
+    //     $rootScope.lname=$rootScope.cur_user.last_name;
+    // } , function(err){
+    //     console.log(err);
+    //
+    // });
   // user.displayShared().then(function(data){
   //    console.log("shares",data.data.shares);
   //   //  $scope.allPosts = data.data.shares.concat($scope.userposts);
