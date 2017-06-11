@@ -199,7 +199,7 @@
 							<!-- if logged in : -->
 							<logged ng-if="token">
 								<li class="dropdown">
-	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="http://localhost:8000/{{cur_user.image}}" alt=""><span class="caret"></span></a>
+	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{cur_user.image}}" alt=""><span class="caret"></span></a>
 	                                <ul class="dropdown-menu">
 	                                    <li><a href="#!/myprofile">{{'NAVBAR.PROFILE' | translate}}</a></li>
 	                                    <li><a href="#!/editprofile">{{'NAVBAR.SETTINGS' | translate}}</a></li>
