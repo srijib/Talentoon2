@@ -33,12 +33,12 @@ margin-left: 138px;
 
 <ion-card>
     <div ng-if="userpost.media_type  == 'image'  ">
-<center>  <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userpost.media_url}}" class="img-circle" style="height:200px">
+<center>  <img ng-src="{{userpost.url}}" class="img-circle" style="height:200px">
 </center>
   </div>
   <div ng-if="userpost.media_type  == 'video'  ">
     <video  controls preload="auto" class="video" width="100%">
-      <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userpost.media_url}}"  type="video/mp4"/>
+      <source ng-src="{{userpost.url}}"  type="video/mp4"/>
        </video>
      </div>
 
@@ -46,7 +46,7 @@ margin-left: 138px;
 
     <audio controls>
 
-             <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userpost.media_url}}" type="audio/mp3"/>
+             <source ng-src="{{userpost.url}}" type="audio/mp3"/>
 
              </audio>
   </div>

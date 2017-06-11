@@ -11,7 +11,7 @@
  </div>
     <div ng-if="post.media_type  == 'video'  ">
       <video  controls preload="auto" class="video" width="100%">
-        <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}"  type="video/mp4"/>
+        <source ng-src="{{post.url}}"  type="video/mp4"/>
          </video>
        </div>
 
@@ -19,7 +19,7 @@
 
       <audio controls>
 
-               <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" type="audio/mp3"/>
+               <source ng-src="{{post.url}}" type="audio/mp3"/>
 
                </audio>
     </div>
