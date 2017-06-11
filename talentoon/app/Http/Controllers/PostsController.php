@@ -159,7 +159,7 @@ class PostsController extends Controller
 //                    ->join('contacts', 'users.id', '=', 'contacts.user_id')
                 ->join('users', 'posts.user_id' , '=', 'users.id' )
                 //,'users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image'
-                ->select(DB::raw('CONCAT("http://192.168.43.242:8000","/",posts.media_url) as url' ) ,'posts.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
+                ->select(DB::raw('CONCAT("http://172.16.3.77:8000","/",posts.media_url) as url' ) ,'posts.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
                 ->where("posts.id",$value->likeable_id)
                 ->get();
 

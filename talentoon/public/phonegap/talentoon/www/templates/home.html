@@ -17,29 +17,15 @@
 </div>
 
 <div ng-if="post.media_type  == 'video'  ">
-  <video  controls preload="auto" >
+  <video  controls preload="auto" class="video" width="100%">
     <source ng-src="{{post.url}}"  type="video/mp4"/>
      </video>
    </div>
 
-
-   
-  <!-- <video  controls preload="auto" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}{{post.media_url}}"> -->
-
-
-<!-- <div ng-if="post.media_type  == 'video'  ">
-
-  <video  controls preload="auto"> -->
-  <!-- <video  controls preload="auto" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}{{post.media_url}}"> -->
-
-           <!-- <source ng-src="{{post.url}}"  />
-            </video> -->
-
-<!-- </div> -->
 <div ng-if="post.media_type == 'audio'">
   <audio controls>
 
-           <source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}'"/>
+           <source ng-src="{{post.url}}" type="audio/mp3"/>
 
            </audio>
 </div>
