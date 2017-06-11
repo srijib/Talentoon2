@@ -12,14 +12,14 @@
 
     <!-- <button type="button" class="btn btn-default btn-lg">{{'ONE_CATEGORY.BE_MENTOR' | translate}}</button> -->
 
-    <mentor ng-if="is_mentor != 1">
+    <mentor ng-if="is_mentor != 1 && is_talent != 1 ">
         <a href="#!/category/{{cat_id}}/bementor" type="button" class="btn btn-default btn-lg">{{'ONE_CATEGORY.BE_MENTOR' | translate}}</a>
     </mentor>
     <mentor ng-if="is_mentor == 1">
         <a class="btn btn-default btn-lg" role="button" ng-click="unmentor()">{{'ONE_CATEGORY.BE_UN_MENTOR' | translate}}</a>
     </mentor>
 
-    <talent ng-if="is_talent != 1">
+    <talent ng-if="is_talent != 1 && is_mentor != 1">
         <a href="#!/category/{{cat_id}}/betalent" type="button" class="btn btn-default btn-lg">{{'ONE_CATEGORY.BE_TALENT' | translate}}</a>
     </talent>
     <talent ng-if="is_talent == 1">
@@ -39,7 +39,7 @@
 <div id="topposts">
   <div class="container">
     <div class="title">
-      <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+      <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
       <h1 class="h1" >{{'TOP_POSTS' | translate}}</h1>
     </div>
 
@@ -47,7 +47,7 @@
 
     <!-- data-aos="fade-up" data-aos-duration="2000"  -->
     <div class="row mainrow">
-      <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in categoryPosts | limitTo:3 track by $index">
+      <div class="col-lg-4 col-md-4 col-sm-12 postSection" data-aos="fade-up" data-aos-duration="2000" ng-repeat="post in categoryPosts | limitTo:3 track by $index">
         <div class="thumbnail" data-toggle="modal" data-target="#po{{post.id}}">
           <!-- defaultimg-->
 
@@ -55,23 +55,23 @@
 
          <div ng-if="post.media_type == 'image'">
 
-            <img class="img-responsive" src="http://localhost:8000/{{post.media_url}}" alt="">
+            <img class="img-responsive" ng-src="http://localhost:8000/{{post.media_url}}" alt="">
           </div>
 
           <div ng-if="post.media_type == 'video' ">
 
            <video  style="height: 242px;" controls  preload="auto">
 
-          <source src="http://localhost:8000/{{post.media_url}}"  />
+          <source ng-src="http://localhost:8000/{{post.media_url}}"  />
        </video>
 
           </div>
             <div ng-if="post.media_type == 'audio'">
-              <img src="http://localhost:8000/uploads/events/2.jpg" alt="">
+              <img ng-src="http://localhost:8000/uploads/events/2.jpg" alt="">
                 <p style="font-size:15px">{{post.title}}</p>
           <audio controls style="width: 348px;">
 
-<source src="http://localhost:8000/{{post.media_url}}" >
+<source ng-src="http://localhost:8000/{{post.media_url}}" >
 
 </audio>
 <div class="caption row">
@@ -94,7 +94,7 @@
 
           <!--                               userinfo-->
           <div class="row userinfo">
-            <img src="http://localhost:8000/{{post.user_image}}" alt="">
+            <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
             <p>{{post.first_name}} {{post.last_name}}</p>
           </div>
           <!--                              end userinfo-->
@@ -178,7 +178,7 @@
                                                         </button>
                 <h4 class="modal-title" id="myModalLabel">
                                                             <div class="row popUserInfo">
-                                                                <img src="http://localhost:8000/{{post.user_image}}" alt="">
+                                                                <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
                                                                 <p>{{post.first_name}} {{post.last_name}}</p>
                                                             </div>
                                                         </h4>
@@ -191,21 +191,21 @@
 
                       <div ng-if="post.media_type == 'image'">
 
-                         <img src="http://localhost:8000/{{post.media_url}}" alt="">
+                         <img ng-src="http://localhost:8000/{{post.media_url}}" alt="">
                        </div>
 
                        <div ng-if="post.media_type == 'video' ">
 
                         <video controls  preload="auto" style="height: 242px;">
 
-                       <source src="http://localhost:8000/{{post.media_url}}"  />
+                       <source ng-src="http://localhost:8000/{{post.media_url}}"  />
                     </video>
 
                        </div>
                          <div ng-if="post.media_type == 'audio'">
                        <audio controls>
 
-                   <source src="http://localhost:8000/{{post.media_url}}" />
+                   <source ng-src="http://localhost:8000/{{post.media_url}}" />
 
                    </audio>
                    </div>
@@ -308,7 +308,7 @@
                             <!-- <li class="media"> -->
                                 <div class="media-left" >
                                     <a href="#">
-                                        <img class="media-object" src="http://localhost:8000/{{comment.user_image}}">
+                                        <img class="media-object" ng-src="http://localhost:8000/{{comment.user_image}}">
                                     </a>
                                 </div>
                                 <div class="media-body">
@@ -362,7 +362,7 @@
 <div id="topEvents">
   <div class="container">
     <div class="title">
-      <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+      <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
       <h1 class="h1">{{'TOP_EVENTS' | translate}}</h1>
     </div>
 
@@ -370,25 +370,25 @@
 
 
     <div class="evMainRow row">
-      <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" event in categoryEvents| limitTo:3">
+      <div class="eventSection col-sm-12 col-md-4 " data-aos="zoom-in-down" data-aos-duration="2000" ng-repeat=" event in categoryEvents| limitTo:3">
         <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
           <div class="row evDefaultImg">
             <!--<h2>{{event.media_url}}</h2>-->
             <div ng-if="event.media_type == 'image'">
-            <img src="http://localhost:8000/{{event.media_url}}" alt="">
+            <img ng-src="http://localhost:8000/{{event.media_url}}" alt="">
             </div>
             <div ng-if="event.media_type == 'video' ">
 
              <video   controls  preload="auto" style="height: 242px;">
 
-            <source src="http://localhost:8000/{{event.media_url}}"  />
+            <source ng-src="http://localhost:8000/{{event.media_url}}"  />
          </video>
 
             </div>
               <div ng-if="event.media_type == 'audio'">
             <audio controls>
 
-         <source src="http://localhost:8000/{{event.media_url}}" />
+         <source ng-src="http://localhost:8000/{{event.media_url}}" />
 
          </audio>
          </div>
@@ -516,20 +516,20 @@
 
 
                     <div ng-if="event.media_type == 'image'">
-                    <img src="http://localhost:8000/{{event.media_url}}" alt="">
+                    <img ng-src="http://localhost:8000/{{event.media_url}}" alt="">
                     </div>
                     <div ng-if="event.media_type == 'video' ">
 
                      <video   controls  preload="auto">
 
-                    <source src="http://localhost:8000/{{event.media_url}}"  />
+                    <source ng-src="http://localhost:8000/{{event.media_url}}"  />
                   </video>
 
                     </div>
                       <div ng-if="event.media_type == 'audio'">
                     <audio controls>
 
-                  <source src="http://localhost:8000/{{event.media_url}}" />
+                  <source ng-src="http://localhost:8000/{{event.media_url}}" />
 
                   </audio>
                   </div>
@@ -577,7 +577,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                       <a class="userPic">
                         <span>Mintoring by : </span>
-                        <img src="Imgs/Persons/face1.jpg" alt=""> {{event.first_name}} {{event.last_name}}
+                        <img ng-src="Imgs/Persons/face1.jpg" alt=""> {{event.first_name}} {{event.last_name}}
                       </a>
 
                       <!--    top event userPic-->
@@ -640,7 +640,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
                           </a>
                         </div>
                         <div class="media-body">
@@ -659,7 +659,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
                           </a>
                         </div>
                         <div class="media-body">
@@ -699,33 +699,33 @@
 <div id="topWorkshops">
   <div class="container">
     <div class="title">
-      <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+      <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
       <h1 class="h1">{{'TOP_WORKSHOPS' | translate}}</h1>
     </div>
 
     <h1 ng-if="category_workshops_exists != 1"  style="text-align: center; color:red;">Sorry No Current approved workshops exists</h1>
 
     <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" ng-repeat="workshop in categoryWorkshops | limitTo:3 track by $index">
+      <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" ng-repeat="workshop in categoryWorkshops | limitTo:3 track by $index">
         <div class="thumbnail" data-toggle="modal" data-target="#ws{{workshop.id}}">
-          <!--                    <img src="http://placehold.it/350x250">-->
+          <!--                    <img ng-src="http://placehold.it/350x250">-->
 
 
           <div ng-if="workshop.media_type == 'image'">
-          <img src="http://localhost:8000/{{workshop.media_url}}" alt="">
+          <img ng-src="http://localhost:8000/{{workshop.media_url}}" alt="">
           </div>
           <div ng-if="workshop.media_type == 'video' ">
 
            <video   controls  preload="auto" style="height: 242px;">
 
-          <source src="http://localhost:8000/{{workshop.media_url}}"  />
+          <source ng-src="http://localhost:8000/{{workshop.media_url}}"  />
         </video>
 
           </div>
             <div ng-if="workshop.media_type == 'audio'">
           <audio controls>
 
-        <source src="http://localhost:8000/{{workshop.media_url}}" />
+        <source ng-src="http://localhost:8000/{{workshop.media_url}}" />
 
         </audio>
         </div>
@@ -754,7 +754,7 @@
             </div>
           </div>
           <a class="userPic row">
-            <span class="col-lg-6 col-md-4 col-sm-12 mintor">Mintoring by   <img src="http://localhost:8000/{{workshop.user_image}}"></span>
+            <span class="col-lg-6 col-md-4 col-sm-12 mintor">Mintoring by   <img ng-src="http://localhost:8000/{{workshop.user_image}}"></span>
             <span class="col-lg-6 col-md-4 col-sm-12">{{workshop.first_name}} {{workshop.last_name}}</span>
           </a>
 
@@ -780,20 +780,20 @@
                   <div class="row popWorkshopDefaultImg">
 
                     <div ng-if="workshop.media_type == 'image'">
-                    <img src="http://localhost:8000/{{workshop.media_url}}" alt="">
+                    <img ng-src="http://localhost:8000/{{workshop.media_url}}" alt="">
                     </div>
                     <div ng-if="workshop.media_type == 'video' ">
 
                      <video   controls  preload="auto">
 
-                    <source src="http://localhost:8000/{{workshop.media_url}}"  />
+                    <source ng-src="http://localhost:8000/{{workshop.media_url}}"  />
                   </video>
 
                     </div>
                       <div ng-if="workshop.media_type == 'audio'">
                     <audio controls>
 
-                  <source src="http://localhost:8000/{{workshop.media_url}}" />
+                  <source ng-src="http://localhost:8000/{{workshop.media_url}}" />
 
                   </audio>
                   </div>
@@ -831,7 +831,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                       <a class="userPic">
                         <span>Mintoring by : </span>
-                        <img src="http://localhost:8000/{{workshop.user_image}}" alt=""> {{workshop.first_name}} {{workshop.last_name}}
+                        <img ng-src="http://localhost:8000/{{workshop.user_image}}" alt=""> {{workshop.first_name}} {{workshop.last_name}}
                       </a>
 
                       <!--    top event userPic-->
@@ -894,7 +894,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face2.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
                           </a>
                         </div>
                         <div class="media-body">
@@ -913,7 +913,7 @@
                       <li class="media">
                         <div class="media-left">
                           <a href="#">
-                            <img class="media-object" src="Imgs/Persons/face3.jpg">
+                            <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
                           </a>
                         </div>
                         <div class="media-body">
@@ -966,21 +966,21 @@
 <!-- ######################################################################## -->
 <!-- COMPETITIONS -->
 
-<div id="topEvents">
+<div id="topComp">
   <div class="container">
     <div class="title">
-      <!--                        <span class="bground"><img src="Imgs/bground2.png" class="img-responsive"></span>-->
+      <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
       <h1 class="h1">{{'TOP_COMPETITIONS' | translate}}</h1>
     </div>
-    <div class="evMainRow row">
-      <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" competition in categoryCompetitions| limitTo:3">
+    <div class="CompMainRow row">
+      <div class="CompSection col-sm-12 col-md-4 " data-aos="zoom-in-down" data-aos-duration="2000" ng-repeat=" competition in categoryCompetitions| limitTo:3">
         <div class="thumbnail" data-toggle="modal" data-target="#co{{competition.id}}">
-          <div class="row evDefaultImg">
-            <img src="http://localhost:8000/{{competition.image}}" alt="">
+          <div class="row CompDefaultImg">
+            <img ng-src="http://localhost:8000/{{competition.image}}" alt="">
           </div>
           <!--    top event default image-->
 
-          <div class="row evTitle">
+          <div class="row CompTitle">
             <div class="col-lg-10 col-md-10 col-sm-8">
               <h3>{{competition.title}}</h3>
             </div>
@@ -1028,13 +1028,13 @@
             </div>
           </div>
           <!--    top event title-->
-          <div class="evCaption row">
+          <div class="CompCaption row">
             <p class="row">{{competition.description}}</p>
           </div>
           <!--    top event caption-->
 
-          <div class=" evDetails row">
-            <div class="eventScd col-lg-6 col-md-12 col-sm-12">
+          <div class="CompDetails row">
+            <div class="CompScd col-lg-6 col-md-12 col-sm-12">
               <span class="bigdate">
                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
                                 <p>{{competition.date_from | date : 'd'}}</p>
@@ -1045,7 +1045,20 @@
               </span>
             </div>
             <!--    top event schdule-->
-            <div class="eventScd col-lg-6 col-md-12 col-sm-12" id="secondp">
+            <div class="CompScd col-lg-6 col-md-12 col-sm-12" id="secondp">
+                <div class="compLevel">
+                    <span class="level">
+                        <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    </span>
+                    <span class="lLabels">
+                        <small>Level</small><span class="label first label-default">{{competition.level}}</span>
+                        -
+                        <span class="label label-default">{{competition.level}}</span>
+                    </span>
+                </div>
+            </div><!--    top event schdule-->
+
+            <!-- <div class="CompScd col-lg-6 col-md-12 col-sm-12" id="secondp">
               <span class="bigdate" id="span1">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                             </span>
@@ -1057,7 +1070,7 @@
                   <i class="fa fa-bar-chart" aria-hidden="true"></i>
                                 to level: {{competition.level}}
                             </span>
-            </div>
+            </div> -->
             <!--    top event schdule-->
           </div>
           <!--    top event detaila-->

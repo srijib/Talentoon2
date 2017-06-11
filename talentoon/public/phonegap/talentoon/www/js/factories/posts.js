@@ -1,12 +1,15 @@
 
-angular.module('talentoon').factory("posts", function ($http, $q) {
+angular.module('talentoon').factory("posts", function ($http, $q,$rootScope) {
 
     return {
 likepost:function(data){
   console.log("from factory",data);
   var def =$q.defer();
   $http({
-    url:'http://192.168.6.5:8000/api/like',
+    url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/like',
+    headers:{
+  'Authorization':'Bearer: '+ $rootScope.token
+     },
     method:'POST',
     data:data
 
@@ -30,7 +33,10 @@ dislikepost:function(data){
   console.log("from factory",data);
   var def =$q.defer();
   $http({
-    url:'http://192.168.6.5:8000/api/dislike',
+    url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/dislike',
+    headers:{
+  'Authorization':'Bearer: '+ $rootScope.token
+     },
     method:'POST',
     data:data
 
@@ -54,7 +60,10 @@ sharepost:function(data){
   console.log("from factory",data);
   var def =$q.defer();
   $http({
-    url:'http://192.168.6.5:8000/api/share',
+    url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/share',
+    headers:{
+  'Authorization':'Bearer: '+ $rootScope.token
+     },
     method:'POST',
     data:data
 

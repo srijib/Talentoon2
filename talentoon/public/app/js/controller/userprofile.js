@@ -229,7 +229,6 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
 
     }
 
-
     $scope.uploadedFile = function (element) {
         console.log("element is ", element)
         $rootScope.profilePictureFile = element.files[0];
@@ -257,5 +256,3 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
         });
     }
 });
-
-

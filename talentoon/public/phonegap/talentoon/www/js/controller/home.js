@@ -7,14 +7,20 @@ angular.module('talentoon').controller("homec",function(Home,$scope,$http,$rootS
 
 		// console.log(data);
 		$scope.topposts=data;
-		for (var i = 0; i < data.length; i++) {
-if(data[i].media_type == 'video'){
-			$scope.video_path = {src:'http://192.168.6.5:8000/'+data[i].media_type};
+// 		for (var i = 0; i < data.length; i++) {
+// if(data[i].media_type == 'video'){
+// 			$scope.video_path = {src:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/'+data[i].media_url};
+//
+// 			 $scope.trustSrc = function(src) {
+// 					 return $sce.trustAsResourceUrl(src);
+// 			 }}
+// 		}
 
-			 $scope.trustSrc = function(src) {
-					 return $sce.trustAsResourceUrl(src);
-			 }}
-		}
+		// for (var i = 0; i < data.length; i++) {
+		// 	$scope.video_path = data[i].media_url;
+		//
+		// 	console.log("url from serve",$scope.video_path)
+		// }
 		// console.log("type",data[0].media_type);
 
 // console.log("top posts",data[0].post);

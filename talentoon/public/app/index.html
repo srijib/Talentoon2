@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="myApp" ng-controller="main">
 <head>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="242561729521-b49f3iect12uqm78km7b1jipg8o3losn.apps.googleusercontent.com">
 	<title>Angular js</title>
 	<!-- scripts -->
 	<meta charset="UTF-8">
@@ -9,9 +11,10 @@
 	<!-- <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script> -->
 	<!-- <script type="text/javascript" src="node_modules/angular-modal-service/dst/angular-modal-service.js"></script> -->
 	<script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
-	<script type="text/javascript" src="node_modules/aos/dist/aos.js"></script>
 	<!-- <script>AOS.init();</script> -->
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="node_modules/aos/dist/aos.js"></script>
+
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 	<!-- angular file translate -->
@@ -34,7 +37,7 @@
 	<script type="text/javascript" src="js/controller/addsession.js"></script>
 	<script type="text/javascript" src="js/controller/showreview.js"></script>
 	<script type="text/javascript" src="js/controller/event.js"></script>
-	<script type="text/javascript" src="js/controller/jquery-3.1.1.js"></script>
+	<!-- <script type="text/javascript" src="js/controller/jquery-3.1.1.js"></script> -->
 	<script type="text/javascript" src="js/controller/post.js"></script>
 	<script type="text/javascript" src="js/controller/workshop.js"></script>
 	<script type="text/javascript" src="js/controller/videoconference.js"></script>
@@ -71,8 +74,6 @@
 	<link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
 	<link rel="stylesheet" href="css/categories.css">
-	<!-- <link rel="stylesheet" href="css/categorySelected.css"> -->
-	<link rel="stylesheet" href="css/clickedCategory.css">
 	<link rel="stylesheet" href="css/talentConfirmation.css">
 	<link rel="stylesheet" href="css/createPost.css">
 	<link rel="stylesheet" href="css/posts.css">
@@ -80,6 +81,7 @@
 	<link rel="stylesheet" href="css/allCompetiton.css">
 	<link rel="stylesheet" href="css/prizes.css">
 	<link rel="stylesheet" href="css/singleCompetition.css">
+	<link rel="stylesheet" href="css/clickedCategory.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>-->
@@ -104,6 +106,16 @@
 </head>
 <body>
 
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=477870279221218";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+<div ng-class="{'IN_home':in_home}">
 	<div id="Navbar">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -124,7 +136,7 @@
                         <div class="container-fluid">
                             <div class="navbar-header">
                                 <a class="navbar-brand" href="#">
-                                    <img alt="Brand" src="imgs/logo.png">
+                                    <img alt="Brand" ng-src="imgs/logo.png">
                                 </a>
                             </div>
                         </div>
@@ -174,11 +186,22 @@
 
                         <!--                        nav right-->
                         <ul class="nav navbar-nav navbar-right">
-
+							<span>
+                                <!--                               search bar-->
+                                <div class="search-bar">
+                                    <input type="text" placeholder="Search for category/friend" />
+                                </div>
+                                <!--                                end search bar-->
+                                <!--                                search-->
+                                <div class="search">
+                                    <div class="search-icon"></div>
+                                </div>
+                                <!--                                end search-->
+                            </span>
 							<!-- if logged in : -->
 							<logged ng-if="token">
 								<li class="dropdown">
-	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://localhost:8000/{{cur_user.image}}" alt=""><span class="caret"></span></a>
+	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="http://localhost:8000/{{cur_user.image}}" alt=""><span class="caret"></span></a>
 	                                <ul class="dropdown-menu">
 	                                    <li><a href="#!/myprofile">{{'NAVBAR.PROFILE' | translate}}</a></li>
 	                                    <li><a href="#!/editprofile">{{'NAVBAR.SETTINGS' | translate}}</a></li>
@@ -216,6 +239,8 @@
                 </div><!-- /.container-fluid -->
             </nav> <!-- nav default-->
         </div>
+</div>
+
 
 
 
@@ -250,9 +275,9 @@
                                             <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
                                                 <i class="fa fa-facebook"></i> Facebook
                                             </a>
-
-                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
+                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="">
                                                 <i class="fa fa-google-plus"></i> Google Plus
+												<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
                                             </a>
                                         </div>
                                     </div>
@@ -373,19 +398,23 @@
 
                                         <div class="dropSelected">
                                             <!--gender-->
+																						<div>
                                             <select class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12" name="gender" ng-model="user.gender" required>
                                                 <option selected disabled>Gender</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </select>
-
+																						<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
+</div>
                                             <!--countries-->
+																						<div>
                                             <select name="country_id" ng-model="user.country_id" class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-offset-1">
                                                 <option selected disabled>Country</option>
                                                 <option value="{{country.id}}" ng-repeat="country in countries track by $index">{{country.name}}</option>
                                             </select>
-											<p class='error' ng-if='submitted && register.country_id.$error.required'>please choose your country</p>
-											<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
+																						<p class="error" ng-if="submitted && register.country_id.$error.required">please choose your country</p>
+
+																					</div>
 
                                         </div>
                                         <!--profile image-->
@@ -441,24 +470,6 @@
     </div><!-- /.modal -->
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -548,11 +559,26 @@
       <!--}-->
     <!--}]);-->
   <!--</script>-->
-  <script type="text/javascript">
-	  $(window).on('load', function() {
-	  AOS.refresh();
-	});
-  </script>
+
+
+  <!-- <script type="text/javascript">
+      function $scope.onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		// location.href='google.php?ID='+profile.getId()+'&Name='+profile.getName()+'&Image='+profile.getImageUrl()+'&Email='+profile.getEmail();
+        }
+    </script> -->
+	<!-- <script>
+	   	function signOut() {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function () {
+				console.log('User signed out.');
+			});
+	   	}
+	</script> -->
 
 </body>
 </html>

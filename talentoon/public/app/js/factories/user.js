@@ -64,7 +64,8 @@ angular.module('myApp').factory("user", function ($http, $q,$rootScope) {
                 }
             }, function (err) {
                 console.log(err);
-                alert("server error ")
+
+                alert("server connection  error ");
             });
             return def.promise;
         },

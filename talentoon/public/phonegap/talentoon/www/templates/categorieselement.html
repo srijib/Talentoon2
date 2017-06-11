@@ -5,7 +5,27 @@
 
   <ion-card>
 
-    <center><img  class="img-responsive" src="http://192.168.6.5:8000/{{post.media_url}}" alt="" style="height:250px"></center>
+  <div ng-if="post.media_type == 'image'">
+    <center><img  class="img-responsive" src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="" style="height:250px"></center>
+
+ </div>
+    <div ng-if="post.media_type  == 'video'  ">
+      <video  controls preload="auto" class="video" width="100%">
+        <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}"  type="video/mp4"/>
+         </video>
+       </div>
+
+    <div ng-if="post.media_type == 'audio'">
+
+      <audio controls>
+
+               <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" type="audio/mp3"/>
+
+               </audio>
+    </div>
+
+
+
     <center><h3 style="color: #FFB733">{{post.title}}</h3></center>
     <p style="margin-left:28px;margin-right:19px">{{post.description}}</p>
     <p style="margin-left:28px;margin-right:19px"> at :{{post.created_at}}</p>
