@@ -13,10 +13,10 @@ angular.module("myApp").run(function($rootScope,$location,$timeout){
   //     alert('hello')
   // }
   $rootScope.$on('$routeChangeStart', function(event, next, current) {
-        console.log('event',event);
-        console.log('next',next);
-        console.log(next.$$route.originalPath);
-        console.log('current',current);
+        // console.log('event',event);
+        // console.log('next',next);
+        // console.log(next.$$route.originalPath);
+        // console.log('current',current);
         if (next.$$route.originalPath=="/") {
                 console.log('in home');
                 $rootScope.in_home = true;
