@@ -1,4 +1,5 @@
 <header>
+</header>
 
   <div id="topposts" ng-if="post_exist"  >
     <div class="container">
@@ -9,20 +10,21 @@
 
       <div class="row mainrow">
         <div class="col-lg-4 col-md-4 col-sm-12 postSection" ng-repeat="post in topposts | limitTo:3  track by $index">
-            <div data-aos="fade-up" data-aos-duration="2000" >
-                <div class="thumbnail" data-toggle="modal" data-target="#po{{post.id}}">
+            <div data-toggle="modal" data-target="#po{{post.id}}">
+                <div class="thumbnail" >
                   <!-- defaultimg-->
                   <div class="row defaultimg">
+                      <div ng-if="post.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{post.media_url}});">
+                      </div>
 
-
-                    <div ng-if="post.media_type == 'image'">
+                    <!-- <div ng-if="post.media_type == 'image'">
 
                       <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="">
-                    </div>
+                    </div> -->
 
                     <div ng-if="post.media_type == 'video' ">
 
-                      <video  controls preload="auto" style="height: 242px;">
+                      <video  controls preload="auto">
 
                                  <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}"  />
                                </video>
@@ -135,12 +137,9 @@
                     <div class="thumbnail">
                       <!-- defaultimg-->
                       <div class="row  popdefaultimg">
-
-
-                        <div ng-if="post.media_type == 'image'">
-
-                          <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="">
-                        </div>
+                            <div ng-if="post.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{post.media_url}});">
+                            </div>
+                          <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt=""> -->
 
                         <div ng-if="post.media_type == 'video' ">
 
@@ -286,6 +285,7 @@
               </div>
               <!--end modalcontent-->
             </div>
+            </div>
             <!--end modaldialog-->
           </div>
           <!--end my modal id-->
@@ -293,7 +293,7 @@
           <!-- END OF MODAAAAAAAAAAAAAAAAAL -->
 
 
-        </div>
+
         <!--end postSection-->
       </div>
       <!--           end of main row-->
@@ -301,7 +301,6 @@
     <!--           end of container-->
   </div>
   <!--           end of top posts-->
-</header>
 
 
 
@@ -313,15 +312,15 @@
       <h1 class="h1">{{'TOP_EVENTS' | translate}}</h1>
     </div>
     <div class="evMainRow row">
-      <div class="eventSection col-sm-12 col-md-4 " data-aos="zoom-in-down" data-aos-duration="2000" ng-repeat=" event in events| limitTo:3">
+      <div class="eventSection col-sm-12 col-md-4 " ng-repeat=" event in events| limitTo:3">
         <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
           <div class="row evDefaultImg">
 
 
+          <div ng-if="event.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{event.media_url}});">
+          </div>
+        <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt=""> -->
 
-      <div ng-if="event.media_type == 'image'">
-
-        <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt="">
         </div>
 
            <div ng-if="event.media_type == 'video' ">
@@ -422,7 +421,7 @@
           </div>
         </div>
         <!-- MODAAAAAAAAAAAAAAAAAAAAL -->
-        <div class="modal fade" id="ev{{event.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="ev{{event.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -441,9 +440,10 @@
                 <div class="thumbnail">
                   <div class="row evDefaultImg">
 
-                    <div ng-if="event.media_type == 'image'">
-                      <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt="">
-                      </div>
+
+                        <div ng-if="event.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{event.media_url}});">
+                        </div>
+
 
          <div ng-if="event.media_type == 'video' ">
               <video   controls  preload="auto">
@@ -618,14 +618,14 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" ng-repeat="workshop in workshops | limitTo:3  track by $index">
+      <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" ng-repeat="workshop in workshops | limitTo:3  track by $index">
         <div class="thumbnail" data-toggle="modal" data-target="#ws{{workshop.id}}">
           <!--                    <img ng-src="http://placehold.it/350x250">-->
 
+              <div ng-if="workshop.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{workshop.media_url}});">
+              </div>
+            <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt=""> -->
 
-          <div ng-if="workshop.media_type == 'image'">
-
-            <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt="">
             </div>
 
                <div ng-if="workshop.media_type == 'video' ">
@@ -723,9 +723,7 @@
                         <span>Mintoring by : </span>
                         <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.user_image}}" alt=""> {{workshop.first_name}} {{workshop.last_name}}
                       </a>
-
                       <!--    top event userPic-->
-
                     </div>
 
                     <!--share -->
