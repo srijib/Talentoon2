@@ -12,7 +12,7 @@
             <div class="recentPosts imageArticle" ng-repeat="initial_post in all_initial_posts track by $index">
                 <div class="userInfos">
                     <!--user image comes here-->
-                    <img src="http://localhost:8000/{{initial_post.image}}" alt="">
+                    <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{initial_post.image}}" alt="">
                     <span ng-if ='initial_post.id != cur_user.id'>
                         <a href="#!/profile/{{initial_post.id}}"><span>{{initial_post.first_name}} {{initial_post.last_name}}</span></a>
                         </span>
@@ -33,11 +33,11 @@
                                 <!-- IF IMAGE -->
                                 <center>
                                     <IMAGE ng-if="initial_post.review_media_type == 'image/jpeg'" >
-                                        <img  style="width: 490px;" src="http://localhost:8000/{{initial_post.review_media_url}}" alt="">
+                                        <img  style="width: 490px;" src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{initial_post.review_media_url}}" alt="">
                                     </IMAGE>
                                     <!-- IF VEDIO -->
                                     <VIDEO ng-if="initial_post.review_media_type == 'video'">
-                                        <video controls><source src="http://localhost:8000/{{initial_post.review_media_url}}"></video>
+                                        <video controls><source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{initial_post.review_media_url}}"></video>
                                     </VIDEO>
                                     <!-- IF AUDIO -->
                                     <AUDIO ng-if="initial_post.review_media_type == 'audio'">
@@ -48,7 +48,7 @@
                     </div>
                     <div class="disc">
                         <AUDIO ng-if="initial_post.media_type == 'audio'">
-                            <audio controls> <source src="http://localhost:8000/{{initial_post.review_media_url}}"></audio>
+                            <audio controls> <source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{initial_post.review_media_url}}"></audio>
                         </AUDIO>
                         <p>{{initial_post.description}}</p>
 

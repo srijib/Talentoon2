@@ -7,7 +7,7 @@ workshop_enroll:function(data){
   console.log("from factory",data);
   var def =$q.defer();
   $http({
-    url:'http://localhost:8000/api/workshop_enroll',
+    url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/workshop_enroll',
     method:'POST',
     data:data
 
@@ -32,7 +32,7 @@ addsession:function(data){
     var def =$q.defer();
     $http({
 
-        url:'http://localhost:8000/api/workshop/'+data.workshop_id ,
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/workshop/'+data.workshop_id ,
         method:'POST',
         data:data
 
@@ -40,7 +40,7 @@ addsession:function(data){
         console.log("session1111111",res.data);
         $http({
             method: 'POST',
-            url: 'http://localhost:8000/api/session_upload/' + res.data.workshop_id,
+            url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/session_upload/' + res.data.workshop_id,
             processData: false,
             data: {"media_url": "uploads/files" + $rootScope.sessionFile.name, "media_type": $rootScope.sessionFile.type},
             transformRequest: function (data) {

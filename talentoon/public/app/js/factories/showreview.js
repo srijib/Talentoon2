@@ -1,11 +1,11 @@
-angular.module('myApp').factory("showreview",function($q,$http){
+angular.module('myApp').factory("showreview",function($q,$http,$rootScope){
 
 return {
 
 		getAllInitialPosts:function(mentor_id){
 			var def =$q.defer();
 			$http({
-				url:'http://localhost:8000/api/initial_posts/'+mentor_id ,
+				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/initial_posts/'+mentor_id ,
 				method:'GET',
 			}).then(function(res){
 				console.log("eshta",res);
@@ -27,7 +27,7 @@ return {
 			console.log("review data is ",rev_data)
 			var def =$q.defer();
 			$http({
-				url:'http://localhost:8000/api/single_review' ,
+				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/single_review' ,
 				method:'POST',
 				data: rev_data
 			}).then(function(res){
