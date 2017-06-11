@@ -168,6 +168,7 @@ Route::get('/categorymentor/get_mentor_details/{mentor_id}', 'CategoryMentorCont
 Route::post('/conference/add_teacher', 'VideoConferenceController@add_wiziq_teacher');
 Route::post('/conference/create_class', 'VideoConferenceController@create_wiziq_class');
 Route::post('/conference/add_attendee_to_class', 'VideoConferenceController@add_wiziq_attendee_class');
+Route::get('/conference/video_conference_details', 'VideoConferenceController@video_conference_details');
 Route::post('/session_upload/{id}', 'UploadController@session_upload');
 Route::post('/workshop/{workshop_id}','WorkShopsController@createSession');
 
