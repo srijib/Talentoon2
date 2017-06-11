@@ -6,7 +6,7 @@ angular.module('myApp').factory("event",function($q,$http,$rootScope){
             console.log("ana hnaaaaaaa",eventdata);
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/categories/' + eventdata.category_id + '/events',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/' + eventdata.category_id + '/events',
                 method: 'POST',
                 data: eventdata
 
@@ -20,7 +20,7 @@ angular.module('myApp').factory("event",function($q,$http,$rootScope){
                 event_id_returned =  res.data.data.original.id;
                 $http({
                     method: 'POST',
-                    url: 'http://localhost:8000/api/event_upload/' + event_id_returned,
+                    url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/event_upload/' + event_id_returned,
                     processData: false,
                     data: {
                         "media_url": "uploads/files" + $rootScope.EventcurrentFile.name,
@@ -52,7 +52,7 @@ angular.module('myApp').factory("event",function($q,$http,$rootScope){
 
         }
 
-        
+
     }
 
 });

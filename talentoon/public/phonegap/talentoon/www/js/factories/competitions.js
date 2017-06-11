@@ -1,4 +1,4 @@
-angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) {
+angular.module('talentoon').factory("Competitions", function ($http, $q,$rootScope) {
 
     return {
     getAllCompetitions:function(){

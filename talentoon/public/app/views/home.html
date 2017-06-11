@@ -19,21 +19,21 @@
 
                     <!-- <div ng-if="post.media_type == 'image'">
 
-                      <img class="img-responsive" ng-src="http://localhost:8000/{{post.media_url}}" alt="">
+                      <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="">
                     </div> -->
 
                     <div ng-if="post.media_type == 'video' ">
 
                       <video  controls preload="auto">
 
-                                 <source ng-src="http://localhost:8000/{{post.media_url}}"  />
+                                 <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}"  />
                                </video>
 
                     </div>
                     <div ng-if="post.media_type == 'audio'">
                       <audio controls>
 
-                               <source ng-src="http://localhost:8000/{{post.media_url}}"/>
+                               <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}"/>
 
                                </audio>
                     </div>
@@ -48,7 +48,7 @@
                   <!-- user-->
                   <!--                               userinfo-->
                   <div class="row userinfo">
-                    <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
+                    <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.user_image}}" alt="">
                     <p>{{post.first_name}} {{post.last_name}}</p>
                   </div>
                   <!--                              end userinfo-->
@@ -127,7 +127,7 @@
                   </button>
                   <h4 class="modal-title" id="myModalLabel">
                         <div class="row popUserInfo">
-                            <img ng-src="http://localhost:8000/{{post.user_image}}" alt="">
+                            <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.user_image}}" alt="">
                             <p>{{post.first_name}} {{post.last_name}}</p>
                         </div>
                     </h4>
@@ -137,24 +137,22 @@
                     <div class="thumbnail">
                       <!-- defaultimg-->
                       <div class="row  popdefaultimg">
-                        <div ng-if="post.media_type == 'image'">
                             <div ng-if="post.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{post.media_url}});">
                             </div>
-                          <!-- <img class="img-responsive" ng-src="http://localhost:8000/{{post.media_url}}" alt=""> -->
-                        </div>
+                          <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt=""> -->
 
                         <div ng-if="post.media_type == 'video' ">
 
                           <video  controls preload="auto">
 
-                                                 <source ng-src="http://localhost:8000/{{post.media_url}}"  />
+                                                 <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}"  />
                                                  </video>
 
                         </div>
                         <div ng-if="post.media_type == 'audio'">
                           <audio controls>
 
-                                                   <source ng-src="http://localhost:8000/{{post.media_url}}"/>
+                                                   <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}"/>
 
                                                              </audio>
                         </div>
@@ -260,7 +258,7 @@
 
                                     <div class="media-left" >
                                         <a href="#">
-                                            <img class="media-object" ng-src="http://localhost:8000/{{comment.user_image}}">
+                                            <img class="media-object" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{comment.user_image}}">
                                         </a>
                                     </div>
                                     <div class="media-body">
@@ -319,21 +317,20 @@
           <div class="row evDefaultImg">
 
 
-
-      <div ng-if="event.media_type == 'image'">
           <div ng-if="event.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{event.media_url}});">
           </div>
-        <!-- <img class="img-responsive" ng-src="http://localhost:8000/{{event.media_url}}" alt=""> -->
+        <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt=""> -->
+
         </div>
 
            <div ng-if="event.media_type == 'video' ">
                 <video   controls  preload="auto" style="height: 242px;">
-                 <source ng-src="http://localhost:8000/{{event.media_url}}"  />
+                 <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}"  />
                </video>
            </div>
           <div ng-if="event.media_type == 'audio'">
               <audio controls>
-                <source ng-src="http://localhost:8000/{{event.media_url}}"/>
+                <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}"/>
                  </audio>
          </div>
 
@@ -443,19 +440,19 @@
                 <div class="thumbnail">
                   <div class="row evDefaultImg">
 
-                    <div ng-if="event.media_type == 'image'">
+
                         <div ng-if="event.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{event.media_url}});">
                         </div>
-                      </div>
+
 
          <div ng-if="event.media_type == 'video' ">
               <video   controls  preload="auto">
-              <source ng-src="http://localhost:8000/{{event.media_url}}"  />
+              <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}"  />
               </video>
          </div>
       <div ng-if="event.media_type == 'audio'">
             <audio controls>
-            <source ng-src="http://localhost:8000/{{event.media_url}}"/>
+            <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}"/>
            </audio>
      </div>
 
@@ -625,21 +622,20 @@
         <div class="thumbnail" data-toggle="modal" data-target="#ws{{workshop.id}}">
           <!--                    <img ng-src="http://placehold.it/350x250">-->
 
-
-          <div ng-if="workshop.media_type == 'image'">
               <div ng-if="workshop.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{workshop.media_url}});">
               </div>
-            <!-- <img class="img-responsive" ng-src="http://localhost:8000/{{workshop.media_url}}" alt=""> -->
+            <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt=""> -->
+
             </div>
 
                <div ng-if="workshop.media_type == 'video' ">
                     <video   controls  preload="auto">
-                     <source ng-src="http://localhost:8000/{{workshop.media_url}}"  />
+                     <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}"  />
                    </video>
                </div>
               <div ng-if="workshop.media_type == 'audio'">
                   <audio controls>
-                    <source ng-src="http://localhost:8000/{{workshop.media_url}}"/>
+                    <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}"/>
                      </audio>
              </div>
 
@@ -668,7 +664,7 @@
           </div>
 
           <a class="userPic row">
-            <span class="col-lg-6 col-md-6 col-sm-6 mintor">Mintoring by   <img ng-src="http://localhost:8000/{{workshop.user_image}}"></span>
+            <span class="col-lg-6 col-md-6 col-sm-6 mintor">Mintoring by   <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.user_image}}"></span>
             <span class="col-lg-6 col-md-6 col-sm-6">{{workshop.first_name}} {{workshop.last_name}}</span>
           </a>
         </div>
@@ -691,7 +687,7 @@
               <div class="modal-body">
                 <div class="thumbnail">
                   <div class="row popWorkshopDefaultImg">
-                    <img ng-src="http://localhost:8000/{{workshop.media_url}}" alt="">
+                    <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt="">
                   </div>
                   <!--    top event default image-->
 
@@ -725,7 +721,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                       <a class="userPic">
                         <span>Mintoring by : </span>
-                        <img ng-src="http://localhost:8000/{{workshop.user_image}}" alt=""> {{workshop.first_name}} {{workshop.last_name}}
+                        <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.user_image}}" alt=""> {{workshop.first_name}} {{workshop.last_name}}
                       </a>
                       <!--    top event userPic-->
                     </div>

@@ -13,7 +13,7 @@
 
 <div ng-if="post.media_type === 'image'">
 
-  <img class="img-responsive" src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt=""style="height:250px">
+  <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt=""style="height:250px">
 </div>
 
 <div ng-if="post.media_type  == 'video'  ">
@@ -39,7 +39,7 @@
 
             </p>
             <a class="item item-avatar" href="" style="background-color: #6A0C38">
-              <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.user_image}}" alt="">
+              <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.user_image}}" alt="">
                  <p>{{post.first_name}} {{post.last_name}}</p>
                  <i class="ion-heart" aria-hidden="true"style="color:white;margin-left:28px"></i>  <span class="badge" style="color:white;font-size:15px;margin-right: 184px;
     margin-top:20px;">{{post.total}}</span>

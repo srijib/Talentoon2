@@ -8,7 +8,7 @@
 
 
                 <!--{{category_workshop.media.media_url}}-->
-                <img src="http://localhost:8000/{{category_workshop.media_url}}" >
+                <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_workshop.media_url}}" >
                 <div class="caption">
 
                   <h4 style="color:Purple ">Title: {{category_workshop.name}}</h4>
@@ -38,6 +38,7 @@
             <a href="#!/category/{{category_workshop.category_id}}" class="btn btn-default" role="button" style="margin: 10px;">GO To My Category </a>
             <a href="#!/category/{{category_workshop.category_id}}/workshops/{{category_workshop.id}}/createSession" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true" style="margin: 10px;"></i> Create Offline Video</a>
             <a href="#!/videoconference" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true" style="margin: 10px;"></i> Create Interactive Scheduled Class</a>
+
 
             <a href="{{current_presenter_class_url}}" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true" style="margin: 10px;"></i> JOIN The Class of Interactive Video Now As Teacher -> -> -> </a>
             <a href="{{current_student_join_class_url}}" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true" style="margin: 10px;"></i> JOIN The Class of Interactive Video Now As Attendee -> -> -> </a>

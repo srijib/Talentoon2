@@ -42,8 +42,9 @@ class UserProfile extends Controller
 
 
 
+
     //user points
-    if($total_mentor_reviews_points){
+    if(count($total_mentor_reviews_points)){
     $points = $total_mentor_reviews_points[0]->points;
 
 
@@ -168,7 +169,6 @@ class UserProfile extends Controller
 
 
          $rewardimage = $rewardimage[0]->$levelname;
-}
          return response()->json(['status' => 1,
                         'message' => 'user data send successfully',
                       'user_id'=>$user->id,
@@ -180,6 +180,14 @@ class UserProfile extends Controller
                     'reward_image'=>$rewardimage,
                     'level' => $level
                   ]);
+}
+         return response()->json(['status' => 1,
+                        'message' => 'user data send successfully',
+                      'user_id'=>$user->id,
+                    'first_name'=>$user->first_name,
+                    'last_name'=>$user->last_name,
+                    'image'=>$user->image,
+                  ]);
 
   }
 
@@ -190,7 +198,7 @@ class UserProfile extends Controller
 
     $my_posts = DB::table('posts')
     ->join('users', 'posts.user_id', '=','users.id' )
-    ->selectRaw('posts.*,cast(posts.created_at as date) as formatted_created_at,count(likeables.id) as like_count,posts.id,users.first_name,users.last_name,users.image')
+    ->selectRaw('CONCAT("http://172.16.3.77:8000","/",posts.media_url) as url,posts.*,cast(posts.created_at as date) as formatted_created_at,count(likeables.id) as like_count,posts.id,users.first_name,users.last_name,users.image')
     // ->join('users', 'posts.user_id', '=', 'users.id')
         ->leftJoin('likeables', function($join)
               {

@@ -680,7 +680,6 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
 
 
-
     // if(localStorage.getItem("wiziq_presenter_url")){
     //     $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
     // }
@@ -688,12 +687,6 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     // if(localStorage.getItem("attendee_"+$rootScope.cur_user.id)){
     //     $scope.current_student_join_class_url =  localStorage.getItem("attendee_"+$rootScope.cur_user.id);
     // }
-
-
-
-
-
-
 
 
 });
