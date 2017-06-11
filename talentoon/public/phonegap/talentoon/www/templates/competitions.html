@@ -1,1 +1,48 @@
-<h1> all commpition</h1>
+
+<ion-view view-title="All competitions ">
+  <ion-content>
+
+
+    <div class="col-lg-4 col-md-4 col-sm-12 categorySection" ng-repeat="competition in competitions  track by $index">
+
+  <ion-card>
+
+
+    <center><img  class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}" alt="" style="height:250px"></center>
+
+
+
+
+
+
+
+
+    <center><h3 style="color: #FFB733">{{competition.title}}</h3></center>
+    <p style="margin-left: 28px;
+    margin-right: 19px;">{{competition.description}}</p>
+    <p style="margin-left:28px;margin-right:19px">
+        <span class="labels">
+      <span class="ion-calendar" style="color:#6A0C38"> {{competition.competition_start_date | date : 'd'}}
+
+      {{competition.competition_start_date | date : 'MMM'}} - {{competition.competition_end_date | date : 'd-MMM'}}</span>
+      <br>  <span class="ion-clock" style="color:#6A0C38"> {{competition.competition_start_time}} - {{competition.competition_end_time}}</span>
+    </span>
+<br>
+    <span class="lLabels">
+        <small class="ion-ribbon-b" style="color:#6A0C38"> Level</small><span style="color:#6A0C38" >{{competition.competition_from_level}}</span>
+        -
+        <span style="color:#6A0C38">{{competition.competition_to_level}}</span>
+    </span>
+    <br>
+    <div class=" col-lg-8  col-md-8 col-sm-12 going" data-toggle="modal" data-target="#Comp1">
+      <center>  <a href="#!/category/{{competition.category_id}}/competitions/{{competition.id}}" type="button"  class=" button " style="background-color:#6A0C38;color:white">Challenge</a>
+  </center>  </div>
+  </ion-card>
+
+  <hr>
+  </div>
+
+
+
+  </ion-content>
+  </ion-view>

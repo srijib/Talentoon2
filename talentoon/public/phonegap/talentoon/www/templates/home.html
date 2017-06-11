@@ -23,16 +23,34 @@
    </div>
 
 <div ng-if="post.media_type == 'audio'">
+
+      <center><h3 style="color: #FFB733">{{post.title}}</h3></center>
   <audio controls>
 
            <source ng-src="{{post.url}}" type="audio/mp3"/>
 
            </audio>
+
+           <ion-card-content>
+
+             <p>
+               <p style="margin-left:22px;mergin-right:16px">{{post.description}}</p>
+
+             </p>
+             <a class="item item-avatar" href="" style="background-color: #6A0C38">
+               <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.user_image}}" alt="">
+                  <p>{{post.first_name}} {{post.last_name}}</p>
+                  <i class="ion-heart" aria-hidden="true"style="color:white;margin-left:28px"></i>  <span class="badge" style="color:white;font-size:15px;margin-right: 184px;
+     margin-top:20px;">{{post.total}}</span>
+
+                </a>
+           </ion-card-content>
 </div>
 
-
+<div ng-if="post.media_type == 'video'||post.media_type == 'image'">
 
           <ion-card-content>
+            <center><h3 style="color: #FFB733">{{post.title}}</h3></center>
 
             <p>
               <p style="margin-left:22px;mergin-right:16px">{{post.description}}</p>
@@ -46,7 +64,7 @@
 
                </a>
           </ion-card-content>
-
+</div>
         </ion-card>
 <hr>
   </div>

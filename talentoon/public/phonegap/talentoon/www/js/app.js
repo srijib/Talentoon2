@@ -8,7 +8,7 @@ angular.module('talentoon', ['ionic'])
 
 .run(function($ionicPlatform,$rootScope) {
   $rootScope.CONSTANSTS={
-    baseURL:"http://172.16.3.77",
+    baseURL:"http://192.168.6.4",
     port:"8000"
   }
   $ionicPlatform.ready(function() {

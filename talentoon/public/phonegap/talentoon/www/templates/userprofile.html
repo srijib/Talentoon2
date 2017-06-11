@@ -12,7 +12,7 @@
 <div class="jumbotron" style="background-color:#6A0C38">
 
 <!-- <img  class="img-circle"src="Imgs/Persons/face1.jpg"/> -->
-<img  class="img-circle"ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userprofile.image}}" width="150px" style="border-radius:50%;">
+<img  class="img-circle"ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userprofile.image}}" width="150px" style="border-radius:50%;margin-top: 10px;">
 
 <h3 style="color:white "> welcome <br><span style="color:white ">{{userprofile.first_name}} {{userprofile.last_name}}</span></h3>
 <div>
@@ -50,27 +50,45 @@ margin-left: 138px;
 </center>
   </div>
   <div ng-if="userpost.media_type  == 'video'  ">
+
     <video  controls preload="auto" class="video" width="100%">
       <source ng-src="{{userpost.url}}"  type="video/mp4"/>
        </video>
      </div>
 
   <div ng-if="userpost.media_type == 'audio'">
-
+<center><div class="card-title" style="margin-left:10px;color: #FFB733">Title: {{userpost.title}}</div>
+</center>
     <audio controls>
 
              <source ng-src="{{userpost.url}}" type="audio/mp3"/>
 
              </audio>
+
+             <div class="card-subtitle"style="margin-left: 28px;
+    margin-right: 19px;"> {{userpost.description}}</div>
+             <a class="userPic"><img class="img-circle"style="border-radius:50%;width: 35px;
+    margin-left: 10px;" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userinfo.image}}" alt="" width="150px">
+           <span style="font-size: 17px;color:#6A0C38"> BY : {{userinfo.first_name}} {{userinfo.last_name}}<span></a>
+             <br>
+             <i class="ion-heart" style="color:#6A0C38;margin-left: 27px;"></i>   <span class="badge" style="color:#6A0C38"> {{userpost.like_count
+         }}</span>
   </div>
 
-    <div class="card-title" style="margin-left:10px">Title: {{userpost.title}}</div>
-    <div class="card-subtitle"style="margin-left:10px"> {{userpost.description}}</div>
-    <a class="userPic"><img class="img-circle"style="border-radius:50%;width: 47px;" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userinfo.image}}" alt="" width="150px">
-  <span style="font-size: 17px;color:#6A0C38"> BY : {{userinfo.first_name}} {{userinfo.last_name}}<span></a>
-    <a href="#" class="interactions"><i class="fa fa-heart" aria-hidden="true"></i>  <span class="badge" style="color:#6A0C38">like: {{userpost.like_count
-}}</span></a>
 
+<div ng-if="userpost.media_type == 'video'||userpost.media_type == 'image'">
+  <center><div class="card-title" style="margin-left:10px;color: #FFB733" >Title: {{userpost.title}}</div>
+</center>
+
+  <div class="card-subtitle"style="margin-left: 28px;
+    margin-right: 19px;"> {{userpost.description}}</div>
+  <a class="userPic"><img class="img-circle"style="border-radius:50%;    width: 35px;
+    margin-left: 10px;" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userinfo.image}}" alt="" width="150px">
+ <span style="font-size: 17px;color:#6A0C38"> BY : {{userinfo.first_name}} {{userinfo.last_name}}<span></a>
+   <br>
+  <i class="ion-heart" style="color:#6A0C38;margin-left: 27px;"></i>  <span class="badge" style="color:#6A0C38"> {{userpost.like_count
+ }}</span>
+</div>
   </ion-card>
   <hr>
 </div>
