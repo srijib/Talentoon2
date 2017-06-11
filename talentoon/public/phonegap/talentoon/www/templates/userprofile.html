@@ -12,12 +12,26 @@
 <div class="jumbotron" style="background-color:#6A0C38">
 
 <!-- <img  class="img-circle"src="Imgs/Persons/face1.jpg"/> -->
-<img  class="img-circle"src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userprofile.image}}" width="150px" style="border-radius:50%;">
+<img  class="img-circle"ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userprofile.image}}" width="150px" style="border-radius:50%;">
 
 <h3 style="color:white "> welcome <br><span style="color:white ">{{userprofile.first_name}} {{userprofile.last_name}}</span></h3>
+<div>
+  <i class="ion-ribbon-b" style="color:white;margin-right: 308px;font-size: 47px;"
+    ></i>
+<h4 id="level" style="margin-right: 306px;
+    color: white;">{{userprofile.level}}<h4>
+</div>
+<!-- <div style ="margin-left:300px">
+  <p style="color: white;">my points <p>
+  <i class="ion-erlenmeyer-flask" style="color:white;"
+    ></i>
+<h4 id="level" style="color: white;">
+  {{userprofile.points_number}}<h4>
+</div> -->
 
 </div>
 </center>
+
 <hr>
 
 <style>
@@ -27,7 +41,6 @@ margin-left: 138px;
     width: 600px;
 }
 </style>
-
 
 <div  ng-repeat="userpost in userposts track by $index" >
 
@@ -53,7 +66,7 @@ margin-left: 138px;
 
     <div class="card-title" style="margin-left:10px">Title: {{userpost.title}}</div>
     <div class="card-subtitle"style="margin-left:10px"> {{userpost.description}}</div>
-    <a class="userPic"><img class="img-circle"style="border-radius:50%;width: 47px;" src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userinfo.image}}" alt="" width="150px">
+    <a class="userPic"><img class="img-circle"style="border-radius:50%;width: 47px;" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userinfo.image}}" alt="" width="150px">
   <span style="font-size: 17px;color:#6A0C38"> BY : {{userinfo.first_name}} {{userinfo.last_name}}<span></a>
     <a href="#" class="interactions"><i class="fa fa-heart" aria-hidden="true"></i>  <span class="badge" style="color:#6A0C38">like: {{userpost.like_count
 }}</span></a>
