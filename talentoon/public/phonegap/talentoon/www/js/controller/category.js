@@ -63,22 +63,7 @@ angular.module('talentoon').controller("oneCategory",function($state,$window,$sc
 	});
 
 //---------------------------------------------------------------
-	//get 3  posts under category
-	// $scope.allposts = function() {
-    // var user_id=1;
-    // categories.getCategoryPost($rootScope.cat_id).then(function(data){
-    //     // console.log("inside controller" , data)
-    //     $scope.category_posts=data;
-    //     // console.log("la2aa",$scope.category_posts);
-		//
-    // console.log("post detalis",$scope.category_posts);
-    // } , function(err){
-    //     console.log(err);
-		//
-    // });
 
-
-//--------------------------------------------------------------
 
 	categories.getCategoryPosts($rootScope.cat_id).then(function(data){
 

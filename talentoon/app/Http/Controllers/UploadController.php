@@ -86,7 +86,9 @@ class UploadController extends Controller
 
              $post = Post::find($id);
              $post->media_url = 'uploads/files/'.$_FILES['file']['name'];
-             $post->media_type = $_FILES['file']['type'];
+            //  $post->media_type = $_FILES['file']['type'];
+             $type = substr($_FILES['file']['type'], 0, 5);
+             $post->media_type=$type;
              $post->save();
 
             $post = Post::find($id-1)->delete();
