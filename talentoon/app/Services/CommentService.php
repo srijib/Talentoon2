@@ -21,8 +21,13 @@ class CommentService
             'user_id' => $user_id,
             'post_id' => $request->post_id,
         ]);
+        $comments=DB::table('comments')
+            ->join('users', 'comments.user_id', '=', 'users.id')
+            ->select('comments.*','users.first_name', 'users.last_name', 'users.image')
+            ->where("comments.post_id",$request->post_id)
+            ->get();
 
-        return Response::json(array('success' => true));
+        return Response::json(array('success' => true,'comments'=>$comments));
     }
     public function DeleteComment($data,$id){
 

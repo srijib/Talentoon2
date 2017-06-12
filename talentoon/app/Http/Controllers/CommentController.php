@@ -20,7 +20,7 @@ class CommentController extends Controller
      */
     public function __construct() {
     //    $this->middleware('ability:audience,permission:create-comment|delete-comment',['only'=>['store','destroy']]);
-       
+
       //dd($user->can('be-talent'));
        }
     public function index()
@@ -39,9 +39,9 @@ class CommentController extends Controller
         $user= JWTAuth::parseToken()->toUser();
         $comment=new CommentService();
 
-        $comment->CreateComment($request,$user->id);
+        $response=$comment->CreateComment($request,$user->id);
 
-        return Response::json(array('message' => 'comment save'));
+        return $response;
     }
 
     /**

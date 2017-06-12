@@ -10,8 +10,10 @@ use App\Models\CompetitionJoin;
 use DB;
 use JWTAuth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
+use App\Http\Controllers\CompetitionPostPointsController;
+use App\Services\CompetitionPostPointsService;
 class CompetitionPostController extends Controller {
+
 
     private $service;
 
@@ -29,12 +31,22 @@ class CompetitionPostController extends Controller {
         $user = JWTAuth::parseToken()->toUser();
 
         $data= DB::table('competitions_posts')
-            ->leftjoin('competition_post_points', 'competition_post_points.competition_post_id', '=', 'competitions_posts.id')
-            ->selectRaw('competitions_posts.*,voter_id,competition_post_points.competition_post_id ,count(competition_post_points.id)')
-            ->where('competition_post_points.voter_id','=',$user->id)
-            ->orWhereNull('competition_post_points.voter_id')
-            ->groupBy('competition_post_points.competition_post_id','competitions_posts.id','voter_id')
+
+            ->join('users', 'users.id', '=', 'competitions_posts.talent_id')
+
+            // ->leftjoin('competition_post_points', 'competition_post_points.competition_post_id', '=', 'competitions_posts.id')
+            ->leftJoin('competition_post_points', function($join)
+                  {
+                      $join->on('competition_post_points.competition_post_id','=','competitions_posts.id')
+                      ->where('competition_post_points.is_voted', '=', '1');
+
+                  })
+            ->selectRaw('competitions_posts.id,competitions_posts.*,count(competition_post_points.id) as votes_count,users.first_name, users.last_name, users.image as user_image,competition_post_points.is_voted,count(competition_post_points.id) as votes_count')
+            ->where('competitions_posts.competition_id','=',$competition_id)
+            ->groupBy('competitions_posts.id')
+
             ->get();
+
 
 //        $data= DB::table('competitions_posts')
 //            ->join('users', 'users.id', '=', 'competitions_posts.talent_id')
@@ -42,6 +54,7 @@ class CompetitionPostController extends Controller {
 //            ->select('competitions_posts.*','users.first_name', 'users.last_name', 'users.image as user_image','competition_post_points.is_voted')
 //            ->where('competitions_posts.competition_id','=',$competition_id)
 //            ->get();
+
 
         // $data = CompetitionPost::where('competition_id', $competition_id)->get();
         return response()->json(['status' => 'ok', 'message' => 'Posts under competition ' . $competition_id . ' retrieved successfully', 'data' => $data], 201);
@@ -156,6 +169,42 @@ class CompetitionPostController extends Controller {
         }
         $response = $this->service->deletePost($postDetails, $competition_id);
         return $response;
+    }
+    public function check(){
+        $date_check=DB::table('competitions')
+            ->join('competition_post_points','competition_post_points.competition_id','competitions.id')
+            ->select('competitions.id','competitions.competition_end_date')
+            ->where('competition_end_date','<',date('Y-m-d').' 00:00:00' )
+            ->get();
+//        dd($date_check);
+
+        $array_comps=array();
+        foreach ($date_check as $data){
+            $num_days = floor((strtotime("now")-strtotime($data->competition_end_date))/(60*60*24));
+            if ($num_days >= 1){
+                $service =new CompetitionPostPointsService();
+                $calculations=new CompetitionPostPointsController($service);
+                //we have 50% votes and 50%
+                $CompetitiorMentorPoints=$calculations->getCompetitiorMentorPoints($data->id);
+                $CompetitiorAudiencePoints=$calculations->getCompetitiorAudiencePoints($data->id);
+                //calculates the total points for each competitor in the competition
+                $FinalCompetitionPoints=$calculations->getFinalCompetitionPoints($data->id);
+                //sends back the total and the talent_ids
+                $FinalCompetitionWinners=$calculations->getFinalCompetitionWinners($data->id);
+
+                array_push($array_comps,$data->id);
+            }
+
+
+        }
+        return response()->json([
+            'CompetitiorMentorPoints'=>$CompetitiorMentorPoints,
+            'CompetitiorAudiencePoints'=>$CompetitiorAudiencePoints,
+            'FinalCompetitionPoints'=>$FinalCompetitionPoints,
+            'FinalCompetitionWinners'=>$FinalCompetitionWinners,
+            'el array'=>$array_comps
+        ]);
+
     }
 
 }

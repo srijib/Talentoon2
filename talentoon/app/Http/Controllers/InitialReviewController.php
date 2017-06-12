@@ -187,7 +187,7 @@ class InitialReviewController extends Controller
     {
         //
     }
-
+// for simonaaaaaaaa
     public function show_not_reviewed_initial_posts(Request $request,$mentor_id)
     {
         $all_media_id = DB::table('initial_reviews')
@@ -255,129 +255,129 @@ class InitialReviewController extends Controller
 
         //level detection/////////////////////////////////////////////////////
 
-        $level=0;
-        $points=0;
-
-
-        $total_mentor_reviews_points = DB::select(DB::raw("select  sum(initial_reviews.level_single) as points_level , initial_reviews.category_talent_id from `initial_reviews` where initial_reviews.category_talent_id = $request->category_talent_id  GROUP by initial_reviews.category_talent_id"));
-        //user points
-        if($total_mentor_reviews_points[0]->points_level) {
-            $points = $total_mentor_reviews_points[0]->points_level;
-
-            //level of user
-            $level = 0;
-
-            if ($points < 100) {
-                $level = 1;
-            }
-            if ($points >= 100 && $points < 200) {
-                $level = 2;
-            }
-            if ($points >= 200 && $points < 300) {
-                $level = 3;
-            }
-            if ($points >= 300 && $points < 400) {
-                $level = 4;
-            }
-            if ($points >= 400 && $points < 500) {
-                $level = 5;
-            }
-            if ($points >= 500 && $points < 600) {
-                $level = 6;
-            }
-            if ($points >= 600 && $points < 700) {
-                $level = 7;
-            }
-            if ($points >= 700 && $points < 800) {
-                $level = 8;
-            }
-            if ($points >= 800 && $points < 900) {
-                $level = 9;
-            }
-            if ($points >= 900 && $points < 1000) {
-                $level = 10;
-            }
-
-
-            //image of the reward
-            switch ($level) {
-                case "1":
-                    $rewardimage = DB::table('rewards')
-                        ->select('first')
-                        ->get();
-                    $levelname = "first";
-                    break;
-                case "2":
-                    $rewardimage = DB::table('rewards')
-                        ->select('second')
-                        ->get();
-                    $levelname = "second";
-                    break;
-                case "3":
-                    $rewardimage = DB::table('rewards')
-                        ->select('third')
-                        ->get();
-                    $levelname = "third";
-                    break;
-                case "4":
-                    $rewardimage = DB::table('rewards')
-                        ->select('fourth')
-                        ->get();
-                    $levelname = "fourth";
-                    break;
-                case "5":
-                    $rewardimage = DB::table('rewards')
-                        ->select('fifth')
-                        ->get();
-                    $levelname = "fifth";
-                    break;
-                case "6":
-                    $rewardimage = DB::table('rewards')
-                        ->select('sixth')
-                        ->get();
-                    $levelname = "sixth";
-                    break;
-                case "7":
-                    $rewardimage = DB::table('rewards')
-                        ->select('seventh')
-                        ->get();
-                    $levelname = "seventh";
-                    break;
-                case "8":
-                    $rewardimage = DB::table('rewards')
-                        ->select('eighths')
-                        ->get();
-                    $levelname = "eighths";
-                    break;
-                case "9":
-                    $rewardimage = DB::table('rewards')
-                        ->select('ninth')
-                        ->get();
-                    $levelname = "ninth";
-                    break;
-                case "10":
-                    $rewardimage = DB::table('rewards')
-                        ->select('tenth')
-                        ->get();
-                    $levelname = "tenth";
-                    break;
-                default:
-                    $rewardimage = DB::table('rewards')
-                        ->select('first')
-                        ->get();
-                    $levelname = "first";
-                    break;
-            }
-
-            $rewardimage = $rewardimage[0]->$levelname;
-
-        }
-        //level detection ended///////////////////////////////////////////////////
+//        $level=0;
+//        $points=0;
+//
+//
+//        $total_mentor_reviews_points = DB::select(DB::raw("select  sum(initial_reviews.level_single) as points_level , initial_reviews.category_talent_id from `initial_reviews` where initial_reviews.category_talent_id = $request->category_talent_id  GROUP by initial_reviews.category_talent_id"));
+//        //user points
+//        if($total_mentor_reviews_points[0]->points_level) {
+//            $points = $total_mentor_reviews_points[0]->points_level;
+//
+//            //level of user
+//            $level = 0;
+//
+//            if ($points < 100) {
+//                $level = 1;
+//            }
+//            if ($points >= 100 && $points < 200) {
+//                $level = 2;
+//            }
+//            if ($points >= 200 && $points < 300) {
+//                $level = 3;
+//            }
+//            if ($points >= 300 && $points < 400) {
+//                $level = 4;
+//            }
+//            if ($points >= 400 && $points < 500) {
+//                $level = 5;
+//            }
+//            if ($points >= 500 && $points < 600) {
+//                $level = 6;
+//            }
+//            if ($points >= 600 && $points < 700) {
+//                $level = 7;
+//            }
+//            if ($points >= 700 && $points < 800) {
+//                $level = 8;
+//            }
+//            if ($points >= 800 && $points < 900) {
+//                $level = 9;
+//            }
+//            if ($points >= 900 && $points < 1000) {
+//                $level = 10;
+//            }
+//
+//
+//            //image of the reward
+//            switch ($level) {
+//                case "1":
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('first')
+//                        ->get();
+//                    $levelname = "first";
+//                    break;
+//                case "2":
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('second')
+//                        ->get();
+//                    $levelname = "second";
+//                    break;
+//                case "3":
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('third')
+//                        ->get();
+//                    $levelname = "third";
+//                    break;
+//                case "4":
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('fourth')
+//                        ->get();
+//                    $levelname = "fourth";
+//                    break;
+//                case "5":
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('fifth')
+//                        ->get();
+//                    $levelname = "fifth";
+//                    break;
+//                case "6":
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('sixth')
+//                        ->get();
+//                    $levelname = "sixth";
+//                    break;
+//                case "7":
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('seventh')
+//                        ->get();
+//                    $levelname = "seventh";
+//                    break;
+//                case "8":
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('eighths')
+//                        ->get();
+//                    $levelname = "eighths";
+//                    break;
+//                case "9":
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('ninth')
+//                        ->get();
+//                    $levelname = "ninth";
+//                    break;
+//                case "10":
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('tenth')
+//                        ->get();
+//                    $levelname = "tenth";
+//                    break;
+//                default:
+//                    $rewardimage = DB::table('rewards')
+//                        ->select('first')
+//                        ->get();
+//                    $levelname = "first";
+//                    break;
+//            }
+//
+//            $rewardimage = $rewardimage[0]->$levelname;
+//
+//        }
+//        //level detection ended///////////////////////////////////////////////////
 
 
         $category_talent = CategoryTalent::find($request->category_talent_id);
         $category_talent->status = '1';
-        $category_talent->level = $level;
+//        $category_talent->level = $level;
         $category_talent->save();
 
 
@@ -419,4 +419,31 @@ class InitialReviewController extends Controller
 
         return response()->json(['status' => '1','message' => 'review saved successfully']);
     }
+    public function calculate_level_talent_status(){
+        //created at check
+        $levels=DB::table('initial_reviews')
+            ->select(DB::Raw('floor(avg(level_single)) as level'),'category_talent_id','created_at')
+//            ->where(DB::Raw('floor((strtotime("now")-strtotime(created_at))/(60*60*24))','=',' 1' ))
+            ->groupBy('category_talent_id')
+            ->get();
+//        dd($created_at_check);
+        foreach ($levels as $level){
+            if(floor((strtotime("now")-strtotime($level->created_at))/(60*60*24))){
+                $approving_talent=DB::table('category_talents')
+                    ->where('id',$level->category_talent_id)
+                    ->update([
+                        'level'=>$level->level,
+                        'status'=>1
+                    ]);
+
+                if($approving_talent == 0){
+                    return response()->json('updated successfully');
+                }
+            }
+
+        }
+
+    }
+
+
 }

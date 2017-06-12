@@ -142,6 +142,8 @@ class VideoConferenceController extends Controller
         try
         {
             $XMLReturn = $httpRequest->wiziq_do_post_request($webServiceUrl.'?method=add_teacher',http_build_query($requestParameters, '', '&'));
+
+
             $xml_cnt = $XMLReturn;
             $xml_cnt = str_replace(array("\n", "\r", "\t"), '', $xml_cnt);    // removes newlines, returns and tabs
 
@@ -149,10 +151,15 @@ class VideoConferenceController extends Controller
             $xml_cnt = trim(str_replace('"', "'", $xml_cnt));
             $simpleXml = simplexml_load_string($xml_cnt);
 
+
+//            dd($simpleXml);
+
+
             //save into db table class
             $wiziq_teacher_obj = new WizIQTeacher;
             $wiziq_teacher_obj->wiziq_teacher_name =  $request->teacher_name;
             $wiziq_teacher_obj->wiziq_teacher_email = $request->teacher_email;
+//            $wiziq_teacher_obj->wiziq_teacher_id = $request->teacher_id;
             $wiziq_teacher_obj->save();
             //end save in db
 

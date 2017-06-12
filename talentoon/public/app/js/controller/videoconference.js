@@ -1,4 +1,5 @@
-angular.module('myApp').controller("videoconference",function($scope,$http,videoconference,$routeParams,$rootScope,$timeout,$window){
+angular.module('myApp').controller("videoconference",function($location,$scope,$http,videoconference,$routeParams,$rootScope,$timeout,$window,user){
+
 
 
     //create wiziq Session with teacher ID set already in local storage
@@ -15,6 +16,7 @@ angular.module('myApp').controller("videoconference",function($scope,$http,video
                 console.log("iam here",data)
             } , function(err){
                 console.log(err);
+                // $location.url('/500');
             });
         }
     }

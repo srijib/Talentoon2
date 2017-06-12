@@ -1,4 +1,4 @@
-angular.module('myApp').controller("singleCompetition",function($location,$routeParams,$route,categories,Competitions,$scope,$http,posts,$rootScope,$q){
+angular.module('myApp').controller("singleCompetition",function($location,$routeParams,$route,categories,Competitions,$scope,$http,posts,$rootScope,$q,user){
     $scope.cat_id= $routeParams['category_id'];
     $scope.competition_id= $routeParams['competition_id'];
 
@@ -24,6 +24,7 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
         console.log("single comppoooooooo data ",data );
     }, function (err) {
         console.log(err);
+        // $location.url('/500');
     });
 
     Competitions.getSingleCompetitionPosts($scope.competition_id).then(function (data) {
@@ -31,6 +32,7 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
         console.log("single comppoooooooo popooo data ",data );
     }, function (err) {
         console.log(err);
+        // $location.url('/500');
     });
 
     $scope.newcompetition = function(vaild) {
@@ -42,6 +44,7 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
                 console.log("the post request from server is ",data);
             } , function(err){
                 console.log(err);
+                // $location.url('/500');
             });
         }
     };
@@ -55,6 +58,7 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
                 console.log("the post request from server is ",data);
             } , function(err){
                 console.log(err);
+                // $location.url('/500');
             });
             $location.url('/category/'+$scope.post.category_id+'/competitions/'+$scope.post.competition_id);
         }
@@ -71,6 +75,7 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
                 }
             } , function(err){
                 console.log(err);
+                // $location.url('/500');
             });
     };
 
@@ -89,6 +94,7 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
                 console.log("VOTE CONTROLLERRR",data);
             } , function(err){
                 console.log(err);
+                // $location.url('/500');
             });
     };
 
