@@ -30,7 +30,7 @@ class CompetitionPostController extends Controller {
 
         $data= DB::table('competitions_posts')
             ->leftjoin('competition_post_points', 'competition_post_points.competition_post_id', '=', 'competitions_posts.id')
-            ->select('competitions_posts.*','voter_id','competition_post_points.competition_post_id' ,'Count(competition_post_points.id)')
+            ->selectRaw('competitions_posts.*,voter_id,competition_post_points.competition_post_id ,count(competition_post_points.id)')
             ->where('competition_post_points.voter_id','=',$user->id)
             ->orWhereNull('competition_post_points.voter_id')
             ->groupBy('competition_post_points.competition_post_id','competitions_posts.id','voter_id')

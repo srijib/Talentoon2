@@ -5,7 +5,7 @@ angular.module("myApp").run(function($rootScope,$location,$timeout){
     AOS.init();
 
     $rootScope.CONSTANSTS={
-      baseURL:"http://localhost",
+      baseURL:"http://172.16.3.77",
       port:"8000"
     }
   // $rootScope.searchPosts=  function(){
