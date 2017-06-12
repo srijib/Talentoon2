@@ -1,6 +1,7 @@
-angular.module('myApp').controller("workshop", function ($route,$scope, $http, workshops, $routeParams,$location,$rootScope) {
+angular.module('myApp').controller("workshop", function ($route,$scope, $http, workshops, $routeParams,$location,$rootScope,user) {
 
-$scope.workshop_enroll = function(workshop_id,userId) {
+
+    $scope.workshop_enroll = function(workshop_id,userId) {
 var workshop_id=workshop_id;
 var user_id=userId;
 console.log(user_id);
@@ -13,7 +14,7 @@ console.log("objjjjjjjjjjjjjjjjjjjjjjj",obj);
 			$route.reload();
 		} , function(err){
 			console.log(err);
-
+            // $location.url('/500');
 		});
 
 }

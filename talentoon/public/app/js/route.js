@@ -180,6 +180,18 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             templateUrl: 'views/showreview.html',
             controller: 'showreview'
         })
+        .when('/404', {
+            templateUrl: 'views/404.html'
+
+        })
+        .when('/401', {
+            templateUrl: 'views/401.html'
+
+        })
+        .when('/500', {
+            templateUrl: 'views/500.html'
+
+        })
 
         .when('/category/:category_id/posts/:post_id', {
             templateUrl: 'views/categorypost.html',

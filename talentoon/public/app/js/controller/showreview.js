@@ -1,4 +1,5 @@
-angular.module('myApp').controller("showreview", function($timeout,$rootScope,$scope, $http,showreview, $routeParams,$route) {
+angular.module('myApp').controller("showreview", function($location,$timeout,$rootScope,$scope, $http,showreview, $routeParams,$route,user) {
+
 
     // $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
     $timeout(function () {
@@ -7,6 +8,7 @@ angular.module('myApp').controller("showreview", function($timeout,$rootScope,$s
             $rootScope.all_initial_posts=data;
         } , function(err){
             console.log(err);
+            // $location.url('/500');
         });
     }, 10);
 
@@ -23,6 +25,7 @@ angular.module('myApp').controller("showreview", function($timeout,$rootScope,$s
           //$route.reload();
       } , function(err){
         console.log(err);
+          // $location.url('/500');
       });
 
   }

@@ -1,18 +1,49 @@
-angular.module('myApp').controller("userprofile", function (categories,$scope, $http, user, $rootScope, $route,$routeParams,$location) {
+angular.module('myApp').controller("userprofile", function ($location,categories,$scope, $http, user, $rootScope, $route,$routeParams,$location) {
+    // $rootScope.fname= $rootScope.cur_user.first_name;
+    // $rootScope.lname=$rootScope.cur_user.last_name;
 
   user.userprofile().then(function(data){
+      console.log("...............user profile is................",$scope.userprofile);
       $scope.userprofile=data.data;
       $scope.user_points_from_mentors_reviews = $scope.userprofile.points_number;
       $scope.reward_image = $scope.userprofile.reward_image;
       $scope.level = $scope.userprofile.level;
       // $scope.user_level = getuserlevel($scope.userprofile.points[0].points);
       // console.log("user profile pointssss are ",$scope.userprofile.points[0]);
-      console.log("user profile is",$scope.userprofile);
+
+      console.log("...............user profile is................",$scope.userprofile);
 	} , function(err){
 		console.log(err);
 	});
+    console.log('el current user ahoooooooooo',$rootScope.cur_user);
+    // if($rootScope.cur_user.date_of_birth){
+    //     var dob=$rootScope.cur_user.date_of_birth;
+    //     $rootScope.cur_user.date_of_birth=new Date(dob);
+    // }
+    // $rootScope.dob=$rootScope.cur_user.date_of_birth;
+    // $rootScope.cur_user.date_of_birth=new Date($rootScope.cur_user.date_of_birth);
+    // user.editprofile($rootScope.cur_user.id).then(function(data){
+    //     console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
+    //     $rootScope.cur_user=data;
+    //     var dob=$rootScope.cur_user.date_of_birth;
+    //     $rootScope.cur_user.date_of_birth=new Date(dob);
+    //     $rootScope.fname= $rootScope.cur_user.first_name;
+    //     $rootScope.lname=$rootScope.cur_user.last_name;
+    //     console.log('el current user ahoooooooooo',$rootScope.cur_user)
+    // } , function(err){
+    //     console.log(err);
+    //     // $location.url('/500');
+    //
+    // });
 
-  user.userposts().then(function(data){
+    //check if the user is autherized or not
+    // user.userprofile().then(function(data){
+    //
+    // } , function(err){
+    //
+    //
+    // });
+    user.userposts().then(function(data){
      console.log("data of users",data.data);
     $scope.allPosts=data.data.allPosts;
     $scope.users=data.data.user;
@@ -35,19 +66,10 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
 
   } , function(err){
     console.log(err);
+    // $location.url('/500');
 
   });
-    user.editprofile($rootScope.cur_user.id).then(function(data){
-        console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
-        $rootScope.cur_user=data;
-        var dob=$rootScope.cur_user.date_of_birth;
-        $rootScope.cur_user.date_of_birth=new Date(dob);
-        $rootScope.fname= $rootScope.cur_user.first_name;
-        $rootScope.lname=$rootScope.cur_user.last_name;
-    } , function(err){
-        console.log(err);
 
-    });
   // user.displayShared().then(function(data){
   //    console.log("shares",data.data.shares);
   //   //  $scope.allPosts = data.data.shares.concat($scope.userposts);
@@ -94,22 +116,23 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
 
   } , function(err){
     console.log(err);
+      // $location.url('/500');
 
   });
-  $scope.editprofile=function () {
-      console.log($rootScope.cur_user.id);
-      user.editprofile($rootScope.cur_user.id).then(function(data){
-          console.log(data);
-      $rootScope.userupdate=data;
-      $location.url('/editprofile');
-      $rootScope.fname= $rootScope.userupdate.first_name;
-      $rootScope.lname=$rootScope.userupdate.last_name;
-      } , function(err){
-          console.log(err);
-
-
-      });
-  }
+  // $scope.editprofile=function () {
+  //     console.log($rootScope.cur_user.id);
+  //     user.editprofile($rootScope.cur_user.id).then(function(data){
+  //         console.log(data);
+  //     $rootScope.cur_user=data;
+  //     // $location.url('/editprofile');
+  //     $rootScope.fname= $rootScope.cur_user.first_name;
+  //     $rootScope.lname=$rootScope.cur_user.last_name;
+  //     } , function(err){
+  //         console.log(err);
+  //         // $location.url('/500');
+  //
+  //     });
+  // }
 
 
   $scope.updateuserprofile=function(valid){
@@ -144,6 +167,7 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
                   }
               }, function (err) {
                   console.log(err);
+                  // $location.url('/500');
               });
 
           }else{
@@ -155,6 +179,7 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
                   console.log(data)
               }, function (err) {
                   console.log(err);
+                  // $location.url('/500');
               });
 
           }
@@ -190,7 +215,7 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
         console.log("countries", $scope.countries);
     }, function (err) {
         console.log(err);
-
+        // $location.url('/500');
     });
 
 
@@ -204,7 +229,7 @@ $scope.follow = function(following_id) {
 
   		} , function(err){
   			console.log(err);
-
+            // $location.url('/500');
   		});
 
 
@@ -223,7 +248,7 @@ var obj={following_id}
 
       } , function(err){
           console.log(err);
-
+          // $location.url('/500');
       });
 
 }
@@ -235,7 +260,7 @@ $scope.add_comment = function(i) {
         $route.reload();
     } , function(err){
         console.log(err);
-
+        // $location.url('/500');
     });
 }
 $scope.new_comment = function(i) {
@@ -245,7 +270,7 @@ $scope.new_comment = function(i) {
         $route.reload();
     } , function(err){
         console.log(err);
-
+        // $location.url('/500');
     });
 }
 

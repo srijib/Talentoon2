@@ -1,5 +1,6 @@
 angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location,$route) {
 
+
     user.get_cur_user().then(function(data){
 		console.log('currrr usssserrrrr',data);
 		$rootScope.cur_user=data.cur_user;
@@ -7,8 +8,12 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
         $rootScope.lname=$rootScope.cur_user.last_name;
         var dob=$rootScope.cur_user.date_of_birth;
         $rootScope.cur_user.date_of_birth=new Date(dob);
+        $rootScope.country=data.country.country_name;
+
+        console.log('el current user ahoooooooooo',$rootScope.cur_user)
 	}, function (err) {
         console.log(err);
+        // $location.url('/500');
     });
 
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
@@ -29,6 +34,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
         console.log("categoriesNames array", $scope.categories);
     }, function (err) {
         console.log(err);
+        // $location.url('/500');
     });
 
     $scope.loginFn = function (valid) {
@@ -47,6 +53,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
                 }
             }, function (err) {
                 console.log(err);
+                // $location.url('/500');
             });
 
         }
@@ -67,7 +74,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
         console.log("countries", $scope.countries);
     }, function (err) {
         console.log(err);
-
+        // $location.url('/500');
     });
 
     $scope.registerFn = function (valid) {
@@ -88,6 +95,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
                 $location.url('/login');
             },function(err){
                console.log(err);
+                // $location.url('/500');
             });
         }
     }

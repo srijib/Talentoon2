@@ -24,7 +24,13 @@ class UserProfile extends Controller
             ->select('category_id')
              ->get();
 
-        return response()->json(['cur_user'=>$user,'talent_in'=>$talent_in]);
+        $country = DB::table('users')
+            ->join('countries', 'countries.id', '=', 'users.country_id')
+            ->select('countries.name as country_name')
+            ->where("users.id",$user->id)
+            ->get()->first();
+
+        return response()->json(['cur_user'=>$user,'talent_in'=>$talent_in,'country'=>$country]);
     }
 
  public function index(Request $request){
@@ -32,6 +38,7 @@ class UserProfile extends Controller
 
      $user= JWTAuth::parseToken()->toUser();
     //mentor review points
+//     return response()->json($user);
     $total_mentor_reviews_points = DB::table('mentor_reviews')
          ->join('posts', 'posts.id', '=', 'mentor_reviews.post_id')
          ->join('users', 'posts.user_id', '=', 'users.id')
@@ -41,13 +48,13 @@ class UserProfile extends Controller
          ->get();
 
 
-
+//     return response()->json($total_mentor_reviews_points);
     //user points
     if($total_mentor_reviews_points){
     $points = $total_mentor_reviews_points[0]->points;
 
 
-
+//        return response()->json($points);
 
 
     //level of user
@@ -169,6 +176,7 @@ class UserProfile extends Controller
 
          $rewardimage = $rewardimage[0]->$levelname;
 }
+
          return response()->json(['status' => 1,
                         'message' => 'user data send successfully',
                       'user_id'=>$user->id,

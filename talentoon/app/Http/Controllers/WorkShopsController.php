@@ -161,7 +161,7 @@ class WorkShopsController extends Controller
         }
 
     }
-    public function show($workshop_id){
+    public function show($category_id,$workshop_id){
 //        return response()->json(['creator'=>$workshop_id]);
         try {
             //dd($request->all());

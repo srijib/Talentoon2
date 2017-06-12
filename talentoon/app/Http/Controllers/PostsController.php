@@ -66,9 +66,16 @@ class PostsController extends Controller
             'description' => $request['description'],
         ))->id;
 
+        $notify = new Notification();
+        $n=$notify->sendMessageFilter();
+        $response=array(
+            'post_id' => $id,
+            'message' => 'data saved successfully'
+        );
+//        $result=json_encode(array_merge($response,json_decode($n, true)));
+        return $n;
 
-
-        return response()->json(['post_id' => $id,'message' => 'data saved successfully']);
+//        return response()->json(['post_id' => $id,'message' => 'data saved successfully']);
         // return redirect('/post');
     }
 
@@ -78,7 +85,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($category_id,$id)
     {
         //
         $post = DB::table('posts')

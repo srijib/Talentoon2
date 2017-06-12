@@ -1,6 +1,7 @@
-angular.module('myApp').controller("post", function ($scope, $http, posts, $routeParams,$location,$rootScope) {
+angular.module('myApp').controller("post", function ($scope, $http, posts, $routeParams,$location,$rootScope,user) {
 
-	$scope.likepost = function(post_id,user_id) {
+
+    $scope.likepost = function(post_id,user_id) {
 	var likeable_id=post_id;
 	var likeable_type="post"
 	var user_id=user_id;
@@ -35,7 +36,7 @@ angular.module('myApp').controller("post", function ($scope, $http, posts, $rout
 
 			} , function(err){
 				console.log(err);
-
+                // $location.url('/500');
 			});
 
 	}
@@ -74,7 +75,7 @@ console.log(obj);
 
 		} , function(err){
 			console.log(err);
-
+            // $location.url('/500');
 		});
 
 }
@@ -90,7 +91,7 @@ console.log("hhhhhhhhhhhhhhhhhhhhhhhhhh",obj);
 
 		} , function(err){
 			console.log(err);
-
+            // $location.url('/500');
 		});
 
 }

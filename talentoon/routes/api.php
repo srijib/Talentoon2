@@ -193,3 +193,5 @@ Route::post('/add_mentor_post_review', 'CategoriesController@add_mentor_post_rev
 Route::post('/push',[
     'uses'=>'HomeController@index',
     'middleware'=> 'jwt.auth']);
+Route::get('/check','CompetitionPostController@check');
+Route::get('/calculateleveltalentstatus','InitialReviewController@calculate_level_talent_status');

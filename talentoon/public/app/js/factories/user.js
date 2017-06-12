@@ -77,6 +77,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
             }).then(function (res) {
                 console.log(res);
                 if (res) {
+                    console.log('user profileeee y simona in resolve');
                     // if(res.data.length){
                     def.resolve(res)
                     // def.resolve(res.data)
@@ -84,6 +85,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
 
                 } else {
                     def.reject('there is no data ')
+                    console.log('user profileeee y simona in error');
                 }
 
             }, function (err) {

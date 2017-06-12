@@ -1,6 +1,7 @@
-angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$routeParams,$rootScope,categories,user){
+angular.module('myApp').controller("homec",function($location,$route,Home,$scope,$http,$routeParams,$rootScope,categories,user){
 
-	Home.getTopPosts().then(function(data){
+
+    Home.getTopPosts().then(function(data){
         console.log("el top posts ba2a",data);
 		$scope.topposts=data.posts;
         $scope.comments=data.comments;
@@ -9,6 +10,7 @@ angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$ro
 	} , function(err){
 		console.log("No posts existing, error: ",err);
         $scope.post_exist = false;
+        // $location.url('/500');
 
 	});
 
@@ -20,6 +22,7 @@ angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$ro
     } , function(err){
         console.log(err);
         $scope.event_exist = false;
+        // $location.url('/500');
 
     });
     Home.getWorkshops().then(function(data){
@@ -30,6 +33,7 @@ angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$ro
     } , function(err){
         console.log(err);
         $scope.workshop_exist = false;
+        // $location.url('/500');
 
     });
 
@@ -39,6 +43,7 @@ angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$ro
 		$scope.post=data;
 	} , function(err){
 		console.log(err);
+        // $location.url('/500');
 
 	});
     $scope.comment={}
@@ -48,6 +53,7 @@ angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$ro
             console.log("saved success comment",data)
         } , function(err){
             console.log(err);
+            // $location.url('/500');
 
         });
     }

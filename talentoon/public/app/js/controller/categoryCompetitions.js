@@ -1,4 +1,4 @@
-angular.module('myApp').controller("categoryCompetitions",function($location,$route,Competitions,categories,$scope,$http,posts,$rootScope,$q, $routeParams){
+angular.module('myApp').controller("categoryCompetitions",function($location,$route,Competitions,categories,$scope,$http,posts,$rootScope,$q, $routeParams,user){
     $scope.cat_id = $routeParams['category_id'];
 
     Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
@@ -7,6 +7,7 @@ angular.module('myApp').controller("categoryCompetitions",function($location,$ro
     }, function (err) {
         console.log(err);
     });
+
 
     $scope.newcompetition = function(vaild) {
         if (vaild) {
@@ -17,6 +18,7 @@ angular.module('myApp').controller("categoryCompetitions",function($location,$ro
                 console.log("the post request from server is ",data);
             } , function(err){
                 console.log(err);
+                // $location.url('/500');
             });
         }
     };

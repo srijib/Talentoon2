@@ -766,6 +766,32 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             })
             return def.promise;
         },
+        updatedworkshop:function (workshopdata) {
+            var def = $q.defer();
+            console.log('bnshooof kkkkk',workshopdata)
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.category_id + '/workshops/'+workshopdata.id,
+                method: 'PUT',
+                data: workshopdata
+
+            }).then(function (res) {
+                console.log('bnshooof kkkkk',workshopdata)
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
         deletePost:function (postdata) {
             var def = $q.defer();
             var id=postdata.post_id
@@ -887,6 +913,32 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var id=eventdata.event_id
             $http({
                 url: 'http://127.0.0.1:8000/api/categories/'+ eventdata.cat_id + '/events/'+eventdata.event_id,
+                method: 'DELETE',
+                data:id
+
+
+            }).then(function (res) {
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
+        deleteWorkshop:function (workshopdata) {
+            var def = $q.defer();
+            var id=workshopdata.workshop_id
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.cat_id + '/workshops/'+workshopdata.workshop_id,
                 method: 'DELETE',
                 data:id
 

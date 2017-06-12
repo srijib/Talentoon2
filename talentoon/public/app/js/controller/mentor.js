@@ -1,6 +1,7 @@
-angular.module('myApp').controller("mentors",function($scope,$http,categories,$routeParams,$rootScope,$timeout){
+angular.module('myApp').controller("mentors",function($location,$scope,$http,categories,$routeParams,$rootScope,$timeout,user){
 
-	mentor.mentor_id = $rootScope.cur_user.id;
+
+    mentor.mentor_id = $rootScope.cur_user.id;
 	mentor.category_id = $routeParams['category_id'];
 	mentor.years_of_experience = $scope.mentor.years_of_experience;
 	mentor.experience = $scope.mentor.experience;
@@ -14,7 +15,8 @@ angular.module('myApp').controller("mentors",function($scope,$http,categories,$r
 
 	}, function (err) {
 		console.log(err)
-		console.log("in complete mentor profile error")
+		console.log("in complete mentor profile error");
+        // $location.url('/500');
 	});
 
 })

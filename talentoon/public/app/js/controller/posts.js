@@ -1,4 +1,5 @@
-angular.module('myApp').controller("posts",function($location,$route,categories,$scope,$http,posts,$rootScope,$q){
+angular.module('myApp').controller("posts",function($location,$route,categories,$scope,$http,posts,$rootScope,$q,user){
+
 
     posts.getSubscribePosts().then(function (data) {
         $scope.posts = data.posts;
@@ -6,6 +7,7 @@ angular.module('myApp').controller("posts",function($location,$route,categories,
         console.log("subscribe posts",$scope.posts );
     }, function (err) {
         console.log(err);
+        // $location.url('/500');
     });
     $scope.comment={}
 
@@ -16,7 +18,7 @@ angular.module('myApp').controller("posts",function($location,$route,categories,
             $route.reload();
         } , function(err){
             console.log(err);
-
+            // $location.url('/500');
         });
     }
 });
