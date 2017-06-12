@@ -9,7 +9,7 @@ namespace App\Services;
             );
 
             $fields = array(
-                'app_id' => "5e0081b4-a54d-46be-b6bb-a42fa5af576b",
+                'app_id' => "b2b4682c-d555-44e6-a8dd-23abb0045834",
                 'included_segments' => array('All'),
                 'data' => array("foo" => "bar"),
                 'contents' => $content
@@ -22,7 +22,7 @@ namespace App\Services;
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8',
-                'Authorization: Basic OTI5YTJjNWUtNjdmZi00Njg1LWI5ZjMtZmNlOTRjY2NhYmM4'));
+                'Authorization: Basic MzM1ZDZmNzMtNDAzZi00MTAwLWIyNjItMzI4MWRhYTEzNzU5'));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
             curl_setopt($ch, CURLOPT_HEADER, FALSE);
             curl_setopt($ch, CURLOPT_POST, TRUE);
