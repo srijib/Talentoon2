@@ -31,6 +31,7 @@ class CompetitionPostController extends Controller {
         $user = JWTAuth::parseToken()->toUser();
 
         $data= DB::table('competitions_posts')
+
             ->join('users', 'users.id', '=', 'competitions_posts.talent_id')
 
             // ->leftjoin('competition_post_points', 'competition_post_points.competition_post_id', '=', 'competitions_posts.id')
@@ -43,6 +44,7 @@ class CompetitionPostController extends Controller {
             ->selectRaw('competitions_posts.id,competitions_posts.*,count(competition_post_points.id) as votes_count,users.first_name, users.last_name, users.image as user_image,competition_post_points.is_voted,count(competition_post_points.id) as votes_count')
             ->where('competitions_posts.competition_id','=',$competition_id)
             ->groupBy('competitions_posts.id')
+
             ->get();
 
 
