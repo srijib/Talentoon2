@@ -202,11 +202,11 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
           console.log('da5lt al etnen passwords',$scope.repassword)
           console.log($rootScope.cur_user.newpassword)
           //for checking on password in backend
-          var userdata = $scope.userupdate
+          var userdata = $rootScope.cur_user
           if ($scope.repassword && $scope.password){
               console.log('da5lt koll 7aga ')
               // var userdata = $scope.userupdate
-              console.log('y simnaaaaaaa');
+              console.log('y simnaaaaaaa',userdata);
               user.checkpassword(userdata).then(function (data) {
                   console.log('y simnaaaaaaa');
                   if (data == 'ok') {

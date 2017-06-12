@@ -296,9 +296,10 @@ public function edit(){
 }
 public function checkpassword(Request $request)
 {
-
+//    return response()->json($request->all());
     $userToken=JWTAuth::parseToken()->toUser();
-
+//    dd(Hash::check($request->userpassword ,$userToken->password));
+//    dd($request->email);
     if(!Hash::check($request->userpassword ,$userToken->password)) {
         return response()->json('y nada we should check this to be displayed as a message to user>> ally 2olti fkrini beha simona ');
     }else{
@@ -310,7 +311,7 @@ public function checkpassword(Request $request)
                 'last_name'=>$request->last_name,
                 'email'=>$request->email,
                 'phone'=>$request->phone,
-                'password'=>Hash::make($request->repassword),
+                'password'=>Hash::make($request->repassword)
 //                'date_of_bith'=>$request->date_of_bith,
 //            'country_id'=>$request->country_name
             ]);

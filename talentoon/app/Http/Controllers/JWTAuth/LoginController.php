@@ -46,30 +46,28 @@ class LoginController extends Controller {
                 } catch (JWTException $e) {
                     throw new HttpException(500);
                 }
-                $notify = new Notification();
-                $n=$notify->sendMessageAll();
+//                $notify = new Notification();
+//                $n=$notify->sendMessageAll();
 
 
 //                OneSignal::sendNotificationToAll("welcome to Talentooooon !", $url = null, $data = null);
 //                return response()->json($n);
 
 //                return response()
-//                    ->json([
-//                        'status' => 'ok',
-//                        'message'=>'User Authenticated SUccessfully',
-//                        'token' => $token,
-//                        'user' => $RegisteredUser,
-//                        'onesignal'=> $n
-//                    ]);
+//                    ->json(
+//                        $n
+//                    );
+
                 $response=array(
                     'status' => 'ok',
                     'message'=>'User Authenticated SUccessfully',
                     'token' => $token,
                     'user' => $RegisteredUser,
                 );
-                $result=array_merge(json_decode($n, true),$response);
+//                return $n;
+//                $result=array_merge(json_decode($n, true),$response);
 //                $result=json_encode(array_merge($response,json_decode($n, true)));
-                return $result;
+                return $response;
             }
         }
     }
