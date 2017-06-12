@@ -4,21 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\LikeService;
-
+use JWTAuth;
 class LikeController extends Controller
 {
 
   public function store(Request $request){
       // return response()->json(['status' => $request,'message' => 'data saved successfully']);
-
-   $response=LikeService::like($request);
+      $user= JWTAuth::parseToken()->toUser();
+   $response=LikeService::like($request , $user->id);
    return $response;
 
 
   }
   public function update(Request $request){
+      $user= JWTAuth::parseToken()->toUser();
 
-   $response=LikeService::Dislike($request);
+   $response=LikeService::Dislike($request,$user->id);
    return $response;
 
 }

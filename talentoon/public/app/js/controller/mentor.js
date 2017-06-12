@@ -2,6 +2,7 @@ angular.module('myApp').controller("mentors",function($scope,$http,categories,$r
 
     var mentor = {}
 
+
     $scope.completeMentorProfile = function(valid) {
 
         mentor.mentor_id = $rootScope.cur_user.id;
@@ -9,6 +10,7 @@ angular.module('myApp').controller("mentors",function($scope,$http,categories,$r
         mentor.years_of_experience = $scope.mentor.years_of_experience;
         mentor.experience = $scope.mentor.experience;
         mentor.status = 0;
+
 
         console.log("Mentor Object is ", mentor);
 
@@ -38,5 +40,6 @@ angular.module('myApp').controller("mentors",function($scope,$http,categories,$r
         });
 
     }
+
 
 })

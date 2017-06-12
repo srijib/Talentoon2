@@ -1,5 +1,5 @@
-angular.module('talentoon').controller("categoryCompetitions",function($location,$route,Competitions,categories,$scope,$http,posts,$rootScope,$q, $routeParams){
-    $scope.cat_id = $routeParams['category_id'];
+angular.module('talentoon').controller("categoryCompetitions",function($state,Competitions,$scope,$rootScope,$stateParams){
+    $scope.cat_id = $stateParams['category_id'];
 
     Competitions.getCategoryCompetitions($scope.cat_id).then(function (data) {
         $scope.categoryCompetitions = data.data;
@@ -10,7 +10,7 @@ angular.module('talentoon').controller("categoryCompetitions",function($location
 
     $scope.newcompetition = function(vaild) {
         if (vaild) {
-            $scope.competition.category_id=$routeParams['category_id'];
+            $scope.competition.category_id=$stateParams['category_id'];
             $scope.competition.mentor_id=$rootScope.cur_user.id;
 
             Competitions.createCompetition($scope.competition).then(function(data){

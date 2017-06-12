@@ -1,7 +1,8 @@
-angular.module('myApp').controller("addsession",function($scope,$http,workshops,$routeParams,$location,$rootScope){
+angular.module('myApp').controller("addsession",function($scope,$http,workshops,$routeParams,$location,$rootScope,user){
     var filesuploaded = []
 
-  $scope.newsession = function(vaild) {
+
+    $scope.newsession = function(vaild) {
      if (vaild) {
        var workshop= $routeParams['workshop_id'];
        var category= $routeParams['category_id'];
@@ -20,7 +21,7 @@ angular.module('myApp').controller("addsession",function($scope,$http,workshops,
            $location.url('/category/'+category+'/workshops/'+workshop);
        } , function(err){
        	console.log(err);
-
+       // $location.url('/500');
        });
 
      }}

@@ -1,4 +1,4 @@
-angular.module('myApp').controller("competitions",function($location,$route,Competitions,categories,$scope,$http,posts,$rootScope,$q){
+angular.module('myApp').controller("competitions",function($location,$route,Competitions,categories,$scope,$http,posts,$rootScope,$q,user){
 
     Competitions.getAllCompetitions().then(function (data) {
         $scope.competitions = data.data;

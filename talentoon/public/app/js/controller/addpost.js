@@ -1,4 +1,4 @@
-angular.module('myApp').controller("addpost",function($scope,$http,categories,$routeParams,$location,$rootScope){
+angular.module('myApp').controller("addpost",function($scope,$http,categories,$routeParams,$location,user,$rootScope){
 
     var filesuploaded = []
 
@@ -12,14 +12,15 @@ angular.module('myApp').controller("addpost",function($scope,$http,categories,$r
          //end here upload
        categories.addpost(postdata).then(function(data){
           //  console.log("the post request from server is ",data);
-//when data retrived from server
+        //when data retrived from server
            $location.url('/category/'+$scope.post.category_id);
        } , function(err){
        	console.log(err);
-
+        // $location.url('/500');
        });
 
      }}
+
 
      $scope.uploadedFile = function(element) {
          console.log("element is ",element)
@@ -28,6 +29,7 @@ angular.module('myApp').controller("addpost",function($scope,$http,categories,$r
      }
 
 });//end of module
+
 
 
 

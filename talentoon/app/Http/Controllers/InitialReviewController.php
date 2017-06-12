@@ -187,7 +187,7 @@ class InitialReviewController extends Controller
     {
         //
     }
-
+// for simonaaaaaaaa
     public function show_not_reviewed_initial_posts(Request $request,$mentor_id)
     {
         $all_media_id = DB::table('initial_reviews')
@@ -419,4 +419,31 @@ class InitialReviewController extends Controller
 
         return response()->json(['status' => '1','message' => 'review saved successfully']);
     }
+    public function calculate_level_talent_status(){
+        //created at check
+        $levels=DB::table('initial_reviews')
+            ->select(DB::Raw('floor(avg(level_single)) as level'),'category_talent_id','created_at')
+//            ->where(DB::Raw('floor((strtotime("now")-strtotime(created_at))/(60*60*24))','=',' 1' ))
+            ->groupBy('category_talent_id')
+            ->get();
+//        dd($created_at_check);
+        foreach ($levels as $level){
+            if(floor((strtotime("now")-strtotime($level->created_at))/(60*60*24))){
+                $approving_talent=DB::table('category_talents')
+                    ->where('id',$level->category_talent_id)
+                    ->update([
+                        'level'=>$level->level,
+                        'status'=>1
+                    ]);
+
+                if($approving_talent == 0){
+                    return response()->json('updated successfully');
+                }
+            }
+
+        }
+
+    }
+
+
 }
