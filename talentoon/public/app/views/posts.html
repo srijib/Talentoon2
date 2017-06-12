@@ -42,14 +42,14 @@
 
                     <div ng-repeat="post in posts" class="recentPosts imageArticle">
                         <div class="userInfos">
-                            <img src="http://localhost:8000/{{post.image}}" alt="">
+                            <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.image}}" alt="">
                             <span>{{post.first_name}} {{post.last_name}}</span>
                         </div>
 
                         <div class="conatinerComment">
 
                             <div class="largePic">
-                                <img src="http://localhost:8000/{{post.media_url}}" alt="">
+                                <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="">
                             </div>
 
                             <div class="titleEdit row">
@@ -91,7 +91,7 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                                <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
                                                     <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
                                                 </a>
                                             </li>

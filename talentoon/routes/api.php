@@ -73,6 +73,7 @@ Route::get('/get_media_for_initial_review/{category_talent_id}/{category_mentor_
 
 Route::post('/single_upload/{id}', 'UploadController@single_upload');
 Route::post('/event_upload/{id}', 'UploadController@event_upload');
+Route::post('/profile_picture_upload/{id}', 'UploadController@profile_picture_upload');
 
 Route::post('/test2', 'UploadController@test2');
 Route::POST('/categorymentor/update','CategoryMentorController@update');
@@ -100,11 +101,12 @@ Route::get('/userprofile',[
             'uses'=>'UserProfile@displayShared',
             'middleware'=> 'jwt.auth']);
 
-    //ask nahala to add middleware
+    //ask nahla to add middleware
 Route::get('/editprofile','UserProfile@edit');
 Route::get('/userprofile/cur_user','UserProfile@cur_user');
 Route::put('/updateprofile','UserProfile@update');
 Route::post('/checkpassword','UserProfile@checkpassword');
+Route::get('/category/{category_mentor_id}/roles','CategoriesController@roles');
 
 Route::get('/userprofile/{post_id}',[
     'uses'=>'UserProfile@show',
@@ -165,6 +167,8 @@ Route::post('/isEventCraetor','EventController@isEventCraetor');
 Route::get('/categorymentor/get_mentor_details/{mentor_id}', 'CategoryMentorController@get_mentor_details');
 Route::post('/conference/add_teacher', 'VideoConferenceController@add_wiziq_teacher');
 Route::post('/conference/create_class', 'VideoConferenceController@create_wiziq_class');
+Route::post('/conference/add_attendee_to_class', 'VideoConferenceController@add_wiziq_attendee_class');
+Route::get('/conference/video_conference_details', 'VideoConferenceController@video_conference_details');
 Route::post('/session_upload/{id}', 'UploadController@session_upload');
 Route::post('/workshop/{workshop_id}','WorkShopsController@createSession');
 
@@ -193,5 +197,8 @@ Route::post('/add_mentor_post_review', 'CategoriesController@add_mentor_post_rev
 Route::post('/push',[
     'uses'=>'HomeController@index',
     'middleware'=> 'jwt.auth']);
+
 Route::get('/check','CompetitionPostController@check');
 Route::get('/calculateleveltalentstatus','InitialReviewController@calculate_level_talent_status');
+
+Route::post('/event/{event_id}/goingevent','EventController@goingEvent');

@@ -109,18 +109,20 @@ class AdminMentorController extends Controller
     public function be_mentor($id){
             //dd($id);
             DB::table('category_mentors')->where('mentor_id', $id)->update(['status' => 1]);
-
             $role = Role::where('name', '=','mentor')->get()->first();
-            //dd($role);
             $userId = DB::table('category_mentors')
             ->join('users', 'users.id', '=', 'category_mentors.mentor_id')
             ->where('category_mentors.mentor_id',$id)
             ->select('users.id')
             ->first();
-            //dd($userId);
+
             $user=User::find($userId->id);
-            //dd($user);
-             $user->attachRole($role);
+            try{
+                $user->attachRole($role);
+            }catch (\Exception $e){
+                var_dump($e->errorInfo);
+            }
+
 
            return redirect()->route('mentor.index');
 

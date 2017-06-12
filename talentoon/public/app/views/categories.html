@@ -5,7 +5,7 @@
         <div class="col-lg-4 col-md-4 col-sm-12 categorySection" ng-repeat="category in categories">
             <div class="thumbnail">
                 <!--                    <img src="http://placehold.it/350x250">-->
-                <img src="http://localhost:8000/{{category.image}}">
+                <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category.image}}">
                 <div class="caption">
                     <h3>{{category.title}}</h3>
                     <p>{{category.description}}</p>

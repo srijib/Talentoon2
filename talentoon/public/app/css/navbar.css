@@ -27,7 +27,9 @@ body {
 #Navbar .navbar {
   background-color: #6A0C38;
   border: 0px;
-  border-radius: 0px; }
+  border-radius: 0px;
+  margin-bottom: 0px;
+  padding: 10px; }
   #Navbar .navbar .container-fluid .navbar-header .navbar-brand {
     padding: 0px; }
     #Navbar .navbar .container-fluid .navbar-header .navbar-brand img {
@@ -65,7 +67,7 @@ body {
     #Navbar .navbar .container-fluid .navbar-collapse .navbar-left li {
       padding-right: 0px;
       font-size: 14px;
-      font-family: light; }
+      font-family: bold; }
       #Navbar .navbar .container-fluid .navbar-collapse .navbar-left li a {
         padding: 15px 5px;
         color: rgba(255, 255, 255, 0.58); }
@@ -84,88 +86,14 @@ body {
         display: block; } }
   #Navbar .navbar .container-fluid .navbar-collapse .navbar-right {
     margin-right: 0px; }
-    #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span {
-      display: inline-block;
-      vertical-align: middle; }
-      @media (max-width: 1060px) {
-        #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span {
-          display: none; } }
-      @media (max-width: 767px) {
-        #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span {
-          display: block; } }
-      #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search-bar {
-        width: 0;
-        vertical-align: middle;
-        background: #FFFFFF;
-        transition: width 300ms ease-in-out;
-        display: inline-block;
-        margin-right: 12px;
-        border-radius: 15px; }
-        #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search-bar input {
-          background: transparent;
-          outline: 0;
-          border: 0;
-          font-size: 14px;
-          font-family: light;
-          color: #231F20;
-          box-sizing: border-box;
-          padding: 5px 12px;
-          display: none;
-          visibility: hidden;
-          position: relative;
-          right: 0px;
-          width: 100%; }
-        #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search-bar.active {
-          width: 200px; }
-          #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search-bar.active input {
-            display: inline-block;
-            visibility: visible; }
-      #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search {
-        display: inline-block; }
-        #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search:hover {
-          cursor: pointer; }
-        #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search.active .search-icon {
-          width: 20px;
-          height: 20px;
-          vertical-align: middle; }
-          #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search.active .search-icon:before, #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search.active .search-icon:after {
-            top: 2px;
-            right: 7px; }
-          #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search.active .search-icon:after {
-            transform: rotate(45deg); }
-        #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search .search-icon {
-          width: 20px;
-          height: 20px;
-          background: transparent;
-          border: 2px solid #fff;
-          display: block;
-          border-radius: 15px;
-          position: relative;
-          transition: all .2s ease-in-out;
-          margin: 0px 0px;
-          display: inline-block;
-          vertical-align: middle; }
-          #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search .search-icon:before, #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .search .search-icon:after {
-            width: 2px;
-            height: 12px;
-            display: block;
-            content: '';
-            background: #fff;
-            position: absolute;
-            top: 15px;
-            right: -5px;
-            transform: rotate(-45deg);
-            transition: all .2s ease-in-out; }
-      #Navbar .navbar .container-fluid .navbar-collapse .navbar-right span .circlemargin {
-        margin-top: 5px; }
-    #Navbar .navbar .container-fluid .navbar-collapse .navbar-right .search-signed {
-      margin-top: 5px; }
     #Navbar .navbar .container-fluid .navbar-collapse .navbar-right #userpic {
       padding: 0px;
       margin: 0px;
-      padding-right: 10px; }
+      padding-right: 10px;
+      margin: 15px; }
     #Navbar .navbar .container-fluid .navbar-collapse .navbar-right .dropdown {
-      margin-top: 4px; }
+      margin-top: 4px;
+      display: inline-block; }
       #Navbar .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-toggle {
         padding-top: 12px; }
         #Navbar .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .dropdown-toggle img {
@@ -203,7 +131,7 @@ body {
             border: 1px solid #45132E;
             border-radius: 50px;
             display: inline-block;
-            margin: 5px; }
+            margin: 15px; }
           #Navbar .navbar .container-fluid .navbar-collapse .navbar-right .dropdown .notemenu a span {
             font-size: 12px;
             font-family: light;
@@ -216,6 +144,11 @@ body {
           margin: 0px;
           background-color: #6A0C38;
           text-align: center; }
+    #Navbar .navbar .container-fluid .navbar-collapse .navbar-right .lng {
+      float: right;
+      margin: 11px; }
+      #Navbar .navbar .container-fluid .navbar-collapse .navbar-right .lng .dropdown-toggle {
+        padding: 5px; }
     #Navbar .navbar .container-fluid .navbar-collapse .navbar-right .btn {
       margin: 8px 5px; }
     #Navbar .navbar .container-fluid .navbar-collapse .navbar-right .btn-default {
@@ -247,4 +180,6 @@ body {
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
   background-color: transparent; }
 
-/*# sourceMappingURL=style.css.map */
+
+
+/*# sourceMappingURL=navbar.css.map */

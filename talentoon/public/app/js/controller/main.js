@@ -1,5 +1,7 @@
 angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location,$route) {
 
+    var filesuploaded = []
+
 
     user.get_cur_user().then(function(data){
 		console.log('currrr usssserrrrr',data);
@@ -26,6 +28,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
         }else{
             localStorage.setItem('language', 'en');
         }
+        window.location.reload();
     }
 
 
@@ -44,24 +47,39 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             user.login(userdata).then(function (data) {
                 console.log("dataaaaa minA",data.user);
                 if (data.status == 'ok') {
+                    // var myModal = angular.element( document.querySelector( '#login' ) ).modal('toggle');;
+                    // myModal.hide();
+                    // console.log("MYMODAAAAL",myModal);
                     $rootScope.token=data.token;
                     $rootScope.cur_user=data.user;
                     localStorage.setItem('token', JSON.stringify(data.token));
                     $location.url('/');
-                }else{
+                }
+
+
+                else{
                     alert('invaled user name or password')
                 }
             }, function (err) {
                 console.log(err);
-                // $location.url('/500');
+
+                console.log(err.status)
+
+
+                // alert("server connection error");
             });
-
         }
-
     }
+
+
 
     $scope.logoutFn = function () {
             // console.log("inside logout");
+            // var auth2 = gapi.auth2.getAuthInstance();
+            // auth2.signOut().then(function () {
+            //     console.log('User signed out.');
+            // });
+
             localStorage.removeItem('token');
             $rootScope.cur_user={}
             $rootScope.token=''
@@ -80,6 +98,12 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
     $scope.registerFn = function (valid) {
         console.log('inside register fn');
         console.log($scope.user);
+
+
+        $scope.user.image = $rootScope.profilePictureFile.name;
+
+        console.log("user image is",$scope.user.image);
+
         if($scope.user.password && $scope.user.password.length>5){
             $scope.pass=true;
         }
@@ -99,4 +123,12 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             });
         }
     }
+
+
+    $scope.uploadedFile = function(element) {
+        console.log("element is ",element)
+        $rootScope.profilePictureFile = element.files[0];
+        filesuploaded.push(element.files[0]);
+    }
+
 })

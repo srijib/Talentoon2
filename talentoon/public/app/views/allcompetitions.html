@@ -32,9 +32,9 @@
             <h2>Top Events</h2>
 
             <div class="top1 col-lg-10 col-md-10 col-sm-12">
-                <img src="Imgs/Website/3.jpg" alt="">
+                <img ng-src="Imgs/Website/3.jpg" alt="">
                 <div>
-                    <img src="Imgs/Persons/face5.jpg" alt="">
+                    <img ng-src="Imgs/Persons/face5.jpg" alt="">
                     <span>Adel Mohsen</span>
                     <a>Lorem Ipsum is simply dummy </a>
                 </div>
@@ -42,9 +42,9 @@
 
 
             <div class="top1 col-lg-10 col-md-10 col-sm-12">
-                <img src="Imgs/Website/4.jpg" alt="">
+                <img ng-src="Imgs/Website/4.jpg" alt="">
                 <div>
-                    <img src="Imgs/Persons/face4.jpg" alt="">
+                    <img ng-src="Imgs/Persons/face4.jpg" alt="">
                     <span>George Rafaat</span>
                     <a>Lorem Ipsum</a>
                 </div>
@@ -57,7 +57,7 @@
             <div class="CompSection col-sm-12 col-md-12 col-lg-12 " ng-repeat="competition in competitions">
                 <div class="thumbnail">
                     <div class="col-lg-4 col-md-4 col-sm-12 CompDefaultImg" >
-                        <img src="http://localhost:8000/{{competition.image}}" alt="">
+                        <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}" alt="">
                     </div><!--    top event default image-->
 
                     <div class="col-lg-8  col-md-8 col-sm-12 CompTitle"  >
@@ -139,7 +139,7 @@
                     </div><!--    top event detaila-->
 
                     <div class=" col-lg-8  col-md-8 col-sm-12 going" data-toggle="modal" data-target="#Comp1">
-                        <button ng-click="joinCompetition(competition.category_id,competition.id)" type="button" class="btn btn-default">Challenge</button>
+                        <a href="#!/category/{{competition.category_id}}/competitions/{{competition.id}}" type="button" class="btn btn-default">Challenge</a>
                     </div>
 
                 </div> <!--    top event thumbnail-->

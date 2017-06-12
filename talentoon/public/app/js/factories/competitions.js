@@ -4,7 +4,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     getAllCompetitions:function(){
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/competition',
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competition',
         method:'GET',
 
       }).then(function(res){
@@ -27,7 +27,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
         console.log('factory commmmm');
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/categories/'+cat_id+'/competitions',
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+cat_id+'/competitions',
         method:'GET',
 
       }).then(function(res){
@@ -46,10 +46,9 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
       return def.promise ;
     },
     getSingleCompetition:function(cat_id,competition_id){
-        console.log('fac fac fac');
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/categories/'+cat_id+'/competitions/'+competition_id,
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+cat_id+'/competitions/'+competition_id,
         method:'GET',
 
       }).then(function(res){
@@ -70,7 +69,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     createCompetition:function(competition_data){
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/categories/'+competition_data.category_id+'/competitions',
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+competition_data.category_id+'/competitions',
         method:'POST',
         data: competition_data
 
@@ -92,7 +91,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     createCompetitionPost:function(competitionPost_data){
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/competitions/'+competitionPost_data.competition_id+'/posts/create',
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competitions/'+competitionPost_data.competition_id+'/posts/create',
         method:'POST',
         data: competitionPost_data
 
@@ -114,7 +113,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     deleteCompetitionPost:function(competition_id,post_id){
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/competitions/'+competition_id+'/posts/'+post_id,
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competitions/'+competition_id+'/posts/'+post_id,
         method:'DELETE',
       }).then(function(res){
         console.log("resssssssssssssss",res);
@@ -134,7 +133,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     getSingleCompetitionPosts:function(competition_id){
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/competitions/'+competition_id+'/posts',
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competitions/'+competition_id+'/posts',
         method:'GET',
       }).then(function(res){
         console.log("resssssssssssssss",res);
@@ -154,7 +153,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     joinCompetition:function(competition_id){
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/competition/'+competition_id+'/join',
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competition/'+competition_id+'/join',
         method:'GET',
       }).then(function(res){
         console.log("resssssssssssssss",res);
@@ -174,7 +173,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     vote:function(post_id){
       var def =$q.defer();
       $http({
-        url:'http://localhost:8000/api/competition/post/'+post_id+'/grantvote',
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competition/post/'+post_id+'/grantvote',
         method:'GET',
       }).then(function(res){
         console.log("resssssssssssssss",res);

@@ -1,11 +1,11 @@
 
 <!-- <img  class="img-circle"src="Imgs/Persons/face1.jpg"/> -->
-<img  class="img-circle"src="http://localhost:8000/{{userprofile.image}}" width="150px">
+<img  class="img-circle"src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userprofile.image}}" width="150px">
 
 <h2> welcome <span style="color:Purple ">{{userprofile.first_name}}  {{userprofile.last_name}}</span></h2>
 <h3> Your Points number Is .. >> {{user_points_from_mentors_reviews}}   <<  and your level is {{level}}</h3>
 <h4>Your Reward image </h4>
-<img  class="img-circle"src="http://localhost:8000/{{userprofile.reward_image}}" width="150px">
+<img  class="img-circle"src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userprofile.reward_image}}" width="150px">
 
 <!-- ##################################################### -->
 
@@ -15,7 +15,7 @@
         <div class="firstCol col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <div class="userImg">
                 <div class="opacity">
-                    <img src="http://localhost:8000/{{user.image}}">
+                    <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{user.image}}">
 
                     <div ng-if="status == 1">
                     <button class="btn btn-default follow" type="submit" ng-click="unfollow(user.id)">UnFollow</button>
@@ -25,6 +25,10 @@
                     </div>
                 </div>
             </div>
+
+
+            <input name="profile_picture" ng-model="user.profile_picture" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+
 
 
             <div class="userName row">
@@ -58,7 +62,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                            <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                            <a data-original-title="Twitter" rel="tooltip" class="btn btn-twitter" data-placement="left">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
@@ -146,7 +150,7 @@
             <div class="showPosts" >
                 <div class="recentPosts imageArticle" ng-repeat="userpost in userposts  track by $index">
                     <div class="userInfos">
-                        <img src="http://localhost:8000/{{userpost.image}}" alt="">
+                        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userpost.image}}" alt="">
                         <span>{{userpost.first_name}}  {{userpost.last_name}}</span><br>
                         <span>{{userpost.formatted_created_at | date : 'dd/MM/yyyy @ h:mma' }}</span>
                     </div>
@@ -155,11 +159,11 @@
 
                         <div class="largePic">
                             <IMAGE ng-if="userpost.media_type == 'image'" >
-                                <img src="http://localhost:8000/{{userpost.media_url}}" alt="">
+                                <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userpost.media_url}}" alt="">
                             </IMAGE>
                             <!-- IF VEDIO -->
                             <VIDEO ng-if="userpost.media_type == 'video'">
-                                <video controls><source src="http://localhost:8000/{{userpost.media_url}}"></video>
+                                <video controls><source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userpost.media_url}}"></video>
                             </VIDEO>
                             <!-- IF AUDIO -->
                             <AUDIO ng-if="post.media_type == 'audio'">

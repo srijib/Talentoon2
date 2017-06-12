@@ -32,15 +32,23 @@
         <div class="firstCol col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <div class="compImg">
                 <div class="opacity">
-                    <img src="http://localhost:8000/{{competition.image}}">
-                    <button class="btn btn-default accept" type="submit">Accept Challenge</button>
+                    <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}">
+                    <JOINED ng-if="is_joined == 1">
+                        <button title="Yes, you can win it" class="btn btn-default accept">Share Competition</button>
+                    </JOINED>
+                    <JOINED ng-if="is_joined == 0">
+                        <button title="add post to beat your friends" class="btn btn-default accept desabled">Challenge Accepted</button>
+                    </JOINED>
+                    <JOINED ng-if="is_joined != 0 && is_joined != 1">
+                        <button ng-click="joinCompetition()"  class="btn btn-default accept">Accept Challenge</button>
+                    </JOINED>
                 </div>
             </div>
 
 
             <div class="compName row">
                 <span class="text-left col-lg-8 ">{{competition.title}}</span>
-
+                <div class="fb-share-button" data-href="http://talentoon.com/#!/category/{{competition.category_id}}/competitions/{{competition.id}}" data-layout="button_count" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftalentoon.com%2F%23%21%2Fcategory%2F2%2Fcompetitions%2F1&amp;src=sdkpreparse">Share</a></div>
             </div>
 
 
@@ -140,7 +148,7 @@
                 <div><span>MADE BY</span></div>
                 <div class="supervise">
                     <div class="superviseInfos">
-                        <img src="http://localhost:8000/{{competition.mentor_image}}" alt="">
+                        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.mentor_image}}" alt="">
                         <span>{{competition.first_name}} {{competition.last_name}}</span>
                     </div>
                 </div>
@@ -152,7 +160,7 @@
             <div class="showPosts">
                 <div class="recentPosts imageArticle" ng-repeat="post in competitionPosts  track by $index">
                     <div class="userInfos">
-                        <img src="http://localhost:8000/{{post.user_image}}" alt="">
+                        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.user_image}}" alt="">
                         <span>{{post.first_name}} {{post.last_name}}</span>
                     </div>
 
@@ -160,11 +168,11 @@
 
                         <div class="largePic">
                             <IMAGE ng-if="post.competition_post_media_type == 'image'" >
-                                <img src="http://localhost:8000/{{post.competition_post_media_url}}" alt="">
+                                <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.competition_post_media_url}}" alt="">
                             </IMAGE>
                             <!-- IF VEDIO -->
                             <VIDEO ng-if="post.competition_post_media_type == 'video'">
-                                <video controls><source src="http://localhost:8000/{{post.competition_post_media_url}}"></video>
+                                <video controls><source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.competition_post_media_url}}"></video>
                             </VIDEO>
                             <!-- IF AUDIO -->
                             <AUDIO ng-if="post.competition_post_media_type == 'audio'">
@@ -187,7 +195,7 @@
 
                         <div class="disc">
                             <AUDIO ng-if="post.competition_post_media_type == 'audio'">
-                                <audio controls> <source src="http://localhost:8000/{{post.competition_post_media_url}}"></audio>
+                                <audio controls> <source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.competition_post_media_url}}"></audio>
                             </AUDIO>
                             <p>{{post.competition_post_description}}</p>
                         </div>
@@ -195,15 +203,23 @@
                         <div class="interactionUser">
                             <VOTED ng-if="post.is_voted == 1">
                                 <a ng-click="vote(post.id)">
-                                    <i class="fa fa-heart" aria-hidden="true" ></i>
+                                    <i class="glyphicon glyphicon-check" aria-hidden="true" ></i>
                                     <span class="badge">8</span>
                                 </a>
                             </VOTED>
                             <NOTVOTED ng-if="post.is_voted != 1">
-                                <a ng-click="vote(post.id)">
-                                    <i class="fa fa-heart" aria-hidden="true" ></i>
-                                    <span class="badge">8</span>
-                                </a>
+                                <YOURS ng-if="post.talent_id == cur_user.id">
+                                    <a ng-click="vote(post.id)">
+                                        <i class="fa fa-heart" aria-hidden="true" ></i>
+                                        <span class="badge">8</span>
+                                    </a>
+                                </YOURS>
+                                <NOTYOURS ng-if="post.talent_id != cur_user.id">
+                                    <a ng-click="vote(post.id)">
+                                        <i class="fa fa-heart" aria-hidden="true" ></i>
+                                        <span class="badge">8</span>
+                                    </a>
+                                </NOTYOURS>
                             </NOTVOTED>
 
                             <a>

@@ -1,4 +1,4 @@
-angular.module('myApp').factory("Home",function($q,$http){
+angular.module('myApp').factory("Home",function($q,$http,$rootScope){
 
 return {
 
@@ -6,7 +6,7 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:' http://127.0.0.1:8000/api/mostLikeabe' ,
+				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/mostLikeabe' ,
 				method:'GET'
 
 			}).then(function(res){
@@ -27,7 +27,7 @@ return {
 
         var def =$q.defer();
         $http({
-            url:'http://127.0.0.1:8000/api/allworkshops' ,
+            url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/allworkshops' ,
             method:'GET'
 
         }).then(function(res){
@@ -48,7 +48,7 @@ return {
 
 			var def =$q.defer();
 			$http({
-				url:'http://127.0.0.1:8000/api/event/showall' ,
+				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/event/showall' ,
 				method:'GET'
 
 			}).then(function(res){
@@ -87,7 +87,31 @@ return {
 			})
 			return def.promise ;
 
-		}
+		},
+		goingevent:function(event_id){
+          console.log("from factory",event_id);
+          var def =$q.defer();
+          $http({
+            url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/event/'+event_id+'/goingevent',
+            method:'POST',
+            data:event_id
+
+          }).then(function(res){
+            console.log("res from share",res);
+            if(res.data){
+              console.log(res.data);
+             def.resolve(res.data);
+
+            }else{
+              def.reject('there is no data ')
+            }
+
+          },function(err){
+            def.reject(err);
+          })
+          return def.promise ;
+
+        }
 		}
 
 

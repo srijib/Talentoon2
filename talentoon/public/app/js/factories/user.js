@@ -1,4 +1,4 @@
-angular.module('myApp').factory("user", function ($http, $q) {
+angular.module('myApp').factory("user", function ($http, $q,$rootScope) {
 
     return {
         register: function (userdata) {
@@ -6,12 +6,36 @@ angular.module('myApp').factory("user", function ($http, $q) {
             //console.log("naaaaahla");
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/signup',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/signup',
                 method: 'POST',
                 data: userdata
             }).then(function (res) {
-                console.log(res);
+                console.log("_________ inside register __ ", res.data.user.id);
                 if (res.data) {
+
+                    /////////////////////////
+                    $http({
+                        method: 'POST',
+                        url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/profile_picture_upload/' + res.data.user.id,
+                        processData: false,
+                        data: {"media_url": "uploads/profile_pic" + $rootScope.profilePictureFile.name, "media_type": $rootScope.profilePictureFile.type},
+                        transformRequest: function (data) {
+                            var formData = new FormData();
+                            formData.append("file", $rootScope.profilePictureFile);
+                            return formData;
+                        },
+                        headers: {
+                            'Content-Type': undefined,
+                            'Process-Data': false
+                        }
+                    }).then(function (data) {
+                        // alert(data);
+                        console.log("thennnnn in add post", data)
+                    });
+
+                    //////////////////////////////////////////////
+
+
                     def.resolve(res.data)
                 } else {
                     def.reject('Couldnot create User')
@@ -26,7 +50,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
         login: function (userdata) {
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/login',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/login',
                 method: 'POST',
                 data: userdata
 
@@ -40,7 +64,8 @@ angular.module('myApp').factory("user", function ($http, $q) {
                 }
             }, function (err) {
                 console.log(err);
-                alert("server error ")
+
+                alert("server connection  error ");
             });
             return def.promise;
         },
@@ -48,7 +73,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
         getAllCountry: function () {
             var def = $q.defer();
             $http({
-                url:'http://localhost:8000/api/countries',
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/countries',
                 method: 'GET'
 
             }).then(function (res) {
@@ -71,7 +96,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
 
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/userprofile',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/userprofile',
                 method: 'GET'
 
             }).then(function (res) {
@@ -99,7 +124,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
 
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/userprofile/userposts',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/userprofile/userposts',
                 method: 'GET'
 
             }).then(function (res) {
@@ -125,7 +150,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
 
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/userprofile/'+user_id,
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/userprofile/'+user_id,
                 method: 'GET'
 
             }).then(function (res) {
@@ -153,11 +178,33 @@ angular.module('myApp').factory("user", function ($http, $q) {
         var def = $q.defer();
 
         $http({
-            url: 'http://localhost:8000/api/editprofile/',
+            url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/editprofile/',
             // url:'http://172.16.2.239:8000/api/posts',
             method: 'GET'
             // data: id
         }).then(function (res) {
+
+            /////////////////////////
+            $http({
+                method: 'POST',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/profile_picture_upload/' + res.data.user.id,
+                processData: false,
+                data: {"media_url": "uploads/profile_pic" + $rootScope.profilePictureFile.name, "media_type": $rootScope.profilePictureFile.type},
+                transformRequest: function (data) {
+                    var formData = new FormData();
+                    formData.append("file", $rootScope.profilePictureFile);
+                    return formData;
+                },
+                headers: {
+                    'Content-Type': undefined,
+                    'Process-Data': false
+                }
+            }).then(function (data) {
+                // alert(data);
+                console.log("thennnnn in add post", data)
+            });
+            //////////////////////////////////////////////
+
 
             console.log('i tested in profile',res.data);
 
@@ -181,7 +228,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
         var def = $q.defer();
 
         $http({
-            url: 'http://127.0.0.1:8000/api/checkpassword',
+            url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/checkpassword',
             method: 'post',
             data: userdata
 
@@ -207,7 +254,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
         var def = $q.defer();
 
         $http({
-            url: 'http://127.0.0.1:8000/api/updateprofile',
+            url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/updateprofile',
             method:'put',
             data: userdata
 
@@ -232,7 +279,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
           console.log("from factory",data);
           var def =$q.defer();
           $http({
-            url:'http://localhost:8000/api/userprofile/follow',
+            url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/userprofile/follow',
             method:'POST',
             data:data
 
@@ -256,7 +303,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
         console.log("from factory",data);
         var def =$q.defer();
         $http({
-          url:'http://localhost:8000/api/userprofile/unfollow',
+          url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/userprofile/unfollow',
           method:'POST',
           data:data
 
@@ -279,7 +326,7 @@ angular.module('myApp').factory("user", function ($http, $q) {
       get_cur_user:function(){
         var def =$q.defer();
         $http({
-          url:'http://localhost:8000/api/userprofile/cur_user',
+          url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/userprofile/cur_user',
           method:'GET',
         }).then(function(res){
           console.log("res from unfollow",res);

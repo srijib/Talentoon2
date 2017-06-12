@@ -24,7 +24,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
           BE_UN_TALENT: 'Un Talent',
           BE_UN_MENTOR: 'Un Mentor',
           UN_SUBSCRIBE: 'Un Subscribe',
-          TOP_COMPETITIONS: 'Top Competitions'
+          TOP_COMPETITIONS: 'Top Competitions',
     },
     };
     var translations_ar = {
@@ -57,6 +57,9 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         },
       };
 
+    if (! localStorage.getItem('language')) {
+        localStorage.setItem('language', 'en');
+    }
     // add translation table
     $translateProvider
       .translations('en', translations_en)
@@ -116,13 +119,13 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
     .when('/categories', {
         templateUrl: 'views/categories.html',
         controller: 'categories',
-        resolve: {
-            resolvedCategory: function (categories) {
-                return categories.getAllCategory().then(function (res) {
-                    return res;
-                });
-            },
-        }
+        // resolve: {
+        //     resolvedCategory: function (categories) {
+        //         return categories.getAllCategory().then(function (res) {
+        //             return res;
+        //         });
+        //     },
+        // }
     })
 
         //allposts in category
@@ -242,6 +245,13 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             templateUrl: 'views/userprofile.html',
             controller: 'userprofile'
         })
+        .when('/404',{
+            templateUrl: 'views/404.html',
+        })
+
+        .otherwise({
+         redirectTo: '/404'
+     });
 
     $httpProvider.interceptors.push(['$q', '$location', function ($q, $location) {
         return {

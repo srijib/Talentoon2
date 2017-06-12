@@ -1,5 +1,11 @@
-angular.module('talentoon').config(function($stateProvider,$httpProvider) {
-  $stateProvider
+angular.module('talentoon').config(function($stateProvider,$httpProvider,$sceDelegateProvider) {
+  //for secuity to make sure that this url is secure or not
+  $sceDelegateProvider.resourceUrlWhitelist([
+     // Allow same origin resource loads.
+     'self',
+     // Allow loading from our assets domain.  Notice the difference between * and **.
+     'http://192.168.6.4:8000/**'
+   ]);  $stateProvider
     //
     .state('app', {
       url: '/app',
@@ -96,7 +102,15 @@ angular.module('talentoon').config(function($stateProvider,$httpProvider) {
           }
         })
 
-
+        .state('app.competitions', {
+          url: '/competitions',
+          views: {
+            "pageContent": {
+              templateUrl: "templates/competitions.html",
+              controller: "competitions"
+            }
+          }
+        })
 
 
 })

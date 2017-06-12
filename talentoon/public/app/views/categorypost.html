@@ -5,20 +5,20 @@
 
             <div class="thumbnail">
    <div ng-if="type == 'image'">
-                <img src="http://localhost:8000/{{category_post.media_url}}" style=" height:200px">
+                <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_post.media_url}}" style=" height:200px">
               </div>
               <div ng-if="type == 'video'">
 
                <video  width="320" height="240" controls  preload="auto">
 
-              <source src="http://localhost:8000/{{category_post.media_url}}"  />
+              <source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_post.media_url}}"  />
            </video>
 
               </div>
                 <div ng-if="type == 'audio'">
               <audio controls>
 
- <source src="http://localhost:8000/{{category_post.media_url}}" />
+ <source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_post.media_url}}" />
 
 </audio>
     </div>
@@ -27,7 +27,7 @@
                   <h4 style="color:Purple ">Description: {{category_post.description}}</h4>
                   <h4 style="color:Purple "> category :{{category_post.category_title}}</h4>
 
-                    <a class="userPic"><img src="http://localhost:8000/{{category_post.user_image}}" alt=""> BY : {{category_post.first_name}} {{category_post.last_name}}</a>
+                    <a class="userPic"><img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_post.user_image}}" alt=""> BY : {{category_post.first_name}} {{category_post.last_name}}</a>
 
                     <div class="row">
                         <div class="col-lg-8 col-md-8 col-sm-8 ">

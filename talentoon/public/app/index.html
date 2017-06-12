@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="myApp" ng-controller="main">
 <head>
+	<!-- <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="242561729521-b49f3iect12uqm78km7b1jipg8o3losn.apps.googleusercontent.com"> -->
 	<title>Angular js</title>
 	<!-- scripts -->
 	<meta charset="UTF-8">
@@ -9,9 +11,9 @@
 	<!-- <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script> -->
 	<!-- <script type="text/javascript" src="node_modules/angular-modal-service/dst/angular-modal-service.js"></script> -->
 	<script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
-	<script type="text/javascript" src="node_modules/aos/dist/aos.js"></script>
-	<!-- <script>AOS.init();</script> -->
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="node_modules/aos/dist/aos.js"></script>
+
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 	<!-- angular file translate -->
@@ -34,7 +36,6 @@
 	<script type="text/javascript" src="js/controller/addsession.js"></script>
 	<script type="text/javascript" src="js/controller/showreview.js"></script>
 	<script type="text/javascript" src="js/controller/event.js"></script>
-	<script type="text/javascript" src="js/controller/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="js/controller/post.js"></script>
 	<script type="text/javascript" src="js/controller/workshop.js"></script>
 	<script type="text/javascript" src="js/controller/videoconference.js"></script>
@@ -63,16 +64,14 @@
 
 
 <!-- style -->
+	<link rel="stylesheet" type="text/css" href="node_modules/aos/dist/aos.css">
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="node_modules/aos/dist/aos.css">
 	<link rel="stylesheet" href="css/fonts.css">
 	<link rel="stylesheet" href="css/talentProfile.css">
 	<link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
 	<link rel="stylesheet" href="css/categories.css">
-	<!-- <link rel="stylesheet" href="css/categorySelected.css"> -->
-	<link rel="stylesheet" href="css/clickedCategory.css">
 	<link rel="stylesheet" href="css/talentConfirmation.css">
 	<link rel="stylesheet" href="css/createPost.css">
 	<link rel="stylesheet" href="css/posts.css">
@@ -80,6 +79,7 @@
 	<link rel="stylesheet" href="css/allCompetiton.css">
 	<link rel="stylesheet" href="css/prizes.css">
 	<link rel="stylesheet" href="css/singleCompetition.css">
+	<link rel="stylesheet" href="css/clickedCategory.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
@@ -117,6 +117,16 @@
 </head>
 <body>
 
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=477870279221218";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+<div >
 	<div id="Navbar">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -137,7 +147,7 @@
                         <div class="container-fluid">
                             <div class="navbar-header">
                                 <a class="navbar-brand" href="#">
-                                    <img alt="Brand" src="imgs/logo.png">
+                                    <img alt="Brand" ng-src="imgs/logo.png">
                                 </a>
                             </div>
                         </div>
@@ -170,20 +180,15 @@
 
                             <!--                            end dropmenu-->
 
-                            <li><a href="#">Workshops</a></li>
+
                             <li><a href="#!/posts">Posts</a></li>
+							<li><a href="#!/competitions">Competition</a></li>
+	                            <li><a href="#!/showreview">Initial review</a></li>
 
                         </ul>
                         <!--end of main links-->
 
-                        <!--                    main 4 link on lg right-->
-                        <ul class="navbar-left list-unstyled list-inline">
-                            <li><a href="#"> Store</a></li>
-                            <li><a href="#!/showreview">Initial review</a></li>
-                            <li><a href="#!/competitions">Competition</a></li>
-                            <li><a href="#">Questionnaire</a></li>
-                        </ul>
-                        <!--                  end  main 4 link on lg right-->
+
 
                         <!--                        nav right-->
                         <ul class="nav navbar-nav navbar-right">
@@ -191,7 +196,7 @@
 							<!-- if logged in : -->
 							<logged ng-if="token">
 								<li class="dropdown">
-	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://localhost:8000/{{cur_user.image}}" alt=""><span class="caret"></span></a>
+	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{cur_user.image}}" alt=""><span class="caret"></span></a>
 	                                <ul class="dropdown-menu">
 	                                    <li><a href="#!/myprofile">{{'NAVBAR.PROFILE' | translate}}</a></li>
 	                                    <li><a href="#!/editprofile">{{'NAVBAR.SETTINGS' | translate}}</a></li>
@@ -199,6 +204,21 @@
 	                                    <li><a ng-click="logoutFn()">{{'NAVBAR.LOGOUT' | translate}}</a></li>
 	                                </ul>
 	                            </li>
+
+								<li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+		<i class="fa fa-bell" aria-hidden="true"></i>
+	</a>
+	<ul class="dropdown-menu notemenu">
+		<a><img src="Persons/face2.jpg">Ahmed Fouad<span>comment on</span><p>your post</p></a>
+		<ul role="separator" class="divider">
+		</ul>
+		<a><img src="Persons/face4.jpg">Ahmed Fouad<span>likes your</span><p>video</p></a>
+
+	</ul>
+</li>
+<!--                           end notification-->
                                 <!--href="#!/editprofile"-->
 	                            <!--                            end user-->
 
@@ -208,16 +228,14 @@
 							   <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login">Log In </button>
                                 <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#signup">Sign Up</button>
 							</notlogged>
-							<li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">language<span class="caret"></span></a>
+							<li class="dropdown lng">
+                                <a class="dropdown-toggle "  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">lang<span class="caret"></span></a>
 
-                                <!--                                drop menu for categories-->
                                 <ul class="dropdown-menu">
                                     <li><a ng-click='language("en")'>en</a></li>
                                     <li><a ng-click='language("ar")'>ar</a></li>
                                 </ul>
 
-                                <!--                                end drop menu for categories-->
                             </li>
 
                         </ul>
@@ -229,6 +247,8 @@
                 </div><!-- /.container-fluid -->
             </nav> <!-- nav default-->
         </div>
+</div>
+
 
 
 
@@ -263,9 +283,9 @@
                                             <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
                                                 <i class="fa fa-facebook"></i> Facebook
                                             </a>
-
-                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
+                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="">
                                                 <i class="fa fa-google-plus"></i> Google Plus
+												<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
                                             </a>
                                         </div>
                                     </div>
@@ -386,31 +406,38 @@
 
                                         <div class="dropSelected">
                                             <!--gender-->
+																						<div>
                                             <select class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12" name="gender" ng-model="user.gender" required>
                                                 <option selected disabled>Gender</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </select>
-
+																						<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
+</div>
                                             <!--countries-->
+																						<div>
                                             <select name="country_id" ng-model="user.country_id" class="custom-select col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-offset-1">
                                                 <option selected disabled>Country</option>
                                                 <option value="{{country.id}}" ng-repeat="country in countries track by $index">{{country.name}}</option>
                                             </select>
-											<p class='error' ng-if='submitted && register.country_id.$error.required'>please choose your country</p>
-											<p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
+																						<p class="error" ng-if="submitted && register.country_id.$error.required">please choose your country</p>
+
+																					</div>
 
                                         </div>
                                         <!--profile image-->
                                             <div class="form-group">
-                                                <input type="file" name="img[]" class="file">
-                                                <div class="input-group col-xs-12">
-                                                    <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control input-lg" disabled placeholder="profile pic">
-                                                    <span class="input-group-btn">
-                                                        <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i>Browse</button>
-                                                    </span>
-                                                </div>
+
+                                                <input name="profile_picture" ng-model="register.profile_picture" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+
+                                                <!--<input type="file" name="img[]" class="file">-->
+                                                <!--<div class="input-group col-xs-12">-->
+                                                    <!--<span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>-->
+                                                    <!--<input type="text" class="form-control input-lg" disabled placeholder="profile pic">-->
+                                                    <!--<span class="input-group-btn">-->
+                                                        <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i>Browse</button>-->
+                                                    <!--</span>-->
+                                                <!--</div>-->
                                             </div>
 
                                         <!--date-->
@@ -451,28 +478,6 @@
     </div><!-- /.modal -->
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div ng-view></div>
 
@@ -558,11 +563,26 @@
       <!--}-->
     <!--}]);-->
   <!--</script>-->
-  <script type="text/javascript">
-	  $(window).on('load', function() {
-	  AOS.refresh();
-	});
-  </script>
+
+
+  <!-- <script type="text/javascript">
+      function $scope.onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		// location.href='google.php?ID='+profile.getId()+'&Name='+profile.getName()+'&Image='+profile.getImageUrl()+'&Email='+profile.getEmail();
+        }
+    </script> -->
+	<!-- <script>
+	   	function signOut() {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function () {
+				console.log('User signed out.');
+			});
+	   	}
+	</script> -->
 
 </body>
 </html>

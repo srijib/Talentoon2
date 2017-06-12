@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\WizIQAttendee;
+use App\Models\WizIQTeacher;
+use App\Models\WizIQClass;
 use Response;
+use DB;
 use Illuminate\Http\Request;
 use DateTime;
 
@@ -144,8 +148,18 @@ class VideoConferenceController extends Controller
             // replace double quotes with single quotes, to ensure the simple XML function can parse the XML
             $xml_cnt = trim(str_replace('"', "'", $xml_cnt));
             $simpleXml = simplexml_load_string($xml_cnt);
+
+            //save into db table class
+            $wiziq_teacher_obj = new WizIQTeacher;
+            $wiziq_teacher_obj->wiziq_teacher_name =  $request->teacher_name;
+            $wiziq_teacher_obj->wiziq_teacher_email = $request->teacher_email;
+            $wiziq_teacher_obj->save();
+            //end save in db
+
             echo json_encode($simpleXml);    // returns a string with JSON object
 //            echo json_decode($simpleXml,true);
+
+
         }
         catch(Exception $e)
         {
@@ -198,10 +212,6 @@ class VideoConferenceController extends Controller
 //        $requestParameters["language_culture_name"]="en-us";
 
 
-
-
-
-
         $httpRequest=new HttpRequest();
         try
         {
@@ -209,12 +219,6 @@ class VideoConferenceController extends Controller
 
             //here find <recording_url> and find </recording_url>
             //to get url then give it as link to a button start class
-
-
-
-
-
-
 
             if(!empty($XMLReturn))
             {
@@ -254,6 +258,22 @@ class VideoConferenceController extends Controller
                     $myObj["duration"] = $requestParameters["duration"];
                     $myObj["attendee_limit"] = $requestParameters["attendee_limit"];
 
+
+
+                    //save into table class
+                    $wiziq_class_obj = new WizIQClass;
+                    $wiziq_class_obj->wiziq_class_id =  $myObj["class_id"];
+                    $wiziq_class_obj->wiziq_recording_url = $myObj["recording_url"];
+                    $wiziq_class_obj->wiziq_class_start_time =$myObj["start_time"];
+                    $wiziq_class_obj->wiziq_class_duration =  $myObj["duration"];
+                    $wiziq_class_obj->wiziq_class_attendee_limit = $myObj["attendee_limit"];
+                    $wiziq_class_obj->wiziq_presenter_url = $myObj["presenter_url"];
+                    $wiziq_class_obj->wiziq_teacher_email = $myObj["presenter_email"];
+                    $wiziq_class_obj->wiziq_teacher_id = $request->input('teacher_id');
+                    $wiziq_class_obj->save();
+                    //save into table class
+
+
                     $myJSON = json_encode($myObj);
 
                     echo $myJSON;
@@ -279,14 +299,6 @@ class VideoConferenceController extends Controller
                 }
             }//end if
 
-
-
-
-
-
-
-
-
 //            echo json_encode($XMLReturn);    // returns a string with JSON object
 //
 //            $xml_cnt = $XMLReturn;
@@ -302,6 +314,143 @@ class VideoConferenceController extends Controller
 
         }
     }
+
+
+
+
+
+
+    //add attendee to class
+
+    public function add_wiziq_attendee_class(Request $request)
+    {
+
+        $secretAcessKey = __secretAcessKey;
+        $access_key=__access_key;
+        $webServiceUrl = __webServiceUrl;
+
+
+        $authBase = new AuthBase($secretAcessKey,$access_key);
+        $XMLAttendee = "<attendee_list><attendee><attendee_id><![CDATA[+ $request->user_id +]]></attendee_id><screen_name><![CDATA[+$request->name+]]></screen_name><language_culture_name><![CDATA[es-ES]]></language_culture_name></attendee></attendee_list>";
+
+
+        $method = "add_attendees";
+        $requestParameters["signature"]=$authBase->GenerateSignature($method,$requestParameters);
+
+        $requestParameters["class_id"]= $request->class_id;
+        $requestParameters["attendee_list"]= $XMLAttendee;
+
+
+        $httpRequest=new HttpRequest();
+        try
+        {
+            $XMLReturn=$httpRequest->wiziq_do_post_request($webServiceUrl.'?method=add_attendees',http_build_query($requestParameters, '', '&'));
+        }
+        catch(Exception $e)
+        {
+            echo $e->getMessage();
+        }
+        if(!empty($XMLReturn))
+        {
+            try
+            {
+                $objDOM = new DOMDocument();
+                $objDOM->loadXML($XMLReturn);
+            }
+            catch(Exception $e)
+            {
+                echo $e->getMessage();
+            }
+            $status=$objDOM->getElementsByTagName("rsp")->item(0);
+            $attribNode = $status->getAttribute("status");
+            if($attribNode=="ok")
+            {
+                $methodTag=$objDOM->getElementsByTagName("method");
+                //echo "<br>method=".$method=$methodTag->item(0)->nodeValue;
+
+                $class_idTag=$objDOM->getElementsByTagName("class_id");
+                //echo "<br>class_id=".$class_id=$class_idTag->item(0)->nodeValue;
+
+                $add_attendeesTag=$objDOM->getElementsByTagName("add_attendees")->item(0);
+                //echo "<br>add_attendeesStatus=".$add_attendeesStatus = $add_attendeesTag->getAttribute("status");
+
+                $attendeeTag=$objDOM->getElementsByTagName("attendee");
+                $length=$attendeeTag->length;
+                for($i=0;$i<$length;$i++)
+                {
+                    $attendee_idTag=$objDOM->getElementsByTagName("attendee_id");
+                    //echo "<br>attendee_id=".$attendee_id=$attendee_idTag->item($i)->nodeValue;
+
+                    $attendee_urlTag=$objDOM->getElementsByTagName("attendee_url");
+                    //echo "<br>attendee_url=".$attendee_url=$attendee_urlTag->item($i)->nodeValue;
+
+                    $myObj["method"] = $methodTag->item(0)->nodeValue;
+                    $myObj["class_id"] = $class_idTag->item(0)->nodeValue;
+                    $myObj["add_attendees_status"] = $add_attendeesTag->getAttribute("status");
+                    $myObj["attendee_id"] = $attendee_idTag->item($i)->nodeValue;
+                    $myObj["attendee_url"] = $attendee_urlTag->item($i)->nodeValue;
+
+
+
+
+                    //save into attendee table
+                    $wiziq_attendee_obj = new WizIQAttendee;
+                    $wiziq_attendee_obj->class_id =  $myObj["class_id"];
+                    $wiziq_attendee_obj->wiziq_attendee_id = $myObj["attendee_id"];
+                    $wiziq_attendee_obj->wiziq_attendee_url = $myObj["attendee_url"];
+                    $wiziq_attendee_obj->save();
+                    //save into table attendee class
+
+
+
+                    $myJSON = json_encode($myObj);
+
+                    echo $myJSON;
+                }
+
+            }
+            else if($attribNode=="fail")
+            {
+                $error=$objDOM->getElementsByTagName("error")->item(0);
+                echo "<br>errorcode=".$errorcode = $error->getAttribute("code");
+                echo "<br>errormsg=".$errormsg = $error->getAttribute("msg");
+            }
+        }//end if
+    }
+
+
+    public function video_conference_details(Request $request)
+    {
+
+
+        $class = DB::table('video_conference_class')
+            ->select('video_conference_class.*')
+            ->orderBy('video_conference_class.wiziq_class_id', 'desc')->first();
+
+
+        $teachers = DB::table('video_conference_teacher')
+            ->select('video_conference_teacher.*')
+            ->get();
+
+
+
+        $attendees = DB::table('video_conference_attendee')
+            ->select('video_conference_attendee.*')
+            ->get();
+
+
+
+//        $video_conference_details = DB::table('video_conference_class')
+//            ->join('video_conference_attendee','video_conference_class.wiziq_class_id','=','video_conference_attendee.class_id')
+//            ->select('video_conference_attendee.wiziq_attendee_id','video_conference_attendee.wiziq_attendee_url','video_conference_class.wiziq_class_id','video_conference_class.wiziq_presenter_url','video_conference_class.wiziq_class_start_time','video_conference_class.wiziq_teacher_id','video_conference_class.wiziq_teacher_email')
+//            ->toSql();
+
+
+        return response()->json(["class"=>$class,"teachers"=>$teachers,"attendees"=>$attendees,'status'=>'1','message'=>'data retrieved successfully']);
+
+    }
+
+
 
 }
 

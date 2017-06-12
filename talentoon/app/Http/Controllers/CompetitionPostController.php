@@ -28,12 +28,22 @@ class CompetitionPostController extends Controller {
 
     public function index($competition_id) {
 
+        $user = JWTAuth::parseToken()->toUser();
+
         $data= DB::table('competitions_posts')
-            ->join('users', 'users.id', '=', 'competitions_posts.talent_id')
             ->leftjoin('competition_post_points', 'competition_post_points.competition_post_id', '=', 'competitions_posts.id')
-            ->select('competitions_posts.*','users.first_name', 'users.last_name', 'users.image as user_image','competition_post_points.is_voted')
-            ->where('competitions_posts.competition_id','=',$competition_id)
+            ->select('competitions_posts.*','voter_id','competition_post_points.competition_post_id' ,'Count(competition_post_points.id)')
+            ->where('competition_post_points.voter_id','=',$user->id)
+            ->orWhereNull('competition_post_points.voter_id')
+            ->groupBy('competition_post_points.competition_post_id','competitions_posts.id','voter_id')
             ->get();
+
+//        $data= DB::table('competitions_posts')
+//            ->join('users', 'users.id', '=', 'competitions_posts.talent_id')
+//            ->leftjoin('competition_post_points', 'competition_post_points.competition_post_id', '=', 'competitions_posts.id')
+//            ->select('competitions_posts.*','users.first_name', 'users.last_name', 'users.image as user_image','competition_post_points.is_voted')
+//            ->where('competitions_posts.competition_id','=',$competition_id)
+//            ->get();
 
         // $data = CompetitionPost::where('competition_id', $competition_id)->get();
         return response()->json(['status' => 'ok', 'message' => 'Posts under competition ' . $competition_id . ' retrieved successfully', 'data' => $data], 201);
