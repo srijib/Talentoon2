@@ -9,7 +9,7 @@ use App\Models\Like;
 use App\Models\Follow;
 
 use App\Services\Notification;
-//use JWTAuth;
+// use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use DB;
 class PostsController extends Controller
@@ -159,7 +159,7 @@ class PostsController extends Controller
 //                    ->join('contacts', 'users.id', '=', 'contacts.user_id')
                 ->join('users', 'posts.user_id' , '=', 'users.id' )
                 //,'users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image'
-                ->select(DB::raw('CONCAT("http://192.168.43.242:8000","/",posts.media_url) as url' ) ,'posts.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
+                ->select(DB::raw('CONCAT("http://172.16.3.77:8000","/",posts.media_url) as url' ) ,'posts.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
                 ->where("posts.id",$value->likeable_id)
                 ->get();
 
@@ -278,6 +278,7 @@ class PostsController extends Controller
 
 public function showSinglePost($post_id){
 
+    $user=JWTAuth::parsetoken()->toUser();
   $post = DB::table('posts')
       ->join('categories', 'posts.category_id', '=', 'categories.id')
       ->join('users', 'posts.user_id', '=', 'users.id')
@@ -287,11 +288,17 @@ public function showSinglePost($post_id){
                 ->where('likeables.liked', '=', '1');
             })
 
-      ->selectRaw('posts.*,count(likeables.id) as like_count,posts.id, categories.title as category_title, users.first_name, users.last_name, users.image as user_image')
+      ->selectRaw('CONCAT("http://172.16.3.77:8000","/",posts.media_url) as url,posts.*,count(likeables.id) as like_count,posts.id, categories.title as category_title, users.first_name, users.last_name, users.image as user_image')
 
           ->where([["posts.id",$post_id],['posts.is_approved','=',1]])
           ->groupBy('posts.id')
       ->get()->first();
+
+
+     $is_liked = DB::table('likeables')
+     ->select('liked')
+     ->where([["user_id",'=',$user->id],['likeable_id','=',$post_id]])
+       ->get();
 
 
   $post_comment = DB::table('posts')
@@ -310,7 +317,7 @@ public function showSinglePost($post_id){
 // 'comments'=>$comments,
 
 
-  return response()->json(['post_comment'=>$post_comment,'post' => $post,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
+  return response()->json(['post_comment'=>$post_comment,'post' => $post,'is_liked'=>$is_liked,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
 // 'countlike'=>$countlike
 
 

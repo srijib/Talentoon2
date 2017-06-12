@@ -1,5 +1,6 @@
 angular.module('myApp').controller("oneCategory", function ($location, $scope, $http,Competitions, categories, $routeParams, $rootScope, $timeout, $q, videoconference,$route,workshops) {
 
+console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $rootScope.in_home = false;
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
 
@@ -522,9 +523,13 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 //----------------------------single----post---------------------------------------
 	if ($scope.post_id) {
 		categories.getCategoryPost($scope.post_id).then(function (data) {
-	        // console.log("inside controller" , data)
-	        $rootScope.category_post = data.post;
-					  $rootScope.type=data.post.media_type;
+	        // console.log("inside controller ESRAAAAAAAAAAAA" , data.is_liked[0].liked)
+            $scope.category_post = data.post;
+
+            if(data.is_liked.length){
+                $scope.category_post.is_liked = data.is_liked[0].liked
+            }
+					  $scope.type=data.post.media_type;
 						console.log("type", $rootScope.type)
 					// 	if( $rootScope.type =="video/mp4" ||$rootScope.type =="video/Avi"){
 					// 		$rootScope.mediaType ="video"
@@ -533,8 +538,9 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 	        //  $rootScope.mediaType ="image"
 					// 	}
 						// video/mp4
-	        $rootScope.category_post_like_count = data.countlike;
-	        $rootScope.comments = data.comments;
+	        $scope.category_post_like_count = data.countlike;
+
+	        $scope.comments = data.comments;
 
 
 	    }, function (err) {
@@ -651,6 +657,8 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 		 var commentdata=$scope.comment
 		 console.log("comment data",commentdata);
 		 categories.addcomment(commentdata).then(function(data){
+             console.log("hhhhhh",data);
+             $scope.comments=data.comments;
 
 		 } , function(err){
 		  console.log(err);
@@ -679,7 +687,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
 
 
 
-
     // if(localStorage.getItem("wiziq_presenter_url")){
     //     $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
     // }
@@ -687,12 +694,6 @@ angular.module('myApp').controller("oneCategory", function ($location, $scope, $
     // if(localStorage.getItem("attendee_"+$rootScope.cur_user.id)){
     //     $scope.current_student_join_class_url =  localStorage.getItem("attendee_"+$rootScope.cur_user.id);
     // }
-
-
-
-
-
-
 
 
 });

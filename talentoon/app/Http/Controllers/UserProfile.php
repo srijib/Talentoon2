@@ -190,7 +190,7 @@ class UserProfile extends Controller
 
     $my_posts = DB::table('posts')
     ->join('users', 'posts.user_id', '=','users.id' )
-    ->selectRaw('posts.*,cast(posts.created_at as date) as formatted_created_at,count(likeables.id) as like_count,posts.id,users.first_name,users.last_name,users.image')
+    ->selectRaw('CONCAT("http://172.16.3.77:8000","/",posts.media_url) as url,posts.*,cast(posts.created_at as date) as formatted_created_at,count(likeables.id) as like_count,posts.id,users.first_name,users.last_name,users.image')
     // ->join('users', 'posts.user_id', '=', 'users.id')
         ->leftJoin('likeables', function($join)
               {
