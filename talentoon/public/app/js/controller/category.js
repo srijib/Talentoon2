@@ -30,7 +30,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $rootScope.event_id = $routeParams['event_id'];
 
 
-    console.log('category id',$rootScope.cat_id);
+    console.log('category id',$scope.cat_id);
     console.log('workshop id',$rootScope.workshop_id);
     console.log('event id',$rootScope.event_id );
 
@@ -144,10 +144,10 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             $rootScope.editable_workshop=data;
             // $rootScope.editable_workshop.time_from =new Date(data.time_from)
             // $rootScope.editable_workshop.time_to =new Date(data.time_to)
-            $rootScope.editable_workshop.date_from = new Date(data.date_from)
-            $rootScope.editable_workshop.date_to = new Date(data.date_to)
-            $rootScope.editable_event.time_from =new Date(data.time_from)
-            $rootScope.editable_event.time_to =new Date(data.time_to)
+            // $rootScope.editable_workshop.date_from = new Date(data.date_from)
+            // $rootScope.editable_workshop.date_to = new Date(data.date_to)
+            // $rootScope.editable_event.time_from =new Date(data.time_from)
+            // $rootScope.editable_event.time_to =new Date(data.time_to)
             var data = localStorage.setItem("workshop", JSON.stringify(data));
             console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_workshop)
 
@@ -248,7 +248,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             $rootScope.workshop_id=data
             console.log('7asl al deleteeeeeee',$rootScope.workshop_id)
             // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
-            $location.url('/category/'+cat_id+'/workshops')
+            $location.url('/category/'+$scope.cat_id+'/workshops')
         } , function(err){
             console.log(err);
             // $location.url('/500');
@@ -258,7 +258,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $scope.saveupdated=function (vaild){
 
         if (vaild) {
-            var category= $rootScope.cat_id;
+            var category= $scope.cat_id;
             var mentor_id= $rootScope.cur_user.id;
             $rootScope.editable_workshop.category_id=category
 
@@ -319,7 +319,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
         categories.deletePost(editable).then(function(data){
             $scope.post_id=data
             console.log('7asl al deleteeeeeee',$scope.post_id)
-            $location.url('/category/'+cat_id+'/posts')
+            $location.url('/category/'+$scope.cat_id+'/posts')
             // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
         } , function(err){
             console.log(err);
@@ -330,7 +330,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $scope.saveupdatedpost=function (vaild){
 
         if (vaild) {
-            var category= $rootScope.cat_id;
+            var category= $scope.cat_id;
             var mentor_id= $rootScope.cur_user.id;
             $rootScope.editable_post.category_id=category
 
@@ -412,7 +412,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $scope.saveupdatedevent=function (vaild){
         console.log('hhhhhhhhhhhhhhhh')
         if (vaild) {
-            var category= $rootScope.cat_id;
+            var category= $scope.cat_id;
             var mentor_id= $rootScope.cur_user.id;
             console.log('hhhhhhhhhhhhhhhh')
             $rootScope.editable_event.category_id=category
@@ -624,7 +624,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 // untalent in category
     $scope.untalent = function () {
         var talent_id = $rootScope.cur_user.id
-        var category_id = $rootScope.cat_id;
+        var category_id = $scope.cat_id;
         var obj = {talent_id, category_id}
         console.log(obj);
         categories.untalent(obj).then(function (data) {
@@ -642,7 +642,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 // unsmentor in category
     $scope.unmentor = function () {
         var mentor_id = $rootScope.cur_user.id
-        var category_id = $rootScope.cat_id;
+        var category_id = $scope.cat_id;
 		// mentor.action = "unmentor";
         var obj = {mentor_id, category_id}
         console.log(obj);

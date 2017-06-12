@@ -189,18 +189,18 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
   $scope.updateuserprofile=function(valid){
       console.log('kkkkkkkkkkk',$scope.userupdate)
 
-      if($scope.userupdate.userpassword ){
+      if($rootScope.cur_user.userpassword ){
           $scope.password=true;
           console.log('i entered here')
       }
-      if($scope.userupdate.newpassword===$scope.userupdate.repassword && $scope.userupdate.newpassword && $scope.userupdate.repassword){
+      if($rootScope.cur_user.newpassword===$rootScope.cur_user.repassword && $rootScope.cur_user.newpassword && $rootScope.cur_user.repassword){
           $scope.repassword=true;
           console.log('iam here')
       }
       if (valid) {
           console.log('feh user password',$scope.password)
           console.log('da5lt al etnen passwords',$scope.repassword)
-          console.log($scope.userupdate.newpassword)
+          console.log($rootScope.cur_user.newpassword)
           //for checking on password in backend
           var userdata = $scope.userupdate
           if ($scope.repassword && $scope.password){
@@ -210,7 +210,7 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
               user.checkpassword(userdata).then(function (data) {
                   console.log('y simnaaaaaaa');
                   if (data == 'ok') {
-                      $location.url('/');
+                      $location.url('#!/');
                       $route.reload();
                   }else{
                       console.log(data)
