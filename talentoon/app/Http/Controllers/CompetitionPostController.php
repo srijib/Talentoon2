@@ -31,12 +31,20 @@ class CompetitionPostController extends Controller {
         $user = JWTAuth::parseToken()->toUser();
 
         $data= DB::table('competitions_posts')
-            ->leftjoin('competition_post_points', 'competition_post_points.competition_post_id', '=', 'competitions_posts.id')
-            ->select('competitions_posts.*','voter_id','competition_post_points.competition_post_id' ,'Count(competition_post_points.id)')
-            ->where('competition_post_points.voter_id','=',$user->id)
-            ->orWhereNull('competition_post_points.voter_id')
-            ->groupBy('competition_post_points.competition_post_id','competitions_posts.id','voter_id')
+            ->join('users', 'users.id', '=', 'competitions_posts.talent_id')
+
+            // ->leftjoin('competition_post_points', 'competition_post_points.competition_post_id', '=', 'competitions_posts.id')
+            ->leftJoin('competition_post_points', function($join)
+                  {
+                      $join->on('competition_post_points.competition_post_id','=','competitions_posts.id')
+                      ->where('competition_post_points.is_voted', '=', '1');
+
+                  })
+            ->selectRaw('competitions_posts.id,competitions_posts.*,count(competition_post_points.id) as votes_count,users.first_name, users.last_name, users.image as user_image,competition_post_points.is_voted,count(competition_post_points.id) as votes_count')
+            ->where('competitions_posts.competition_id','=',$competition_id)
+            ->groupBy('competitions_posts.id')
             ->get();
+
 
 //        $data= DB::table('competitions_posts')
 //            ->join('users', 'users.id', '=', 'competitions_posts.talent_id')
@@ -44,6 +52,7 @@ class CompetitionPostController extends Controller {
 //            ->select('competitions_posts.*','users.first_name', 'users.last_name', 'users.image as user_image','competition_post_points.is_voted')
 //            ->where('competitions_posts.competition_id','=',$competition_id)
 //            ->get();
+
 
         // $data = CompetitionPost::where('competition_id', $competition_id)->get();
         return response()->json(['status' => 'ok', 'message' => 'Posts under competition ' . $competition_id . ' retrieved successfully', 'data' => $data], 201);

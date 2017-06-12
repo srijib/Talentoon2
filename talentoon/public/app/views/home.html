@@ -334,7 +334,7 @@
                  </audio>
          </div>
 
-          </div>
+
           <!--    top event default image-->
 
           <div class="row evTitle">
@@ -420,6 +420,8 @@
             <button type="button" class="btn btn-default" ng-click="going(event.id)" >{{event.going_count}} Going</button>
           </div>
         </div>
+        </div>
+
         <!-- MODAAAAAAAAAAAAAAAAAAAAL -->
         <div class="modal fade" id="ev{{event.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
           <div class="modal-dialog" role="document">
@@ -626,7 +628,6 @@
               </div>
             <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt=""> -->
 
-            </div>
 
                <div ng-if="workshop.media_type == 'video' ">
                     <video   controls  preload="auto">
@@ -668,6 +669,8 @@
             <span class="col-lg-6 col-md-6 col-sm-6">{{workshop.first_name}} {{workshop.last_name}}</span>
           </a>
         </div>
+</div>
+
         <!-- MODALLLLLLLLLLLLLLLLLLLLLL -->
         <div class="modal fade" id="ws{{workshop.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">

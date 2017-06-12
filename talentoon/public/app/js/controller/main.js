@@ -47,6 +47,8 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             user.login(userdata).then(function (data) {
                 console.log("dataaaaa minA",data.user);
                 if (data.status == 'ok') {
+
+                    // $rootScope.login.show = false;
                     // var myModal = angular.element( document.querySelector( '#login' ) ).modal('toggle');;
                     // myModal.hide();
                     // console.log("MYMODAAAAL",myModal);

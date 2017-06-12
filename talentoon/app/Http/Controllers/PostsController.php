@@ -9,7 +9,7 @@ use App\Models\Like;
 use App\Models\Follow;
 
 use App\Services\Notification;
-//use JWTAuth;
+// use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use DB;
 class PostsController extends Controller
@@ -285,6 +285,7 @@ class PostsController extends Controller
 
 public function showSinglePost($post_id){
 
+    $user=JWTAuth::parsetoken()->toUser();
   $post = DB::table('posts')
       ->join('categories', 'posts.category_id', '=', 'categories.id')
       ->join('users', 'posts.user_id', '=', 'users.id')
@@ -299,6 +300,12 @@ public function showSinglePost($post_id){
           ->where([["posts.id",$post_id],['posts.is_approved','=',1]])
           ->groupBy('posts.id')
       ->get()->first();
+
+
+     $is_liked = DB::table('likeables')
+     ->select('liked')
+     ->where([["user_id",'=',$user->id],['likeable_id','=',$post_id]])
+       ->get();
 
 
   $post_comment = DB::table('posts')
@@ -317,7 +324,7 @@ public function showSinglePost($post_id){
 // 'comments'=>$comments,
 
 
-  return response()->json(['post_comment'=>$post_comment,'post' => $post,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
+  return response()->json(['post_comment'=>$post_comment,'post' => $post,'is_liked'=>$is_liked,'comments'=>$comments,'status' => '1','message' => 'data sent successfully']);
 // 'countlike'=>$countlike
 
 

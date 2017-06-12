@@ -14,11 +14,10 @@
 
 
 
-
+<!--
 
 <div class="container">
     <div class="row">
-        <!-- Side Bar -->
 
             <div class="topPosts col-lg-4 col-lg-push-8 col-md-4 col-md-push-8 col-sm-4 col-sm-push-8 col-xs-12">
                 <mentor ng-if="is_mentor == 1">
@@ -117,4 +116,155 @@
     </div>
 
     </div>
-</div>
+</div> -->
+
+
+
+
+<div class="container">
+            <div id="allTopwork" class=" col-lg-4 col-lg-push-8 col-md-4 col-md-push-8 col-sm-4 col-sm-push-8 col-xs-12">
+
+                <div class="topwork">
+                    <mentor ng-if="is_mentor == 1">
+                    <a href="#!/category/{{category_id}}/addworkshop" class="btn btn-lg">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create New
+                    </a><!--end btn create-->
+                    </mentor>
+                    <mentor ng-if="is_mentor != 1">
+                        <button class="btn btn-lg disabled" title="You have to be Mentor Or Talent in this category to add workshop">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> New Workshop
+                        </button>
+                    </mentor>
+
+                    <h2>Top Workshops</h2>
+
+                    <div class="top1 col-lg-10 col-md-10 col-sm-12">
+
+                        <img src="http://localhost:8000/{{categoryWorkshops[0].media_url}}" alt="">
+                        <div>
+                            <img src="http://localhost:8000/{{categoryWorkshops[0].user_image}}" alt="">
+                            <span>{{categoryWorkshops[0].first_name}} {{categoryWorkshops[0].last_name}}</span>
+                            <a>{{categoryWorkshops[0].description}} </a>
+                        </div>
+                    </div><!--end top1-->
+
+
+                    <div class="top1 col-lg-10 col-md-10 col-sm-12">
+                        <img src="http://localhost:8000/{{categoryWorkshops[1].media_url}}" alt="">
+                        <div>
+                            <img src="http://localhost:8000/{{categoryWorkshops[1].user_image}}" alt="">
+                            <span>{{categoryWorkshops[1].first_name}} {{categoryWorkshops[1].last_name}}</span>
+                            <a>{{categoryWorkshops[1].description}} </a>
+                        </div>
+                    </div><!--end top1-->
+                </div><!--endtopwork-->
+            </div><!--end allTopwork-->
+
+        <div ng-repeat="workshop in categoryWorkshops track by $index">
+            <div  id="allRecentwork"  class="workMainRow col-lg-8 col-lg-pull-4 col-md-8 col-md-pull-4 col-sm-8 col-sm-pull-4 col-xm-12">
+                <div class="thumbnail">
+
+                    <div class="col-lg-4 col-md-4 col-sm-12  workDefaultImg" >
+                        <img src="http://localhost:8000/{{workshop.user_image}}" alt="">
+
+                    </div><!-- end work default image-->
+
+                    <div class=" col-lg-8  col-md-8 col-sm-12 workTitle"  >
+                        <div class="col-lg-8 col-md-8 col-sm-8" >
+                            <a href="#">
+                                <h2>{{workshop.title}}</h2>
+                            </a>
+                        </div><!--end col-lg-8-->
+
+
+                        <div class="live col-lg-3 col-md-4 col-sm-4">LIVESTREAM</div>
+
+                        <!--share -->
+                        <div id="socialHolder" class="col-lg-1 col-md-4 col-sm-4">
+                            <div id="socialShare" class="btn-group share-group">
+                                <a data-toggle="dropdown" class="btn btn-info">
+                                    <i class="fa fa-share-alt fa-inverse"></i>
+                                </a>
+                                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                            <i class="fa fa-envelope"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> <!--end share -->
+
+                    </div><!--end work title-->
+
+
+                    <div class=" col-lg-8  col-md-8 col-sm-12  workCaption">
+                        <p class="row">{{workshop.description}}</p>
+                    </div><!--end work caption-->
+
+                    <div class=" col-lg-8  col-md-8 col-sm-12 workDetails">
+                        <div class="workScd col-lg-5 col-md-8 col-sm-8">
+                            <span  class="bigdate">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <p>25</p>
+                            </span>
+                            <span class="labels">
+                                <span class="label first label-default"> {{workshop.date_from | date : 'MMM'}} - {{workshop.date_to | date : 'd-MMM'}}</span>
+                                <span class="label label-default">{{workshop.time_from| date : 'short'}} - {{workshop.time_to | date : 'hh:mm'}}</span>
+                            </span>
+                        </div><!--end work schdule-->
+
+                        <div class="workScd col-lg-3 col-md-8 col-sm-8">
+                            <div class="workLevel ">
+                                <span  class="level">
+                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                </span>
+                                <span class="lLabels">
+                                    <span class="label label-default">{{workshop.level}} Level</span>
+                                </span>
+                            </div><!--end workLevel-->
+                        </div><!--end work schdule-->
+
+
+                        <div class="workScd col-lg-4 col-md-8 col-sm-8">
+                            <div class="workLeft">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span class="badge">{{workshop.max_capacity-workshop.enroll_count}} place left</span>
+                            </div><!--end workLeft-->
+                        </div><!--end work schdule-->
+
+                    </div><!--end work detail-->
+
+
+                    <div class=" col-lg-8  col-md-8 col-sm-12 enroll ">
+                        <a href="#!/category/{{workshop.category_id}}/workshops/{{workshop.id}}"><button type="button" class="btn btn-default">Enroll</button></a>
+                    </div>
+
+                </div> <!--end work thumbnail-->
+            </div><!--end allRecentwork-->
+        </div>
+</div><!--end container-->

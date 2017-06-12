@@ -19,18 +19,20 @@ angular.module('myApp').controller("post", function ($scope, $http, posts,catego
 	// 	console.log(err);
 	// });
 
+	$scope.likepost = function(post_id) {
 
-
-    $scope.likepost = function(post_id,user_id) {
 	var likeable_id=post_id;
 	var likeable_type="post"
-	var user_id=user_id;
 	console.log(likeable_id)
 	console.log(likeable_type);
-	console.log(user_id);
-	var obj={likeable_id,likeable_type,user_id}
+	var obj={likeable_id,likeable_type}
 	console.log(obj);
 			posts.likepost(obj).then(function(data){
+				console.log('LIKEEEEDDDDDD CONTROLLER',data.is_liked);
+				if (data.new_like_count.length) {
+					$scope.category_post.like_count = data.new_like_count[0].count_like
+					$scope.category_post.is_liked = data.is_liked[0].liked
+				}
 				// $rootScope.status=data;
 				// localStorage.setItem('status',data);
 				// $rootScope.status = localStorage.getItem("status");
@@ -39,8 +41,8 @@ angular.module('myApp').controller("post", function ($scope, $http, posts,catego
 				// console.log("status in controller",$rootScope.status);
 				var likedata = localStorage.getItem('testObject');
 				console.log("parse",JSON.parse(likedata))
-	     $rootScope.userstatus=JSON.parse(likedata).status;
-	     $rootScope.user_id=JSON.parse(likedata).user_id;
+	     		$rootScope.userstatus=JSON.parse(likedata).status;
+	     		$rootScope.user_id=JSON.parse(likedata).user_id;
 
 
 			 //
@@ -65,11 +67,9 @@ angular.module('myApp').controller("post", function ($scope, $http, posts,catego
 $scope.dislikepost = function(post_id,user_id) {
 var likeable_id=post_id;
 var likeable_type="post"
-var user_id=user_id;
 console.log(likeable_id)
 console.log(likeable_type);
-console.log(user_id);
-var obj={likeable_id,likeable_type,user_id}
+var obj={likeable_id,likeable_type}
 console.log(obj);
 		posts.dislikepost(obj).then(function(data){
 			// $rootScope.status=data;
@@ -77,6 +77,14 @@ console.log(obj);
 			// localStorage.setItem('testObject', JSON.stringify(data));
 			// $rootScope.status = localStorage.getItem("status");
 			// console.log("status in controller",$rootScope.status);
+			if (data.new_like_count.length) {
+				$scope.category_post.like_count = data.new_like_count[0].count_like
+				$scope.category_post.is_liked = data.is_liked[0].liked
+			}else{
+				$scope.category_post.like_count=0;
+				$scope.category_post.is_liked = data.is_liked[0].liked
+
+			}
 
 			$rootScope.data=data;
 			localStorage.setItem('testObject', JSON.stringify(data));
@@ -85,8 +93,6 @@ console.log(obj);
 			console.log("parse",JSON.parse(likedata))
 			$rootScope.userstatus=JSON.parse(likedata).status;
 			$rootScope.user_id=JSON.parse(likedata).user_id;
-
-
 
 					 localStorage.setItem('userstatus', $rootScope.userstatus );
 					 $rootScope.userstatu = localStorage.getItem('userstatus');
@@ -115,11 +121,5 @@ console.log("hhhhhhhhhhhhhhhhhhhhhhhhhh",obj);
 		});
 
 }
-
-
-
-
-
-
 
 });
