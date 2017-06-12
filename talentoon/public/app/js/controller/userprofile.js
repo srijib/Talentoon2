@@ -40,8 +40,6 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
     //
     // });
 
-<<<<<<< HEAD
-
     user.user($scope.user_id).then(function(data){
             console.log("data of users",data.data);
            $scope.allPosts=data.data.allPosts;
