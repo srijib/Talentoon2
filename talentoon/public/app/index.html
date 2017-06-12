@@ -3,7 +3,7 @@
 <head>
 	<!-- <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="242561729521-b49f3iect12uqm78km7b1jipg8o3losn.apps.googleusercontent.com"> -->
-	<title>Angular js</title>
+	<title>Talentoon</title>
 	<!-- scripts -->
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -460,6 +460,7 @@
 													<p class="error" ng-if="submitted && register.phone.$error.required" >please enter your phone</p>
 													<p class="error" ng-show="submitted && register.phone.$error.number" >please enter only number </p>
 													<p class="error" ng-show="register.phone.$error.minlength" > phone number should be 11 digits </p>
+													<p class="error" ng-show="register.phone.$error.maxlength" > phone number should be 11 digits </p>
                                             </div>
                                         </div>
 

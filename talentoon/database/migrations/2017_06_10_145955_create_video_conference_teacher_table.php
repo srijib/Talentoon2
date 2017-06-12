@@ -21,6 +21,7 @@ class CreateVideoConferenceTeacherTable extends Migration
             $table->string('wiziq_teacher_name')->nullable();
             $table->string('wiziq_teacher_email')->nullable();
             $table->string('wiziq_teacher_password')->default("123456")->nullable();
+            $table->string('wiziq_teacher_id')->nullable();
         });
     }
 
