@@ -91,14 +91,41 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     createCompetitionPost:function(competitionPost_data){
       var def =$q.defer();
       $http({
-        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competitions/'+competitionPost_data.competition_id+'/posts/create',
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competitions/'+ competitionPost_data.competition_id+'/posts',
         method:'POST',
         data: competitionPost_data
 
       }).then(function(res){
         console.log("resssssssssssssss",res);
         if(res.data){
-          console.log(res.data);
+          console.log("res . data returned from add post compet",res.data);
+
+
+          /////////////////////////
+        console.log("currentFile in add post competion "  ,$rootScope.currentFile.name);
+          $http({
+              method: 'POST',
+              url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competition_post_upload/' + res.data.post_id,
+              processData: false,
+              data: {"media_url": "uploads/competitions/posts" + $rootScope.currentFile.name, "media_type": $rootScope.currentFile.type},
+              transformRequest: function (data) {
+                  var formData = new FormData();
+                  formData.append("file", $rootScope.currentFile);
+                  return formData;
+              },
+              headers: {
+                  'Content-Type': undefined,
+                  'Process-Data': false
+              }
+          }).then(function (data) {
+              // alert(data);
+              console.log("thennnnn in add post", data)
+          });
+
+          //////////////////////////////////////////////
+
+
+
          def.resolve(res.data);
 
         }else{

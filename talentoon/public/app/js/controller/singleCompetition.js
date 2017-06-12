@@ -1,5 +1,6 @@
 angular.module('myApp').controller("singleCompetition",function($location,$routeParams,$route,categories,Competitions,$scope,$http,posts,$rootScope,$q,user){
     $scope.cat_id= $routeParams['category_id'];
+    var filesuploaded = []
     $scope.competition_id= $routeParams['competition_id'];
 
     categories.getUserRoles($scope.cat_id).then(function (data) {
@@ -50,17 +51,22 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
     };
 
     $scope.newCompetitionPost = function(vaild) {
+      console.log("test befor vaild in  newCompetitionPost ");
+
         if (vaild) {
             $scope.post.category_id=$routeParams['category_id'];
             $scope.post.competition_id=$routeParams['competition_id'];
-
+console.log("data of compition post form  ",$scope.post);
+$scope.post.media_type =  $rootScope.currentFile.type
+$scope.post.media_url =  $rootScope.currentFile.name
+console.log("media type is ",$scope.post.media_type, "media url is " , $scope.post.media_url);
             Competitions.createCompetitionPost($scope.post).then(function(data){
                 console.log("the post request from server is ",data);
             } , function(err){
                 console.log(err);
                 // $location.url('/500');
             });
-            $location.url('/category/'+$scope.post.category_id+'/competitions/'+$scope.post.competition_id);
+            // $location.url('/category/'+$scope.post.category_id+'/competitions/'+$scope.post.competition_id);
         }
     };
     $scope.deleteCompetitionPost = function(post_id) {
@@ -97,6 +103,12 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
                 // $location.url('/500');
             });
     };
+
+    $scope.uploadedFile = function(element) {
+        console.log("element is ",element)
+        $rootScope.currentFile = element.files[0];
+        filesuploaded.push(element.files[0]);
+    }
 
 
 });
