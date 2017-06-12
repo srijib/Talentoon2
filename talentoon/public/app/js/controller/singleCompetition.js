@@ -28,7 +28,7 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
 
     Competitions.getSingleCompetitionPosts($scope.competition_id).then(function (data) {
         $scope.competitionPosts = data.data;
-        console.log("single comppoooooooo popooo data ",data );
+        console.log("single comppoooooooo popooo data ",data ); 
     }, function (err) {
         console.log(err);
     });

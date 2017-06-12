@@ -26,6 +26,15 @@ class UserProfile extends Controller
 
         return response()->json(['cur_user'=>$user,'talent_in'=>$talent_in]);
     }
+    public function main_role(){
+        $user= JWTAuth::parseToken()->toUser();
+        $is_mentor = DB::table('role_user')
+             ->where('user_id', '=', $user->id)
+            ->select('role_id')
+             ->first();
+
+        return response()->json($is_mentor);
+    }
 
  public function index(Request $request){
 

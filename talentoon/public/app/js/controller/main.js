@@ -2,16 +2,35 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
 
     var filesuploaded = []
 
-    user.get_cur_user().then(function(data){
-		console.log('currrr usssserrrrr',data);
-		$rootScope.cur_user=data.cur_user;
-        $rootScope.fname= $rootScope.cur_user.first_name;
-        $rootScope.lname=$rootScope.cur_user.last_name;
-        var dob=$rootScope.cur_user.date_of_birth;
-        $rootScope.cur_user.date_of_birth=new Date(dob);
-	}, function (err) {
-        console.log(err);
-    });
+    if (localStorage.getItem("token")) {
+        user.get_cur_user().then(function(data){
+    		console.log('currrr usssserrrrr',data);
+    		$rootScope.cur_user=data.cur_user;
+            $rootScope.fname= $rootScope.cur_user.first_name;
+            $rootScope.lname=$rootScope.cur_user.last_name;
+            var dob=$rootScope.cur_user.date_of_birth;
+            $rootScope.cur_user.date_of_birth=new Date(dob);
+    	}, function (err) {
+            console.log(err);
+        });
+
+        user.getAllCountry().then(function (data) {
+            //console.log("countries:", data);
+            $scope.countries = data;
+            console.log("countries", $scope.countries);
+        }, function (err) {
+            console.log(err);
+        });
+
+        user.Main_Role().then(function (data) {
+            //console.log("countries:", data);
+            $scope.is_mentor = data.role_id;
+            console.log("is_mentor", data.role_id);
+        }, function (err) {
+            console.log(err);
+        });
+    }
+
 
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
 	// $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
@@ -41,6 +60,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             user.login(userdata).then(function (data) {
                 console.log("dataaaaa minA",data.user);
                 if (data.status == 'ok') {
+
                     // var myModal = angular.element( document.querySelector( '#login' ) ).modal('toggle');;
                     // myModal.hide();
                     // console.log("MYMODAAAAL",myModal);
@@ -48,6 +68,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
                     $rootScope.cur_user=data.user;
                     localStorage.setItem('token', JSON.stringify(data.token));
                     $location.url('/');
+                    window.location.reload();
                 }
 
 
@@ -78,14 +99,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             $location.url('/');
     }
 
-    user.getAllCountry().then(function (data) {
-        //console.log("countries:", data);
-        $scope.countries = data;
-        console.log("countries", $scope.countries);
-    }, function (err) {
-        console.log(err);
 
-    });
 
     $scope.registerFn = function (valid) {
         console.log('inside register fn');
@@ -108,7 +122,8 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             console.log("userdata",userdata);
             user.register(userdata).then(function(data){
                 console.log("inside controller:",data);
-                $location.url('/login');
+                $location.url('/');
+                window.location.reload();
             },function(err){
                console.log(err);
             });

@@ -123,11 +123,8 @@
 
         <div class="userInfos">
           <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.user_image}}" alt="">
-          <span ng-if='post.user_id != cur_user.id'>
-                        <a href="#!/profile/{{post.user_id}}"><span>{{post.first_name}} {{post.last_name}}</span></a>
-          </span>
-          <span ng-if='post.user_id == cur_user.id'>
-                        <a href="#!/myprofile"><span>{{post.first_name}} {{post.last_name}}</span></a>
+          <span >
+                <a href="#!/profile/{{post.user_id}}"><span>{{post.first_name}} {{post.last_name}}</span></a>
           </span>
           <span>{{post.created_at}}</span>
         </div>

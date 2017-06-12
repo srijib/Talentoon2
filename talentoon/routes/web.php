@@ -10,9 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
-    return view('welcome');
+    Mail::send('welcome', ['name' => 'Mina'], function ($m) {
+            $m->to('test@yahoo.com', 'someGuy')->subject('Your Reminder!');
+        });
+    // return view('welcome');
 });
 
 Auth::routes();
@@ -74,3 +78,9 @@ Route::prefix('admin')->group(function(){
 //Route::resource('initial_reviews','InitialReviewController');
 
 Route::resource('initial_reviews','InitialReviewController');
+
+
+Route::get('password/reset/{token}', [
+  'as' => 'password.reset',
+  'uses' => 'Auth\ResetPasswordController@showResetForm'
+]);
