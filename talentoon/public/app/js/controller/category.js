@@ -125,6 +125,8 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 	        $rootScope.userId = data.user.id;
 	        $rootScope.enroll = data.enroll;
 	        $rootScope.media = data.session;
+            $rootScope.countcapacity=data.countcapacity.workshop_count;
+            console.log("el count capacity",data.countcapacity.workshop_count);
 
 	        // $rootScope.category_post = localStorage.getItem("data");
 	        console.log("single workshop from controller", $rootScope.category_workshop);
@@ -144,10 +146,10 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             $rootScope.editable_workshop=data;
             // $rootScope.editable_workshop.time_from =new Date(data.time_from)
             // $rootScope.editable_workshop.time_to =new Date(data.time_to)
-            $rootScope.editable_workshop.date_from = new Date(data.date_from)
-            $rootScope.editable_workshop.date_to = new Date(data.date_to)
-            $rootScope.editable_event.time_from =new Date(data.time_from)
-            $rootScope.editable_event.time_to =new Date(data.time_to)
+            // $rootScope.editable_workshop.date_from = new Date(data.date_from)
+            // $rootScope.editable_workshop.date_to = new Date(data.date_to)
+            // $rootScope.editable_event.time_from =new Date(data.time_from)
+            // $rootScope.editable_event.time_to =new Date(data.time_to)
             var data = localStorage.setItem("workshop", JSON.stringify(data));
             console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_workshop)
 
