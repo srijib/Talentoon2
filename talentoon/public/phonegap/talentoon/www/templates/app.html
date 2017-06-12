@@ -34,7 +34,7 @@
     <ion-list>
       <ion-item menu-close>
       <center>  <h4 style="color:#6A0C38;font-size:20px">welcome , {{username}}</h4>
-        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userimage}}" alt="" class="userimage"></center>
+        <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userimage}}" alt="" class="userimage" ui-sref="app.myprofile" ></center>
       </ion-item>
       <ion-item ui-sref="app.home" menu-close>
         <i class="icon ion-home"></i>  Home
@@ -50,11 +50,15 @@
     <i class="ion-compose"></i>
       Categories
       </ion-item>
+      <ion-item ui-sref="app.competitions" menu-close>
+      <i class="ion-trophy"></i>   All competitions
+      </ion-item>
       <ion-item ui-sref="app.myprofile" menu-close>
       <i class="ion-android-contact "></i>   My Profile
       </ion-item>
-      <ion-item ng-click="logout()" menu-close>
-        Logout
+
+      <ion-item ng-click="logout()" menu-close style="background-color:#6A0C38;color:white">
+      <i class="ion-log-out"> Logout</i>  
       </ion-item>
 
 </ion-list>

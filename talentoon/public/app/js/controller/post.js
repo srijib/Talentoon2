@@ -20,6 +20,7 @@ angular.module('myApp').controller("post", function ($scope, $http, posts,catego
 	// });
 
 	$scope.likepost = function(post_id) {
+
 	var likeable_id=post_id;
 	var likeable_type="post"
 	console.log(likeable_id)
@@ -57,7 +58,7 @@ angular.module('myApp').controller("post", function ($scope, $http, posts,catego
 
 			} , function(err){
 				console.log(err);
-
+                // $location.url('/500');
 			});
 
 	}
@@ -100,7 +101,7 @@ console.log(obj);
 
 		} , function(err){
 			console.log(err);
-
+            // $location.url('/500');
 		});
 
 }
@@ -116,7 +117,7 @@ console.log("hhhhhhhhhhhhhhhhhhhhhhhhhh",obj);
 
 		} , function(err){
 			console.log(err);
-
+            // $location.url('/500');
 		});
 
 }

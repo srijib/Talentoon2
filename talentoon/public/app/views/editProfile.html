@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row infoName">
         <div class="userInfos">
-            <img src="http://localhost:8000/{{cur_user.image}}" alt="">
+            <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{cur_user.image}}" alt="">
             <span>{{fname}} {{lname}}</span>
         </div>
     </div>
@@ -55,7 +55,7 @@
 
                 <!--countries-->
                 <select class="custom-select">
-                    <option selected  name="country" ng-model="cur_user.country_name">{{cur_user.country_name}}</option>
+                    <option selected  name="country" ng-model="cur_user.country">{{country}}</option>
                     <option value="{{country.id}}" ng-repeat="country in countries_edit_user track by $index">{{country.name}}</option>
                 </select>
 

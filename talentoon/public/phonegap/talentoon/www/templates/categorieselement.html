@@ -6,7 +6,7 @@
   <ion-card>
 
   <div ng-if="post.media_type == 'image'">
-    <center><img  class="img-responsive" src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="" style="height:250px"></center>
+    <center><img  class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="" style="height:250px"></center>
 
  </div>
     <div ng-if="post.media_type  == 'video'  ">

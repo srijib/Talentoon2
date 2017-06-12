@@ -1,4 +1,4 @@
-angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) {
+angular.module('talentoon').factory("Competitions", function ($http, $q,$rootScope) {
 
     return {
     getAllCompetitions:function(){
@@ -8,7 +8,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
         method:'GET',
 
       }).then(function(res){
-        console.log("resssssssssssssss",res);
+        console.log("all compition from factory",res);
         if(res.data){
           console.log(res.data);
          def.resolve(res.data);

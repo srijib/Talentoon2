@@ -11,8 +11,8 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
             console.log("in add teacher d5l", mentor_id)
             var def =$q.defer();
             $http({
-                // url:'http://localhost:8000/api/conference/'+ mentor_id ,
-                url:'http://localhost:8000/api/categorymentor/get_mentor_details/'+ mentor_id ,
+                // url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/conference/'+ mentor_id ,
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categorymentor/get_mentor_details/'+ mentor_id ,
                 method:'GET'
 
             }).then(function(res){
@@ -22,7 +22,7 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
                     console.log("after ret in video",res.data.mentor.email)
                     // def.resolve(res.data)
                     $http({
-                        url:'http://localhost:8000/api/conference/add_teacher' ,
+                        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/conference/add_teacher' ,
                         method:'POST',
                         data: {"mentor_id":mentor_id,"teacher_email":teacher_email,"teacher_name":teacher_name}
                     }).then(function(res){
@@ -67,7 +67,7 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
             console.log("class object is ",class_object);
             var def =$q.defer();
             $http({
-                url:'http://localhost:8000/api/conference/create_class' ,
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/conference/create_class' ,
                 method:'POST',
                 data:class_object
             }).then(function(res){
@@ -97,7 +97,7 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
             console.log("add attendee object is ",add_attendee_object);
             var def =$q.defer();
             $http({
-                url:'http://localhost:8000/api/conference/add_attendee_to_class' ,
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/conference/add_attendee_to_class' ,
                 method:'POST',
                 data:add_attendee_object
             }).then(function(res){
@@ -127,7 +127,7 @@ angular.module('myApp').factory("videoconference",function($q,$http,$rootScope,$
             console.log("from wiziq factory",data);
             var def =$q.defer();
             $http({
-                url:'http://localhost:8000/api/conference/video_conference_details',
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/conference/video_conference_details',
                 method:'GET',
             }).then(function(res){
                 console.log("res of wiz iq data",res);

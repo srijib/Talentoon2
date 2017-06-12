@@ -64,9 +64,9 @@
 
 
 <!-- style -->
+	<link rel="stylesheet" type="text/css" href="node_modules/aos/dist/aos.css">
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="node_modules/aos/dist/aos.css">
 	<link rel="stylesheet" href="css/fonts.css">
 	<!-- <link rel="stylesheet" href="css/prizes.css"> -->
 	<link rel="stylesheet" href="css/talentProfile.css">
@@ -86,25 +86,38 @@
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-	<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>-->
-	<!--<script>-->
-        <!--var OneSignal = window.OneSignal || [];-->
-        <!--OneSignal.push(["init", {-->
-            <!--appId: "5e0081b4-a54d-46be-b6bb-a42fa5af576b",-->
-            <!--autoRegister: false, /* Set to true to automatically prompt visitors */-->
-            <!--subdomainName: 'simona',-->
-			<!--/*-->
-			 <!--subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN-->
-			 <!--*/-->
-            <!--httpPermissionRequest: {-->
-                <!--enable: true-->
-            <!--},-->
-            <!--notifyButton: {-->
-                <!--enable: true /* Set to false to hide */-->
-            <!--}-->
-        <!--}]);-->
-	<!--</script>-->
+	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+	<script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(["init", {
+            appId: "5e0081b4-a54d-46be-b6bb-a42fa5af576b",
+            autoRegister: false, /* Set to true to automatically prompt visitors */
+            subdomainName: 'simona',
+			/*
+			 subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN
+			 */
+            httpPermissionRequest: {
+                enable: true
+            },
+            notifyButton: {
+                enable: true /* Set to false to hide */
+            }
+        }]);
+	</script>
+    <!--<script>-->
+        <!--OneSignal.push(function() {-->
+            <!--/* These examples are all valid */-->
+            <!--OneSignal.sendTag("key", "value");-->
 
+            <!--OneSignal.sendTag("key", "value", function(tagsSent) {-->
+                <!--// Callback called when tags have finished sending-->
+            <!--});-->
+
+            <!--OneSignal.sendTag("key", "value").then(function(tagsSent) {-->
+                <!--// Callback called when tags have finished sending-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
 </head>
 <body>
 
@@ -117,7 +130,7 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 
-<div ng-class="{'IN_home':in_home}">
+<div >
 	<div id="Navbar">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -171,39 +184,23 @@
 
                             <!--                            end dropmenu-->
 
-                            <li><a href="#">Workshops</a></li>
+
                             <li><a href="#!/posts">Posts</a></li>
+							<li><a href="#!/competitions">Competition</a></li>
+	                            <li><a href="#!/showreview">Initial review</a></li>
 
                         </ul>
                         <!--end of main links-->
 
-                        <!--                    main 4 link on lg right-->
-                        <ul class="navbar-left list-unstyled list-inline">
-                            <li><a href="#"> Store</a></li>
-                            <li><a href="#!/showreview">Initial review</a></li>
-                            <li><a href="#!/competitions">Competition</a></li>
-                            <li><a href="#">Questionnaire</a></li>
-                        </ul>
-                        <!--                  end  main 4 link on lg right-->
+
 
                         <!--                        nav right-->
                         <ul class="nav navbar-nav navbar-right">
-							<span>
-                                <!--                               search bar-->
-                                <div class="search-bar">
-                                    <input type="text" placeholder="Search for category/friend" />
-                                </div>
-                                <!--                                end search bar-->
-                                <!--                                search-->
-                                <div class="search">
-                                    <div class="search-icon"></div>
-                                </div>
-                                <!--                                end search-->
-                            </span>
+
 							<!-- if logged in : -->
 							<logged ng-if="token">
 								<li class="dropdown">
-	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="http://localhost:8000/{{cur_user.image}}" alt=""><span class="caret"></span></a>
+	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{cur_user.image}}" alt=""><span class="caret"></span></a>
 	                                <ul class="dropdown-menu">
 	                                    <li><a href="#!/myprofile">{{'NAVBAR.PROFILE' | translate}}</a></li>
 	                                    <li><a href="#!/editprofile">{{'NAVBAR.SETTINGS' | translate}}</a></li>
@@ -211,6 +208,21 @@
 	                                    <li><a ng-click="logoutFn()">{{'NAVBAR.LOGOUT' | translate}}</a></li>
 	                                </ul>
 	                            </li>
+
+								<li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+		<i class="fa fa-bell" aria-hidden="true"></i>
+	</a>
+	<ul class="dropdown-menu notemenu">
+		<a><img src="Persons/face2.jpg">Ahmed Fouad<span>comment on</span><p>your post</p></a>
+		<ul role="separator" class="divider">
+		</ul>
+		<a><img src="Persons/face4.jpg">Ahmed Fouad<span>likes your</span><p>video</p></a>
+
+	</ul>
+</li>
+<!--                           end notification-->
                                 <!--href="#!/editprofile"-->
 	                            <!--                            end user-->
 
@@ -220,16 +232,14 @@
 							   <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login">Log In </button>
                                 <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#signup">Sign Up</button>
 							</notlogged>
-							<li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">lang<span class="caret"></span></a>
+							<li class="dropdown lng">
+                                <a class="dropdown-toggle "  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">lang<span class="caret"></span></a>
 
-                                <!--                                drop menu for categories-->
                                 <ul class="dropdown-menu">
                                     <li><a ng-click='language("en")'>en</a></li>
                                     <li><a ng-click='language("ar")'>ar</a></li>
                                 </ul>
 
-                                <!--                                end drop menu for categories-->
                             </li>
 
                         </ul>
@@ -472,10 +482,6 @@
     </div><!-- /.modal -->
 
 </div>
-
-
-
-
 
 <div ng-view></div>
 

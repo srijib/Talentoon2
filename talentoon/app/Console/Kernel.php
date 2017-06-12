@@ -14,6 +14,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+
+        '\App\Console\Commands\MentorApprovePosts',
+        'App\Console\Commands\InitialReview'
     ];
 
     /**
@@ -26,6 +29,11 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->command('MentorApprovePosts:mentorapproves')
+            ->everyMinute();
+        $schedule->command('InitialReview:initialreviewcalculations')
+            ->everyMinute();
+
     }
 
     /**

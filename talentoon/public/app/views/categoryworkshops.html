@@ -33,18 +33,18 @@
             <h2>Workshops</h2>
 
             <div class="top1 col-lg-10 col-md-10 col-sm-12">
-                <img src="http://localhost:8000/{{categoryWorkshops[0].media_url}}" alt="">
+                <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryWorkshops[0].media_url}}" alt="">
                 <div>
-                    <img src="http://localhost:8000/{{categoryWorkshops[0].user_image}}" alt="">
+                    <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryWorkshops[0].user_image}}" alt="">
                     <span>{{categoryWorkshops[0].first_name}} {{categoryWorkshops[0].last_name}}</span>
                     <a>{{categoryWorkshops[0].description}} </a>
                 </div>
             </div>
 
             <div class="top1 col-lg-10 col-md-10 col-sm-12">
-                <img src="http://localhost:8000/{{categoryWorkshops[1].media_url}}" alt="">
+                <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryWorkshops[1].media_url}}" alt="">
                 <div>
-                    <img src="http://localhost:8000/{{categoryWorkshops[1].user_image}}" alt="">
+                    <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryWorkshops[1].user_image}}" alt="">
                     <span>{{categoryWorkshops[1].first_name}} {{categoryWorkshops[1].last_name}}</span>
                     <a>{{categoryWorkshops[1].description}} </a>
                 </div>
@@ -64,7 +64,7 @@
 
 
                     <div class="userInfos">
-                        <img src="http://localhost:8000/{{workshop.user_image}}" alt="">
+                        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.user_image}}" alt="">
                         <span ng-if ='workshop.mentor_id != cur_user.id'>
                         <a href="#!/profile/{{workshop.mentor_id}}"><span>{{workshop.first_name}} {{workshop.last_name}}</span></a>
                         </span>
@@ -77,7 +77,7 @@
 
 
                     <div class="largePic">
-                            <img src="http://localhost:8000/{{workshop.media_url}}" alt="">
+                            <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt="">
                     </div>
 
                     <div class="titleEdit row">
@@ -87,7 +87,9 @@
                         </div>
 
                         <div class="col-lg-4 edits ">
-                            <i class="fa fa-pencil" aria-hidden="true" ng-click="editWorkshop(workshop.id,workshop.category_id)"></i>
+                            <!--href="#!/category/{{workshop.category_id}}/workshops/{{workshop.id}}/editworkshop"-->
+
+                            <i class="fa fa-pencil" aria-hidden="true" ng-click="editWorkshop(workshop.id,workshop.category_id)" ></i>
                             <i class="fa fa-trash" aria-hidden="true" ng-click="deleteWorkshop(workshop.id,workshop.category_id)"></i>
 
                         </div>

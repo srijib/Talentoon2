@@ -4,7 +4,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/category',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/category',
                 // url:'json/categories.json',
                 method: 'GET'
 
@@ -30,7 +30,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         getCategoryAllData:function(cat_id){
             var def =$q.defer();
             $http({
-                url:'http://localhost:8000/api/category/'+cat_id,
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/category/'+cat_id,
                 method:'GET'
             }).then(function(res){
                 // 		console.log("response is" , res);
@@ -49,7 +49,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         getUserRoles:function(cat_id){
             var def =$q.defer();
             $http({
-                url:'http://localhost:8000/api/category/'+cat_id+'/roles',
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/category/'+cat_id+'/roles',
                 method:'GET'
             }).then(function(res){
                 		// console.log("ROLESSSSS FROM FACTORY" , res);
@@ -69,7 +69,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         //     // console.log('factory cat cat_id',cat_id);
         // 			var def =$q.defer();
         // 			$http({
-        // 				url:'http://localhost:8000/api/category/'+cat_id ,
+        // 				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/category/'+cat_id ,
         // 				method:'GET'
         // 			}).then(function(res){
         // 				console.log("response is 3abet" , res);
@@ -90,7 +90,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         getCategoryEventEdit:function(cat_id,event_id){
         			var def =$q.defer();
         			$http({
-        				url:'http://localhost:8000/api/categories/'+cat_id+'/events/'+event_id ,
+        				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+cat_id+'/events/'+event_id ,
         				method:'GET'
         			}).then(function(res){
         				console.log("<<<<<<<<<event in factory>>>>>>>>>" , res.data.event[0]);
@@ -113,7 +113,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         // getCategoryEvents:function(cat_id){
         // 			var def =$q.defer();
         // 			$http({
-        // 				url:'http://localhost:8000/api/categories/'+cat_id+'/events' ,
+        // 				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+cat_id+'/events' ,
         // 				method:'GET'
         // 			}).then(function(res){
         // 				console.log("all events in factory " , res.data);
@@ -135,7 +135,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             console.log("post id", id)
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/categories/'+cat_id+'/posts/'+id,
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+cat_id+'/posts/'+id,
                 method: 'GET',
 
             }).then(function (res) {
@@ -162,7 +162,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             console.log("post id", id)
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/post/' + id,
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/post/' + id,
                 method: 'GET',
                 data: id
             }).then(function (res) {
@@ -195,7 +195,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
             $http({
 
-                url: 'http://localhost:8000/api/categorysubscribe',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categorysubscribe',
                 method: 'POST',
                 data: data
 
@@ -221,7 +221,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
 
             $http({
-                url: 'http://localhost:8000/api/categoryunsubscribe',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categoryunsubscribe',
                 method: 'POST',
                 data: data
 
@@ -245,7 +245,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
 
             $http({
-                url: 'http://localhost:8000/api/categoryuntalent',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categoryuntalent',
                 method: 'POST',
                 data: data
 
@@ -268,13 +268,13 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
             // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
             $http({
-                url: 'http://localhost:8000/api/categories/' + postdata.category_id + '/posts',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/' + postdata.category_id + '/posts',
                 // url:'http://172.16.2.239:8000/api/posts',
                 method: 'POST',
                 data: postdata
             }).then(function (res) {
 
-                console.log("____________in res add post ", res.data.post_id) 
+                console.log("____________in res add post ", res.data.post_id)
                 console.log("____________media type ", $rootScope.currentFile.type)
                 console.log('_________', $rootScope.currentFile.name)
 
@@ -282,7 +282,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 /////////////////////////
                 $http({
                     method: 'POST',
-                    url: 'http://localhost:8000/api/single_upload/' + res.data.post_id,
+                    url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/single_upload/' + res.data.post_id,
                     processData: false,
                     data: {"media_url": "uploads/files" + $rootScope.currentFile.name, "media_type": $rootScope.currentFile.type},
                     transformRequest: function (data) {
@@ -320,7 +320,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
             $http({
                 method: 'POST',
-                url: 'http://localhost:8000/api/review_files_upload/' + category_talent_id,
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/review_files_upload/' + category_talent_id,
                 processData: false,
                 data: reviewfilesuploaded,
                 transformRequest: function (data) {
@@ -357,7 +357,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             // /////////////////////////
             // $http({
             // 	method  : 'POST',
-            // 	url     : 'http://localhost:8000/api/review_files_upload/'+category_talent_id,
+            // 	url     : $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/review_files_upload/'+category_talent_id,
             // 	processData: false,
             // 	data:reviewfilesuploaded,
             // 	transformRequest: function (data) {
@@ -389,7 +389,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def =$q.defer();
             $http({
 
-                url:'http://localhost:8000/api/categories/'+workshopdata.category_id+'/workshops' ,
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+workshopdata.category_id+'/workshops' ,
                 method:'POST',
                 data:workshopdata
 
@@ -398,7 +398,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 console.log("workshop",res);
                 $http({
                     method: 'POST',
-                    url: 'http://localhost:8000/api/workshop_upload/' + res.data.workshop_id,
+                    url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/workshop_upload/' + res.data.workshop_id,
                     processData: false,
                     data: {"media_url": "uploads/files" + $rootScope.workshopFile.name, "media_type": $rootScope.workshopFile.type},
                     transformRequest: function (data) {
@@ -461,7 +461,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
 
             var def = $q.defer();
             $http({
-                url: 'http://127.0.0.1:8000/api/categorytalent/store',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categorytalent/store',
                 method: 'POST',
                 data: talent_data
 
@@ -490,7 +490,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             console.log("mentor object in complete mentor profile ",mentor_data)
             var def = $q.defer();
             $http({
-                url: 'http://127.0.0.1:8000/api/categorymentor/store',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categorymentor/store',
                 method: 'POST',
                 data: mentor_data
 
@@ -515,7 +515,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
 
             $http({
-                url: 'http://127.0.0.1:8000/api/categorymentor/update',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categorymentor/update',
                 method: 'POST',
                 data: mentor_data
 
@@ -539,7 +539,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         //
         // 	var def =$q.defer();
         // 	$http({
-        // 		url:'http://localhost:8000/api/category/'+index ,
+        // 		url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/category/'+index ,
         // 		method:'GET'
         // 	}).then(function(res){
         //         console.log("workshops_bassant",res);
@@ -562,7 +562,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             // console.log("workshop id", id)
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/categories/'+cat_id+'/workshops/'+id,
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+cat_id+'/workshops/'+id,
                 method: 'GET',
 
             }).then(function (res) {
@@ -591,7 +591,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             // console.log("workshop id", id)
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/workshop/'+id,
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/workshop/'+id,
                 method: 'GET',
                 data: id
             }).then(function (res) {
@@ -622,7 +622,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
             console.log("data",data)
             $http({
-                url: 'http://localhost:8000/api/isWorkshopCreator',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/isWorkshopCreator',
                 method: 'POST',
                 data: data
             }).then(function (res) {
@@ -652,7 +652,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var id=editable.workshop_id;
             // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
             $http({
-                url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/workshops/'+editable.workshop_id+'/edit',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/' + editable.cat_id + '/workshops/'+editable.workshop_id+'/edit',
                 // url:'http://172.16.2.239:8000/api/posts',
                 method: 'get',
                 data: id
@@ -677,7 +677,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         addcomment: function (commentdata) {
             var def = $q.defer();
             $http({
-                url: 'http://localhost:8000/api/comment',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/comment',
                 method: 'POST',
                 data: commentdata
 
@@ -704,7 +704,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
             console.log("data",data)
             $http({
-                url: 'http://localhost:8000/api/isPostCreator',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/isPostCreator',
                 method: 'POST',
                 data: data
             }).then(function (res) {
@@ -735,7 +735,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var id=editable.post_id;
             // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
             $http({
-                url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/posts/'+id+'/edit',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/' + editable.cat_id + '/posts/'+id+'/edit',
                 // url:'http://172.16.2.239:8000/api/posts',
                 method: 'GET'
                 // data: id
@@ -762,7 +762,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
             console.log('bnshooof kkkkk',postdata)
             $http({
-                url: 'http://127.0.0.1:8000/api/categories/'+ postdata.category_id + '/posts/'+postdata.id,
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+ postdata.category_id + '/posts/'+postdata.id,
                 method: 'PUT',
                 data: postdata
 
@@ -784,11 +784,37 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             })
             return def.promise;
         },
+        updatedworkshop:function (workshopdata) {
+            var def = $q.defer();
+            console.log('bnshooof kkkkk',workshopdata)
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.category_id + '/workshops/'+workshopdata.id,
+                method: 'PUT',
+                data: workshopdata
+
+            }).then(function (res) {
+                console.log('bnshooof kkkkk',workshopdata)
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
         deletePost:function (postdata) {
             var def = $q.defer();
             var id=postdata.post_id
             $http({
-                url: 'http://127.0.0.1:8000/api/categories/'+ postdata.cat_id + '/posts/'+postdata.post_id,
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+ postdata.cat_id + '/posts/'+postdata.post_id,
                 method: 'DELETE',
                 data:id
 
@@ -819,7 +845,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
             console.log("data",data)
             $http({
-                url: 'http://localhost:8000/api/isEventCreator',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/isEventCreator',
                 method: 'POST',
                 data: data
             }).then(function (res) {
@@ -850,7 +876,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var id=editable.event_id;
             // console.log('the url ya esraa', 'http://172.16.2.239:8000/api/categories/'+postdata.category_id+'/posts');
             $http({
-                url: 'http://localhost:8000/api/categories/' + editable.cat_id + '/events/'+id+'/edit',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/' + editable.cat_id + '/events/'+id+'/edit',
                 // url:'http://172.16.2.239:8000/api/posts',
                 method: 'GET'
                 // data: id
@@ -879,7 +905,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             console.log(eventdata.category_id)
             console.log(eventdata.id)
             $http({
-                url: 'http://127.0.0.1:8000/api/categories/'+ eventdata.category_id + '/events/'+eventdata.id,
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+ eventdata.category_id + '/events/'+eventdata.id,
                 method: 'PUT',
                 data: eventdata
 
@@ -904,7 +930,33 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             var def = $q.defer();
             var id=eventdata.event_id
             $http({
-                url: 'http://127.0.0.1:8000/api/categories/'+ eventdata.cat_id + '/events/'+eventdata.event_id,
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+ eventdata.cat_id + '/events/'+eventdata.event_id,
+                method: 'DELETE',
+                data:id
+
+
+            }).then(function (res) {
+                console.log("b3tna al update ensha2 allah ", res.data)
+
+                if (res) {
+
+                    console.log("d5lna gwa al res if", res.data);
+                    def.resolve(res.data)
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+        },
+        deleteWorkshop:function (workshopdata) {
+            var def = $q.defer();
+            var id=workshopdata.workshop_id
+            $http({
+                url: 'http://127.0.0.1:8000/api/categories/'+ workshopdata.cat_id + '/workshops/'+workshopdata.workshop_id,
                 method: 'DELETE',
                 data:id
 
@@ -933,7 +985,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             console.log("in mentors reviews");
             $http({
                 method: 'GET',
-                url: 'http://localhost:8000/api/get_post_reviews',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/get_post_reviews',
             }).then(function (data_of_reviews) {
                 console.log("then in reviews of post", data_of_reviews.data.reviews)
                 if (data_of_reviews) {
@@ -954,7 +1006,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             console.log("in mentors add reviews",review);
             $http({
                 method: 'POST',
-                url: 'http://localhost:8000/api/add_mentor_post_review',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/add_mentor_post_review',
                 data: review,
             }).then(function (data) {
                 console.log("then in added reviews of post", data)
@@ -979,7 +1031,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
             console.log("in posts comment",data);
             $http({
                 method: 'POST',
-                url: 'http://localhost:8000/api/comment',
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/comment',
                 data: data,
             }).then(function (data) {
                 console.log("then in added comment of post", data)

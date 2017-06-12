@@ -66,9 +66,16 @@ class PostsController extends Controller
             'description' => $request['description'],
         ))->id;
 
+        $notify = new Notification();
+        $n=$notify->sendMessageFilter();
+        $response=array(
+            'post_id' => $id,
+            'message' => 'data saved successfully'
+        );
+//        $result=json_encode(array_merge($response,json_decode($n, true)));
+        return $n;
 
-
-        return response()->json(['post_id' => $id,'message' => 'data saved successfully']);
+//        return response()->json(['post_id' => $id,'message' => 'data saved successfully']);
         // return redirect('/post');
     }
 
@@ -78,7 +85,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($category_id,$id)
     {
         //
         $post = DB::table('posts')
@@ -159,7 +166,7 @@ class PostsController extends Controller
 //                    ->join('contacts', 'users.id', '=', 'contacts.user_id')
                 ->join('users', 'posts.user_id' , '=', 'users.id' )
                 //,'users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image'
-                ->select(DB::raw('CONCAT("http://172.16.3.77:8000","/",posts.media_url) as url' ) ,'posts.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
+                ->select(DB::raw('CONCAT("http://192.168.6.4:8000","/",posts.media_url) as url' ) ,'posts.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
                 ->where("posts.id",$value->likeable_id)
                 ->get();
 
@@ -288,7 +295,7 @@ public function showSinglePost($post_id){
                 ->where('likeables.liked', '=', '1');
             })
 
-      ->selectRaw('CONCAT("http://172.16.3.77:8000","/",posts.media_url) as url,posts.*,count(likeables.id) as like_count,posts.id, categories.title as category_title, users.first_name, users.last_name, users.image as user_image')
+      ->selectRaw('CONCAT("http://192.168.6.4:8000","/",posts.media_url) as url,posts.*,count(likeables.id) as like_count,posts.id, categories.title as category_title, users.first_name, users.last_name, users.image as user_image')
 
           ->where([["posts.id",$post_id],['posts.is_approved','=',1]])
           ->groupBy('posts.id')

@@ -28,7 +28,15 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $scope.cat_id = $routeParams['category_id'];
     $rootScope.workshop_id = $routeParams['workshop_id'];
     $rootScope.event_id = $routeParams['event_id'];
+
+
+    console.log('category id',$rootScope.cat_id);
+    console.log('workshop id',$rootScope.workshop_id);
+    console.log('event id',$rootScope.event_id );
+
+
     $scope.post_id = $routeParams['post_id'];
+
 
 	categories.getUserRoles($scope.cat_id).then(function (data) {
 		console.log("ROLESSSSS FROM CONTROLLER", data)
@@ -91,6 +99,8 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
         }
     }, function (err) {
         console.log(err);
+        // $location.url('/500');
+
     });
 
 
@@ -99,6 +109,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
         $scope.categoryCompetitions = data.data;
     }, function (err) {
         console.log(err);
+        // $location.url('/500');
     });
 
 
@@ -120,46 +131,68 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
 	    }, function (err) {
 	        console.log(err);
+            // $location.url('/500');
 	    });
 	}
 
     //---------------------- FOR REFRESHING BUG---------------------------------
-    categories.getCategoryWorkshopEdit($rootScope.cat_id,$rootScope.workshop_id).then(function (data) {
+    if($rootScope.workshop_id){
+        categories.getCategoryWorkshopEdit($rootScope.cat_id,$rootScope.workshop_id).then(function (data) {
 
-        $rootScope.editable_workshop=data;
-        // $rootScope.editable_workshop.time_from =new Date(data.time_from)
-        // $rootScope.editable_workshop.time_to =new Date(data.time_to)
-        // $rootScope.editable_workshop.date_from = new Date(data.date_from)
-        // $rootScope.editable_workshop.date_to = new Date(data.date_to)
+            console.log('ID,ID',$rootScope.cat_id,$rootScope.workshop_id)
 
+            $rootScope.editable_workshop=data;
+            // $rootScope.editable_workshop.time_from =new Date(data.time_from)
+            // $rootScope.editable_workshop.time_to =new Date(data.time_to)
+            $rootScope.editable_workshop.date_from = new Date(data.date_from)
+            $rootScope.editable_workshop.date_to = new Date(data.date_to)
+            $rootScope.editable_event.time_from =new Date(data.time_from)
+            $rootScope.editable_event.time_to =new Date(data.time_to)
+            var data = localStorage.setItem("workshop", JSON.stringify(data));
+            console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_workshop)
 
-        // $rootScope.category_post = localStorage.getItem("data");
-        console.log("single workshop from controller", $rootScope.category_workshop);
+            // $rootScope.category_post = localStorage.getItem("data");
+            console.log("single workshop from controller", $rootScope.category_workshop);
 
-    }, function (err) {
-        console.log(err);
-    });
-
-    categories.getCategoryEventEdit($rootScope.cat_id,$rootScope.event_id).then(function (data) {
-        console.log('hna al data',data)
-        $rootScope.editable_event=data;
-        // $rootScope.editable_event.time_from =new Date(data.time_from)
-        // $rootScope.editable_event.time_to =new Date(data.time_to)
-        // $rootScope.editable_event.date_from = new Date(data.date_from)
-        // $rootScope.editable_event.date_to = new Date(data.date_to)
-        console.log("single event from controller", $rootScope.category_workshop);
-
-    }, function (err) {
-        console.log(err);
-    });
-    categories.getCategoryPostEdit($rootScope.cat_id, $scope.post_id).then(function (data) {
-
-        $rootScope.editable_post=data;
+        }, function (err) {
+            console.log(err);
+            // $location.url('/500');
+        });
+    }
 
 
-    }, function (err) {
-        console.log(err);
-    });
+	if($rootScope.event_id){
+        categories.getCategoryEventEdit($rootScope.cat_id,$rootScope.event_id).then(function (data) {
+            console.log('hna al data',data)
+            $rootScope.editable_event=data;
+            var store= localStorage.setItem("event", JSON.stringify(data))
+
+            $rootScope.editable_event.time_from = new Time(data.time_from)
+            $rootScope.editable_event.time_to = new Time(data.time_to)
+            $rootScope.editable_event.date_from = new Date(data.date_from)
+            $rootScope.editable_event.date_to = new Date(data.date_to)
+            // console.log("single event from controller", $rootScope.category_workshop);
+
+        }, function (err) {
+            console.log(err);
+            // $location.url('/500');
+        });
+    }
+    if($scope.post_id){
+        categories.getCategoryPostEdit($rootScope.cat_id, $scope.post_id).then(function (data) {
+            $rootScope.editable_post=data;
+            console.log('ID,ID',$rootScope.cat_id,$rootScope.post_id,$rootScope.editable_post)
+
+            console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_post);
+            var store= localStorage.setItem("post", JSON.stringify(data));
+
+
+        }, function (err) {
+            console.log(err);
+            // $location.url('/500');
+        });
+    }
+
     //------------------------------------------------------------
     // categories.getCategoryPost($scope.workshop_id).then(function (data) {
     //     $rootScope.editable_post=data;
@@ -190,24 +223,25 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 			console.log($rootScope.isCreator)
         } , function(err){
             console.log(err);
-        });
-    }
-
-    $scope.editWorkshop=function (workshop_id,cat_id){
-        console.log('gwa edit al workshop',workshop_id);
-        var editable={workshop_id,cat_id}
-        categories.editWorkshop(editable).then(function(data){
-            $rootScope.editable_workshop=data
-            var data = localStorage.setItem("workshop", JSON.stringify(data));
-            console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_workshop)
-
-            $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
-        } , function(err){
-            console.log(err);
-
 
         });
     }
+
+    // $scope.editWorkshop=function (workshop_id,cat_id){
+    //     console.log('gwa edit al workshop',workshop_id);
+    //     var editable={workshop_id,cat_id}
+    //     categories.editWorkshop(editable).then(function(data){
+    //         $rootScope.editable_workshop=data
+    //         var data = localStorage.setItem("workshop", JSON.stringify(data));
+    //         console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_workshop)
+    //
+    //         $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
+    //     } , function(err){
+    //         console.log(err);
+    //         // $location.url('/500');
+    //
+    //     });
+    // }
     $scope.deleteWorkshop=function (workshop_id,cat_id) {
         var editable={workshop_id,cat_id}
         categories.deleteWorkshop(editable).then(function(data){
@@ -217,14 +251,14 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             $location.url('/category/'+cat_id+'/workshops')
         } , function(err){
             console.log(err);
-
+            // $location.url('/500');
 
         });
     }
     $scope.saveupdated=function (vaild){
 
         if (vaild) {
-            var category= $routeParams['category_id'];
+            var category= $rootScope.cat_id;
             var mentor_id= $rootScope.cur_user.id;
             $rootScope.editable_workshop.category_id=category
 
@@ -234,11 +268,11 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             categories.updatedworkshop(workshopdata).then(function(data){
                 console.log('in update al workshop lma da5lt anadi 3la method al factory w geet')
                 console.log("the workshop request from server is ",data);
-                $location.url('/category/'+cat_id+'/workshops')
+                $location.url('/category/'+category+'/workshops')
 
             } , function(err){
                 console.log(err);
-
+                // $location.url('/500');
             });
 
         }
@@ -259,27 +293,27 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             console.log($rootScope.isPostCreator)
         } , function(err){
             console.log(err);
-
+            // $location.url('/500');
 
         });
 
 
     }
 
-    $scope.editPost=function (post_id,cat_id){
-        console.log('gwa edit al post',post_id);
-        var editable={post_id,cat_id}
-        categories.editPost(editable).then(function(data){
-            $rootScope.editable_post=data
-            console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_post)
-            var store= localStorage.setItem("post", JSON.stringify(data));
-            $location.url('/category/'+cat_id+'/posts/'+post_id+'/editpost')
-        } , function(err){
-            console.log(err);
-
-
-        });
-    }
+    // $scope.editPost=function (post_id,cat_id){
+    //     console.log('gwa edit al post',post_id);
+    //     var editable={post_id,cat_id}
+    //     categories.editPost(editable).then(function(data){
+    //         $rootScope.editable_post=data
+    //         console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_post)
+    //         var store= localStorage.setItem("post", JSON.stringify(data));
+    //         $location.url('/category/'+cat_id+'/posts/'+post_id+'/editpost')
+    //     } , function(err){
+    //         console.log(err);
+    //         // $location.url('/500');
+    //
+    //     });
+    // }
     $scope.deletePost=function (post_id,cat_id) {
         var editable={post_id,cat_id}
         categories.deletePost(editable).then(function(data){
@@ -289,14 +323,14 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
         } , function(err){
             console.log(err);
-
+            // $location.url('/500');
 
         });
     }
     $scope.saveupdatedpost=function (vaild){
 
         if (vaild) {
-            var category= $routeParams['category_id'];
+            var category= $rootScope.cat_id;
             var mentor_id= $rootScope.cur_user.id;
             $rootScope.editable_post.category_id=category
 
@@ -306,11 +340,11 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             categories.updatedpost(postdata).then(function(data){
                 console.log('in update al post lma da5lt anadi 3la method al factory w geet')
                 console.log("the workshop request from server is ",data);
-                $location.url('/category/'+cat_id+'/posts')
+                $location.url('/category/'+category+'/posts')
 
             } , function(err){
                 console.log(err);
-
+                // $location.url('/500');
             });
 
         }
@@ -332,36 +366,36 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             console.log($rootScope.isEventCreator)
         } , function(err){
             console.log(err);
-
+            // $location.url('/500');
 
         });
 
 
     }
 
-    $scope.editEvent=function (event_id,cat_id){
-        console.log('gwa edit al event',event_id);
-        var editable={event_id,cat_id}
-        categories.editEvent(editable).then(function(data){
-
-            $rootScope.editable_event=data
-            var store= localStorage.setItem("event", JSON.stringify(data))
-            $rootScope.editable_event.time_from =new Date(data.time_from)
-            $rootScope.editable_event.time_to =new Date(data.time_to)
-            // $scope.editable_event.time_from = new Time(data.time_from)
-            // $scope.editable_event.time_to = new Time(data.time_to)
-            $rootScope.editable_event.date_from = new Date(data.date_from)
-            $rootScope.editable_event.date_to = new Date(data.date_to)
-
-            console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_event)
-            $location.url('/category/'+cat_id+'/events/'+event_id+'/editevent')
-
-        } , function(err){
-            console.log(err);
-
-
-        });
-    }
+    // $scope.editEvent=function (event_id,cat_id){
+    //     console.log('gwa edit al event',event_id);
+    //     var editable={event_id,cat_id}
+    //     categories.editEvent(editable).then(function(data){
+    //
+    //         $rootScope.editable_event=data
+    //         var store= localStorage.setItem("event", JSON.stringify(data))
+    //         $rootScope.editable_event.time_from =new Date(data.time_from)
+    //         $rootScope.editable_event.time_to =new Date(data.time_to)
+    //         // $scope.editable_event.time_from = new Time(data.time_from)
+    //         // $scope.editable_event.time_to = new Time(data.time_to)
+    //         $rootScope.editable_event.date_from = new Date(data.date_from)
+    //         $rootScope.editable_event.date_to = new Date(data.date_to)
+    //
+    //         console.log('7asl al edit ya3ni haygeb al data',$rootScope.editable_event)
+    //         $location.url('/category/'+cat_id+'/events/'+event_id+'/editevent')
+    //
+    //     } , function(err){
+    //         console.log(err);
+    //         // $location.url('/500');
+    //
+    //     });
+    // }
     $scope.deleteEvent=function (event_id,cat_id) {
         var editable={event_id,cat_id}
         categories.deleteEvent(editable).then(function(data){
@@ -371,14 +405,14 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             // $location.url('/category/'+cat_id+'/workshops/'+workshop_id+'/editworkshop')
         } , function(err){
             console.log(err);
-
+            // $location.url('/500');
 
         });
     }
     $scope.saveupdatedevent=function (vaild){
         console.log('hhhhhhhhhhhhhhhh')
         if (vaild) {
-            var category= $routeParams['category_id'];
+            var category= $rootScope.cat_id;
             var mentor_id= $rootScope.cur_user.id;
             console.log('hhhhhhhhhhhhhhhh')
             $rootScope.editable_event.category_id=category
@@ -397,7 +431,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
             } , function(err){
                 console.log(err);
-
+                // $location.url('/500');
             });
 
         }
@@ -412,7 +446,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
         $scope.allposts_mentorsreviews = data;
     } , function(err){
         console.log(err);
-
+        // $location.url('/500');
     });
 
     $scope.rev={}
@@ -427,7 +461,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             $route.reload();
         } , function(err){
             console.log(err);
-
+            // $location.url('/500');
         });
     }
 
@@ -521,6 +555,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     // });
 
 //----------------------------single----post---------------------------------------
+
 	if ($scope.post_id) {
 		categories.getCategoryPost($scope.post_id).then(function (data) {
 	        // console.log("inside controller ESRAAAAAAAAAAAA" , data.is_liked[0].liked)
@@ -545,6 +580,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
 	    }, function (err) {
 	        console.log(err);
+            // $location.url('/500');
 	    });
 	}
 
@@ -556,7 +592,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
         var subscriber_id = $rootScope.cur_user.id
         var subscribed = 1;
 
-        var category_id = $routeParams['category_id'];
+        var category_id = $rootScope.cat_id;
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.subscribe(obj).then(function (data) {
@@ -566,6 +602,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 			$route.reload();
         }, function (err) {
             console.log(err);
+            // $location.url('/500');
         });
 
     }
@@ -576,7 +613,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
         var subscriber_id = $rootScope.cur_user.id
         var subscribed = 0;
 
-        var category_id = $routeParams['category_id'];
+        var category_id = $rootScope.cat_id;
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.unsubscribe(obj).then(function (data) {
@@ -586,12 +623,13 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 			 $route.reload();
         }, function (err) {
             console.log(err);
+            // $location.url('/500');
         });
     }
 // untalent in category
     $scope.untalent = function () {
         var talent_id = $rootScope.cur_user.id
-        var category_id = $routeParams['category_id'];
+        var category_id = $rootScope.cat_id;
         var obj = {talent_id, category_id}
         console.log(obj);
         categories.untalent(obj).then(function (data) {
@@ -603,12 +641,13 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 			 $route.reload();
         }, function (err) {
             console.log(err);
+            // $location.url('/500');
         });
     }
 // unsmentor in category
     $scope.unmentor = function () {
         var mentor_id = $rootScope.cur_user.id
-        var category_id = $routeParams['category_id'];
+        var category_id = $rootScope.cat_id;
 		// mentor.action = "unmentor";
         var obj = {mentor_id, category_id}
         console.log(obj);
@@ -616,6 +655,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 			 $route.reload();
         }, function (err) {
             console.log(err);
+            // $location.url('/500');
         });
     }
 
@@ -630,7 +670,9 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
         }, function (err) {
             console.log("Add Wiziq Teacher ERROR section");
-            console.log(err);
+            // console.log(err);
+            // $location.url('/500');
+
         });
     }
 
@@ -652,7 +694,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
 	$scope.newcomment = function(vaild) {
 	   if (vaild) {
-   var post_id=$routeParams['post_id'];
+   var post_id= $rootScope.post_id;
    		$scope.comment.post_id=post_id
 		 var commentdata=$scope.comment
 		 console.log("comment data",commentdata);
@@ -662,7 +704,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
 		 } , function(err){
 		  console.log(err);
-
+		  // $location.url('/500');
 		 });
 
 	   }}
@@ -676,7 +718,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
                $route.reload();
            } , function(err){
                console.log(err);
-
+               // $location.url('/500');
            });
        }
 

@@ -12,6 +12,7 @@ angular.module('myApp').controller("categories",function($location,$scope,$http,
 
 	$scope.cat_id= $routeParams['category_id'];
 
+
     categories.getAllCategory().then(function (data) {
         $scope.categories = data.data;
         console.log("categories array", $scope.categories);
@@ -19,5 +20,6 @@ angular.module('myApp').controller("categories",function($location,$scope,$http,
     }, function (err) {
         $scope.category_exist = 0
         console.log(err);
+        // $location.url('/500');
     });
 });

@@ -1,4 +1,4 @@
-angular.module('myApp').controller("competitions",function($location,$route,Competitions,categories,$scope,$http,posts,$rootScope,$q,user){
+angular.module('talentoon').controller("competitions",function(Competitions,$scope){
 
     Competitions.getAllCompetitions().then(function (data) {
         $scope.competitions = data.data;

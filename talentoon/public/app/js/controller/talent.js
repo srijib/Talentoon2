@@ -1,4 +1,4 @@
-angular.module('myApp').controller("talents",function($scope,$http,categories,$routeParams,$rootScope,$timeout){
+angular.module('myApp').controller("talents",function($location,$scope,$http,categories,$routeParams,$rootScope,$timeout,user){
 	// $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 
   var reviewfilesuploaded = []
@@ -6,7 +6,8 @@ angular.module('myApp').controller("talents",function($scope,$http,categories,$r
   var talent = {}
 
 
-	$scope.completeTalentProfile = function(valid){
+
+    $scope.completeTalentProfile = function(valid){
 
 	if (reviewfilesuploaded.length > 0)
 	{
@@ -29,11 +30,13 @@ angular.module('myApp').controller("talents",function($scope,$http,categories,$r
 				console.log("in then ")
 			}, function (error) {
 				console.log(error)
+                // $location.url('/500');
 			});
 
 
 		}, function (err) {
 			console.log(err)
+            // $location.url('/500');
 		});
 
 

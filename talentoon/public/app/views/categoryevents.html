@@ -5,32 +5,33 @@
         <div class="thumbnail">
 
           <div ng-if="event.media_type == 'image'">
-          <img src="http://localhost:8000/{{event.media_url}}" alt="" class="img-circle" style="height:80px;" >
+          <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt="" class="img-circle" style="height:80px;" >
           </div>
           <div ng-if="event.media_type == 'video' ">
 
            <video   controls  preload="auto" style="height: 240px;">
 
-          <source src="http://localhost:8000/{{event.media_url}}"  />
+          <source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}"  />
         </video>
 
           </div>
             <div ng-if="event.media_type == 'audio'">
           <audio controls>
 
-        <source src="http://localhost:8000/{{event.media_url}}" />
+        <source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" />
 
         </audio>
         </div>
 
-            <!-- <img src="http://localhost:8000/{{event.media_url}}" class="img-circle" style="height:80px;" /> -->
+            <!-- <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" class="img-circle" style="height:80px;" /> -->
             <h4 style="color:Purple ">{{event.title}}</h4>
             <h4 style="color:Purple ">{{event.description}}</h4>
             <h4 style="color:Purple ">{{event.created_at}}</h4>
             <input type="hidden" ng-model=event.event_id value="{{event.id}}">
         </div>
         <!-- <a href="#!/category/{{event.category_id}}/events/{{event.id}}" class="btn btn-default" role="button" >details</a> -->
-        <a ng-click="editEvent(event.id,event.category_id)" class="btn btn-default" role="button" >edit</a>
+        <!--ng-click="editEvent(event.id,event.category_id)"-->
+        <a  href="#!/category/{{event.category_id}}/events/{{event.id}}/editevent" class="btn btn-default" role="button" >edit</a>
         <a ng-click="deleteEvent(event.id,event.category_id)" class="btn btn-default" role="button" >delete</a>
     </div>
 </div>

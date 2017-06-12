@@ -111,7 +111,7 @@ class CategoriesController extends Controller
 
         $posts = DB::table('posts')
         ->join('users', 'posts.user_id', '=','users.id' )
-        ->selectRaw('CONCAT("http://172.16.3.77:8000","/",posts.media_url) as url,posts.*,count(likeables.id) as like_count,posts.id,users.last_name,users.first_name,users.image as user_image,users.id as user_id')
+        ->selectRaw('CONCAT("http://192.168.6.4:8000","/",posts.media_url) as url,posts.*,count(likeables.id) as like_count,posts.id,users.last_name,users.first_name,users.image as user_image,users.id as user_id')
             ->leftJoin('likeables', function($join)
                   {
                       $join->on('posts.id','=','likeables.likeable_id')
