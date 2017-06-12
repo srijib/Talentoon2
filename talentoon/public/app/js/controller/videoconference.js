@@ -1,10 +1,12 @@
-angular.module('myApp').controller("videoconference",function($scope,$http,videoconference,$routeParams,$rootScope,$timeout,$window){
+angular.module('myApp').controller("videoconference",function($location,$scope,$http,videoconference,$routeParams,$rootScope,$timeout,$window,user){
+
 
 
     //create wiziq Session with teacher ID set already in local storage
     //Warning there is only one teacher session can be scheduled at one time
     //because the teacher numbers are limited and the local storage is set once not for every mentor login
     $scope.create_wiziq_session = function() {
+        alert("6")
         var teacher_id = $window.localStorage.getItem("wiziq_teacher_id");
         var teacher_email = $window.localStorage.getItem("wiziq_teacher_email");
         if(teacher_id){
@@ -15,6 +17,7 @@ angular.module('myApp').controller("videoconference",function($scope,$http,video
                 console.log("iam here",data)
             } , function(err){
                 console.log(err);
+                // $location.url('/500');
             });
         }
     }

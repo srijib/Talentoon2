@@ -1,0 +1,234 @@
+@font-face {
+  font-family: regular;
+  src: url(../../Fonts/Roboto-Regular.ttf); }
+@font-face {
+  font-family: medium;
+  src: url(../../Fonts/Roboto-Medium.ttf); }
+@font-face {
+  font-family: blak;
+  src: url(../../Fonts/Roboto-Black.ttf); }
+@font-face {
+  font-family: bold;
+  src: url(../../Fonts/Roboto-Bold.ttf); }
+@font-face {
+  font-family: boldco;
+  src: url(../../Fonts/Roboto-BoldCondensed.ttf); }
+@font-face {
+  font-family: light;
+  src: url(../../Fonts/Roboto-Light.ttf); }
+@font-face {
+  font-family: thin;
+  src: url(../../Fonts/Roboto-Thin.ttf); }
+body {
+  font-size: 0px;
+  margin: 0px;
+  padding: 0px;
+  background-color: #FFFFFF;
+  outline: 0px; }
+  body:focus, body:active, body:visited, body:hover {
+    outline: 0px; }
+
+#allRecentEvents, .evMainRow {
+  margin: 30px 0px;
+  padding: 0px;
+  background-color: transparent;
+  border: 1px solid #E4E4E4; }
+  #allRecentEvents .thumbnail, .evMainRow .thumbnail {
+    padding: 0px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: 0px;
+    border-radius: 0px; }
+    #allRecentEvents .thumbnail .evDefaultImg, .evMainRow .thumbnail .evDefaultImg {
+      padding: 0px;
+      margin: 0px; }
+      #allRecentEvents .thumbnail .evDefaultImg img, .evMainRow .thumbnail .evDefaultImg img {
+        width: 100%;
+        height: 294px; }
+      #allRecentEvents .thumbnail .evDefaultImg video, .evMainRow .thumbnail .evDefaultImg video {
+        width: 100%;
+        height: 300px;
+        object-fit: fill; }
+    #allRecentEvents .thumbnail .evTitle, .evMainRow .thumbnail .evTitle {
+      font-family: bold;
+      font-size: 20px;
+      color: #FFB733; }
+      #allRecentEvents .thumbnail .evTitle div a, .evMainRow .thumbnail .evTitle div a {
+        font-family: bold;
+        font-size: 20px;
+        color: #FFB733; }
+        #allRecentEvents .thumbnail .evTitle div a:hover, .evMainRow .thumbnail .evTitle div a:hover {
+          text-decoration: none; }
+      #allRecentEvents .thumbnail .evTitle div i, .evMainRow .thumbnail .evTitle div i {
+        font-size: 20px;
+        color: #808285;
+        margin-top: 20px; }
+    #allRecentEvents .thumbnail .evCaption, .evMainRow .thumbnail .evCaption {
+      margin: 0px;
+      padding: 10px 20px;
+      overflow: hidden;
+      height: 14%; }
+      #allRecentEvents .thumbnail .evCaption p, .evMainRow .thumbnail .evCaption p {
+        font-family: regular;
+        font-size: 14px;
+        text-align: left;
+        margin-bottom: 15px;
+        vertical-align: middle;
+        width: 100%; }
+    #allRecentEvents .thumbnail .evDetails, .evMainRow .thumbnail .evDetails {
+      font-size: 10px; }
+      #allRecentEvents .thumbnail .evDetails .eventScd, .evMainRow .thumbnail .evDetails .eventScd {
+        margin-bottom: 15px;
+        padding: 0;
+        padding-left: 10px; }
+        #allRecentEvents .thumbnail .evDetails .eventScd .bigdate, .evMainRow .thumbnail .evDetails .eventScd .bigdate {
+          width: 60%;
+          font-size: 12px;
+          font-family: light; }
+          #allRecentEvents .thumbnail .evDetails .eventScd .bigdate i, .evMainRow .thumbnail .evDetails .eventScd .bigdate i {
+            font-size: 40px;
+            color: #6A0C38;
+            margin: 0px;
+            padding: 0px; }
+          #allRecentEvents .thumbnail .evDetails .eventScd .bigdate p, .evMainRow .thumbnail .evDetails .eventScd .bigdate p {
+            font-size: 40px;
+            font-family: medium;
+            display: inline-block; }
+        #allRecentEvents .thumbnail .evDetails .eventScd .labels, .evMainRow .thumbnail .evDetails .eventScd .labels {
+          width: 46%;
+          display: inline-block;
+          text-align: left; }
+          #allRecentEvents .thumbnail .evDetails .eventScd .labels .label, .evMainRow .thumbnail .evDetails .eventScd .labels .label {
+            background-color: transparent;
+            color: #231F20;
+            text-align: left;
+            font-size: 12px;
+            font-family: light;
+            padding: 0px; }
+          #allRecentEvents .thumbnail .evDetails .eventScd .labels .first, .evMainRow .thumbnail .evDetails .eventScd .labels .first {
+            display: block;
+            padding: 0px;
+            margin-bottom: 7px; }
+    #allRecentEvents .thumbnail .userPic, .evMainRow .thumbnail .userPic {
+      font-family: bold;
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #FFB733;
+      display: inline-block;
+      margin-bottom: 20px;
+      margin-left: 18px;
+      vertical-align: bottom; }
+      #allRecentEvents .thumbnail .userPic:hover, .evMainRow .thumbnail .userPic:hover {
+        text-decoration: none; }
+      #allRecentEvents .thumbnail .userPic span, .evMainRow .thumbnail .userPic span {
+        display: inline-block;
+        color: #525252;
+        font-family: medium; }
+      #allRecentEvents .thumbnail .userPic img, .evMainRow .thumbnail .userPic img {
+        width: 40px;
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block; }
+    #allRecentEvents .thumbnail .going, .evMainRow .thumbnail .going {
+      margin-top: 0px;
+      display: block;
+      text-align: right; }
+      #allRecentEvents .thumbnail .going .btn, .evMainRow .thumbnail .going .btn {
+        background-color: #6A0C38;
+        color: #FFFFFF;
+        border: 0px;
+        vertical-align: middle;
+        padding: 10px;
+        border-radius: 25px;
+        width: 120px;
+        margin-bottom: 14px; }
+  #allRecentEvents .row, .evMainRow .row {
+    margin: 0px; }
+  #allRecentEvents #s, .evMainRow #s {
+    color: #231F20;
+    text-align: left;
+    font-size: 12px;
+    font-family: regular;
+    padding: 0px;
+    font-size: 12px; }
+  #allRecentEvents div#secondp, .evMainRow div#secondp {
+    margin-top: 8px; }
+  #allRecentEvents #socialHolder, .evMainRow #socialHolder {
+    display: inline-block;
+    margin-top: 5px;
+    text-align: right; }
+    #allRecentEvents #socialHolder #socialShare .btn-info, .evMainRow #socialHolder #socialShare .btn-info {
+      margin: 0px;
+      padding: 0px;
+      background-color: transparent;
+      border: 0px; }
+      #allRecentEvents #socialHolder #socialShare .btn-info .fa-share-alt, .evMainRow #socialHolder #socialShare .btn-info .fa-share-alt {
+        color: #6A0C38;
+        font-size: 30px; }
+    #allRecentEvents #socialHolder #socialShare .share .caret, .evMainRow #socialHolder #socialShare .share .caret {
+      display: none; }
+    #allRecentEvents #socialHolder #socialShare .share .dropdown-menu, .evMainRow #socialHolder #socialShare .share .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      min-width: 0px;
+      padding: 0;
+      margin: 0; }
+      #allRecentEvents #socialHolder #socialShare .share .dropdown-menu li a:hover i, .evMainRow #socialHolder #socialShare .share .dropdown-menu li a:hover i {
+        color: #FFB733; }
+
+#allTopEvents {
+  margin: 30 0px;
+  text-align: center; }
+  #allTopEvents .btn-lg {
+    background-color: #6A0C38;
+    border-radius: 50px;
+    color: #FFB733;
+    font-family: medium;
+    font-size: 16px;
+    padding: 15px;
+    width: 150px;
+    margin-bottom: 0px; }
+    #allTopEvents .btn-lg i {
+      color: #FFB733; }
+  #allTopEvents h2 {
+    color: #45132E;
+    font-family: bold;
+    font-size: 30px;
+    text-align: center;
+    margin: 33px; }
+  #allTopEvents .top1 {
+    margin-bottom: 30px;
+    margin-left: 40px;
+    padding: 0px;
+    border: 1px solid #E4E4E4;
+    border-radius: 30px;
+    text-align: left;
+    background-color: #E4E4E4; }
+    #allTopEvents .top1 img {
+      width: 100%;
+      height: auto;
+      overflow-x: hidden; }
+    #allTopEvents .top1 div {
+      padding: 15px;
+      margin: 10 0px; }
+      #allTopEvents .top1 div img {
+        width: 30px;
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block;
+        margin-right: 5px; }
+      #allTopEvents .top1 div span {
+        font-family: bold;
+        font-size: 16px;
+        color: #FFB733;
+        margin-left: 5px;
+        vertical-align: middle; }
+      #allTopEvents .top1 div a {
+        font-family: medium;
+        color: #525252;
+        margin: 5 0px;
+        font-size: 16px;
+        display: block;
+        cursor: pointer; }
+
+/*# sourceMappingURL=allEvents.css.map */

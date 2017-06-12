@@ -204,20 +204,20 @@
                             <VOTED ng-if="post.is_voted == 1">
                                 <a ng-click="vote(post.id)">
                                     <i class="glyphicon glyphicon-check" aria-hidden="true" ></i>
-                                    <span class="badge">8</span>
+                                    <span class="badge">{{post.votes_count}}</span>
                                 </a>
                             </VOTED>
                             <NOTVOTED ng-if="post.is_voted != 1">
                                 <YOURS ng-if="post.talent_id == cur_user.id">
                                     <a ng-click="vote(post.id)">
                                         <i class="fa fa-heart" aria-hidden="true" ></i>
-                                        <span class="badge">8</span>
+                                        <span class="badge">{{post.votes_count}}</span>
                                     </a>
                                 </YOURS>
                                 <NOTYOURS ng-if="post.talent_id != cur_user.id">
                                     <a ng-click="vote(post.id)">
                                         <i class="fa fa-heart" aria-hidden="true" ></i>
-                                        <span class="badge">8</span>
+                                        <span class="badge">{{post.votes_count}}</span>
                                     </a>
                                 </NOTYOURS>
                             </NOTVOTED>
@@ -271,7 +271,7 @@
 
                         </div>
 
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" class="collapse">
+                        <!-- <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" class="collapse">
                             <div class="panel panel-default comments" >
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
@@ -431,7 +431,7 @@
                                 </div><!--panel-collapse-->
                             </div><!--2nd panel-->
 
-                        </div><!--panel-group-->
+                        </div><!--panel-group--> -->
 
                     </div>
 

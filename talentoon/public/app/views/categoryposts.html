@@ -157,9 +157,11 @@
               <h3>{{post.title}}</h3>
               <input type="hidden" ng-model=post.post_id value="{{post.id}}"></input>
             </div>
-
+              <!--ng-click="editPost(post.id,post.category_id)"-->
             <div class="col-lg-4 edits ">
-              <i class="fa fa-pencil" aria-hidden="true" ng-click="editPost(post.id,post.category_id)"></i>
+              <a href="#!/category/{{cat_id}}/posts/{{post.id}}/editpost">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </a>
               <i class="fa fa-trash" aria-hidden="true" ng-click="deletePost(post.id,post.category_id)"></i>
             </div>
 

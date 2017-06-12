@@ -112,5 +112,27 @@ angular.module('talentoon').config(function($stateProvider,$httpProvider,$sceDel
           }
         })
 
+        .state('app.categorycompetitions', {
+          url: '/category/:category_id/competitions/:competition_id',
+          views: {
+            "pageContent": {
+              templateUrl: "templates/singlecompetition.html",
+              controller: "singleCompetition"
+            }
+          }
+        })
+
+        .state('app.addcompetitionpost', {
+          url: '/category/:category_id/competitions/:competition_id/addpost',
+          views: {
+            "pageContent": {
+              templateUrl: "templates/addcompetitionpost.html",
+              controller: "singleCompetition"
+            }
+          }
+        })
+
+
+    
 
 })

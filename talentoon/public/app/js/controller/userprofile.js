@@ -5,18 +5,42 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
         $scope.user_id = $rootScope.cur_user.id
     }
 
+
   user.userprofile().then(function(data){
+      console.log("...............user profile is................",$scope.userprofile);
       $scope.userprofile=data.data;
       $scope.user_points_from_mentors_reviews = $scope.userprofile.points_number;
       $scope.reward_image = $scope.userprofile.reward_image;
       $scope.level = $scope.userprofile.level;
       // $scope.user_level = getuserlevel($scope.userprofile.points[0].points);
       // console.log("user profile pointssss are ",$scope.userprofile.points[0]);
-      console.log("user profile is",$scope.userprofile);
+
+      console.log("...............user profile is................",$scope.userprofile);
 	} , function(err){
 		console.log(err);
 	});
+    console.log('el current user ahoooooooooo',$rootScope.cur_user);
+    // if($rootScope.cur_user.date_of_birth){
+    //     var dob=$rootScope.cur_user.date_of_birth;
+    //     $rootScope.cur_user.date_of_birth=new Date(dob);
+    // }
+    // $rootScope.dob=$rootScope.cur_user.date_of_birth;
+    // $rootScope.cur_user.date_of_birth=new Date($rootScope.cur_user.date_of_birth);
+    // user.editprofile($rootScope.cur_user.id).then(function(data){
+    //     console.log('<<<<<<<<< user update dataaaaaaaaaaaa >>>>>>>>',data);
+    //     $rootScope.cur_user=data;
+    //     var dob=$rootScope.cur_user.date_of_birth;
+    //     $rootScope.cur_user.date_of_birth=new Date(dob);
+    //     $rootScope.fname= $rootScope.cur_user.first_name;
+    //     $rootScope.lname=$rootScope.cur_user.last_name;
+    //     console.log('el current user ahoooooooooo',$rootScope.cur_user)
+    // } , function(err){
+    //     console.log(err);
+    //     // $location.url('/500');
+    //
+    // });
 
+<<<<<<< HEAD
 
     user.user($scope.user_id).then(function(data){
             console.log("data of users",data.data);
@@ -118,6 +142,7 @@ console.log(obj);
       });
 
 }
+
     // user.editprofile($rootScope.cur_user.id).then(function(data){
     //     $rootScope.cur_user=data;
     //     var dob=$rootScope.cur_user.date_of_birth;
@@ -128,6 +153,7 @@ console.log(obj);
     //     console.log(err);
     //
     // });
+
   // user.displayShared().then(function(data){
   //    console.log("shares",data.data.shares);
   //   //  $scope.allPosts = data.data.shares.concat($scope.userposts);
@@ -192,80 +218,82 @@ console.log(obj);
         // $scope.userinfo=data.data;
         console.log("user profile posts MINAAA", data.data.follow);
 
-    }, function (err) {
-        console.log(err);
+  } , function(err){
+    console.log(err);
+      // $location.url('/500');
 
-    });
-    $scope.editprofile = function () {
-        console.log($rootScope.cur_user.id);
-        user.editprofile($rootScope.cur_user.id).then(function (data) {
-            console.log(data);
-            $rootScope.userupdate = data;
-            $location.url('/editprofile');
-            $rootScope.fname = $rootScope.userupdate.first_name;
-            $rootScope.lname = $rootScope.userupdate.last_name;
-        }, function (err) {
-            console.log(err);
-
-
-        });
-    }
-
-
-    $scope.updateuserprofile = function (valid) {
-        console.log('kkkkkkkkkkk', $scope.userupdate)
-
-        $scope.userupdate.image = $rootScope.profilePictureFile.name;
-        console.log("user image is", $scope.userupdate.image);
+  });
+  // $scope.editprofile=function () {
+  //     console.log($rootScope.cur_user.id);
+  //     user.editprofile($rootScope.cur_user.id).then(function(data){
+  //         console.log(data);
+  //     $rootScope.cur_user=data;
+  //     // $location.url('/editprofile');
+  //     $rootScope.fname= $rootScope.cur_user.first_name;
+  //     $rootScope.lname=$rootScope.cur_user.last_name;
+  //     } , function(err){
+  //         console.log(err);
+  //         // $location.url('/500');
+  //
+  //     });
+  // }
 
 
-        if ($scope.userupdate.userpassword) {
-            $scope.password = true;
-            console.log('i entered here')
-        }
-        if ($scope.userupdate.newpassword === $scope.userupdate.repassword && $scope.userupdate.newpassword && $scope.userupdate.repassword) {
-            $scope.repassword = true;
-            console.log('iam here')
-        }
-        if (valid) {
-            console.log('feh user password', $scope.password)
-            console.log('da5lt al etnen passwords', $scope.repassword)
-            console.log($scope.userupdate.newpassword)
-            //for checking on password in backend
-            var userdata = $scope.userupdate
-            if ($scope.repassword && $scope.password) {
-                console.log('da5lt koll 7aga ')
-                // var userdata = $scope.userupdate
-                console.log('y simnaaaaaaa');
-                user.checkpassword(userdata).then(function (data) {
-                    console.log('y simnaaaaaaa');
-                    if (data == 'ok') {
-                        $location.url('/');
-                        $route.reload();
-                    } else {
-                        console.log(data)
-                        // alert('enter your password right')
-                    }
-                }, function (err) {
-                    console.log(err);
-                });
+  $scope.updateuserprofile=function(valid){
+      console.log('kkkkkkkkkkk',$scope.userupdate)
 
-            } else {
-                //for updating data directly
+      if($rootScope.cur_user.userpassword ){
+          $scope.password=true;
+          console.log('i entered here')
+      }
+      if($rootScope.cur_user.newpassword===$rootScope.cur_user.repassword && $rootScope.cur_user.newpassword && $rootScope.cur_user.repassword){
+          $scope.repassword=true;
+          console.log('iam here')
+      }
+      if (valid) {
+          console.log('feh user password',$scope.password)
+          console.log('da5lt al etnen passwords',$scope.repassword)
+          console.log($rootScope.cur_user.newpassword)
+          //for checking on password in backend
+          var userdata = $rootScope.cur_user
+          if ($scope.repassword && $scope.password){
+              console.log('da5lt koll 7aga ')
+              // var userdata = $scope.userupdate
+              console.log('y simnaaaaaaa',userdata);
+              user.checkpassword(userdata).then(function (data) {
+                  console.log('y simnaaaaaaa');
+                  if (data == 'ok') {
+                      $location.url('#!/');
+                      $route.reload();
+                  }else{
+                      console.log(data)
+                      // alert('enter your password right')
+                  }
+              }, function (err) {
+                  console.log(err);
+                  // $location.url('/500');
+              });
 
-                console.log('dddddddddddggggggggggg')
+          }else{
+              //for updating data directly
 
-                user.updateuser(userdata).then(function (data) {
-                    console.log(data)
-                }, function (err) {
-                    console.log(err);
-                });
+              console.log('dddddddddddggggggggggg')
 
-            }
+              user.updateuser(userdata).then(function (data) {
+                  console.log(data)
+              }, function (err) {
+                  console.log(err);
+                  // $location.url('/500');
+              });
+
+          }
 
 
-        }
-    }
+      }
+  }
+
+
+    //edit user profile function
 
     // $scope.editprofile=function () {
     //     console.log($rootScope.cur_user.id);
@@ -291,7 +319,7 @@ console.log(obj);
         console.log("countries", $scope.countries);
     }, function (err) {
         console.log(err);
-
+        // $location.url('/500');
     });
 
 
@@ -303,10 +331,12 @@ console.log(obj);
             console.log(data);
             $route.reload();
 
+
         }, function (err) {
             console.log(err);
 
         });
+
 
 
     }
@@ -320,12 +350,15 @@ console.log(obj);
             console.log(data);
             console.log("el un follow", data);
 
+
             $route.reload();
 
         }, function (err) {
             console.log(err);
 
+
         });
+
 
     }
 
@@ -342,6 +375,7 @@ console.log(obj);
             $route.reload();
         }, function (err) {
             console.log(err);
+
 
         });
     }

@@ -1,27 +1,42 @@
-angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$routeParams,$rootScope,categories,user){
+angular.module('myApp').controller("homec",function($location,$route,Home,$scope,$http,$routeParams,$rootScope,categories,user){
+    Home.getTopPosts().then(function(data){
 
-
-
-	Home.getTopPosts().then(function(data){
         console.log("el top posts ba2a",data);
 		$scope.topposts=data.posts;
         $scope.comments=data.comments;
         console.log("comments",$scope.comments);
-        $scope.post_exist = true;
+
+        if($scope.topposts.length){
+            $scope.post_exist = true;
+        }
+        else{
+            $scope.post_exist = false;
+        }
+
 	} , function(err){
 		console.log("No posts existing, error: ",err);
         $scope.post_exist = false;
+        // $location.url('/500');
 
 	});
 
     Home.getEvents().then(function(data){
 
         $scope.events=data;
-		console.log("Eventsssssssssssss here",data);
-        $scope.event_exist = true;
+
+        if($scope.events.length){
+            console.log("Eventsssssssssssss here",data);
+            $scope.event_exist = true;
+        }
+        else{
+            $scope.event_exist = false;
+        }
+
+
     } , function(err){
         console.log(err);
         $scope.event_exist = false;
+        // $location.url('/500');
 
     });
     Home.getWorkshops().then(function(data){
@@ -29,11 +44,19 @@ angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$ro
         $scope.workshops=data;
 		// $scope.places=data.max_capacity-data.enroll_count;
 
+        if($scope.workshops.length){
+            $scope.workshop_exist = true;
+        }
+        else{
+            $scope.workshop_exist = false;
+        }
+
 		console.log("workshopsssssssssssss is here",data);
-        $scope.workshop_exist = true;
+
     } , function(err){
         console.log(err);
         $scope.workshop_exist = false;
+        // $location.url('/500');
 
     });
 
@@ -43,6 +66,7 @@ angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$ro
 		$scope.post=data;
 	} , function(err){
 		console.log(err);
+        // $location.url('/500');
 
 	});
     $scope.comment={}
@@ -52,6 +76,7 @@ angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$ro
             console.log("saved success comment",data)
         } , function(err){
             console.log(err);
+            // $location.url('/500');
 
         });
     }
@@ -84,3 +109,44 @@ angular.module('myApp').controller("homec",function($route,Home,$scope,$http,$ro
 
 
 })
+
+
+
+
+
+///////////
+
+
+
+if($scope.categoryPosts.length){
+    $scope.category_posts_exists = 1;
+}else{
+    $scope.category_posts_exists = 0;
+}
+if($scope.categoryEvents.length){
+    $scope.category_events_exists = 1;
+}else{
+    $scope.category_events_exists = 0;
+}
+
+if($scope.categoryWorkshops.length){
+    $scope.category_workshops_exists = 1;
+}else{
+    $scope.category_workshops_exists = 0;
+}
+
+if($scope.cur_user){
+    $scope.cur_user_exists = 1;
+}else{
+    $scope.cur_user_exists = 0;
+}
+
+if($scope.category_details){
+    $scope.category_details_exists = 1;
+}else{
+    $scope.category_details_exists = 0;
+}
+
+
+
+/////////////

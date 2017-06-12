@@ -1,0 +1,144 @@
+
+
+<ion-view view-title="All competitions ">
+  <ion-content>
+<!-- about competion -->
+    <div class="col-lg-4 col-md-4 col-sm-12 categorySection">
+  <ion-card>
+    <center><img  class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}" alt="" style="height:250px"></center>
+    <center><h3 style="color: #FFB733">{{competition.title}}</h3></center>
+    <p style="margin-left: 28px;
+    margin-right: 19px;">{{competition.description}}</p>
+    <p style="margin-left:28px;margin-right:19px">
+        <span class="labels">
+      <span class="ion-calendar" style="color:#6A0C38"> {{competition.competition_start_date | date : 'd'}}
+
+      {{competition.competition_start_date | date : 'MMM'}} - {{competition.competition_end_date | date : 'd-MMM'}}</span>
+      <br>  <span class="ion-clock" style="color:#6A0C38"> {{competition.competition_start_time}} - {{competition.competition_end_time}}</span>
+    </span>
+<br>
+    <span class="lLabels">
+        <small class="ion-ribbon-b" style="color:#6A0C38"> Level</small><span style="color:#6A0C38" >{{competition.competition_from_level}}</span>
+        -
+        <span style="color:#6A0C38">{{competition.competition_to_level}}</span>
+    </span>
+
+    <span class="lLabels">
+      <center><img  class="img-circle" style="border-radius:50%;width: 35px;" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.mentor_image}}" ></center>
+
+      <center> <span style="color:#6A0C38">   Made By: {{competition.first_name}} {{competition.last_name}}</span>
+  </center>  </span>
+
+    <br>
+    <div class=" col-lg-8  col-md-8 col-sm-12 going" data-toggle="modal" data-target="#Comp1">
+      <center>
+  <div class="opacity">
+
+      <JOINED ng-if="is_joined != 0 && is_joined != 1">
+          <button ng-click="joinCompetition(competition.id)" class="button" style="background-color:#6A0C38;color:white">Accept Challenge</button>
+      </JOINED>
+  </div>
+  </center>
+
+
+ </div>
+  </ion-card>
+
+  <hr>
+  <div >
+    <center>
+      <a href="#/app/category/{{competition.category_id}}/competitions/{{competition.id}}/addpost" class="button"  style="background-color:#6A0C38;color:white">
+          <i class="ion-paper-airplane"></i> New Post
+      </a>
+    </center>
+  </div>
+  </div>
+<!-- end of about of competions- ------------------------------->
+<div  class="recentPosts imageArticle" ng-repeat="post in competitionPosts  track by $index">
+  <div class="list card" >
+
+    <div class="item item-avatar" bordercolor="#6A0C38">
+      <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.user_image}}">
+      <h2 style="color:#6A0C38;margin-right: 111px;">{{post.first_name}} {{post.last_name}}</h2>
+      <p style="color:#6A0C38">{{post.created_at | date:'medium'}}</p>
+    </div>
+<!--  start body item -->
+    <div class="item item-body">
+      <div ng-if="post.competition_post_media_type === 'image'">
+      <img class="full-image" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.competition_post_media_url
+}}">
+</div>
+<!--  start audio -->
+<div ng-if="post.competition_post_media_type == 'audio'">
+
+      <center><h3 style="color: #FFB733">{{post.competition_post_title}}</h3></center>
+  <audio controls>
+
+           <source ng-src="{{post.url}}" type="audio/mp3"/>
+           <p>
+           {{post.competition_post_description}}
+           </p>
+           </audio>
+ </div>
+ <!--  end audio -->
+ <!--  start video  -->
+ <div ng-if="post.competition_post_media_type   == 'video'  ">
+   <video  controls preload="auto" class="video" width="100%">
+     <source ng-src="{{post.url}}"  type="video/mp4"/>
+      </video>
+    </div>
+    <!--  end video  -->
+    <!--  start video &image -->
+    <div ng-if="post.competition_post_media_type == 'video'||post.competition_post_media_type == 'image'">
+    <center>  <p style="color: #FFB733">
+      {{post.competition_post_title}}
+      </p>
+    </center>
+      <p>
+      {{post.competition_post_description}}
+      </p>
+
+<!-- start votes -->
+<div >
+    <VOTED ng-if="post.is_voted == 1">
+        <a ng-click="vote(post.id,$index)">
+            <i class="ion-android-checkbox-outline" ></i>
+            <span  style="color:#6A0C38">{{post.votes_count}}</span>
+        </a>
+    </VOTED>
+    <NOTVOTED ng-if="post.is_voted != 1">
+        <YOURS ng-if="post.talent_id == cur_user">
+            <a>
+                <i class="ion-close-circled" title="it's your post" style="color:#6A0C38"  ></i>
+                <span  style="color:#6A0C38">{{post.votes_count}}</span>
+            </a>
+        </YOURS>
+        <NOTYOURS ng-if="post.talent_id != cur_user">
+            <a ng-click="vote(post.id,$index)">
+                <i class="ion-heart"style="color:#6A0C38" ></i>
+                <span  style="color:#6A0C38">{{post.votes_count}}</span>
+            </a>
+        </NOTYOURS>
+    </NOTVOTED>
+
+
+
+</div>
+
+
+
+
+  <!-- end votes -->
+  </div>
+<!--  end video &image -->
+    </div>
+<!--  end body item -->
+  </div>
+
+
+
+
+</div>
+<!-- - -->
+  </ion-content>
+  </ion-view>

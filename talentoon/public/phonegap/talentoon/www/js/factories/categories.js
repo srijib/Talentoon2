@@ -263,6 +263,27 @@ console.log("add post in factory",res)
             })
             return def.promise;
 
+        },getUserRoles:function(cat_id){
+            var def =$q.defer();
+            $http({
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/category/'+cat_id+'/roles',
+                headers:{
+              'Authorization':'Bearer: '+ $rootScope.token
+                 },
+                method:'GET'
+            }).then(function(res){
+                		// console.log("ROLESSSSS FROM FACTORY" , res);
+                if(res.data){
+                    def.resolve(res.data);
+                }else{
+                    def.reject('there is no data ')
+                }
+
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise ;
+
         }
 
 

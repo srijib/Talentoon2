@@ -17,7 +17,13 @@ class CompetitionPostPointsService {
             'voter_id' => $user->id,
             'points' => 2
         ]);
-        return response()->json(['status' => 1, 'message' => 'points added successfully']);
+
+        $new_count_votes = DB::table('competition_post_points')
+        ->selectRaw('count(id)as count_vote,id')
+        ->where([["competition_post_id",$post_id],['is_voted','=',1]])
+          ->groupBy('id')
+          ->get();
+        return response()->json(['status' => 1, 'message' => 'points added successfully','new_votes_count'=>$new_count_votes]);
     }
 
     public function revokeVotePoints($talentPost, $oldVotedPost, $post_id, $user) {
@@ -39,7 +45,13 @@ class CompetitionPostPointsService {
                 'points' => 2
             ]);
         }
-        return response()->json(['status' => 1, 'message' => 'points revoked from old post and added successfully to new post']);
+
+        $new_count_votes = DB::table('competition_post_points')
+        ->selectRaw('count(id)as count_vote,id')
+        ->where([["competition_post_id",$post_id],['is_voted','=',1]])
+          ->groupBy('id')
+          ->get();
+        return response()->json(['status' => 1, 'message' => 'points revoked from old post and added successfully to new post','new_votes_count'=>$new_count_votes]);
     }
 
 //should be called when competition ends
@@ -65,7 +77,7 @@ class CompetitionPostPointsService {
                 ->groupBy('competition_post_id', 'talent_id')
                 ->select('talent_id', 'competition_post_id', 'competition_id', DB::raw('sum(points) as sum'))
                 ->get();
-        //dd($data);
+//        dd($data);
 
         foreach ($data as $datum) {
             // dd( $datum->competition_post_id);
@@ -93,7 +105,7 @@ class CompetitionPostPointsService {
             }
         }
 
-        return response()->json(['status' => 1, 'message' => $message]);
+        return response()->json(['status' => 1]);
     }
 
     public function addMentorPoints($talentPost, $post_id, $user, $points) {
@@ -126,13 +138,14 @@ class CompetitionPostPointsService {
                 ->groupBy('competition_post_id', 'talent_id')
                 ->select('talent_id', 'competition_post_id', 'competition_id', DB::raw('sum(points) as sum'))
                 ->get();
-        //dd($data);
+
+//        dd($data);
         foreach ($data as $datum) {
             // dd( $datum->competition_post_id);
             $mentorAverageOfPoints = $datum->sum * 0.50;
             //dd($audienceAverageOfPoints);
             if ($talentRecord = finalCompetitionPoints::where('competition_id', $competition_id)->where('talent_id', $datum->talent_id)->first()) {
-                //dd('here');
+//                dd('here');
                 $talentRecord->update([
                     'mentorsSumOfPoints' => $datum->sum,
                     'mentorsAverageOfPoints' => $mentorAverageOfPoints
@@ -150,7 +163,7 @@ class CompetitionPostPointsService {
             }
         }
 
-        return response()->json(['status' => 1, 'message' => $message]);
+        return response()->json(['status' => 1]);
     }
 
     //should be called after calculateCompetitorAudiencePoints and calculateCompetitorMentorPoints
@@ -184,8 +197,9 @@ class CompetitionPostPointsService {
         foreach ($competitorsRecords as $competitorRecord) {
             array_push($competitorsArray, $competitorRecord);
         }
-        //dd($competitorsArray);
+//        dd($competitorsArray[0]);
         $competition = Competition::where('id', $competition_id);
+//        dd($competition)
         $competition->update([
             'first_winner_talent_id' => $competitorsArray[0]->talent_id,
             'second_winner_talent_id'=>$competitorsArray[1]->talent_id,

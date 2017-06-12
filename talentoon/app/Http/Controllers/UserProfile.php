@@ -24,7 +24,13 @@ class UserProfile extends Controller
             ->select('category_id')
              ->get();
 
-        return response()->json(['cur_user'=>$user,'talent_in'=>$talent_in]);
+        $country = DB::table('users')
+            ->join('countries', 'countries.id', '=', 'users.country_id')
+            ->select('countries.name as country_name')
+            ->where("users.id",$user->id)
+            ->get()->first();
+
+        return response()->json(['cur_user'=>$user,'talent_in'=>$talent_in,'country'=>$country]);
     }
     public function main_role(){
         $user= JWTAuth::parseToken()->toUser();
@@ -41,6 +47,7 @@ class UserProfile extends Controller
 
      $user= JWTAuth::parseToken()->toUser();
     //mentor review points
+//     return response()->json($user);
     $total_mentor_reviews_points = DB::table('mentor_reviews')
          ->join('posts', 'posts.id', '=', 'mentor_reviews.post_id')
          ->join('users', 'posts.user_id', '=', 'users.id')
@@ -52,12 +59,13 @@ class UserProfile extends Controller
 
 
 
+
     //user points
     if(count($total_mentor_reviews_points)){
     $points = $total_mentor_reviews_points[0]->points;
 
 
-
+//        return response()->json($points);
 
 
     //level of user
@@ -178,6 +186,7 @@ class UserProfile extends Controller
 
 
          $rewardimage = $rewardimage[0]->$levelname;
+
          return response()->json(['status' => 1,
                         'message' => 'user data send successfully',
                       'user_id'=>$user->id,
@@ -296,9 +305,10 @@ public function edit(){
 }
 public function checkpassword(Request $request)
 {
-
+//    return response()->json($request->all());
     $userToken=JWTAuth::parseToken()->toUser();
-
+//    dd(Hash::check($request->userpassword ,$userToken->password));
+//    dd($request->email);
     if(!Hash::check($request->userpassword ,$userToken->password)) {
         return response()->json('y nada we should check this to be displayed as a message to user>> ally 2olti fkrini beha simona ');
     }else{
@@ -310,7 +320,7 @@ public function checkpassword(Request $request)
                 'last_name'=>$request->last_name,
                 'email'=>$request->email,
                 'phone'=>$request->phone,
-                'password'=>Hash::make($request->repassword),
+                'password'=>Hash::make($request->repassword)
 //                'date_of_bith'=>$request->date_of_bith,
 //            'country_id'=>$request->country_name
             ]);

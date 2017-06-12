@@ -23,7 +23,7 @@
 
                     <input name="talent_files[]" class="form-control upload input-lg" ng-model="talent.file" type="file" class="form-control input-lg" onchange="angular.element(this).scope().uploadedReviewFile(this)" style="width:400px">
 
-                    <input type="text" name="from_when" required ng-model="talent.from_when" placeholder="12 years">
+                    <input type="date" name="from_when" required ng-model="talent.from_when">
 
                     <input type="text"  class="form-control upload input-lg" disabled placeholder="Uploaded Files">
                     </input>

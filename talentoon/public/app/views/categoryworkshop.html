@@ -1,4 +1,4 @@
-
+<!--
 
 <div class="container">
     <h1 style="color:#6A0C38;font-family:Times New Roman">{{category_workshop.name}} Work Shop Details</h1>
@@ -7,7 +7,6 @@
             <div class="thumbnail">
 
 
-                <!--{{category_workshop.media.media_url}}-->
                 <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_workshop.media_url}}" >
                 <div class="caption">
 
@@ -20,7 +19,6 @@
                   <h4 style="color:Purple ">Date from: {{category_workshop.date_from}}</h4>
                   <h4 style="color:Purple ">Date to: {{category_workshop.date_to}}</h4>
 
-                  <!-- <h4 style="color:Purple ">{{category_post.id}}</h4> -->
 
 
 
@@ -54,4 +52,211 @@
                  </video>
                 </div>
             </div>
-</div>
+</div> -->
+
+
+
+
+
+
+
+<div class="container">
+
+            <!--first column-->
+            <div class="firstColWork col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="workImg">
+                    <div class="opacity">
+                        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_workshop.media_url}}">
+                        <mentor ng-if="is_mentor != 1">
+                            <div ng-if="enroll == 1">
+                            <button class="btn btn-default enroll" type="submit" ng-click="workshop_enroll(category_workshop.id)" ng-controller="workshop">ENROLL NOW</button>
+                            </div>
+                            </mentor>
+                            <div ng-if="enroll == 0">
+                            <button class="btn btn-default enroll  disabled" >ENROLL NOW</button>
+                            </div>
+                        <mentor ng-if="is_mentor == 1">
+
+                            <a href="#!/category/{{category_workshop.category_id}}/workshops/{{category_workshop.id}}/createSession"><button class="btn btn-default  enroll" >Create Offline Video</button></a>
+                        </mentor>
+
+                    </div>
+                </div>
+
+
+                <div class="workName row">
+                    <span class="text-left col-lg-8 ">{{category_workshop.name}}</span>
+                </div>
+
+
+                <div class="info">
+                    <div class="workScd col-lg-12 col-md-12 col-sm-12">
+                        <span  class="bigdate">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            <p>{{category_workshop.date_from | date : 'd'}}</p>
+                        </span><!--end bigdate-->
+                        <span class="labels">
+                            <span class="label first label-default"> {{category_workshop.date_from | date : 'MMM'}} - {{category_workshop.date_to | date : 'd-MMM'}}</span>
+                            <span class="label label-default">{{category_workshop.time_from| date : 'short'}} - {{category_workshop.time_to | date : 'hh:mm'}}</span>
+                        </span><!--end labels-->
+                    </div><!--    top event schdule-->
+
+                    <div class="about col-lg-12 col-md-12 col-sm-12">
+                        <span>ABOUT</span>
+                        <p>{{category_workshop.description}} </p>
+
+                    </div><!--end about-->
+
+                    <div class="workLevel col-lg-6 col-md-12 col-sm-12">
+                        <span  class="level">
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                        </span><!--end level-->
+                        <span class="lLabels">
+                            <span class="label label-default">{{category_workshop.level}} Level</span>
+                        </span><!--end lLabels-->
+                    </div><!--end workLevel-->
+                    <div class="workLeft col-lg-6 col-md-12 col-sm-12">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <span class="badge">{{category_workshop.max_capacity-countcapacity}} place left</span>
+                    </div>
+                </div><!--end info-->
+
+
+                <!--share -->
+                <div id="socialHolder" class="share">
+                    <div id="socialShare" class="btn-group share-group">
+                        <a data-toggle="dropdown" class="btn btn-info">
+
+                            <button class="btn btn-default btn-share" type="submit">
+                                <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                                Share Workshop</button></a>
+                        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                    <i class="fa fa-envelope"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!--end share -->
+            </div><!--end of first column-->
+
+            <!--third column-->
+            <div class="thirdCol col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="workName col-lg-5 col-md-5 col-sm-5">
+                        <span class="text-left col-lg-8 ">{{category_workshop.title}}</span>
+                    </div><!--end workName -->
+                    <mentor ng-if="is_mentor == 1">
+                    <div class="newPost col-lg-6 col-md-6 col-sm-6">
+                        <a href="#!/videoconference" class="btn btn-lg" >
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i> Create Live session
+                        </a>
+                        <!--
+<a href="" class="btn btn-lg">
+<i class="fa fa-paper-plane" aria-hidden="true"></i> Go Live
+</a>
+-->
+                    </div>  <!--end new post -->
+                </mentor>
+
+                <mentor ng-if="is_mentor != 1">
+
+                    <a href="{{current_student_join_class_url}" class="btn btn-lg">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i> Join
+                    </a>
+
+                </mentor>
+                <mentor ng-if="is_mentor == 1">
+                    <a href="{{current_presenter_class_url}" class="btn btn-lg">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i> Join
+                    </a>
+
+                </mentor>
+
+
+                </div><!--end row-->
+
+                <div class="about col-lg-4 col-md-4 col-sm-4">
+                    <span>HINT</span>
+                    <p>{{category_workshop.description}}</p>
+                </div><!--end about-->
+
+                <div class="workScd col-lg-4 col-md-4 col-sm-4">
+                    <span  class="bigdate">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <p>{{category_workshop.date_from | date : 'd'}}</p>
+                    </span><!--end bigdate-->
+                    <span class="labels">
+                        <span class="label first label-default"> {{category_workshop.date_from | date : 'MMM'}} - {{category_workshop.date_to | date : 'd-MMM'}}</span>
+                        <span class="label label-default">{{category_workshop.time_from| date : 'short'}} - {{category_workshop.time_to | date : 'hh:mm'}}</span>
+                    </span><!--end labels-->
+                </div><!--end workscd-->
+
+
+                <div class="workScd col-lg-4 col-md-4 col-sm-4">
+                    <div class="workdur col-lg-12 col-md-12 col-sm-12">
+                        <!--end of duration-->
+                        <!--end of lLabels-->
+                    </div><!--end of workdur-->
+
+
+                    <div class="workLeft col-lg-12 col-md-12 col-sm-12">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <span class="badge">{{category_workshop.max_capacity-countcapacity}} places left</span>
+                    </div><!--end of workLeft-->
+                </div><!--end of workscd-->
+            </div><!--end of third column-->
+
+            <!--second column-->
+            <div class="secCol col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <div class="showPosts" ng-repeat="session in media">
+
+                    <div class="recentPosts videoArticle">
+                        <div class="userInfos">
+                            <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_workshop.image}}" alt="">
+                            <span>{{category_workshop.first_name}} {{category_workshop.last_name}}</span>
+                        </div><!--end of userInfos-->
+
+                        <div class="conatinerComment">
+
+                            <div class="largePic">
+                                <video controls><source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{session.media_url}}" type="{{session.media_type}}"></video>
+                            </div><!--end of largePic-->
+
+                            <div class="titleEdit row">
+                                <div class="col-lg-8 title">
+                                    <h3>{{session.title}} </h3>
+                                </div><!--end of title-->
+
+                            </div><!--end of titleEdit-->
+                        </div><!--end of conatinerComment-->
+                    </div><!--end of recent post-->
+
+                </div><!--end of show post-->
+            </div><!--end of second column-->
+        </div><!--end container-->

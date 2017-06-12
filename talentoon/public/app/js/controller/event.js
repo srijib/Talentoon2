@@ -1,8 +1,9 @@
-angular.module('myApp').controller("eventcontroller",function(event,$scope,$http,$routeParams,$rootScope,$location){
+angular.module('myApp').controller("eventcontroller",function(event,$scope,$http,$routeParams,$rootScope,$location,user){
     var filesuploaded = []
 
     // $rootScope.token = JSON.parse(localStorage.getItem("token"));
     // $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+
 
     $scope.newevent = function(vaild) {
         var today = new Date();
@@ -31,7 +32,7 @@ angular.module('myApp').controller("eventcontroller",function(event,$scope,$http
                     $scope.event_created = false;
                     console.log(err);
                     console.log("________________________________error in event new");
-
+                    // $location.url('/500');
                 });
             }
         }

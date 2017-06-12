@@ -1,7 +1,7 @@
 angular.module('myApp').controller("mentors",function($scope,$http,categories,$routeParams,$rootScope,$timeout,videoconference){
 
     var mentor = {}
-    $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+
 
     $scope.completeMentorProfile = function(valid) {
 
@@ -10,6 +10,7 @@ angular.module('myApp').controller("mentors",function($scope,$http,categories,$r
         mentor.years_of_experience = $scope.mentor.years_of_experience;
         mentor.experience = $scope.mentor.experience;
         mentor.status = 0;
+
 
         console.log("Mentor Object is ", mentor);
 
@@ -39,5 +40,6 @@ angular.module('myApp').controller("mentors",function($scope,$http,categories,$r
         });
 
     }
+
 
 })

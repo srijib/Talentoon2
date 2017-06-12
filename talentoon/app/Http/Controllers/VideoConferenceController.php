@@ -142,6 +142,8 @@ class VideoConferenceController extends Controller
         try
         {
             $XMLReturn = $httpRequest->wiziq_do_post_request($webServiceUrl.'?method=add_teacher',http_build_query($requestParameters, '', '&'));
+
+
             $xml_cnt = $XMLReturn;
             $xml_cnt = str_replace(array("\n", "\r", "\t"), '', $xml_cnt);    // removes newlines, returns and tabs
 
@@ -149,10 +151,15 @@ class VideoConferenceController extends Controller
             $xml_cnt = trim(str_replace('"', "'", $xml_cnt));
             $simpleXml = simplexml_load_string($xml_cnt);
 
+
+//            dd($simpleXml);
+
+
             //save into db table class
             $wiziq_teacher_obj = new WizIQTeacher;
             $wiziq_teacher_obj->wiziq_teacher_name =  $request->teacher_name;
             $wiziq_teacher_obj->wiziq_teacher_email = $request->teacher_email;
+//            $wiziq_teacher_obj->wiziq_teacher_id = $request->teacher_id;
             $wiziq_teacher_obj->save();
             //end save in db
 
@@ -422,12 +429,31 @@ class VideoConferenceController extends Controller
     public function video_conference_details(Request $request)
     {
 
-        $video_conference_details = DB::table('video_conference_class')
-            ->join('video_conference_attendee','video_conference_class.wiziq_class_id','=','video_conference_attendee.class_id')
-            ->select('video_conference_attendee.wiziq_attendee_id','video_conference_attendee.wiziq_attendee_url','video_conference_class.wiziq_class_id','video_conference_class.wiziq_presenter_url','video_conference_class.wiziq_class_start_time','video_conference_class.wiziq_teacher_id','video_conference_class.wiziq_teacher_email')
+
+        $class = DB::table('video_conference_class')
+            ->select('video_conference_class.*')
+            ->orderBy('video_conference_class.wiziq_class_id', 'desc')->first();
+
+
+        $teachers = DB::table('video_conference_teacher')
+            ->select('video_conference_teacher.*')
             ->get();
 
-        return response()->json(['status'=>'1','message'=>'data retrieved successfully','data'=>$video_conference_details]);
+
+
+        $attendees = DB::table('video_conference_attendee')
+            ->select('video_conference_attendee.*')
+            ->get();
+
+
+
+//        $video_conference_details = DB::table('video_conference_class')
+//            ->join('video_conference_attendee','video_conference_class.wiziq_class_id','=','video_conference_attendee.class_id')
+//            ->select('video_conference_attendee.wiziq_attendee_id','video_conference_attendee.wiziq_attendee_url','video_conference_class.wiziq_class_id','video_conference_class.wiziq_presenter_url','video_conference_class.wiziq_class_start_time','video_conference_class.wiziq_teacher_id','video_conference_class.wiziq_teacher_email')
+//            ->toSql();
+
+
+        return response()->json(["class"=>$class,"teachers"=>$teachers,"attendees"=>$attendees,'status'=>'1','message'=>'data retrieved successfully']);
 
     }
 

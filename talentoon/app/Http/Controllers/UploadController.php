@@ -108,7 +108,9 @@ class UploadController extends Controller
 //            return response()->json(['id'=>$id]);
             $event =Event::find($id);
             $event->media_url = 'uploads/events/'.$_FILES['file']['name'];
-            $event->media_type = $_FILES['file']['type'];
+//            $event->media_type = $_FILES['file']['type'];
+            $type = substr($_FILES['file']['type'], 0, 5);
+            $event->media_type=$type;
             $event->save();
 
             $event = Event::find($id-1)->delete();
@@ -132,7 +134,9 @@ class UploadController extends Controller
 
                 $review_media = new ReviewMedia;
                 $review_media->review_media_url = 'uploads/reviews/'.$_FILES['file']['name'][$i];
-                $review_media->review_media_type = $_FILES['file']['type'][$i];
+//                $review_media->review_media_type = $_FILES['file']['type'][$i];
+                $type = substr($_FILES['file']['type'][$i], 0, 5);
+                $review_media->review_media_type=$type;
                 $review_media->category_talent_id = $category_talent_id;
                 $review_media->save();
             }
@@ -201,7 +205,9 @@ class UploadController extends Controller
 
             $workshop = WorkShop::find($id);
             $workshop->media_url = 'uploads/files/'.$_FILES['file']['name'];
-            $workshop->media_type = $_FILES['file']['type'];
+//            $workshop->media_type = $_FILES['file']['type'];
+            $type = substr($_FILES['file']['type'], 0, 5);
+            $workshop->media_type=$type;
             $workshop->save();
 
             $workshop = WorkShop::find($id-1)->delete();
@@ -246,7 +252,9 @@ class UploadController extends Controller
 
         $session = WorkshopSession::find($id);
         $session->media_url = 'uploads/files/'.$_FILES['file']['name'];
-        $session->media_type = $_FILES['file']['type'];
+//        $session->media_type = $_FILES['file']['type'];
+        $type = substr($_FILES['file']['type'], 0, 5);
+        $session->media_type=$type;
         $session->save();
 
 
@@ -256,4 +264,27 @@ class UploadController extends Controller
     }
 
 }
+
+
+public function competition_post_upload (Request $request,$id){
+    if(!empty($_FILES)){
+        $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/competitions/posts/'.$_FILES['file']['name']);
+
+         $comp_post = CompetitionPost::find($id);
+         $comp_post->competition_post_media_url = 'uploads/competitions/posts/'.$_FILES['file']['name'];
+        //  $post->media_type = $_FILES['file']['type'];
+         $type = substr($_FILES['file']['type'], 0, 5);
+         $comp_post->competition_post_media_type=$type;
+         $comp_post->save();
+
+        $comp_post = CompetitionPost::find($id-1)->delete();
+
+        return response()->json(['request'=> $x,'message' => 'data sent successfully']);
+    }else{
+        echo "Image Is Empty";
+    }
+
+}
+
+
 }

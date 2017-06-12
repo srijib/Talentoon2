@@ -102,6 +102,7 @@ angular.module('myApp').factory("user", function ($http, $q,$rootScope) {
             }).then(function (res) {
                 console.log(res);
                 if (res) {
+                    console.log('user profileeee y simona in resolve');
                     // if(res.data.length){
                     def.resolve(res)
                     // def.resolve(res.data)
@@ -109,6 +110,7 @@ angular.module('myApp').factory("user", function ($http, $q,$rootScope) {
 
                 } else {
                     def.reject('there is no data ')
+                    console.log('user profileeee y simona in error');
                 }
 
             }, function (err) {
@@ -252,7 +254,8 @@ angular.module('myApp').factory("user", function ($http, $q,$rootScope) {
         var def = $q.defer();
 
         $http({
-            url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/checkpassword',
+            url:'http://127.0.0.1:8000/api/checkpassword' ,
+            // $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/checkpassword',
             method: 'post',
             data: userdata
 

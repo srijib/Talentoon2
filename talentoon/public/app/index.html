@@ -3,7 +3,7 @@
 <head>
 	<!-- <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="242561729521-b49f3iect12uqm78km7b1jipg8o3losn.apps.googleusercontent.com"> -->
-	<title>Angular js</title>
+	<title>Talentoon</title>
 	<!-- scripts -->
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,6 +70,7 @@
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" href="css/fonts.css">
+	<!-- <link rel="stylesheet" href="css/prizes.css"> -->
 	<link rel="stylesheet" href="css/talentProfile.css">
 	<link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -79,20 +80,22 @@
 	<link rel="stylesheet" href="css/posts.css">
 	<link rel="stylesheet" href="css/createCompetition.css">
 	<link rel="stylesheet" href="css/allCompetiton.css">
-	<link rel="stylesheet" href="css/prizes.css">
 	<link rel="stylesheet" href="css/singleCompetition.css">
 	<link rel="stylesheet" href="css/clickedCategory.css">
 	<link rel="stylesheet" href="css/review.css">
 	<link rel="stylesheet" href="css/404.css">
+	<link rel="stylesheet" href="css/allWorkshop.css">
+	<link rel="stylesheet"href="css/singleWorkshop.css">
+	 <link rel="stylesheet" href="css/allEvents.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>-->
 	<!--<script>-->
         <!--var OneSignal = window.OneSignal || [];-->
         <!--OneSignal.push(["init", {-->
-            <!--appId: "5e0081b4-a54d-46be-b6bb-a42fa5af576b",-->
+            <!--appId: "b2b4682c-d555-44e6-a8dd-23abb0045834",-->
             <!--autoRegister: false, /* Set to true to automatically prompt visitors */-->
-            <!--subdomainName: 'simona',-->
+            <!--subdomainName: 'talentoonfinal',-->
 			<!--/*-->
 			 <!--subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN-->
 			 <!--*/-->
@@ -104,7 +107,20 @@
             <!--}-->
         <!--}]);-->
 	<!--</script>-->
+    <!--<script>-->
+        <!--OneSignal.push(function() {-->
+            <!--/* These examples are all valid */-->
+            <!--OneSignal.sendTag("key", "value");-->
 
+            <!--OneSignal.sendTag("key", "value", function(tagsSent) {-->
+                <!--// Callback called when tags have finished sending-->
+            <!--});-->
+
+            <!--OneSignal.sendTag("key", "value").then(function(tagsSent) {-->
+                <!--// Callback called when tags have finished sending-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
 </head>
 <body>
 
@@ -196,8 +212,6 @@
 	                                    <li><a ng-click="logoutFn()">{{'NAVBAR.LOGOUT' | translate}}</a></li>
 	                                </ul>
 	                            </li>
-
-
 							</logged>
 
 							<notlogged ng-if="! token">
@@ -400,6 +414,7 @@
 													<p class="error" ng-if="submitted && register.phone.$error.required" >please enter your phone</p>
 													<p class="error" ng-show="submitted && register.phone.$error.number" >please enter only number </p>
 													<p class="error" ng-show="register.phone.$error.minlength" > phone number should be 11 digits </p>
+													<p class="error" ng-show="register.phone.$error.maxlength" > phone number should be 11 digits </p>
                                             </div>
                                         </div>
 
@@ -430,10 +445,11 @@
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
 								<ul>
 										<h4>{{'FOOTER.LINKS' | translate}}</h4>
-										<li>Workshops</li>
-										<li>Categories</li>
-										<li>Posts</li>
-										<li>Blog</li>
+
+                                        <li><a href="#!/posts" style="color: #808285; text-decoration: none;">Posts</a></li>
+                                        <li><a href="#!/competitions" style="color: #808285; text-decoration: none;">Competition</a></li>
+                                        <li><a href="#!/showreview" style="color: #808285; text-decoration: none;">Initial review</a></li>
+
 								</ul>
 						</div>
 
@@ -445,29 +461,27 @@
 
 										<ul class="list-inline list-unstyled includedUl">
 												<br>
-												<li><i class="fa fa-facebook-square" aria-hidden="true"></i></li>
-												<li><i class="fa fa-twitter-square" aria-hidden="true"></i></li>
-												<li><i class="fa fa-google-plus-square" aria-hidden="true"></i></li>
+                                            <li><a href="https://www.facebook.com/talentoon/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
 										</ul>
 								</ul>
 						</div>
 
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
 								<ul class="list-unstyled">
-										<h4>Email Updated</h4>
-										<li>Be the first to hear about our news
-												and announcements</li>
-										<li class="inputEmail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><input type="text" placeholder="Email Address"></li>
+										<h4>Email Us</h4>
+										<li>If you have any inquiry, please send a email</li>
+										<li class="inputEmail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><input type="text" placeholder="Enter Your Question Here"></li>
+                                        <li class="emailBtn">Email Us</li>
 								</ul>
 						</div>
 
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
 								<ul class="list-unstyled">
 									<h4>{{'FOOTER.CONTACT_US' | translate}}</h4>
-										<li>Questions ? we've got
-												answers.
-												<br>Try us.</li>
-										<li class="emailBtn">Email Us</li>
+                                    <li>If you have any problem, please do not hesitate to email us</li>
+                                    <li class="inputEmail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><input type="text" placeholder="Complaint"></li>
+                                    <li class="emailBtn">Send</li>
+
 								</ul>
 						</div>
 				</div>

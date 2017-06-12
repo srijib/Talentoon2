@@ -2,6 +2,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
 
     var filesuploaded = []
 
+<<<<<<< HEAD
     if (localStorage.getItem("token")) {
         user.get_cur_user().then(function(data){
     		console.log('currrr usssserrrrr',data);
@@ -10,6 +11,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             $rootScope.lname=$rootScope.cur_user.last_name;
             var dob=$rootScope.cur_user.date_of_birth;
             $rootScope.cur_user.date_of_birth=new Date(dob);
+            $rootScope.country=data.country.country_name;
     	}, function (err) {
             console.log(err);
         });
@@ -31,7 +33,6 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
         });
     }
 
-
     $rootScope.token = JSON.parse(localStorage.getItem("token"));
 	// $rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
 
@@ -51,6 +52,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
         console.log("categoriesNames array", $scope.categories);
     }, function (err) {
         console.log(err);
+        // $location.url('/500');
     });
 
     $scope.loginFn = function (valid) {
@@ -60,7 +62,6 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             user.login(userdata).then(function (data) {
                 console.log("dataaaaa minA",data.user);
                 if (data.status == 'ok') {
-
                     // var myModal = angular.element( document.querySelector( '#login' ) ).modal('toggle');;
                     // myModal.hide();
                     // console.log("MYMODAAAAL",myModal);
@@ -77,7 +78,9 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
                 }
             }, function (err) {
                 console.log(err);
+
                 console.log(err.status)
+
 
                 // alert("server connection error");
             });
@@ -98,8 +101,6 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
             $rootScope.token=''
             $location.url('/');
     }
-
-
 
     $scope.registerFn = function (valid) {
         console.log('inside register fn');
@@ -126,6 +127,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
                 window.location.reload();
             },function(err){
                console.log(err);
+                // $location.url('/500');
             });
         }
     }

@@ -1,6 +1,7 @@
-angular.module('myApp').controller("addworkshop",function($scope,$http,categories,$routeParams,$location,$rootScope){
+angular.module('myApp').controller("addworkshop",function($scope,$http,categories,$routeParams,$location,$rootScope,user){
 
-  $scope.newworkshop = function(vaild) {
+
+    $scope.newworkshop = function(vaild) {
       var today = new Date();
       console.log("Today is ", today)
 
@@ -32,6 +33,7 @@ angular.module('myApp').controller("addworkshop",function($scope,$http,categorie
              }, function (err) {
                  console.log(err);
                  $scope.workshop_created = false;
+                 // $location.url('/500');
 
              });
          }
