@@ -147,6 +147,7 @@
                     <div class=" col-lg-8  col-md-8 col-sm-12 going" data-toggle="modal" data-target="#Comp1">
                         <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Challenge</a>
                     </div>
+                    <mentor ng-if="is_mentor == 1">
                     <div class="col-lg-4 edits " style="color: #0f0f0f; font-size: 20px;">
 
                         <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}/edit">
@@ -154,6 +155,7 @@
                         </a>
                         <i class="fa fa-trash" aria-hidden="true" ng-click="deletecompetition(competition.id,cat_id)"></i>
                     </div>
+                    </mentor>
 
                 </div> <!--    top event thumbnail-->
             </div><!--    top event section-->

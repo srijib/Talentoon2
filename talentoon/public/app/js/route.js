@@ -73,7 +73,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             BE_UN_MENTOR: 'الغاء التعليم',
             UN_SUBSCRIBE: 'لا تتابع',
             TOP_COMPETITIONS: 'المسابقات'
-
         },
       };
 
