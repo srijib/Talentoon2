@@ -57,6 +57,7 @@
 	<script type="text/javascript" src="js/factories/event.js"></script>
 	<script type="text/javascript" src="js/factories/videoconference.js"></script>
 	<script type="text/javascript" src="js/factories/password.js"></script>
+	<script type="text/javascript" src="js/factories/email.js"></script>
 
 
 
@@ -184,7 +185,7 @@
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <!--            main links-->
-                        <ul class="nav navbar-nav">
+                        <ul ng-if="token" class="nav navbar-nav">
                             <li ><a href="#!/">{{'NAVBAR.HOME' | translate}}</a></li>
 							<li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'NAVBAR.CATEGORIES' | translate}}<span class="caret"></span></a>
@@ -206,7 +207,8 @@
 
                             <li><a href="#!/posts">{{'NAVBAR.POSTS' | translate}}</a></li>
 							<li><a href="#!/competitions">{{'NAVBAR.COMPETITION' | translate}}</a></li>
-                            <li><a  ng-if="is_mentor == 3" href="#!/showreview">{{'NAVBAR.INITIALREVIEW' | translate}}</a></li>
+                            <li ng-if="is_mentor == 3"><a href="#!/showreview">{{'NAVBAR.INITIALREVIEW' | translate}}</a></li>
+
 
                         </ul>
                         <!--end of main links-->
@@ -458,12 +460,12 @@
 		<div class="container">
 				<div class="row">
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
-								<ul>
+								<ul ng-if="token">
 										<h4>{{'FOOTER.LINKS' | translate}}</h4>
 
                                         <li><a href="#!/posts" style="color: #808285; text-decoration: none;">{{'NAVBAR.POSTS' | translate}}</a></li>
                                         <li><a href="#!/competitions" style="color: #808285; text-decoration: none;">{{'NAVBAR.COMPETITION' | translate}}</a></li>
-                                        <li><a href="#!/showreview" style="color: #808285; text-decoration: none;">{{'NAVBAR.INITIALREVIEW' | translate}}</a></li>
+                                        <li><a ng-if="is_mentor == 3" href="#!/showreview" style="color: #808285; text-decoration: none;">{{'NAVBAR.INITIALREVIEW' | translate}}</a></li>
 
 								</ul>
 						</div>
@@ -481,20 +483,15 @@
 						</div>
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
 								<ul class="list-unstyled">
-										<h4>Email Us</h4>
-										<li>{{'FOOTER.Email_US_TEXT' | translate}}</li>
-										<li class="inputEmail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><input ng-model="email.message" type="text" placeholder="{{'FOOTER.Email_US_ENTER_QN_TEXT' | translate}}"></li>
-                                        <li class="emailBtn" ng-click="send_email()">{{'FOOTER.Email_US_BUTTON' | translate}}</li>
-								</ul>
-						</div>
-
-						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
-								<ul class="list-unstyled">
 									<h4>{{'FOOTER.CONTACT_US' | translate}}</h4>
                                     <li>{{'FOOTER.COMPLAINT_TEXT' | translate}}</li>
-                                    <li class="inputEmail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><input ng-model="complaint.message" type="text" placeholder="{{'FOOTER.COMPLAINT_ENTER_COMPLAINT_TEXT' | translate}}"></li>
-                                    <li class="emailBtn" ng-click="send_email()">{{'FOOTER.Email_US_BUTTON' | translate}}</li>
 
+									<form ng-submit="submitted=true ; send_complaint(complaint.$valid)" name="complaint"  novalidate>
+										<li class="inputEmail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+										<input type="text" ng-model="complaint.text" name="complain" required="true" placeholder="Complaint"></li>
+										<p class="error" ng-if="complaint.complain.$error.required && submitted" >please enter your complaint</p>
+										<li><button class="emailBtn" type="submit" name="button">{{'FOOTER.Email_US_BUTTON' | translate}}</button></li>
+									</form>
 								</ul>
 						</div>
 				</div>

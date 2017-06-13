@@ -106,6 +106,7 @@ Route::get('/userprofile',[
 
     //ask nahla to add middleware
 Route::get('/editprofile','UserProfile@edit');
+Route::post('/contact_us','EmailsController@receive_complaint');
 Route::get('/userprofile/cur_user','UserProfile@cur_user');
 Route::put('/updateprofile','UserProfile@update');
 Route::post('/checkpassword','UserProfile@checkpassword');

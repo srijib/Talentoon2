@@ -66,6 +66,29 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
       })
       return def.promise ;
     },
+        updatecompetition:function (competition_data,cat_id,competition_id) {
+            var def =$q.defer();
+            console.log('al data bta3t al competition',competition_data)
+            $http({
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+cat_id+'/competitions/'+competition_id,
+                method:'Put',
+                data: competition_data
+
+            }).then(function(res){
+                console.log("resssssssssssssss updated competition",$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+cat_id+'/competitions/'+competition_id);
+                if(res.data){
+                    console.log(res.data);
+                    def.resolve(res.data);
+
+                }else{
+                    def.reject('there is no data ')
+                }
+
+            },function(err){
+                def.reject(err);
+            })
+            return def.promise ;
+        },
     createCompetition:function(competition_data){
       var def =$q.defer();
       console.log('al data bta3t al competition',competition_data)
@@ -181,6 +204,27 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
       })
       return def.promise ;
     },
+        deletecompetition:function(competition_id,cat_id){
+      var def =$q.defer();
+      $http({
+        url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+cat_id+'/competitions/'+competition_id,
+        method:'DELETE',
+      }).then(function(res){
+        console.log("resssssssssssssss delete competition",res);
+        if(res.data){
+          console.log(res.data);
+         def.resolve(res.data);
+
+        }else{
+          def.reject('there is no data ')
+        }
+
+      },function(err){
+        def.reject(err);
+      })
+      return def.promise ;
+    },
+
     getSingleCompetitionPosts:function(competition_id){
       var def =$q.defer();
       $http({

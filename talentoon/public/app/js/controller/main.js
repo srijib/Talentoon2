@@ -1,8 +1,10 @@
-angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location,$route) {
+angular.module('myApp').controller("main", function ($scope,$rootScope, Email,user,categories,$location,$route) {
 
     var filesuploaded = []
 
-if(localStorage.getItem("token")) {
+
+    if (localStorage.getItem("token")) {
+
         user.get_cur_user().then(function(data){
     		console.log('currrr usssserrrrr',data);
     		$rootScope.cur_user=data.cur_user;
@@ -46,6 +48,18 @@ if(localStorage.getItem("token")) {
         window.location.reload();
     }
 
+    $scope.send_complaint=function(valid){
+        if (valid) {
+            console.log($scope.complaint.text);
+            var obj = {text:$scope.complaint.text}
+            Email.contact_us(obj).then(function(data){
+        		console.log('EMAIL',data);
+
+        	}, function (err) {
+                console.log(err);
+            });
+        }
+    }
 
     categories.getAllCategory().then(function (data) {
         $scope.categories = data.data;
