@@ -223,7 +223,7 @@ class UserProfile extends Controller
                   $join->on('posts.id','=','likeables.likeable_id')
                   ->where('likeables.liked', '=', '1');
               })
-              ->where("posts.user_id",$user->id)
+              ->where([['posts.user_id',$user->id],['posts.is_approved','=',1]])
               ->groupBy('posts.id')
                 ->get();
 
