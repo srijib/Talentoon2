@@ -12,6 +12,19 @@ angular.module('myApp').controller("competitions",function($routeParams,$locatio
     }, function (err) {
         console.log(err);
     });
+    $scope.deletecompetition = function(competition_id,cat_id) {
+        console.log('da5lnaaaaaaaaaa');
+        $scope.competition_id= $routeParams['competition_id'];
+
+        Competitions.deletecompetition(competition_id,cat_id).then(function(data){
+            console.log("the competition request from server is ",data);
+
+        } , function(err){
+            console.log(err);
+            // $location.url('/500');
+        });
+    };
+
     Competitions.getAllCompetitions().then(function (data) {
         $scope.competitions = data.data;
         console.log("Compooo dataa controller",$scope.competitions );

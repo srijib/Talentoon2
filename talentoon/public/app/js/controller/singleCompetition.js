@@ -3,6 +3,19 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
     var filesuploaded = []
     $scope.competition_id= $routeParams['competition_id'];
 
+    $scope.updatecompetition=function(valid){
+        console.log('kkkkkkkkkkk',$scope.userupdate)
+        if (valid) {
+            Competitions.updatecompetition( $scope.competition,$scope.cat_id,$scope.competition_id).then(function (data) {
+            console.log('after clicking on update',data);
+            $location.url('/category/'+$scope.cat_id);
+            }, function (err) {
+                console.log(err);
+                // $location.url('/500');
+            });
+        }
+    }
+
     categories.getUserRoles($scope.cat_id).then(function (data) {
 		console.log("ROLESSSSS FROM CONTROLLER", data)
 
@@ -81,6 +94,18 @@ console.log("media type is ",$scope.post.media_type, "media url is " , $scope.po
                 }else {
                     alert("sorry it's not your post")
                 }
+            } , function(err){
+                console.log(err);
+                // $location.url('/500');
+            });
+    };
+    $scope.deletecompetition = function(competition_id,cat_id) {
+        console.log('da5lnaaaaaaaaaa');
+            $scope.competition_id= $routeParams['competition_id'];
+
+            Competitions.deletecompetition(competition_id,cat_id).then(function(data){
+                console.log("the competition request from server is ",data);
+
             } , function(err){
                 console.log(err);
                 // $location.url('/500');
