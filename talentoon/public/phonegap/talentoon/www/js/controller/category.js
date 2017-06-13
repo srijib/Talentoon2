@@ -54,18 +54,6 @@ angular.module('talentoon').controller("oneCategory",function($state,$window,$sc
 
 
 //------------------------------------------------------------------
-	//get all category
-        //esraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-	// categories.getAllCategory().then(function(data){
-	// 	 console.log("esraaaaa all data",data);
-	// 	$scope.categories=data.data;
-  //               console.log("categories array",$scope.categories);
-	// } , function(err){
-	// 	console.log(err);
-	// });
-
-//---------------------------------------------------------------
-
 
 	categories.getCategoryPosts($rootScope.cat_id).then(function(data){
 

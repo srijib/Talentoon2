@@ -18,7 +18,9 @@ angular.module('myApp').controller("addsession",function($scope,$http,workshops,
 
            console.log("the workshop request from server is ",data);
 //when data retrived from server
+            console.log("category",category);
            $location.url('/category/'+category+'/workshops/'+workshop);
+           console.log("workshop",workshop);
        } , function(err){
        	console.log(err);
        // $location.url('/500');
@@ -32,6 +34,7 @@ angular.module('myApp').controller("addsession",function($scope,$http,workshops,
          filesuploaded.push(element.files[0]);
          console.log("current file is ",$rootScope.sessionFile)
          var reader = new FileReader();
+         $(element).parent().parent().parent().find('.form-control').val($(element).val().replace(/C:\\fakepath\\/i, ''));
 
          reader.onload = function(event) {
              $scope.session_source = event.target.result

@@ -1,29 +1,33 @@
-<style>
-	.container{
-		font-size: 10px;
-	}
-</style>
 
-<div class="container" >
-<form ng-submit="submitted=true ; newsession(addsession.$valid)" name="addsession"  novalidate >
+<div class="container">
+            <div class="createupload col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
+				<form ng-submit="submitted=true ; newsession(addsession.$valid)" name="addsession"  novalidate >
 
-<div class="field">
-	<input type="text" name="title"  ng-model="session.title" class="form-control" >
+                <input type="text" class="form-control" name="title"  ng-model="session.title" placeholder="Workshop title" >
+				<input type="hidden" name="workshop_id"  ng-model="session.workshop_id" class="form-control" >
 
+                <div class="row">
 
-<input type="hidden" name="workshop_id"  ng-model="session.workshop_id" class="form-control" >
+                    <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files"></input>
+                <div class ="icons col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <input  class="file"  ng-model="session.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)">
+                        <div class="input-group col-xs-12">
 
-<h4 style="color:Purple ">workshop session</h4>
-<input name="workshop_session" ng-model="session.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
-		<!--<input type="submit" id="submit_file" value="Submit" />-->
-</div>
-
-	<button  type="submit" name="button">OK</button>
-	<!-- <p type="submit" class="btnAction"><a class="btn btn-primary btnAction" role="button">Discover More</a></p> -->
-</form>
-
-
-
-</div>
-<br>
-<br>
+                            <span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">
+                                <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
+                                <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+                                <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-video-camera" aria-hidden="true"></i></button>
+                                <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-headphones" aria-hidden="true"></i></button>
+                            </span><!--end of icons input-group-btn-->
+                        </div><!--end of input-group-->
+                    </div><!--end of form-group-->
+                </div><!--end of icons-->
+				<div class="wupload  col-lg-6 col-md-6 col-sm-6">
+					<button  type="submit" name="button" class= "text-right " > <i class="fa fa-paper-plane" aria-hidden="true"></i>
+						Post </button>
+				</div>
+            </div><!--end of row-->
+			</form>
+		</div><!--end of create upload-->
+        </div><!--end of container-->
