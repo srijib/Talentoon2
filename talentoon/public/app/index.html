@@ -204,16 +204,9 @@
                             <!--                            end dropmenu-->
 
 
-<<<<<<< HEAD
                             <li><a href="#!/posts">{{'NAVBAR.POSTS' | translate}}</a></li>
 							<li><a href="#!/competitions">{{'NAVBAR.COMPETITION' | translate}}</a></li>
-                            <li><a href="#!/showreview">{{'NAVBAR.INITIALREVIEW' | translate}}</a></li>
-=======
-                            <li><a href="#!/posts">Posts</a></li>
-							<li><a href="#!/competitions">Competition</a></li>
-							<li ng-if="is_mentor == 3"><a href="#!/showreview">Initial review</a></li>
-
->>>>>>> 3c630c6c9bebf4cfd411c2783f052ba411e57f60
+                            <li><a  ng-if="is_mentor == 3" href="#!/showreview">{{'NAVBAR.INITIALREVIEW' | translate}}</a></li>
 
                         </ul>
                         <!--end of main links-->
@@ -288,25 +281,6 @@
                                     </div>
                                 </div>
 
-<<<<<<< HEAD
-                                <div class="row">
-                                    <div class=" social-login">
-
-                                        <div class="social-login-buttons">
-                                            <a  href="#">
-                                                <!--<i class="fa fa-facebook"></i> Facebook-->
-                                            </a>
-                                            <a href="">
-                                                <!--<i class="fa fa-google-plus"></i> Google Plus-->
-												<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <h3>Login With Your Account</h3>
-=======
->>>>>>> 3c630c6c9bebf4cfd411c2783f052ba411e57f60
                                 <div class="form-bottom">
                                     <form class="login-form col-lg-8 col-lg-offset-2" ng-submit="submitted = true; loginFn(login.$valid)" name="login" novalidate>
                                         <div class="form-group">
