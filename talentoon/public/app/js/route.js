@@ -1,9 +1,9 @@
 angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translateProvider', function ($routeProvider, $httpProvider, $translateProvider) {
     var translations_en = {
       DESCOVER_MORE: 'Discover More',
-      TOP_POSTS: 'Top Posts',
-      TOP_EVENTS: 'Top Events',
-      TOP_WORKSHOPS:'Top Workshops',
+      TOP_POSTS: 'TOP POSTS',
+      TOP_EVENTS: 'TOP EVENTS',
+      TOP_WORKSHOPS:'TOP WORKSHOPS',
       NAVBAR: {
         HOME: 'Home',
         CATEGORIES: 'Categories',
@@ -11,7 +11,7 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         PROFILE: 'Profile',
         SETTINGS: 'Settings',
         LOGOUT: 'Logout',
-        POSTS:'posts',
+        POSTS:'Posts',
         COMPETITION:'Competition',
         INITIALREVIEW:'Initial Review'
 
@@ -73,7 +73,6 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             BE_UN_MENTOR: 'الغاء التعليم',
             UN_SUBSCRIBE: 'لا تتابع',
             TOP_COMPETITIONS: 'المسابقات'
-
         },
       };
 

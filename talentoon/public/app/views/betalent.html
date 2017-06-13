@@ -17,15 +17,15 @@
 
                     <!-- <input type="text" name="description" required ng-model="talent.description" placeholder="description"> -->
 
-                    <input name="talent_files[]" class="form-control upload input-lg" ng-model="talent.file" type="file" class="form-control input-lg" onchange="angular.element(this).scope().uploadedReviewFile(this)" style="width:400px">
+                    <!--<input name="talent_files[]" class="form-control upload input-lg" ng-model="talent.file" type="file" class="form-control input-lg" onchange="angular.element(this).scope().uploadedReviewFile(this)" style="width:400px">-->
 
-                    <input type="date" name="from_when" required ng-model="talent.from_when">
+                    <!--<input type="date" name="from_when" required ng-model="talent.from_when">-->
 
                     <input type="text"  class="form-control upload input-lg" disabled placeholder="Uploaded Files">
                     </input>
                     <div class ="icons col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">
-                            <input type="file" name="img" class="file" multiple>
+                            <input type="file"  name="talent_files[]"  class="file"  ng-model="talent.file" onchange="angular.element(this).scope().uploadedReviewFile(this)" >
                             <div class="input-group col-xs-12">
 
                                 <span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">
@@ -40,13 +40,13 @@
 
                     <div class="wpost  col-lg-6 col-md-6 col-sm-6">
 
-                        <a class= "text-right " data-toggle="modal" data-target=".bs-example-modal-sm"> <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            Send </a>
-                        <input type="submit" name="button" value="Send My Talent Profile" />
+                        <button class= "text-right " type="submit" name="button" data-toggle="modal" data-target=".bs-example-modal-sm"> <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            Send </button>
+                        <!--<input type="submit" name="button" value="Send My Talent Profile" />-->
                     </div>
 
 
-                    <h1>Files in form is : {{files_in_form}}</h1>
+                    <!--<h1>Files in form is : {{files_in_form}}</h1>-->
 
 
 

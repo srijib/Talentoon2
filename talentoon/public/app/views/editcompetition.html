@@ -18,10 +18,10 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h6 class="col-lg-2">Date</h6>
 
-                <input name="date_from" required ng-model="competition.date_from" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="From Date" id="example-date-input">
+                <input name="date_from" required ng-model="competition.date_from"  class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="From Date" id="example-date-input">
                 <p class="error" ng-if="addcompetition.date_from.$error.required && submitted" >please enter your competition date from</p>
 
-                <input name="date_to" required ng-model="competition.date_to" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="To Date" id="example-date-input">
+                <input name="date_to" required ng-model="competition.date_to" value="competition.date_to" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="To Date" id="example-date-input">
                 <p class="error" ng-if="addcompetition.date_to.$error.required && submitted" >please enter your competition date to</p>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h6 class="col-lg-2">Time</h6>
 
-                <input name="time_from" required ng-model="competition.time_from" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="From Time" id="example-date-input">
+                <input name="time_from" required  ng-model="competition.time_from" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="From Time" id="example-date-input">
                 <p class="error" ng-if="addcompetition.time_from.$error.required && submitted" >please enter your competition time from</p>
 
                 <input name="time_to" required ng-model="competition.time_to" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="To Time" id="example-date-input">
@@ -47,8 +47,10 @@
         <div class="col-lg-12">
             <h6 class="col-lg-2">Level</h6>
 
-            <select ng-model="competition.competition_from_level" class="custom-select col-lg-4 col-md-4 col-sm-12">
-                <option selected >{{competition.competition_from_level}}</option>
+
+
+            <select class="custom-select col-lg-4 col-md-4 col-sm-12">
+                <option  ng-model="competition.competition_from_level" selected >{{competition.competition_from_level}}</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -57,8 +59,8 @@
             </select>
 
 
-            <select ng-model="competition.competition_to_level" class="custom-select col-lg-4 col-md-4 col-sm-12">
-                <option selected >{{competition.competition_to_level}}</option>
+            <select  class="custom-select col-lg-4 col-md-4 col-sm-12">
+                <option ng-model="competition.competition_to_level" selected >{{competition.competition_to_level}}</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

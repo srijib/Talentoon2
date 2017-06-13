@@ -12,52 +12,52 @@ angular.module('myApp').controller("workshop", function ($route,$scope, $http, w
     var id = user_id;
     var is_mentor = $rootScope.cur_user.id;
 
-    videoconference.get_wiziq_data(is_mentor,id).then(function(data){
-    	console.log("respoon wiziq",data)
-
-        $window.localStorage.setItem("wiziq_teacher_id" ,data.class.wiziq_teacher_id);
-        $window.localStorage.setItem("wiziq_teacher_email", data.class.wiziq_teacher_email);
-
-        $window.localStorage.setItem("wiziq_class_id", data.class.wiziq_class_id);
-        $window.localStorage.setItem("wiziq_presenter_url", data.class.wiziq_presenter_url);
-
-
-        // $window.localStorage.setItem("wiziq_teacher_id" ,data.data[0].wiziq_teacher_id);
-        // $window.localStorage.setItem("wiziq_teacher_email", data.data[0].wiziq_teacher_email);
-        //
-        // $window.localStorage.setItem("wiziq_class_id", data.data[0].wiziq_class_id);
-        // $window.localStorage.setItem("wiziq_presenter_url", data.data[0].wiziq_presenter_url);
-
-
-        $rootScope.current_presenter_class_url = data.class.wiziq_presenter_url;
-
-        console.log("presenter url is >>>> ",data.class.wiziq_presenter_url)
-
-
-        //need loop
-        if(data.attendees.length>0){
-            for(i=0;i<data.attendees.length;i++){
-                console.log("current user id is " ,$rootScope.cur_user.id ,"wiz iq in loop id is" ,data.attendees[i].wiziq_attendee_id )
-                if($rootScope.cur_user.id == data.attendees[i].wiziq_attendee_id){
-                    $rootScope.current_student_join_class_url =  data.attendees[i].wiziq_attendee_url;
-                    console.log("student url is ",$rootScope.current_student_join_class_url )
-                }
-                $window.localStorage.setItem("attendee_" + data.attendees[i].wiziq_attendee_id, data.attendees[i].wiziq_attendee_url);
-            }
-        }
-
-        // if(localStorage.getItem("wiziq_presenter_url")){
-        //     $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
-        // }
-        //
-        // if(localStorage.getItem("attendee_"+$rootScope.cur_user.id)){
-        //     $scope.current_student_join_class_url =  localStorage.getItem("attendee_"+$rootScope.cur_user.id);
-        // }
-
-
-    }, function (err) {
-        console.log(err);
-    });
+    // videoconference.get_wiziq_data(is_mentor,id).then(function(data){
+    // 	console.log("respoon wiziq",data)
+	// 
+    //     $window.localStorage.setItem("wiziq_teacher_id" ,data.class.wiziq_teacher_id);
+    //     $window.localStorage.setItem("wiziq_teacher_email", data.class.wiziq_teacher_email);
+	//
+    //     $window.localStorage.setItem("wiziq_class_id", data.class.wiziq_class_id);
+    //     $window.localStorage.setItem("wiziq_presenter_url", data.class.wiziq_presenter_url);
+	//
+	//
+    //     // $window.localStorage.setItem("wiziq_teacher_id" ,data.data[0].wiziq_teacher_id);
+    //     // $window.localStorage.setItem("wiziq_teacher_email", data.data[0].wiziq_teacher_email);
+    //     //
+    //     // $window.localStorage.setItem("wiziq_class_id", data.data[0].wiziq_class_id);
+    //     // $window.localStorage.setItem("wiziq_presenter_url", data.data[0].wiziq_presenter_url);
+	//
+	//
+    //     $rootScope.current_presenter_class_url = data.class.wiziq_presenter_url;
+	//
+    //     console.log("presenter url is >>>> ",data.class.wiziq_presenter_url)
+	//
+	//
+    //     //need loop
+    //     if(data.attendees.length>0){
+    //         for(i=0;i<data.attendees.length;i++){
+    //             console.log("current user id is " ,$rootScope.cur_user.id ,"wiz iq in loop id is" ,data.attendees[i].wiziq_attendee_id )
+    //             if($rootScope.cur_user.id == data.attendees[i].wiziq_attendee_id){
+    //                 $rootScope.current_student_join_class_url =  data.attendees[i].wiziq_attendee_url;
+    //                 console.log("student url is ",$rootScope.current_student_join_class_url )
+    //             }
+    //             $window.localStorage.setItem("attendee_" + data.attendees[i].wiziq_attendee_id, data.attendees[i].wiziq_attendee_url);
+    //         }
+    //     }
+	//
+    //     // if(localStorage.getItem("wiziq_presenter_url")){
+    //     //     $scope.current_presenter_class_url =  localStorage.getItem("wiziq_presenter_url");
+    //     // }
+    //     //
+    //     // if(localStorage.getItem("attendee_"+$rootScope.cur_user.id)){
+    //     //     $scope.current_student_join_class_url =  localStorage.getItem("attendee_"+$rootScope.cur_user.id);
+    //     // }
+	//
+	//
+    // }, function (err) {
+    //     console.log(err);
+    // });
 
 
 

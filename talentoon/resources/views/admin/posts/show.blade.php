@@ -11,7 +11,7 @@
       <li> Description:-> {{$post->description}}</li>
       <li>Category:-> {{$category_name}}</li>
       <li>Username:-> {{$user_name}}</li>
-
+      <li>Image:-><img src={{asset("$post->media_url")}}></li>
     </ul>
 
 @endsection

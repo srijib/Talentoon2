@@ -1,8 +1,11 @@
 <div id="homepage">
-<header>
+    <div ng-if="server_down == 1">
+        <div class="serverError"></div>
+    </div>
+<header ng-if="server_down != 1">
 </header>
 
-<div id="topposts" ng-if="post_exist"  >
+<div id="topposts" ng-if="post_exist "  >
     <div class="container">
         <div class="title">
             <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
@@ -88,27 +91,6 @@
                                             <li>
                                                 <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
                                                     <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-original-title="e+" rel="tooltip"  href="#" class="btn btn-e" data-placement="left">
-                                                    <i class="fa fa-e-plus"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
-                                                    <i class="fa fa-linkedin"></i>
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                                    <i class="fa fa-envelope"></i>
                                                 </a>
                                             </li>
                                         </ul>
@@ -205,27 +187,6 @@
                                                                 <li>
                                                                     <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
                                                                         <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
-                                                                        <i class="fa fa-facebook"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a data-original-title="e+" rel="tooltip"  href="#" class="btn btn-e" data-placement="left">
-                                                                        <i class="fa fa-e-plus"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
-                                                                        <i class="fa fa-linkedin"></i>
-                                                                    </a>
-                                                                </li>
-
-                                                                <li>
-                                                                    <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                                                        <i class="fa fa-envelope"></i>
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -347,47 +308,6 @@
                             </a>
                         </div>
 
-
-                        <!--share -->
-
-                        <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-4">
-                            <div id="socialShare" class="btn-group share-group">
-                                <a data-toggle="dropdown" class="btn btn-info">
-                                    <i class="fa fa-share-alt fa-inverse"></i>
-                                </a>
-                                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="e+" rel="tooltip" href="#" class="btn btn-e" data-placement="left">
-                                            <i class="fa fa-e-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                            <i class="fa fa-envelope"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                     <!--    top event title-->
                     <div class="evCaption row">
@@ -403,7 +323,7 @@
                             </span>
                             <span class="labels">
                                 <span class="label first label-default"> {{event.date_from | date : 'MMM'}} - {{event.date_to | date : 'd-MMM'}}</span>
-              <span class="label label-default">{{event.time_from| date : 'short'}} - {{event.time_to | date : 'hh:mm'}}</span>
+              <span class="label label-default">{{event.time_from| date : 'short'}} </span>
               </span>
                         </div>
                         <!--    top event schdule-->
@@ -446,7 +366,7 @@
                                 <div class="row evDefaultImg">
 
 
-                                    <div ng-if="event.media_type == 'image'" class="bgrounddefault" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}});">
+                                    <div ng-if="event.media_type == 'image'" class="leftbgground" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}});">
                                     </div>
 
 
@@ -516,88 +436,6 @@
                                         <button type="button" class=" btn btn-default" ng-click="going(event.id)" > {{event.going_count}} Going</button>
                                     </div>
 
-                                    <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
-                                        <div id="socialShare" class="btn-group share-group">
-                                            <a data-toggle="dropdown" class="btn btn-info">
-                                                <i class="fa fa-share-alt fa-inverse"></i>
-                                            </a>
-                                            <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a data-original-title="e+" rel="tooltip" href="#" class="btn btn-e" data-placement="left">
-                                                        <i class="fa fa-e-plus"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                                                        <i class="fa fa-linkedin"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                                        <i class="fa fa-envelope"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="popUsersComments">
-                                    <div class="writePost">
-                                        <textarea class="form-control" rows="3"></textarea>
-                                        <div class="posting">
-                                            <button type="button" class="btn btn-default">Comment</button>
-                                        </div>
-
-                                    </div>
-                                    <ul class="media-list">
-                                        <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Omar Mourad</h4>
-                                                <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                                                    ultricies vehicu</p>
-
-
-
-                                            </div>
-
-
-
-                                        </li>
-
-                                        <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Khaled Ali</h4>
-                                                <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                                                    ultricies vehicu</p>
-
-
-                                            </div>
-                                        </li>
-                                    </ul>
                                 </div>
 
                             </div>
@@ -662,7 +500,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                <span class="badge">{{workshop.date_from | date : 'd-MMM'}} {{workshop.time_from}}</span>
+                                <span class="badge">{{workshop.date_from | date : 'd-MMM'}} </span>
                             </div>
                         </div>
                     </div>
@@ -737,90 +575,7 @@
                                         <button type="button" class=" btn btn-default">Enroll Now</button>
                                     </div>
 
-                                    <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
-                                        <div id="socialShare" class="btn-group share-group">
-                                            <a data-toggle="dropdown" class="btn btn-info">
-                                                <i class="fa fa-share-alt fa-inverse"></i>
-                                            </a>
-                                            <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a data-original-title="e+" rel="tooltip" href="#" class="btn btn-e" data-placement="left">
-                                                        <i class="fa fa-e-plus"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                                                        <i class="fa fa-linkedin"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                                        <i class="fa fa-envelope"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="popWorkshopUsersComments">
-                                    <div class="writePost">
-                                        <textarea class="form-control" rows="3"></textarea>
-                                        <div class="posting">
-                                            <button type="button" class="btn btn-default">Comment</button>
-                                        </div>
-
-                                    </div>
-                                    <ul class="media-list">
-                                        <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Omar Mourad</h4>
-                                                <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                                                    ultricies vehicu</p>
-
-
-
-                                            </div>
-
-
-
-                                        </li>
-
-                                        <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Khaled Ali</h4>
-                                                <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                                                    ultricies vehicu</p>
-
-
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-
                             </div>
                             <!--    top event thumbnail-->
 

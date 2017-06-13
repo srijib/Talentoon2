@@ -1,12 +1,7 @@
 
-  <!-- <a ng-href="{{current_presenter_class_url}}" class="btn btn-info" role="button">Join Current Session NOW</a> </center>
 
-</center> -->
+<div id="clickedcategorypage">
 
-
-
-<!-- <br> -->
-  <div id="clickedcategorypage">
 <div class="container">
   <div class="btn-group " role="group" aria-label="...">
 
@@ -43,8 +38,8 @@
       <h1 class="h1" >{{'TOP_POSTS' | translate}}</h1>
     </div>
 
-    <h1 ng-if="category_posts_exists == 0"  style="text-align: center; color:red;">Sorry No Current approved posts exists</h1>
 
+<h1 ng-if="category_posts_exists == 0"   class="stay-tuned">Stay Tuned</h1>
     <!-- data-aos="fade-up" data-aos-duration="2000"  -->
     <div class="row mainrow">
       <div class="col-lg-4 col-md-4 col-sm-12 postSection" data-aos="fade-up" data-aos-duration="2000" ng-repeat="post in categoryPosts | limitTo:3 track by $index">
@@ -53,9 +48,9 @@
 
           <div class="row defaultimg">
 
-         <div ng-if="post.media_type == 'image'">
+         <div ng-if="post.media_type == 'image'"   style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}});height:200px;  background-size:cover;">
 
-            <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="">
+            <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt=""> -->
           </div>
 
           <div ng-if="post.media_type == 'video' ">
@@ -67,16 +62,13 @@
 
           </div>
             <div ng-if="post.media_type == 'audio'">
-              <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/uploads/events/2.jpg" alt="">
-                <p style="font-size:15px">{{post.title}}</p>
+              <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/uploads/default.jpg" alt="">
           <audio controls style="width: 348px;">
-
-<source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" >
-
-</audio>
+            <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" >
+          </audio>
 <div class="caption row">
 <p>{{post.description}}</p>
-<p>{{post.created_at}}</p>
+<span>{{post.created_at}}</span>
 </div>
 </div>
           </div>
@@ -84,9 +76,8 @@
           <!-- caption-->
             <div ng-if="post.media_type == 'video'||post.media_type == 'image'">
           <div class="caption row">
-            <p>{{post.title}}</p>
             <p>{{post.description}}</p>
-            <p>{{post.created_at}}</p>
+            <span>{{post.created_at}}</span>
           </div>
 </div>
           <!-- user-->
@@ -130,27 +121,6 @@
                     <li>
                       <a data-original-title="Twitter" rel="tooltip"  class="btn btn-twitter" data-placement="left">
                           <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                        <i class="fa fa-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                        <i class="fa fa-google-plus"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                        <i class="fa fa-linkedin"></i>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                        <i class="fa fa-envelope"></i>
                       </a>
                     </li>
                   </ul>
@@ -256,27 +226,7 @@
                                       <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
                                   </a>
                                 </li>
-                                <li>
-                                  <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                                    <i class="fa fa-facebook"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                                    <i class="fa fa-google-plus"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                                    <i class="fa fa-linkedin"></i>
-                                  </a>
-                                </li>
 
-                                <li>
-                                  <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                    <i class="fa fa-envelope"></i>
-                                  </a>
-                                </li>
                               </ul>
                             </div>
                           </div>
@@ -366,7 +316,7 @@
       <h1 class="h1">{{'TOP_EVENTS' | translate}}</h1>
     </div>
 
-    <h1 ng-if="category_events_exists != 1"  style="text-align: center; color:red;">Sorry No Current approved events exists</h1>
+    <h1 ng-if="category_events_exists != 1" class="stay-tuned">Stay Tuned</h1>
 
 
     <div class="evMainRow row">
@@ -374,8 +324,8 @@
         <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
           <div class="row evDefaultImg">
             <!--<h2>{{event.media_url}}</h2>-->
-            <div ng-if="event.media_type == 'image'">
-            <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt="">
+            <div ng-if="event.media_type == 'image'" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}});height:200px;  background-size:cover;">
+            <!-- <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt=""> -->
             </div>
             <div ng-if="event.media_type == 'video' ">
 
@@ -415,46 +365,6 @@
             </div>
 
 
-            <!--share -->
-
-            <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-4">
-              <div id="socialShare" class="btn-group share-group">
-                <a data-toggle="dropdown" class="btn btn-info">
-                  <i class="fa fa-share-alt fa-inverse"></i>
-                </a>
-                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                    <span class="caret"></span>
-                                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                      <i class="fa fa-twitter"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                      <i class="fa fa-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                      <i class="fa fa-google-plus"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                      <i class="fa fa-linkedin"></i>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                      <i class="fa fa-envelope"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
           <!--    top event title-->
           <div class="evCaption row">
@@ -470,7 +380,7 @@
                             </span>
               <span class="labels">
                                 <span class="label first label-default"> {{event.date_from | date : 'MMM'}} - {{event.date_to | date : 'd-MMM'}}</span>
-              <span class="label label-default">{{event.time_from| date : 'short'}} - {{event.time_to | date : 'hh:mm'}}</span>
+              <span class="label label-default">{{event.time_from| date : 'short'}} </span>
               </span>
             </div>
             <!--    top event schdule-->
@@ -577,102 +487,14 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                       <a class="userPic">
                         <span>Mintoring by : </span>
-                        <img ng-src="Imgs/Persons/face1.jpg" alt=""> {{event.first_name}} {{event.last_name}}
+                        <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.user_image}}" alt=""> {{event.first_name}} {{event.last_name}}
                       </a>
 
                       <!--    top event userPic-->
 
                     </div>
 
-                    <!--share -->
-                    <div class="going  col-lg-4 col-md-4 col-sm-12">
-                      <button type="button" class=" btn btn-default" ng-click="going(event.id)" ng-controller="homec"> {{event.going_count}} Going</button>
-                    </div>
-
-                    <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
-                      <div id="socialShare" class="btn-group share-group">
-                        <a data-toggle="dropdown" class="btn btn-info">
-                          <i class="fa fa-share-alt fa-inverse"></i>
-                        </a>
-                        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                                    <span class="caret"></span>
-                                                </button>
-                        <ul class="dropdown-menu">
-                          <li>
-                            <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                              <i class="fa fa-twitter"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                              <i class="fa fa-facebook"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                              <i class="fa fa-google-plus"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                              <i class="fa fa-linkedin"></i>
-                            </a>
-                          </li>
-
-                          <li>
-                            <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                              <i class="fa fa-envelope"></i>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
                   </div>
-                  <div class="popUsersComments">
-                    <div class="writePost">
-                      <textarea class="form-control" rows="3"></textarea>
-                      <div class="posting">
-                        <button type="button" class="btn btn-default">Comment</button>
-                      </div>
-
-                    </div>
-                    <ul class="media-list">
-                      <li class="media">
-                        <div class="media-left">
-                          <a href="#">
-                            <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
-                          </a>
-                        </div>
-                        <div class="media-body">
-                          <h4 class="media-heading">Omar Mourad</h4>
-                          <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                            ultricies vehicu</p>
-
-
-
-                        </div>
-
-
-
-                      </li>
-
-                      <li class="media">
-                        <div class="media-left">
-                          <a href="#">
-                            <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
-                          </a>
-                        </div>
-                        <div class="media-body">
-                          <h4 class="media-heading">Khaled Ali</h4>
-                          <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                            ultricies vehicu</p>
-
-
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-
                 </div>
                 <!--    top event thumbnail-->
 
@@ -703,7 +525,7 @@
       <h1 class="h1">{{'TOP_WORKSHOPS' | translate}}</h1>
     </div>
 
-    <h1 ng-if="category_workshops_exists != 1"  style="text-align: center; color:red;">Sorry No Current approved workshops exists</h1>
+    <h1 ng-if="category_workshops_exists != 1"  class="stay-tuned">Stay Tuned</h1>
 
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" ng-repeat="workshop in categoryWorkshops | limitTo:3 track by $index">
@@ -711,8 +533,8 @@
           <!--                    <img ng-src="http://placehold.it/350x250">-->
 
 
-          <div ng-if="workshop.media_type == 'image'">
-          <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt="">
+          <div ng-if="workshop.media_type == 'image'" class="bgrounddefault" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}})">
+          <!-- <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt=""> -->
           </div>
           <div ng-if="workshop.media_type == 'video' ">
 
@@ -749,7 +571,7 @@
               </div>
               <div class="col-lg-4 col-md-12 col-sm-12">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <span class="badge">{{workshop.date_from | date : 'd-MMM'}} {{workshop.time_from}}</span>
+                <span class="badge">{{workshop.date_from | date : 'd-MMM'}}</span>
               </div>
             </div>
           </div>
@@ -843,101 +665,6 @@
                       <button type="button" class=" btn btn-default">Enroll Now</button>
                     </div>
 
-                    <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
-                      <div id="socialShare" class="btn-group share-group">
-                        <a data-toggle="dropdown" class="btn btn-info">
-                          <i class="fa fa-share-alt fa-inverse"></i>
-                        </a>
-                        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                                    <span class="caret"></span>
-                                                </button>
-                        <ul class="dropdown-menu">
-                          <li>
-                            <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                              <i class="fa fa-twitter"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                              <i class="fa fa-facebook"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                              <i class="fa fa-google-plus"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                              <i class="fa fa-linkedin"></i>
-                            </a>
-                          </li>
-
-                          <li>
-                            <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                              <i class="fa fa-envelope"></i>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="popWorkshopUsersComments">
-                    <div class="writePost">
-                      <textarea class="form-control" rows="3"></textarea>
-                      <div class="posting">
-                        <button type="button" class="btn btn-default">Comment</button>
-                      </div>
-
-                    </div>
-                    <ul class="media-list">
-                      <li class="media">
-                        <div class="media-left">
-                          <a href="#">
-                            <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
-                          </a>
-                        </div>
-                        <div class="media-body">
-                          <h4 class="media-heading">Omar Mourad</h4>
-                          <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                            ultricies vehicu</p>
-
-
-
-                        </div>
-
-
-
-                      </li>
-
-                      <li class="media">
-                        <div class="media-left">
-                          <a href="#">
-                            <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
-                          </a>
-                        </div>
-                        <div class="media-body">
-                          <h4 class="media-heading">Khaled Ali</h4>
-                          <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                            ultricies vehicu</p>
-
-
-                          <!--</div>-->
-                          <!--</li>-->
-                    </ul>
-                    <!--<div ng-if="isCreator==1">-->
-                    <div class="writePost">
-                      <div class="posting">
-                        <button type="button" class="btn btn-default" ng-click="editWorkshop(workshop.id,cat_id)">Edit</button>
-
-                      </div>
-                      </li>
-                      </ul>
-                    </div>
-
-                    </div>
-                    <!--    top event thumbnail-->
-
                   </div>
                 </div>
               </div>
@@ -960,7 +687,7 @@
       </div>
     </div>
   </div>
-
+</div>
 
 
 <!-- ######################################################################## -->
@@ -970,13 +697,16 @@
   <div class="container">
     <div class="title">
       <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
-      <h1 class="h1">{{'TOP_COMPETITIONS' | translate}}</h1>
+      <h1 class="h1"> {{'TOP_COMPETITIONS' | translate}} </h1>
     </div>
     <div class="CompMainRow row">
       <div class="CompSection col-sm-12 col-md-4 " data-aos="zoom-in-down" data-aos-duration="2000" ng-repeat=" competition in categoryCompetitions| limitTo:3">
         <div class="thumbnail" data-toggle="modal" data-target="#co{{competition.id}}">
           <div class="row CompDefaultImg">
-            <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}" alt="">
+
+              <div class="bgrounddefault" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}});">
+              </div>
+            <!--<img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}" alt="">-->
           </div>
           <!--    top event default image-->
 
@@ -985,47 +715,6 @@
               <h3>{{competition.title}}</h3>
             </div>
 
-
-            <!--share -->
-
-            <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-4">
-              <div id="socialShare" class="btn-group share-group">
-                <a data-toggle="dropdown" class="btn btn-info">
-                  <i class="fa fa-share-alt fa-inverse"></i>
-                </a>
-                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                    <span class="caret"></span>
-                                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a data-original-title="Twitter" rel="tooltip" href="#" class="btn btn-twitter" data-placement="left">
-                      <i class="fa fa-twitter"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-original-title="Facebook" rel="tooltip" href="#" class="btn btn-facebook" data-placement="left">
-                      <i class="fa fa-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-original-title="Google+" rel="tooltip" href="#" class="btn btn-google" data-placement="left">
-                      <i class="fa fa-google-plus"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a data-original-title="LinkedIn" rel="tooltip" href="#" class="btn btn-linkedin" data-placement="left">
-                      <i class="fa fa-linkedin"></i>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                      <i class="fa fa-envelope"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
           <!--    top event title-->
           <div class="CompCaption row">
@@ -1097,4 +786,4 @@
     </div>
   </div>
 </div>
-  </div>
+</div>

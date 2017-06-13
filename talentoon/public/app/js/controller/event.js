@@ -75,6 +75,7 @@ angular.module('myApp').controller("eventcontroller",function(event,$scope,$http
     $scope.uploadedFile = function(element) {
         console.log("element is ",element)
         $rootScope.EventcurrentFile = element.files[0];
+        $(element).parent().parent().parent().find('.form-control').val($(element).val().replace(/C:\\fakepath\\/i, ''));
     }
 
     // $scope.going= function(event_id) {

@@ -15,6 +15,7 @@
       <li> Time To:-> {{$event->time_to}}</li>
       <li>Category:-> {{$category_name}}</li>
       <li>Username:-> {{$user_name}}</li>
+      <li>Image:-><img src={{asset("$event->media_url")}}></li>
 
     </ul>
 

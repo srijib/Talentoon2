@@ -74,47 +74,6 @@
                             </a>
                         </div>
 
-
-                        <!--share -->
-
-                        <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-4">
-                            <div id="socialShare" class="btn-group share-group">
-                                <a data-toggle="dropdown" class="btn btn-info">
-                                    <i class="fa fa-share-alt fa-inverse"></i>
-                                </a>
-                                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                            <i class="fa fa-envelope"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div><!--    top event title-->
                     <div class="CompCaption col-lg-8  col-md-8 col-sm-12">
                         <p class="row">{{competition.description}}</p>
@@ -147,13 +106,15 @@
                     <div class=" col-lg-8  col-md-8 col-sm-12 going" data-toggle="modal" data-target="#Comp1">
                         <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Challenge</a>
                     </div>
+                    <mentor ng-if="is_mentor == 1">
                     <div class="col-lg-4 edits " style="color: #0f0f0f; font-size: 20px;">
 
                         <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}/edit">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </a>
-                        <i class="fa fa-trash" aria-hidden="true" ng-click="deletePost(competition.id,cat_id)"></i>
+                        <i class="fa fa-trash" aria-hidden="true" ng-click="deletecompetition(competition.id,cat_id)"></i>
                     </div>
+                    </mentor>
 
                 </div> <!--    top event thumbnail-->
             </div><!--    top event section-->

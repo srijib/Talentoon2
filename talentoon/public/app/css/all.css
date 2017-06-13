@@ -1,24 +1,24 @@
 @font-face {
   font-family: regular;
-  src: url(../../Fonts/Roboto-Regular.ttf); }
+  src: url(../fonts/Roboto-Regular.ttf); }
 @font-face {
   font-family: medium;
-  src: url(../../Fonts/Roboto-Medium.ttf); }
+  src: url(../fonts/Roboto-Medium.ttf); }
 @font-face {
   font-family: blak;
-  src: url(../../Fonts/Roboto-Black.ttf); }
+  src: url(../fonts/Roboto-Black.ttf); }
 @font-face {
   font-family: bold;
-  src: url(../../Fonts/Roboto-Bold.ttf); }
+  src: url(../fonts/Roboto-Bold.ttf); }
 @font-face {
   font-family: boldco;
-  src: url(../../Fonts/Roboto-BoldCondensed.ttf); }
+  src: url(../fonts/Roboto-BoldCondensed.ttf); }
 @font-face {
   font-family: light;
-  src: url(../../Fonts/Roboto-Light.ttf); }
+  src: url(../fonts/Roboto-Light.ttf); }
 @font-face {
   font-family: thin;
-  src: url(../../Fonts/Roboto-Thin.ttf); }
+  src: url(../fonts/Roboto-Thin.ttf); }
 body {
   font-size: 0px;
   margin: 0px;
@@ -32,7 +32,11 @@ body {
   background-size: cover !important;
   background-position: center !important; }
 
-
+.leftbgground{
+  height: 287px;
+  background-size: cover !important;
+  background-position: center !important;
+}
 
 #homepage header{
   background-image:url(../imgs/cover2.jpg) ;
@@ -52,7 +56,7 @@ body {
   #homepage #topposts .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -637,7 +641,7 @@ body {
   #homepage #topWorkshops .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -887,7 +891,7 @@ body {
   #homepage #topComp .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -2102,7 +2106,8 @@ body {
   border: 1px solid #E4E4E4; }
 #allpostspage .topPosts {
   margin-top: 0px;
-  margin: 5px 0px;
+  margin: 10px 0px;
+
   text-align: center; }
   #allpostspage .topPosts .btn-lg {
     background-color: #6A0C38;
@@ -2112,7 +2117,7 @@ body {
     font-size: 16px;
     padding: 15px;
     width: 150px;
-    margin-bottom: 0px; }
+    margin:15px 0px; }
     #allpostspage .topPosts .btn-lg i {
       color: #FFB733; }
   #allpostspage .topPosts h2 {
@@ -2238,16 +2243,23 @@ body {
     #categorieslistpage .categorySection .thumbnail .caption p {
       font-family: regular;
       font-size: 16px;
-      text-align: center; }
-      #categorieslistpage .categorySection .thumbnail .caption p .btnAction {
+      text-align: left;
+      height:150px;
+      overflow:hidden;
+      }
+#categorieslistpage .categorySection .thumbnail .caption span .btnAction {
         background-color: #6A0C38;
         color: #FFFFFF;
         font-family: medium;
         font-size: 16px;
         border: 0px;
         margin-top: 15px;
-        margin-bottom: 15px; }
-        #categorieslistpage .categorySection .thumbnail .caption p .btnAction:hover {
+        margin-bottom: 15px;
+  display: block;
+  text-align: center;
+
+}
+        #categorieslistpage .categorySection .thumbnail .caption span .btnAction:hover {
           box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
           color: #E4E4E4; }
 
@@ -2263,6 +2275,7 @@ body {
     font-family: bold;
     width: 33%;
     box-shadow: 0 3px 5px; }
+
     #clickedcategorypage .btn-group .btn-lg:hover {
       background-color: #6A0C38;
       color: #FFB733; }
@@ -2273,7 +2286,7 @@ body {
   #clickedcategorypage #topposts .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -2290,6 +2303,12 @@ body {
         background-image: none; }
         #clickedcategorypage #topposts .container .title h1 {
           text-align: left; } }
+
+    #clickedcategorypage  div#topWorkshops .stay-tuned {
+    text-align: center;
+    color: #878181;
+    margin-top: 86px;
+}
   #clickedcategorypage #topposts .container .mainrow {
     margin-left: 0px;
     margin-top: 15px;
@@ -2318,7 +2337,8 @@ body {
           font-size: 14px;
           text-align: left;
           margin-bottom: 15px;
-          vertical-align: middle; }
+          vertical-align: middle;
+          height: 150px;}
         #clickedcategorypage #topposts .container .mainrow .postSection .thumbnail .caption audio {
           width: 100%;
           margin-bottom: 5px; }
@@ -2333,7 +2353,9 @@ body {
           width: 40px;
           border: 2px solid #FFB733;
           border-radius: 50px;
-          display: inline-block; }
+          display: inline-block;
+          height: 40px;
+      }
         #clickedcategorypage #topposts .container .mainrow .postSection .thumbnail .userinfo p {
           display: inline-block;
           color: #FFB733;
@@ -2579,7 +2601,9 @@ body {
         text-align: left;
         margin-bottom: 15px;
         vertical-align: middle;
-        width: 100%; }
+        width: 100%;
+        height: 150px;
+     }
     #clickedcategorypage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails {
       font-size: 10px; }
       #clickedcategorypage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd {
@@ -2886,7 +2910,7 @@ body {
   #clickedcategorypage #topWorkshops .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -3147,7 +3171,7 @@ body {
   #clickedcategorypage #topComp .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -3603,7 +3627,9 @@ body {
     border: 0px;
     border: 1px #E4E4E4 solid;
     border-radius: 0px;
-    box-shadow: inset 0 0 0 transparent; }
+    box-shadow: inset 0 0 0 transparent;
+  margin:0px;
+  padding: 10px;}
   #createpostpage .createPost span {
     font-family: light;
     font-size: 16px;
@@ -6012,11 +6038,12 @@ body {
 
 
 
-#talmentconfirmationpage body {
-  background-image: url(../../Imgs/plain.png);
+#talmentconfirmationpage{
+  background-image: url(../imgs/plain.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  height: 600px;}
 #talmentconfirmationpage .mainTitle {
   font-size: inherit;
   color: #FFB733;
@@ -6065,13 +6092,15 @@ body {
 #talmentconfirmationpage .createConfirmation div .wpost {
   color: #FFB733;
   text-align: right; }
-#talmentconfirmationpage .createConfirmation div .wpost a {
+#talmentconfirmationpage .createConfirmation div .wpost button {
   display: inline-block;
   font-family: bold;
   font-size: 20px;
   padding: 10px;
-  color: #FFB733; }
-#talmentconfirmationpage .createConfirmation div .wpost a:hover {
+  color: #FFB733;
+  background-color: transparent;
+  border: 0px;}
+#talmentconfirmationpage .createConfirmation div .wpost button:hover {
   text-decoration: none;
   cursor: pointer; }
 #talmentconfirmationpage .upload {
@@ -6152,7 +6181,9 @@ footer {
       color: #FFB733;
       padding: 5px 10px;
       width: 100px;
-      margin-top: 8px; }
+      margin-top: 8px;
+      background: rgba(255, 255, 255, 0);
+   }
 
 /*# sourceMappingURL=all.css.map */
 

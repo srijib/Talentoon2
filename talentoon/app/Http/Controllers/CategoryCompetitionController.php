@@ -64,7 +64,7 @@ class CategoryCompetitionController extends Controller {
             $user = JWTAuth::parseToken()->toUser();
             $competitionDetails = DB::table('competitions')
                 ->join('users', 'users.id', '=', 'competitions.mentor_id')
-                ->select('competitions.*','users.first_name', 'users.last_name', 'users.image as mentor_image')
+                ->select('competitions.*','competitions.competition_end_date as date_to','competitions.competition_end_time as time_to','competitions.competition_start_date as date_from','competitions.competition_start_time as time_from','users.first_name', 'users.last_name', 'users.image as mentor_image')
                 ->where([['competitions.id','=',$competition_id],['competitions.category_id','=',$category_id]])
                 ->get();
             $is_joined =  DB::table('competition_join')
@@ -106,16 +106,32 @@ class CategoryCompetitionController extends Controller {
     public function update(Request $request, $category_id, $competition_id) {
         $user = JWTAuth::parseToken()->toUser();
         //dd($user);
+//        return response()->json($request);
         try {
-            $competitionDetails = Competition::where('mentor_id', $user->id)->where('category_id', $category_id)->findOrFail($competition_id);
+
+
+        $competitionDetails = Competition::where('mentor_id', $user->id)->where('category_id', $category_id)->findOrFail($competition_id);
+
             //dd($competitionDetails);
         } catch (ModelNotFoundException $e) {
             $code = $e->getCode();
             $SQLmessage = $e->getMessage();
             return response()->json(['code' => $code, 'SQLmessage' => $SQLmessage, 'message' => 'You are trying to edit Competition ' . $competition_id . ' that is not yours under Category ' . $category_id]);
         }
-        $response = $this->service->updateCompetitionUnderCategory($competitionDetails, $category_id, $request->description, $request->competition_from_level, $request->competition_to_level, $request->competition_start_date, $request->competition_end_date, $request->competition_start_time, $request->competition_end_time);
+        $response = $this->service->updateCompetitionUnderCategory($competitionDetails, $category_id, $request->title,$request->description, $request->competition_from_level, $request->competition_to_level, $request->date_from, $request->date_to, $request->time_from, $request->time_to);
         return $response;
+
+//        $result=$competitionDetails->update([
+//            'description' => $request->description,
+//
+//            'competition_from_level' =>  $request->competition_from_level,
+//            'competition_to_level' => $request->competition_to_level,
+//            'competition_start_date' => $request->date_from,
+//            'competition_end_date' => $request->date_to,
+//            'competition_start_time' => $request->time_from,
+//            'competition_end_time' =>$request->time_to
+//        ]);
+//        return response()->json($result);
     }
 
     /**

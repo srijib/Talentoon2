@@ -1,8 +1,10 @@
-angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location,$route) {
+angular.module('myApp').controller("main", function ($scope,$rootScope, Email,user,categories,$location,$route) {
 
     var filesuploaded = []
 
-if(localStorage.getItem("token")) {
+
+    if (localStorage.getItem("token")) {
+
         user.get_cur_user().then(function(data){
     		console.log('currrr usssserrrrr',data);
     		$rootScope.cur_user=data.cur_user;
@@ -13,6 +15,14 @@ if(localStorage.getItem("token")) {
             $rootScope.country=data.country.country_name;
     	}, function (err) {
             console.log(err);
+        });
+
+        categories.getAllCategory().then(function (data) {
+            $scope.categories = data.data;
+            console.log("categoriesNames array", $scope.categories);
+        }, function (err) {
+            console.log(err);
+            // $location.url('/500');
         });
 
         user.getAllCountry().then(function (data) {
@@ -46,14 +56,20 @@ if(localStorage.getItem("token")) {
         window.location.reload();
     }
 
+    $scope.send_complaint=function(valid){
+        if (valid) {
+            console.log($scope.complaint.text);
+            var obj = {text:$scope.complaint.text}
+            Email.contact_us(obj).then(function(data){
+        		console.log('EMAIL',data);
 
-    categories.getAllCategory().then(function (data) {
-        $scope.categories = data.data;
-        console.log("categoriesNames array", $scope.categories);
-    }, function (err) {
-        console.log(err);
-        // $location.url('/500');
-    });
+        	}, function (err) {
+                console.log(err);
+            });
+        }
+    }
+
+
 
     $scope.loginFn = function (valid) {
         if (valid) {
@@ -78,7 +94,8 @@ if(localStorage.getItem("token")) {
                 }
             }, function (err) {
                 console.log(err);
-
+                $rootScope.server_down = 1;
+                // angular.element( document.querySelector( '#login' ) ).modal('hide')
                 console.log(err.status)
 
 
@@ -127,6 +144,8 @@ if(localStorage.getItem("token")) {
                 window.location.reload();
             },function(err){
                console.log(err);
+               $rootScope.server_down = 1;
+               window.location.reload();
                 // $location.url('/500');
             });
         }
@@ -138,8 +157,8 @@ if(localStorage.getItem("token")) {
         $rootScope.profilePictureFile = element.files[0];
         filesuploaded.push(element.files[0]);
     }
-    
-    
+
+
     $scope.send_email = function (message) {
         alert(message);
 

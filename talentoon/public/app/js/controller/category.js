@@ -31,11 +31,6 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $rootScope.event_id = $routeParams['event_id'];
 
 
-    console.log('category id',$scope.cat_id);
-    console.log('workshop id',$rootScope.workshop_id);
-    console.log('event id',$rootScope.event_id );
-
-
     $scope.post_id = $routeParams['post_id'];
 
 
@@ -43,15 +38,20 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 		console.log("ROLESSSSS FROM CONTROLLER", data)
 		if(data.is_sub.length){
             $scope.is_subscribed = data.is_sub[0].subscribed;
+        }else {
+            $scope.is_subscribed = 0;
         }
 
         if(data.is_talent.length != 0){
             $scope.is_talent = data.is_talent[0].status;
+        }else {
+            $scope.is_talent = 0;
         }
 
         if(data.is_mentor.length != 0 ){
             $scope.is_mentor = data.is_mentor[0].status;
-            console.log('is_mentorrrrr',$scope.is_mentor);
+        }else {
+            $scope.is_mentor = 0;
         }
 	}, function (err) {
 		console.log(err);
@@ -130,8 +130,13 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             console.log("ya 3m",data.is_enroll);
 
 	        $rootScope.media = data.session;
-            $rootScope.countcapacity=data.countcapacity.workshop_count;
-            console.log("el count capacity",data.countcapacity.workshop_count);
+            if (data.countcapacity == null) {
+                $rootScope.countcapacity=0;
+            }else {
+                $rootScope.countcapacity=data.countcapacity.workshop_count;
+            }
+
+            // console.log("el count capacity",data.countcapacity.workshop_count);
 
 	        // $rootScope.category_post = localStorage.getItem("data");
 	        console.log("single workshop from controller", $rootScope.category_workshop);
@@ -144,7 +149,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
     //---------------------- FOR REFRESHING BUG---------------------------------
     if($rootScope.workshop_id){
-        categories.getCategoryWorkshopEdit($rootScope.cat_id,$rootScope.workshop_id).then(function (data) {
+        categories.getCategoryWorkshopEdit($scope.cat_id,$rootScope.workshop_id).then(function (data) {
 
             console.log('ID,ID',$rootScope.cat_id,$rootScope.workshop_id)
 
@@ -567,7 +572,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 		categories.getCategoryPost($scope.post_id).then(function (data) {
 	        // console.log("inside controller ESRAAAAAAAAAAAA" , data.is_liked[0].liked)
             $scope.category_post = data.post;
-
+            console.log('BASSANTTTTTTTTTTTTTTTT',$scope.category_post);
             if(data.is_liked.length){
                 $scope.category_post.is_liked = data.is_liked[0].liked
             }
@@ -598,8 +603,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $scope.subscribe = function () {
         var subscriber_id = $rootScope.cur_user.id
         var subscribed = 1;
-
-        var category_id = $rootScope.cat_id;
+        var category_id = $scope.cat_id;
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.subscribe(obj).then(function (data) {
@@ -620,7 +624,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
         var subscriber_id = $rootScope.cur_user.id
         var subscribed = 0;
 
-        var category_id = $rootScope.cat_id;
+        var category_id = $scope.cat_id;
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.unsubscribe(obj).then(function (data) {
@@ -655,6 +659,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $scope.unmentor = function () {
         var mentor_id = $rootScope.cur_user.id
         var category_id = $scope.cat_id;
+        console.log('RANIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
 		// mentor.action = "unmentor";
         var obj = {mentor_id, category_id}
         console.log(obj);
@@ -701,7 +706,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
 	$scope.newcomment = function(vaild) {
 	   if (vaild) {
-   var post_id= $rootScope.post_id;
+   var post_id= $scope.post_id;
    		$scope.comment.post_id=post_id
 		 var commentdata=$scope.comment
 		 console.log("comment data",commentdata);

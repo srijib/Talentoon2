@@ -69,6 +69,7 @@ angular.module('myApp').controller("talents",function($location,$scope,$http,cat
 		console.log(reviewfilesuploaded)
         console.log(reviewfilesuploaded_names)
 		$rootScope.files_in_form = reviewfilesuploaded_names;
+        $(element).parent().parent().parent().find('.form-control').val($(element).val().replace(/C:\\fakepath\\/i, ''));
 
 
     }
