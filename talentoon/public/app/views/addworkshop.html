@@ -1,29 +1,107 @@
-<style>
-	.container{
-		font-size: 10px;
-	}
-</style>
+<form ng-submit="submitted=true ; newworkshop(addworkshop.$valid)" name="addworkshop"  novalidate class="login-form col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2" enctype="multipart/form-data">
+    <div class="row">
+        <input type="text" name="name" required ng-model="workshop.name" class="form-controls col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Workshop Title">
+		<p class="error" ng-if="addworkshop.name.$error.required && submitted" >please enter your workshop name</p>
+	</div><!--end row title-->
+
+
+    <div class="row">
+        <textarea type="text" name="description" required ng-model="workshop.description" cols="30" rows="5" class="col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Workshop Description "></textarea>
+		<p class="error" ng-if="addworkshop.description.$error.required && submitted" >please enter your workshop description</p>
+	</div><!--end row textarea-->
+
+
+    <div class="row form-group">
+		  <!-- type="file"  onchange="angular.element(this).scope().uploadedFile(this) -->
+        <input type="file" name="workshop_file" ng-model="workshop.file" class="file" onchange="angular.element(this).scope().uploadedFile(this)">
+        <div class="input-group col-xs-12">
+            <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+            <input type="text" class="form-control input-lg" disabled="" placeholder="profile pic">
+            <span class="input-group-btn">
+                <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i>Browse</button>
+            </span><!--end input-group-btn-->
+        </div><!--end input-group-->
+    </div><!--end row file-->
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h6 class="col-lg-2">Date</h6>
+
+                <input name="date_from" required ng-model="workshop.date_from" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="date" placeholder="From Date" id="example-date-input">
+				<p class="error" ng-if="addworkshop.date_from.$error.required && submitted" >please enter start date</p>
+
+				<input name="date_to" required ng-model="workshop.date_to" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="date" placeholder="To Date" id="example-date-input">
+				<p class="error" ng-if="addworkshop.date_to.$error.required && submitted" >please enter end date</p>
+
+			</div><!--end col-lg-12-->
+        </div><!--end form-group-->
+    </div><!--end row date-->
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h6 class="col-lg-2">Time</h6>
+
+                <input name="time_from" required ng-model="workshop.time_from" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="time" placeholder="From Time" id="example-date-input">
+				<p class="error" ng-if="addworkshop.time_from.$error.required && submitted" >please enter start time</p>
+
+                <input name="time_to" required ng-model="workshop.time_to" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="time" placeholder="To Time" id="example-date-input">
+				<p class="error" ng-if="addworkshop.time_to.$error.required && submitted" >please enter end time</p>
+
+            </div><!--end col-lg-12-->
+        </div><!--end form-group-->
+    </div><!--end row time-->
+
+    <div class="row">
+        <div class="col-lg-12 pad">
+            <h6 class="col-lg-2">Level</h6>
+            <select ng-model="workshop.level" name="level" required class="custom-select col-lg-4 col-md-4 col-sm-12">
+                <option selected disabled>Level</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div><!--end pad-->
+    </div><!--end row level-->
+	<p class="error" ng-if="addworkshop.level.$error.required && submitted" >please enter level</p>
+
+
+    <div class="row">
+        <div class="col-lg-12 pad">
+            <h6 class="col-lg-2">Places Available</h6>
+            <input type="text" name="max_capacity" required ng-model="workshop.max_capacity" class="form-controls col-lg-4 col-md-4 col-sm-12" id="formGroupExampleInput" placeholder="Attendance Capacity">
+			<p class="error" ng-if="addworkshop.max_capacity.$error.required && submitted" >please enter capacity</p>
+		</div><!--end pad-->
+    </div><!--end row places-->
+	<input type="hidden" name="category_id"  ng-model="workshop.category_id" class="form-control" value="{{cat_id}}">
+
+    <div class="submit ">
+        <button type="submit" name="button" class="btn btn-lg submitBtn">
+            <i class="fa fa-check" aria-hidden="true"></i>Submit
+        </button>
+    </div><!--end submit-->
+</form><!--end form-->
+
+
+
+<!-- <div class="container" > -->
 
 
 
 
 
 
-<div class="container" >
+    <!-- <form ng-submit="submitted=true ; newworkshop(addworkshop.$valid)" name="addworkshop"  novalidate > -->
 
-
-    <center>
-        <h2 style="color:Purple">Create a New Work Shop </h2>
-        <h3 class="error" ng-if="workshop_created == false" >Something Wrong Happened</h3>
-        <h3 class="error" ng-if="End_Start_Date_validation == false" >Event End Date Cannot Precede Start Date</h3>
-        <h3 class="error" ng-if="Start_Today_Date_validation == false" >Event Start Must be After Today</h3>
-    </center>
-
-
-
-    <form ng-submit="submitted=true ; newworkshop(addworkshop.$valid)" name="addworkshop"  novalidate >
-
-
+<!--
 	<div class="field">
 	<h4 style="color:Purple ">workshop name</h4>
 		<input type="text" name="name" required ng-model="workshop.name" class="form-control">
@@ -33,18 +111,18 @@
 	<h4 style="color:Purple ">description</h4>
 		<input type="text" name="description" required ng-model="workshop.description" class="form-control">
 			<p class="error" ng-if="addworkshop.description.$error.required && submitted" >please enter your workshop description</p>
-	</div>
-    <div class="field">
+	</div> -->
+    <!-- <div class="field">
    <h4 style="color:Purple ">start time</h4>
        <input type="time" name="time_from" required ng-model="workshop.time_from" class="form-control">
            <p class="error" ng-if="addworkshop.time_from.$error.required && submitted" >please enter start time</p>
-   </div>
-   <div class="field">
+   </div> -->
+   <!-- <div class="field">
   <h4 style="color:Purple ">end time</h4>
       <input type="time" name="time_to" required ng-model="workshop.time_to" class="form-control">
           <p class="error" ng-if="addworkshop.time_to.$error.required && submitted" >please enter end time</p>
-  </div>
-  <div class="field">
+  </div> -->
+  <!-- <div class="field">
  <h4 style="color:Purple ">start date</h4>
      <input type="date" name="date_from" required ng-model="workshop.date_from" class="form-control">
          <p class="error" ng-if="addworkshop.date_from.$error.required && submitted" >please enter start date</p>
@@ -53,32 +131,30 @@
 <h4 style="color:Purple ">end date</h4>
     <input type="date" name="date_to" required ng-model="workshop.date_to" class="form-control">
         <p class="error" ng-if="addworkshop.date_to.$error.required && submitted" >please enter end date</p>
-</div>
-<div class="field">
+</div> -->
+<!-- <div class="field">
 <h4 style="color:Purple ">Capacity</h4>
    <input type="number" name="max_capacity" required ng-model="workshop.max_capacity" class="form-control">
        <p class="error" ng-if="addworkshop.max_capacity.$error.required && submitted" >please enter capacity</p>
-</div>
-<div class="field">
+</div> -->
+<!-- <div class="field">
 <h4 style="color:Purple ">Level</h4>
    <input type="text" name="level" required ng-model="workshop.level" class="form-control">
        <p class="error" ng-if="addworkshop.level.$error.required && submitted" >please enter level</p>
-</div>
+</div> -->
 
-<div class="field">
+<!-- <div class="field">
     <h4 style="color:Purple ">workshop image</h4>
-    <input name="workshop_file" ng-model="workshop.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+    <input name="workshop_file" ng-model="workshop.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" > -->
     <!--<input type="submit" id="submit_file" value="Submit" />-->
-</div>
+<!-- </div> -->
 
-    <input type="hidden" name="category_id"  ng-model="workshop.category_id" class="form-control" value="{{cat_id}}">
 
-	<button  type="submit" name="button">OK</button>
 	<!-- <p type="submit" class="btnAction"><a class="btn btn-primary btnAction" role="button">Discover More</a></p> -->
-</form>
+<!-- </form>
 
 
 
 </div>
 <br>
-<br>
+<br> -->

@@ -29,7 +29,7 @@ angular.module('myApp').controller("addworkshop",function($scope,$http,categorie
                  console.log("the workshop request from server is ", data);
                  $scope.workshop_created = true;
 //when data retrived from server
-//            $location.url('/category/'+$scope.post.category_id);
+           $location.url('/category/'+$scope.workshop.category_id);
              }, function (err) {
                  console.log(err);
                  $scope.workshop_created = false;
@@ -43,6 +43,8 @@ angular.module('myApp').controller("addworkshop",function($scope,$http,categorie
  $scope.uploadedFile = function(element) {
      console.log("element is ",element)
      $rootScope.workshopFile = element.files[0];
+     $(element).parent().parent().parent().find('.form-control').val($(element).val().replace(/C:\\fakepath\\/i, ''));
+
      //filesuploaded.push(element.files[0]);
 
 
