@@ -674,16 +674,15 @@
 
           </div>
         </div>
-        <div class="btnsOn">
-          <a href="#!/category/{{cat_id}}/workshops" class="btn btn-default" role="button"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
-          <mentor ng-if="is_mentor == 1">
-              <a href="#!/category/{{cat_id}}/addworkshop" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
-          </mentor>
-          <mentor ng-if="is_mentor != 1">
-              <button class="btn btn-default disabled" title="You have to be Mentor in this category to create a workshop" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
-          </mentor>
-        </div>
-
+      </div>
+      <div class="btnsOn">
+        <a href="#!/category/{{cat_id}}/workshops" class="btn btn-default" role="button"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
+        <mentor ng-if="is_mentor == 1">
+            <a href="#!/category/{{cat_id}}/addworkshop" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+        </mentor>
+        <mentor ng-if="is_mentor != 1">
+            <button class="btn btn-default disabled" title="You have to be Mentor in this category to create a workshop" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
+        </mentor>
       </div>
     </div>
   </div>
