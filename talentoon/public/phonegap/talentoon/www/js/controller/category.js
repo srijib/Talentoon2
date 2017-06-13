@@ -56,23 +56,29 @@ angular.module('talentoon').controller("oneCategory",function($state,$window,$sc
 //------------------------------------------------------------------
 	//get all category
         //esraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-	categories.getAllCategory().then(function(data){
-		 console.log("esraaaaa all data",data);
-		$scope.categories=data.data;
-                console.log("categories array",$scope.categories);
-	} , function(err){
-		console.log(err);
-	});
+	// categories.getAllCategory().then(function(data){
+	// 	 console.log("esraaaaa all data",data);
+	// 	$scope.categories=data.data;
+  //               console.log("categories array",$scope.categories);
+	// } , function(err){
+	// 	console.log(err);
+	// });
 
 //---------------------------------------------------------------
 
 
 	categories.getCategoryPosts($rootScope.cat_id).then(function(data){
-// 		if(data.talent.talent_id != null){
-// $rootScope.talent_id=data.talent.talent_id;
-// }
-// $rootScope.talent_id=0;
+
   // $rootScope.talent_id=data.talent.talent_id;
+			if(data.talent ==null){
+
+	$rootScope.talent_id=0;
+
+	}
+	else{
+		$rootScope.talent_id=data.talent.talent_id;
+	}
+
 console.log("talent id in category",$rootScope.talent_id);
 console.log("curent user id  in category",$rootScope.cur_user);
 			$rootScope.category3Posts=data.posts;
