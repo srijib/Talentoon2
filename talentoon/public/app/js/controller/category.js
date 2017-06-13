@@ -124,6 +124,9 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 	        $rootScope.category_workshop = data.workshop;
 	        $rootScope.userId = data.user.id;
 	        $rootScope.enroll = data.enroll;
+            $rootScope.is_enroll = data.is_enroll;
+            console.log("ya 3m",data.is_enroll);
+
 	        $rootScope.media = data.session;
             $rootScope.countcapacity=data.countcapacity.workshop_count;
             console.log("el count capacity",data.countcapacity.workshop_count);
@@ -455,7 +458,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
     $scope.add_review = function(i) {
 
-        console.log("ana hena ",$scope.categoryPosts[i].id);
+        console.log("ana hena ",$scope.categoryPosts[i]);
 
         categories.submitMentorReview($scope.categoryPosts[i]).then(function(data){
             console.log("saved success review",data)
