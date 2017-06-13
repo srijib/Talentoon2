@@ -59,57 +59,29 @@
             <div class="CompSection col-sm-12 col-md-12 col-lg-12 " ng-repeat="competition in competitions">
                 <div class="thumbnail">
                     <div class="col-lg-4 col-md-4 col-sm-12 CompDefaultImg" >
-                        <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}" alt="">
+
+                        <div class="leftbgground" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}});">
+                        </div>
+                        <!--<img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}" alt="">-->
                     </div><!--    top event default image-->
 
                     <div class="col-lg-8  col-md-8 col-sm-12 CompTitle"  >
-                        <div class="col-lg-10 col-md-10 col-sm-8" >
+                        <div class="col-lg-10 col-md-10 col-sm-12" >
                             <a href="#" data-toggle="modal" data-target="#ev1">
                                 <h3>{{competition.title}}</h3>
                             </a>
                         </div>
 
+                        <div class="col-lg-2 col-md-2 col-sm-12" >
 
-                        <!--share -->
 
-                        <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-4">
-                            <div id="socialShare" class="btn-group share-group">
-                                <a data-toggle="dropdown" class="btn btn-info">
-                                    <i class="fa fa-share-alt fa-inverse"></i>
-                                </a>
-                                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                            <i class="fa fa-envelope"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <a href="#!/category/{{competition.category_id}}/competitions/{{competition.id}}/edit">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        <!--<button >delete</button>-->
+                        <i class="fa fa-trash" aria-hidden="true" ng-click="deletecompetition(competition.id,competition.category_id);"></i>
                         </div>
+
                     </div><!--    top event title-->
                     <div class="CompCaption col-lg-8  col-md-8 col-sm-12">
                         <p class="row">{{competition.description}}</p>
@@ -144,14 +116,7 @@
                         <a href="#!/category/{{competition.category_id}}/competitions/{{competition.id}}" type="button" class="btn btn-default">Challenge</a>
                     </div>
 
-                    <div class="col-lg-4 edits " style="color: #0f0f0f; font-size: 20px;">
 
-                        <a href="#!/category/{{competition.category_id}}/competitions/{{competition.id}}/edit">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </a>
-                        <!--<button >delete</button>-->
-                            <i class="fa fa-trash" aria-hidden="true" ng-click="deletecompetition(competition.id,competition.category_id);"></i>
-                    </div>
 
                 </div> <!--    top event thumbnail-->
             </div><!--    top event section-->
