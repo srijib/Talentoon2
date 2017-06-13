@@ -43,15 +43,21 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 		console.log("ROLESSSSS FROM CONTROLLER", data)
 		if(data.is_sub.length){
             $scope.is_subscribed = data.is_sub[0].subscribed;
+        }else{
+            $scope.is_subscribed = 0;
         }
 
         if(data.is_talent.length != 0){
             $scope.is_talent = data.is_talent[0].status;
+        }else{
+            $scope.is_talent = 0;
         }
 
         if(data.is_mentor.length != 0 ){
             $scope.is_mentor = data.is_mentor[0].status;
             console.log('is_mentorrrrr',$scope.is_mentor);
+        }else{
+            $scope.is_mentor = 0;
         }
 	}, function (err) {
 		console.log(err);
@@ -655,6 +661,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $scope.unmentor = function () {
         var mentor_id = $rootScope.cur_user.id
         var category_id = $scope.cat_id;
+        console.log('RANIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
 		// mentor.action = "unmentor";
         var obj = {mentor_id, category_id}
         console.log(obj);

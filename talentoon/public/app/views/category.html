@@ -970,13 +970,16 @@
   <div class="container">
     <div class="title">
       <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
-      <h1 class="h1">{{'TOP_COMPETITIONS' | translate}}</h1>
+      <h1 class="h1"> {{'TOP_COMPETITIONS' | translate}} </h1>
     </div>
     <div class="CompMainRow row">
       <div class="CompSection col-sm-12 col-md-4 " data-aos="zoom-in-down" data-aos-duration="2000" ng-repeat=" competition in categoryCompetitions| limitTo:3">
         <div class="thumbnail" data-toggle="modal" data-target="#co{{competition.id}}">
           <div class="row CompDefaultImg">
-            <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}" alt="">
+
+              <div class="bgrounddefault" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}});">
+              </div>
+            <!--<img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{competition.image}}" alt="">-->
           </div>
           <!--    top event default image-->
 

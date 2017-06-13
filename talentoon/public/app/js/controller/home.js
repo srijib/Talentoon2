@@ -111,42 +111,4 @@ angular.module('myApp').controller("homec",function($location,$route,Home,$scope
 })
 
 
-
-
-
-///////////
-
-
-
-if($scope.categoryPosts.length){
-    $scope.category_posts_exists = 1;
-}else{
-    $scope.category_posts_exists = 0;
-}
-if($scope.categoryEvents.length){
-    $scope.category_events_exists = 1;
-}else{
-    $scope.category_events_exists = 0;
-}
-
-if($scope.categoryWorkshops.length){
-    $scope.category_workshops_exists = 1;
-}else{
-    $scope.category_workshops_exists = 0;
-}
-
-if($scope.cur_user){
-    $scope.cur_user_exists = 1;
-}else{
-    $scope.cur_user_exists = 0;
-}
-
-if($scope.category_details){
-    $scope.category_details_exists = 1;
-}else{
-    $scope.category_details_exists = 0;
-}
-
-
-
 /////////////
