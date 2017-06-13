@@ -26,7 +26,7 @@ class EventService
                 'description' => $request['description'],
 //            'is_approved' => $request['is_approved'],
                 'mentor_id' => $mentor_id,
-                'is_paid' => $request['is_paid'],
+
                 'category_id' => $request['category_id'],
 //            'media_url' => $request['media_url'],
 //            'media_type' => $request['media_type']

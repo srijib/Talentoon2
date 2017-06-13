@@ -1,102 +1,81 @@
-<style>
-    .container{
-        font-size: 10px;
-    }
-
-    .save_button{
-        /*position: relative;*/
-        /*bottom: -108px;*/
-    }
-</style>
 
 
-<div class="container" >
+<form role="form" ng-submit="submitted=true ; newevent(addevent.$valid)" name="addevent"  novalidate class="login-form col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2" enctype="multipart/form-data">
 
-    <center>
-        <h2 style="color:Purple">Create Event </h2>
-        <h3 class="error" ng-if="event_created == false" >Something Wrong Happened</h3>
-        <h3 class="error" ng-if="End_Start_Date_validation == false" >Event End Date Cannot Precede Start Date</h3>
-        <h3 class="error" ng-if="Start_Today_Date_validation == false" >Event Start Must be After Today</h3>
-    </center>
+            <div class="row">
+                <input type="text" name="title" required ng-model="event.title" class="form-controls col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Event Title">
+                <p class="error" ng-if="addevent.title.$error.required && submitted" >This field is required</p>
+            </div><!--end title-->
 
+            <div class="row">
+                <textarea type="text" name="description" required ng-model="event.description" cols="30" rows="5" class="col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Event Description "></textarea>
+                <p class="error" ng-if="addevent.description.$error.required && submitted" >This field is required</p>
 
-    <form ng-submit="submitted=true ; newevent(addevent.$valid)" name="addevent"  novalidate >
-
-        <div class="field">
-            <h4 style="color:Purple ">Title</h4>
-            <input type="text" name="title" required ng-model="event.title" class="form-control">
-            <p class="error" ng-if="addevent.title.$error.required && submitted" >This field is required</p>
-        </div>
-
-        <div class="field">
-            <h4 style="color:Purple ">Time from</h4>
-            <input type="time" name="time_from" required ng-model="event.time_from" class="form-control">
-            <p class="error" ng-if="addevent.time_from.$error.required && submitted" >This field is required</p>
-        </div>
-        <div class="field">
-            <h4 style="color:Purple ">Time to</h4>
-            <input type="time" name="time_to" required ng-model="event.time_to" class="form-control">
-            <p class="error" ng-if="addevent.time_to.$error.required && submitted" >This field is required</p>
-        </div>
-
-        <div class="field">
-            <h4 style="color:Purple ">Date from</h4>
-            <input type="date" name="date_from" required ng-model="event.date_from" class="form-control">
-            <p class="error" ng-if="addevent.date_from.$error.required && submitted" >This field is required</p>
-        </div>
-        <div class="field">
-            <h4 style="color:Purple ">Date to</h4>
-            <input type="date" name="date_to" required ng-model="event.date_to" class="form-control">
-            <p class="error" ng-if="addevent.date_to.$error.required && submitted" >This field is required</p>
-        </div>
-        <div class="field">
-            <h4 style="color:Purple ">Location</h4>
-            <input type="text" name="location" required ng-model="event.location" class="form-control">
-            <p class="error" ng-if="addevent.location.$error.required && submitted" >This field is required</p>
-        </div>
-        <div class="field">
-            <h4 style="color:Purple ">Description</h4>
-            <input type="text" name="description" required ng-model="event.description" class="form-control">
-            <p class="error" ng-if="addevent.description.$error.required && submitted" >This field is required</p>
-        </div>
-
-        <div class="field">
-            <h4 style="color:Purple ">Is Premium Event (Paid)</h4>
-
-            <input class="radiobtn" type="radio" name="paied" required ng-model="event.is_paid" value="1" checked>Premium
-
-            <input   class="radiobtn" type="radio" name="paied" required ng-model="event.is_paid"  value="0" checked>Free
+            </div><!--end description-->
 
 
-            <p class="error" ng-if="addevent.paied.$error.required && submitted" >This field is required</p>
-        </div>
+            <div class="row form-group">
+                <input type="file"  name="event_file" ng-model="event.file" class="file" onchange="angular.element(this).scope().uploadedFile(this)">
+                <div class="input-group col-xs-12">
+                    <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control input-lg" disabled="" placeholder="profile pic">
+                    <span class="input-group-btn">
+                        <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i>Browse</button>
+                    </span><!--end input-group-btn-->
+                </div><!--end input-group-->
+            </div><!--end row file-->
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h6 class="col-lg-2">Event Date</h6>
+
+                        <input class="form-controls date col-lg-4 col-md-4 col-sm-12" name="date_from" required ng-model="event.date_from" type="date" placeholder="From" id="example-date-input"><!--from-->
+
+                        <input class="form-controls date col-lg-4 col-md-4 col-sm-12" type="date"  name="date_to" required ng-model="event.date_to" placeholder="To" id="example-date-input"><!--to-->
+                        <p class="error" ng-if="addevent.date_from.$error.required && submitted" >This field is required</p>
+                        <p class="error" ng-if="addevent.date_to.$error.required && submitted" >This field is required</p>
+                    </div><!--end col-lg-12-->
+                </div><!--end form gp-->
+            </div><!--end date-->
 
 
-        <input type="hidden" name="category_id"  ng-model="event.category_id" class="form-control" value="{{cat_id}}">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
 
-        <br/>
 
 
-        <button  type="submit" name="button" class="btn btn-default save_button">Save Event </button>
+                        <h6 class="col-lg-2">Event Time</h6>
 
-        <!-- <p type="submit" class="btnAction"><a class="btn btn-primary btnAction" role="button">Discover More</a></p> -->
-    </form>
+                        <input class="form-controls date col-lg-4 col-md-4 col-sm-12" name="time_from" required ng-model="event.time_from" type="time" placeholder="From" id="example-date-input">
+                        <input class="form-controls date col-lg-4 col-md-4 col-sm-12" type="time" name="time_to" required ng-model="event.time_to" placeholder="To" id="example-date-input">
+                        <p class="error" ng-if="addevent.time_from.$error.required && submitted" >This field is required</p>
+                        <p class="error" ng-if="addevent.time_to.$error.required && submitted" >This field is required</p>
+                    </div><!--end col-lg-12-->
+                </div><!--end form gp-->
+            </div><!--end time-->
 
 
 
 
-    <h4 style="color:Purple ">Event Image</h4>
-    <!-- Form Start -->
-    <form ng-submit="submit_event_file" name="form" role="form" enctype="multipart/form-data">
-        <input name="event_file" ng-model="event.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
-        <!--<input type="submit" id="submit_file" value="Submit" />-->
-        <br/>
-        <img ng-src="{{post.file}}" style="width:300px;">
-    </form>
-    <!-- Form End -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6 class="col-lg-2">Event Location</h6>
+                    <input type="address" name="location" required ng-model="event.location" class="form-controls col-lg-8 col-md-8 col-sm-12" id="formGroupExampleInput" placeholder="Address">
+                    <p class="error" ng-if="addevent.location.$error.required && submitted" >This field is required</p>
+
+                </div><!--end col-lg-12-->
+            </div><!--end location-->
+
+            <div class="submit ">
+                <!-- <a href="" class="btn btn-lg submitBtn">
+                    <i class="fa fa-check" aria-hidden="true"></i>Submit
+                </a> -->
+
+                <button  type="submit" name="button" class="btn btn-lg submitBtn" > <i class="fa fa-check" aria-hidden="true"></i>
+                    Submit </button>
 
 
-
-</div>
-<br>
-<br>
+            </div><!--end submit-->
+        </form><!--end form-->

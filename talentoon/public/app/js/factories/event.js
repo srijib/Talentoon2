@@ -18,6 +18,7 @@ angular.module('myApp').factory("event",function($q,$http,$rootScope){
                     def.reject('something bad happened at service')
                 }
                 event_id_returned =  res.data.data.original.id;
+
                 $http({
                     method: 'POST',
                     url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/event_upload/' + event_id_returned,

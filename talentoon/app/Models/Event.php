@@ -6,5 +6,5 @@ class Event extends Model
 {
 //    use SoftDeletes;
     protected $table = 'events';
-    protected $fillable =['title','time_from','time_to','date_from','date_to','location','description','is_approved','is_paid','category_id','mentor_id'];
+    protected $fillable =['title','time_from','time_to','date_from','date_to','location','description','is_approved','category_id','mentor_id'];
 }
