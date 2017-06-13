@@ -40,9 +40,9 @@ console.log("token in factory",token)
            },
   				method:'GET'
   			}).then(function(res){
-  				// console.log("response is " , res.data.posts);
+  				console.log("response is " , res.data);
   				if(res.data.posts){
-  		     			def.resolve(res.data.posts);
+  		     			def.resolve(res.data);
   							// 			console.log("res.data.posts is " , res.data.posts )
   						// def.resolve(res.data[index])
   				}else{
