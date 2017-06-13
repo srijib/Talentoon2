@@ -4,6 +4,10 @@
         <div class="userInfos">
             <img src="http://localhost:8000/{{category_post.user_image}}" alt="">
             <span>{{category_post.first_name}} {{category_post.last_name}}</span>
+            <div class="compName row">
+                <span class="text-left col-lg-8 ">{{competition.title}}</span>
+                <div class="fb-share-button" data-href="http://talentoon.com/#!/category/{{category_post.category_id}}/posts/{{category_post.id}}" data-layout="button_count" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftalentoon.com%2F%23%21%2Fcategory%2F2%2Fcompetitions%2F1&amp;src=sdkpreparse">Share</a></div>
+            </div>
         </div><!--userInfos-->
 
         <div class="conatinerComment">

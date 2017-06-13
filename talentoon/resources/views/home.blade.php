@@ -1,15 +1,5 @@
-<!-- @extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <div class="col-md-8 col-md-offset-2">
-                <div class="panel-heading"> USER Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-        </div>
-    </div>
-@endsection -->
-
-hellooo emaaaail {{$name}}
+<h1>hellooo I'm {{$name}}</h1>
+<p>I have a message to you :</p>
+<hr>
+<p>{{$user_message}}</p>

@@ -1,4 +1,4 @@
-angular.module('myApp').controller("main", function ($scope,$rootScope, user,categories,$location,$route) {
+angular.module('myApp').controller("main", function ($scope,$rootScope, Email,user,categories,$location,$route) {
 
     var filesuploaded = []
 
@@ -45,6 +45,18 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
         window.location.reload();
     }
 
+    $scope.send_complaint=function(valid){
+        if (valid) {
+            console.log($scope.complaint.text);
+            var obj = {text:$scope.complaint.text}
+            Email.contact_us(obj).then(function(data){
+        		console.log('EMAIL',data);
+
+        	}, function (err) {
+                console.log(err);
+            });
+        }
+    }
 
     categories.getAllCategory().then(function (data) {
         $scope.categories = data.data;
