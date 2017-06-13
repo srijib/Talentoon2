@@ -3,17 +3,6 @@ $scope.user={}
 
     $scope.loginFn = function (valid) {
 
-    //   $ionicPopup.show({
-    // template: 'invaild user name or password ',
-    // title: 'Password is Incorrect',
-    // subTitle: 'Please rewrite your password ',
-    // scope: $scope,
-    // buttons: [
-    //   { text: 'Cancel' },
-    //
-    // ]
-    // });
-
         console.log('in controller');
         if (valid) {
             console.log(valid);
