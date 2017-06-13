@@ -5,6 +5,7 @@ angular.module("myApp").run(function($rootScope,$location,$timeout){
     AOS.init();
 
     $rootScope.CONSTANSTS={
+
       baseURL:"http://localhost",
       port:"8000"
     }

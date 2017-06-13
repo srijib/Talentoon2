@@ -19,6 +19,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
 
 	var filesuploaded = []
+	var files_editpost_uploaded = []
 
     var filesmentoruploaded = []
     var reviewfilesuploaded = []
@@ -727,6 +728,17 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
                // $location.url('/500');
            });
        }
+
+
+
+    $scope.uploadedFile = function(element) {
+        console.log("element is ",element)
+        $rootScope.current_edit_post_file = element.files[0];
+
+        $scope.files_editpost_uploaded.push(element.files[0]);
+        $(element).parent().parent().parent().find('.form-control').val($(element).val().replace(/C:\\fakepath\\/i, ''));
+    }
+
 
 
 

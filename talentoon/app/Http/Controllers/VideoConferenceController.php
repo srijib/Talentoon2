@@ -151,10 +151,7 @@ class VideoConferenceController extends Controller
             $xml_cnt = trim(str_replace('"', "'", $xml_cnt));
             $simpleXml = simplexml_load_string($xml_cnt);
 
-
-//            dd($simpleXml);
-
-
+//            dd($sim)
             //save into db table class
             $wiziq_teacher_obj = new WizIQTeacher;
             $wiziq_teacher_obj->wiziq_teacher_name =  $request->teacher_name;

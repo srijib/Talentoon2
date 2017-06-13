@@ -22,6 +22,7 @@
 
 <!-- // na2s upload + submit -->
 
+<div id="createpostpage">
 
 <div class="container">
     <div class="createPost col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
@@ -50,35 +51,35 @@
 	        <!--&lt;!&ndash;profile image&ndash;&gt;-->
 
 	        <div class="row">
-				<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+<!--<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >-->
 
-				<img ng-src="{{post.file}}" style="width:300px;">
 
 		        <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files">
 		        </input>
 
-			    <!--<div class ="icons col-lg-6 col-md-6 col-sm-6">-->
-			        <!--<div class="form-group">-->
-			            <!--<input type="file" name="img[]" class="file">-->
-			            <!--<div class="input-group col-xs-12">-->
-			                <!--<span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">-->
-			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-paperclip" aria-hidden="true"></i></button>-->
-			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>-->
-			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-video-camera" aria-hidden="true"></i></button>-->
-			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-headphones" aria-hidden="true"></i></button>-->
-			                <!--</span>-->
-			            <!--</div>-->
-			        <!--</div>-->
-			    <!--</div>-->
+			    <div class ="icons col-lg-6 col-md-6 col-sm-6">
+			        <div class="form-group">
+			            <input  class="file" name="post_file" ng-model="post.file" type="file"  onchange="angular.element(this).scope().uploadedFile(this)">
+			            <div class="input-group col-xs-12">
+			                <span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">
+			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
+			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-video-camera" aria-hidden="true"></i></button>
+			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-headphones" aria-hidden="true"></i></button>
+			                </span>
+			            </div>
+			        </div>
+			    </div>
 
 
 				<div class="wpost  col-lg-6 col-md-6 col-sm-6">
-	                <a class= "text-right " > <i class="fa fa-paper-plane" aria-hidden="true"></i>
-	                    Post </a>
+	                <button  type="submit" name="button" class= "text-right " > <i class="fa fa-paper-plane" aria-hidden="true"></i>
+	                    Post </button>
 	            </div>
 	        </div>
 
-			<button  type="submit" name="button" style="font-size: 20px;">OK</button>
+			<!--<button  type="submit" name="button" style="font-size: 20px;">OK</button>-->
 		</form>
     </div>
+</div>
 </div>

@@ -1,6 +1,6 @@
-angular.module('myApp').controller("addpost",function($scope,$http,categories,$routeParams,$location,user,$rootScope){
+angular.module('myApp').controller("addpost",function($scope,$http,categories,$routeParams,$location,user,$rootScope,$timeout){
 
-    var filesuploaded = []
+    $scope.filesuploaded = []
 
   $scope.newpost = function(vaild) {
      if (vaild) {
@@ -13,7 +13,7 @@ angular.module('myApp').controller("addpost",function($scope,$http,categories,$r
        categories.addpost(postdata).then(function(data){
           //  console.log("the post request from server is ",data);
         //when data retrived from server
-           $location.url('/category/'+$scope.post.category_id);
+          //  $location.url('/category/'+$scope.post.category_id);
        } , function(err){
        	console.log(err);
         // $location.url('/500');
@@ -25,8 +25,11 @@ angular.module('myApp').controller("addpost",function($scope,$http,categories,$r
      $scope.uploadedFile = function(element) {
          console.log("element is ",element)
          $rootScope.currentFile = element.files[0];
-         filesuploaded.push(element.files[0]);
+
+         $scope.filesuploaded.push(element.files[0]);
+         $(element).parent().parent().parent().find('.form-control').val($(element).val().replace(/C:\\fakepath\\/i, ''));
      }
+
 
 });//end of module
 

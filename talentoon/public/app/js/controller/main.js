@@ -138,5 +138,11 @@ if(localStorage.getItem("token")) {
         $rootScope.profilePictureFile = element.files[0];
         filesuploaded.push(element.files[0]);
     }
+    
+    
+    $scope.send_email = function (message) {
+        alert(message);
+
+    }
 
 })

@@ -11,11 +11,22 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         PROFILE: 'Profile',
         SETTINGS: 'Settings',
         LOGOUT: 'Logout',
+        POSTS:'posts',
+        COMPETITION:'Competition',
+        INITIALREVIEW:'Initial Review'
+
     },
       FOOTER: {
         LINKS: 'Links',
         STAY_TUNED: 'Stay tuned',
         CONTACT_US: 'Contact us',
+          SOCIAL_TEXT:'Connect with us and stay in the loop',
+          Email_US_TEXT:'If you have any inquiry, please send a email',
+          Email_US_ENTER_QN_TEXT:'Enter Your Question Here',
+          Email_US_BUTTON:'Email Us',
+          COMPLAINT_TEXT:'If you have any problem, please do not hesitate to email us',
+          COMPLAINT_ENTER_COMPLAINT_TEXT:'Complaint',
+
     },
       ONE_CATEGORY: {
           SUBSCRIBE: 'Subscribe',
@@ -39,11 +50,20 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         PROFILE:'بروفايل',
         SETTINGS:'الاعدادات',
         LOGOUT:'تسجيل الخروج',
+        POSTS:'بوستات',
+        COMPETITION:'المسابقات',
+        INITIALREVIEW:'تقييم المستوى'
     },
         FOOTER: {
           LINKS: 'روابط',
           STAY_TUNED: 'خليك معانا ',
           CONTACT_US: 'كلمنا',
+            SOCIAL_TEXT:'اتصل بنا عبر الفيسبوك ',
+            Email_US_TEXT:'لو قابلتك مشكله ماتتردش تبعتلنا',
+            Email_US_ENTER_QN_TEXT:'ادخل سؤالك هنا',
+            Email_US_BUTTON:'ارسل',
+            COMPLAINT_TEXT:'لو عندك شكوى, ابعتلنا هنرد عليك',
+            COMPLAINT_ENTER_COMPLAINT_TEXT:'أرسل الشكوى',
       },
         ONE_CATEGORY: {
             SUBSCRIBE: 'تابع',
@@ -262,9 +282,11 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
          redirectTo: '/404'
      });
 
+
     $httpProvider.interceptors.push(['$q', '$location', function ($q, $location) {
         return {
             'request': function (config) {
+
                 config.headers = config.headers || {};
                 var token = JSON.parse(localStorage.getItem("token"));
                 if (token) {

@@ -65,30 +65,30 @@ $(document).on('change', '.file', function(){
     $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
 });
 
-
-//scroll
-
-
-$(window).scroll(function() {
-    var scrollTop = $(window).scrollTop();
-    if ( scrollTop > 300 ) {
-        //   console.log("Test");
-//        $("#topposts").css({position: relative;
-//                            top: 0;
-//                            left: 0;
-//                            z-index: 10;
-//                            width: auto;
-//                            transform: translate(0,0);
-//                            margin-top: 50vh;
-//                            padding: 0;})
 //
-        $("#topposts").css({"position": "relative",
-                            "top": "0",
-                            "left": "0",
-                            "z-index": "10",
-                            "width": "auto",
-                            "transform": "translate(0,0)",
-//                            "margin-top": "50vh",
-                            "padding": "0"});
-    }
-});
+// //scroll
+//
+//
+// $(window).scroll(function() {
+//     var scrollTop = $(window).scrollTop();
+//     if ( scrollTop > 300 ) {
+//         //   console.log("Test");
+// //        $("#topposts").css({position: relative;
+// //                            top: 0;
+// //                            left: 0;
+// //                            z-index: 10;
+// //                            width: auto;
+// //                            transform: translate(0,0);
+// //                            margin-top: 50vh;
+// //                            padding: 0;})
+// //
+//         $("#topposts").css({"position": "relative",
+//                             "top": "0",
+//                             "left": "0",
+//                             "z-index": "10",
+//                             "width": "auto",
+//                             "transform": "translate(0,0)",
+// //                            "margin-top": "50vh",
+//                             "padding": "0"});
+//     }
+// });

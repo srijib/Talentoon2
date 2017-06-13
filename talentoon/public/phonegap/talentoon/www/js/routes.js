@@ -133,6 +133,6 @@ angular.module('talentoon').config(function($stateProvider,$httpProvider,$sceDel
         })
 
 
-    
+
 
 })
