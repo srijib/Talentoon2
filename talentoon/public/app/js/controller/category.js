@@ -604,7 +604,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
         var subscriber_id = $rootScope.cur_user.id
         var subscribed = 1;
 
-        var category_id = $rootScope.cat_id;
+        var category_id = $scope.cat_id;
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.subscribe(obj).then(function (data) {
@@ -625,7 +625,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
         var subscriber_id = $rootScope.cur_user.id
         var subscribed = 0;
 
-        var category_id = $rootScope.cat_id;
+        var category_id = $scope.cat_id;
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.unsubscribe(obj).then(function (data) {
