@@ -21,6 +21,7 @@ Route::resource('comment','CommentController');
 //Haven't considered yet
 Route::post('/uploads/singleuploded','UploadController@single_upload');
 
+
 Route::post('/betalent',[
     'uses'=>'CategoryTalentController@store',
     'middleware'=> 'ability:audience,permission:be-talent']);
@@ -72,6 +73,8 @@ Route::get('/get_media_for_initial_review/{category_talent_id}/{category_mentor_
 
 
 Route::post('/single_upload/{id}', 'UploadController@single_upload');
+Route::post('/competition_post_upload/{id}','UploadController@competition_post_upload');
+
 Route::post('/event_upload/{id}', 'UploadController@event_upload');
 Route::post('/profile_picture_upload/{id}', 'UploadController@profile_picture_upload');
 
@@ -107,6 +110,7 @@ Route::get('/userprofile/cur_user','UserProfile@cur_user');
 Route::put('/updateprofile','UserProfile@update');
 Route::post('/checkpassword','UserProfile@checkpassword');
 Route::get('/category/{category_mentor_id}/roles','CategoriesController@roles');
+Route::get('/main_role','UserProfile@main_role');
 
 Route::get('/userprofile/{post_id}',[
     'uses'=>'UserProfile@show',

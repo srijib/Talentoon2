@@ -17,7 +17,13 @@ class CompetitionPostPointsService {
             'voter_id' => $user->id,
             'points' => 2
         ]);
-        return response()->json(['status' => 1, 'message' => 'points added successfully']);
+
+        $new_count_votes = DB::table('competition_post_points')
+        ->selectRaw('count(id)as count_vote,id')
+        ->where([["competition_post_id",$post_id],['is_voted','=',1]])
+          ->groupBy('id')
+          ->get();
+        return response()->json(['status' => 1, 'message' => 'points added successfully','new_votes_count'=>$new_count_votes]);
     }
 
     public function revokeVotePoints($talentPost, $oldVotedPost, $post_id, $user) {
@@ -39,7 +45,13 @@ class CompetitionPostPointsService {
                 'points' => 2
             ]);
         }
-        return response()->json(['status' => 1, 'message' => 'points revoked from old post and added successfully to new post']);
+
+        $new_count_votes = DB::table('competition_post_points')
+        ->selectRaw('count(id)as count_vote,id')
+        ->where([["competition_post_id",$post_id],['is_voted','=',1]])
+          ->groupBy('id')
+          ->get();
+        return response()->json(['status' => 1, 'message' => 'points revoked from old post and added successfully to new post','new_votes_count'=>$new_count_votes]);
     }
 
 //should be called when competition ends

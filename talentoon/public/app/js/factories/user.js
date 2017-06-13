@@ -173,6 +173,32 @@ angular.module('myApp').factory("user", function ($http, $q,$rootScope) {
 
         },
 
+        Main_Role: function () {
+            var def = $q.defer();
+            $http({
+                url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/main_role/',
+                method: 'GET'
+
+            }).then(function (res) {
+                console.log("posts",res);
+                if (res) {
+                    // if(res.data.length){
+                    def.resolve(res.data)
+                    // def.resolve(res.data)
+
+
+                } else {
+                    def.reject('there is no data ')
+                }
+
+            }, function (err) {
+                // console.log(err);
+                def.reject(err);
+            })
+            return def.promise;
+
+        },
+
         editprofile: function (id) {
         console.log("in factory to edit profile",id);
         var def = $q.defer();

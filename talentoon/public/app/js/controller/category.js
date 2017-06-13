@@ -126,6 +126,8 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 	        $rootScope.userId = data.user.id;
 	        $rootScope.enroll = data.enroll;
 	        $rootScope.media = data.session;
+            $rootScope.countcapacity=data.countcapacity.workshop_count;
+            console.log("el count capacity",data.countcapacity.workshop_count);
 
 	        // $rootScope.category_post = localStorage.getItem("data");
 	        console.log("single workshop from controller", $rootScope.category_workshop);

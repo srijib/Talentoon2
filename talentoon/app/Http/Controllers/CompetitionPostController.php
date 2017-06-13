@@ -41,7 +41,7 @@ class CompetitionPostController extends Controller {
                       ->where('competition_post_points.is_voted', '=', '1');
 
                   })
-            ->selectRaw('competitions_posts.id,competitions_posts.*,count(competition_post_points.id) as votes_count,users.first_name, users.last_name, users.image as user_image,competition_post_points.is_voted,count(competition_post_points.id) as votes_count')
+            ->selectRaw('CONCAT("http://172.16.3.77:8000","/",competitions_posts.competition_post_media_url) as url,competitions_posts.id,competitions_posts.*,count(competition_post_points.id) as votes_count,users.first_name, users.last_name, users.image as user_image,competition_post_points.is_voted,count(competition_post_points.id) as votes_count')
             ->where('competitions_posts.competition_id','=',$competition_id)
             ->groupBy('competitions_posts.id')
 
@@ -76,6 +76,7 @@ class CompetitionPostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $competition_id) {
+      // return response()->json(['code' =>"kkkkkkkkkkk"]);
         try {
             $competition = Competition::findOrFail($competition_id)->first();
                                 $user = JWTAuth::parseToken()->toUser();
@@ -90,7 +91,7 @@ class CompetitionPostController extends Controller {
                         return response()->json(['status' => 'wrong', 'message' => 'Talent ' . $user->id . ' already has an uploaded post under competition ' . $competition_id]);
                     } else {
                         $joinedTalent = CompetitionJoin::where('talent_id', $user->id)->where('competition_id', $competition_id);
-                        $response = $this->service->createPost($joinedTalent, $user, $competition_id, $request->competition_post_title, $request->competition_post_description, $request->competition_post_media_type, $request->competition_post_media_url);
+                        $response = $this->service->createPost($joinedTalent, $user, $competition_id, $request->title, $request->description, substr($request->media_type, 0, 5), 'uploads/competitions/posts/'.$request->media_url);
                         return $response;
                     }
                 }
