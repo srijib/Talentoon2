@@ -2,7 +2,7 @@
 
 	<!-- Form Start -->
 	<form ng-submit="submit_post_file()" name="form" role="form" enctype="multipart/form-data">
-		<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+		<!-- <input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" > -->
 		<!--<input type="submit" id="submit_file" value="Submit" />-->
 		<br/>
 		<img ng-src="{{post.file}}" style="width:300px;">
@@ -17,7 +17,7 @@
 
 <div class="container">
     <div class="createPost col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
-		<form ng-submit="submitted=true ; newCompetitionPost(addpost.$valid)" name="addpost"  novalidate >
+		<form   enctype="multipart/form-data" ng-submit="submitted=true ; newCompetitionPost(addpost.$valid)" name="addpost"  novalidate >
 	        <input type="text" class="form-control" placeholder="Post title" name="title" required ng-model="post.title" >
 			<p class="error" ng-if="addpost.title.$error.required && submitted" >please enter your post title</p>
 
@@ -42,9 +42,11 @@
 			            </div>
 			        </div>
 			    </div>
+					<input name="post_file" ng-model="post.file" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
 				<div class="wpost  col-lg-6 col-md-6 col-sm-6">
 	                <a class= "text-right "> <i class="fa fa-paper-plane" aria-hidden="true"></i>
 	                    Post </a>
+											<input type="submit" id="submit_file" value="Submit" />
 	            </div>
 	        </div>
 		</form>

@@ -44,6 +44,7 @@ class CompetitionsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+
         $user = JWTAuth::parseToken()->toUser();
         $response = $this->service->createCompetition($user, $request->category_id, $request->description, $request->competition_from_level, $request->competition_to_level, $request->competition_start_date, $request->competition_end_date, $request->competition_start_time, $request->competition_end_time);
         return $response;
@@ -56,6 +57,7 @@ class CompetitionsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
+
         try {
             $competitionDetails = Competition::findOrFail($id);
         } catch (ModelNotFoundException $e) {

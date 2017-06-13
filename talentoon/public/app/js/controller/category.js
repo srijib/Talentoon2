@@ -50,6 +50,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
         if(data.is_mentor.length != 0 ){
             $scope.is_mentor = data.is_mentor[0].status;
+            console.log('is_mentorrrrr',$scope.is_mentor);
         }
 	}, function (err) {
 		console.log(err);

@@ -44,9 +44,10 @@ class CategoryCompetitionController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $category_id) {
+    public function store(Request $request) {
+//        return response()->json($request);
         $user = JWTAuth::parseToken()->toUser();
-        $response = $this->service->createCompetitionUnderCategory($user, $category_id, $request->description, $request->competition_from_level, $request->competition_to_level, $request->competition_start_date, $request->competition_end_date, $request->competition_start_time, $request->competition_end_time);
+        $response = $this->service->createCompetitionUnderCategory($user, $request->category_id, $request->description, $request->competition_from_level, $request->competition_to_level, $request->date_to, $request->date_from, $request->time_from, $request->time_to);
         return $response;
     }
 
@@ -57,6 +58,7 @@ class CategoryCompetitionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($category_id, $competition_id) {
+
         try {
             // $competitionDetails = Competition::where('category_id', $category_id)->findOrFail($competition_id);
             $user = JWTAuth::parseToken()->toUser();

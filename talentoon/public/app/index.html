@@ -41,6 +41,7 @@
 	<script type="text/javascript" src="js/controller/videoconference.js"></script>
 	<script type="text/javascript" src="js/controller/posts.js"></script>
 	<script type="text/javascript" src="js/controller/userprofile.js"></script>
+	<script type="text/javascript" src="js/controller/forget_password.js"></script>
 
 
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -55,6 +56,7 @@
 	<script type="text/javascript" src="js/factories/workshops.js"></script>
 	<script type="text/javascript" src="js/factories/event.js"></script>
 	<script type="text/javascript" src="js/factories/videoconference.js"></script>
+	<script type="text/javascript" src="js/factories/password.js"></script>
 
 
 
@@ -80,10 +82,11 @@
 	<link rel="stylesheet" href="css/allCompetiton.css">
 	<link rel="stylesheet" href="css/singleCompetition.css">
 	<link rel="stylesheet" href="css/clickedCategory.css">
+	<link rel="stylesheet" href="css/review.css">
+	<link rel="stylesheet" href="css/404.css">
 	<link rel="stylesheet" href="css/allWorkshop.css">
 	<link rel="stylesheet"href="css/singleWorkshop.css">
 	 <link rel="stylesheet" href="css/allEvents.css">
-
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>-->
@@ -187,7 +190,8 @@
 
                             <li><a href="#!/posts">Posts</a></li>
 							<li><a href="#!/competitions">Competition</a></li>
-	                            <li><a href="#!/showreview">Initial review</a></li>
+							<li ng-if="is_mentor == 3"><a href="#!/showreview">Initial review</a></li>
+
 
                         </ul>
                         <!--end of main links-->
@@ -202,30 +206,12 @@
 								<li class="dropdown">
 	                                <a href="" id="userpic" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{cur_user.image}}" alt=""><span class="caret"></span></a>
 	                                <ul class="dropdown-menu">
-	                                    <li><a href="#!/myprofile">{{'NAVBAR.PROFILE' | translate}}</a></li>
+	                                    <li><a href="#!/profile">{{'NAVBAR.PROFILE' | translate}}</a></li>
 	                                    <li><a href="#!/editprofile">{{'NAVBAR.SETTINGS' | translate}}</a></li>
 	                                    <li role="separator" class="divider"></li>
 	                                    <li><a ng-click="logoutFn()">{{'NAVBAR.LOGOUT' | translate}}</a></li>
 	                                </ul>
 	                            </li>
-
-								<!--<li class="dropdown">-->
-	<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
-
-		<!--<i class="fa fa-bell" aria-hidden="true"></i>-->
-	<!--</a>-->
-	<!--<ul class="dropdown-menu notemenu">-->
-		<!--<a><img src="Persons/face2.jpg">Ahmed Fouad<span>comment on</span><p>your post</p></a>-->
-		<!--<ul role="separator" class="divider">-->
-		<!--</ul>-->
-		<!--<a><img src="Persons/face4.jpg">Ahmed Fouad<span>likes your</span><p>video</p></a>-->
-
-	<!--</ul>-->
-<!--</li>-->
-<!--                           end notification-->
-                                <!--href="#!/editprofile"-->
-	                            <!--                            end user-->
-
 							</logged>
 
 							<notlogged ng-if="! token">
@@ -280,22 +266,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class=" social-login">
-
-                                        <div class="social-login-buttons">
-                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
-                                                <i class="fa fa-facebook"></i> Facebook
-                                            </a>
-                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="">
-                                                <i class="fa fa-google-plus"></i> Google Plus
-												<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <h3>Or Login With Your Account</h3>
                                 <div class="form-bottom">
                                     <form class="login-form col-lg-8 col-lg-offset-2" ng-submit="submitted = true; loginFn(login.$valid)" name="login" novalidate>
                                         <div class="form-group">
@@ -309,7 +279,7 @@
                                             <input type="password" name="password"  required ng-model="user.password" placeholder="Password" class="form-password form-control" id="form-password">
 								            <p class="error" ng-if="submitted && login.password.$error.required" >please enter your password</p>
 										</div>
-                                        <a href="">forget your password ?</a>
+                                        <a href="#!/password/forget">forget your password ?</a>
                                         <button type="submit" name="button" class="btn submit">Sign in!</button>
                                     </form>
                                 </div>
@@ -351,22 +321,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class=" social-login">
-
-                                        <div class="social-login-buttons">
-                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
-                                                <i class="fa fa-facebook"></i> Facebook
-                                            </a>
-
-                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
-                                                <i class="fa fa-google-plus"></i> Google Plus
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <h3>Or Sign up by fill our form</h3>
                                 <div class="form-bottom">
                                     <form name="register" ng-submit="submitted=true; registerFn(register.$valid)"  novalidate class="login-form col-lg-12 col-lg-offset-1">
                                         <!--last first name-->
@@ -465,7 +419,6 @@
                                         </div>
 
 
-                                        <a href="">Already have an account ?</a>
                                         <button type="submit" name="button" class="btn submit">Sign Up!</button>
                                     </form>
                                 </div>

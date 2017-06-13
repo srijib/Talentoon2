@@ -1,0 +1,124 @@
+<!-- <<col-lg-8>> col-lg-offset-2    <<col-md-8 >>   col-md-offset-2  <<col-sm-8 >> col-sm-offset-2 -->
+<form ng-submit="submitted=true ; updatecompetition(addcompetition.$valid)" name="addcompetition" novalidate enctype="multipart/form-data" class="login-form col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+
+    <div class="row">
+        <input name="title" required ng-model="competition.title" type="text" class="form-controls col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Competition Title">
+        <p class="error" ng-if="addcompetition.title.$error.required && submitted" >please enter your competition title</p>
+    </div>
+
+    <div class="row">
+        <textarea name="description" required ng-model="competition.description" type="text" cols="30" rows="5" class="col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Competition Description "></textarea>
+        <p class="error" ng-if="addcompetition.description.$error.required && submitted" >please enter your competition description</p>
+
+    </div>
+    <!--date-->
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h6 class="col-lg-2">Date</h6>
+
+                <input name="date_from" required ng-model="competition.date_from" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="From Date" id="example-date-input">
+                <p class="error" ng-if="addcompetition.date_from.$error.required && submitted" >please enter your competition date from</p>
+
+                <input name="date_to" required ng-model="competition.date_to" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="To Date" id="example-date-input">
+                <p class="error" ng-if="addcompetition.date_to.$error.required && submitted" >please enter your competition date to</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h6 class="col-lg-2">Time</h6>
+
+                <input name="time_from" required ng-model="competition.time_from" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="From Time" id="example-date-input">
+                <p class="error" ng-if="addcompetition.time_from.$error.required && submitted" >please enter your competition time from</p>
+
+                <input name="time_to" required ng-model="competition.time_to" class="form-controls date col-lg-4 col-md-4 col-sm-12" type="text" placeholder="To Time" id="example-date-input">
+                <p class="error" ng-if="addcompetition.time_to.$error.required && submitted" >please enter your competition time to</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h6 class="col-lg-2">Level</h6>
+
+            <select ng-model="competition.competition_from_level" class="custom-select col-lg-4 col-md-4 col-sm-12">
+                <option selected >{{competition.competition_from_level}}</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+
+            <select ng-model="competition.competition_to_level" class="custom-select col-lg-4 col-md-4 col-sm-12">
+                <option selected >{{competition.competition_to_level}}</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <textarea name="points_description" required ng-model="competition.points_description" type="text" cols="30" rows="5" class="col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Reward Description "></textarea>
+        <p class="error" ng-if="addcompetition.points_description.$error.required && submitted" >please enter your points description</p>
+
+    </div>
+    <!--<div class="row">-->
+        <!--<div class="col-lg-12">-->
+            <!--<h6 class="col-lg-2">Rank your prizies</h6>-->
+            <!--<select class="custom-select col-lg-3 col-md-3 col-sm-12">-->
+                <!--<option selected disabled>1st Prize Points</option>-->
+                <!--<option value="1">10 Points</option>-->
+                <!--<option value="2">20 Points</option>-->
+                <!--<option value="3">30 Points</option>-->
+                <!--<option value="4">40 Points</option>-->
+                <!--<option value="5">50 Points</option>-->
+            <!--</select>-->
+
+            <!--<select class="custom-select col-lg-3 col-md-3 col-sm-12">-->
+                <!--<option selected disabled>2nd Prize Points</option>-->
+                <!--<option value="1">10 Points</option>-->
+                <!--<option value="2">20 Points</option>-->
+                <!--<option value="3">30 Points</option>-->
+                <!--<option value="4">40 Points</option>-->
+                <!--<option value="5">50 Points</option>-->
+            <!--</select>-->
+
+            <!--<select class="custom-select col-lg-3 col-md-3 col-sm-12">-->
+                <!--<option selected disabled>3rd Prize Points</option>-->
+                <!--<option value="1">10 Points</option>-->
+                <!--<option value="2">20 Points</option>-->
+                <!--<option value="3">30 Points</option>-->
+                <!--<option value="4">40 Points</option>-->
+                <!--<option value="5">50 Points</option>-->
+            <!--</select>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!-- <div class="row">
+        <div class="col-lg-12">
+            <h6 class="col-lg-2">Challenge two</h6>
+
+            <input type="text" class="form-controls col-lg-4 col-md-4 col-sm-12" id="formGroupExampleInput" placeholder="Challenge talented person">
+
+            <input type="text" class="form-controls col-lg-4 col-md-4 col-sm-12" id="formGroupExampleInput" placeholder="Challenge talented person">
+
+        </div>
+    </div> -->
+    <input type="submit"></input>
+    <!--<div class="submit ">-->
+    <!--<a href="" class="btn btn-lg submitBtn">-->
+    <!--<i class="fa fa-check" aria-hidden="true"></i>Submit-->
+    <!--</a>-->
+    <!--</div>-->
+</form>
+
