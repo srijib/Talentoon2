@@ -13,7 +13,7 @@ angular.module('myApp').controller("addpost",function($scope,$http,categories,$r
        categories.addpost(postdata).then(function(data){
           //  console.log("the post request from server is ",data);
         //when data retrived from server
-           $location.url('/category/'+$scope.post.category_id);
+          //  $location.url('/category/'+$scope.post.category_id);
        } , function(err){
        	console.log(err);
         // $location.url('/500');

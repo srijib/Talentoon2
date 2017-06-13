@@ -1,12 +1,12 @@
 angular.module('talentoon').factory("categories", function ($q, $http, $rootScope) {
     return {
-        getAllCategory: function (token) {
-console.log("token in factory",token)
+        getAllCategory: function () {
+// console.log("token in factory",token)
             var def = $q.defer();
             $http({
                 url: $rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/category',
                 headers:{
-              'Authorization':'Bearer: '+ token
+              'Authorization':'Bearer: '+ $rootScope.token
                  },
                 method: 'GET'
 
@@ -40,9 +40,9 @@ console.log("token in factory",token)
            },
   				method:'GET'
   			}).then(function(res){
-  				// console.log("response is " , res.data.posts);
+  				console.log("response is " , res.data);
   				if(res.data.posts){
-  		     			def.resolve(res.data.posts);
+  		     			def.resolve(res.data);
   							// 			console.log("res.data.posts is " , res.data.posts )
   						// def.resolve(res.data[index])
   				}else{

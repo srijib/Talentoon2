@@ -35,15 +35,16 @@
 
 
   	</div>
+    <br>
   	<div class="field">
-      <label style="color:#6A0C38">gender   </label>
+      <label style="color:#6A0C38 ;margin-top:10px">gender   </label>
       <select name="gender" ng-model="user.gender" required>
     <option value="male">male</option>
     <option value="female">female</option>
   </select>
       <p class="error" ng-if="submitted && register.gender.$error.required" >please choose your gender</p>
   </div>
-
+<br>
   <div class="field">
     <label style="color:#6A0C38">country  </label>
     <select  name="country_id" ng-model="user.country_id" >
@@ -51,6 +52,7 @@
   </select>
     <p class='error' ng-if='submitted && register.country_id.$error.required'>please choose your country</p>
   </div>
+  <br>
   <div class="field ">
     <label style="color:#6A0C38">Date of Birthday </label>
    <input type="date" name="date_of_birth" ng-model="user.date_of_birth">
