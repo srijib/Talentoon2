@@ -4,6 +4,10 @@
         <div class="userInfos">
             <img src="http://localhost:8000/{{category_post.user_image}}" alt="">
             <span>{{category_post.first_name}} {{category_post.last_name}}</span>
+            <div class="compName row">
+                <span class="text-left col-lg-8 ">{{competition.title}}</span>
+                <div class="fb-share-button" data-href="http://talentoon.com/#!/category/{{category_post.category_id}}/posts/{{category_post.id}}" data-layout="button_count" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftalentoon.com%2F%23%21%2Fcategory%2F2%2Fcompetitions%2F1&amp;src=sdkpreparse">Share</a></div>
+            </div>
         </div><!--userInfos-->
 
         <div class="conatinerComment">
@@ -111,7 +115,7 @@
                 <div class="panel panel-default comments" >
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Comments
                             </a>
                         </h4>
@@ -149,27 +153,13 @@
 
                                     </li>
 
-                                    <!-- <li class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <img class="media-object" src="Imgs/Persons/face3.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Khaled Ali</h4>
-                                            <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicu</p>
-
-
-                                        </div>
-                                    </li> -->
-
                                 </ul>
 
                             </div>
 
-                            <div class="seeComments">
+                            <!-- <div class="seeComments">
                                 <span> <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS</span>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
@@ -177,9 +167,9 @@
                 <div class="panel panel-default reviews">
                     <div class="panel-heading" role="tab" id="headingTwo">
                         <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <!-- <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 Reviews
-                            </a>
+                            </a> -->
                         </h4>
                     </div>
 

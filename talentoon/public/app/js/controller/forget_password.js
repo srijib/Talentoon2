@@ -1,5 +1,4 @@
 angular.module('myApp').controller("forget_password",function($scope,Password,$rootScope){
-
     $scope.forget_password = function() {
         var obj = {email:$scope.email}
         console.log('EMAAAAIL',$scope.email);

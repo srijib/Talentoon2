@@ -43,20 +43,19 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 		console.log("ROLESSSSS FROM CONTROLLER", data)
 		if(data.is_sub.length){
             $scope.is_subscribed = data.is_sub[0].subscribed;
-        }else{
+        }else {
             $scope.is_subscribed = 0;
         }
 
         if(data.is_talent.length != 0){
             $scope.is_talent = data.is_talent[0].status;
-        }else{
+        }else {
             $scope.is_talent = 0;
         }
 
         if(data.is_mentor.length != 0 ){
             $scope.is_mentor = data.is_mentor[0].status;
-            console.log('is_mentorrrrr',$scope.is_mentor);
-        }else{
+        }else {
             $scope.is_mentor = 0;
         }
 	}, function (err) {
@@ -573,7 +572,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 		categories.getCategoryPost($scope.post_id).then(function (data) {
 	        // console.log("inside controller ESRAAAAAAAAAAAA" , data.is_liked[0].liked)
             $scope.category_post = data.post;
-
+            console.log('BASSANTTTTTTTTTTTTTTTT',$scope.category_post);
             if(data.is_liked.length){
                 $scope.category_post.is_liked = data.is_liked[0].liked
             }
