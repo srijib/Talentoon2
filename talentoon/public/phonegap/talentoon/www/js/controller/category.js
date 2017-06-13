@@ -2,7 +2,9 @@ angular.module('talentoon').controller("oneCategory",function($state,$window,$sc
 
 	// $rootScope.token = JSON.parse(localStorage.getItem("token"));
 		$rootScope.token = localStorage.getItem('token');
-	$rootScope.cur_user = JSON.parse(localStorage.getItem("cur_user"));
+		$rootScope.cur_user = localStorage.getItem('id');
+
+
 	console.log("category controller current user",$rootScope.cur_user);
 	var filesuploaded = []
     var filesmentoruploaded = []
@@ -54,21 +56,33 @@ angular.module('talentoon').controller("oneCategory",function($state,$window,$sc
 //------------------------------------------------------------------
 	//get all category
         //esraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-	categories.getAllCategory().then(function(data){
-		 console.log("esraaaaa all data",data);
-		$scope.categories=data.data;
-                console.log("categories array",$scope.categories);
-	} , function(err){
-		console.log(err);
-	});
+	// categories.getAllCategory().then(function(data){
+	// 	 console.log("esraaaaa all data",data);
+	// 	$scope.categories=data.data;
+  //               console.log("categories array",$scope.categories);
+	// } , function(err){
+	// 	console.log(err);
+	// });
 
 //---------------------------------------------------------------
 
 
 	categories.getCategoryPosts($rootScope.cat_id).then(function(data){
 
-			$rootScope.category3Posts=data;
-			console.log("posts in category",$rootScope.category3Posts)
+  // $rootScope.talent_id=data.talent.talent_id;
+			if(data.talent ==null){
+
+	$rootScope.talent_id=0;
+
+	}
+	else{
+		$rootScope.talent_id=data.talent.talent_id;
+	}
+
+console.log("talent id in category",$rootScope.talent_id);
+console.log("curent user id  in category",$rootScope.cur_user);
+			$rootScope.category3Posts=data.posts;
+			console.log("posts in category",$rootScope.category3Posts);
 	} , function(err){
 			console.log(err);
 

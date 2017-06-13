@@ -15,7 +15,7 @@
           <tr>
 
                   <td>{{$category->title}}</td>
-                  <td>{{$category->image}}</td>
+                  <td><img src={{asset("$category->image")}}></td>
                   <td>
                       <form method="post" action="{{route('category.destroy',$category->id)}}">
                           <input name="_method" type="hidden" value="DELETE">

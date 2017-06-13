@@ -2,7 +2,7 @@ angular.module('myApp').controller("allCategoryPosts",function($scope,$http,cate
 
   var index= $routeParams['category_id'];
   	$scope.cat_id=index;
-  	var user_id=1;
+  	// var user_id=1;
   	categories.getCategoryPosts(index).then(function(data){
   			console.log("inside all category posts  controller " , data)
   			$rootScope.categoryAllPosts=data;

@@ -1,5 +1,11 @@
-<!-- <<col-lg-8>> col-lg-offset-2    <<col-md-8 >>   col-md-offset-2  <<col-sm-8 >> col-sm-offset-2 -->
-<form ng-submit="submitted=true ; newcompetition(addcompetition.$valid)" name="addcompetition" novalidate enctype="multipart/form-data" class="login-form col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+<div id="createcomppage" class="row">
+    <div class="container">
+<form ng-submit="submitted=true ; newcompetition(addcompetition.$valid)" name="addcompetition" novalidate enctype="multipart/form-data" class="login-form col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+    <!--last first name-->
+    <div class="row">
+        <input name="title" required ng-model="competition.title" type="text" class="form-controls col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Competition Title">
+        <p class="error" ng-if="addcompetition.title.$error.required && submitted" >please enter your competition title</p>
+    </div>
 
     <div class="row">
             <input name="title" required ng-model="competition.title" type="text" class="form-controls col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Competition Title">
@@ -122,3 +128,6 @@
     <!--</div>-->
 </form>
 
+</div>
+
+</div>

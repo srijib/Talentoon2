@@ -14,7 +14,7 @@
 
 <!-- // na2s upload + submit -->
 
-
+<div id="createpostpage">
 <div class="container">
     <div class="createPost col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
         <form ng-submit="submitted=true ; saveupdatedpost(editpost.$valid)" name="editpost"  novalidate>
@@ -28,15 +28,14 @@
 
             <!--profile image-->
             <!--<i  class="fa fa-paper-plane" aria-hidden="true"></i>-->
-                <button type="submit" >Save</button>
             <div class="row">
-                <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files">
+                <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files"  style="display: none">
                 </input>
-                <div class ="icons col-lg-6 col-md-6 col-sm-6">
+                <div class ="icons col-lg-6 col-md-6 col-sm-6" style="display: none">
                     <div class="form-group">
-                        <input type="file" name="img[]" class="file">
+                        <input  class="file" name="post_file" ng-model="editable_post.file" type="file"  onchange="angular.element(this).scope().uploadedFile(this)"  style="display: none">
                         <div class="input-group col-xs-12">
-			                <span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">
+			                <span class="icons input-group-btn col-lg-7 col-md-7 col-sm-7">
 			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
 			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
 			                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-video-camera" aria-hidden="true"></i></button>
@@ -45,11 +44,18 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="wpost  col-lg-6 col-md-6 col-sm-6">
-                    <!--<a class= "text-right "> <i  class="fa fa-paper-plane" aria-hidden="true"></i>-->
-                        <!--<button type="submit" >Save</button></a>-->
+                    <button  type="submit" name="button" class= "text-right " > <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        Update Post </button>
                 </div>
+                <!--<div class="wpost  col-lg-6 col-md-6 col-sm-6">-->
+                    <!--&lt;!&ndash;<a class= "text-right "> <i  class="fa fa-paper-plane" aria-hidden="true"></i>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<button type="submit" >Save</button></a>&ndash;&gt;-->
+                <!--</div>-->
             </div>
         </form>
     </div>
+</div>
 </div>

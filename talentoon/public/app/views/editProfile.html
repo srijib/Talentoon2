@@ -1,9 +1,10 @@
-<style>
-.container{
-    font-size:10px;
-}
+<!--<style>-->
+<!--.container{-->
+    <!--font-size:10px;-->
+<!--}-->
 
-</style>
+<!--</style>-->
+<div id="editprofile">
 <div class="container">
     <div class="row infoName">
         <div class="userInfos">
@@ -24,9 +25,9 @@
             <p class="error" ng-if="submitted && editform.firstname.$error.required" >please enter your user first name</p>
             <input name="lastname" class="form-control" ng-model="cur_user.last_name" type="text"  placeholder="LastName" id="example-name-input" value="{{cur_user.last_name}}" required>
                 <p class="error" ng-if="submitted && editform.lastname.$error.required" >please enter your last name</p>
-            <input name="email" class="form-control"  ng-model="cur_user.email" type="Email"  placeholder="Email" id="example-email-input" value="{{cur_user.email}}" required>
-                <p class="error" ng-if="submitted && editform.email.$error.required" >please enter your email</p>
-                <p class="error" ng-if="submitted && editform.email.$error.email"> please enter valid email</p>
+            <!--<input name="email" class="form-control"  ng-model="cur_user.email" type="Email"  placeholder="Email" id="example-email-input" value="{{cur_user.email}}" required style="diplay:none;">-->
+                <!--<p class="error" ng-if="submitted && editform.email.$error.required" >please enter your email</p>-->
+                <!--<p class="error" ng-if="submitted && editform.email.$error.email"> please enter valid email</p>-->
             <div class="changepass">
                 <h6>Change Password</h6>
                 <input name="userpassword" ng-model="cur_user.userpassword" class="form-control"  type="password" id="example-password-input" placeholder="Old Password">
@@ -123,6 +124,7 @@
     </div>
 </form>
 
+</div>
 </div>
 <!--<script>-->
     <!--$("a#subanc").click(function()-->

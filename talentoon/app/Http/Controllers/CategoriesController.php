@@ -154,7 +154,15 @@ class CategoriesController extends Controller
                 ->join('users', 'users.id', '=', 'comments.user_id')
                 ->select('comments.*','users.first_name as first_name', 'users.last_name as last_name', 'users.image as user_image')
                 ->get();
-        return response()->json(['comments'=>$comments,'cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
+
+            $talent=DB::table('category_talents')
+            ->join('users', 'users.id', '=', 'category_talents.talent_id')
+            ->select('category_talents.talent_id')
+            ->where([['category_talents.category_id','=',$cat_id],['category_talents.talent_id','=',$user->id]])
+            ->distinct()
+            ->get()->first();
+
+        return response()->json(['talent'=>$talent,'comments'=>$comments,'cur_user'=>$user,'events'=>$events,'category_details' => $category,'workshops' => $workshops,'posts' => $posts,'status' => '1','message' => 'data sent successfully']);
     }
 //
     /**

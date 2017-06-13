@@ -2,7 +2,9 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
 
     var filesuploaded = []
 
+
     if (localStorage.getItem("token")) {
+
         user.get_cur_user().then(function(data){
     		console.log('currrr usssserrrrr',data);
     		$rootScope.cur_user=data.cur_user;
@@ -137,6 +139,12 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
         console.log("element is ",element)
         $rootScope.profilePictureFile = element.files[0];
         filesuploaded.push(element.files[0]);
+    }
+    
+    
+    $scope.send_email = function (message) {
+        alert(message);
+
     }
 
 })
