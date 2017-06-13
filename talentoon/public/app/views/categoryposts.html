@@ -72,24 +72,26 @@
                             <i class="fa fa-paper-plane "  aria-hidden="true"></i> New Post
                         </button>
                     </mentor>
+                     <div ng-if="status==1">
                   <h2>Top Posts</h2>
 
                   <div class="top1 col-lg-10 col-md-10 col-sm-12">
-                    <img src="Imgs/Website/3.jpg" alt="">
+                    <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryPosts[0].media_url}}" alt="">
                     <div>
-                      <img src="Imgs/Persons/face5.jpg" alt="">
-                      <span>Adel Mohsen</span>
-                      <a>Lorem Ipsum is simply dummy </a>
+                      <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryPosts[0].user_image}}" alt="">
+                      <span>{{categoryPosts[0].first_name}} {{categoryPosts[0].last_name}}</span>
+                      <a>{{categoryPosts[0].title}} </a>
                     </div>
                   </div>
+              </div>
 
 
                   <div class="top1 col-lg-10 col-md-10 col-sm-12">
-                    <img src="Imgs/Website/4.jpg" alt="">
+                    <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryPosts[1].media_url}}" alt="">
                     <div>
-                      <img src="Imgs/Persons/face4.jpg" alt="">
-                      <span>George Rafaat</span>
-                      <a>Lorem Ipsum</a>
+                      <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryPosts[1].user_image}}" alt="">
+                      <span>{{categoryPosts[1].first_name}} {{categoryPosts[1].last_name}}</span>
+                      <a>{{categoryPosts[1].title}} </a>
                     </div>
                   </div>
                 </div>
@@ -293,17 +295,13 @@
 
                                                                 </div>
                                                             </div>
-
                                                             <!-- <p class="col-lg-12" >{{review.comment}}</p> -->
 
                                                         </div>
 
-
-
                                                     </li>
 
                                                 </ul>
-
 
 
                                             </div>

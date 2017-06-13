@@ -106,13 +106,13 @@ class AdminMentorController extends Controller
     {
         //
     }
-    public function be_mentor($id){
+    public function be_mentor($id,$category_id){
             //dd($id);
             DB::table('category_mentors')->where('mentor_id', $id)->update(['status' => 1]);
             $role = Role::where('name', '=','mentor')->get()->first();
             $userId = DB::table('category_mentors')
             ->join('users', 'users.id', '=', 'category_mentors.mentor_id')
-            ->where('category_mentors.mentor_id',$id)
+            ->where([['category_mentors.mentor_id','=',$id],['category_mentors.category_id','=',$category_id]])
             ->select('users.id')
             ->first();
 
@@ -128,8 +128,8 @@ class AdminMentorController extends Controller
 
 
     }
-        public function unmentor($id){
-            DB::table('category_mentors')->where('mentor_id', $id)->update(['status' => 0]);
+        public function unmentor($id,$category_id){
+            DB::table('category_mentors')->where([['mentor_id','=', $id],['category_id','=',$category_id]])->update(['status' => 0]);
             return redirect()->route('mentor.index');
 
         }

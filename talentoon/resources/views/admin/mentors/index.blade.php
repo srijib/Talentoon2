@@ -25,7 +25,7 @@
 
 
                   @if ($mentor->status == 1)
-                  <a class="btn btn-danger" href="{{route('mentor.unmentor',$mentor->mentor_id)}}">Un Mentor</a>
+                  <a class="btn btn-danger" href="{{route('mentor.unmentor',[$mentor->mentor_id,$mentor->category_id])}}">Un Mentor</a>
                   @else
                   <a class="btn btn-danger" href="{{route('mentor.be_mentor',$mentor->mentor_id)}}">Be Mentor</a>
 
