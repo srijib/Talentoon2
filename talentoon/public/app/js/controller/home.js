@@ -112,12 +112,6 @@ angular.module('myApp').controller("homec",function($location,$route,Home,$scope
 
 
 
-
-
-///////////
-
-
-
 // if($scope.categoryPosts.length){
 //     $scope.category_posts_exists = 1;
 // }else{
@@ -148,5 +142,3 @@ angular.module('myApp').controller("homec",function($location,$route,Home,$scope
 // }
 
 
-
-/////////////
