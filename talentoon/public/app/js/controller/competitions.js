@@ -3,7 +3,10 @@ angular.module('myApp').controller("competitions",function($routeParams,$locatio
     $rootScope.cat_id = $routeParams['category_id'];
     $rootScope.competition_id = $routeParams['competition_id'];
 
-    Competitions.getcompetition($scope.cat_id,$rootScope.competition_id).then(function (data) {
+
+
+
+    Competitions.getcompetition($rootScope.cat_id,$rootScope.competition_id).then(function (data) {
         console.log('ID,ID',$scope.cat_id,$rootScope.competition_id)
         $rootScope.competition=data;
 
