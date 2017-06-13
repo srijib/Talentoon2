@@ -30,10 +30,12 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         getCategoryAllData:function(cat_id){
             var def =$q.defer();
             $http({
-                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/category/'+cat_id,
+                //'http://localhost:8000/api/category/1'
+                //
+                url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/category/'+cat_id ,
                 method:'GET'
             }).then(function(res){
-                // 		console.log("response is" , res);
+                		console.log("response is" , res.data);
                 if(res.data){
                     def.resolve(res.data);
                 }else{

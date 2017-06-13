@@ -15,7 +15,7 @@
                     <div class="thumbnail" >
                         <!-- defaultimg-->
                         <div class="row defaultimg">
-                            <div ng-if="post.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{post.media_url}});">
+                            <div ng-if="post.media_type == 'image'" class="bgrounddefault" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}});">
                             </div>
 
                             <!-- <div ng-if="post.media_type == 'image'">
@@ -138,7 +138,7 @@
                                     <div class="thumbnail">
                                         <!-- defaultimg-->
                                         <div class="row  popdefaultimg">
-                                            <div ng-if="post.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{post.media_url}});">
+                                            <div ng-if="post.media_type == 'image'" class="bgrounddefault" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}});">
                                             </div>
                                             <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt=""> -->
 
@@ -318,7 +318,7 @@
                     <div class="row evDefaultImg">
 
 
-                        <div ng-if="event.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{event.media_url}});">
+                        <div ng-if="event.media_type == 'image'" class="bgrounddefault" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}});">
                         </div>
                         <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt=""> -->
 
@@ -444,7 +444,7 @@
                                 <div class="row evDefaultImg">
 
 
-                                    <div ng-if="event.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{event.media_url}});">
+                                    <div ng-if="event.media_type == 'image'" class="bgrounddefault" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}});">
                                     </div>
 
 
@@ -625,7 +625,7 @@
                 <div class="thumbnail" data-toggle="modal" data-target="#ws{{workshop.id}}">
                     <!--                    <img ng-src="http://placehold.it/350x250">-->
 
-                    <div ng-if="workshop.media_type == 'image'" class="bgrounddefault" style="background:url(http://localhost:8000/{{workshop.media_url}});">
+                    <div ng-if="workshop.media_type == 'image'" class="bgrounddefault" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}});">
                     </div>
                     <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt=""> -->
 

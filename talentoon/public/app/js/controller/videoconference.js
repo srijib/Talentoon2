@@ -6,6 +6,7 @@ angular.module('myApp').controller("videoconference",function($location,$scope,$
     //Warning there is only one teacher session can be scheduled at one time
     //because the teacher numbers are limited and the local storage is set once not for every mentor login
     $scope.create_wiziq_session = function() {
+        alert("6")
         var teacher_id = $window.localStorage.getItem("wiziq_teacher_id");
         var teacher_email = $window.localStorage.getItem("wiziq_teacher_email");
         if(teacher_id){

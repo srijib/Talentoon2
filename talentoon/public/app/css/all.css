@@ -35,26 +35,24 @@ body {
 
 
 #homepage header{
-  background-image:url(../../imgs/cover2.jpg) ;
+  background-image:url(../imgs/cover2.jpg) ;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 600px;
+  position: relative;
+  z-index:110px;
 }
 #homepage #topposts {
   background-color: #FFFFFF;
-  position: fixed;
-  top: 20vh;
-  left: 50%;
-  transform: translateX(calc(-50% + 8px));
-  width: 100vw;
+
   margin-top: 0; }
   #homepage #topposts .row {
     margin: 0px; }
   #homepage #topposts .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../Imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }

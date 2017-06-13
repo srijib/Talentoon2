@@ -42,6 +42,8 @@ $scope.user={}
                 localStorage.setItem('token',data.token);
                 localStorage.setItem('username',data.user.first_name);
                 localStorage.setItem('userimage',data.user.image);
+                localStorage.setItem('id',data.user.id);
+
 
                 $state.go('app.home');
             }, function (err) {

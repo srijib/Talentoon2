@@ -264,4 +264,27 @@ class UploadController extends Controller
     }
 
 }
+
+
+public function competition_post_upload (Request $request,$id){
+    if(!empty($_FILES)){
+        $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/competitions/posts/'.$_FILES['file']['name']);
+
+         $comp_post = CompetitionPost::find($id);
+         $comp_post->competition_post_media_url = 'uploads/competitions/posts/'.$_FILES['file']['name'];
+        //  $post->media_type = $_FILES['file']['type'];
+         $type = substr($_FILES['file']['type'], 0, 5);
+         $comp_post->competition_post_media_type=$type;
+         $comp_post->save();
+
+        $comp_post = CompetitionPost::find($id-1)->delete();
+
+        return response()->json(['request'=> $x,'message' => 'data sent successfully']);
+    }else{
+        echo "Image Is Empty";
+    }
+
+}
+
+
 }

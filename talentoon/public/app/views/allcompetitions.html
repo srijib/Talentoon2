@@ -144,6 +144,14 @@
                         <a href="#!/category/{{competition.category_id}}/competitions/{{competition.id}}" type="button" class="btn btn-default">Challenge</a>
                     </div>
 
+                    <div class="col-lg-4 edits " style="color: #0f0f0f; font-size: 20px;">
+
+                        <a href="#!/category/{{competition.category_id}}/competitions/{{competition.id}}/edit">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        <i class="fa fa-trash" aria-hidden="true" ng-click="deletePost(competition.id,cat_id)"></i>
+                    </div>
+
                 </div> <!--    top event thumbnail-->
             </div><!--    top event section-->
 

@@ -32,7 +32,7 @@ class LoginController extends Controller {
                             'status' => 'wrong',
                             'message' => 'Password is Incorrect'
                 ]);
-            } else {
+            } else if($RegisteredUser->is_active==1) {
                 $credentials = $request->only(['email', 'password']);
                 //dd($credentials);
                 try {
@@ -67,6 +67,13 @@ class LoginController extends Controller {
 //                return $n;
 //                $result=array_merge(json_decode($n, true),$response);
 //                $result=json_encode(array_merge($response,json_decode($n, true)));
+                return $response;
+            }else{
+                $response=array(
+                    'status' => 'wrong',
+                    'message'=>'blocked user'
+
+                );
                 return $response;
             }
         }

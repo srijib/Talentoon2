@@ -1,14 +1,3 @@
-
-<!-- <img  class="img-circle"src="Imgs/Persons/face1.jpg"/> -->
-<img  class="img-circle"src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userprofile.image}}" width="150px">
-
-<h2> welcome <span style="color:Purple ">{{userprofile.first_name}}  {{userprofile.last_name}}</span></h2>
-<h3> Your Points number Is .. >> {{user_points_from_mentors_reviews}}   <<  and your level is {{level}}</h3>
-<h4>Your Reward image </h4>
-<img  class="img-circle"src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userprofile.reward_image}}" width="150px">
-
-<!-- ##################################################### -->
-
 <div id="profilepage">
 <div class="container">
     <div class="row">
@@ -16,28 +5,31 @@
             <div class="userImg">
                 <div class="opacity">
                     <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{users.image}}">
+                    <FOLLOW ng-if="cur_user.id != users.id">
+                        <div ng-if="status == 1">
+                            <button class="btn btn-default follow" type="submit" ng-click="unfollow(user.id)">UnFollow</button>
+                        </div>
+                        <div ng-if="status != 1">
+                            <button class="btn btn-default follow" type="submit" ng-click="follow(user.id)">Follow</button>
+                        </div>
+                    </FOLLOW>
+
                 </div>
             </div>
 
 
             <div class="userName row">
                 <span class="text-left col-lg-8 ">{{users.first_name}}  {{users.last_name}}</span>
-                <span class="text-center col-lg-4"><i class="fa fa-trophy" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Vertified"></i><i class="fa fa-cog" aria-hidden="true"></i></span>
+                <span class="text-center col-lg-4">{{level}}<i class="fa fa-trophy" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Vertified"></i><a href="#!/editprofile"><i class="fa fa-cog" aria-hidden="true"></i></a></span>
             </div>
 
 
             <div class="info row">
                 <p class="col-lg-12">Talented</p>
+                <p class="col-lg-12">Points: {{user_points_from_mentors_reviews}}</p>
                 <p class="col-lg-12">country: {{user_country.name}}</p>
                 <p class="col-lg-12">birth date: {{users.date_of_birth}}</p>
             </div>
-
-            <ul class="socialLink list-unstyled list-inline">
-                <li><i class="fa fa-facebook-square" aria-hidden="true"></i></li>
-                <li><i class="fa fa-twitter-square" aria-hidden="true"></i></li>
-                <li><i class="fa fa-google-plus-square" aria-hidden="true"></i></li>
-                <li><i class="fa fa-instagram" aria-hidden="true"></i></li>
-            </ul>
 
             <!--share -->
 
@@ -101,11 +93,6 @@
                 <div class="count">
                     <div class="col-lg-6 titl">FOLLOWING</div>
                     <badge class="num col-lg-6 text-center">{{following}}</badge>
-                </div>
-
-                <div class="count">
-                    <div class="col-lg-6 titl">SUBSCRIBE</div>
-                    <badge class="num col-lg-6 text-center">3</badge>
                 </div>
 
             </div>

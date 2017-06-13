@@ -8,11 +8,16 @@
     </div>
 
     <div class="row">
-        <textarea name="description" required ng-model="competition.description" type="text" cols="30" rows="5" class="col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Competition Description "></textarea>
-        <p class="error" ng-if="addcompetition.description.$error.required && submitted" >please enter your competition description</p>
+            <input name="title" required ng-model="competition.title" type="text" class="form-controls col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Competition Title">
+            <p class="error" ng-if="addcompetition.title.$error.required && submitted" >please enter your competition title</p>
+        </div>
 
-    </div>
-    <!--date-->
+        <div class="row">
+            <textarea name="description" required ng-model="competition.description" type="text" cols="30" rows="5" class="col-lg-12 col-md-12 col-sm-12" id="formGroupExampleInput" placeholder="Competition Description "></textarea>
+            <p class="error" ng-if="addcompetition.description.$error.required && submitted" >please enter your competition description</p>
+
+        </div>
+        <!--date-->
 
     <div class="row">
         <div class="form-group">
@@ -48,8 +53,8 @@
         <div class="col-lg-12">
             <h6 class="col-lg-2">Level</h6>
 
-            <select class="custom-select col-lg-4 col-md-4 col-sm-12">
-                <option selected disabled>From Level</option>
+            <select ng-model="competition.competition_from_level" class="custom-select col-lg-4 col-md-4 col-sm-12">
+                <option selected >From Level</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -58,8 +63,8 @@
             </select>
 
 
-            <select class="custom-select col-lg-4 col-md-4 col-sm-12">
-                <option selected disabled>To Level</option>
+            <select ng-model="competition.competition_to_level" class="custom-select col-lg-4 col-md-4 col-sm-12">
+                <option selected >To Level</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -115,13 +120,14 @@
 
         </div>
     </div> -->
-
-    <div class="submit ">
-        <a href="" class="btn btn-lg submitBtn">
-            <i class="fa fa-check" aria-hidden="true"></i>Submit
-        </a>
-    </div>
+    <input type="submit"></input>
+    <!--<div class="submit ">-->
+        <!--<a href="" class="btn btn-lg submitBtn">-->
+            <!--<i class="fa fa-check" aria-hidden="true"></i>Submit-->
+        <!--</a>-->
+    <!--</div>-->
 </form>
+
 </div>
 
 </div>

@@ -1,5 +1,6 @@
-<div id="alleventpage">
-<div class="container">
+
+<!-- <div class="container">
+>>>>>>> 3c630c6c9bebf4cfd411c2783f052ba411e57f60
     <h1>category events</h1>
     <div ng-repeat="event in categoryEvents">
 
@@ -24,16 +25,146 @@
         </audio>
         </div>
 
-            <!-- <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" class="img-circle" style="height:80px;" /> -->
             <h4 style="color:Purple ">{{event.title}}</h4>
             <h4 style="color:Purple ">{{event.description}}</h4>
             <h4 style="color:Purple ">{{event.created_at}}</h4>
             <input type="hidden" ng-model=event.event_id value="{{event.id}}">
         </div>
-        <!-- <a href="#!/category/{{event.category_id}}/events/{{event.id}}" class="btn btn-default" role="button" >details</a> -->
-        <!--ng-click="editEvent(event.id,event.category_id)"-->
+
         <a  href="#!/category/{{event.category_id}}/events/{{event.id}}/editevent" class="btn btn-default" role="button" >edit</a>
         <a ng-click="deleteEvent(event.id,event.category_id)" class="btn btn-default" role="button" >delete</a>
     </div>
+<<<<<<< HEAD
 </div>
+</div>
+=======
+</div> -->
+
+<div id="alleventpage">
+<div class="container">
+            <div id="allTopEvents" class=" col-lg-4 col-lg-push-8 col-md-4 col-md-push-8 col-sm-4 col-sm-push-8 col-xs-12">
+
+                <div class="topEvents">
+                    <mentor ng-if="is_mentor == 1">
+                    <a href="" class="btn btn-lg">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create New
+                    </a>
+                    </mentor>
+                    <h2>Top Events</h2>
+
+                    <div class="top1 col-lg-10 col-md-10 col-sm-12">
+                        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryEvents[0].media_url}}" alt="">
+                        <div>
+                            <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryEvents[0].user_image}}" alt="">
+                            <span>{{categoryEvents[0].first_name}} {{categoryEvents[0].last_name}}</span>
+                            <a>{{categoryEvents[0].description}} </a>
+                        </div>
+                    </div>
+
+
+                    <div class="top1 col-lg-10 col-md-10 col-sm-12">
+                        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryEvents[1].media_url}}" alt="">
+                        <div>
+                            <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{categoryEvents[1].user_image}}" alt="">
+                            <span>{{categoryEvents[1].first_name}} {{categoryEvents[1].last_name}}</span>
+                            <a>{{categoryEvents[1].description}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--    top events container-->
+
+        <div >
+            <div ng-repeat="event in categoryEvents track by $index" id="allRecentEvents" class="evMainRow col-lg-8 col-lg-pull-4 col-md-8 col-md-pull-4 col-sm-8 col-sm-pull-4 col-xm-12">
+                <div class="thumbnail">
+                    <div class="col-lg-4 col-md-4 col-sm-12  evDefaultImg" >
+                        <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt="">
+                    </div><!--    top event default image-->
+
+                    <div class=" col-lg-8  col-md-8 col-sm-12 evTitle"  >
+                        <div class="col-lg-10 col-md-10 col-sm-8" >
+                            <a href="#">
+                                <h2>{{event.title}}</h2>
+                            </a>
+                        </div>
+
+
+
+                        <!--share -->
+
+                         <div id="socialHolder" class="col-lg-2 col-md-2 col-sm-12">
+                             <div class="col-lg-4 edits ">
+                                        <a  href="#!/category/{{event.category_id}}/events/{{event.id}}/editevent"><i class="fa fa-trash" aria-hidden="true" ></i></a>
+                                        <i class="fa fa-pencil" aria-hidden="true" ng-click="deleteEvent(event.id,event.category_id)"></i>
+                                    </div>
+                         </div>
+                        <!--    <div id="socialShare" class="btn-group share-group">
+                                <a data-toggle="dropdown" class="btn btn-info">
+                                    <i class="fa fa-share-alt fa-inverse"></i>
+                                </a>
+                                <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a data-original-title="Twitter" rel="tooltip"  href="#" class="btn btn-twitter" data-placement="left">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="Google+" rel="tooltip"  href="#" class="btn btn-google" data-placement="left">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
+                                            <i class="fa fa-envelope"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+                    </div><!--    top event title-->
+                    <div class=" col-lg-8  col-md-8 col-sm-12 evCaption">
+                        <p class="row">{{event.description}}</p>
+                    </div><!--    top event caption-->
+
+                    <div class=" col-lg-8  col-md-8 col-sm-12 evDetails">
+                        <div class="eventScd col-lg-6 col-md-12 col-sm-12">
+                            <span  class="bigdate">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <p>{{event.date_from | date : 'd'}}</p>
+                            </span>
+                            <span class="labels">
+                                <span class="label first label-default"> {{event.date_from | date : 'MMM'}} - {{event.date_to | date : 'd-MMM'}}</span>
+                                <span class="label label-default">{{event.time_from| date : 'short'}} - {{event.time_to | date : 'hh:mm'}}</span>
+                            </span>
+                        </div><!--    top event schdule-->
+                        <div class="eventScd col-lg-6 col-md-12 col-sm-12" id="secondp">
+                            <span  class="bigdate" id="span1">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </span>
+                            <span class="labels"id="s">
+                                {{event.location}}
+                            </span>
+                        </div><!--    top event schdule-->
+                    </div><!--    top event detaila-->
+
+                    <div class=" col-lg-8  col-md-8 col-sm-12 going ">
+                        <button type="button" class="btn btn-default" ng-click="going(event.id)" ng-controller="homec">{{event.going_count}}Going</button>
+                    </div>
+                </div> <!--    top event thumbnail-->
+            </div><!--    top event row-->
+        </div>
+        </div>
 </div>
