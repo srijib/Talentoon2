@@ -1,24 +1,24 @@
 @font-face {
   font-family: regular;
-  src: url(../../Fonts/Roboto-Regular.ttf); }
+  src: url(../fonts/Roboto-Regular.ttf); }
 @font-face {
   font-family: medium;
-  src: url(../../Fonts/Roboto-Medium.ttf); }
+  src: url(../fonts/Roboto-Medium.ttf); }
 @font-face {
   font-family: blak;
-  src: url(../../Fonts/Roboto-Black.ttf); }
+  src: url(../fonts/Roboto-Black.ttf); }
 @font-face {
   font-family: bold;
-  src: url(../../Fonts/Roboto-Bold.ttf); }
+  src: url(../fonts/Roboto-Bold.ttf); }
 @font-face {
   font-family: boldco;
-  src: url(../../Fonts/Roboto-BoldCondensed.ttf); }
+  src: url(../fonts/Roboto-BoldCondensed.ttf); }
 @font-face {
   font-family: light;
-  src: url(../../Fonts/Roboto-Light.ttf); }
+  src: url(../fonts/Roboto-Light.ttf); }
 @font-face {
   font-family: thin;
-  src: url(../../Fonts/Roboto-Thin.ttf); }
+  src: url(../fonts/Roboto-Thin.ttf); }
 body {
   font-size: 0px;
   margin: 0px;
@@ -32,7 +32,11 @@ body {
   background-size: cover !important;
   background-position: center !important; }
 
-
+.leftbgground{
+  height: 287px;
+  background-size: cover !important;
+  background-position: center !important;
+}
 
 #homepage header{
   background-image:url(../imgs/cover2.jpg) ;
@@ -52,7 +56,7 @@ body {
   #homepage #topposts .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -637,7 +641,7 @@ body {
   #homepage #topWorkshops .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -887,7 +891,7 @@ body {
   #homepage #topComp .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -2280,7 +2284,7 @@ body {
   #clickedcategorypage #topposts .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -2893,7 +2897,7 @@ body {
   #clickedcategorypage #topWorkshops .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -3154,7 +3158,7 @@ body {
   #clickedcategorypage #topComp .container .title {
     text-align: center;
     margin-top: 20px;
-    background-image: url(../../Imgs/bground2.png);
+    background-image: url(../imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
@@ -3610,7 +3614,9 @@ body {
     border: 0px;
     border: 1px #E4E4E4 solid;
     border-radius: 0px;
-    box-shadow: inset 0 0 0 transparent; }
+    box-shadow: inset 0 0 0 transparent;
+  margin:0px;
+  padding: 10px;}
   #createpostpage .createPost span {
     font-family: light;
     font-size: 16px;
@@ -6019,11 +6025,12 @@ body {
 
 
 
-#talmentconfirmationpage body {
-  background-image: url(../../Imgs/plain.png);
+#talmentconfirmationpage{
+  background-image: url(../imgs/plain.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  height: 600px;}
 #talmentconfirmationpage .mainTitle {
   font-size: inherit;
   color: #FFB733;
@@ -6072,13 +6079,15 @@ body {
 #talmentconfirmationpage .createConfirmation div .wpost {
   color: #FFB733;
   text-align: right; }
-#talmentconfirmationpage .createConfirmation div .wpost a {
+#talmentconfirmationpage .createConfirmation div .wpost button {
   display: inline-block;
   font-family: bold;
   font-size: 20px;
   padding: 10px;
-  color: #FFB733; }
-#talmentconfirmationpage .createConfirmation div .wpost a:hover {
+  color: #FFB733;
+  background-color: transparent;
+  border: 0px;}
+#talmentconfirmationpage .createConfirmation div .wpost button:hover {
   text-decoration: none;
   cursor: pointer; }
 #talmentconfirmationpage .upload {

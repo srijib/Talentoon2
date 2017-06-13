@@ -77,6 +77,8 @@
 	<!--<link rel="stylesheet" href="css/talentProfile.css">-->
 	<!--<link rel="stylesheet" href="css/home.css">-->
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/emailReset.css">
+    <link rel="stylesheet" href="css/serverError.css">
 
 	<!--<link rel="stylesheet" href="css/categories.css">-->
 	<!--<link rel="stylesheet" href="css/talentConfirmation.css">-->
@@ -454,7 +456,6 @@
     </div><!-- /.modal -->
 
 </div>
-
 <div ng-view></div>
 
 <footer>
@@ -466,7 +467,7 @@
 
                                         <li><a href="#!/posts" style="color: #808285; text-decoration: none;">{{'NAVBAR.POSTS' | translate}}</a></li>
                                         <li><a href="#!/competitions" style="color: #808285; text-decoration: none;">{{'NAVBAR.COMPETITION' | translate}}</a></li>
-                                        <li><a ng-if="is_mentor == 3" href="#!/showreview" style="color: #808285; text-decoration: none;">{{'NAVBAR.INITIALREVIEW' | translate}}</a></li>
+                                        <li ng-if="is_mentor == 3" ><a href="#!/showreview" style="color: #808285; text-decoration: none;">{{'NAVBAR.INITIALREVIEW' | translate}}</a></li>
 
 								</ul>
 						</div>
