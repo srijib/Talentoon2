@@ -17,6 +17,14 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, Email,us
             console.log(err);
         });
 
+        categories.getAllCategory().then(function (data) {
+            $scope.categories = data.data;
+            console.log("categoriesNames array", $scope.categories);
+        }, function (err) {
+            console.log(err);
+            // $location.url('/500');
+        });
+
         user.getAllCountry().then(function (data) {
             //console.log("countries:", data);
             $scope.countries = data;
@@ -61,13 +69,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, Email,us
         }
     }
 
-    categories.getAllCategory().then(function (data) {
-        $scope.categories = data.data;
-        console.log("categoriesNames array", $scope.categories);
-    }, function (err) {
-        console.log(err);
-        // $location.url('/500');
-    });
+
 
     $scope.loginFn = function (valid) {
         if (valid) {
@@ -92,7 +94,8 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, Email,us
                 }
             }, function (err) {
                 console.log(err);
-
+                $rootScope.server_down = 1;
+                // angular.element( document.querySelector( '#login' ) ).modal('hide')
                 console.log(err.status)
 
 
@@ -141,6 +144,8 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, Email,us
                 window.location.reload();
             },function(err){
                console.log(err);
+               $rootScope.server_down = 1;
+               window.location.reload();
                 // $location.url('/500');
             });
         }
@@ -152,8 +157,8 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, Email,us
         $rootScope.profilePictureFile = element.files[0];
         filesuploaded.push(element.files[0]);
     }
-    
-    
+
+
     $scope.send_email = function (message) {
         alert(message);
 

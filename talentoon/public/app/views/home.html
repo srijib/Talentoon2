@@ -1,8 +1,11 @@
 <div id="homepage">
-<header>
+    <div ng-if="server_down == 1">
+        <div class="serverError"></div>
+    </div>
+<header ng-if="server_down != 1">
 </header>
 
-<div id="topposts" ng-if="post_exist"  >
+<div id="topposts" ng-if="post_exist "  >
     <div class="container">
         <div class="title">
             <!--                        <span class="bground"><img ng-src="Imgs/bground2.png" class="img-responsive"></span>-->
@@ -86,27 +89,6 @@
                                             <li>
                                                 <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
                                                     <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-original-title="Facebook" rel="tooltip"  href="#" class="btn btn-facebook" data-placement="left">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-original-title="e+" rel="tooltip"  href="#" class="btn btn-e" data-placement="left">
-                                                    <i class="fa fa-e-plus"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-original-title="LinkedIn" rel="tooltip"  href="#" class="btn btn-linkedin" data-placement="left">
-                                                    <i class="fa fa-linkedin"></i>
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a  data-original-title="Email" rel="tooltip" class="btn btn-mail" data-placement="left">
-                                                    <i class="fa fa-envelope"></i>
                                                 </a>
                                             </li>
                                         </ul>
