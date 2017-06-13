@@ -76,6 +76,7 @@ class PostsController extends Controller
         // return $n;
 
        return response()->json(['post_id' => $id,'message' => 'data saved successfully']);
+
         // return redirect('/post');
     }
 

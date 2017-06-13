@@ -67,14 +67,20 @@
                 <div class="workImg">
                     <div class="opacity">
                         <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{category_workshop.media_url}}">
+
                         <mentor ng-if="is_mentor != 1">
-                            <div ng-if="enroll == 1">
-                            <button class="btn btn-default enroll" type="submit" ng-click="workshop_enroll(category_workshop.id)" ng-controller="workshop">ENROLL NOW</button>
-                            </div>
+                            <!-- <div ng-if="is_enroll ==0"> -->
+                                <div ng-if="enroll == 1 && is_enroll ==1">
+                                    <button class="btn btn-default enroll" type="submit" ng-click="workshop_enroll(category_workshop.id)" ng-controller="workshop">ENROLL NOW</button>
+                                </div>
+                            <!-- </div> -->
+                            <!-- <div ng-if="is_enroll ==1"> -->
+
+                                <div ng-if="enroll == 0 || is_enroll ==0">
+                                    <button class="btn btn-default enroll  disabled" >ENROLL NOW</button>
+                                </div>
+                            <!-- </div> -->
                             </mentor>
-                            <div ng-if="enroll == 0">
-                            <button class="btn btn-default enroll  disabled" >ENROLL NOW</button>
-                            </div>
                         <mentor ng-if="is_mentor == 1">
 
                             <a href="#!/category/{{category_workshop.category_id}}/workshops/{{category_workshop.id}}/createSession"><button class="btn btn-default  enroll" >Create Offline Video</button></a>

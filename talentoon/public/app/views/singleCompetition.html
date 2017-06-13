@@ -25,7 +25,7 @@
     <a ng-click="deleteCompetitionPost({{post_id}})">delete</a>
 </div> -->
 
-
+<div id="singlecomppage">
 <div class="container">
     <div class="row">
 
@@ -36,12 +36,15 @@
                     <JOINED ng-if="is_joined == 1">
                         <button title="Yes, you can win it" class="btn btn-default accept">Share Competition</button>
                     </JOINED>
-                    <JOINED ng-if="is_joined == 0">
-                        <button title="add post to beat your friends" class="btn btn-default accept desabled">Challenge Accepted</button>
-                    </JOINED>
-                    <JOINED ng-if="is_joined != 0 && is_joined != 1">
-                        <button ng-click="joinCompetition()"  class="btn btn-default accept">Accept Challenge</button>
-                    </JOINED>
+                    <MENTOR ng-if="is_talent">
+                        <JOINED ng-if="is_joined == 0">
+                            <button title="add post to beat your friends" class="btn btn-default accept desabled">Challenge Accepted</button>
+                        </JOINED>
+                        <JOINED ng-if="is_joined != 0 && is_joined != 1">
+                            <button ng-click="joinCompetition()"  class="btn btn-default accept">Accept Challenge</button>
+                        </JOINED>
+                    </MENTOR>
+
                 </div>
             </div>
 
@@ -438,9 +441,5 @@
                 </div>
 
             </div>
-
-        </div>
-
-    </div>
 
 </div>
