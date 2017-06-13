@@ -20,12 +20,12 @@
     </ul>
 </div> -->
 
-
+<div id="allcompetitonpage">
 <div class="container">
     <div id="allTopComps" class=" col-lg-4 col-lg-push-8 col-md-4 col-md-push-8 col-sm-4 col-sm-push-8 col-xs-12">
         <div class="topEvents">
             <mentor ng-if="is_mentor == 1">
-                <a href="/category/{{cat_id}}/createcompetition" class="btn btn-lg">
+                <a href="#!/category/{{cat_id}}/createcompetition" class="btn btn-lg">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create New
                 </a>
             </mentor>
@@ -147,9 +147,18 @@
                     <div class=" col-lg-8  col-md-8 col-sm-12 going" data-toggle="modal" data-target="#Comp1">
                         <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}" class="btn btn-default">Challenge</a>
                     </div>
+                    <div class="col-lg-4 edits " style="color: #0f0f0f; font-size: 20px;">
+
+                        <a href="#!/category/{{cat_id}}/competitions/{{competition.id}}/edit">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        <i class="fa fa-trash" aria-hidden="true" ng-click="deletePost(competition.id,cat_id)"></i>
+                    </div>
+
                 </div> <!--    top event thumbnail-->
             </div><!--    top event section-->
 
         </div><!--    top events id-->
     </div><!--    top events container-->
+</div>
 </div>

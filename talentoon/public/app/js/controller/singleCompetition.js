@@ -12,7 +12,9 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
 
         if(data.is_mentor.length != 0 ){
             $scope.is_mentor = data.is_mentor[0].status;
+            // console.log('is_mentorrrrr',$scope.is_mentor);
         }
+        // console.log('is_mentorrrrr error',$scope.is_mentor);
 	}, function (err) {
 		console.log(err);
 	});
@@ -30,7 +32,7 @@ angular.module('myApp').controller("singleCompetition",function($location,$route
 
     Competitions.getSingleCompetitionPosts($scope.competition_id).then(function (data) {
         $scope.competitionPosts = data.data;
-        console.log("single comppoooooooo popooo data ",data );
+        console.log("single comppoooooooo popooo data ",data ); 
     }, function (err) {
         console.log(err);
         // $location.url('/500');

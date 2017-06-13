@@ -68,6 +68,7 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
     },
     createCompetition:function(competition_data){
       var def =$q.defer();
+      console.log('al data bta3t al competition',competition_data)
       $http({
         url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+competition_data.category_id+'/competitions',
         method:'POST',
@@ -87,6 +88,29 @@ angular.module('myApp').factory("Competitions", function ($http, $q,$rootScope) 
         def.reject(err);
       })
       return def.promise ;
+    },
+        getcompetition:function(cat_id,competition_id){
+        var def =$q.defer();
+        $http({
+            url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competition/'+competition_id ,
+            method:'GET'
+        }).then(function(res){
+            console.log('al url ahoooooooooo',$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/competition/'+competition_id);
+            console.log("<<<<<<<<<competition in factory>>>>>>>>>" , res.data);
+            if(res.data){
+                // var data = localStorage.setItem("event", JSON.stringify(res.data));
+                console.log('competition gat',res.data);
+                def.resolve(res.data);
+
+            }else{
+                def.reject('there is no data ')
+            }
+
+        },function(err){
+            def.reject(err);
+        })
+        return def.promise ;
+
     },
     createCompetitionPost:function(competitionPost_data){
       var def =$q.defer();

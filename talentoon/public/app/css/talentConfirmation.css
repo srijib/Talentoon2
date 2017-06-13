@@ -1,84 +1,80 @@
-body {
-  background-image: url(../imgs/plain.png);
+#talmentconfirmationpage body {
+  background-image: url(../../Imgs/plain.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; }
-
-.mainTitle {
+#talmentconfirmationpage .mainTitle {
   font-size: inherit;
   color: #FFB733;
   text-align: center;
   margin-bottom: 20px; }
-  .mainTitle small {
+  #talmentconfirmationpage .mainTitle small {
     color: #e9ebee;
-    font-size: 20px; }
-
-.createConfirmation {
+    font-size: inherit; }
+#talmentconfirmationpage .createConfirmation {
   box-shadow: 5px 5px 5px #45132E;
   padding: 0px; }
-  .createConfirmation input {
+  #talmentconfirmationpage .createConfirmation input {
     border: 0px;
     border: 1px #E4E4E4 solid;
     border-radius: 0px;
     box-shadow: inset 0 0 0 transparent; }
-  .createConfirmation span {
+  #talmentconfirmationpage .createConfirmation span {
     font-family: light;
     font-size: 16px;
     color: #E4E4E4; }
-  .createConfirmation textarea {
+  #talmentconfirmationpage .createConfirmation textarea {
     border: 0px;
     border: 1px #E4E4E4 solid;
     border-radius: 0px;
     box-shadow: inset 0 0 0 transparent; }
-  .createConfirmation div {
+  #talmentconfirmationpage .createConfirmation div {
     display: block;
     background-color: #45132E;
     border: 0px;
     padding: 0px;
     margin: 0px; }
-    .createConfirmation div .icons {
+    #talmentconfirmationpage .createConfirmation div .icons {
       display: inline-block; }
-      .createConfirmation div .icons input {
+      #talmentconfirmationpage .createConfirmation div .icons input {
         color: #FFFFFF;
         font-size: 16px;
         padding: 10px;
         margin-top: 5px;
         margin-left: 5px; }
-      .createConfirmation div .icons .fa {
+      #talmentconfirmationpage .createConfirmation div .icons .fa {
         color: #FFFFFF;
         font-size: 22px;
         padding: 10px;
         margin-top: 5px;
         margin-left: 5px; }
-    .createConfirmation div .wpost {
+    #talmentconfirmationpage .createConfirmation div .wpost {
       color: #FFB733;
       text-align: right; }
-      .createConfirmation div .wpost a {
+      #talmentconfirmationpage .createConfirmation div .wpost a {
         display: inline-block;
         font-family: bold;
         font-size: 20px;
         padding: 10px;
         color: #FFB733; }
-        .createConfirmation div .wpost a:hover {
+        #talmentconfirmationpage .createConfirmation div .wpost a:hover {
           text-decoration: none;
           cursor: pointer; }
-
-.upload {
+#talmentconfirmationpage .upload {
   font-size: 14px; }
-
-.form-group {
+#talmentconfirmationpage .form-group {
   font-size: 16px;
   color: #808285;
   font-family: regular; }
-  .form-group .file {
+  #talmentconfirmationpage .form-group .file {
     visibility: hidden;
     position: absolute; }
-  .form-group .input-group {
+  #talmentconfirmationpage .form-group .input-group {
     display: block; }
-    .form-group .input-group .input-group-addon {
+    #talmentconfirmationpage .form-group .input-group .input-group-addon {
       background-color: transparent;
       border: 0px; }
-    .form-group .input-group .input-lg {
+    #talmentconfirmationpage .form-group .input-group .input-lg {
       border-radius: 0;
       background-color: transparent;
       border: 0px;
@@ -86,7 +82,7 @@ body {
       font-size: 14px;
       color: #808285;
       font-family: regular; }
-    .form-group .input-group .input-group-btn .browse {
+    #talmentconfirmationpage .form-group .input-group .input-group-btn .browse {
       font-size: 16px;
       color: #FFFFFF;
       font-family: regular;
@@ -96,17 +92,16 @@ body {
       border-radius: 0;
       border: 0px;
       box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075); }
-      .form-group .input-group .input-group-btn .browse i {
+      #talmentconfirmationpage .form-group .input-group .input-group-btn .browse i {
         padding: 0px;
         margin: 0px; }
-
-.modal .modal-content {
+#talmentconfirmationpage .modal .modal-content {
   font-size: 16px;
   font-family: medium;
   color: #6A0C38;
   padding: 20px;
   background-color: #e9ebee; }
-  .modal .modal-content h2 {
+  #talmentconfirmationpage .modal .modal-content h2 {
     color: #808285; }
 
 /*# sourceMappingURL=talentConfirmation.css.map */

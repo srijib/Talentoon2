@@ -66,6 +66,7 @@ class PostsController extends Controller
             'description' => $request['description'],
         ))->id;
 
+
         // $notify = new Notification();
         // $n=$notify->sendMessageFilter();
         // $response=array(
@@ -76,6 +77,8 @@ class PostsController extends Controller
         // return $n;
 
        return response()->json(['post_id' => $id,'message' => 'data saved successfully']);
+
+
         // return redirect('/post');
     }
 

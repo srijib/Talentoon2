@@ -1,54 +1,35 @@
-
-<!-- <img  class="img-circle"src="Imgs/Persons/face1.jpg"/> -->
-<img  class="img-circle"src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userprofile.image}}" width="150px">
-
-<h2> welcome <span style="color:Purple ">{{userprofile.first_name}}  {{userprofile.last_name}}</span></h2>
-<h3> Your Points number Is .. >> {{user_points_from_mentors_reviews}}   <<  and your level is {{level}}</h3>
-<h4>Your Reward image </h4>
-<img  class="img-circle"src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userprofile.reward_image}}" width="150px">
-
-<!-- ##################################################### -->
-
-
+<div id="profilepage">
 <div class="container">
     <div class="row">
         <div class="firstCol col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <div class="userImg">
                 <div class="opacity">
-                    <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{user.image}}">
+                    <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{users.image}}">
+                    <FOLLOW ng-if="cur_user.id != users.id">
+                        <div ng-if="status == 1">
+                            <button class="btn btn-default follow" type="submit" ng-click="unfollow(user.id)">UnFollow</button>
+                        </div>
+                        <div ng-if="status != 1">
+                            <button class="btn btn-default follow" type="submit" ng-click="follow(user.id)">Follow</button>
+                        </div>
+                    </FOLLOW>
 
-                    <div ng-if="status == 1">
-                    <button class="btn btn-default follow" type="submit" ng-click="unfollow(user.id)">UnFollow</button>
-                    </div>
-                    <div ng-if="status != 1">
-                    <button class="btn btn-default follow" type="submit" ng-click="follow(user.id)">Follow</button>
-                    </div>
                 </div>
             </div>
 
 
-            <input name="profile_picture" ng-model="user.profile_picture" type="file" class="form-control input-lg"  onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
-
-
-
             <div class="userName row">
-                <span class="text-left col-lg-8 ">{{user.first_name}}  {{user.last_name}}</span>
-                <span class="text-center col-lg-4"><i class="fa fa-trophy" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Vertified"></i><i class="fa fa-cog" aria-hidden="true"></i></span>
+                <span class="text-left col-lg-8 ">{{users.first_name}}  {{users.last_name}}</span>
+                <span class="text-center col-lg-4">{{level}}<i class="fa fa-trophy" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Vertified"></i><a href="#!/editprofile"><i class="fa fa-cog" aria-hidden="true"></i></a></span>
             </div>
 
 
             <div class="info row">
                 <p class="col-lg-12">Talented</p>
-                <p class="col-lg-12">country: {{country.name}}</p>
-                <p class="col-lg-12">birth date: {{user.date_of_birth}}</p>
+                <p class="col-lg-12">Points: {{user_points_from_mentors_reviews}}</p>
+                <p class="col-lg-12">country: {{user_country.name}}</p>
+                <p class="col-lg-12">birth date: {{users.date_of_birth}}</p>
             </div>
-
-            <ul class="socialLink list-unstyled list-inline">
-                <li><i class="fa fa-facebook-square" aria-hidden="true"></i></li>
-                <li><i class="fa fa-twitter-square" aria-hidden="true"></i></li>
-                <li><i class="fa fa-google-plus-square" aria-hidden="true"></i></li>
-                <li><i class="fa fa-instagram" aria-hidden="true"></i></li>
-            </ul>
 
             <!--share -->
 
@@ -62,7 +43,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                            <a data-original-title="Twitter" rel="tooltip" class="btn btn-twitter" data-placement="left">
+                            <a data-original-title="Twitter" rel="tooltip"   class="btn btn-twitter" data-placement="left">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
@@ -114,11 +95,6 @@
                     <badge class="num col-lg-6 text-center">{{following}}</badge>
                 </div>
 
-                <div class="count">
-                    <div class="col-lg-6 titl">SUBSCRIBE</div>
-                    <badge class="num col-lg-6 text-center">3</badge>
-                </div>
-
             </div>
 
             <div class="about">
@@ -148,7 +124,7 @@
         </div>
         <div class="secCol col-lg-6 col-lg-pull-3 col-md-12 col-lg-pull-6 col-sm-12 col-lg-pull-6 col-xs-12">
             <div class="showPosts" >
-                <div class="recentPosts imageArticle" ng-repeat="userpost in userposts  track by $index">
+                <div class="recentPosts imageArticle" ng-repeat="userpost in allPosts  track by $index">
                     <div class="userInfos">
                         <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userpost.image}}" alt="">
                         <span>{{userpost.first_name}}  {{userpost.last_name}}</span><br>
@@ -166,7 +142,7 @@
                                 <video controls><source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userpost.media_url}}"></video>
                             </VIDEO>
                             <!-- IF AUDIO -->
-                            <AUDIO ng-if="post.media_type == 'audio'">
+                            <AUDIO ng-if="userpost.media_type == 'audio'">
                                 <img src="Imgs/Website/5536c78cccd436f31c8c66732cee72d2.jpg" alt="">
                             </AUDIO>
 
@@ -186,7 +162,7 @@
 
                         <div class="disc">
                             <AUDIO ng-if="post.media_type == 'audio'">
-                                <audio controls> <source src="Audios/music.mp3"></audio>
+                                <audio controls> <source src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{userpost.media_url}}"></audio>
                             </AUDIO>
                             <p>{{userpost.description}}</p>
                         </div>
@@ -199,7 +175,7 @@
 
                             <a>
                                 <i class="fa fa-commenting" aria-hidden="true"></i>
-                                <span class="badge">6</span>
+                                <span class="badge"> </span>
                             </a>
 
 
@@ -248,7 +224,7 @@
 
                         <div class="UserComments">
                             <div class="writePost">
-                                <form ng-submit="new_comment($index)" name="comment_form_{{$index}}">
+                                <form ng-submit="add_comment($index)" name="comment_form_{{$index}}">
                                 <textarea class="form-control" name="comments_{{$index}}"  ng-model="userpost.comment" rows="3"></textarea>
                                 <div class="posting">
                                     <button type="submit" class="btn btn-default" name="button_{{$index}}">Comment</button>
@@ -256,8 +232,8 @@
                                 </form>
 
                             </div>
-
-                            <!-- <ul class="media-list">
+<!--
+                            <ul class="media-list">
                                 <li class="media">
                                     <div class="media-left">
                                         <a href="#">
@@ -291,4 +267,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

@@ -1,0 +1,42 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    font-size: 0px;
+}
+
+.bgerror{
+    background-image: url(../imgs/error.jpg);
+    height:600px;
+    padding-top: 0;
+    /*background-size: cover;*/
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btnerror{
+    background-color: #690C37;
+    width: 150px;
+    padding: 15px;
+    border-radius: 50px;
+    border: 0px;
+    display: block;
+    text-align: center;
+    border: 0px;
+    margin: 0 auto;
+    margin-top: 50px;
+     &:hover{
+        cursor: pointer;
+    }
+
+}
+
+.btnerror .errorback{
+    background-color: #690C37;
+    color: white;
+    font-size: 16px;
+    font-family: roboto-light;
+    border: 0px;
+
+
+
+}

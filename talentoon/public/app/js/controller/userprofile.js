@@ -1,5 +1,9 @@
 angular.module('myApp').controller("userprofile", function (categories,$scope, $http, user, $rootScope, $route,$routeParams,$location) {
     var filesuploaded = []
+    $scope.user_id = $routeParams['user_id'];
+    if (! $scope.user_id) {
+        $scope.user_id = $rootScope.cur_user.id
+    }
 
 
   user.userprofile().then(function(data){
@@ -36,38 +40,106 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
     //
     // });
 
-    //check if the user is autherized or not
-    // user.userprofile().then(function(data){
-    //
-    // } , function(err){
-    //
-    //
-    // });
-    user.userposts().then(function(data){
-     console.log("data of users",data.data);
-    $scope.allPosts=data.data.allPosts;
-    $scope.users=data.data.user;
-    $scope.user_country=data.data.country;
-    if(data.data.follower==null){
-        $scope.follower=0;
-    }else{
-    $scope.follower=data.data.follower.followers_count
-    }
-    if(data.data.following==null){
-        $scope.following=0;
-    }else{
-        $scope.following=data.data.following.following_count
-    }
-    // $scope.userinfo=data.data;
-        console.log("user profile posts MINAAA",data.data.allPosts);
-        // console.log("user profile info",$scope.userinfo);
-        var d = new Date(data.data.allPosts[0].created_at);
-        // console.log('ddddddddddddddddddddddddddddddd',d)
-  } , function(err){
-    console.log(err);
-    // $location.url('/500');
+    user.user($scope.user_id).then(function(data){
+            console.log("data of users",data.data);
+           $scope.allPosts=data.data.allPosts;
+           $scope.users=data.data.user;
+           $scope.user_country=data.data.country;
+           if(data.data.follower==null){
+               $scope.follower=0;
+           }else{
+           $scope.follower=data.data.follower.followers_count
+           }
+           if(data.data.following==null){
+               $scope.following=0;
+           }else{
+               $scope.following=data.data.following.following_count
+           }
+          // $scope.following=data.data.following
+      } , function(err){
+        console.log(err);
 
-  });
+      });
+
+
+  $scope.likepost = function(post_id,user_id) {
+  var likeable_id=post_id;
+  var likeable_type="post"
+  var user_id=user_id;
+  console.log(likeable_id)
+  console.log(likeable_type);
+  console.log(user_id);
+  var obj={likeable_id,likeable_type,user_id}
+  console.log(obj);
+          posts.likepost(obj).then(function(data){
+              // $rootScope.status=data;
+              // localStorage.setItem('status',data);
+              // $rootScope.status = localStorage.getItem("status");
+              $rootScope.data=data;
+              localStorage.setItem('testObject', JSON.stringify(data));
+              // console.log("status in controller",$rootScope.status);
+              var likedata = localStorage.getItem('testObject');
+              console.log("parse",JSON.parse(likedata))
+       $rootScope.userstatus=JSON.parse(likedata).status;
+       $rootScope.user_id=JSON.parse(likedata).user_id;
+
+
+           //
+           localStorage.setItem('userstatus', $rootScope.userstatus );
+           $rootScope.userstatu = localStorage.getItem('userstatus');
+
+
+              // console.log("data in controller",$rootScope.data);
+              console.log("status in controller",$rootScope.userstatus);
+              // console.log("user_id in controller",$rootScope.user_id);
+
+
+
+          } , function(err){
+              console.log(err);
+
+          });
+
+  }
+
+
+$scope.dislikepost = function(post_id,user_id) {
+var likeable_id=post_id;
+var likeable_type="post"
+var user_id=user_id;
+console.log(likeable_id)
+console.log(likeable_type);
+console.log(user_id);
+var obj={likeable_id,likeable_type,user_id}
+console.log(obj);
+      posts.dislikepost(obj).then(function(data){
+          // $rootScope.status=data;
+          // localStorage.setItem('status',data);
+          // localStorage.setItem('testObject', JSON.stringify(data));
+          // $rootScope.status = localStorage.getItem("status");
+          // console.log("status in controller",$rootScope.status);
+
+          $rootScope.data=data;
+          localStorage.setItem('testObject', JSON.stringify(data));
+          // console.log("status in controller",$rootScope.status);
+          var likedata = localStorage.getItem('testObject');
+          console.log("parse",JSON.parse(likedata))
+          $rootScope.userstatus=JSON.parse(likedata).status;
+          $rootScope.user_id=JSON.parse(likedata).user_id;
+
+
+
+                   localStorage.setItem('userstatus', $rootScope.userstatus );
+                   $rootScope.userstatu = localStorage.getItem('userstatus');
+          console.log("status in controller",$rootScope.userstatus);
+
+
+      } , function(err){
+          console.log(err);
+
+      });
+
+}
 
     // user.editprofile($rootScope.cur_user.id).then(function(data){
     //     $rootScope.cur_user=data;
@@ -99,28 +171,7 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
   // } , function(err){
   //   console.log(err);
   // });
-  $scope.user_id = $routeParams['user_id'];
 
-  user.user($scope.user_id).then(function(data){
-     console.log(data.data);
-    $scope.userposts=data.data.allPosts;
-    $scope.user=data.data.user;
-    $scope.country=data.data.country;
-    $scope.status=data.data.follow;
-    if(data.data.follower==null){
-        $scope.follower=0;
-    }else{
-    $scope.follower=data.data.follower.followers_count
-    }
-    if(data.data.following==null){
-        $scope.following=0;
-    }else{
-        $scope.following=data.data.following.following_count
-    }
-    // $scope.following=data.data.following
-
-
-    });
     // user.displayShared().then(function(data){
     //    console.log("shares",data.data.shares);
     //   //  $scope.allPosts = data.data.shares.concat($scope.userposts);
@@ -208,12 +259,15 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
               // var userdata = $scope.userupdate
               console.log('y simnaaaaaaa',userdata);
               user.checkpassword(userdata).then(function (data) {
-                  console.log('y simnaaaaaaa');
+                  console.log('y simnaaaaaaa',data);
                   if (data == 'ok') {
-                      $location.url('#!/');
-                      $route.reload();
+                      console.log("innside ok")
+                      //$location.url('#!/');
+                      //$route.reload();
+                      $location.url('/');
                   }else{
                       console.log(data)
+                      $location.url('/');
                       // alert('enter your password right')
                   }
               }, function (err) {
@@ -228,6 +282,7 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
 
               user.updateuser(userdata).then(function (data) {
                   console.log(data)
+                  $location.url('/');
               }, function (err) {
                   console.log(err);
                   // $location.url('/500');

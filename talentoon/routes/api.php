@@ -110,6 +110,7 @@ Route::get('/userprofile/cur_user','UserProfile@cur_user');
 Route::put('/updateprofile','UserProfile@update');
 Route::post('/checkpassword','UserProfile@checkpassword');
 Route::get('/category/{category_mentor_id}/roles','CategoriesController@roles');
+Route::get('/main_role','UserProfile@main_role');
 
 Route::get('/userprofile/{post_id}',[
     'uses'=>'UserProfile@show',

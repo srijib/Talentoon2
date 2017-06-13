@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
@@ -29,4 +30,30 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    public function sendResetLinkEmail(Request $request)
+    {
+        // $this->validate($request, ['email' => 'required|email']);
+        // We will send the password reset link to this user. Once we have attempted
+        // to send the link, we will examine the response then see the message we
+        // need to show to the user. Finally, we'll send out a proper response.
+        $response = $this->broker()->sendResetLink(
+            $request->only('email')
+        );
+        // dd('testtttt');
+
+        if ($response === Password::RESET_LINK_SENT) {
+            return response()->json(['trans'=> trans($response),'status' => '1','message' => 'An Email has been sent to your email to varify your password']);
+            // return back()->with('status', trans($response));
+        }
+        // If an error was returned by the password broker, we will get this message
+        // translated so we can notify a user of the problem. We'll redirect back
+        // to where the users came from so they can attempt this process again.
+        return response()->json(['email'=> trans($response),'status' => '0','message' => 'there is a problem']);
+
+        // return back()->withErrors(
+        //     ['email' => trans($response)]
+        // );
+    }
+
 }

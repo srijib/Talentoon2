@@ -1,3 +1,62 @@
+<div id="createpostpage">
+    <div class="container">
+        <div class="createPost col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
+            <form ng-submit="completeMentorProfile()" name="complete_mentor_profile">
+                <textarea name="experience" required ng-model="mentor.experience" class="form-control" rows="8" placeholder="Your Experience"></textarea>
+                <span><input type="text" name="years_of_experience" class="years_of_experience" required ng-model="mentor.years_of_experience" placeholder="years of experience"></span>
+                <div class="row">
+                    <div class="wpost col-lg-8 col-md-8 col-sm-8">
+                    <button  type="submit" name="button" class= "text-right " > <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        Send My Mentor Profile </button>
+                    </div>
+
+                </div>
+            </form>
+            <!--<form ng-submit="submitted=true ; newpost(addpost.$valid)" name="addpost"  novalidate >-->
+                <!--<input type="text" class="form-control" placeholder="Post title" name="title" required ng-model="post.title" >-->
+                <!--<p class="error" ng-if="addpost.title.$error.required && submitted" >please enter your post title</p>-->
+                <!--<textarea class="form-control" rows="9" placeholder="Write your post here" name="description" required ng-model="post.description"></textarea>-->
+                <!--<p class="error" ng-if="addpost.description.$error.required && submitted" >please enter your post description</p>-->
+                <!--<input type="hidden" name="category_id"  ng-model="post.category_id" class="form-control" value="{{cat_id}}">-->
+                <!--<div class="row">-->
+                    <!--<input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files">-->
+                    <!--</input>-->
+
+                    <!--<div class ="icons col-lg-6 col-md-6 col-sm-6">-->
+                        <!--<div class="form-group">-->
+                            <!--<input  class="file" name="post_file" ng-model="post.file" type="file"  onchange="angular.element(this).scope().uploadedFile(this)">-->
+                            <!--<div class="input-group col-xs-12">-->
+			                <!--<span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">-->
+			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-paperclip" aria-hidden="true"></i></button>-->
+			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>-->
+			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-video-camera" aria-hidden="true"></i></button>-->
+			                    <!--<button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-headphones" aria-hidden="true"></i></button>-->
+			                <!--</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="wpost  col-lg-6 col-md-6 col-sm-6">-->
+                        <!--<button  type="submit" name="button" class= "text-right " > <i class="fa fa-paper-plane" aria-hidden="true"></i>-->
+                            <!--Post </button>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            <!--</form>-->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <h1>Please Complete Your Profile to be Mentor.. ()</h1>
 <div class="completementor">
 
@@ -18,52 +77,26 @@
 
 
 
+<!--<div id="talentconfirmationpage">-->
 
-<div class="container">
-    <div class="mainTitle">
-        <h1>Join Talentoon Mentors</h1>
-        <small>To confirm you as a mentor with us</small>
-    </div>
-    <div class="row">
-        <div class="createConfirmation col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
-             <form ng-submit="completeMentorProfile()" name="complete_mentor_profile">
-                 <textarea name="experience" required ng-model="mentor.experience" class="form-control" rows="8" placeholder="Your Experience"></textarea>
-                  <input type="text" name="years_of_experience" required ng-model="mentor.years_of_experience" placeholder="years of experience">
-                <div class="row">
-                    <!-- <input type="text" class="form-control upload input-lg" disabled placeholder="Uploaded Files"></input>
-                    <div class ="icons col-lg-6 col-md-6 col-sm-6">
-                        <div class="form-group">
-                            <input type="file" name="img" class="file" multiple>
-                            <div class="input-group col-xs-12">
-                                <span class="icons input-group-btn col-lg-6 col-md-6 col-sm-6">
-                                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
-                                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
-                                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-video-camera" aria-hidden="true"></i></button>
-                                    <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-headphones" aria-hidden="true"></i></button>
-                                </span>
-                            </div>
-                        </div>
-                    </div> -->
+<!--<div class="container">-->
+    <!--<div class="mainTitle">-->
+        <!--<h1>Join Talentoon Mentors</h1>-->
+        <!--<small>To confirm you as a mentor with us</small>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+        <!--<div class="createConfirmation col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">-->
 
-                    <div class="wpost  col-lg-6 col-md-6 col-sm-6">
-                        <a class= "text-right " data-toggle="modal" data-target=".bs-example-modal-sm"> <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            Send</a>
-                    </div>
+        <!--</div>-->
+    <!--</div>-->
 
-                    <button type="submit" name="button">Send My Mentor Profile</button>
-
-
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <h2>Congratulation , </h2><br/>
-                We will notify you with the confirmation within 24 hr maximum.
-            </div>
-        </div>
-    </div>
-</div>
+    <!--<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">-->
+        <!--<div class="modal-dialog modal-sm" role="document">-->
+            <!--<div class="modal-content">-->
+                <!--<h2>Congratulation , </h2><br/>-->
+                <!--We will notify you with the confirmation within 24 hr maximum.-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--</div>-->
