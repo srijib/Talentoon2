@@ -14,6 +14,7 @@ angular.module('myApp').controller("homec",function($location,$route,Home,$scope
         }
 
 	} , function(err){
+        $rootScope.server_down = 1;
 		console.log("No posts existing, error: ",err);
         $scope.post_exist = false;
         // $location.url('/500');
@@ -35,6 +36,7 @@ angular.module('myApp').controller("homec",function($location,$route,Home,$scope
 
     } , function(err){
         console.log(err);
+        $rootScope.server_down = 1;
         $scope.event_exist = false;
         // $location.url('/500');
 
@@ -55,6 +57,7 @@ angular.module('myApp').controller("homec",function($location,$route,Home,$scope
 
     } , function(err){
         console.log(err);
+        $rootScope.server_down = 1;
         $scope.workshop_exist = false;
         // $location.url('/500');
 
