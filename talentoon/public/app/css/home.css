@@ -19,7 +19,6 @@
 @font-face {
   font-family: thin;
   src: url(../../Fonts/Roboto-Thin.ttf); }
-
 body {
   font-size: 0px;
   margin: 0px;
@@ -28,326 +27,30 @@ body {
   outline: 0px; }
   body:focus, body:active, body:visited, body:hover {
     outline: 0px; }
-header {
-    background-image: url(../imgs/cover2.jpg);
-    background-size: cover !important;
-    height: 610px;
-    background-size: 100% auto !important;
-    background-repeat: no-repeat; }
 
-#login {
-  /***** Media queries *****/ }
-  #login .row {
-    margin: 0px; }
-  #login .logindialog {
-    background-color: #FFFFFF;
-    opacity: 0.9;
-    border: 0px; }
-    #login .logindialog .loginBody .modal-body {
-      padding: 0px;
-      border: 0px; }
-      #login .logindialog .loginBody .modal-body .top-content .text {
-        color: #FFFFFF; }
-      #login .logindialog .loginBody .modal-body .top-content h1 {
-        margin-top: 10px;
-        font-size: 30px;
-        font-family: bold;
-        font-weight: 100;
-        color: #FFB733;
-        text-align: center; }
-      #login .logindialog .loginBody .modal-body .top-content .row .form-box {
-        margin-top: 20px; }
-        #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-top {
-          text-align: center;
-          overflow: hidden;
-          border-radius: 4px 4px 0 0; }
-          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-left {
-            float: left;
-            width: 75%; }
-            #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-left h3 {
-              font-size: 30px;
-              color: #6A0C38;
-              font-family: Sansita One;
-              text-align: center;
-              line-height: 30px;
-              margin: 30px 0px;
-              margin-left: 135px; }
-          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-right {
-            float: left;
-            width: 25%;
-            padding-top: 5px;
-            font-size: 66px;
-            color: #FFB733;
-            line-height: 100px;
-            text-align: right;
-            opacity: 0.8;
-            text-align: center; }
-            #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-right .fa-lock {
-              color: #FFB733; }
-        #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons {
-          margin-top: 15px; }
-          #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2 {
-            height: 50px;
-            padding: 15px 20px 0 20px;
-            font-size: 20px;
-            font-family: bold;
-            line-height: 16px;
-            background-color: #6A0C38;
-            border-radius: 5px;
-            color: #FFB733;
-            text-decoration: none;
-            transition: all .3s;
-            margin: 20px; }
-            #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:hover, #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:focus, #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:active, #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:active:focus {
-              outline: 0;
-              opacity: 0.8;
-              color: #6A0C38;
-              background-color: #FFB733;
-              text-decoration: none;
-              transition: all .3s; }
-            #login .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2 .fa {
-              font-size: 20px; }
-        #login .logindialog .loginBody .modal-body .top-content .row .form-box h3 {
-          font-size: 25px;
-          color: #6A0C38;
-          text-align: center;
-          line-height: 30px;
-          margin-bottom: 0px;
-          font-family: Sansita One; }
-        #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom {
-          padding: 20px;
-          border-radius: 0 0 4px 4px; }
-          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form textarea {
-            height: 100px; }
-          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form a {
-            font-family: light;
-            font-size: 14px;
-            color: #808285; }
-          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit {
-            width: 100%;
-            height: 50px;
-            padding: 15px 20px;
-            font-size: 20px;
-            font-family: bold;
-            line-height: 16px;
-            background-color: #6A0C38;
-            border-radius: 5px;
-            color: #FFB733;
-            text-decoration: none;
-            transition: all .3s;
-            margin: 20px 0px; }
-            #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:hover, #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:focus, #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:active, #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:active:focus {
-              outline: 0;
-              opacity: 0.8;
-              color: #6A0C38;
-              background-color: #FFB733;
-              text-decoration: none;
-              transition: all .3s; }
-          #login .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .input-error {
-            border-color: firebrick;
-            font-family: light;
-            font-size: 16px;
-            color: firebrick; }
-  @media (max-width: 767px) {
-    #login .inner-bg {
-      padding: 60px 0 110px 0; } }
-  @media (max-width: 415px) {
-    #login h1, #login h2 {
-      font-size: 32px; } }
+.bgrounddefault {
+  height: 200px;
+  background-size: cover !important;
+  background-position: center !important; }
 
-#signup {
-  /***** Media queries *****/ }
-  #signup .row {
-    margin: 0px; }
-  #signup .logindialog {
-    background-color: #FFFFFF;
-    opacity: 0.9;
-    border: 0px; }
-    #signup .logindialog .loginBody .modal-body {
-      padding: 0px;
-      border: 0px; }
-      #signup .logindialog .loginBody .modal-body .top-content .text {
-        color: #FFFFFF; }
-      #signup .logindialog .loginBody .modal-body .top-content h1 {
-        margin-top: 10px;
-        font-size: 30px;
-        font-family: bold;
-        font-weight: 100;
-        color: #FFB733;
-        text-align: center; }
-      #signup .logindialog .loginBody .modal-body .top-content .row .form-box {
-        margin-top: 20px; }
-        #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-top {
-          text-align: center;
-          overflow: hidden;
-          border-radius: 4px 4px 0 0; }
-          #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-left {
-            float: left;
-            width: 75%; }
-            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-left h3 {
-              font-size: 30px;
-              color: #6A0C38;
-              font-family: Sansita One;
-              text-align: center;
-              line-height: 30px;
-              margin: 30px 0px;
-              margin-left: 135px; }
-          #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-right {
-            float: left;
-            width: 25%;
-            padding-top: 5px;
-            font-size: 66px;
-            color: #FFB733;
-            line-height: 100px;
-            text-align: right;
-            opacity: 0.8;
-            text-align: center; }
-            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-top .form-top-right .fa-lock {
-              color: #FFB733; }
-        #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons {
-          margin-top: 15px; }
-          #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2 {
-            height: 50px;
-            padding: 15px 20px 0 20px;
-            font-size: 20px;
-            font-family: bold;
-            line-height: 16px;
-            background-color: #6A0C38;
-            border-radius: 5px;
-            color: #FFB733;
-            text-decoration: none;
-            transition: all .3s;
-            margin: 20px; }
-            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:hover, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:focus, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:active, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2:active:focus {
-              outline: 0;
-              opacity: 0.8;
-              color: #6A0C38;
-              background-color: #FFB733;
-              text-decoration: none;
-              transition: all .3s; }
-            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .row .social-login .social-login-buttons .btn-link-2 .fa {
-              font-size: 20px; }
-        #signup .logindialog .loginBody .modal-body .top-content .row .form-box h3 {
-          font-size: 25px;
-          color: #6A0C38;
-          text-align: center;
-          line-height: 30px;
-          margin-bottom: 0px;
-          font-family: Sansita One; }
-        #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom {
-          padding: 20px;
-          border-radius: 0 0 4px 4px; }
-          #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form {
-            font-size: 16px;
-            color: #808285;
-            font-family: regular;
-            margin-left: 0px; }
-            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .row .form-control {
-              border: 0px;
-              border-bottom: 1px solid #808285;
-              box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-              background-color: transparent;
-              margin-bottom: 20px; }
-            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .dropSelected {
-              margin: 10px 0px; }
-              #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .dropSelected select {
-                border: 0px;
-                border-bottom: 1px solid #808285;
-                box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-                background-color: transparent;
-                border-radius: 4px; }
-            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group {
-              font-size: 16px;
-              color: #808285;
-              font-family: regular; }
-              #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .file {
-                visibility: hidden;
-                position: absolute; }
-              #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group {
-                margin-top: 50px; }
-                #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-addon {
-                  background-color: transparent;
-                  border: 0px;
-                  border-bottom: 1px solid gray; }
-                #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-lg {
-                  border-radius: 0;
-                  background-color: transparent;
-                  border: 0px;
-                  border-bottom: 1px solid gray;
-                  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-                  font-size: 16px;
-                  color: #808285;
-                  font-family: regular; }
-                #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-btn .browse {
-                  font-size: 16px;
-                  color: #FFFFFF;
-                  font-family: regular;
-                  background-color: #6A0C38;
-                  border-color: #45132E;
-                  outline: none;
-                  border-radius: 0;
-                  border: 0px;
-                  border-bottom: 1px solid gray;
-                  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075); }
-                  #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-btn .browse:hover {
-                    background-color: #3c0720;
-                    border-color: #3c0720; }
-                  #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-btn .browse:active, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-btn .browse:focus {
-                    background-color: #810f44;
-                    border-color: #810f44; }
-                  #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .form-group .input-group .input-group-btn .browse i {
-                    margin-right: 10px; }
-            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form a {
-              font-family: light;
-              font-size: 14px;
-              color: #FFB733; }
-              #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form a:hover {
-                color: #808285; }
-            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit {
-              width: 100%;
-              height: 50px;
-              padding: 15px 20px;
-              font-size: 20px;
-              font-family: bold;
-              line-height: 16px;
-              background-color: #6A0C38;
-              border-radius: 5px;
-              color: #FFB733;
-              text-decoration: none;
-              transition: all .3s;
-              margin: 20px 0px; }
-              #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:hover, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:focus, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:active, #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .submit:active:focus {
-                outline: 0;
-                opacity: 0.8;
-                color: #6A0C38;
-                background-color: #FFB733;
-                text-decoration: none;
-                transition: all .3s; }
-            #signup .logindialog .loginBody .modal-body .top-content .row .form-box .form-bottom form .input-error {
-              border-color: firebrick;
-              font-family: light;
-              font-size: 16px;
-              color: firebrick; }
-  @media (max-width: 767px) {
-    #signup .inner-bg {
-      padding: 60px 0 110px 0; } }
-  @media (max-width: 415px) {
-    #signup h1, #signup h2 {
-      font-size: 32px; } }
-
-#topposts {
+#homepage #topposts {
   background-color: #FFFFFF;
-}
-  #topposts .row {
+  position: fixed;
+  top: 20vh;
+  left: 50%;
+  transform: translateX(calc(-50% + 8px));
+  width: 100vw;
+  margin-top: 0; }
+  #homepage #topposts .row {
     margin: 0px; }
-  #topposts .container .title {
+  #homepage #topposts .container .title {
     text-align: center;
     margin-top: 20px;
     background-image: url(../../Imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
-    #topposts .container .title h1 {
+    #homepage #topposts .container .title h1 {
       color: #FFB733;
       font-family: bold;
       margin-top: 60px;
@@ -356,206 +59,201 @@ header {
       display: inline-block;
       font-size: 50px; }
     @media (max-width: 615px) {
-      #topposts .container .title {
+      #homepage #topposts .container .title {
         background-image: none; }
-        #topposts .container .title h1 {
+        #homepage #topposts .container .title h1 {
           text-align: left; } }
-  #topposts .container .mainrow {
+  #homepage #topposts .container .mainrow {
     margin-left: 0px;
     margin-top: 15px;
     display: block; }
-    #topposts .container .mainrow .postSection .thumbnail {
+    #homepage #topposts .container .mainrow .postSection .thumbnail {
       padding: 0px;
       background-color: #f1f1f1;
       width: 100%; }
-      #topposts .container .mainrow .postSection .thumbnail .defaultimg {
+      #homepage #topposts .container .mainrow .postSection .thumbnail .defaultimg {
         padding: 0px;
         margin: 0px;
         width: 100%; }
-        #topposts .container .mainrow .postSection .thumbnail .defaultimg img {
+        #homepage #topposts .container .mainrow .postSection .thumbnail .defaultimg img {
           width: 100%;
           max-height: 200px; }
-        #topposts .container .mainrow .postSection .thumbnail .defaultimg video {
+        #homepage #topposts .container .mainrow .postSection .thumbnail .defaultimg video {
           width: 100%;
           height: 200px;
           object-fit: fill; }
-      #topposts .container .mainrow .postSection .thumbnail .caption {
+      #homepage #topposts .container .mainrow .postSection .thumbnail .caption {
         margin: 0px;
         padding: 20px;
         width: 100%; }
-        #topposts .container .mainrow .postSection .thumbnail .caption p {
+        #homepage #topposts .container .mainrow .postSection .thumbnail .caption p {
           font-family: regular;
           font-size: 14px;
           text-align: left;
           margin-bottom: 15px;
           vertical-align: middle; }
-        #topposts .container .mainrow .postSection .thumbnail .caption audio {
+        #homepage #topposts .container .mainrow .postSection .thumbnail .caption audio {
           width: 100%;
           margin-bottom: 5px; }
-      #topposts .container .mainrow .postSection .thumbnail .userinfo {
+      #homepage #topposts .container .mainrow .postSection .thumbnail .userinfo {
         font-family: regular;
         font-size: 14px;
         text-align: center;
         margin-bottom: 20px;
         background-color: #6A0C38;
         width: 100%; }
-        #topposts .container .mainrow .postSection .thumbnail .userinfo img {
+        #homepage #topposts .container .mainrow .postSection .thumbnail .userinfo img {
           width: 40px;
           border: 2px solid #FFB733;
           border-radius: 50px;
           display: inline-block; }
-        #topposts .container .mainrow .postSection .thumbnail .userinfo p {
+        #homepage #topposts .container .mainrow .postSection .thumbnail .userinfo p {
           display: inline-block;
           color: #FFB733;
           font-family: medium; }
-      #topposts .container .mainrow .postSection .thumbnail .interaction {
+      #homepage #topposts .container .mainrow .postSection .thumbnail .interaction {
         margin-bottom: 15px;
         vertical-align: middle;
         text-align: center;
         width: 100%; }
-        #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder {
+        #homepage #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder {
           display: inline-block; }
-          #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .btn-info {
+          #homepage #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .btn-info {
             margin: 0px;
             padding: 0px;
             background-color: transparent;
             border: 0px; }
-          #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .share .caret {
+          #homepage #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .share .caret {
             display: none; }
-          #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .share .dropdown-menu {
+          #homepage #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .share .dropdown-menu {
             position: absolute;
             top: 100%;
             min-width: 0px;
             padding: 0;
             margin: 0; }
-            #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .share .dropdown-menu li a:hover i {
+            #homepage #topposts .container .mainrow .postSection .thumbnail .interaction #socialHolder #socialShare .share .dropdown-menu li a:hover i {
               color: #FFB733; }
-        #topposts .container .mainrow .postSection .thumbnail .interaction div a {
+        #homepage #topposts .container .mainrow .postSection .thumbnail .interaction div a {
           margin: 10px; }
-          #topposts .container .mainrow .postSection .thumbnail .interaction div a:hover {
+          #homepage #topposts .container .mainrow .postSection .thumbnail .interaction div a:hover {
             text-decoration: none; }
-          #topposts .container .mainrow .postSection .thumbnail .interaction div a i {
+          #homepage #topposts .container .mainrow .postSection .thumbnail .interaction div a i {
             font-size: 20px;
             color: #808285;
             vertical-align: top; }
-            #topposts .container .mainrow .postSection .thumbnail .interaction div a i:hover {
+            #homepage #topposts .container .mainrow .postSection .thumbnail .interaction div a i:hover {
               color: #FFB733; }
-          #topposts .container .mainrow .postSection .thumbnail .interaction div a .badge {
+          #homepage #topposts .container .mainrow .postSection .thumbnail .interaction div a .badge {
             font-family: regular;
             font-size: 14px;
             background-color: transparent;
             color: #808285; }
-
-
-
-
-.has-danger {
+#homepage .has-danger {
   border: 0px;
   border-bottom: 1px solid firebrick; }
-  .has-danger .inputHorizontalDnger {
+  #homepage .has-danger .inputHorizontalDnger {
     color: firebrick; }
-  .has-danger .form-control-danger {
+  #homepage .has-danger .form-control-danger {
     color: firebrick; }
-  .has-danger .form-control-feedback {
+  #homepage .has-danger .form-control-feedback {
     color: firebrick; }
-
-div .row {
+#homepage div .row {
   margin: 0px; }
-div .modal-dialog .modal-content .modal-header {
+#homepage div .modal-dialog .modal-content .modal-header {
   background-color: #6A0C38; }
-  div .modal-dialog .modal-content .modal-header .close {
+  #homepage div .modal-dialog .modal-content .modal-header .close {
     color: #FFB733; }
-    div .modal-dialog .modal-content .modal-header .close span {
+    #homepage div .modal-dialog .modal-content .modal-header .close span {
       color: #FFB733; }
-  div .modal-dialog .modal-content .modal-header h4 {
+  #homepage div .modal-dialog .modal-content .modal-header h4 {
     text-align: center; }
-    div .modal-dialog .modal-content .modal-header h4 .popUserInfo {
+    #homepage div .modal-dialog .modal-content .modal-header h4 .popUserInfo {
       background-color: transparent;
       margin-bottom: 0px; }
-      div .modal-dialog .modal-content .modal-header h4 .popUserInfo img {
+      #homepage div .modal-dialog .modal-content .modal-header h4 .popUserInfo img {
         width: 40px;
         border: 2px solid #FFB733;
         border-radius: 50px;
         display: inline-block; }
-      div .modal-dialog .modal-content .modal-header h4 .popUserInfo p {
+      #homepage div .modal-dialog .modal-content .modal-header h4 .popUserInfo p {
         display: inline-block;
         color: #FFFFFF;
         font-family: medium; }
-div .modal-dialog .modal-content .modal-body {
+#homepage div .modal-dialog .modal-content .modal-body {
   padding: 0px;
   border: 0px; }
-  div .modal-dialog .modal-content .modal-body .popPostSection {
+  #homepage div .modal-dialog .modal-content .modal-body .popPostSection {
     padding: 0px;
     width: 100%;
     margin: 0px;
     margin-top: 0px; }
-    div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail {
+    #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail {
       background-color: #FFFFFF;
       border: 0px;
       padding: 0px;
       padding-bottom: 10px; }
-      div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popdefaultimg {
+      #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popdefaultimg {
         border: 0px; }
-        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popdefaultimg img {
+        #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popdefaultimg img {
           width: 100%; }
-        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popdefaultimg video {
+        #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popdefaultimg video {
           width: 100%; }
-      div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popCaption {
+      #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popCaption {
         font-size: 14px;
         font-family: regular;
         color: #231F20; }
-        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popCaption p {
+        #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popCaption p {
           padding: 20px; }
-        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popCaption audio {
+        #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popCaption audio {
           width: 100%; }
-      div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser {
+      #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser {
         background-color: #E4E4E4;
         text-align: center; }
-        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction {
+        #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction {
           font-size: 20px; }
-          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder {
+          #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder {
             display: inline-block; }
-            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .btn-info {
+            #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .btn-info {
               margin: 0px;
               padding: 0px;
               background-color: transparent;
               border: 0px; }
-            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .share .caret {
+            #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .share .caret {
               display: none; }
-            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .share .dropdown-menu {
+            #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .share .dropdown-menu {
               position: absolute;
               top: 100%;
               min-width: 0px;
               padding: 0;
               margin: 0; }
-              div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .share .dropdown-menu li a:hover i {
+              #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction #socialHolder #socialShare .share .dropdown-menu li a:hover i {
                 color: #FFB733; }
-          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div {
+          #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div {
             margin: 0px; }
-            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div a {
+            #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div a {
               padding: 15px; }
-              div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div a:hover {
+              #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div a:hover {
                 text-decoration: none; }
-            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div i {
+            #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div i {
               color: #FFB733; }
-            div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div span {
+            #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUser .popInteraction div span {
               background-color: transparent;
               font-size: 14px;
               font-family: regular;
               color: #808285; }
-      div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost {
+      #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost {
         padding: 10px; }
-        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .form-control {
+        #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .form-control {
           width: 100%; }
-          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .form-control:focus {
+          #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .form-control:focus {
             border-color: #FFB733; }
-        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .posting {
+        #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .posting {
           display: block;
           margin: 20px;
           margin-right: 5px;
           margin-bottom: 0;
           text-align: right; }
-          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .posting .btn {
+          #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .writePost .posting .btn {
             background-color: #6A0C38;
             color: #FFFFFF;
             border: 0px;
@@ -563,36 +261,34 @@ div .modal-dialog .modal-content .modal-body {
             padding: 10px;
             border-radius: 25px;
             width: 120px; }
-      div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media {
+      #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media {
         margin-left: 20px;
         margin-top: 10px; }
-        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-left {
+        #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-left {
           width: 10%; }
-          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-left a img {
+          #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-left a img {
             border: 2px solid #FFB733;
             border-radius: 50px;
             display: inline-block;
             width: 100%; }
-        div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-body {
+        #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-body {
           font-family: regular;
           font-size: 12px;
           color: #808285; }
-          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-body h4 {
+          #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-body h4 {
             font-family: regular;
             font-size: 16px;
             color: #231F20; }
-          div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-body p {
+          #homepage div .modal-dialog .modal-content .modal-body .popPostSection .thumbnail .popUsersComments .media-list .media .media-body p {
             margin: 10px; }
-
-header #topposts .container .mainrow .postSection .thumbnail .interaction div a .fa-heart:hover {
+#homepage header #topposts .container .mainrow .postSection .thumbnail .interaction div a .fa-heart:hover {
   color: darkred; }
-
-#topEvents {
+#homepage #topEvents {
   background-color: #6A0C38; }
-  #topEvents .container .title {
+  #homepage #topEvents .container .title {
     text-align: center;
     margin-top: 20px; }
-    #topEvents .container .title h1 {
+    #homepage #topEvents .container .title h1 {
       color: #FFB733;
       font-family: bold;
       margin-top: 60px;
@@ -602,83 +298,83 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
       display: inline-block;
       font-size: 50px; }
     @media (max-width: 615px) {
-      #topEvents .container .title {
+      #homepage #topEvents .container .title {
         background-image: none; }
-        #topEvents .container .title h1 {
+        #homepage #topEvents .container .title h1 {
           text-align: left; } }
-  #topEvents .container .evMainRow .eventSection .thumbnail {
+  #homepage #topEvents .container .evMainRow .eventSection .thumbnail {
     background-color: #f1f1f1;
     padding: 0px; }
-    #topEvents .container .evMainRow .eventSection .thumbnail .evDefaultImg {
+    #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDefaultImg {
       padding: 0px;
       margin: 0px;
       width: 100%; }
-      #topEvents .container .evMainRow .eventSection .thumbnail .evDefaultImg img {
+      #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDefaultImg img {
         width: 100%;
         max-height: 300px; }
-      #topEvents .container .evMainRow .eventSection .thumbnail .evDefaultImg video {
+      #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDefaultImg video {
         width: 100%;
         height: 300px;
         object-fit: fill; }
-    #topEvents .container .evMainRow .eventSection .thumbnail .evTitle {
+    #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evTitle {
       font-family: bold;
       font-size: 20px;
       color: #FFB733; }
-      #topEvents .container .evMainRow .eventSection .thumbnail .evTitle div a {
+      #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evTitle div a {
         font-family: bold;
         font-size: 20px;
         color: #FFB733; }
-        #topEvents .container .evMainRow .eventSection .thumbnail .evTitle div a:hover {
+        #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evTitle div a:hover {
           text-decoration: none; }
-      #topEvents .container .evMainRow .eventSection .thumbnail .evTitle div i {
+      #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evTitle div i {
         font-size: 20px;
         color: #808285;
         margin-top: 20px; }
-    #topEvents .container .evMainRow .eventSection .thumbnail .evCaption {
+    #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evCaption {
       margin: 0px;
       padding: 20px; }
-      #topEvents .container .evMainRow .eventSection .thumbnail .evCaption p {
+      #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evCaption p {
         font-family: regular;
         font-size: 14px;
         text-align: left;
         margin-bottom: 15px;
         vertical-align: middle;
         width: 100%; }
-    #topEvents .container .evMainRow .eventSection .thumbnail .evDetails {
+    #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails {
       font-size: 10px; }
-      #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd {
+      #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd {
         margin-bottom: 15px;
         padding: 0;
         padding-left: 10px; }
-        #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .bigdate {
+        #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .bigdate {
           width: 60%;
           font-size: 12px;
           font-family: light; }
-          #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .bigdate i {
+          #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .bigdate i {
             font-size: 40px;
             color: #6A0C38;
             margin: 0px;
             padding: 0px; }
-          #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .bigdate p {
+          #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .bigdate p {
             font-size: 40px;
             font-family: medium;
             display: inline-block; }
-        #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .labels {
+        #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .labels {
           width: 46%;
           display: inline-block;
           text-align: left; }
-          #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .labels .label {
+          #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .labels .label {
             background-color: transparent;
             color: #231F20;
             text-align: left;
             font-size: 12px;
             font-family: light;
             padding: 0px; }
-          #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .labels .first {
+          #homepage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd .labels .first {
             display: block;
             padding: 0px;
             margin-bottom: 7px; }
-    #topEvents .container .evMainRow .eventSection .thumbnail .userPic {
+    #homepage #topEvents .container .evMainRow .eventSection .thumbnail .userPic {
       font-family: bold;
       font-size: 14px;
       margin-bottom: 20px;
@@ -687,23 +383,23 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
       margin-bottom: 20px;
       margin-left: 18px;
       vertical-align: bottom; }
-      #topEvents .container .evMainRow .eventSection .thumbnail .userPic:hover {
+      #homepage #topEvents .container .evMainRow .eventSection .thumbnail .userPic:hover {
         text-decoration: none; }
-      #topEvents .container .evMainRow .eventSection .thumbnail .userPic span {
+      #homepage #topEvents .container .evMainRow .eventSection .thumbnail .userPic span {
         display: inline-block;
         color: #525252;
         font-family: medium; }
-      #topEvents .container .evMainRow .eventSection .thumbnail .userPic img {
+      #homepage #topEvents .container .evMainRow .eventSection .thumbnail .userPic img {
         width: 40px;
         border: 2px solid #FFB733;
         border-radius: 50px;
         display: inline-block; }
-    #topEvents .container .evMainRow .eventSection .thumbnail .going {
+    #homepage #topEvents .container .evMainRow .eventSection .thumbnail .going {
       margin: 20px;
       margin-top: 0px;
       display: block;
       text-align: right; }
-      #topEvents .container .evMainRow .eventSection .thumbnail .going .btn {
+      #homepage #topEvents .container .evMainRow .eventSection .thumbnail .going .btn {
         background-color: #6A0C38;
         color: #FFFFFF;
         border: 0px;
@@ -711,116 +407,115 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
         padding: 10px;
         border-radius: 25px;
         width: 120px; }
-  #topEvents .container .evMainRow .row {
+  #homepage #topEvents .container .evMainRow .row {
     margin: 0px; }
-  #topEvents .container .evMainRow #s {
+  #homepage #topEvents .container .evMainRow #s {
     color: #231F20;
     text-align: left;
     font-size: 12px;
     font-family: regular;
     padding: 0px;
     font-size: 12px; }
-  #topEvents .container .evMainRow div#secondp {
+  #homepage #topEvents .container .evMainRow div#secondp {
     margin-top: 8px; }
-  #topEvents .container .evMainRow #socialHolder {
+  #homepage #topEvents .container .evMainRow #socialHolder {
     display: inline-block; }
-    #topEvents .container .evMainRow #socialHolder #socialShare .btn-info {
+    #homepage #topEvents .container .evMainRow #socialHolder #socialShare .btn-info {
       margin: 0px;
       padding: 0px;
       background-color: transparent;
       border: 0px; }
-    #topEvents .container .evMainRow #socialHolder #socialShare .share .caret {
+    #homepage #topEvents .container .evMainRow #socialHolder #socialShare .share .caret {
       display: none; }
-    #topEvents .container .evMainRow #socialHolder #socialShare .share .dropdown-menu {
+    #homepage #topEvents .container .evMainRow #socialHolder #socialShare .share .dropdown-menu {
       position: absolute;
       top: 100%;
       min-width: 0px;
       padding: 0;
       margin: 0; }
-      #topEvents .container .evMainRow #socialHolder #socialShare .share .dropdown-menu li a:hover i {
+      #homepage #topEvents .container .evMainRow #socialHolder #socialShare .share .dropdown-menu li a:hover i {
         color: #FFB733; }
-
-.modal .modal-dialog .modal-content .modal-header .modal-title .popUpEvTitle {
+#homepage .modal .modal-dialog .modal-content .modal-header .modal-title .popUpEvTitle {
   font-family: bold;
   font-size: 20px;
   color: #FFB733; }
-  .modal .modal-dialog .modal-content .modal-header .modal-title .popUpEvTitle a {
+  #homepage .modal .modal-dialog .modal-content .modal-header .modal-title .popUpEvTitle a {
     font-family: bold;
     font-size: 20px;
     color: #FFB733; }
-    .modal .modal-dialog .modal-content .modal-header .modal-title .popUpEvTitle a:hover {
+    #homepage .modal .modal-dialog .modal-content .modal-header .modal-title .popUpEvTitle a:hover {
       text-decoration: none; }
-.modal .modal-dialog .modal-body .thumbnail {
+#homepage .modal .modal-dialog .modal-body .thumbnail {
   padding: 0px; }
-  .modal .modal-dialog .modal-body .thumbnail .evDefaultImg {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .evDefaultImg {
     padding: 0px;
     margin: 0px;
     width: 100%; }
-    .modal .modal-dialog .modal-body .thumbnail .evDefaultImg img {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .evDefaultImg img {
       width: 100%; }
-  .modal .modal-dialog .modal-body .thumbnail .evCaption {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .evCaption {
     margin: 0px;
     padding: 20px; }
-    .modal .modal-dialog .modal-body .thumbnail .evCaption p {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .evCaption p {
       font-family: regular;
       font-size: 14px;
       text-align: left;
       margin-bottom: 15px;
       vertical-align: middle;
       width: 100%; }
-  .modal .modal-dialog .modal-body .thumbnail .evDetails {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails {
     font-size: 10px; }
-    .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd {
       margin-bottom: 15px; }
-      .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .bigdate {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .bigdate {
         display: inline-block;
         width: 35%;
         font-size: 40px;
         font-family: medium; }
-        .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .bigdate i {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .bigdate i {
           font-size: 40px;
           color: #6A0C38;
           margin: 0px;
           padding: 0px; }
-        .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .bigdate p {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .bigdate p {
           font-size: 40px;
           font-family: medium;
           display: inline-block; }
-      .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .labels {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .labels {
         width: 46%;
         display: inline-block;
         text-align: left; }
-        .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .labels .label {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .labels .label {
           background-color: transparent;
           color: #231F20;
           text-align: left;
           font-size: 12px;
           font-family: light;
           padding: 0px; }
-        .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .labels .first {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd .labels .first {
           display: block;
           padding: 0px;
           margin-bottom: 7px; }
-      .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd #secondp {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd #secondp {
         margin-top: 8px; }
-      .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd #s {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd #s {
         color: #231F20;
         text-align: left;
         font-size: 12px;
         font-family: regular;
         padding: 0px;
         font-size: 12px; }
-      .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd #span1 {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .evDetails .eventScd #span1 {
         text-align: right; }
-  .modal .modal-dialog .modal-body .thumbnail .evTitle {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle {
     padding: 15px;
     font-family: bold;
     font-size: 20px;
     color: #FFB733;
     background-color: #E4E4E4; }
-    .modal .modal-dialog .modal-body .thumbnail .evTitle div {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle div {
       padding: 0px; }
-      .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic {
         font-family: bold;
         font-size: 14px;
         color: #FFB733;
@@ -828,22 +523,22 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
         margin-left: 18px;
         vertical-align: bottom;
         font-family: bold; }
-        .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic:hover {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic:hover {
           text-decoration: none; }
-        .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic span {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic span {
           display: inline-block;
           color: #525252;
           font-family: medium; }
-        .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic img {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle div .userPic img {
           width: 40px;
           border: 2px solid #FFB733;
           border-radius: 50px;
           display: inline-block; }
-    .modal .modal-dialog .modal-body .thumbnail .evTitle .going {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle .going {
       margin-top: 0px;
       display: block;
       text-align: right; }
-      .modal .modal-dialog .modal-body .thumbnail .evTitle .going .btn {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle .going .btn {
         background-color: #6A0C38;
         color: #FFFFFF;
         border: 0px;
@@ -851,41 +546,41 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
         padding: 10px;
         border-radius: 25px;
         width: 120px; }
-    .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder {
       display: inline-block;
       text-align: center;
       margin-top: 9px; }
-      .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .btn-info {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .btn-info {
         margin: 0px;
         padding: 0px;
         background-color: transparent;
         border: 0px; }
-        .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .btn-info .fa-share-alt {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .btn-info .fa-share-alt {
           font-size: 25px;
           color: #6A0C38; }
-      .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .share .caret {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .share .caret {
         display: none; }
-      .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .dropdown-menu {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .dropdown-menu {
         position: absolute;
         top: 100%;
         min-width: 0px;
         padding: 0;
         margin: 0; }
-        .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .dropdown-menu li a:hover i {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .evTitle #socialHolder #socialShare .dropdown-menu li a:hover i {
           color: #FFB733; }
-  .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost {
     padding: 10px; }
-    .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .form-control {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .form-control {
       width: 100%; }
-      .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .form-control:focus {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .form-control:focus {
         border-color: #FFB733; }
-    .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .posting {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .posting {
       display: block;
       margin: 20px;
       margin-right: 5px;
       margin-bottom: 0;
       text-align: right; }
-      .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .posting .btn {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .writePost .posting .btn {
         background-color: #6A0C38;
         color: #FFFFFF;
         border: 0px;
@@ -893,47 +588,45 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
         padding: 10px;
         border-radius: 25px;
         width: 120px; }
-  .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media {
     margin-left: 20px;
     margin-top: 10px; }
-    .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-left {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-left {
       width: 10%; }
-      .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-left a img {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-left a img {
         border: 2px solid #FFB733;
         border-radius: 50px;
         display: inline-block;
         width: 100%; }
-    .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-body {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-body {
       font-family: regular;
       font-size: 12px;
       color: #808285; }
-      .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-body h4 {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-body h4 {
         font-family: regular;
         font-size: 16px;
         color: #231F20; }
-      .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-body p {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popUsersComments .media-list .media .media-body p {
         margin: 10px; }
-
 @media (max-width: 994px) {
-  #socialHolder {
+  #homepage #socialHolder {
     display: block;
     text-align: left; }
-
-  .going {
+  #homepage .going {
     display: block;
     text-align: left; } }
-#topWorkshops {
+#homepage #topWorkshops {
   background-color: #E4E4E4; }
-  #topWorkshops .row {
+  #homepage #topWorkshops .row {
     margin: 0px; }
-  #topWorkshops .container .title {
+  #homepage #topWorkshops .container .title {
     text-align: center;
     margin-top: 20px;
     background-image: url(../../Imgs/bground2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
-    #topWorkshops .container .title h1 {
+    #homepage #topWorkshops .container .title h1 {
       color: #FFB733;
       font-family: bold;
       margin-top: 60px;
@@ -942,36 +635,36 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
       display: inline-block;
       font-size: 50px; }
     @media (max-width: 615px) {
-      #topWorkshops .container .title {
+      #homepage #topWorkshops .container .title {
         background-image: none; }
-        #topWorkshops .container .title h1 {
+        #homepage #topWorkshops .container .title h1 {
           text-align: left; } }
-  #topWorkshops .container .workshopsSection {
+  #homepage #topWorkshops .container .workshopsSection {
     margin-top: 25px;
     height: inherit; }
-    #topWorkshops .container .workshopsSection .thumbnail {
+    #homepage #topWorkshops .container .workshopsSection .thumbnail {
       padding: 0px; }
-      #topWorkshops .container .workshopsSection .thumbnail img {
+      #homepage #topWorkshops .container .workshopsSection .thumbnail img {
         width: 100%;
         margin: 0px; }
-      #topWorkshops .container .workshopsSection .thumbnail h3 {
+      #homepage #topWorkshops .container .workshopsSection .thumbnail h3 {
         font-family: bold;
         color: #FFB733;
         text-align: center; }
-      #topWorkshops .container .workshopsSection .thumbnail .caption p {
+      #homepage #topWorkshops .container .workshopsSection .thumbnail .caption p {
         font-family: regular;
         font-size: 14px;
         text-align: left;
         margin-bottom: 25px; }
-      #topWorkshops .container .workshopsSection .thumbnail .workshopInfo div {
+      #homepage #topWorkshops .container .workshopsSection .thumbnail .workshopInfo div {
         display: inline-block;
         padding: 0px;
         text-align: center; }
-        #topWorkshops .container .workshopsSection .thumbnail .workshopInfo div i {
+        #homepage #topWorkshops .container .workshopsSection .thumbnail .workshopInfo div i {
           margin-right: 5px;
           color: #6A0C38;
           font-size: 20px; }
-        #topWorkshops .container .workshopsSection .thumbnail .workshopInfo div .badge {
+        #homepage #topWorkshops .container .workshopsSection .thumbnail .workshopInfo div .badge {
           font-size: 12px;
           font-family: light;
           background-color: transparent;
@@ -980,7 +673,7 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
           padding: 0px;
           vertical-align: top;
           margin-top: 5px; }
-      #topWorkshops .container .workshopsSection .thumbnail .userPic {
+      #homepage #topWorkshops .container .workshopsSection .thumbnail .userPic {
         display: inline-block;
         color: #FFB733;
         font-family: light;
@@ -989,7 +682,7 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
         background-color: #6A0C38;
         margin-top: 15px;
         width: 100%; }
-        #topWorkshops .container .workshopsSection .thumbnail .userPic .mintor {
+        #homepage #topWorkshops .container .workshopsSection .thumbnail .userPic .mintor {
           font-family: medium;
           font-size: 14px;
           color: #FFFFFF;
@@ -998,14 +691,14 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
           text-align: right;
           padding-right: 0px;
           margin-bottom: 10px; }
-          #topWorkshops .container .workshopsSection .thumbnail .userPic .mintor img {
+          #homepage #topWorkshops .container .workshopsSection .thumbnail .userPic .mintor img {
             width: 40px;
             border: 2px solid #FFB733;
             border-radius: 50px;
             display: inline-block;
             vertical-align: middle;
             padding: 0px; }
-        #topWorkshops .container .workshopsSection .thumbnail .userPic span {
+        #homepage #topWorkshops .container .workshopsSection .thumbnail .userPic span {
           font-family: medium;
           font-size: 14px;
           color: #FFB733;
@@ -1014,46 +707,45 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
           margin-bottom: 10px;
           padding-left: 5px;
           text-align: left; }
-
-.modal .modal-dialog .modal-content .modal-header .modal-title .popWorkshopTitle {
+#homepage .modal .modal-dialog .modal-content .modal-header .modal-title .popWorkshopTitle {
   font-family: bold;
   font-size: 20px;
   color: #FFB733; }
-  .modal .modal-dialog .modal-content .modal-header .modal-title .popWorkshopTitle a {
+  #homepage .modal .modal-dialog .modal-content .modal-header .modal-title .popWorkshopTitle a {
     font-family: bold;
     font-size: 20px;
     color: #FFB733; }
-    .modal .modal-dialog .modal-content .modal-header .modal-title .popWorkshopTitle a:hover {
+    #homepage .modal .modal-dialog .modal-content .modal-header .modal-title .popWorkshopTitle a:hover {
       text-decoration: none; }
-.modal .modal-dialog .modal-body .thumbnail {
+#homepage .modal .modal-dialog .modal-body .thumbnail {
   padding: 0px; }
-  .modal .modal-dialog .modal-body .thumbnail .popWorkshopDefaultImg {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopDefaultImg {
     padding: 0px;
     margin: 0px;
     width: 100%; }
-    .modal .modal-dialog .modal-body .thumbnail .popWorkshopDefaultImg img {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopDefaultImg img {
       width: 100%; }
-  .modal .modal-dialog .modal-body .thumbnail .popWorkshopCaption {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopCaption {
     margin: 0px;
     padding: 20px; }
-    .modal .modal-dialog .modal-body .thumbnail .popWorkshopCaption p {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopCaption p {
       font-family: regular;
       font-size: 14px;
       text-align: left;
       margin-bottom: 15px;
       vertical-align: middle;
       width: 100%; }
-  .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo {
     margin-bottom: 20px; }
-    .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo div {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo div {
       display: inline-block;
       padding: 0px;
       text-align: center; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo div i {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo div i {
         margin-right: 5px;
         color: #6A0C38;
         font-size: 20px; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo div .badge {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopInfo div .badge {
         font-size: 12px;
         font-family: light;
         background-color: transparent;
@@ -1062,16 +754,16 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
         padding: 0px;
         vertical-align: top;
         margin-top: 5px; }
-  .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle {
     margin-top: 20px;
     padding: 15px;
     font-family: bold;
     font-size: 20px;
     color: #FFB733;
     background-color: #E4E4E4; }
-    .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div {
       padding: 0px; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic {
         font-family: bold;
         font-size: 14px;
         color: #FFB733;
@@ -1079,22 +771,22 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
         margin-left: 18px;
         vertical-align: bottom;
         font-family: bold; }
-        .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic:hover {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic:hover {
           text-decoration: none; }
-        .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic span {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic span {
           display: inline-block;
           color: #525252;
           font-family: medium; }
-        .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic img {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle div .userPic img {
           width: 40px;
           border: 2px solid #FFB733;
           border-radius: 50px;
           display: inline-block; }
-    .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle .going {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle .going {
       margin-top: 0px;
       display: block;
       text-align: right; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle .going .btn {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle .going .btn {
         background-color: #6A0C38;
         color: #FFFFFF;
         border: 0px;
@@ -1102,41 +794,41 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
         padding: 10px;
         border-radius: 25px;
         width: 120px; }
-    .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder {
       display: inline-block;
       text-align: center;
       margin-top: 9px; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .btn-info {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .btn-info {
         margin: 0px;
         padding: 0px;
         background-color: transparent;
         border: 0px; }
-        .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .btn-info .fa-share-alt {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .btn-info .fa-share-alt {
           font-size: 25px;
           color: #6A0C38; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .share .caret {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .share .caret {
         display: none; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .dropdown-menu {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .dropdown-menu {
         position: absolute;
         top: 100%;
         min-width: 0px;
         padding: 0;
         margin: 0; }
-        .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .dropdown-menu li a:hover i {
+        #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopTitle #socialHolder #socialShare .dropdown-menu li a:hover i {
           color: #FFB733; }
-  .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost {
     padding: 10px; }
-    .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .form-control {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .form-control {
       width: 100%; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .form-control:focus {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .form-control:focus {
         border-color: #FFB733; }
-    .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .posting {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .posting {
       display: block;
       margin: 20px;
       margin-right: 5px;
       margin-bottom: 0;
       text-align: right; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .posting .btn {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .writePost .posting .btn {
         background-color: #6A0C38;
         color: #FFFFFF;
         border: 0px;
@@ -1144,32 +836,224 @@ header #topposts .container .mainrow .postSection .thumbnail .interaction div a 
         padding: 10px;
         border-radius: 25px;
         width: 120px; }
-  .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media {
+  #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media {
     margin-left: 20px;
     margin-top: 10px; }
-    .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-left {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-left {
       width: 10%; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-left a img {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-left a img {
         border: 2px solid #FFB733;
         border-radius: 50px;
         display: inline-block;
         width: 100%; }
-    .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-body {
+    #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-body {
       font-family: regular;
       font-size: 12px;
       color: #808285; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-body h4 {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-body h4 {
         font-family: regular;
         font-size: 16px;
         color: #231F20; }
-      .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-body p {
+      #homepage .modal .modal-dialog .modal-body .thumbnail .popWorkshopUsersComments .media-list .media .media-body p {
         margin: 10px; }
-        .bgrounddefault{
-            background-size:cover!important;
-            background-position:center!important;
-            height:250px!important;
+#homepage #topComp {
+  background-color: #FFFFFF; }
+  #homepage #topComp .container .title {
+    text-align: center;
+    margin-top: 20px;
+    background-image: url(../../Imgs/bground2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; }
+    #homepage #topComp .container .title h1 {
+      color: #FFB733;
+      font-family: bold;
+      margin-top: 60px;
+      margin-bottom: 15px;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-block;
+      font-size: 50px; }
+    @media (max-width: 615px) {
+      #homepage #topComp .container .title {
+        background-image: none; }
+        #homepage #topComp .container .title h1 {
+          text-align: left; } }
+  #homepage #topComp .container .CompMainRow .CompSection .thumbnail {
+    background-color: #f1f1f1;
+    padding: 0px; }
+    #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDefaultImg {
+      padding: 0px;
+      margin: 0px;
+      width: 100%; }
+      #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDefaultImg img {
+        width: 100%;
+        max-height: 300px; }
+      #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDefaultImg video {
+        width: 100%;
+        height: 300px;
+        object-fit: fill; }
+    #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompTitle {
+      font-family: bold;
+      font-size: 20px;
+      color: #FFB733; }
+      #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompTitle div a {
+        font-family: bold;
+        font-size: 20px;
+        color: #FFB733; }
+        #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompTitle div a:hover {
+          text-decoration: none; }
+      #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompTitle div i {
+        font-size: 20px;
+        color: #808285;
+        margin-top: 20px; }
+    #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompCaption {
+      margin: 0px;
+      padding: 20px; }
+      #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompCaption p {
+        font-family: regular;
+        font-size: 14px;
+        text-align: left;
+        margin-bottom: 15px;
+        vertical-align: middle;
+        width: 100%; }
+    #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails {
+      font-size: 10px; }
+      #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd {
+        margin-bottom: 15px;
+        padding: 0;
+        padding-left: 10px; }
+        #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .bigdate {
+          width: 60%;
+          font-size: 12px;
+          font-family: light; }
+          #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .bigdate i {
+            font-size: 40px;
+            color: #6A0C38;
+            margin: 0px;
+            padding: 0px; }
+          #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .bigdate p {
+            font-size: 40px;
+            font-family: medium;
+            display: inline-block; }
+        #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .labels {
+          width: 46%;
+          display: inline-block;
+          text-align: left; }
+          #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .labels .label {
+            background-color: transparent;
+            color: #231F20;
+            text-align: left;
+            font-size: 12px;
+            font-family: light;
+            padding: 0px; }
+          #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .labels .first {
+            display: block;
+            padding: 0px;
+            margin-bottom: 7px; }
+        #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .compLevel {
+          margin-bottom: 15px;
+          padding: 0;
+          padding-left: 10px; }
+          #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .compLevel .level .fa-bar-chart {
+            font-size: 40px;
+            color: #6A0C38; }
+          #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .compLevel .lLabels small {
+            font-family: light;
+            color: #231F20;
+            font-size: 12px; }
+          #homepage #topComp .container .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .compLevel .lLabels span {
+            font-size: 30px;
+            font-family: medium;
+            color: #231F20;
+            padding: 0px;
+            background-color: transparent;
+            margin: 5px; }
+    #homepage #topComp .container .CompMainRow .CompSection .thumbnail .userPic {
+      font-family: bold;
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #FFB733;
+      display: inline-block;
+      margin-bottom: 20px;
+      margin-left: 18px;
+      vertical-align: bottom; }
+      #homepage #topComp .container .CompMainRow .CompSection .thumbnail .userPic:hover {
+        text-decoration: none; }
+      #homepage #topComp .container .CompMainRow .CompSection .thumbnail .userPic span {
+        display: inline-block;
+        color: #525252;
+        font-family: medium; }
+      #homepage #topComp .container .CompMainRow .CompSection .thumbnail .userPic img {
+        width: 40px;
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block; }
+    #homepage #topComp .container .CompMainRow .CompSection .thumbnail .going {
+      margin: 20px;
+      margin-top: 0px;
+      display: block;
+      text-align: right; }
+      #homepage #topComp .container .CompMainRow .CompSection .thumbnail .going .btn {
+        background-color: #6A0C38;
+        color: #FFFFFF;
+        border: 0px;
+        vertical-align: middle;
+        padding: 10px;
+        border-radius: 25px;
+        width: 120px; }
+  #homepage #topComp .container .CompMainRow .row {
+    margin: 0px; }
+  #homepage #topComp .container .CompMainRow #s {
+    color: #231F20;
+    text-align: left;
+    font-size: 12px;
+    font-family: regular;
+    padding: 0px;
+    font-size: 12px; }
+  #homepage #topComp .container .CompMainRow div#secondp {
+    margin-top: 8px; }
+  #homepage #topComp .container .CompMainRow #socialHolder {
+    display: inline-block; }
+    #homepage #topComp .container .CompMainRow #socialHolder #socialShare .btn-info {
+      margin: 0px;
+      padding: 0px;
+      background-color: transparent;
+      border: 0px; }
+    #homepage #topComp .container .CompMainRow #socialHolder #socialShare .share .caret {
+      display: none; }
+    #homepage #topComp .container .CompMainRow #socialHolder #socialShare .share .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      min-width: 0px;
+      padding: 0;
+      margin: 0; }
+      #homepage #topComp .container .CompMainRow #socialHolder #socialShare .share .dropdown-menu li a:hover i {
+        color: #FFB733; }
+  #homepage #topComp .container .btnsOn {
+    margin: 20px;
+    margin-top: 0px;
+    display: block;
+    text-align: center; }
+    #homepage #topComp .container .btnsOn .btn {
+      background-color: #FFB733;
+      color: #45132E;
+      border: 0px;
+      vertical-align: middle;
+      padding: 10px;
+      border-radius: 25px;
+      width: 130px;
+      margin: 30px;
+      font-family: medium; }
+      #homepage #topComp .container .btnsOn .btn .fa {
+        color: #45132E;
+        font-size: 20px;
+        margin-right: 5px; }
+      #homepage #topComp .container .btnsOn .btn:hover {
+        color: #FFFFFF; }
+        #homepage #topComp .container .btnsOn .btn:hover i {
+          color: #FFFFFF; }
 
-        }
 footer {
   font-size: 14px;
   background-color: #6A0C38;
@@ -1191,15 +1075,11 @@ footer {
       footer .row .footerSection ul .inputEmail .glyphicon-envelope {
         color: #808285;
         padding: 5px;
-        margin-left: 5px; }
+        margin-left: 10px; }
       footer .row .footerSection ul .inputEmail input {
         background-color: transparent;
         border: 0px;
-        padding: 5px;
-        vertical-align: top;
-    margin-top: 10px;
-    margin: 0px;
-}
+        padding: 5px; }
     footer .row .footerSection ul .emailBtn {
       border: 3px #FFB733 solid;
       color: #FFB733;

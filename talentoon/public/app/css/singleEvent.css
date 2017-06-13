@@ -1,0 +1,335 @@
+body {
+  font-size: 0px;
+  margin: 0px;
+  padding: 0px;
+  outline: 0px;
+  background-color: #FFFFFF; }
+  body:focus, body:active, body:visited, body:hover {
+    outline: 0px; }
+
+#singleeventpage .row {
+  position: relative; }
+#singleeventpage .firstCol {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  padding: 0px;
+  background-color: #FFFFFF;
+  height: 551px;
+  margin-bottom: 30px; }
+  #singleeventpage .firstCol .evImg {
+    height: 45%;
+    margin: 0px; }
+    #singleeventpage .firstCol .evImg .opacity {
+      background-color: #231F20;
+      position: relative;
+      height: 100%;
+      text-align: -webkit-center; }
+      #singleeventpage .firstCol .evImg .opacity img {
+        display: block;
+        opacity: 0.6;
+        overflow: hidden;
+        width: 100%;
+        height: 100%; }
+      #singleeventpage .firstCol .evImg .opacity .accept {
+        display: block;
+        position: relative;
+        bottom: 60px;
+        border-radius: 35px;
+        padding: 7px;
+        width: 155px;
+        background-color: #6A0C38;
+        color: #FFFFFF;
+        border: 0px;
+        font-family: bold;
+        font-size: 18px; }
+        #singleeventpage .firstCol .evImg .opacity .accept:hover {
+          background-color: #FFB733;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
+  #singleeventpage .firstCol .evName {
+    margin: 10px; }
+    #singleeventpage .firstCol .evName .text-left {
+      color: #6A0C38;
+      font-family: medium;
+      font-size: 20px;
+      padding: 0px;
+      margin-top: 10px; }
+    #singleeventpage .firstCol .evName .text-center {
+      padding: 0px; }
+      #singleeventpage .firstCol .evName .text-center .fa {
+        color: #FFB733;
+        font-size: 30px;
+        margin: 5px; }
+  #singleeventpage .firstCol .info {
+    font-size: 10px; }
+    #singleeventpage .firstCol .info .evScd {
+      margin-bottom: 15px;
+      padding: 0;
+      padding-left: 10px; }
+      #singleeventpage .firstCol .info .evScd .bigdate {
+        width: 60%;
+        font-size: 12px;
+        font-family: light; }
+        #singleeventpage .firstCol .info .evScd .bigdate i {
+          font-size: 40px;
+          color: #6A0C38;
+          margin: 0px;
+          padding: 0px; }
+        #singleeventpage .firstCol .info .evScd .bigdate p {
+          font-size: 40px;
+          font-family: medium;
+          display: inline-block; }
+      #singleeventpage .firstCol .info .evScd .labels {
+        width: 46%;
+        display: inline-block;
+        text-align: left; }
+        #singleeventpage .firstCol .info .evScd .labels .label {
+          background-color: transparent;
+          color: #231F20;
+          text-align: left;
+          font-size: 12px;
+          font-family: light;
+          padding: 0px; }
+        #singleeventpage .firstCol .info .evScd .labels .first {
+          display: block;
+          padding: 0px;
+          margin-bottom: 7px; }
+#singleeventpage .secCol .showPosts {
+  margin-top: 0px; }
+  #singleeventpage .secCol .showPosts .recentPosts {
+    background-color: #FFFFFF;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.3);
+    padding: 0px;
+    margin-bottom: 40px; }
+    #singleeventpage .secCol .showPosts .recentPosts .userInfos {
+      padding: 10px; }
+      #singleeventpage .secCol .showPosts .recentPosts .userInfos img {
+        width: 60px;
+        border-radius: 40px;
+        border: 2px #FFB733 solid;
+        display: inline-block; }
+      #singleeventpage .secCol .showPosts .recentPosts .userInfos span {
+        font-family: bold;
+        font-size: 20px;
+        color: #FFB733;
+        margin-left: 5px; }
+    #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .largePic img {
+      overflow-x: hidden;
+      width: 100%;
+      max-height: 20%; }
+    #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .largePic video {
+      width: 100%;
+      object-fit: cover; }
+    #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .titleEdit {
+      margin: 10px 0px; }
+      #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .titleEdit .title h3 {
+        font-family: medium;
+        color: #6A0C38; }
+      #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits {
+        text-align: right; }
+        #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits i {
+          color: #525252;
+          font-size: 20px;
+          margin-top: 20px;
+          margin-left: 15px; }
+    #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .disc p {
+      font-size: 16px;
+      font-family: regular;
+      color: #231F20;
+      padding: 10px; }
+    #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .disc audio {
+      width: 100%; }
+    #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser {
+      background-color: #E4E4E4;
+      font-size: 20px;
+      padding: 10px; }
+      #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser a {
+        margin: 0 10px; }
+        #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser a i {
+          color: #FFB733; }
+        #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser a .badge {
+          background-color: transparent;
+          color: #525252;
+          font-size: 16px;
+          font-family: medium; }
+      #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder {
+        display: inline-block; }
+        #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .btn-info {
+          margin: 0px;
+          padding: 0px;
+          background-color: transparent;
+          border: 0px; }
+          #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .btn-info .fa-share-alt {
+            font-size: 20px; }
+        #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .share .caret {
+          display: none; }
+        #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu {
+          border-radius: 20px;
+          min-width: 100px;
+          position: absolute;
+          top: 75%;
+          padding: 0; }
+          #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a {
+            margin: 10 0px; }
+            #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a:hover i {
+              color: #FFB733; }
+    #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .userComments {
+      border-radius: 0px;
+      border: 0px;
+      border-bottom: 1px solid #E4E4E4; }
+      #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .userComments .writePost {
+        padding: 10px; }
+        #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .userComments .writePost .form-control {
+          width: 100%; }
+          #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .userComments .writePost .form-control:focus {
+            border-color: #FFB733; }
+        #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .userComments .writePost .posting {
+          display: block;
+          margin: 20px;
+          margin-right: 5px;
+          margin-bottom: 0;
+          text-align: right; }
+          #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .userComments .writePost .posting .btn {
+            border: #6A0C38 2px solid;
+            color: #6A0C38;
+            vertical-align: middle;
+            padding: 10px;
+            border-radius: 25px;
+            width: 120px;
+            font-family: medium;
+            font-size: 16px; }
+            #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .userComments .writePost .posting .btn:hover, #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .userComments .writePost .posting .btn:active, #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .userComments .writePost .posting .btn:focus {
+              background-color: #FFB733;
+              border: 0px;
+              color: #45132E; }
+    #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .seeComments {
+      background-color: #E4E4E4;
+      text-align: center;
+      padding: 10px; }
+      #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .seeComments span {
+        font-size: 16px;
+        font-family: light;
+        color: #808285; }
+        #singleeventpage .secCol .showPosts .recentPosts .conatinerComment .seeComments span i {
+          margin: 0 8px; }
+#singleeventpage .title {
+  margin-top: 10px;
+  color: #808285;
+  font-family: medium;
+  font-size: 16px; }
+#singleeventpage #socialHolder {
+  display: block;
+  text-align: -webkit-center; }
+  #singleeventpage #socialHolder #socialShare .btn-info {
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+    border: 0px; }
+    #singleeventpage #socialHolder #socialShare .btn-info .btn-share {
+      display: block;
+      border-radius: 35px;
+      padding: 7px;
+      width: 190px;
+      background-color: #6A0C38;
+      color: #FFFFFF;
+      border: 0px;
+      font-family: medium;
+      font-size: 16px;
+      margin: 20px 0px; }
+      #singleeventpage #socialHolder #socialShare .btn-info .btn-share:hover {
+        background-color: #FFB733;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
+      #singleeventpage #socialHolder #socialShare .btn-info .btn-share .fa {
+        color: #FFFFFF;
+        font-size: 20px;
+        margin: 5px; }
+  #singleeventpage #socialHolder .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    min-width: 0px;
+    padding: 0;
+    margin: 0; }
+    #singleeventpage #socialHolder .dropdown-menu li a:hover i {
+      color: #FFB733; }
+    #singleeventpage #socialHolder .dropdown-menu li a i {
+      color: #6A0C38; }
+#singleeventpage .thirdCol {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  padding: 0px;
+  background-color: #FFFFFF;
+  height: 551px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  position: inherit; }
+  #singleeventpage .thirdCol .newPost {
+    text-align: center;
+    margin: 20 0px;
+    margin-bottom: 40px; }
+    #singleeventpage .thirdCol .newPost .btn-lg {
+      background-color: #6A0C38;
+      border-radius: 50px;
+      color: #FFFFFF;
+      font-family: medium;
+      font-size: 16px;
+      padding: 15px;
+      width: 150px;
+      margin-bottom: 0px; }
+      #singleeventpage .thirdCol .newPost .btn-lg i {
+        color: #FFFFFF; }
+      #singleeventpage .thirdCol .newPost .btn-lg:hover {
+        background-color: #FFB733;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
+  #singleeventpage .thirdCol .numbers {
+    margin: 20 0px; }
+    #singleeventpage .thirdCol .numbers .count {
+      padding: 20px 0px; }
+      #singleeventpage .thirdCol .numbers .count .titl {
+        font-family: medium;
+        color: #231F20;
+        font-size: 16px; }
+      #singleeventpage .thirdCol .numbers .count .num {
+        font-family: light;
+        color: #808285;
+        font-size: 16px; }
+  #singleeventpage .thirdCol .about {
+    padding: 12px;
+    height: 45%;
+    overflow: hidden;
+    margin-bottom: 30px; }
+    #singleeventpage .thirdCol .about span {
+      font-family: medium;
+      color: #FFB733;
+      font-size: 16px;
+      margin-bottom: 10px; }
+    #singleeventpage .thirdCol .about p {
+      font-family: light;
+      color: #808285;
+      opacity: 0.8;
+      font-size: 14px;
+      overflow: hidden;
+      padding: 10px 0px; }
+  #singleeventpage .thirdCol .madeby {
+    padding: 12px;
+    height: 30%;
+    overflow: hidden;
+    display: inline-block; }
+    #singleeventpage .thirdCol .madeby span {
+      font-family: medium;
+      color: #FFB733;
+      font-size: 16px;
+      margin-bottom: 10px;
+      display: inline-block; }
+    #singleeventpage .thirdCol .madeby .superviseInfos {
+      padding: 10px;
+      display: inline-block;
+      display: inline-block; }
+      #singleeventpage .thirdCol .madeby .superviseInfos img {
+        width: 40px;
+        border-radius: 40px;
+        border: 2px #FFB733 solid; }
+      #singleeventpage .thirdCol .madeby .superviseInfos span {
+        font-family: bold;
+        font-size: 16px;
+        color: #6A0C38;
+        margin-left: 5px;
+        vertical-align: middle; }
+
+/*# sourceMappingURL=singleEvent.css.map */

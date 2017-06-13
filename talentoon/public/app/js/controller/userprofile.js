@@ -208,12 +208,15 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
               // var userdata = $scope.userupdate
               console.log('y simnaaaaaaa',userdata);
               user.checkpassword(userdata).then(function (data) {
-                  console.log('y simnaaaaaaa');
+                  console.log('y simnaaaaaaa',data);
                   if (data == 'ok') {
-                      $location.url('#!/');
-                      $route.reload();
+                      console.log("innside ok")
+                      //$location.url('#!/');
+                      //$route.reload();
+                      $location.url('/');
                   }else{
                       console.log(data)
+                      $location.url('/');
                       // alert('enter your password right')
                   }
               }, function (err) {
@@ -228,6 +231,7 @@ angular.module('myApp').controller("userprofile", function (categories,$scope, $
 
               user.updateuser(userdata).then(function (data) {
                   console.log(data)
+                  $location.url('/');
               }, function (err) {
                   console.log(err);
                   // $location.url('/500');

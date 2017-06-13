@@ -4,33 +4,32 @@ body {
   padding: 0px;
   outline: 0px;
   background-color: #FFFFFF; }
-body:focus, body:active, body:visited, body:hover {
-outline: 0px; }
+  body:focus, body:active, body:visited, body:hover {
+    outline: 0px; }
 
-.row {
+#singlecomppage .row {
   position: relative; }
-
-.firstCol {
+#singlecomppage .firstCol {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   padding: 0px;
   background-color: #FFFFFF;
   height: 551px;
   margin-bottom: 30px; }
-  .firstCol .compImg {
+  #singlecomppage .firstCol .compImg {
     height: 45%;
     margin: 0px; }
-    .firstCol .compImg .opacity {
+    #singlecomppage .firstCol .compImg .opacity {
       background-color: #231F20;
       position: relative;
       height: 100%;
       text-align: -webkit-center; }
-      .firstCol .compImg .opacity img {
+      #singlecomppage .firstCol .compImg .opacity img {
         display: block;
         opacity: 0.6;
         overflow: hidden;
         width: 100%;
         height: 100%; }
-      .firstCol .compImg .opacity .accept {
+      #singlecomppage .firstCol .compImg .opacity .accept {
         display: block;
         position: relative;
         bottom: 60px;
@@ -42,183 +41,182 @@ outline: 0px; }
         border: 0px;
         font-family: bold;
         font-size: 18px; }
-        .firstCol .compImg .opacity .accept:hover {
+        #singlecomppage .firstCol .compImg .opacity .accept:hover {
           background-color: #FFB733;
           box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
-  .firstCol .compName {
+  #singlecomppage .firstCol .compName {
     margin: 10px; }
-    .firstCol .compName .text-left {
+    #singlecomppage .firstCol .compName .text-left {
       color: #6A0C38;
       font-family: medium;
       font-size: 20px;
       padding: 0px;
       margin-top: 10px; }
-    .firstCol .compName .text-center {
+    #singlecomppage .firstCol .compName .text-center {
       padding: 0px; }
-      .firstCol .compName .text-center .fa {
+      #singlecomppage .firstCol .compName .text-center .fa {
         color: #FFB733;
         font-size: 30px;
         margin: 5px; }
-  .firstCol .info {
+  #singlecomppage .firstCol .info {
     font-size: 10px; }
-    .firstCol .info .compScd {
+    #singlecomppage .firstCol .info .compScd {
       margin-bottom: 15px;
       padding: 0;
       padding-left: 10px; }
-      .firstCol .info .compScd .bigdate {
+      #singlecomppage .firstCol .info .compScd .bigdate {
         width: 60%;
         font-size: 12px;
         font-family: light; }
-        .firstCol .info .compScd .bigdate i {
+        #singlecomppage .firstCol .info .compScd .bigdate i {
           font-size: 40px;
           color: #6A0C38;
           margin: 0px;
           padding: 0px; }
-        .firstCol .info .compScd .bigdate p {
+        #singlecomppage .firstCol .info .compScd .bigdate p {
           font-size: 40px;
           font-family: medium;
           display: inline-block; }
-      .firstCol .info .compScd .labels {
+      #singlecomppage .firstCol .info .compScd .labels {
         width: 46%;
         display: inline-block;
         text-align: left; }
-        .firstCol .info .compScd .labels .label {
+        #singlecomppage .firstCol .info .compScd .labels .label {
           background-color: transparent;
           color: #231F20;
           text-align: left;
           font-size: 12px;
           font-family: light;
           padding: 0px; }
-        .firstCol .info .compScd .labels .first {
+        #singlecomppage .firstCol .info .compScd .labels .first {
           display: block;
           padding: 0px;
           margin-bottom: 7px; }
-    .firstCol .info .compLevel {
+    #singlecomppage .firstCol .info .compLevel {
       margin-bottom: 15px;
       padding: 0;
       padding-left: 10px; }
-      .firstCol .info .compLevel .level .fa-bar-chart {
+      #singlecomppage .firstCol .info .compLevel .level .fa-bar-chart {
         font-size: 40px;
         color: #6A0C38; }
-      .firstCol .info .compLevel .lLabels small {
+      #singlecomppage .firstCol .info .compLevel .lLabels small {
         font-family: light;
         color: #231F20;
         font-size: 12px; }
-      .firstCol .info .compLevel .lLabels span {
+      #singlecomppage .firstCol .info .compLevel .lLabels span {
         font-size: 30px;
         font-family: medium;
         color: #231F20;
         padding: 0px;
         background-color: transparent;
         margin: 5px; }
-
-.secCol .showPosts {
+#singlecomppage .secCol .showPosts {
   margin-top: 0px; }
-  .secCol .showPosts .recentPosts {
+  #singlecomppage .secCol .showPosts .recentPosts {
     background-color: #FFFFFF;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.3);
     padding: 0px;
     margin-bottom: 40px; }
-    .secCol .showPosts .recentPosts .userInfos {
+    #singlecomppage .secCol .showPosts .recentPosts .userInfos {
       padding: 10px; }
-      .secCol .showPosts .recentPosts .userInfos img {
+      #singlecomppage .secCol .showPosts .recentPosts .userInfos img {
         width: 60px;
         border-radius: 40px;
         border: 2px #FFB733 solid;
         display: inline-block; }
-      .secCol .showPosts .recentPosts .userInfos span {
+      #singlecomppage .secCol .showPosts .recentPosts .userInfos span {
         font-family: bold;
         font-size: 20px;
         color: #FFB733;
         margin-left: 5px; }
-    .secCol .showPosts .recentPosts .conatinerComment .largePic img {
+    #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .largePic img {
       overflow-x: hidden;
       width: 100%;
       max-height: 20%; }
-    .secCol .showPosts .recentPosts .conatinerComment .largePic video {
+    #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .largePic video {
       width: 100%;
       object-fit: cover; }
-    .secCol .showPosts .recentPosts .conatinerComment .titleEdit {
+    #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .titleEdit {
       margin: 10px 0px; }
-      .secCol .showPosts .recentPosts .conatinerComment .titleEdit div h3 {
+      #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .titleEdit div h3 {
         font-family: medium;
         color: #6A0C38; }
-      .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits {
+      #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits {
         text-align: right; }
-        .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits i {
+        #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits i {
           color: #525252;
           font-size: 20px;
           margin-top: 20px;
           margin-left: 15px; }
-    .secCol .showPosts .recentPosts .conatinerComment .disc p {
+    #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .disc p {
       font-size: 16px;
       font-family: regular;
       color: #231F20;
       padding: 10px; }
-    .secCol .showPosts .recentPosts .conatinerComment .disc audio {
+    #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .disc audio {
       width: 100%; }
-    .secCol .showPosts .recentPosts .conatinerComment .interactionUser {
+    #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser {
       background-color: #E4E4E4;
       font-size: 20px;
       padding: 10px; }
-      .secCol .showPosts .recentPosts .conatinerComment .interactionUser a {
+      #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser a {
         margin: 0 10px; }
-        .secCol .showPosts .recentPosts .conatinerComment .interactionUser a i {
+        #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser a i {
           color: #FFB733; }
-        .secCol .showPosts .recentPosts .conatinerComment .interactionUser a .badge {
+        #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser a .badge {
           background-color: transparent;
           color: #525252;
           font-size: 16px;
           font-family: medium; }
-      .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder {
+      #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder {
         display: inline-block; }
-        .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .btn-info {
+        #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .btn-info {
           margin: 0px;
           padding: 0px;
           background-color: transparent;
           border: 0px; }
-          .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .btn-info .fa-share-alt {
+          #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .btn-info .fa-share-alt {
             font-size: 20px; }
-        .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .share .caret {
+        #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .share .caret {
           display: none; }
-        .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu {
+        #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu {
           border-radius: 20px;
           min-width: 100px;
           position: absolute;
           top: 75%;
           padding: 0; }
-          .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a {
+          #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a {
             margin: 10 0px; }
-            .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a:hover i {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a:hover i {
               color: #FFB733; }
-    .secCol .showPosts .recentPosts .conatinerComment .panel-group {
+    #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group {
       margin: 0px; }
-      .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments {
+      #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments {
         border-radius: 0px;
         border: 0px;
         border-bottom: 1px solid #E4E4E4; }
-        .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-heading {
+        #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-heading {
           background-color: #6A0C38;
           text-align: center;
           color: #FFFFFF;
           font-size: 16px;
           font-family: medium;
           border: 0px; }
-        .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body {
+        #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body {
           padding: 0px; }
-          .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost {
+          #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost {
             padding: 10px; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .form-control {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .form-control {
               width: 100%; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .form-control:focus {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .form-control:focus {
                 border-color: #FFB733; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting {
               display: block;
               margin: 20px;
               margin-right: 5px;
               margin-bottom: 0;
               text-align: right; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn {
                 border: #6A0C38 2px solid;
                 color: #6A0C38;
                 vertical-align: middle;
@@ -227,66 +225,66 @@ outline: 0px; }
                 width: 120px;
                 font-family: medium;
                 font-size: 16px; }
-                .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:hover, .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:active, .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:focus {
+                #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:hover, #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:active, #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:focus {
                   background-color: #FFB733;
                   border: 0px;
                   color: #45132E; }
-          .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media {
+          #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media {
             margin-left: 20px;
             margin-top: 10px; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-left {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-left {
               width: 10%; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-left a img {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-left a img {
                 border: 2px solid #FFB733;
                 border-radius: 50px;
                 display: inline-block;
                 width: 100%; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body {
               font-family: regular;
               font-size: 12px;
               color: #808285; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body h4 {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body h4 {
                 font-family: regular;
                 font-size: 16px;
                 color: #231F20; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body p {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body p {
                 margin: 10px; }
-          .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments {
+          #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments {
             background-color: #E4E4E4;
             text-align: center;
             padding: 10px; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments span {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments span {
               font-size: 16px;
               font-family: light;
               color: #808285; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments span i {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments span i {
                 margin: 0 8px; }
-      .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews {
+      #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews {
         margin-top: 0px;
         border-radius: 0px;
         border: 0px; }
-        .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-heading {
+        #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-heading {
           background-color: #6A0C38;
           text-align: center;
           color: #FFFFFF;
           font-size: 16px;
           font-family: medium;
           border: 0px; }
-        .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body {
+        #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body {
           padding: 0px; }
-          .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost {
+          #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost {
             padding: 10px; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control {
               width: 100%; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control:focus {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control:focus {
                 border-color: #FFB733; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost textarea {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost textarea {
               margin-bottom: 10px; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting {
               margin-right: 5px;
               margin-bottom: 0;
               text-align: right; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn {
                 border: #6A0C38 2px solid;
                 color: #6A0C38;
                 vertical-align: middle;
@@ -295,42 +293,41 @@ outline: 0px; }
                 width: 120px;
                 font-family: medium;
                 font-size: 16px; }
-                .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:hover, .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:active, .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:focus {
+                #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:hover, #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:active, #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:focus {
                   background-color: #FFB733;
                   border: 0px;
                   color: #45132E; }
-          .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media {
+          #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media {
             margin-left: 20px;
             margin-top: 10px; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left {
               width: 10%; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left a img {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left a img {
                 border: 2px solid #FFB733;
                 border-radius: 50px;
                 display: inline-block;
                 width: 100%; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body {
               font-family: regular;
               font-size: 12px;
               color: #808285; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body h4 {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body h4 {
                 font-family: regular;
                 font-size: 16px;
                 color: #231F20; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body p {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body p {
                 margin: 10px; }
-          .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview {
+          #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview {
             background-color: #E4E4E4;
             text-align: center;
             padding: 10px; }
-            .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span {
+            #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span {
               font-size: 16px;
               font-family: light;
               color: #808285; }
-              .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span i {
+              #singlecomppage .secCol .showPosts .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span i {
                 margin: 0 8px; }
-
-.range {
+#singlecomppage .range {
   display: table;
   padding: 0px;
   position: relative;
@@ -339,14 +336,12 @@ outline: 0px; }
   border-radius: 4px;
   cursor: pointer;
   box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1); }
-
-.title {
+#singlecomppage .title {
   margin-top: 10px;
   color: #808285;
   font-family: medium;
   font-size: 16px; }
-
-.range input[type="range"] {
+#singlecomppage .range input[type="range"] {
   -webkit-appearance: none !important;
   appearance: none !important;
   display: table-cell;
@@ -357,8 +352,7 @@ outline: 0px; }
   height: 10px;
   cursor: pointer;
   margin-top: 7px; }
-
-.range input[type="range"]::-webkit-slider-thumb {
+#singlecomppage .range input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none !important;
   appearance: none !important;
   width: 11px;
@@ -369,8 +363,7 @@ outline: 0px; }
   vertical-align: baseline;
   border-radius: 0px;
   background-color: #FFB733; }
-
-.range output {
+#singlecomppage .range output {
   display: table-cell;
   padding: 3px 2px;
   min-width: 40px;
@@ -392,112 +385,110 @@ outline: 0px; }
   border-radius: 4px;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
-
-.range input[type="range"] {
+#singlecomppage .range input[type="range"] {
   outline: none; }
-
-.singlePost .userInfos {
+#singlecomppage .singlePost .userInfos {
   margin: 10px; }
-  .singlePost .userInfos img {
+  #singlecomppage .singlePost .userInfos img {
     width: 60px;
     border: 2px solid #FFB733;
     border-radius: 50px;
     display: inline-block; }
-  .singlePost .userInfos span {
+  #singlecomppage .singlePost .userInfos span {
     font-family: bold;
     font-size: 20px;
     color: #FFB733;
     margin-left: 5px; }
-.singlePost .conatinerComment {
+#singlecomppage .singlePost .conatinerComment {
   border: 1px solid #E4E4E4; }
-  .singlePost .conatinerComment .largePic img {
+  #singlecomppage .singlePost .conatinerComment .largePic img {
     overflow-x: hidden;
     width: 100%;
     max-height: 20%; }
-  .singlePost .conatinerComment .largePic video {
+  #singlecomppage .singlePost .conatinerComment .largePic video {
     width: 100%;
     object-fit: cover; }
-  .singlePost .conatinerComment .titleEdit {
+  #singlecomppage .singlePost .conatinerComment .titleEdit {
     margin: 10px 0px; }
-    .singlePost .conatinerComment .titleEdit div h3 {
+    #singlecomppage .singlePost .conatinerComment .titleEdit div h3 {
       font-family: medium;
       color: #6A0C38; }
-    .singlePost .conatinerComment .titleEdit .edits {
+    #singlecomppage .singlePost .conatinerComment .titleEdit .edits {
       text-align: right; }
-      .singlePost .conatinerComment .titleEdit .edits i {
+      #singlecomppage .singlePost .conatinerComment .titleEdit .edits i {
         color: #525252;
         font-size: 20px;
         margin-top: 20px;
         margin-left: 15px; }
-  .singlePost .conatinerComment .disc p {
+  #singlecomppage .singlePost .conatinerComment .disc p {
     font-size: 16px;
     font-family: regular;
     text-align: justify;
     color: #231F20;
     padding: 10px; }
-  .singlePost .conatinerComment .disc audio {
+  #singlecomppage .singlePost .conatinerComment .disc audio {
     width: 100%; }
-  .singlePost .conatinerComment .interactionUser {
+  #singlecomppage .singlePost .conatinerComment .interactionUser {
     background-color: #E4E4E4;
     font-size: 20px;
     padding: 10px; }
-    .singlePost .conatinerComment .interactionUser a {
+    #singlecomppage .singlePost .conatinerComment .interactionUser a {
       margin: 0 10px; }
-      .singlePost .conatinerComment .interactionUser a i {
+      #singlecomppage .singlePost .conatinerComment .interactionUser a i {
         color: #FFB733; }
-      .singlePost .conatinerComment .interactionUser a .badge {
+      #singlecomppage .singlePost .conatinerComment .interactionUser a .badge {
         background-color: transparent;
         color: #525252;
         font-size: 16px;
         font-family: medium; }
-    .singlePost .conatinerComment .interactionUser #socialHolder {
+    #singlecomppage .singlePost .conatinerComment .interactionUser #socialHolder {
       display: inline-block; }
-      .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .btn-info {
+      #singlecomppage .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .btn-info {
         margin: 0px;
         padding: 0px;
         background-color: transparent;
         border: 0px; }
-        .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .btn-info .fa-share-alt {
+        #singlecomppage .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .btn-info .fa-share-alt {
           font-size: 20px; }
-      .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .share .caret {
+      #singlecomppage .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .share .caret {
         display: none; }
-      .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu {
+      #singlecomppage .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu {
         min-width: 100px;
         position: absolute;
         top: 100%;
         padding: 0; }
-        .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a {
+        #singlecomppage .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a {
           margin: 10 0px; }
-          .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a:hover i {
+          #singlecomppage .singlePost .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a:hover i {
             color: #FFB733; }
-  .singlePost .conatinerComment .panel-group {
+  #singlecomppage .singlePost .conatinerComment .panel-group {
     margin: 0px; }
-    .singlePost .conatinerComment .panel-group .comments {
+    #singlecomppage .singlePost .conatinerComment .panel-group .comments {
       border-radius: 0px;
       border: 0px;
       border-bottom: 1px solid #E4E4E4; }
-      .singlePost .conatinerComment .panel-group .comments .panel-heading {
+      #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-heading {
         background-color: #6A0C38;
         text-align: center;
         color: #FFFFFF;
         font-size: 16px;
         font-family: medium;
         border: 0px; }
-      .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body {
+      #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body {
         padding: 0px; }
-        .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost {
+        #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost {
           padding: 10px; }
-          .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .form-control {
+          #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .form-control {
             width: 100%; }
-            .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .form-control:focus {
+            #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .form-control:focus {
               border-color: #FFB733; }
-          .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting {
+          #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting {
             display: block;
             margin: 20px;
             margin-right: 5px;
             margin-bottom: 0;
             text-align: right; }
-            .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn {
+            #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn {
               border: #6A0C38 2px solid;
               color: #6A0C38;
               vertical-align: middle;
@@ -506,68 +497,68 @@ outline: 0px; }
               width: 120px;
               font-family: medium;
               font-size: 16px; }
-              .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:hover, .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:active, .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:focus {
+              #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:hover, #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:active, #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:focus {
                 background-color: #FFB733;
                 border: 0px;
                 color: #45132E; }
-        .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media {
+        #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media {
           margin-left: 20px;
           margin-top: 10px; }
-          .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-left {
+          #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-left {
             width: 10%;
             margin-top: 15px; }
-            .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-left a img {
+            #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-left a img {
               border: 2px solid #FFB733;
               border-radius: 50px;
               display: inline-block;
               width: 100%; }
-          .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body {
+          #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body {
             font-family: regular;
             font-size: 12px;
             color: #808285; }
-            .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body h4 {
+            #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body h4 {
               font-family: regular;
               font-size: 16px;
               color: #231F20;
               margin-top: 15px; }
-            .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body p {
+            #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body p {
               margin: s 10px; }
-        .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments {
+        #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments {
           background-color: #E4E4E4;
           text-align: center;
           padding: 10px; }
-          .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments span {
+          #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments span {
             font-size: 16px;
             font-family: light;
             color: #808285; }
-            .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments span i {
+            #singlecomppage .singlePost .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments span i {
               margin: 0 8px; }
-    .singlePost .conatinerComment .panel-group .reviews {
+    #singlecomppage .singlePost .conatinerComment .panel-group .reviews {
       margin-top: 0px;
       border-radius: 0px;
       border: 0px; }
-      .singlePost .conatinerComment .panel-group .reviews .panel-heading {
+      #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-heading {
         background-color: #6A0C38;
         text-align: center;
         color: #FFFFFF;
         font-size: 16px;
         font-family: medium;
         border: 0px; }
-      .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body {
+      #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body {
         padding: 0px; }
-        .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost {
+        #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost {
           padding: 10px; }
-          .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control {
+          #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control {
             width: 100%; }
-            .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control:focus {
+            #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control:focus {
               border-color: #FFB733; }
-          .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost textarea {
+          #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost textarea {
             margin-bottom: 10px; }
-          .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting {
+          #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting {
             margin-right: 5px;
             margin-bottom: 0;
             text-align: right; }
-            .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn {
+            #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn {
               border: #6A0C38 2px solid;
               color: #6A0C38;
               vertical-align: middle;
@@ -576,53 +567,51 @@ outline: 0px; }
               width: 120px;
               font-family: medium;
               font-size: 16px; }
-              .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:hover, .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:active, .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:focus {
+              #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:hover, #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:active, #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:focus {
                 background-color: #FFB733;
                 border: 0px;
                 color: #45132E; }
-        .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media {
+        #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media {
           margin-left: 20px;
           margin-top: 10px; }
-          .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left {
+          #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left {
             width: 10%; }
-            .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left a img {
+            #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left a img {
               border: 2px solid #FFB733;
               border-radius: 50px;
               display: inline-block;
               width: 100%; }
-          .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body {
+          #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body {
             font-family: regular;
             font-size: 12px;
             color: #808285; }
-            .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body h4 {
+            #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body h4 {
               font-family: regular;
               font-size: 16px;
               color: #231F20; }
-            .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body p {
+            #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body p {
               margin: 10px; }
-        .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview {
+        #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview {
           background-color: #E4E4E4;
           text-align: center;
           padding: 10px; }
-          .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span {
+          #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span {
             font-size: 16px;
             font-family: light;
             color: #808285; }
-            .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span i {
+            #singlecomppage .singlePost .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span i {
               margin: 0 8px; }
-
-.outcomment {
+#singlecomppage .outcomment {
   background-color: transparent; }
-
-#socialHolder {
+#singlecomppage #socialHolder {
   display: block;
   text-align: -webkit-center; }
-  #socialHolder #socialShare .btn-info {
+  #singlecomppage #socialHolder #socialShare .btn-info {
     margin: 0px;
     padding: 0px;
     background-color: transparent;
     border: 0px; }
-    #socialHolder #socialShare .btn-info .btn-share {
+    #singlecomppage #socialHolder #socialShare .btn-info .btn-share {
       display: block;
       border-radius: 35px;
       padding: 7px;
@@ -633,34 +622,31 @@ outline: 0px; }
       font-family: medium;
       font-size: 16px;
       margin: 20px 0px; }
-      #socialHolder #socialShare .btn-info .btn-share:hover {
+      #singlecomppage #socialHolder #socialShare .btn-info .btn-share:hover {
         background-color: #FFB733;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
-      #socialHolder #socialShare .btn-info .btn-share .fa {
+      #singlecomppage #socialHolder #socialShare .btn-info .btn-share .fa {
         color: #FFFFFF;
         font-size: 20px;
         margin: 5px; }
-  #socialHolder .dropdown-menu {
+  #singlecomppage #socialHolder .dropdown-menu {
     position: absolute;
     top: 100%;
     min-width: 0px;
     padding: 0;
     margin: 0; }
-    #socialHolder .dropdown-menu li a:hover i {
+    #singlecomppage #socialHolder .dropdown-menu li a:hover i {
       color: #FFB733; }
-    #socialHolder .dropdown-menu li a i {
+    #singlecomppage #socialHolder .dropdown-menu li a i {
       color: #6A0C38; }
-
-input[type="date"]:before {
+#singlecomppage input[type="date"]:before {
   content: attr(placeholder) !important;
   color: #aaa;
   margin-right: 0.5em; }
-
-input[type="date"]:focus:before,
-input[type="date"]:valid:before {
+#singlecomppage input[type="date"]:focus:before,
+#singlecomppage input[type="date"]:valid:before {
   content: ""; }
-
-.thirdCol {
+#singlecomppage .thirdCol {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   padding: 0px;
   background-color: #FFFFFF;
@@ -668,10 +654,10 @@ input[type="date"]:valid:before {
   overflow: hidden;
   margin-bottom: 30px;
   position: inherit; }
-  .thirdCol .newPost {
+  #singlecomppage .thirdCol .newPost {
     text-align: center;
     margin: 20 0px; }
-    .thirdCol .newPost .btn-lg {
+    #singlecomppage .thirdCol .newPost .btn-lg {
       background-color: #6A0C38;
       border-radius: 50px;
       color: #FFFFFF;
@@ -680,287 +666,80 @@ input[type="date"]:valid:before {
       padding: 15px;
       width: 150px;
       margin-bottom: 0px; }
-      .thirdCol .newPost .btn-lg i {
+      #singlecomppage .thirdCol .newPost .btn-lg i {
         color: #FFFFFF; }
-      .thirdCol .newPost .btn-lg:hover {
+      #singlecomppage .thirdCol .newPost .btn-lg:hover {
         background-color: #FFB733;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
-  .thirdCol .numbers {
+  #singlecomppage .thirdCol .numbers {
     margin: 20 0px; }
-    .thirdCol .numbers .count {
+    #singlecomppage .thirdCol .numbers .count {
       padding: 20px 0px; }
-      .thirdCol .numbers .count .titl {
+      #singlecomppage .thirdCol .numbers .count .titl {
         font-family: medium;
         color: #231F20;
         font-size: 16px; }
-      .thirdCol .numbers .count .num {
+      #singlecomppage .thirdCol .numbers .count .num {
         font-family: light;
         color: #808285;
         font-size: 16px; }
-  .thirdCol .aboutt {
+  #singlecomppage .thirdCol .about {
     padding: 12px;
     height: 30%;
     overflow: hidden; }
-    .thirdCol .aboutt span {
+    #singlecomppage .thirdCol .about span {
       font-family: medium;
       color: #FFB733;
       font-size: 16px;
       margin-bottom: 10px; }
-    .thirdCol .aboutt p {
+    #singlecomppage .thirdCol .about p {
       font-family: light;
       color: #808285;
       opacity: 0.8;
       font-size: 14px;
       overflow: hidden;
       padding: 10px 0px; }
-  .thirdCol .reward {
+  #singlecomppage .thirdCol .reward {
     padding: 12px;
     height: 30%;
     overflow: hidden;
     background-color: #6A0C38; }
-    .thirdCol .reward span {
+    #singlecomppage .thirdCol .reward span {
       font-family: medium;
       color: #FFB733;
       font-size: 16px;
       margin-bottom: 10px; }
-    .thirdCol .reward p {
+    #singlecomppage .thirdCol .reward p {
       font-family: light;
       color: #FFFFFF;
       opacity: 0.8;
       font-size: 14px;
       overflow: hidden;
       padding: 10px 0px; }
-  .thirdCol .madeby {
+  #singlecomppage .thirdCol .madeby {
     padding: 12px;
     height: 30%;
-    overflow: hidden; }
-    .thirdCol .madeby span {
+    overflow: hidden;
+    display: inline-block; }
+    #singlecomppage .thirdCol .madeby span {
       font-family: medium;
       color: #FFB733;
       font-size: 16px;
-      margin-bottom: 10px; }
-    .thirdCol .madeby .superviseInfos {
-      padding: 10px; }
-      .thirdCol .madeby .superviseInfos img {
+      margin-bottom: 10px;
+      display: inline-block; }
+    #singlecomppage .thirdCol .madeby .superviseInfos {
+      padding: 10px;
+      display: inline-block;
+      display: inline-block; }
+      #singlecomppage .thirdCol .madeby .superviseInfos img {
         width: 40px;
         border-radius: 40px;
-        border: 2px #FFB733 solid;
-        display: inline-block; }
-      .thirdCol .madeby .superviseInfos span {
+        border: 2px #FFB733 solid; }
+      #singlecomppage .thirdCol .madeby .superviseInfos span {
         font-family: bold;
         font-size: 16px;
         color: #6A0C38;
         margin-left: 5px;
         vertical-align: middle; }
-
-.infoName {
-  text-align: center; }
-  .infoName .userInfos {
-    padding: 10px; }
-    .infoName .userInfos img {
-      width: 60px;
-      border-radius: 40px;
-      border: 2px #FFB733 solid;
-      display: inline-block; }
-    .infoName .userInfos span {
-      font-family: bold;
-      font-size: 20px;
-      color: #6A0C38;
-      margin-left: 5px;
-      vertical-align: middle; }
-
-h5 {
-  font-family: medium;
-  font-size: 23px;
-  color: #FFB733;
-  margin: 20px 0px;
-  text-align: center; }
-
-h6 {
-  font-family: medium;
-  font-size: 14px;
-  color: #231F20;
-  margin: 20px 0px;
-  text-align: left; }
-
-.done {
-  text-align: center;
-  margin: 20 0px; }
-  .done .btn-lg {
-    background-color: #6A0C38;
-    border-radius: 50px;
-    color: #FFFFFF;
-    font-family: medium;
-    font-size: 16px;
-    padding: 10px;
-    width: 100px;
-    margin-bottom: 0px; }
-    .done .btn-lg i {
-      color: #FFFFFF; }
-    .done .btn-lg:hover {
-      background-color: #FFB733;
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
-
-.basicInfo {
-  border-right: 1px #e9ebee solid;
-  margin: 20px 0px; }
-  .basicInfo .form-control {
-    border: 0px;
-    border-bottom: 1px solid #e9ebee;
-    width: 80%;
-    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-    background-color: transparent;
-    margin-bottom: 30px;
-    font-family: light;
-    font-size: 14px; }
-
-.personalInfo {
-  margin: 20px 0px;
-  border-right: 1px #e9ebee solid; }
-  .personalInfo .editSelected {
-    padding: 12px 12px; }
-    .personalInfo .editSelected select {
-      width: 80%;
-      border: 0px;
-      border-bottom: 1px solid #e9ebee;
-      box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-      background-color: transparent;
-      border-radius: 4px;
-      font-family: light;
-      font-size: 14px;
-      color: #808285;
-      margin-bottom: 30px; }
-      .personalInfo .editSelected select option {
-        color: #808285; }
-  .personalInfo .form-control {
-    width: 80%;
-    border: 0px;
-    border-bottom: 1px solid #e9ebee;
-    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-    background-color: transparent;
-    margin-bottom: 30px;
-    font-family: light;
-    font-size: 14px; }
-  .personalInfo .about textarea {
-    width: 80%;
-    border: 1px solid #e9ebee; }
-
-.connectInfo {
-  margin: 20px 0px; }
-  .connectInfo .form-group {
-    font-size: 16px;
-    color: #808285;
-    font-family: regular;
-    margin-bottom: 0px; }
-    .connectInfo .form-group .file {
-      visibility: hidden;
-      position: absolute; }
-    .connectInfo .form-group .input-group {
-      margin-top: 10px; }
-      .connectInfo .form-group .input-group .input-group-addon {
-        background-color: transparent;
-        border: 0px;
-        border-bottom: 1px solid #e9ebee; }
-      .connectInfo .form-group .input-group .input-lg {
-        margin: 0px;
-        border-radius: 0;
-        background-color: transparent;
-        border: 0px;
-        border-bottom: 1px solid #e9ebee;
-        box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-        font-size: 16px;
-        color: #808285;
-        font-family: regular;
-        width: 100%; }
-      .connectInfo .form-group .input-group .input-group-btn .browse {
-        font-size: 16px;
-        color: #FFFFFF;
-        font-family: regular;
-        background-color: #6A0C38;
-        border-color: #45132E;
-        outline: none;
-        border-radius: 0;
-        border: 0px;
-        border-bottom: 1px solid #e9ebee;
-        box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075); }
-        .connectInfo .form-group .input-group .input-group-btn .browse:hover {
-          background-color: #3c0720;
-          border-color: #3c0720; }
-        .connectInfo .form-group .input-group .input-group-btn .browse:active, .connectInfo .form-group .input-group .input-group-btn .browse:focus {
-          background-color: #810f44;
-          border-color: #810f44; }
-        .connectInfo .form-group .input-group .input-group-btn .browse i {
-          margin-right: 10px; }
-  .connectInfo div {
-    margin: 0px; }
-    .connectInfo div .form-control {
-      border: 0px;
-      border-bottom: 1px solid #e9ebee;
-      box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-      background-color: transparent;
-      margin-bottom: 30px;
-      font-family: light;
-      font-size: 14px;
-      width: 80%; }
-    .connectInfo div .fa-facebook, .connectInfo div .fa-twitter, .connectInfo div .fa-google-plus {
-      font-size: 20px;
-      color: #6A0C38; }
-
-.personalInfo {
-  margin: 20px 0px;
-  border-right: 1px #E4E4E4 solid; }
-  .personalInfo .general {
-    padding: 12px 12px; }
-    .personalInfo .general li {
-      border: 0px;
-      background-color: transparent;
-      font-family: light;
-      font-size: 14px;
-      color: #808285;
-      margin-bottom: 30px;
-      border-bottom: 1px #e9ebee solid; }
-      .personalInfo .general li div {
-        display: inline-block; }
-  .personalInfo .about p {
-    font-family: light;
-    font-size: 14px; }
-
-.connectInfo {
-  margin: 20px 0px; }
-  .connectInfo .lnk a {
-    margin: 20px; }
-    .connectInfo .lnk a .socialize {
-      margin-bottom: 30px;
-      font-size: 40px;
-      color: #6A0C38; }
-      .connectInfo .lnk a .socialize:hover {
-        cursor: pointer; }
-  .connectInfo .others span {
-    font-family: light;
-    font-size: 14px;
-    color: #808285;
-    margin-bottom: 30px;
-    display: block;
-    padding: 15px;
-    padding-left: 0px; }
-  .connectInfo .typeof {
-    padding: 12px;
-    margin: 20px 0px; }
-    .connectInfo .typeof .review {
-      padding: 0 7px; }
-      .connectInfo .typeof .review .categ {
-        padding: 7px 0px;
-        font-family: light;
-        font-size: 14px;
-        color: #808285; }
-      .connectInfo .typeof .review .reviewrate {
-        padding: 7px 0px;
-        font-family: regular;
-        color: #6A0C38;
-        font-size: 16px; }
-        .connectInfo .typeof .review .reviewrate i {
-          color: #FFB733;
-          font-size: 16px;
-          margin-right: 10px; }
 
 /*# sourceMappingURL=singleCompetition.css.map */

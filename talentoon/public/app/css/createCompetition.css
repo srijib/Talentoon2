@@ -7,24 +7,23 @@ body {
   body:focus, body:active, body:visited, body:hover {
     outline: 0px; }
 
-select:focus, select:active, select:visited, select:hover, .form-control:focus, .form-control:active, .form-control:visited, .form-control:hover, form:focus, form:active, form:visited, form:hover, textarea:focus, textarea:active, textarea:visited, textarea:hover, input:focus, input:active, input:visited, input:hover {
+#createcomppage select:focus, #createcomppage select:active, #createcomppage select:visited, #createcomppage select:hover, #createcomppage .form-control:focus, #createcomppage .form-control:active, #createcomppage .form-control:visited, #createcomppage .form-control:hover, #createcomppage form:focus, #createcomppage form:active, #createcomppage form:visited, #createcomppage form:hover, #createcomppage textarea:focus, #createcomppage textarea:active, #createcomppage textarea:visited, #createcomppage textarea:hover, #createcomppage input:focus, #createcomppage input:active, #createcomppage input:visited, #createcomppage input:hover {
   outline: 0px; }
-
-form {
+#createcomppage form {
   font-size: 14px;
   color: #808285;
   font-family: light;
   margin-left: 0px;
   text-align: left;
   padding-top: 10px; }
-  form .form-controls {
+  #createcomppage form .form-controls {
     border: 0px;
     border-bottom: 1px solid #e9ebee;
     box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
     background-color: transparent;
     margin-bottom: 20px;
     display: block; }
-  form select {
+  #createcomppage form select {
     border: 0px;
     border-bottom: 1px solid #e9ebee;
     box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
@@ -33,20 +32,20 @@ form {
     margin-bottom: 30px;
     padding: 0px;
     margin-left: 10px; }
-  form .form-group {
+  #createcomppage form .form-group {
     font-size: 14px;
     color: #808285;
     font-family: light; }
-    form .form-group .file {
+    #createcomppage form .form-group .file {
       visibility: hidden;
       position: absolute; }
-    form .form-group .input-group {
+    #createcomppage form .form-group .input-group {
       margin-top: 50px; }
-      form .form-group .input-group .input-group-addon {
+      #createcomppage form .form-group .input-group .input-group-addon {
         background-color: transparent;
         border: 0px;
         border-bottom: 1px solid gray; }
-      form .form-group .input-group .input-lg {
+      #createcomppage form .form-group .input-group .input-lg {
         border-radius: 0;
         background-color: transparent;
         border: 0px;
@@ -55,7 +54,7 @@ form {
         font-size: 14px;
         color: #808285;
         font-family: light; }
-      form .form-group .input-group .input-group-btn .browse {
+      #createcomppage form .form-group .input-group .input-group-btn .browse {
         font-size: 14px;
         color: #FFFFFF;
         font-family: light;
@@ -66,23 +65,23 @@ form {
         border: 0px;
         border-bottom: 1px solid gray;
         box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075); }
-        form .form-group .input-group .input-group-btn .browse:hover {
+        #createcomppage form .form-group .input-group .input-group-btn .browse:hover {
           background-color: #3c0720;
           border-color: #3c0720; }
-        form .form-group .input-group .input-group-btn .browse:active, form .form-group .input-group .input-group-btn .browse:focus {
+        #createcomppage form .form-group .input-group .input-group-btn .browse:active, #createcomppage form .form-group .input-group .input-group-btn .browse:focus {
           background-color: #810f44;
           border-color: #810f44; }
-        form .form-group .input-group .input-group-btn .browse i {
+        #createcomppage form .form-group .input-group .input-group-btn .browse i {
           margin-right: 10px; }
-  form a {
+  #createcomppage form a {
     font-family: light;
     font-size: 14px;
     color: #FFB733; }
-    form a:hover {
+    #createcomppage form a:hover {
       color: #808285; }
-  form .submit {
+  #createcomppage form .submit {
     text-align: center; }
-    form .submit .submitBtn {
+    #createcomppage form .submit .submitBtn {
       height: 50px;
       padding: 15px 20px;
       font-size: 20px;
@@ -94,47 +93,40 @@ form {
       text-decoration: none;
       transition: all .3s;
       margin: 20px 0px; }
-      form .submit .submitBtn:hover, form .submit .submitBtn:focus, form .submit .submitBtn:active, form .submit .submitBtn:active:focus {
+      #createcomppage form .submit .submitBtn:hover, #createcomppage form .submit .submitBtn:focus, #createcomppage form .submit .submitBtn:active, #createcomppage form .submit .submitBtn:active:focus {
         outline: 0;
         opacity: 0.8;
         color: #6A0C38;
         background-color: #FFB733;
         text-decoration: none;
         transition: all .3s; }
-
-textarea {
+#createcomppage textarea {
   border: 1px solid #e9ebee;
   margin-bottom: 20px; }
-
-input {
+#createcomppage input {
   margin-bottom: 30px;
   margin-left: 10px; }
-
-input[type="date"]:before {
+#createcomppage input[type="date"]:before {
   content: attr(placeholder) !important;
   color: #808285;
   margin-right: 0.5em; }
-
-input[type="time"]:before {
+#createcomppage input[type="time"]:before {
   content: attr(placeholder) !important;
   color: #808285;
   margin-right: 0.5em; }
-
-input[type="date"], input[type="time"] {
+#createcomppage input[type="date"], #createcomppage input[type="time"] {
   color: #6A0C38;
   margin-right: 0.5em;
   margin-bottom: 30px;
   padding: 0px; }
-
-h6 {
+#createcomppage h6 {
   font-family: medium;
   font-size: 14px;
   color: #FFB733;
   margin: 20px 0px;
   text-align: left;
   margin-top: 5px; }
-
-.custom-select {
+#createcomppage .custom-select {
   padding: 0px; }
 
 /*# sourceMappingURL=createCompetition.css.map */

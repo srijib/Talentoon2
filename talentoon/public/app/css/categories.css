@@ -1,33 +1,32 @@
-
 body {
   font-size: 0px;
   padding: 0px;
   margin: 0px;
   background-color: #FFFFFF; }
 
-.categorySection {
+#categorieslistpage .categorySection {
   margin-top: 25px; }
-  .categorySection .thumbnail {
+  #categorieslistpage .categorySection .thumbnail {
     padding: 0px;
     box-shadow: 0 3px 3px;
     color: #E4E4E4; }
-    .categorySection .thumbnail:hover {
+    #categorieslistpage .categorySection .thumbnail:hover {
       box-shadow: 5px 15px 21px 0 rgba(0, 0, 0, 0.2), 5px 15px 22px 0 rgba(0, 0, 0, 0.3);
       color: #E4E4E4; }
-    .categorySection .thumbnail img {
+    #categorieslistpage .categorySection .thumbnail img {
       margin: 0px;
       width: 100%;
       height: 250px; }
-    .categorySection .thumbnail .caption h3 {
+    #categorieslistpage .categorySection .thumbnail .caption h3 {
       color: #FFB733;
       font-family: bold;
       font-size: 20px;
       text-align: center; }
-    .categorySection .thumbnail .caption p {
+    #categorieslistpage .categorySection .thumbnail .caption p {
       font-family: regular;
       font-size: 16px;
-      text-align: center;}
-      .categorySection .thumbnail .caption p .btnAction {
+      text-align: center; }
+      #categorieslistpage .categorySection .thumbnail .caption p .btnAction {
         background-color: #6A0C38;
         color: #FFFFFF;
         font-family: medium;
@@ -35,7 +34,43 @@ body {
         border: 0px;
         margin-top: 15px;
         margin-bottom: 15px; }
-        .categorySection .thumbnail .caption p .btnAction:hover {
+        #categorieslistpage .categorySection .thumbnail .caption p .btnAction:hover {
           box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
           color: #E4E4E4; }
-/*# sourceMappingURL=CategoriesCss.css.map */
+
+footer {
+  font-size: 14px;
+  background-color: #6A0C38;
+  color: #E4E4E4; }
+  footer .row {
+    padding: 25px; }
+    footer .row .footerSection ul h4 {
+      color: #FFFFFF; }
+    footer .row .footerSection ul li {
+      color: #808285; }
+    footer .row .footerSection ul .includedUl li {
+      margin: 10px; }
+      footer .row .footerSection ul .includedUl li i {
+        color: #FFB733;
+        font-size: 35px; }
+    footer .row .footerSection ul .inputEmail {
+      border: 3px #808285 solid;
+      border-radius: 10%;
+      margin-top: 10px; }
+      footer .row .footerSection ul .inputEmail .glyphicon-envelope {
+        color: #808285;
+        padding: 5px;
+        margin-left: 10px; }
+      footer .row .footerSection ul .inputEmail input {
+        background-color: transparent;
+        border: 0px;
+        padding: 5px; }
+    footer .row .footerSection ul .emailBtn {
+      border: 3px #FFB733 solid;
+      color: #FFB733;
+      border-radius: 10%;
+      padding: 5px 10px;
+      width: 100px;
+      margin-top: 8px; }
+
+/*# sourceMappingURL=categories.css.map */

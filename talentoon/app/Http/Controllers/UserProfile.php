@@ -309,7 +309,7 @@ public function checkpassword(Request $request)
             ->where('id', $request->id)
             ->update(['first_name'=>$request->first_name,
                 'last_name'=>$request->last_name,
-                'email'=>$request->email,
+//                'email'=>$request->email,
                 'phone'=>$request->phone,
                 'password'=>Hash::make($request->repassword)
 //                'date_of_bith'=>$request->date_of_bith,

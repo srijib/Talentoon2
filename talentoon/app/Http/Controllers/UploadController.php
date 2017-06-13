@@ -65,7 +65,7 @@ class UploadController extends Controller
             $entry->original_filename = $filename;
             $entry->filename = $file->getFilename() . '.' . $extension;
             $entry->save();
-            dd('saved');
+//            dd('saved');
                 }
         }
 

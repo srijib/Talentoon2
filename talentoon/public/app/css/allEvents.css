@@ -1,0 +1,212 @@
+body {
+  font-size: 0px;
+  margin: 0px;
+  padding: 0px;
+  background-color: #FFFFFF;
+  outline: 0px; }
+  body:focus, body:active, body:visited, body:hover {
+    outline: 0px; }
+
+#alleventpage #allRecentEvents, #alleventpage .evMainRow {
+  margin: 30px 0px;
+  padding: 0px;
+  background-color: transparent;
+  border: 1px solid #E4E4E4; }
+  #alleventpage #allRecentEvents .thumbnail, #alleventpage .evMainRow .thumbnail {
+    padding: 0px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: 0px;
+    border-radius: 0px; }
+    #alleventpage #allRecentEvents .thumbnail .evDefaultImg, #alleventpage .evMainRow .thumbnail .evDefaultImg {
+      padding: 0px;
+      margin: 0px; }
+      #alleventpage #allRecentEvents .thumbnail .evDefaultImg img, #alleventpage .evMainRow .thumbnail .evDefaultImg img {
+        width: 100%;
+        height: 294px; }
+      #alleventpage #allRecentEvents .thumbnail .evDefaultImg video, #alleventpage .evMainRow .thumbnail .evDefaultImg video {
+        width: 100%;
+        height: 300px;
+        object-fit: fill; }
+    #alleventpage #allRecentEvents .thumbnail .evTitle, #alleventpage .evMainRow .thumbnail .evTitle {
+      font-family: bold;
+      font-size: 20px;
+      color: #FFB733; }
+      #alleventpage #allRecentEvents .thumbnail .evTitle div a, #alleventpage .evMainRow .thumbnail .evTitle div a {
+        font-family: bold;
+        font-size: 20px;
+        color: #FFB733; }
+        #alleventpage #allRecentEvents .thumbnail .evTitle div a:hover, #alleventpage .evMainRow .thumbnail .evTitle div a:hover {
+          text-decoration: none; }
+      #alleventpage #allRecentEvents .thumbnail .evTitle div i, #alleventpage .evMainRow .thumbnail .evTitle div i {
+        font-size: 20px;
+        color: #808285;
+        margin-top: 20px; }
+    #alleventpage #allRecentEvents .thumbnail .evCaption, #alleventpage .evMainRow .thumbnail .evCaption {
+      margin: 0px;
+      padding: 10px 20px;
+      overflow: hidden;
+      height: 14%; }
+      #alleventpage #allRecentEvents .thumbnail .evCaption p, #alleventpage .evMainRow .thumbnail .evCaption p {
+        font-family: regular;
+        font-size: 14px;
+        text-align: left;
+        margin-bottom: 15px;
+        vertical-align: middle;
+        width: 100%; }
+    #alleventpage #allRecentEvents .thumbnail .evDetails, #alleventpage .evMainRow .thumbnail .evDetails {
+      font-size: 10px; }
+      #alleventpage #allRecentEvents .thumbnail .evDetails .eventScd, #alleventpage .evMainRow .thumbnail .evDetails .eventScd {
+        margin-bottom: 15px;
+        padding: 0;
+        padding-left: 10px; }
+        #alleventpage #allRecentEvents .thumbnail .evDetails .eventScd .bigdate, #alleventpage .evMainRow .thumbnail .evDetails .eventScd .bigdate {
+          width: 60%;
+          font-size: 12px;
+          font-family: light; }
+          #alleventpage #allRecentEvents .thumbnail .evDetails .eventScd .bigdate i, #alleventpage .evMainRow .thumbnail .evDetails .eventScd .bigdate i {
+            font-size: 40px;
+            color: #6A0C38;
+            margin: 0px;
+            padding: 0px; }
+          #alleventpage #allRecentEvents .thumbnail .evDetails .eventScd .bigdate p, #alleventpage .evMainRow .thumbnail .evDetails .eventScd .bigdate p {
+            font-size: 40px;
+            font-family: medium;
+            display: inline-block; }
+        #alleventpage #allRecentEvents .thumbnail .evDetails .eventScd .labels, #alleventpage .evMainRow .thumbnail .evDetails .eventScd .labels {
+          width: 46%;
+          display: inline-block;
+          text-align: left; }
+          #alleventpage #allRecentEvents .thumbnail .evDetails .eventScd .labels .label, #alleventpage .evMainRow .thumbnail .evDetails .eventScd .labels .label {
+            background-color: transparent;
+            color: #231F20;
+            text-align: left;
+            font-size: 12px;
+            font-family: light;
+            padding: 0px; }
+          #alleventpage #allRecentEvents .thumbnail .evDetails .eventScd .labels .first, #alleventpage .evMainRow .thumbnail .evDetails .eventScd .labels .first {
+            display: block;
+            padding: 0px;
+            margin-bottom: 7px; }
+    #alleventpage #allRecentEvents .thumbnail .userPic, #alleventpage .evMainRow .thumbnail .userPic {
+      font-family: bold;
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #FFB733;
+      display: inline-block;
+      margin-bottom: 20px;
+      margin-left: 18px;
+      vertical-align: bottom; }
+      #alleventpage #allRecentEvents .thumbnail .userPic:hover, #alleventpage .evMainRow .thumbnail .userPic:hover {
+        text-decoration: none; }
+      #alleventpage #allRecentEvents .thumbnail .userPic span, #alleventpage .evMainRow .thumbnail .userPic span {
+        display: inline-block;
+        color: #525252;
+        font-family: medium; }
+      #alleventpage #allRecentEvents .thumbnail .userPic img, #alleventpage .evMainRow .thumbnail .userPic img {
+        width: 40px;
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block; }
+    #alleventpage #allRecentEvents .thumbnail .going, #alleventpage .evMainRow .thumbnail .going {
+      margin-top: 0px;
+      display: block;
+      text-align: right; }
+      #alleventpage #allRecentEvents .thumbnail .going .btn, #alleventpage .evMainRow .thumbnail .going .btn {
+        background-color: #6A0C38;
+        color: #FFFFFF;
+        border: 0px;
+        vertical-align: middle;
+        padding: 10px;
+        border-radius: 25px;
+        width: 120px;
+        margin-bottom: 14px; }
+  #alleventpage #allRecentEvents .row, #alleventpage .evMainRow .row {
+    margin: 0px; }
+  #alleventpage #allRecentEvents #s, #alleventpage .evMainRow #s {
+    color: #231F20;
+    text-align: left;
+    font-size: 12px;
+    font-family: regular;
+    padding: 0px;
+    font-size: 12px; }
+  #alleventpage #allRecentEvents div#secondp, #alleventpage .evMainRow div#secondp {
+    margin-top: 8px; }
+  #alleventpage #allRecentEvents #socialHolder, #alleventpage .evMainRow #socialHolder {
+    display: inline-block;
+    margin-top: 5px;
+    text-align: right; }
+    #alleventpage #allRecentEvents #socialHolder #socialShare .btn-info, #alleventpage .evMainRow #socialHolder #socialShare .btn-info {
+      margin: 0px;
+      padding: 0px;
+      background-color: transparent;
+      border: 0px; }
+      #alleventpage #allRecentEvents #socialHolder #socialShare .btn-info .fa-share-alt, #alleventpage .evMainRow #socialHolder #socialShare .btn-info .fa-share-alt {
+        color: #6A0C38;
+        font-size: 30px; }
+    #alleventpage #allRecentEvents #socialHolder #socialShare .share .caret, #alleventpage .evMainRow #socialHolder #socialShare .share .caret {
+      display: none; }
+    #alleventpage #allRecentEvents #socialHolder #socialShare .share .dropdown-menu, #alleventpage .evMainRow #socialHolder #socialShare .share .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      min-width: 0px;
+      padding: 0;
+      margin: 0; }
+      #alleventpage #allRecentEvents #socialHolder #socialShare .share .dropdown-menu li a:hover i, #alleventpage .evMainRow #socialHolder #socialShare .share .dropdown-menu li a:hover i {
+        color: #FFB733; }
+#alleventpage #allTopEvents {
+  margin: 30 0px;
+  text-align: center; }
+  #alleventpage #allTopEvents .btn-lg {
+    background-color: #6A0C38;
+    border-radius: 50px;
+    color: #FFB733;
+    font-family: medium;
+    font-size: 16px;
+    padding: 15px;
+    width: 150px;
+    margin-bottom: 0px; }
+    #alleventpage #allTopEvents .btn-lg i {
+      color: #FFB733; }
+  #alleventpage #allTopEvents h2 {
+    color: #45132E;
+    font-family: bold;
+    font-size: 30px;
+    text-align: center;
+    margin: 33px; }
+  #alleventpage #allTopEvents .top1 {
+    margin-bottom: 30px;
+    margin-left: 40px;
+    padding: 0px;
+    border: 1px solid #E4E4E4;
+    border-radius: 30px;
+    text-align: left;
+    background-color: #E4E4E4; }
+    #alleventpage #allTopEvents .top1 img {
+      width: 100%;
+      height: auto;
+      overflow-x: hidden; }
+    #alleventpage #allTopEvents .top1 div {
+      padding: 15px;
+      margin: 10 0px; }
+      #alleventpage #allTopEvents .top1 div img {
+        width: 30px;
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block;
+        margin-right: 5px; }
+      #alleventpage #allTopEvents .top1 div span {
+        font-family: bold;
+        font-size: 16px;
+        color: #FFB733;
+        margin-left: 5px;
+        vertical-align: middle; }
+      #alleventpage #allTopEvents .top1 div a {
+        font-family: medium;
+        color: #525252;
+        margin: 5 0px;
+        font-size: 16px;
+        display: block;
+        cursor: pointer; }
+
+/*# sourceMappingURL=allEvents.css.map */

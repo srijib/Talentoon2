@@ -1,0 +1,439 @@
+@font-face {
+  font-family: regular;
+  src: url(../../Fonts/Roboto-Regular.ttf); }
+@font-face {
+  font-family: medium;
+  src: url(../../Fonts/Roboto-Medium.ttf); }
+@font-face {
+  font-family: blak;
+  src: url(../../Fonts/Roboto-Black.ttf); }
+@font-face {
+  font-family: bold;
+  src: url(../../Fonts/Roboto-Bold.ttf); }
+@font-face {
+  font-family: boldco;
+  src: url(../../Fonts/Roboto-BoldCondensed.ttf); }
+@font-face {
+  font-family: light;
+  src: url(../../Fonts/Roboto-Light.ttf); }
+@font-face {
+  font-family: thin;
+  src: url(../../Fonts/Roboto-Thin.ttf); }
+body {
+  font-size: 0px;
+  margin: 0px;
+  padding: 0px;
+  outline: 0px;
+  background-color: #FFFFFF; }
+  body:focus, body:active, body:visited, body:hover {
+    outline: 0px; }
+
+#singleworkshoppage .row {
+  position: relative; }
+#singleworkshoppage .firstColWork {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  padding: 0px;
+  background-color: #FFFFFF;
+  height: 690px;
+  margin-bottom: 30px; }
+  #singleworkshoppage .firstColWork .workImg {
+    height: 248px;
+    margin: 0px; }
+    #singleworkshoppage .firstColWork .workImg .opacity {
+      background-color: #6A0C38;
+      position: relative;
+      height: 100%;
+      text-align: -webkit-center; }
+      #singleworkshoppage .firstColWork .workImg .opacity img {
+        display: block;
+        opacity: 0.6;
+        overflow: hidden;
+        width: 100%;
+        height: 100%; }
+      #singleworkshoppage .firstColWork .workImg .opacity .enroll {
+        display: block;
+        position: relative;
+        bottom: 60px;
+        border-radius: 35px;
+        padding: 7px;
+        width: 190px;
+        background-color: #FFB733;
+        color: #FFFFFF;
+        border: 0px;
+        font-family: bold;
+        font-size: 18px; }
+        #singleworkshoppage .firstColWork .workImg .opacity .enroll:hover {
+          background-color: #6A0C38;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
+  #singleworkshoppage .firstColWork .workName {
+    margin: 10px; }
+    #singleworkshoppage .firstColWork .workName .text-left {
+      color: #6A0C38;
+      font-family: medium;
+      font-size: 20px;
+      padding: 0px;
+      margin-top: 10px; }
+    #singleworkshoppage .firstColWork .workName .text-center {
+      padding: 0px; }
+      #singleworkshoppage .firstColWork .workName .text-center .fa {
+        color: #FFB733;
+        font-size: 30px;
+        margin: 5px; }
+  #singleworkshoppage .firstColWork .info {
+    font-size: 10px; }
+    #singleworkshoppage .firstColWork .info .workScd {
+      margin-bottom: 0px;
+      padding: 0;
+      padding-left: 10px; }
+      #singleworkshoppage .firstColWork .info .workScd .bigdate {
+        width: 60%;
+        font-size: 12px;
+        font-family: light; }
+        #singleworkshoppage .firstColWork .info .workScd .bigdate i {
+          font-size: 40px;
+          color: #6A0C38;
+          margin: 0px;
+          padding: 0px; }
+        #singleworkshoppage .firstColWork .info .workScd .bigdate p {
+          font-size: 40px;
+          font-family: medium;
+          display: inline-block;
+          margin: 0px; }
+      #singleworkshoppage .firstColWork .info .workScd .labels {
+        width: 46%;
+        display: inline-block;
+        text-align: left; }
+        #singleworkshoppage .firstColWork .info .workScd .labels .label {
+          background-color: transparent;
+          color: #231F20;
+          text-align: left;
+          font-size: 12px;
+          font-family: light;
+          padding: 0px; }
+        #singleworkshoppage .firstColWork .info .workScd .labels .first {
+          display: block;
+          padding: 0px;
+          margin-bottom: 7px; }
+    #singleworkshoppage .firstColWork .info .about {
+      padding: 12px;
+      height: 20%;
+      overflow: hidden; }
+      #singleworkshoppage .firstColWork .info .about span {
+        font-family: medium;
+        color: #FFB733;
+        font-size: 16px;
+        margin-bottom: 10px; }
+      #singleworkshoppage .firstColWork .info .about p {
+        font-family: light;
+        color: #808285;
+        opacity: 0.8;
+        font-size: 14px;
+        overflow: hidden;
+        padding: 10px 0px; }
+    #singleworkshoppage .firstColWork .info .workLevel {
+      margin-bottom: 15px;
+      padding: 0;
+      padding-left: 10px; }
+      #singleworkshoppage .firstColWork .info .workLevel .level .fa-bar-chart {
+        font-size: 30px;
+        color: #6A0C38; }
+      #singleworkshoppage .firstColWork .info .workLevel .lLabels span {
+        font-family: light;
+        color: #231F20;
+        font-size: 12px;
+        margin: 5px;
+        padding: 0px;
+        background-color: transparent; }
+    #singleworkshoppage .firstColWork .info .workLeft {
+      margin-bottom: 15px;
+      padding: 0;
+      padding-left: 10px; }
+      #singleworkshoppage .firstColWork .info .workLeft i {
+        font-size: 30px;
+        color: #6A0C38;
+        margin: 0px;
+        padding: 0px; }
+      #singleworkshoppage .firstColWork .info .workLeft .badge {
+        font-family: light;
+        color: #231F20;
+        font-size: 12px;
+        background-color: transparent; }
+#singleworkshoppage .madeby {
+  padding: 12px; }
+  #singleworkshoppage .madeby span {
+    font-family: medium;
+    color: #FFB733;
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 0px;
+    margin-top: 6px; }
+  #singleworkshoppage .madeby .supervise {
+    padding: 0px; }
+  #singleworkshoppage .madeby .superviseInfos img {
+    width: 30px;
+    border-radius: 40px;
+    border: 2px #FFB733 solid; }
+  #singleworkshoppage .madeby .superviseInfos span {
+    font-family: bold;
+    font-size: 16px;
+    color: #6A0C38;
+    margin-left: 5px;
+    vertical-align: top;
+    margin-bottom: 0px; }
+#singleworkshoppage .secCol .showPosts {
+  margin-top: 0px; }
+  #singleworkshoppage .secCol .showPosts .recentPosts {
+    background-color: #FFFFFF;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.3);
+    padding: 0px;
+    margin-bottom: 40px; }
+    #singleworkshoppage .secCol .showPosts .recentPosts .userInfos {
+      padding: 10px; }
+      #singleworkshoppage .secCol .showPosts .recentPosts .userInfos img {
+        width: 60px;
+        border-radius: 40px;
+        border: 2px #FFB733 solid;
+        display: inline-block; }
+      #singleworkshoppage .secCol .showPosts .recentPosts .userInfos span {
+        font-family: bold;
+        font-size: 20px;
+        color: #FFB733;
+        margin-left: 5px; }
+    #singleworkshoppage .secCol .showPosts .recentPosts .conatinerComment .largePic img {
+      overflow-x: hidden;
+      width: 100%;
+      max-height: 20%; }
+    #singleworkshoppage .secCol .showPosts .recentPosts .conatinerComment .largePic video {
+      width: 100%;
+      object-fit: cover; }
+    #singleworkshoppage .secCol .showPosts .recentPosts .conatinerComment .titleEdit {
+      margin: 10px 0px; }
+      #singleworkshoppage .secCol .showPosts .recentPosts .conatinerComment .titleEdit div h3 {
+        font-family: medium;
+        color: #6A0C38; }
+      #singleworkshoppage .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits {
+        text-align: right;
+        MARGIN-BOTTOM: 20PX; }
+        #singleworkshoppage .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits i {
+          color: #525252;
+          font-size: 20px;
+          margin-top: 20px;
+          margin-left: 15px; }
+#singleworkshoppage #socialHolder {
+  display: block;
+  text-align: -webkit-center; }
+  #singleworkshoppage #socialHolder #socialShare .btn-info {
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+    border: 0px; }
+    #singleworkshoppage #socialHolder #socialShare .btn-info .btn-share {
+      display: block;
+      border-radius: 35px;
+      padding: 7px;
+      width: 190px;
+      background-color: #6A0C38;
+      color: #FFFFFF;
+      border: 0px;
+      font-family: medium;
+      font-size: 16px;
+      margin: 20px 0px; }
+      #singleworkshoppage #socialHolder #socialShare .btn-info .btn-share:hover {
+        background-color: #FFB733;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
+      #singleworkshoppage #socialHolder #socialShare .btn-info .btn-share .fa {
+        color: #FFFFFF;
+        font-size: 20px;
+        margin: 5px; }
+  #singleworkshoppage #socialHolder .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    min-width: 0px;
+    padding: 0;
+    margin: 0; }
+    #singleworkshoppage #socialHolder .dropdown-menu li a:hover i {
+      color: #FFB733; }
+    #singleworkshoppage #socialHolder .dropdown-menu li a i {
+      color: #6A0C38; }
+#singleworkshoppage .thirdCol {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  padding: 0px;
+  background-color: #6A0C38;
+  overflow: hidden;
+  padding: 0px;
+  height: 248px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  opacity: 0.9; }
+  #singleworkshoppage .thirdCol .workName {
+    margin: 10px; }
+    #singleworkshoppage .thirdCol .workName .text-left {
+      color: #FFFFFF;
+      font-family: light;
+      font-size: 18px;
+      padding: 0px;
+      margin-top: 10px; }
+    #singleworkshoppage .thirdCol .workName .text-center {
+      padding: 0px; }
+      #singleworkshoppage .thirdCol .workName .text-center .fa {
+        color: #FFB733;
+        font-size: 30px;
+        margin: 5px; }
+  #singleworkshoppage .thirdCol .newPost {
+    text-align: right;
+    margin: 10 0px; }
+    #singleworkshoppage .thirdCol .newPost .btn-lg {
+      background-color: #FFFFFF;
+      border-radius: 50px;
+      color: #6A0C38;
+      font-family: medium;
+      font-size: 16px;
+      padding: 15px;
+      width: 190px;
+      margin-bottom: 0px;
+      margin: 5px; }
+      #singleworkshoppage .thirdCol .newPost .btn-lg i {
+        color: #6A0C38; }
+      #singleworkshoppage .thirdCol .newPost .btn-lg:hover {
+        color: #6A0C38;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
+        #singleworkshoppage .thirdCol .newPost .btn-lg:hover i {
+          color: #6A0C38; }
+  #singleworkshoppage .thirdCol .numbers {
+    margin: 20 0px; }
+    #singleworkshoppage .thirdCol .numbers .count {
+      padding: 20px 0px; }
+      #singleworkshoppage .thirdCol .numbers .count .titl {
+        font-family: medium;
+        color: #231F20;
+        font-size: 16px; }
+      #singleworkshoppage .thirdCol .numbers .count .num {
+        font-family: light;
+        color: #808285;
+        font-size: 16px; }
+  #singleworkshoppage .thirdCol .about {
+    height: 50%;
+    overflow: hidden; }
+    #singleworkshoppage .thirdCol .about span {
+      font-family: medium;
+      color: #FFB733;
+      font-size: 15px;
+      margin-bottom: 10px; }
+    #singleworkshoppage .thirdCol .about p {
+      font-family: light;
+      color: #FFFFFF;
+      opacity: 0.8;
+      font-size: 12px;
+      overflow: hidden;
+      padding: 10px 0px; }
+  #singleworkshoppage .thirdCol .workScd {
+    margin-bottom: 0px;
+    margin-top: 30px;
+    padding: 0;
+    padding-left: 10px;
+    color: #FFFFFF;
+    text-align: center; }
+    #singleworkshoppage .thirdCol .workScd .bigdate {
+      width: 60%;
+      font-size: 12px;
+      font-family: light; }
+      #singleworkshoppage .thirdCol .workScd .bigdate i {
+        font-size: 40px;
+        color: #FFFFFF;
+        margin: 0px;
+        padding: 0px; }
+      #singleworkshoppage .thirdCol .workScd .bigdate p {
+        font-size: 40px;
+        font-family: medium;
+        display: inline-block;
+        margin: 0px; }
+    #singleworkshoppage .thirdCol .workScd .labels {
+      width: 46%;
+      display: inline-block;
+      text-align: left; }
+      #singleworkshoppage .thirdCol .workScd .labels .label {
+        background-color: transparent;
+        color: #FFFFFF;
+        text-align: left;
+        font-size: 12px;
+        font-family: light;
+        padding: 0px; }
+      #singleworkshoppage .thirdCol .workScd .labels .first {
+        display: block;
+        padding: 0px;
+        margin-bottom: 7px; }
+    #singleworkshoppage .thirdCol .workScd .workdur {
+      margin-bottom: 15px;
+      padding: 0;
+      padding-left: 10px;
+      text-align: left; }
+      #singleworkshoppage .thirdCol .workScd .workdur .duration .fa-hourglass-half {
+        font-size: 30px;
+        color: #FFFFFF; }
+      #singleworkshoppage .thirdCol .workScd .workdur .lLabels span {
+        font-family: light;
+        color: #FFFFFF;
+        font-size: 12px;
+        margin: 15px;
+        padding: 0px;
+        background-color: transparent; }
+    #singleworkshoppage .thirdCol .workScd .workLeft {
+      margin-bottom: 15px;
+      padding: 0;
+      padding-left: 10px;
+      text-align: left; }
+      #singleworkshoppage .thirdCol .workScd .workLeft i {
+        font-size: 30px;
+        color: #FFFFFF;
+        margin: 0px;
+        padding: 0px; }
+      #singleworkshoppage .thirdCol .workScd .workLeft .badge {
+        font-family: light;
+        color: #FFFFFF;
+        font-size: 12px;
+        background-color: transparent; }
+  #singleworkshoppage .thirdCol .reward {
+    padding: 12px;
+    height: 30%;
+    overflow: hidden;
+    background-color: #6A0C38; }
+    #singleworkshoppage .thirdCol .reward span {
+      font-family: medium;
+      color: #FFB733;
+      font-size: 16px;
+      margin-bottom: 10px; }
+    #singleworkshoppage .thirdCol .reward p {
+      font-family: light;
+      color: #FFFFFF;
+      opacity: 0.8;
+      font-size: 14px;
+      overflow: hidden;
+      padding: 10px 0px; }
+  #singleworkshoppage .thirdCol .madeby {
+    padding: 12px;
+    height: 30%;
+    overflow: hidden;
+    display: inline-block; }
+    #singleworkshoppage .thirdCol .madeby span {
+      font-family: medium;
+      color: #FFB733;
+      font-size: 16px;
+      margin-bottom: 10px;
+      display: inline-block; }
+    #singleworkshoppage .thirdCol .madeby .superviseInfos {
+      padding: 10px;
+      display: inline-block;
+      display: inline-block; }
+      #singleworkshoppage .thirdCol .madeby .superviseInfos img {
+        width: 40px;
+        border-radius: 40px;
+        border: 2px #FFB733 solid; }
+      #singleworkshoppage .thirdCol .madeby .superviseInfos span {
+        font-family: bold;
+        font-size: 16px;
+        color: #6A0C38;
+        margin-left: 5px;
+        vertical-align: middle; }
+
+/*# sourceMappingURL=singleWorkshop.css.map */

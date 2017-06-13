@@ -7,30 +7,29 @@ body {
   body:focus, body:active, body:visited, body:hover {
     outline: 0px; }
 
-.row {
+#profilepage .row {
   position: relative; }
-
-.firstCol {
+#profilepage .firstCol {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   padding: 0px;
   background-color: #FFFFFF;
   height: 551px;
   margin-bottom: 30px; }
-  .firstCol .userImg {
+  #profilepage .firstCol .userImg {
     height: 45%;
     margin: 0px; }
-    .firstCol .userImg .opacity {
+    #profilepage .firstCol .userImg .opacity {
       background-color: #231F20;
       position: relative;
       height: 100%;
       text-align: -webkit-center; }
-      .firstCol .userImg .opacity img {
+      #profilepage .firstCol .userImg .opacity img {
         display: block;
         opacity: 0.6;
         overflow: hidden;
         width: 100%;
         height: 100%; }
-      .firstCol .userImg .opacity .follow {
+      #profilepage .firstCol .userImg .opacity .follow {
         display: block;
         position: relative;
         bottom: 60px;
@@ -42,128 +41,127 @@ body {
         border: 0px;
         font-family: bold;
         font-size: 18px; }
-        .firstCol .userImg .opacity .follow:hover {
+        #profilepage .firstCol .userImg .opacity .follow:hover {
           background-color: #FFB733;
           box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
-  .firstCol .userName {
+  #profilepage .firstCol .userName {
     margin: 10px; }
-    .firstCol .userName span {
+    #profilepage .firstCol .userName span {
       color: #6A0C38;
       font-family: medium;
       font-size: 20px;
       padding: 0px; }
-    .firstCol .userName span {
+    #profilepage .firstCol .userName span {
       padding: 0px; }
-      .firstCol .userName span .fa {
+      #profilepage .firstCol .userName span .fa {
         color: #FFB733;
         font-size: 30px;
         margin: 5px; }
-  .firstCol .info p {
+  #profilepage .firstCol .info p {
     font-family: light;
     font-size: 14px;
     color: #808285;
     margin: 5px 10px; }
-  .firstCol .socialLink {
+  #profilepage .firstCol .socialLink {
     text-align: center;
     margin: 20px 0px; }
-    .firstCol .socialLink .fa {
+    #profilepage .firstCol .socialLink .fa {
       color: #FFB733;
       font-size: 30px; }
-      .firstCol .socialLink .fa:hover {
+      #profilepage .firstCol .socialLink .fa:hover {
         color: #6A0C38; }
-
-.secCol .showPosts {
+#profilepage .secCol .showPosts {
   margin-top: 0px; }
-  .secCol .showPosts .recentPosts {
+  #profilepage .secCol .showPosts .recentPosts {
     background-color: #FFFFFF;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.3);
     padding: 0px;
     margin-bottom: 40px; }
-    .secCol .showPosts .recentPosts .userInfos {
+    #profilepage .secCol .showPosts .recentPosts .userInfos {
       padding: 10px; }
-      .secCol .showPosts .recentPosts .userInfos img {
+      #profilepage .secCol .showPosts .recentPosts .userInfos img {
         width: 60px;
         border-radius: 40px;
         border: 2px #FFB733 solid;
         display: inline-block; }
-      .secCol .showPosts .recentPosts .userInfos span {
+      #profilepage .secCol .showPosts .recentPosts .userInfos span {
         font-family: bold;
         font-size: 20px;
         color: #FFB733;
         margin-left: 5px; }
-    .secCol .showPosts .recentPosts .conatinerComment .largePic img {
+    #profilepage .secCol .showPosts .recentPosts .conatinerComment .largePic img {
       overflow-x: hidden;
       width: 100%;
       max-height: 20%; }
-    .secCol .showPosts .recentPosts .conatinerComment .largePic video {
+    #profilepage .secCol .showPosts .recentPosts .conatinerComment .largePic video {
       width: 100%;
       object-fit: cover; }
-    .secCol .showPosts .recentPosts .conatinerComment .titleEdit {
+    #profilepage .secCol .showPosts .recentPosts .conatinerComment .titleEdit {
       margin: 10px 0px; }
-      .secCol .showPosts .recentPosts .conatinerComment .titleEdit div h3 {
+      #profilepage .secCol .showPosts .recentPosts .conatinerComment .titleEdit div h3 {
         font-family: medium;
         color: #6A0C38; }
-      .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits {
+      #profilepage .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits {
         text-align: right; }
-        .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits i {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .titleEdit .edits i {
           color: #525252;
           font-size: 20px;
           margin-top: 20px;
           margin-left: 15px; }
-    .secCol .showPosts .recentPosts .conatinerComment .disc p {
+    #profilepage .secCol .showPosts .recentPosts .conatinerComment .disc p {
       font-size: 16px;
       font-family: regular;
       color: #231F20;
       padding: 10px; }
-    .secCol .showPosts .recentPosts .conatinerComment .disc audio {
+    #profilepage .secCol .showPosts .recentPosts .conatinerComment .disc audio {
       width: 100%; }
-    .secCol .showPosts .recentPosts .conatinerComment .interactionUser {
+    #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser {
       background-color: #E4E4E4;
       font-size: 20px;
       padding: 10px; }
-      .secCol .showPosts .recentPosts .conatinerComment .interactionUser a {
+      #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser a {
         margin: 0 10px; }
-        .secCol .showPosts .recentPosts .conatinerComment .interactionUser a i {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser a i {
           color: #FFB733; }
-        .secCol .showPosts .recentPosts .conatinerComment .interactionUser a .badge {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser a .badge {
           background-color: transparent;
           color: #525252;
           font-size: 16px;
           font-family: medium; }
-      .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder {
+      #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder {
         display: inline-block; }
-        .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .btn-info {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .btn-info {
           margin: 0px;
           padding: 0px;
           background-color: transparent;
           border: 0px; }
-          .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .btn-info .fa-share-alt {
+          #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .btn-info .fa-share-alt {
             font-size: 20px; }
-        .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .share .caret {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .share .caret {
           display: none; }
-        .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu {
           border-radius: 20px;
           min-width: 100px;
           position: absolute;
           top: 75%;
           padding: 0; }
-          .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a {
+          #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a {
             margin: 10 0px; }
-            .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a:hover i {
+            #profilepage .secCol .showPosts .recentPosts .conatinerComment .interactionUser #socialHolder #socialShare .dropdown-menu li a:hover i {
               color: #FFB733; }
-    .secCol .showPosts .recentPosts .conatinerComment .UserComments .writePost {
+    #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .writePost {
       padding: 10px; }
-      .secCol .showPosts .recentPosts .conatinerComment .UserComments .writePost .form-control {
+      #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .writePost .form-control {
         width: 100%; }
-        .secCol .showPosts .recentPosts .conatinerComment .UserComments .writePost .form-control:focus {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .writePost .form-control:focus {
           border-color: #FFB733; }
-      .secCol .showPosts .recentPosts .conatinerComment .UserComments .writePost .posting {
+      #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .writePost .posting {
         display: block;
         margin: 20px;
         margin-right: 5px;
         margin-bottom: 0;
         text-align: right; }
-        .secCol .showPosts .recentPosts .conatinerComment .UserComments .writePost .posting .btn {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .writePost .posting .btn {
           background-color: #6A0C38;
           color: #FFFFFF;
           border: 0px;
@@ -171,46 +169,45 @@ body {
           padding: 10px;
           border-radius: 25px;
           width: 120px; }
-    .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media {
+    #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media {
       margin-left: 20px;
       margin-top: 10px; }
-      .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media .media-left {
+      #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media .media-left {
         width: 10%; }
-        .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media .media-left a img {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media .media-left a img {
           border: 2px solid #FFB733;
           border-radius: 50px;
           display: inline-block;
           width: 100%; }
-      .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media .media-body {
+      #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media .media-body {
         font-family: regular;
         font-size: 12px;
         color: #808285; }
-        .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media .media-body h4 {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media .media-body h4 {
           font-family: regular;
           font-size: 16px;
           color: #231F20; }
-        .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media .media-body p {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .UserComments .media-list .media .media-body p {
           margin: 10px; }
-    .secCol .showPosts .recentPosts .conatinerComment .seeComments {
+    #profilepage .secCol .showPosts .recentPosts .conatinerComment .seeComments {
       background-color: #808285;
       text-align: center;
       padding: 10px; }
-      .secCol .showPosts .recentPosts .conatinerComment .seeComments span {
+      #profilepage .secCol .showPosts .recentPosts .conatinerComment .seeComments span {
         font-size: 16px;
         font-family: medium;
         color: #FFFFFF; }
-        .secCol .showPosts .recentPosts .conatinerComment .seeComments span i {
+        #profilepage .secCol .showPosts .recentPosts .conatinerComment .seeComments span i {
           margin: 0 8px; }
-
-#socialHolder {
+#profilepage #socialHolder {
   display: block;
   text-align: -webkit-center; }
-  #socialHolder #socialShare .btn-info {
+  #profilepage #socialHolder #socialShare .btn-info {
     margin: 0px;
     padding: 0px;
     background-color: transparent;
     border: 0px; }
-    #socialHolder #socialShare .btn-info .btn-share {
+    #profilepage #socialHolder #socialShare .btn-info .btn-share {
       display: block;
       border-radius: 35px;
       padding: 7px;
@@ -221,34 +218,31 @@ body {
       font-family: medium;
       font-size: 16px;
       margin: 20px 0px; }
-      #socialHolder #socialShare .btn-info .btn-share:hover {
+      #profilepage #socialHolder #socialShare .btn-info .btn-share:hover {
         background-color: #FFB733;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
-      #socialHolder #socialShare .btn-info .btn-share .fa {
+      #profilepage #socialHolder #socialShare .btn-info .btn-share .fa {
         color: #FFFFFF;
         font-size: 20px;
         margin: 5px; }
-  #socialHolder .dropdown-menu {
+  #profilepage #socialHolder .dropdown-menu {
     position: absolute;
     top: 100%;
     min-width: 0px;
     padding: 0;
     margin: 0; }
-    #socialHolder .dropdown-menu li a:hover i {
+    #profilepage #socialHolder .dropdown-menu li a:hover i {
       color: #FFB733; }
-    #socialHolder .dropdown-menu li a i {
+    #profilepage #socialHolder .dropdown-menu li a i {
       color: #6A0C38; }
-
-input[type="date"]:before {
+#profilepage input[type="date"]:before {
   content: attr(placeholder) !important;
   color: #aaa;
   margin-right: 0.5em; }
-
-input[type="date"]:focus:before,
-input[type="date"]:valid:before {
+#profilepage input[type="date"]:focus:before,
+#profilepage input[type="date"]:valid:before {
   content: ""; }
-
-.thirdCol {
+#profilepage .thirdCol {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   padding: 0px;
   background-color: #FFFFFF;
@@ -256,10 +250,10 @@ input[type="date"]:valid:before {
   overflow: hidden;
   margin-bottom: 30px;
   position: inherit; }
-  .thirdCol .newPost {
+  #profilepage .thirdCol .newPost {
     text-align: center;
     margin: 20 0px; }
-    .thirdCol .newPost .btn-lg {
+    #profilepage .thirdCol .newPost .btn-lg {
       background-color: #6A0C38;
       border-radius: 50px;
       color: #FFFFFF;
@@ -268,100 +262,97 @@ input[type="date"]:valid:before {
       padding: 15px;
       width: 150px;
       margin-bottom: 0px; }
-      .thirdCol .newPost .btn-lg i {
+      #profilepage .thirdCol .newPost .btn-lg i {
         color: #FFFFFF; }
-      .thirdCol .newPost .btn-lg:hover {
+      #profilepage .thirdCol .newPost .btn-lg:hover {
         background-color: #FFB733;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
-  .thirdCol .numbers {
+  #profilepage .thirdCol .numbers {
     margin: 20 0px; }
-    .thirdCol .numbers .count {
+    #profilepage .thirdCol .numbers .count {
       padding: 20px 0px; }
-      .thirdCol .numbers .count .titl {
+      #profilepage .thirdCol .numbers .count .titl {
         font-family: medium;
         color: #231F20;
         font-size: 16px; }
-      .thirdCol .numbers .count .num {
+      #profilepage .thirdCol .numbers .count .num {
         font-family: light;
         color: #808285;
         font-size: 16px; }
-  .thirdCol .about {
+  #profilepage .thirdCol .about {
     padding: 12px;
     height: 30%;
     overflow: hidden;
     background-color: #6A0C38; }
-    .thirdCol .about span {
+    #profilepage .thirdCol .about span {
       font-family: medium;
       color: #FFB733;
       font-size: 16px;
       margin-bottom: 10px; }
-    .thirdCol .about p {
+    #profilepage .thirdCol .about p {
       font-family: light;
       color: #FFFFFF;
       opacity: 0.8;
       font-size: 14px;
       overflow: hidden;
       padding: 10px 0px; }
-  .thirdCol .typeof {
+  #profilepage .thirdCol .typeof {
     padding: 12px;
     margin: 20px 0px;
     overflow: scroll; }
-    .thirdCol .typeof span {
+    #profilepage .thirdCol .typeof span {
       font-family: medium;
       color: #231F20;
       font-size: 16px;
       margin-bottom: 20px; }
-    .thirdCol .typeof .review {
+    #profilepage .thirdCol .typeof .review {
       padding: 0 7px; }
-      .thirdCol .typeof .review .categ {
+      #profilepage .thirdCol .typeof .review .categ {
         padding: 7px 0px;
         font-family: light;
         font-size: 14px;
         color: #808285; }
-      .thirdCol .typeof .review .reviewrate {
+      #profilepage .thirdCol .typeof .review .reviewrate {
         padding: 7px 0px;
         font-family: regular;
         color: #6A0C38;
         font-size: 16px; }
-        .thirdCol .typeof .review .reviewrate i {
+        #profilepage .thirdCol .typeof .review .reviewrate i {
           color: #FFB733;
           font-size: 16px;
           margin-right: 10px; }
 
-.infoName {
+#editprofile .infoName {
   text-align: center; }
-  .infoName .userInfos {
+  #editprofile .infoName .userInfos {
     padding: 10px; }
-    .infoName .userInfos img {
+    #editprofile .infoName .userInfos img {
       width: 60px;
       border-radius: 40px;
       border: 2px #FFB733 solid;
       display: inline-block; }
-    .infoName .userInfos span {
+    #editprofile .infoName .userInfos span {
       font-family: bold;
       font-size: 20px;
       color: #6A0C38;
       margin-left: 5px;
       vertical-align: middle; }
-
-h5 {
+#editprofile h5 {
   font-family: medium;
   font-size: 23px;
   color: #FFB733;
   margin: 20px 0px;
   text-align: center; }
-
-h6 {
+#editprofile h6 {
   font-family: medium;
   font-size: 14px;
   color: #231F20;
   margin: 20px 0px;
   text-align: left; }
-
-.done {
+#editprofile .done {
   text-align: center;
   margin: 20 0px; }
-  .done .btn-lg {
+  #editprofile .done .btn-lg {
     background-color: #6A0C38;
     border-radius: 50px;
     color: #FFFFFF;
@@ -370,16 +361,15 @@ h6 {
     padding: 10px;
     width: 100px;
     margin-bottom: 0px; }
-    .done .btn-lg i {
+    #editprofile .done .btn-lg i {
       color: #FFFFFF; }
-    .done .btn-lg:hover {
+    #editprofile .done .btn-lg:hover {
       background-color: #FFB733;
       box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.22); }
-
-.basicInfo {
+#editprofile .basicInfo {
   border-right: 1px #e9ebee solid;
   margin: 20px 0px; }
-  .basicInfo .form-control {
+  #editprofile .basicInfo .form-control {
     border: 0px;
     border-bottom: 1px solid #e9ebee;
     width: 80%;
@@ -388,13 +378,12 @@ h6 {
     margin-bottom: 30px;
     font-family: light;
     font-size: 14px; }
-
-.personalInfo {
+#editprofile .personalInfo {
   margin: 20px 0px;
   border-right: 1px #e9ebee solid; }
-  .personalInfo .editSelected {
+  #editprofile .personalInfo .editSelected {
     padding: 12px 12px; }
-    .personalInfo .editSelected select {
+    #editprofile .personalInfo .editSelected select {
       width: 80%;
       border: 0px;
       border-bottom: 1px solid #e9ebee;
@@ -405,9 +394,9 @@ h6 {
       font-size: 14px;
       color: #808285;
       margin-bottom: 30px; }
-      .personalInfo .editSelected select option {
+      #editprofile .personalInfo .editSelected select option {
         color: #808285; }
-  .personalInfo .form-control {
+  #editprofile .personalInfo .form-control {
     width: 80%;
     border: 0px;
     border-bottom: 1px solid #e9ebee;
@@ -416,27 +405,26 @@ h6 {
     margin-bottom: 30px;
     font-family: light;
     font-size: 14px; }
-  .personalInfo .about textarea {
+  #editprofile .personalInfo .about textarea {
     width: 80%;
     border: 1px solid #e9ebee; }
-
-.connectInfo {
+#editprofile .connectInfo {
   margin: 20px 0px; }
-  .connectInfo .form-group {
+  #editprofile .connectInfo .form-group {
     font-size: 16px;
     color: #808285;
     font-family: regular;
     margin-bottom: 0px; }
-    .connectInfo .form-group .file {
+    #editprofile .connectInfo .form-group .file {
       visibility: hidden;
       position: absolute; }
-    .connectInfo .form-group .input-group {
+    #editprofile .connectInfo .form-group .input-group {
       margin-top: 10px; }
-      .connectInfo .form-group .input-group .input-group-addon {
+      #editprofile .connectInfo .form-group .input-group .input-group-addon {
         background-color: transparent;
         border: 0px;
         border-bottom: 1px solid #e9ebee; }
-      .connectInfo .form-group .input-group .input-lg {
+      #editprofile .connectInfo .form-group .input-group .input-lg {
         margin: 0px;
         border-radius: 0;
         background-color: transparent;
@@ -447,7 +435,7 @@ h6 {
         color: #808285;
         font-family: regular;
         width: 100%; }
-      .connectInfo .form-group .input-group .input-group-btn .browse {
+      #editprofile .connectInfo .form-group .input-group .input-group-btn .browse {
         font-size: 16px;
         color: #FFFFFF;
         font-family: regular;
@@ -458,17 +446,17 @@ h6 {
         border: 0px;
         border-bottom: 1px solid #e9ebee;
         box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075); }
-        .connectInfo .form-group .input-group .input-group-btn .browse:hover {
+        #editprofile .connectInfo .form-group .input-group .input-group-btn .browse:hover {
           background-color: #3c0720;
           border-color: #3c0720; }
-        .connectInfo .form-group .input-group .input-group-btn .browse:active, .connectInfo .form-group .input-group .input-group-btn .browse:focus {
+        #editprofile .connectInfo .form-group .input-group .input-group-btn .browse:active, #editprofile .connectInfo .form-group .input-group .input-group-btn .browse:focus {
           background-color: #810f44;
           border-color: #810f44; }
-        .connectInfo .form-group .input-group .input-group-btn .browse i {
+        #editprofile .connectInfo .form-group .input-group .input-group-btn .browse i {
           margin-right: 10px; }
-  .connectInfo div {
+  #editprofile .connectInfo div {
     margin: 0px; }
-    .connectInfo div .form-control {
+    #editprofile .connectInfo div .form-control {
       border: 0px;
       border-bottom: 1px solid #e9ebee;
       box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
@@ -477,16 +465,15 @@ h6 {
       font-family: light;
       font-size: 14px;
       width: 80%; }
-    .connectInfo div .fa-facebook, .connectInfo div .fa-twitter, .connectInfo div .fa-google-plus {
+    #editprofile .connectInfo div .fa-facebook, #editprofile .connectInfo div .fa-twitter, #editprofile .connectInfo div .fa-google-plus {
       font-size: 20px;
       color: #6A0C38; }
-
-.personalInfo {
+#editprofile .personalInfo {
   margin: 20px 0px;
   border-right: 1px #E4E4E4 solid; }
-  .personalInfo .general {
+  #editprofile .personalInfo .general {
     padding: 12px 12px; }
-    .personalInfo .general li {
+    #editprofile .personalInfo .general li {
       border: 0px;
       background-color: transparent;
       font-family: light;
@@ -494,23 +481,22 @@ h6 {
       color: #808285;
       margin-bottom: 30px;
       border-bottom: 1px #e9ebee solid; }
-      .personalInfo .general li div {
+      #editprofile .personalInfo .general li div {
         display: inline-block; }
-  .personalInfo .about p {
+  #editprofile .personalInfo .about p {
     font-family: light;
     font-size: 14px; }
-
-.connectInfo {
+#editprofile .connectInfo {
   margin: 20px 0px; }
-  .connectInfo .lnk a {
+  #editprofile .connectInfo .lnk a {
     margin: 20px; }
-    .connectInfo .lnk a .socialize {
+    #editprofile .connectInfo .lnk a .socialize {
       margin-bottom: 30px;
       font-size: 40px;
       color: #6A0C38; }
-      .connectInfo .lnk a .socialize:hover {
+      #editprofile .connectInfo .lnk a .socialize:hover {
         cursor: pointer; }
-  .connectInfo .others span {
+  #editprofile .connectInfo .others span {
     font-family: light;
     font-size: 14px;
     color: #808285;
@@ -518,22 +504,22 @@ h6 {
     display: block;
     padding: 15px;
     padding-left: 0px; }
-  .connectInfo .typeof {
+  #editprofile .connectInfo .typeof {
     padding: 12px;
     margin: 20px 0px; }
-    .connectInfo .typeof .review {
+    #editprofile .connectInfo .typeof .review {
       padding: 0 7px; }
-      .connectInfo .typeof .review .categ {
+      #editprofile .connectInfo .typeof .review .categ {
         padding: 7px 0px;
         font-family: light;
         font-size: 14px;
         color: #808285; }
-      .connectInfo .typeof .review .reviewrate {
+      #editprofile .connectInfo .typeof .review .reviewrate {
         padding: 7px 0px;
         font-family: regular;
         color: #6A0C38;
         font-size: 16px; }
-        .connectInfo .typeof .review .reviewrate i {
+        #editprofile .connectInfo .typeof .review .reviewrate i {
           color: #FFB733;
           font-size: 16px;
           margin-right: 10px; }

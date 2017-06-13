@@ -68,23 +68,23 @@
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/all.css">
 	<!-- <link rel="stylesheet" href="css/prizes.css"> -->
-	<link rel="stylesheet" href="css/talentProfile.css">
-	<link rel="stylesheet" href="css/home.css">
+	<!--<link rel="stylesheet" href="css/talentProfile.css">-->
+	<!--<link rel="stylesheet" href="css/home.css">-->
     <link rel="stylesheet" href="css/navbar.css">
-	<link rel="stylesheet" href="css/categories.css">
-	<link rel="stylesheet" href="css/talentConfirmation.css">
-	<link rel="stylesheet" href="css/createPost.css">
-	<link rel="stylesheet" href="css/posts.css">
-	<link rel="stylesheet" href="css/createCompetition.css">
-	<link rel="stylesheet" href="css/allCompetiton.css">
+	<!--<link rel="stylesheet" href="css/categories.css">-->
+	<!--<link rel="stylesheet" href="css/talentConfirmation.css">-->
+	<!--<link rel="stylesheet" href="css/createPost.css">-->
+	<!--<link rel="stylesheet" href="css/posts.css">-->
+	<!--<link rel="stylesheet" href="css/createCompetition.css">-->
+	<!--<link rel="stylesheet" href="css/allCompetiton.css">-->
+	<!--<link rel="stylesheet" href="css/singleCompetition.css">-->
+	<!--<link rel="stylesheet" href="css/clickedCategory.css">-->
+	<!--<link rel="stylesheet" href="css/allWorkshop.css">-->
 
-	<link rel="stylesheet" href="css/singleCompetition.css">
-	<link rel="stylesheet" href="css/clickedCategory.css">
-	<link rel="stylesheet" href="css/allWorkshop.css">
 
-
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
 
 	<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>-->
 	<!--<script>-->
@@ -185,9 +185,9 @@
                             <!--                            end dropmenu-->
 
 
-                            <li><a href="#!/posts">Posts</a></li>
-							<li><a href="#!/competitions">Competition</a></li>
-	                            <li><a href="#!/showreview">Initial review</a></li>
+                            <li><a href="#!/posts">{{'NAVBAR.POSTS' | translate}}</a></li>
+							<li><a href="#!/competitions">{{'NAVBAR.COMPETITION' | translate}}</a></li>
+                            <li><a href="#!/showreview">{{'NAVBAR.INITIALREVIEW' | translate}}</a></li>
 
                         </ul>
                         <!--end of main links-->
@@ -284,18 +284,18 @@
                                     <div class=" social-login">
 
                                         <div class="social-login-buttons">
-                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
-                                                <i class="fa fa-facebook"></i> Facebook
+                                            <a  href="#">
+                                                <!--<i class="fa fa-facebook"></i> Facebook-->
                                             </a>
-                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="">
-                                                <i class="fa fa-google-plus"></i> Google Plus
+                                            <a href="">
+                                                <!--<i class="fa fa-google-plus"></i> Google Plus-->
 												<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
                                             </a>
                                         </div>
                                     </div>
 
                                 </div>
-                                <h3>Or Login With Your Account</h3>
+                                <h3>Login With Your Account</h3>
                                 <div class="form-bottom">
                                     <form class="login-form col-lg-8 col-lg-offset-2" ng-submit="submitted = true; loginFn(login.$valid)" name="login" novalidate>
                                         <div class="form-group">
@@ -351,22 +351,22 @@
                                     </div>
                                 </div>
 
+
                                 <div class="row">
                                     <div class=" social-login">
 
                                         <div class="social-login-buttons">
-                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
-                                                <i class="fa fa-facebook"></i> Facebook
+                                            <a  href="#">
+                                                <!--<i class="fa fa-facebook"></i> Facebook-->
                                             </a>
-
-                                            <a class="btn btn-link-2 col-lg-5 col-sm-5" href="#">
-                                                <i class="fa fa-google-plus"></i> Google Plus
+                                            <a href="">
+                                                <!--<i class="fa fa-google-plus"></i> Google Plus-->
+                                                <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
-                                <h3>Or Sign up by fill our form</h3>
+                                <h3>Sign up by fill our form</h3>
                                 <div class="form-bottom">
                                     <form name="register" ng-submit="submitted=true; registerFn(register.$valid)"  novalidate class="login-form col-lg-12 col-lg-offset-1">
                                         <!--last first name-->
@@ -465,7 +465,6 @@
                                         </div>
 
 
-                                        <a href="">Already have an account ?</a>
                                         <button type="submit" name="button" class="btn submit">Sign Up!</button>
                                     </form>
                                 </div>
@@ -493,9 +492,9 @@
 								<ul>
 										<h4>{{'FOOTER.LINKS' | translate}}</h4>
 
-                                        <li><a href="#!/posts" style="color: #808285; text-decoration: none;">Posts</a></li>
-                                        <li><a href="#!/competitions" style="color: #808285; text-decoration: none;">Competition</a></li>
-                                        <li><a href="#!/showreview" style="color: #808285; text-decoration: none;">Initial review</a></li>
+                                        <li><a href="#!/posts" style="color: #808285; text-decoration: none;">{{'NAVBAR.POSTS' | translate}}</a></li>
+                                        <li><a href="#!/competitions" style="color: #808285; text-decoration: none;">{{'NAVBAR.COMPETITION' | translate}}</a></li>
+                                        <li><a href="#!/showreview" style="color: #808285; text-decoration: none;">{{'NAVBAR.INITIALREVIEW' | translate}}</a></li>
 
 								</ul>
 						</div>
@@ -503,8 +502,7 @@
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
 								<ul class="list-unstyled">
 										<h4>{{'FOOTER.STAY_TUNED' | translate}}</h4>
-										<li>Connect with us and
-												stay in the loop</li>
+										<li>{{'FOOTER.SOCIAL_TEXT' | translate}}</li>
 
 										<ul class="list-inline list-unstyled includedUl">
 												<br>
@@ -512,22 +510,21 @@
 										</ul>
 								</ul>
 						</div>
-
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
 								<ul class="list-unstyled">
 										<h4>Email Us</h4>
-										<li>If you have any inquiry, please send a email</li>
-										<li class="inputEmail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><input type="text" placeholder="Enter Your Question Here"></li>
-                                        <li class="emailBtn">Email Us</li>
+										<li>{{'FOOTER.Email_US_TEXT' | translate}}</li>
+										<li class="inputEmail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><input ng-model="email.message" type="text" placeholder="{{'FOOTER.Email_US_ENTER_QN_TEXT' | translate}}"></li>
+                                        <li class="emailBtn" ng-click="send_email()">{{'FOOTER.Email_US_BUTTON' | translate}}</li>
 								</ul>
 						</div>
 
 						<div class="col-md-3 col-sm-6 col-xs-12 footerSection">
 								<ul class="list-unstyled">
 									<h4>{{'FOOTER.CONTACT_US' | translate}}</h4>
-                                    <li>If you have any problem, please do not hesitate to email us</li>
-                                    <li class="inputEmail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><input type="text" placeholder="Complaint"></li>
-                                    <li class="emailBtn">Send</li>
+                                    <li>{{'FOOTER.COMPLAINT_TEXT' | translate}}</li>
+                                    <li class="inputEmail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><input ng-model="complaint.message" type="text" placeholder="{{'FOOTER.COMPLAINT_ENTER_COMPLAINT_TEXT' | translate}}"></li>
+                                    <li class="emailBtn" ng-click="send_email()">{{'FOOTER.Email_US_BUTTON' | translate}}</li>
 
 								</ul>
 						</div>

@@ -90,7 +90,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
         getCategoryEventEdit:function(cat_id,event_id){
         			var def =$q.defer();
         			$http({
-        				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'/api/categories/'+cat_id+'/events/'+event_id ,
+        				url:$rootScope.CONSTANSTS.baseURL+':'+$rootScope.CONSTANSTS.port+'angulartalentoon.com/#!/api/categories/'+cat_id+'/events/'+event_id ,
         				method:'GET'
         			}).then(function(res){
         				console.log("<<<<<<<<<event in factory>>>>>>>>>" , res.data.event[0]);
@@ -274,7 +274,7 @@ angular.module('myApp').factory("categories", function ($q, $http, $rootScope) {
                 data: postdata
             }).then(function (res) {
 
-                console.log("____________in res add post ", res.data.post_id)
+                console.log("____________in res add post ", res.data)
                 console.log("____________media type ", $rootScope.currentFile.type)
                 console.log('_________', $rootScope.currentFile.name)
 

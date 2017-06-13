@@ -1,74 +1,71 @@
-
-body {
-  background-image: url(../imgs/plain.png);
+#createpostpage body {
+  background-image: url(../../Imgs/plain.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; }
-
-.createPost {
+#createpostpage .createPost {
   box-shadow: 5px 5px 5px #45132E;
   padding: 0px;
   margin-top: 100px; }
-  .createPost input {
+  #createpostpage .createPost input {
     border: 0px;
     border: 1px #E4E4E4 solid;
     border-radius: 0px;
     box-shadow: inset 0 0 0 transparent; }
-  .createPost span {
+  #createpostpage .createPost span {
     font-family: light;
     font-size: 16px;
     color: #E4E4E4; }
-  .createPost textarea {
+  #createpostpage .createPost textarea {
     border: 0px;
     border: 1px #E4E4E4 solid;
     border-radius: 0px;
     box-shadow: inset 0 0 0 transparent; }
-  .createPost div {
+  #createpostpage .createPost div {
     display: block;
     background-color: #45132E;
     border: 0px;
     padding: 0px;
     margin: 0px; }
-    .createPost div .icons {
+    #createpostpage .createPost div .icons {
       display: inline-block; }
-      .createPost div .icons input {
+      #createpostpage .createPost div .icons input {
         color: #FFFFFF;
         font-size: 16px;
         padding: 10px;
         margin-top: 5px;
         margin-left: 5px; }
-      .createPost div .icons .fa {
+      #createpostpage .createPost div .icons .fa {
         color: #FFFFFF;
         font-size: 22px;
         padding: 10px;
         margin-top: 5px;
         margin-left: 5px; }
-    .createPost div .wpost {
+    #createpostpage .createPost div .wpost {
       color: #FFB733;
       text-align: right; }
-      .createPost div .wpost a {
+      #createpostpage .createPost div .wpost a {
         display: inline-block;
         font-family: bold;
         font-size: 20px;
         padding: 10px;
         color: #FFB733; }
-        .createPost div .wpost a:hover {
+        #createpostpage .createPost div .wpost a:hover {
           text-decoration: none;
           cursor: pointer; }
-
-.form-group {
+#createpostpage .form-group {
   font-size: 16px;
   color: #808285;
   font-family: regular; }
-  .form-group .file {
+  #createpostpage .form-group .file {
     visibility: hidden;
     position: absolute; }
-  .form-group .input-group {
+  #createpostpage .form-group .input-group {
     display: block; }
-    .form-group .input-group .input-group-addon {
+    #createpostpage .form-group .input-group .input-group-addon {
       background-color: transparent;
       border: 0px; }
-    .form-group .input-group .input-lg {
+    #createpostpage .form-group .input-group .input-lg {
       border-radius: 0;
       background-color: transparent;
       border: 0px;
@@ -76,7 +73,7 @@ body {
       font-size: 16px;
       color: #808285;
       font-family: regular; }
-    .form-group .input-group .input-group-btn .browse {
+    #createpostpage .form-group .input-group .input-group-btn .browse {
       font-size: 16px;
       color: #FFFFFF;
       font-family: regular;
@@ -86,7 +83,7 @@ body {
       border-radius: 0;
       border: 0px;
       box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075); }
-      .form-group .input-group .input-group-btn .browse i {
+      #createpostpage .form-group .input-group .input-group-btn .browse i {
         padding: 0px;
         margin: 0px; }
 

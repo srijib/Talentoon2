@@ -1,0 +1,174 @@
+
+
+//sass --watch sass\style.scss:css\style.css
+
+$yellow:#FFB733;
+$purplel:#6A0C38;
+$purpled:#45132E;
+$white:#FFFFFF;
+$black:#231F20;
+$gray:#808285;
+$grayl:#E4E4E4;
+$lightgray: #f1f1f1;
+$grayd:#525252; 
+$placehold:#e9ebee;
+
+
+#talmentconfirmationpage{
+    body{
+        background-image: url(../../Imgs/plain.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .mainTitle{
+        font-size: inherit;
+        color: $yellow;
+        text-align: center;
+        margin-bottom: 20px;
+        h1{
+
+        }
+        small{
+            color:$placehold;
+            font-size: inherit;
+        }
+    }
+
+    .createConfirmation {
+        box-shadow: 5px 5px 5px $purpled;
+        padding: 0px;
+        input {
+            border: 0px;
+            border: 1px #E4E4E4 solid;
+            border-radius: 0px;
+            box-shadow: inset 0 0 0 transparent; }
+        span{
+            font-family: light;
+            font-size: 16px;
+            color: $grayl;
+        }
+        textarea {
+            border: 0px;
+            border: 1px #E4E4E4 solid;
+            border-radius: 0px;
+            box-shadow: inset 0 0 0 transparent; }
+        div {
+            display: block;
+            background-color: $purpled;
+            border: 0px;
+            padding: 0px;
+            margin: 0px; 
+            .icons {
+                display: inline-block; 
+                input {
+                    color: #FFFFFF;
+                    font-size: 16px;
+                    padding: 10px;
+                    margin-top: 5px;
+                    margin-left: 5px; }
+                .fa {
+                    color: #FFFFFF;
+                    font-size: 22px;
+                    padding: 10px;
+                    margin-top: 5px;
+                    margin-left: 5px; }
+            }
+            .wpost {
+                color: #FFB733;
+                text-align: right;
+                a {
+                    display: inline-block;
+                    font-family: bold;
+                    font-size: 20px;
+                    padding: 10px;
+                    color: #FFB733;
+                    &:hover{
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    .upload{
+        font-size: 14px;
+
+    }
+    .form-group{
+        font-size: 16px;
+        color: $gray;
+        font-family: regular;
+        .file{
+            visibility: hidden;
+            position: absolute;
+        }
+        .input-group{
+            display: block;
+
+            .input-group-addon{
+                background-color: transparent;
+                border: 0px;
+                i{
+
+                }
+            }
+            .input-lg{
+                border-radius: 0;
+                background-color: transparent;
+                border: 0px;
+                box-shadow: inset 0 0 0 rgba(0, 0, 0, .075);
+                font-size: 14px;
+                color: $gray;
+                font-family: regular;
+
+
+            }
+            .input-group-btn{
+                .browse{
+                    font-size: 16px;
+                    color: $white;
+                    font-family: regular;
+                    background-color: transparent;
+                    border-color: transparent;
+                    outline: none;
+                    border-radius: 0;
+                    border: 0px;
+                    box-shadow: inset 0 0 0 rgba(0, 0, 0, .075);
+
+                    i{
+                        padding: 0px;
+                        margin: 0px;
+
+                    } 
+                }
+            } 
+
+
+        }
+
+    }
+
+
+    .modal{
+
+        .modal-content{
+            font-size: 16px;
+            font-family: medium;
+            color: $purplel;
+            padding: 20px;
+            background-color: $placehold;
+            h2{
+                color: $gray;
+            }
+
+        }
+
+
+    }
+
+}

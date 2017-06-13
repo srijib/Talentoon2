@@ -1,0 +1,361 @@
+body {
+  font-size: 0px;
+  margin: 0px;
+  padding: 0px;
+  background-color: #FFFFFF;
+  outline: 0px; }
+  body:focus, body:active, body:visited, body:hover {
+    outline: 0px; }
+
+#allcompetitonpage #recentCompAll, #allcompetitonpage .CompMainRow {
+  border: 0px;
+  margin: 30px 0px;
+  padding: 0px;
+  background-color: transparent; }
+  #allcompetitonpage #recentCompAll .CompSection, #allcompetitonpage .CompMainRow .CompSection {
+    border: 1px solid #E4E4E4;
+    margin-bottom: 40px;
+    padding: 0px; }
+    #allcompetitonpage #recentCompAll .CompSection .thumbnail, #allcompetitonpage .CompMainRow .CompSection .thumbnail {
+      padding: 0px;
+      margin-bottom: 20px;
+      background-color: transparent;
+      border: 0px;
+      border-radius: 0px; }
+      #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDefaultImg, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDefaultImg {
+        padding: 0px;
+        margin: 0px; }
+        #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDefaultImg img, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDefaultImg img {
+          width: 100%;
+          height: 294px; }
+        #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDefaultImg video, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDefaultImg video {
+          width: 100%;
+          height: 300px;
+          object-fit: fill; }
+      #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompTitle, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompTitle {
+        font-family: bold;
+        font-size: 20px;
+        color: #FFB733; }
+        #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompTitle div a, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompTitle div a {
+          font-family: bold;
+          font-size: 20px;
+          color: #FFB733; }
+          #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompTitle div a:hover, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompTitle div a:hover {
+            text-decoration: none; }
+        #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompTitle div i, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompTitle div i {
+          font-size: 20px;
+          color: #808285;
+          margin-top: 20px; }
+      #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompCaption, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompCaption {
+        margin: 0px;
+        padding: 10px 20px;
+        overflow: hidden;
+        height: 14%; }
+        #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompCaption p, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompCaption p {
+          font-family: regular;
+          font-size: 14px;
+          text-align: left;
+          margin-bottom: 15px;
+          vertical-align: middle;
+          width: 100%; }
+      #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails {
+        font-size: 10px; }
+        #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd {
+          margin-bottom: 15px;
+          padding: 0;
+          padding-left: 10px; }
+          #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd .bigdate, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .bigdate {
+            width: 60%;
+            font-size: 12px;
+            font-family: light; }
+            #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd .bigdate i, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .bigdate i {
+              font-size: 40px;
+              color: #6A0C38;
+              margin: 0px;
+              padding: 0px; }
+            #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd .bigdate p, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .bigdate p {
+              font-size: 40px;
+              font-family: medium;
+              display: inline-block; }
+          #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd .labels, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .labels {
+            width: 46%;
+            display: inline-block;
+            text-align: left; }
+            #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd .labels .label, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .labels .label {
+              background-color: transparent;
+              color: #231F20;
+              text-align: left;
+              font-size: 12px;
+              font-family: light;
+              padding: 0px; }
+            #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd .labels .first, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .labels .first {
+              display: block;
+              padding: 0px;
+              margin-bottom: 7px; }
+          #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd .compLevel, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .compLevel {
+            margin-bottom: 15px;
+            padding: 0;
+            padding-left: 10px; }
+            #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd .compLevel .level .fa-bar-chart, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .compLevel .level .fa-bar-chart {
+              font-size: 40px;
+              color: #6A0C38; }
+            #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd .compLevel .lLabels small, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .compLevel .lLabels small {
+              font-family: light;
+              color: #231F20;
+              font-size: 12px; }
+            #allcompetitonpage #recentCompAll .CompSection .thumbnail .CompDetails .CompScd .compLevel .lLabels span, #allcompetitonpage .CompMainRow .CompSection .thumbnail .CompDetails .CompScd .compLevel .lLabels span {
+              font-size: 40px;
+              font-family: medium;
+              color: #231F20;
+              padding: 0px;
+              background-color: transparent;
+              margin: 5px; }
+      #allcompetitonpage #recentCompAll .CompSection .thumbnail .userPic, #allcompetitonpage .CompMainRow .CompSection .thumbnail .userPic {
+        font-family: bold;
+        font-size: 14px;
+        margin-bottom: 20px;
+        color: #FFB733;
+        display: inline-block;
+        margin-bottom: 20px;
+        margin-left: 18px;
+        vertical-align: bottom; }
+        #allcompetitonpage #recentCompAll .CompSection .thumbnail .userPic:hover, #allcompetitonpage .CompMainRow .CompSection .thumbnail .userPic:hover {
+          text-decoration: none; }
+        #allcompetitonpage #recentCompAll .CompSection .thumbnail .userPic span, #allcompetitonpage .CompMainRow .CompSection .thumbnail .userPic span {
+          display: inline-block;
+          color: #525252;
+          font-family: medium; }
+        #allcompetitonpage #recentCompAll .CompSection .thumbnail .userPic img, #allcompetitonpage .CompMainRow .CompSection .thumbnail .userPic img {
+          width: 40px;
+          border: 2px solid #FFB733;
+          border-radius: 50px;
+          display: inline-block; }
+      #allcompetitonpage #recentCompAll .CompSection .thumbnail .going, #allcompetitonpage .CompMainRow .CompSection .thumbnail .going {
+        margin-top: 0px;
+        display: block;
+        text-align: right; }
+        #allcompetitonpage #recentCompAll .CompSection .thumbnail .going .btn, #allcompetitonpage .CompMainRow .CompSection .thumbnail .going .btn {
+          background-color: #6A0C38;
+          color: #FFFFFF;
+          border: 0px;
+          vertical-align: middle;
+          padding: 10px;
+          border-radius: 25px;
+          width: 120px;
+          margin-bottom: 14px; }
+  #allcompetitonpage #recentCompAll .thumbnail, #allcompetitonpage .CompMainRow .thumbnail {
+    padding: 0px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: 0px;
+    border-radius: 0px; }
+    #allcompetitonpage #recentCompAll .thumbnail .CompDefaultImg, #allcompetitonpage .CompMainRow .thumbnail .CompDefaultImg {
+      padding: 0px;
+      margin: 0px; }
+      #allcompetitonpage #recentCompAll .thumbnail .CompDefaultImg img, #allcompetitonpage .CompMainRow .thumbnail .CompDefaultImg img {
+        width: 100%;
+        height: 294px; }
+      #allcompetitonpage #recentCompAll .thumbnail .CompDefaultImg video, #allcompetitonpage .CompMainRow .thumbnail .CompDefaultImg video {
+        width: 100%;
+        height: 300px;
+        object-fit: fill; }
+    #allcompetitonpage #recentCompAll .thumbnail .CompTitle, #allcompetitonpage .CompMainRow .thumbnail .CompTitle {
+      font-family: bold;
+      font-size: 20px;
+      color: #FFB733; }
+      #allcompetitonpage #recentCompAll .thumbnail .CompTitle div a, #allcompetitonpage .CompMainRow .thumbnail .CompTitle div a {
+        font-family: bold;
+        font-size: 20px;
+        color: #FFB733; }
+        #allcompetitonpage #recentCompAll .thumbnail .CompTitle div a:hover, #allcompetitonpage .CompMainRow .thumbnail .CompTitle div a:hover {
+          text-decoration: none; }
+      #allcompetitonpage #recentCompAll .thumbnail .CompTitle div i, #allcompetitonpage .CompMainRow .thumbnail .CompTitle div i {
+        font-size: 20px;
+        color: #808285;
+        margin-top: 20px; }
+    #allcompetitonpage #recentCompAll .thumbnail .CompCaption, #allcompetitonpage .CompMainRow .thumbnail .CompCaption {
+      margin: 0px;
+      padding: 10px 20px;
+      overflow: hidden;
+      height: 14%; }
+      #allcompetitonpage #recentCompAll .thumbnail .CompCaption p, #allcompetitonpage .CompMainRow .thumbnail .CompCaption p {
+        font-family: regular;
+        font-size: 14px;
+        text-align: left;
+        margin-bottom: 15px;
+        vertical-align: middle;
+        width: 100%; }
+    #allcompetitonpage #recentCompAll .thumbnail .CompDetails, #allcompetitonpage .CompMainRow .thumbnail .CompDetails {
+      font-size: 10px; }
+      #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd {
+        margin-bottom: 15px;
+        padding: 0;
+        padding-left: 10px; }
+        #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd .bigdate, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd .bigdate {
+          width: 60%;
+          font-size: 12px;
+          font-family: light; }
+          #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd .bigdate i, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd .bigdate i {
+            font-size: 40px;
+            color: #6A0C38;
+            margin: 0px;
+            padding: 0px; }
+          #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd .bigdate p, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd .bigdate p {
+            font-size: 40px;
+            font-family: medium;
+            display: inline-block; }
+        #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd .labels, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd .labels {
+          width: 46%;
+          display: inline-block;
+          text-align: left; }
+          #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd .labels .label, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd .labels .label {
+            background-color: transparent;
+            color: #231F20;
+            text-align: left;
+            font-size: 12px;
+            font-family: light;
+            padding: 0px; }
+          #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd .labels .first, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd .labels .first {
+            display: block;
+            padding: 0px;
+            margin-bottom: 7px; }
+        #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd .compLevel, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd .compLevel {
+          margin-bottom: 15px;
+          padding: 0;
+          padding-left: 10px; }
+          #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd .compLevel .level .fa-bar-chart, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd .compLevel .level .fa-bar-chart {
+            font-size: 40px;
+            color: #6A0C38; }
+          #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd .compLevel .lLabels small, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd .compLevel .lLabels small {
+            font-family: light;
+            color: #231F20;
+            font-size: 12px; }
+          #allcompetitonpage #recentCompAll .thumbnail .CompDetails .CompScd .compLevel .lLabels span, #allcompetitonpage .CompMainRow .thumbnail .CompDetails .CompScd .compLevel .lLabels span {
+            font-size: 30px;
+            font-family: medium;
+            color: #231F20;
+            padding: 0px;
+            background-color: transparent;
+            margin: 5px; }
+    #allcompetitonpage #recentCompAll .thumbnail .userPic, #allcompetitonpage .CompMainRow .thumbnail .userPic {
+      font-family: bold;
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #FFB733;
+      display: inline-block;
+      margin-bottom: 20px;
+      margin-left: 18px;
+      vertical-align: bottom; }
+      #allcompetitonpage #recentCompAll .thumbnail .userPic:hover, #allcompetitonpage .CompMainRow .thumbnail .userPic:hover {
+        text-decoration: none; }
+      #allcompetitonpage #recentCompAll .thumbnail .userPic span, #allcompetitonpage .CompMainRow .thumbnail .userPic span {
+        display: inline-block;
+        color: #525252;
+        font-family: medium; }
+      #allcompetitonpage #recentCompAll .thumbnail .userPic img, #allcompetitonpage .CompMainRow .thumbnail .userPic img {
+        width: 40px;
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block; }
+    #allcompetitonpage #recentCompAll .thumbnail .going, #allcompetitonpage .CompMainRow .thumbnail .going {
+      margin-top: 0px;
+      display: block;
+      text-align: right; }
+      #allcompetitonpage #recentCompAll .thumbnail .going .btn, #allcompetitonpage .CompMainRow .thumbnail .going .btn {
+        background-color: #6A0C38;
+        color: #FFFFFF;
+        border: 0px;
+        vertical-align: middle;
+        padding: 10px;
+        border-radius: 25px;
+        width: 120px;
+        margin-bottom: 14px; }
+  #allcompetitonpage #recentCompAll .row, #allcompetitonpage .CompMainRow .row {
+    margin: 0px; }
+  #allcompetitonpage #recentCompAll #s, #allcompetitonpage .CompMainRow #s {
+    color: #231F20;
+    text-align: left;
+    font-size: 12px;
+    font-family: regular;
+    padding: 0px;
+    font-size: 12px; }
+  #allcompetitonpage #recentCompAll div#secondp, #allcompetitonpage .CompMainRow div#secondp {
+    margin-top: 8px; }
+  #allcompetitonpage #recentCompAll #socialHolder, #allcompetitonpage .CompMainRow #socialHolder {
+    display: inline-block;
+    margin-top: 5px;
+    text-align: right; }
+    #allcompetitonpage #recentCompAll #socialHolder #socialShare .btn-info, #allcompetitonpage .CompMainRow #socialHolder #socialShare .btn-info {
+      margin: 0px;
+      padding: 0px;
+      background-color: transparent;
+      border: 0px; }
+      #allcompetitonpage #recentCompAll #socialHolder #socialShare .btn-info .fa-share-alt, #allcompetitonpage .CompMainRow #socialHolder #socialShare .btn-info .fa-share-alt {
+        color: #6A0C38;
+        font-size: 30px; }
+    #allcompetitonpage #recentCompAll #socialHolder #socialShare .share .caret, #allcompetitonpage .CompMainRow #socialHolder #socialShare .share .caret {
+      display: none; }
+    #allcompetitonpage #recentCompAll #socialHolder #socialShare .share .dropdown-menu, #allcompetitonpage .CompMainRow #socialHolder #socialShare .share .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      min-width: 0px;
+      padding: 0;
+      margin: 0; }
+      #allcompetitonpage #recentCompAll #socialHolder #socialShare .share .dropdown-menu li a:hover i, #allcompetitonpage .CompMainRow #socialHolder #socialShare .share .dropdown-menu li a:hover i {
+        color: #FFB733; }
+#allcompetitonpage #allTopComps {
+  margin: 30 0px;
+  text-align: center; }
+  #allcompetitonpage #allTopComps .btn-lg {
+    background-color: #6A0C38;
+    border-radius: 50px;
+    color: #FFB733;
+    font-family: medium;
+    font-size: 16px;
+    padding: 15px;
+    width: 150px;
+    margin-bottom: 0px; }
+    #allcompetitonpage #allTopComps .btn-lg i {
+      color: #FFB733; }
+  #allcompetitonpage #allTopComps h2 {
+    color: #45132E;
+    font-family: bold;
+    font-size: 30px;
+    text-align: center;
+    margin: 33px; }
+  #allcompetitonpage #allTopComps .top1 {
+    margin-bottom: 30px;
+    margin-left: 40px;
+    padding: 0px;
+    border: 1px solid #E4E4E4;
+    border-radius: 30px;
+    text-align: left;
+    background-color: #E4E4E4; }
+    #allcompetitonpage #allTopComps .top1 img {
+      width: 100%;
+      height: auto;
+      overflow-x: hidden; }
+    #allcompetitonpage #allTopComps .top1 div {
+      padding: 15px;
+      margin: 10 0px; }
+      #allcompetitonpage #allTopComps .top1 div img {
+        width: 30px;
+        border: 2px solid #FFB733;
+        border-radius: 50px;
+        display: inline-block;
+        margin-right: 5px; }
+      #allcompetitonpage #allTopComps .top1 div span {
+        font-family: bold;
+        font-size: 16px;
+        color: #FFB733;
+        margin-left: 5px;
+        vertical-align: middle; }
+      #allcompetitonpage #allTopComps .top1 div a {
+        font-family: medium;
+        color: #525252;
+        margin: 5 0px;
+        font-size: 16px;
+        display: block;
+        cursor: pointer; }
+
+/*# sourceMappingURL=allCompetition.css.map */
