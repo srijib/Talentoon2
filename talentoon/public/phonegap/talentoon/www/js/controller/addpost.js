@@ -1,4 +1,4 @@
-angular.module('talentoon').controller("addpost",function($state,$scope,$http,categories,$stateParams,$location,$rootScope){
+angular.module('talentoon').controller("addpost",function($window,$state,$scope,$http,categories,$stateParams,$location,$rootScope){
     var filesuploaded = []
 $scope.post={}
   $scope.newpost = function(vaild) {
@@ -26,7 +26,9 @@ var data={title,description,category_id}
            console.log("the post request from server is ",data);
 //when data retrived from server
           //  $location.url('/category/'+$scope.post.category_id);
-          $state.go('app.categories')
+          $window.location.href='#/app/category/'+category_id;
+
+          // $state.go('app.categories')
        } , function(err){
        	console.log(err);
 

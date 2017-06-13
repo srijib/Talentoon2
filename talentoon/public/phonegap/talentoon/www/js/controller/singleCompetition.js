@@ -1,12 +1,13 @@
 angular.module('talentoon').controller("singleCompetition",function(  $window,$state,$stateParams,categories,Competitions,$scope,$rootScope){
   $rootScope.token = localStorage.getItem('token');
+  $rootScope.cur_user = localStorage.getItem('id');
   var filesuploaded = [];
 $scope.post={};
     $scope.cat_id= $stateParams['category_id'];
     $scope.competition_id= $stateParams['competition_id'];
 
     categories.getUserRoles($scope.cat_id).then(function (data) {
-		console.log("ROLESSSSS FROM CONTROLLER", data)
+		// console.log("ROLESSSSS FROM CONTROLLER", data)
 
         if(data.is_talent.length != 0){
             $scope.is_talent = data.is_talent[0].status;
@@ -21,17 +22,28 @@ $scope.post={};
 
     Competitions.getSingleCompetition($scope.cat_id,$scope.competition_id).then(function (data) {
         $scope.competition = data.data[0];
+        if(data.talent ==null){
+
+  	$rootScope.talent_id=0;
+
+  	}
+  	else{
+  		$rootScope.talent_id=data.talent.talent_id;
+  	}
+
+    console.log("talent id in category",$rootScope.talent_id);
+    console.log("curent user id  in category",$rootScope.cur_user);
         if (data.is_joined) {
             $scope.is_joined = data.is_joined.joined
         }
-        console.log("single comppoooooooo data ",data );
+        console.log("single competition data ",data );
     }, function (err) {
         console.log(err);
     });
 
     Competitions.getSingleCompetitionPosts($scope.competition_id).then(function (data) {
         $scope.competitionPosts = data.data;
-        console.log("single comptions  posts ",data );
+        // console.log("single comptions  posts ",data );
     }, function (err) {
         console.log(err);
     });
