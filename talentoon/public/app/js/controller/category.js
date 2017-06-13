@@ -31,11 +31,6 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $rootScope.event_id = $routeParams['event_id'];
 
 
-    console.log('category id',$scope.cat_id);
-    console.log('workshop id',$rootScope.workshop_id);
-    console.log('event id',$rootScope.event_id );
-
-
     $scope.post_id = $routeParams['post_id'];
 
 
@@ -603,8 +598,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $scope.subscribe = function () {
         var subscriber_id = $rootScope.cur_user.id
         var subscribed = 1;
-
-        var category_id = $rootScope.cat_id;
+        var category_id = $scope.cat_id;
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.subscribe(obj).then(function (data) {
@@ -625,7 +619,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
         var subscriber_id = $rootScope.cur_user.id
         var subscribed = 0;
 
-        var category_id = $rootScope.cat_id;
+        var category_id = $scope.cat_id;
         var obj = {subscriber_id, category_id, subscribed}
         console.log(obj);
         categories.unsubscribe(obj).then(function (data) {
@@ -707,7 +701,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
 	$scope.newcomment = function(vaild) {
 	   if (vaild) {
-   var post_id= $rootScope.post_id;
+   var post_id= $scope.post_id;
    		$scope.comment.post_id=post_id
 		 var commentdata=$scope.comment
 		 console.log("comment data",commentdata);

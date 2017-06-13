@@ -1,20 +1,21 @@
-body{
+#resetpss{
     background-image: url(../imgs/plain.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 600px;
 }
 
-.resetEmail{
+#resetpss .resetEmail{
     margin-top: 250px;
 
 }
 
-.resetPass{
+#resetpss .resetPass{
     margin-top: 150px;
 }
 
-.passReset , .emailReset , .confpassReset{
+#resetpss .passReset , .emailReset , .confpassReset{
     margin: 0 auto;
     border: 0px;
     border-bottom: 1px solid #e9ebee;
@@ -30,11 +31,11 @@ body{
 }
 
 
-.clickReset{
+#resetpss .clickReset{
     text-align: center;
 }
 
-.resetBtn{
+#resetpss .resetBtn{
     background-color: #6A0C38;
     border-radius: 50px;
     color: #FFFFFF;

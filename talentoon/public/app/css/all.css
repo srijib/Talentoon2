@@ -2106,7 +2106,8 @@ body {
   border: 1px solid #E4E4E4; }
 #allpostspage .topPosts {
   margin-top: 0px;
-  margin: 5px 0px;
+  margin: 10px 0px;
+
   text-align: center; }
   #allpostspage .topPosts .btn-lg {
     background-color: #6A0C38;
@@ -2116,7 +2117,7 @@ body {
     font-size: 16px;
     padding: 15px;
     width: 150px;
-    margin-bottom: 0px; }
+    margin:15px 0px; }
     #allpostspage .topPosts .btn-lg i {
       color: #FFB733; }
   #allpostspage .topPosts h2 {
