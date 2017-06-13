@@ -660,6 +660,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
     $scope.unmentor = function () {
         var mentor_id = $rootScope.cur_user.id
         var category_id = $scope.cat_id;
+        console.log('RANIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
 		// mentor.action = "unmentor";
         var obj = {mentor_id, category_id}
         console.log(obj);
