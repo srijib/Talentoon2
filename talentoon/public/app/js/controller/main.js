@@ -2,7 +2,7 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
 
     var filesuploaded = []
 
-localStorage.getItem("token")) {
+    if (localStorage.getItem("token")) {
         user.get_cur_user().then(function(data){
     		console.log('currrr usssserrrrr',data);
     		$rootScope.cur_user=data.cur_user;
