@@ -2,6 +2,8 @@ angular.module('myApp').controller("main", function ($scope,$rootScope, user,cat
 
     var filesuploaded = []
 
+    // $rootScope.cat_id = $routeParams['category_id'];
+    // $rootScope.competition_id = $routeParams['competition_id'];
 
     user.get_cur_user().then(function(data){
 		console.log('currrr usssserrrrr',data);

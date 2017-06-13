@@ -88,8 +88,8 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
         templateUrl: 'views/singleCompetition.html',
         controller: 'singleCompetition'
     })
-    .when('/category/:category_id/competitions/competition_id/edit', {
-        templateUrl: 'views/formcompetition.html',
+    .when('/category/:category_id/competitions/:competition_id/edit', {
+        templateUrl: 'views/editcompetition.html',
         controller: 'singleCompetition'
     })
     .when('/category/:category_id/competitions/:competition_id/addpost', {
@@ -162,7 +162,12 @@ angular.module('myApp').config(['$routeProvider', '$httpProvider', '$translatePr
             controller: 'oneCategory'
         })
 
+//edit competition
 
+        // .when('/category/:category_id/competitions/:competition.id/editcompetition',{
+        //     templateUrl: 'views/editcompetition.html',
+        //     controller: 'competitions'
+        // })
         //user choose to be a talent under a certain category
         .when('/category/:category_id/betalent', {
             templateUrl: 'views/betalent.html',
