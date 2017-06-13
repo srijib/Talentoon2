@@ -60,12 +60,9 @@
           </div>
             <div ng-if="post.media_type == 'audio'">
               <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/uploads/events/2.jpg" alt="">
-                <p style="font-size:15px">{{post.title}}</p>
           <audio controls style="width: 348px;">
-
-<source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" >
-
-</audio>
+            <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" >
+          </audio>
 <div class="caption row">
 <p>{{post.description}}</p>
 <p>{{post.created_at}}</p>
@@ -76,7 +73,6 @@
           <!-- caption-->
             <div ng-if="post.media_type == 'video'||post.media_type == 'image'">
           <div class="caption row">
-            <p>{{post.title}}</p>
             <p>{{post.description}}</p>
             <p>{{post.created_at}}</p>
           </div>
@@ -227,7 +223,7 @@
                                       <i class="fa fa-share" ng-click="sharepost(post.id)" ng-controller="post"></i>
                                   </a>
                                 </li>
-                                
+
                               </ul>
                             </div>
                           </div>
@@ -381,7 +377,7 @@
                             </span>
               <span class="labels">
                                 <span class="label first label-default"> {{event.date_from | date : 'MMM'}} - {{event.date_to | date : 'd-MMM'}}</span>
-              <span class="label label-default">{{event.time_from| date : 'short'}} - {{event.time_to | date : 'hh:mm'}}</span>
+              <span class="label label-default">{{event.time_from| date : 'short'}} </span>
               </span>
             </div>
             <!--    top event schdule-->
@@ -488,7 +484,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                       <a class="userPic">
                         <span>Mintoring by : </span>
-                        <img ng-src="Imgs/Persons/face1.jpg" alt=""> {{event.first_name}} {{event.last_name}}
+                        <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.user_image}}" alt=""> {{event.first_name}} {{event.last_name}}
                       </a>
 
                       <!--    top event userPic-->
@@ -496,51 +492,6 @@
                     </div>
 
                   </div>
-                  <div class="popUsersComments">
-                    <div class="writePost">
-                      <textarea class="form-control" rows="3"></textarea>
-                      <div class="posting">
-                        <button type="button" class="btn btn-default">Comment</button>
-                      </div>
-
-                    </div>
-                    <ul class="media-list">
-                      <li class="media">
-                        <div class="media-left">
-                          <a href="#">
-                            <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
-                          </a>
-                        </div>
-                        <div class="media-body">
-                          <h4 class="media-heading">Omar Mourad</h4>
-                          <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                            ultricies vehicu</p>
-
-
-
-                        </div>
-
-
-
-                      </li>
-
-                      <li class="media">
-                        <div class="media-left">
-                          <a href="#">
-                            <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
-                          </a>
-                        </div>
-                        <div class="media-body">
-                          <h4 class="media-heading">Khaled Ali</h4>
-                          <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                            ultricies vehicu</p>
-
-
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-
                 </div>
                 <!--    top event thumbnail-->
 
@@ -617,7 +568,7 @@
               </div>
               <div class="col-lg-4 col-md-12 col-sm-12">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <span class="badge">{{workshop.date_from | date : 'd-MMM'}} {{workshop.time_from}}</span>
+                <span class="badge">{{workshop.date_from | date : 'd-MMM'}}</span>
               </div>
             </div>
           </div>
@@ -710,63 +661,6 @@
                     <div class="going  col-lg-4 col-md-4 col-sm-12">
                       <button type="button" class=" btn btn-default">Enroll Now</button>
                     </div>
-
-                  </div>
-                  <div class="popWorkshopUsersComments">
-                    <div class="writePost">
-                      <textarea class="form-control" rows="3"></textarea>
-                      <div class="posting">
-                        <button type="button" class="btn btn-default">Comment</button>
-                      </div>
-
-                    </div>
-                    <ul class="media-list">
-                      <li class="media">
-                        <div class="media-left">
-                          <a href="#">
-                            <img class="media-object" ng-src="Imgs/Persons/face2.jpg">
-                          </a>
-                        </div>
-                        <div class="media-body">
-                          <h4 class="media-heading">Omar Mourad</h4>
-                          <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                            ultricies vehicu</p>
-
-
-
-                        </div>
-
-
-
-                      </li>
-
-                      <li class="media">
-                        <div class="media-left">
-                          <a href="#">
-                            <img class="media-object" ng-src="Imgs/Persons/face3.jpg">
-                          </a>
-                        </div>
-                        <div class="media-body">
-                          <h4 class="media-heading">Khaled Ali</h4>
-                          <p>non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                            ultricies vehicu</p>
-
-
-                          <!--</div>-->
-                          <!--</li>-->
-                    </ul>
-                    <!--<div ng-if="isCreator==1">-->
-                    <div class="writePost">
-                      <div class="posting">
-                        <button type="button" class="btn btn-default" ng-click="editWorkshop(workshop.id,cat_id)">Edit</button>
-
-                      </div>
-                      </li>
-                      </ul>
-                    </div>
-
-                    </div>
-                    <!--    top event thumbnail-->
 
                   </div>
                 </div>
