@@ -130,8 +130,13 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
             console.log("ya 3m",data.is_enroll);
 
 	        $rootScope.media = data.session;
-            $rootScope.countcapacity=data.countcapacity.workshop_count;
-            console.log("el count capacity",data.countcapacity.workshop_count);
+            if (data.countcapacity == null) {
+                $rootScope.countcapacity=0;
+            }else {
+                $rootScope.countcapacity=data.countcapacity.workshop_count;
+            }
+
+            // console.log("el count capacity",data.countcapacity.workshop_count);
 
 	        // $rootScope.category_post = localStorage.getItem("data");
 	        console.log("single workshop from controller", $rootScope.category_workshop);
@@ -144,7 +149,7 @@ console.log('CURRRRRRRRRRRRRRRRRRRRRRRRR',$rootScope.cur_user);
 
     //---------------------- FOR REFRESHING BUG---------------------------------
     if($rootScope.workshop_id){
-        categories.getCategoryWorkshopEdit($rootScope.cat_id,$rootScope.workshop_id).then(function (data) {
+        categories.getCategoryWorkshopEdit($scope.cat_id,$rootScope.workshop_id).then(function (data) {
 
             console.log('ID,ID',$rootScope.cat_id,$rootScope.workshop_id)
 
