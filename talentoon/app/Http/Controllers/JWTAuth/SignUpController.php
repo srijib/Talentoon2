@@ -26,7 +26,7 @@ class SignUpController extends Controller {
                         'country_id' => $request['country_id'],
                         'gender' => $request['gender'],
                         'date_of_birth' => $request['date_of_birth'],
-                        'image' => $request['image'],
+                        'image' => 'uploads/profile_pic/'.$request['image'],
                         'email' => $request['email'],
                         'password' => Hash::make($request['password'])
                     ])) {
@@ -43,7 +43,7 @@ class SignUpController extends Controller {
                 //return($role->id);
                 $user->attachRole($role);
                // $user->roles()->attach($role->id);
-                 
+
                 return response()->json([
                             'status' => "ok",
                             'message' => "User Created Successfully",

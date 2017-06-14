@@ -77,6 +77,7 @@ angular.module('myApp').controller("homec",function($location,$route,Home,$scope
     $scope.add_comment = function(i) {
         categories.submitComment($scope.topposts[i].comment,$scope.topposts[i].id).then(function(data){
             console.log("saved success comment",data)
+            // $scope.comments[i].comment=data.comments
         } , function(err){
             console.log(err);
             // $location.url('/500');
@@ -84,20 +85,20 @@ angular.module('myApp').controller("homec",function($location,$route,Home,$scope
         });
     }
 
-	$scope.going= function(event_id) {
-    var event_id=event_id;
-    // var user_id=user_id;
+	$scope.going= function(event_id,index) {
+		Home.goingevent(event_id).then(function(data){
+			console.log("GOING EVENT",data);
+            if (data.new_going_count) {
+                $scope.events[index].going_count= data.new_going_count.going_count
+            }
+            if (data.going ==1) {
+                alert ('you are already going')
+            }
 
+		} , function(err){
+			console.log(err);
 
-
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhh",event_id);
-    		Home.goingevent(event_id).then(function(data){
-    			console.log(data);
-
-    		} , function(err){
-    			console.log(err);
-
-    		});
+		});
     }
 
 	// categories.getCategoryPost(id).then(function(data){
@@ -143,5 +144,3 @@ angular.module('myApp').controller("homec",function($location,$route,Home,$scope
 // }else{
 //     $scope.category_details_exists = 0;
 // }
-
-

@@ -88,7 +88,7 @@ return {
 			return def.promise ;
 
 		},
-		goingevent:function(event_id){
+		goingevent:function(event_id){ 
           console.log("from factory",event_id);
           var def =$q.defer();
           $http({
