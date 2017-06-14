@@ -216,10 +216,10 @@ class UploadController extends Controller
     public function workshop_upload (Request $request,$id){
 //        return response()->json(['request'=> $_FILES['file'],'message' => 'data sent successfully']);
         if(!empty($_FILES)){
-            $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/files/'.$_FILES['file']['name']);
+            $x = move_uploaded_file($_FILES['file']['tmp_name'],'uploads/workshops/'.$_FILES['file']['name']);
 
             $workshop = WorkShop::find($id);
-            $workshop->media_url = 'uploads/files/'.$_FILES['file']['name'];
+            $workshop->media_url = 'uploads/workshops/'.$_FILES['file']['name'];
 //            $workshop->media_type = $_FILES['file']['type'];
             $type = substr($_FILES['file']['type'], 0, 5);
             $workshop->media_type=$type;

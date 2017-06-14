@@ -131,16 +131,21 @@ public function __construct(){
 
     }
 //***************************************************
-public function goingEvent(Request $request){
+public function goingEvent($event_id){
     $user=JWTAuth::parsetoken()->toUser();
     $event = DB::table('going_event')
-    ->where('event_id', '=', $request->event_id)
+    ->where('event_id', '=', $event_id)
     ->where('user_id', '=', $user->id)
     ->first();
 
 if (is_null($event)) {
-    GoingEvent::create(['event_id'=>$request->event_id,'user_id'=>$user->id]);
-    return response()->json(['message' => 'going successfully']);
+    GoingEvent::create(['event_id'=>$event_id,'user_id'=>$user->id]);
+    $new_going_count = DB::table('going_event')
+        ->selectRaw('event_id,count(id) as going_count')
+        ->where('event_id','=',$event_id)
+        ->groupBy('event_id')
+        ->first();
+    return response()->json(['going'=>0,'message' => 'going successfully','new_going_count'=>$new_going_count]);
 
 
 }else{

@@ -2307,6 +2307,7 @@ body {
     font-family: bold;
     width: 33%;
     box-shadow: 0 3px 5px; }
+
     #clickedcategorypage .btn-group .btn-lg:hover {
       background-color: #6A0C38;
       color: #FFB733; }
@@ -2334,6 +2335,12 @@ body {
         background-image: none; }
         #clickedcategorypage #topposts .container .title h1 {
           text-align: left; } }
+
+    #clickedcategorypage  div#topWorkshops .stay-tuned {
+    text-align: center;
+    color: #878181;
+    margin-top: 86px;
+}
   #clickedcategorypage #topposts .container .mainrow {
     margin-left: 0px;
     margin-top: 15px;
@@ -2362,7 +2369,8 @@ body {
           font-size: 14px;
           text-align: left;
           margin-bottom: 15px;
-          vertical-align: middle; }
+          vertical-align: middle;
+          height: 150px;}
         #clickedcategorypage #topposts .container .mainrow .postSection .thumbnail .caption audio {
           width: 100%;
           margin-bottom: 5px; }
@@ -2377,7 +2385,9 @@ body {
           width: 40px;
           border: 2px solid #FFB733;
           border-radius: 50px;
-          display: inline-block; }
+          display: inline-block;
+          height: 40px;
+      }
         #clickedcategorypage #topposts .container .mainrow .postSection .thumbnail .userinfo p {
           display: inline-block;
           color: #FFB733;
@@ -2623,7 +2633,9 @@ body {
         text-align: left;
         margin-bottom: 15px;
         vertical-align: middle;
-        width: 100%; }
+        width: 100%;
+        height: 150px;
+     }
     #clickedcategorypage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails {
       font-size: 10px; }
       #clickedcategorypage #topEvents .container .evMainRow .eventSection .thumbnail .evDetails .eventScd {
@@ -6201,7 +6213,9 @@ footer {
       color: #FFB733;
       padding: 5px 10px;
       width: 100px;
-      margin-top: 8px; }
+      margin-top: 8px;
+      background: rgba(255, 255, 255, 0);
+   }
 
 /*# sourceMappingURL=all.css.map */
 

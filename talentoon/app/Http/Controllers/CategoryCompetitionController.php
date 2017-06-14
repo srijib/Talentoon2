@@ -71,12 +71,19 @@ class CategoryCompetitionController extends Controller {
                 ->select('joined')
                 ->where([['competition_id','=',$competition_id],['talent_id','=',$user->id]])
                 ->first();
+
+                $talent=DB::table('category_talents')
+                ->join('users', 'users.id', '=', 'category_talents.talent_id')
+                ->select('category_talents.talent_id')
+                ->where([['category_talents.category_id','=',$category_id],['category_talents.talent_id','=',$user->id]])
+                ->distinct()
+                ->get()->first();
         } catch (ModelNotFoundException $e) {
             $code = $e->getCode();
             $SQLmessage = $e->getMessage();
             return response()->json(['code' => $code, 'SQLmessage' => $SQLmessage, 'message' => 'No Competition Found Under the Specified Category']);
         }
-        return response()->json(['status' => 'ok', 'message' => 'Competition Found under Category ' . $category_id . ' and Retrieved Successfully', 'data' => $competitionDetails,'is_joined'=>$is_joined]);
+        return response()->json(['talent'=>$talent,'status' => 'ok', 'message' => 'Competition Found under Category ' . $category_id . ' and Retrieved Successfully', 'data' => $competitionDetails,'is_joined'=>$is_joined]);
     }
 
     /**

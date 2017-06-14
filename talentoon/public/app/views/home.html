@@ -35,7 +35,9 @@
 
                             </div>
                             <div ng-if="post.media_type == 'audio'">
-                                <audio controls>
+                              <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/uploads/posts/4.jpg"  />
+
+                                <audio controls style="width: 348px;">
 
                                     <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}"/>
 
@@ -338,7 +340,7 @@
                     <!--    top event detaila-->
                     <div class=" going">
 
-                        <button type="button" class="btn btn-default" ng-click="going(event.id)" >{{event.going_count}} Going</button>
+                        <button type="button" class="btn btn-default" ng-click="going(event.id,$index)" >{{event.going_count}} Going</button>
                     </div>
                 </div>
             </div>

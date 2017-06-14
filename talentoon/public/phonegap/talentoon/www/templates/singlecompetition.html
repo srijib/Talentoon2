@@ -34,7 +34,7 @@
       <center>
   <div class="opacity">
 
-      <JOINED ng-if="is_joined != 0 && is_joined != 1">
+      <JOINED ng-if="is_joined != 0 && is_joined != 1&&talent_id == cur_user">
           <button ng-click="joinCompetition(competition.id)" class="button" style="background-color:#6A0C38;color:white">Accept Challenge</button>
       </JOINED>
   </div>
@@ -47,9 +47,11 @@
   <hr>
   <div >
     <center>
+      <div ng-if="talent_id == cur_user">
       <a href="#/app/category/{{competition.category_id}}/competitions/{{competition.id}}/addpost" class="button"  style="background-color:#6A0C38;color:white">
           <i class="ion-paper-airplane"></i> New Post
       </a>
+    </div>
     </center>
   </div>
   </div>

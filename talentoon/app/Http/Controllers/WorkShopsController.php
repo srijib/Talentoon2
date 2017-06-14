@@ -218,13 +218,13 @@ class WorkShopsController extends Controller
 
         if(is_null($countcapacity)){
 
-            return response()->json(['is_enroll'=>$is_enroll,'session'=>$session,'enroll'=>1,'user'=>$user,'workshop' => $workshop,'message' => 'workshop sent successfully']);
+            return response()->json(['is_enroll'=>$is_enroll,'countcapacity'=>$countcapacity,'session'=>$session,'enroll'=>1,'user'=>$user,'workshop' => $workshop,'message' => 'workshop sent successfully']);
 
         }else{
         $countcapacity=get_object_vars($countcapacity);
         if($countcapacity["workshop_count"]==$capacity){
 
-            return response()->json(['is_enroll'=>$is_enroll,'session'=>$session,'enroll'=>0,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
+            return response()->json(['is_enroll'=>$is_enroll,'countcapacity'=>$countcapacity,'session'=>$session,'enroll'=>0,'workshop' => $workshop,'user'=>$user,'message' => 'workshop sent successfully']);
 
             }else{
 

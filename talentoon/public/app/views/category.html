@@ -1,4 +1,7 @@
 
+
+<div id="clickedcategorypage">
+
 <div class="container">
   <div class="btn-group " role="group" aria-label="...">
 
@@ -35,8 +38,8 @@
       <h1 class="h1" >{{'TOP_POSTS' | translate}}</h1>
     </div>
 
-    <h1 ng-if="category_posts_exists == 0"  style="text-align: center; color:red;">Sorry No Current approved posts exists</h1>
 
+<h1 ng-if="category_posts_exists == 0"   class="stay-tuned">Stay Tuned</h1>
     <!-- data-aos="fade-up" data-aos-duration="2000"  -->
     <div class="row mainrow">
       <div class="col-lg-4 col-md-4 col-sm-12 postSection" data-aos="fade-up" data-aos-duration="2000" ng-repeat="post in categoryPosts | limitTo:3 track by $index">
@@ -45,9 +48,9 @@
 
           <div class="row defaultimg">
 
-         <div ng-if="post.media_type == 'image'">
+         <div ng-if="post.media_type == 'image'"   style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}});height:200px;  background-size:cover;">
 
-            <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="">
+            <!-- <img class="img-responsive" ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt=""> -->
           </div>
 
           <div ng-if="post.media_type == 'video' ">
@@ -59,13 +62,13 @@
 
           </div>
             <div ng-if="post.media_type == 'audio'">
-              <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/uploads/events/2.jpg" alt="">
+              <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/uploads/default.jpg" alt="">
           <audio controls style="width: 348px;">
             <source ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" >
           </audio>
 <div class="caption row">
 <p>{{post.description}}</p>
-<p>{{post.created_at}}</p>
+<span>{{post.created_at}}</span>
 </div>
 </div>
           </div>
@@ -74,7 +77,7 @@
             <div ng-if="post.media_type == 'video'||post.media_type == 'image'">
           <div class="caption row">
             <p>{{post.description}}</p>
-            <p>{{post.created_at}}</p>
+            <span>{{post.created_at}}</span>
           </div>
 </div>
           <!-- user-->
@@ -313,7 +316,7 @@
       <h1 class="h1">{{'TOP_EVENTS' | translate}}</h1>
     </div>
 
-    <h1 ng-if="category_events_exists != 1"  style="text-align: center; color:red;">Sorry No Current approved events exists</h1>
+    <h1 ng-if="category_events_exists != 1" class="stay-tuned">Stay Tuned</h1>
 
 
     <div class="evMainRow row">
@@ -321,8 +324,8 @@
         <div class="thumbnail" data-toggle="modal" data-target="#ev{{event.id}}">
           <div class="row evDefaultImg">
             <!--<h2>{{event.media_url}}</h2>-->
-            <div ng-if="event.media_type == 'image'">
-            <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt="">
+            <div ng-if="event.media_type == 'image'" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}});height:200px;  background-size:cover;">
+            <!-- <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{event.media_url}}" alt=""> -->
             </div>
             <div ng-if="event.media_type == 'video' ">
 
@@ -522,7 +525,7 @@
       <h1 class="h1">{{'TOP_WORKSHOPS' | translate}}</h1>
     </div>
 
-    <h1 ng-if="category_workshops_exists != 1"  style="text-align: center; color:red;">Sorry No Current approved workshops exists</h1>
+    <h1 ng-if="category_workshops_exists != 1"  class="stay-tuned">Stay Tuned</h1>
 
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-4  workshopsSection" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" ng-repeat="workshop in categoryWorkshops | limitTo:3 track by $index">
@@ -530,8 +533,8 @@
           <!--                    <img ng-src="http://placehold.it/350x250">-->
 
 
-          <div ng-if="workshop.media_type == 'image'">
-          <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt="">
+          <div ng-if="workshop.media_type == 'image'" class="bgrounddefault" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}})">
+          <!-- <img ng-src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{workshop.media_url}}" alt=""> -->
           </div>
           <div ng-if="workshop.media_type == 'video' ">
 
@@ -671,16 +674,15 @@
 
           </div>
         </div>
-        <div class="btnsOn">
-          <a href="#!/category/{{cat_id}}/workshops" class="btn btn-default" role="button"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
-          <mentor ng-if="is_mentor == 1">
-              <a href="#!/category/{{cat_id}}/addworkshop" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
-          </mentor>
-          <mentor ng-if="is_mentor != 1">
-              <button class="btn btn-default disabled" title="You have to be Mentor in this category to create a workshop" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
-          </mentor>
-        </div>
-
+      </div>
+      <div class="btnsOn">
+        <a href="#!/category/{{cat_id}}/workshops" class="btn btn-default" role="button"><i class="fa fa-plus" aria-hidden="true"></i> See More</a>
+        <mentor ng-if="is_mentor == 1">
+            <a href="#!/category/{{cat_id}}/addworkshop" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Create New</a>
+        </mentor>
+        <mentor ng-if="is_mentor != 1">
+            <button class="btn btn-default disabled" title="You have to be Mentor in this category to create a workshop" ><i class="fa fa-pencil" aria-hidden="true"></i> Create New</button>
+        </mentor>
       </div>
     </div>
   </div>
@@ -782,4 +784,5 @@
       </mentor>
     </div>
   </div>
+</div>
 </div>
