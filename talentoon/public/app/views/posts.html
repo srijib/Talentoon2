@@ -12,7 +12,9 @@
                         <h2>Top Posts</h2>
 
                         <div class="top1 col-lg-10 col-md-10 col-sm-12">
-                            <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{posts[0].media_url}}" alt="">
+                            <div class="rightimg" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{posts[0].media_url}});">
+                            </div>
+                            <!--<img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{posts[0].media_url}}" alt="">-->
                             <div>
                                 <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{posts[0].image}}" alt="">
                                 <span>{{posts[0].first_name}} {{posts[0].last_name}}</span>
@@ -20,7 +22,9 @@
                             </div>
                         </div>
                         <div class="top1 col-lg-10 col-md-10 col-sm-12">
-                            <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{posts[1].media_url}}" alt="">
+                            <div class="rightimg" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{posts[1].media_url}});">
+                            </div>
+                            <!--<img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{posts[1].media_url}}" alt="">-->
                             <div>
                                 <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{posts[1].image}}" alt="">
                                 <span>{{posts[1].first_name}} {{posts[1].last_name}}</span>
@@ -32,6 +36,9 @@
 
                 <div ng-repeat="post in posts" class="recentPosts imageArticle">
                     <div class="userInfos">
+
+
+
                         <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.image}}" alt="">
                         <span>{{post.first_name}} {{post.last_name}}</span>
                     </div>
@@ -39,7 +46,15 @@
                     <div class="conatinerComment">
 
                         <div class="largePic">
-                            <img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="">
+
+                            <!--<div class="bgroundthumbnail" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}});">-->
+                            <!--</div>-->
+
+                            <div class="bgroundthumbnail" style="background:url(http://172.16.2.214:8000/uploads/events/1.jpg);">
+                            </div>
+                            <!--<div class="bgroundthumbnail" style="background:url({{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}});">-->
+                            <!--</div>-->
+                            <!--<img src="{{CONSTANSTS.baseURL}}:{{CONSTANSTS.port}}/{{post.media_url}}" alt="">-->
                         </div>
 
                         <div class="titleEdit row">
@@ -160,7 +175,9 @@
                         </div>
 
                         <div class="seeComments">
-                            <span> <a class="fa fa-plus" aria-hidden="true" href="#!/category/{{post.category_id}}/posts/{{post.id}}">MORE COMMENTS</a></span>
+                            <a  href="#!/category/{{post.category_id}}/posts/{{post.id}}">
+                                <i class="fa fa-plus" aria-hidden="true"></i>MORE COMMENTS
+                            </a>
                         </div>
 
                     </div>

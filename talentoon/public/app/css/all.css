@@ -38,6 +38,21 @@ body {
   background-position: center !important;
 }
 
+.bgroundthumbnail{
+  height: 400px;
+  width:100%;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+
+.rightimg{
+  height: 150px;
+  width:100%;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
 #homepage header{
   background-image:url(../imgs/cover2.jpg) ;
   background-position: center;
@@ -1913,9 +1928,12 @@ body {
       object-fit: cover; }
     #allpostspage .recentPosts .conatinerComment .titleEdit {
       margin: 10px 0px; }
-      #allpostspage .recentPosts .conatinerComment .titleEdit div h3 {
+      #allpostspage .recentPosts .conatinerComment .titleEdit .title h3 {
         font-family: medium;
-        color: #6A0C38; }
+        color: #6A0C38;
+       text-align: left;
+        text-align: left;
+      }
       #allpostspage .recentPosts .conatinerComment .titleEdit .edits {
         text-align: right; }
         #allpostspage .recentPosts .conatinerComment .titleEdit .edits i {
@@ -1923,10 +1941,16 @@ body {
           font-size: 20px;
           margin-top: 20px;
           margin-left: 15px; }
+
+#allpostspage .recentPosts .conatinerComment .disc {
+  height:200px;
+  overflow: hidden;
+
+}
     #allpostspage .recentPosts .conatinerComment .disc p {
       font-size: 16px;
       font-family: regular;
-      text-align: justify;
+      text-align: left;
       color: #231F20;
       padding: 10px; }
     #allpostspage .recentPosts .conatinerComment .disc audio {
@@ -1977,21 +2001,21 @@ body {
           font-size: 16px;
           font-family: medium;
           border: 0px; }
-        #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body {
+        #allpostspage .recentPosts .conatinerComment {
           padding: 0px; }
-          #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost {
+          #allpostspage .recentPosts .conatinerComment .UserComments .writePost {
             padding: 10px; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .form-control {
+            #allpostspage .recentPosts .conatinerComment .UserComments .writePost .form-control {
               width: 100%; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .form-control:focus {
+              #allpostspage .recentPosts .conatinerComment .UserComments .writePost .form-control:focus {
                 border-color: #FFB733; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting {
+            #allpostspage .recentPosts .conatinerComment  .UserComments .writePost .posting {
               display: block;
               margin: 20px;
               margin-right: 5px;
               margin-bottom: 0;
               text-align: right; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn {
+              #allpostspage .recentPosts .conatinerComment  .UserComments .writePost .posting .btn {
                 border: #6A0C38 2px solid;
                 color: #6A0C38;
                 vertical-align: middle;
@@ -2000,108 +2024,116 @@ body {
                 width: 120px;
                 font-family: medium;
                 font-size: 16px; }
-                #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:hover, #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:active, #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:focus {
+                #allpostspage .recentPosts .conatinerComment .UserComments .writePost .posting .btn:hover, #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:active, #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .writePost .posting .btn:focus {
                   background-color: #FFB733;
                   border: 0px;
                   color: #45132E; }
-          #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media {
+          #allpostspage .recentPosts .conatinerComment  .UserComments .media-list .media {
             margin-left: 20px;
             margin-top: 10px; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-left {
+            #allpostspage .recentPosts .conatinerComment  .UserComments .media-list .media .media-left {
               width: 10%; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-left a img {
+              #allpostspage .recentPosts .conatinerComment  .UserComments .media-list .media .media-left a img {
                 border: 2px solid #FFB733;
                 border-radius: 50px;
                 display: inline-block;
                 width: 100%; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body {
+            #allpostspage .recentPosts .conatinerComment  .UserComments .media-list .media .media-body {
               font-family: regular;
               font-size: 12px;
               color: #808285; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body h4 {
+              #allpostspage .recentPosts .conatinerComment .UserComments .media-list .media .media-body h4 {
                 font-family: regular;
                 font-size: 16px;
                 color: #231F20; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .UserComments .media-list .media .media-body p {
+              #allpostspage .recentPosts .conatinerComment .UserComments .media-list .media .media-body p {
                 margin: 10px; }
-          #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments {
+          #allpostspage .recentPosts .conatinerComment  .seeComments {
             background-color: #E4E4E4;
             text-align: center;
-            padding: 10px; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments span {
+            padding: 10px;
+            font-size: 16px;
+            font-family: light;
+            color: #808285;}
+
+#allpostspage .recentPosts .conatinerComment .seeComments a{
+  font-size: 16px;
+  font-family: light;
+  color: #808285; }
+
+            #allpostspage .recentPosts .conatinerComment .seeComments a i{
               font-size: 16px;
-              font-family: light;
               color: #808285; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .comments .panel-collapse .panel-body .seeComments span i {
+              #allpostspage .recentPosts .conatinerComment .seeComments a i {
                 margin: 0 8px; }
-      #allpostspage .recentPosts .conatinerComment .panel-group .reviews {
-        margin-top: 0px;
-        border-radius: 0px;
-        border: 0px; }
-        #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-heading {
-          background-color: #6A0C38;
-          text-align: center;
-          color: #FFFFFF;
-          font-size: 16px;
-          font-family: medium;
-          border: 0px; }
-        #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body {
-          padding: 0px; }
-          #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost {
-            padding: 10px; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control {
-              width: 100%; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control:focus {
-                border-color: #FFB733; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost textarea {
-              margin-bottom: 10px; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting {
-              margin-right: 5px;
-              margin-bottom: 0;
-              text-align: right; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn {
-                border: #6A0C38 2px solid;
-                color: #6A0C38;
-                vertical-align: middle;
-                padding: 10px;
-                border-radius: 25px;
-                width: 120px;
-                font-family: medium;
-                font-size: 16px; }
-                #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:hover, #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:active, #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:focus {
-                  background-color: #FFB733;
-                  border: 0px;
-                  color: #45132E; }
-          #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media {
-            margin-left: 20px;
-            margin-top: 10px; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left {
-              width: 10%; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left a img {
-                border: 2px solid #FFB733;
-                border-radius: 50px;
-                display: inline-block;
-                width: 100%; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body {
-              font-family: regular;
-              font-size: 12px;
-              color: #808285; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body h4 {
-                font-family: regular;
-                font-size: 16px;
-                color: #231F20; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body p {
-                margin: 10px; }
-          #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview {
-            background-color: #E4E4E4;
-            text-align: center;
-            padding: 10px; }
-            #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span {
-              font-size: 16px;
-              font-family: light;
-              color: #808285; }
-              #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span i {
-                margin: 0 8px; }
+      /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews {*/
+        /*margin-top: 0px;*/
+        /*border-radius: 0px;*/
+        /*border: 0px; }*/
+        /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-heading {*/
+          /*background-color: #6A0C38;*/
+          /*text-align: center;*/
+          /*color: #FFFFFF;*/
+          /*font-size: 16px;*/
+          /*font-family: medium;*/
+          /*border: 0px; }*/
+        /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body {*/
+          /*padding: 0px; }*/
+          /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost {*/
+            /*padding: 10px; }*/
+            /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control {*/
+              /*width: 100%; }*/
+              /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .form-control:focus {*/
+                /*border-color: #FFB733; }*/
+            /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost textarea {*/
+              /*margin-bottom: 10px; }*/
+            /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting {*/
+              /*margin-right: 5px;*/
+              /*margin-bottom: 0;*/
+              /*text-align: right; }*/
+              /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn {*/
+                /*border: #6A0C38 2px solid;*/
+                /*color: #6A0C38;*/
+                /*vertical-align: middle;*/
+                /*padding: 10px;*/
+                /*border-radius: 25px;*/
+                /*width: 120px;*/
+                /*font-family: medium;*/
+                /*font-size: 16px; }*/
+                /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:hover, #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:active, #allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .writePost .posting .btn:focus {*/
+                  /*background-color: #FFB733;*/
+                  /*border: 0px;*/
+                  /*color: #45132E; }*/
+          /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media {*/
+            /*margin-left: 20px;*/
+            /*margin-top: 10px; }*/
+            /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left {*/
+              /*width: 10%; }*/
+              /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-left a img {*/
+                /*border: 2px solid #FFB733;*/
+                /*border-radius: 50px;*/
+                /*display: inline-block;*/
+                /*width: 100%; }*/
+            /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body {*/
+              /*font-family: regular;*/
+              /*font-size: 12px;*/
+              /*color: #808285; }*/
+              /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body h4 {*/
+                /*font-family: regular;*/
+                /*font-size: 16px;*/
+                /*color: #231F20; }*/
+              /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .UserReview .media-list .media .media-body p {*/
+                /*margin: 10px; }*/
+          /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview {*/
+            /*background-color: #E4E4E4;*/
+            /*text-align: center;*/
+            /*padding: 10px; }*/
+            /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span {*/
+              /*font-size: 16px;*/
+              /*font-family: light;*/
+              /*color: #808285; }*/
+              /*#allpostspage .recentPosts .conatinerComment .panel-group .reviews .panel-collapse .panel-body .seeReview span i {*/
+                /*margin: 0 8px; }*/
 #allpostspage hr {
   border: 1px solid #E4E4E4; }
 #allpostspage .topPosts {
@@ -2139,12 +2171,12 @@ body {
       height: auto;
       overflow-x: hidden; }
     #allpostspage .topPosts .top1 div {
-      padding: 15px;
+      padding: 20px;
       margin: 10 0px; }
       #allpostspage .topPosts .top1 div img {
         width: 30px;
         border: 2px solid #FFB733;
-        border-radius: 50px;
+        border-radius: 20px;
         display: inline-block;
         margin-right: 5px; }
       #allpostspage .topPosts .top1 div span {
@@ -2156,7 +2188,7 @@ body {
       #allpostspage .topPosts .top1 div a {
         font-family: medium;
         color: #525252;
-        margin: 5 0px;
+        margin: 10px 0px;
         font-size: 16px;
         display: block;
         cursor: pointer; }
